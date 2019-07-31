@@ -2,14 +2,20 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.treeleaf.suchi">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
+        android:name=".SuchiApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.enterkey.EnterKeyActivity"></activity>
+        <activity android:name=".activities.credit.CreditActivity"></activity>
+        <activity android:name=".activities.inventory.InventoryActivity" />
+        <activity android:name=".activities.dashboard.DashboardActivity" />
+        <activity android:name=".activities.enterkey.EnterKeyActivity" />
         <activity android:name=".activities.register.RegisterActivity" />
         <activity android:name=".activities.login.LoginActivity" />
         <activity android:name=".activities.profile.ProfileActivity" />

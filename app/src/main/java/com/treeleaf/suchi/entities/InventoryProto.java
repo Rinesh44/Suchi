@@ -1635,8 +1635,8 @@ public final class InventoryProto {
     }
   }
 
-  public interface inventoryOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:com.entities.pb.inventory)
+  public interface InventoryOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.entities.pb.Inventory)
       com.google.protobuf.MessageLiteOrBuilder {
 
     /**
@@ -1680,14 +1680,14 @@ public final class InventoryProto {
         getUserIdBytes();
   }
   /**
-   * Protobuf type {@code com.entities.pb.inventory}
+   * Protobuf type {@code com.entities.pb.Inventory}
    */
-  public  static final class inventory extends
+  public  static final class Inventory extends
       com.google.protobuf.GeneratedMessageLite<
-          inventory, inventory.Builder> implements
-      // @@protoc_insertion_point(message_implements:com.entities.pb.inventory)
-      inventoryOrBuilder {
-    private inventory() {
+          Inventory, Inventory.Builder> implements
+      // @@protoc_insertion_point(message_implements:com.entities.pb.Inventory)
+      InventoryOrBuilder {
+    private Inventory() {
       inventoryId_ = "";
       skuId_ = "";
       userId_ = "";
@@ -1924,60 +1924,60 @@ public final class InventoryProto {
       return size;
     }
 
-    public static inventory parseFrom(
+    public static Inventory parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data);
     }
-    public static inventory parseFrom(
+    public static Inventory parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data, extensionRegistry);
     }
-    public static inventory parseFrom(byte[] data)
+    public static Inventory parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data);
     }
-    public static inventory parseFrom(
+    public static Inventory parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data, extensionRegistry);
     }
-    public static inventory parseFrom(java.io.InputStream input)
+    public static Inventory parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, input);
     }
-    public static inventory parseFrom(
+    public static Inventory parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, input, extensionRegistry);
     }
-    public static inventory parseDelimitedFrom(java.io.InputStream input)
+    public static Inventory parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return parseDelimitedFrom(DEFAULT_INSTANCE, input);
     }
-    public static inventory parseDelimitedFrom(
+    public static Inventory parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
     }
-    public static inventory parseFrom(
+    public static Inventory parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, input);
     }
-    public static inventory parseFrom(
+    public static Inventory parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1988,19 +1988,19 @@ public final class InventoryProto {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(inventory prototype) {
+    public static Builder newBuilder(Inventory prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
 
     /**
-     * Protobuf type {@code com.entities.pb.inventory}
+     * Protobuf type {@code com.entities.pb.Inventory}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageLite.Builder<
-          inventory, Builder> implements
-        // @@protoc_insertion_point(builder_implements:com.entities.pb.inventory)
-        inventoryOrBuilder {
-      // Construct using com.treeleaf.suchi.entities.InventoryProto.inventory.newBuilder()
+          Inventory, Builder> implements
+        // @@protoc_insertion_point(builder_implements:com.entities.pb.Inventory)
+        InventoryOrBuilder {
+      // Construct using com.treeleaf.suchi.entities.InventoryProto.Inventory.newBuilder()
       private Builder() {
         super(DEFAULT_INSTANCE);
       }
@@ -2172,14 +2172,14 @@ public final class InventoryProto {
         return this;
       }
 
-      // @@protoc_insertion_point(builder_scope:com.entities.pb.inventory)
+      // @@protoc_insertion_point(builder_scope:com.entities.pb.Inventory)
     }
     protected final Object dynamicMethod(
         MethodToInvoke method,
         Object arg0, Object arg1) {
       switch (method) {
         case NEW_MUTABLE_INSTANCE: {
-          return new inventory();
+          return new Inventory();
         }
         case IS_INITIALIZED: {
           return DEFAULT_INSTANCE;
@@ -2192,7 +2192,7 @@ public final class InventoryProto {
         }
         case VISIT: {
           Visitor visitor = (Visitor) arg0;
-          inventory other = (inventory) arg1;
+          Inventory other = (Inventory) arg1;
           inventoryId_ = visitor.visitString(!inventoryId_.isEmpty(), inventoryId_,
               !other.inventoryId_.isEmpty(), other.inventoryId_);
           quantity_ = visitor.visitInt(quantity_ != 0, quantity_,
@@ -2270,7 +2270,7 @@ public final class InventoryProto {
           return DEFAULT_INSTANCE;
         }
         case GET_PARSER: {
-          if (PARSER == null) {    synchronized (inventory.class) {
+          if (PARSER == null) {    synchronized (Inventory.class) {
               if (PARSER == null) {
                 PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
               }
@@ -2283,20 +2283,20 @@ public final class InventoryProto {
     }
 
 
-    // @@protoc_insertion_point(class_scope:com.entities.pb.inventory)
-    private static final inventory DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:com.entities.pb.Inventory)
+    private static final Inventory DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new inventory();
+      DEFAULT_INSTANCE = new Inventory();
       DEFAULT_INSTANCE.makeImmutable();
     }
 
-    public static inventory getDefaultInstance() {
+    public static Inventory getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static volatile com.google.protobuf.Parser<inventory> PARSER;
+    private static volatile com.google.protobuf.Parser<Inventory> PARSER;
 
-    public static com.google.protobuf.Parser<inventory> parser() {
+    public static com.google.protobuf.Parser<Inventory> parser() {
       return DEFAULT_INSTANCE.getParserForType();
     }
   }

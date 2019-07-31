@@ -5,6 +5,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
@@ -64,6 +65,7 @@ public class RegisterActivity extends BaseActivity implements RegisterView {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setBackgroundDrawable(getResources().getDrawable(R.drawable.bg_for_keyboard_glitch));
         setContentView(R.layout.activity_register);
 
         ButterKnife.bind(this);
@@ -75,59 +77,78 @@ public class RegisterActivity extends BaseActivity implements RegisterView {
         mRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                validateFields();
-                showLoading();
-                presenter.register(mStoreName.getText().toString().trim(), mAddress.getText().toString().trim(),
-                        mPhone.getText().toString().trim(), mOwnerName.getText().toString().trim(),
-                        mUsername.getText().toString().trim(), mPassword.getText().toString().trim());
+                validateFieldsAndRegister();
 
             }
         });
     }
 
-    private void validateFields() {
+    private void validateFieldsAndRegister() {
         if (Objects.requireNonNull(mStoreName.getText()).toString().isEmpty()) {
+            mStoreNameLayout.setErrorEnabled(true);
             mStoreNameLayout.setError("This field is required");
             mStoreName.requestFocus();
             return;
+        } else {
+            mStoreNameLayout.setErrorEnabled(false);
         }
 
         if (Objects.requireNonNull(mAddress.getText()).toString().isEmpty()) {
+            mAddressLayout.setErrorEnabled(true);
             mAddressLayout.setError("This field is required");
             mAddress.requestFocus();
             return;
+        } else {
+            mAddressLayout.setErrorEnabled(false);
         }
 
         if (Objects.requireNonNull(mPhone.getText()).toString().isEmpty()) {
+            mPhoneLayout.setErrorEnabled(true);
             mPhoneLayout.setError("This field is required");
             mPhone.requestFocus();
             return;
+        } else {
+            mPhoneLayout.setErrorEnabled(false);
         }
 
         if (Objects.requireNonNull(mOwnerName.getText()).toString().isEmpty()) {
+            mOwnerNameLayout.setErrorEnabled(true);
             mOwnerNameLayout.setError("This field is required");
             mOwnerName.requestFocus();
             return;
+        } else {
+            mOwnerNameLayout.setErrorEnabled(false);
         }
 
         if (Objects.requireNonNull(mUsername.getText()).toString().isEmpty()) {
+            mUserNameLayout.setErrorEnabled(true);
             mUserNameLayout.setError("This field is required");
             mUsername.requestFocus();
             return;
+        } else {
+            mUserNameLayout.setErrorEnabled(false);
         }
 
         if (Objects.requireNonNull(mPassword.getText()).toString().isEmpty()) {
+            mPasswordLayout.setErrorEnabled(true);
             mPasswordLayout.setError("This field is required");
             mPassword.requestFocus();
             return;
+        } else {
+            mPasswordLayout.setErrorEnabled(false);
         }
+
+        showLoading();
+        presenter.register(mStoreName.getText().toString().trim(), mAddress.getText().toString().trim(),
+                mPhone.getText().toString().trim(), mOwnerName.getText().toString().trim(),
+                mUsername.getText().toString().trim(), mPassword.getText().toString().trim());
 
     }
 
     private void init() {
         setUpToolbar(mToolbar);
         if (null != getSupportActionBar()) {
-            getSupportActionBar().setDisplayShowTitleEnabled(true);
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setHomeButtonEnabled(true);
         }
@@ -138,11 +159,18 @@ public class RegisterActivity extends BaseActivity implements RegisterView {
     @Override
     public void registerSuccess() {
         AppUtils.showLog(TAG, "Registered successfully");
+        Toast.makeText(this, "User registered", Toast.LENGTH_SHORT).show();
         finish();
     }
 
     @Override
     public void registerFail(String msg) {
         showMessage(msg);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }

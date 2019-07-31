@@ -9,21 +9,18 @@
         android:layout_height="match_parent"
         android:gravity="center">
 
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <ImageView
+            android:id="@+id/iv_logo"
+            android:layout_width="200dp"
+            android:layout_height="100dp"
             android:layout_centerHorizontal="true"
-            android:fontFamily="serif"
-            android:text="SUCHI"
-            android:textColor="@color/colorPrimary"
-            android:textSize="40sp" />
+            android:src="@drawable/title_logo" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_login"
             android:layout_width="250dp"
             android:layout_height="60dp"
-            android:layout_below="@+id/title"
+            android:layout_below="@+id/iv_logo"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="40dp"
             android:text="Login" />
@@ -34,7 +31,6 @@
             android:layout_height="60dp"
             android:layout_below="@+id/btn_login"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
             android:text="Sign up" />
 
 

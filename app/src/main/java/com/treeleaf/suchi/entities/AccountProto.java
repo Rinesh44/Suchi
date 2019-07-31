@@ -7482,6 +7482,445 @@ public final class AccountProto {
     }
   }
 
+  public interface LoginResultOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.entities.pb.LoginResult)
+      com.google.protobuf.MessageLiteOrBuilder {
+
+    /**
+     * <code>optional .com.entities.pb.User user = 1;</code>
+     */
+    boolean hasUser();
+    /**
+     * <code>optional .com.entities.pb.User user = 1;</code>
+     */
+    User getUser();
+
+    /**
+     * <code>optional string password = 2;</code>
+     */
+    String getPassword();
+    /**
+     * <code>optional string password = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getPasswordBytes();
+  }
+  /**
+   * Protobuf type {@code com.entities.pb.LoginResult}
+   */
+  public  static final class LoginResult extends
+      com.google.protobuf.GeneratedMessageLite<
+          LoginResult, LoginResult.Builder> implements
+      // @@protoc_insertion_point(message_implements:com.entities.pb.LoginResult)
+      LoginResultOrBuilder {
+    private LoginResult() {
+      password_ = "";
+    }
+    public static final int USER_FIELD_NUMBER = 1;
+    private User user_;
+    /**
+     * <code>optional .com.entities.pb.User user = 1;</code>
+     */
+    public boolean hasUser() {
+      return user_ != null;
+    }
+    /**
+     * <code>optional .com.entities.pb.User user = 1;</code>
+     */
+    public User getUser() {
+      return user_ == null ? User.getDefaultInstance() : user_;
+    }
+    /**
+     * <code>optional .com.entities.pb.User user = 1;</code>
+     */
+    private void setUser(User value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      user_ = value;
+      
+      }
+    /**
+     * <code>optional .com.entities.pb.User user = 1;</code>
+     */
+    private void setUser(
+        User.Builder builderForValue) {
+      user_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>optional .com.entities.pb.User user = 1;</code>
+     */
+    private void mergeUser(User value) {
+      if (user_ != null &&
+          user_ != User.getDefaultInstance()) {
+        user_ =
+          User.newBuilder(user_).mergeFrom(value).buildPartial();
+      } else {
+        user_ = value;
+      }
+      
+    }
+    /**
+     * <code>optional .com.entities.pb.User user = 1;</code>
+     */
+    private void clearUser() {  user_ = null;
+      
+    }
+
+    public static final int PASSWORD_FIELD_NUMBER = 2;
+    private String password_;
+    /**
+     * <code>optional string password = 2;</code>
+     */
+    public String getPassword() {
+      return password_;
+    }
+    /**
+     * <code>optional string password = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getPasswordBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(password_);
+    }
+    /**
+     * <code>optional string password = 2;</code>
+     */
+    private void setPassword(
+        String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      password_ = value;
+    }
+    /**
+     * <code>optional string password = 2;</code>
+     */
+    private void clearPassword() {
+      
+      password_ = getDefaultInstance().getPassword();
+    }
+    /**
+     * <code>optional string password = 2;</code>
+     */
+    private void setPasswordBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      password_ = value.toStringUtf8();
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (user_ != null) {
+        output.writeMessage(1, getUser());
+      }
+      if (!password_.isEmpty()) {
+        output.writeString(2, getPassword());
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (user_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getUser());
+      }
+      if (!password_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeStringSize(2, getPassword());
+      }
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    public static LoginResult parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static LoginResult parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static LoginResult parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static LoginResult parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static LoginResult parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static LoginResult parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static LoginResult parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    }
+    public static LoginResult parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static LoginResult parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static LoginResult parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(LoginResult prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+
+    /**
+     * Protobuf type {@code com.entities.pb.LoginResult}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          LoginResult, Builder> implements
+        // @@protoc_insertion_point(builder_implements:com.entities.pb.LoginResult)
+        LoginResultOrBuilder {
+      // Construct using com.treeleaf.suchi.entities.AccountProto.LoginResult.newBuilder()
+      private Builder() {
+        super(DEFAULT_INSTANCE);
+      }
+
+
+      /**
+       * <code>optional .com.entities.pb.User user = 1;</code>
+       */
+      public boolean hasUser() {
+        return instance.hasUser();
+      }
+      /**
+       * <code>optional .com.entities.pb.User user = 1;</code>
+       */
+      public User getUser() {
+        return instance.getUser();
+      }
+      /**
+       * <code>optional .com.entities.pb.User user = 1;</code>
+       */
+      public Builder setUser(User value) {
+        copyOnWrite();
+        instance.setUser(value);
+        return this;
+        }
+      /**
+       * <code>optional .com.entities.pb.User user = 1;</code>
+       */
+      public Builder setUser(
+          User.Builder builderForValue) {
+        copyOnWrite();
+        instance.setUser(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .com.entities.pb.User user = 1;</code>
+       */
+      public Builder mergeUser(User value) {
+        copyOnWrite();
+        instance.mergeUser(value);
+        return this;
+      }
+      /**
+       * <code>optional .com.entities.pb.User user = 1;</code>
+       */
+      public Builder clearUser() {  copyOnWrite();
+        instance.clearUser();
+        return this;
+      }
+
+      /**
+       * <code>optional string password = 2;</code>
+       */
+      public String getPassword() {
+        return instance.getPassword();
+      }
+      /**
+       * <code>optional string password = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getPasswordBytes() {
+        return instance.getPasswordBytes();
+      }
+      /**
+       * <code>optional string password = 2;</code>
+       */
+      public Builder setPassword(
+          String value) {
+        copyOnWrite();
+        instance.setPassword(value);
+        return this;
+      }
+      /**
+       * <code>optional string password = 2;</code>
+       */
+      public Builder clearPassword() {
+        copyOnWrite();
+        instance.clearPassword();
+        return this;
+      }
+      /**
+       * <code>optional string password = 2;</code>
+       */
+      public Builder setPasswordBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setPasswordBytes(value);
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.entities.pb.LoginResult)
+    }
+    protected final Object dynamicMethod(
+        MethodToInvoke method,
+        Object arg0, Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new LoginResult();
+        }
+        case IS_INITIALIZED: {
+          return DEFAULT_INSTANCE;
+        }
+        case MAKE_IMMUTABLE: {
+          return null;
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case VISIT: {
+          Visitor visitor = (Visitor) arg0;
+          LoginResult other = (LoginResult) arg1;
+          user_ = visitor.visitMessage(user_, other.user_);
+          password_ = visitor.visitString(!password_.isEmpty(), password_,
+              !other.password_.isEmpty(), other.password_);
+          if (visitor == MergeFromVisitor
+              .INSTANCE) {
+          }
+          return this;
+        }
+        case MERGE_FROM_STREAM: {
+          com.google.protobuf.CodedInputStream input =
+              (com.google.protobuf.CodedInputStream) arg0;
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry =
+              (com.google.protobuf.ExtensionRegistryLite) arg1;
+          try {
+            boolean done = false;
+            while (!done) {
+              int tag = input.readTag();
+              switch (tag) {
+                case 0:
+                  done = true;
+                  break;
+                default: {
+                  if (!input.skipField(tag)) {
+                    done = true;
+                  }
+                  break;
+                }
+                case 10: {
+                  User.Builder subBuilder = null;
+                  if (user_ != null) {
+                    subBuilder = user_.toBuilder();
+                  }
+                  user_ = input.readMessage(User.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(user_);
+                    user_ = subBuilder.buildPartial();
+                  }
+
+                  break;
+                }
+                case 18: {
+                  String s = input.readStringRequireUtf8();
+
+                  password_ = s;
+                  break;
+                }
+              }
+            }
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw new RuntimeException(e.setUnfinishedMessage(this));
+          } catch (java.io.IOException e) {
+            throw new RuntimeException(
+                new com.google.protobuf.InvalidProtocolBufferException(
+                    e.getMessage()).setUnfinishedMessage(this));
+          } finally {
+          }
+        }
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          if (PARSER == null) {    synchronized (LoginResult.class) {
+              if (PARSER == null) {
+                PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+              }
+            }
+          }
+          return PARSER;
+        }
+      }
+      throw new UnsupportedOperationException();
+    }
+
+
+    // @@protoc_insertion_point(class_scope:com.entities.pb.LoginResult)
+    private static final LoginResult DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new LoginResult();
+      DEFAULT_INSTANCE.makeImmutable();
+    }
+
+    public static LoginResult getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static volatile com.google.protobuf.Parser<LoginResult> PARSER;
+
+    public static com.google.protobuf.Parser<LoginResult> parser() {
+      return DEFAULT_INSTANCE.getParserForType();
+    }
+  }
+
 
   static {
   }

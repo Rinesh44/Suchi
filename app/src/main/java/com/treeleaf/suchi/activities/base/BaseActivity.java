@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import android.widget.TextView;
@@ -71,6 +72,11 @@ public abstract class BaseActivity extends AppCompatActivity implements com.tree
         if (mProgressDialog != null && mProgressDialog.isShowing()) {
             mProgressDialog.cancel();
         }
+    }
+
+    public static void showLog(String tag, String msg){
+        if(tag != null && msg != null)
+            Log.d(tag, "APP_FLOW --> " + msg);
     }
 
     @Override

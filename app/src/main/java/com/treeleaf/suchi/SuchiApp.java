@@ -7,6 +7,7 @@ import com.treeleaf.suchi.dagger.component.AppComponent;
 import com.treeleaf.suchi.dagger.component.DaggerAppComponent;
 import com.treeleaf.suchi.dagger.component.module.NetModule;
 import com.treeleaf.suchi.dagger.component.modules.module.AppModule;
+import com.treeleaf.suchi.realm.RealmDatabase;
 
 public class SuchiApp extends Application {
     private static final String TAG = "SuchiApp";
@@ -16,8 +17,9 @@ public class SuchiApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-
         SuchiApp.context = getApplicationContext();
+
+        setUpRealm();
     }
 
     public static SuchiApp getMyApplication(Context context) {
@@ -32,5 +34,9 @@ public class SuchiApp extends Application {
                     .build();
         }
         return appComponent;
+    }
+
+    private void setUpRealm() {
+        RealmDatabase.init(this);
     }
 }
