@@ -12,6 +12,7 @@ import com.google.android.material.button.MaterialButton;
 import com.treeleaf.suchi.activities.dashboard.DashboardActivity;
 import com.treeleaf.suchi.activities.enterkey.EnterKeyActivity;
 import com.treeleaf.suchi.activities.login.LoginActivity;
+import com.treeleaf.suchi.activities.register.RegisterActivity;
 import com.treeleaf.suchi.utils.Constants;
 
 import butterknife.BindView;
@@ -51,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_sign_up:
-                startActivity(new Intent(MainActivity.this, EnterKeyActivity.class));
+                startActivity(new Intent(MainActivity.this, RegisterActivity.class));
                 break;
 
             case R.id.btn_login:

@@ -9,73 +9,6 @@ public final class InventoryProto {
       com.google.protobuf.ExtensionRegistryLite registry) {
   }
   /**
-   * Protobuf enum {@code com.entities.pb.BusinessStatus}
-   */
-  public enum BusinessStatus
-      implements com.google.protobuf.Internal.EnumLite {
-    /**
-     * <code>UNKNOWN_BUSINESS_STATUS = 0;</code>
-     */
-    UNKNOWN_BUSINESS_STATUS(0),
-    /**
-     * <code>ACTIVE = 1;</code>
-     */
-    ACTIVE(1),
-    UNRECOGNIZED(-1),
-    ;
-
-    /**
-     * <code>UNKNOWN_BUSINESS_STATUS = 0;</code>
-     */
-    public static final int UNKNOWN_BUSINESS_STATUS_VALUE = 0;
-    /**
-     * <code>ACTIVE = 1;</code>
-     */
-    public static final int ACTIVE_VALUE = 1;
-
-
-    public final int getNumber() {
-      return value;
-    }
-
-    /**
-     * @deprecated Use {@link #forNumber(int)} instead.
-     */
-    @Deprecated
-    public static BusinessStatus valueOf(int value) {
-      return forNumber(value);
-    }
-
-    public static BusinessStatus forNumber(int value) {
-      switch (value) {
-        case 0: return UNKNOWN_BUSINESS_STATUS;
-        case 1: return ACTIVE;
-        default: return null;
-      }
-    }
-
-    public static com.google.protobuf.Internal.EnumLiteMap<BusinessStatus>
-        internalGetValueMap() {
-      return internalValueMap;
-    }
-    private static final com.google.protobuf.Internal.EnumLiteMap<
-        BusinessStatus> internalValueMap =
-          new com.google.protobuf.Internal.EnumLiteMap<BusinessStatus>() {
-            public BusinessStatus findValueByNumber(int number) {
-              return BusinessStatus.forNumber(number);
-            }
-          };
-
-    private final int value;
-
-    private BusinessStatus(int value) {
-      this.value = value;
-    }
-
-    // @@protoc_insertion_point(enum_scope:com.entities.pb.BusinessStatus)
-  }
-
-  /**
    * Protobuf enum {@code com.entities.pb.SKUStatus}
    */
   public enum SKUStatus
@@ -149,6 +82,82 @@ public final class InventoryProto {
     }
 
     // @@protoc_insertion_point(enum_scope:com.entities.pb.SKUStatus)
+  }
+
+  /**
+   * Protobuf enum {@code com.entities.pb.FieldsStatus}
+   */
+  public enum FieldsStatus
+      implements com.google.protobuf.Internal.EnumLite {
+    /**
+     * <code>UNKNOWN_FIELDS_STATUS = 0;</code>
+     */
+    UNKNOWN_FIELDS_STATUS(0),
+    /**
+     * <code>ACTIVE = 1;</code>
+     */
+    ACTIVE(1),
+    /**
+     * <code>INACTIVE = 2;</code>
+     */
+    INACTIVE(2),
+    UNRECOGNIZED(-1),
+    ;
+
+    /**
+     * <code>UNKNOWN_FIELDS_STATUS = 0;</code>
+     */
+    public static final int UNKNOWN_FIELDS_STATUS_VALUE = 0;
+    /**
+     * <code>ACTIVE = 1;</code>
+     */
+    public static final int ACTIVE_VALUE = 1;
+    /**
+     * <code>INACTIVE = 2;</code>
+     */
+    public static final int INACTIVE_VALUE = 2;
+
+
+    public final int getNumber() {
+      return value;
+    }
+
+    /**
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @Deprecated
+    public static FieldsStatus valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static FieldsStatus forNumber(int value) {
+      switch (value) {
+        case 0: return UNKNOWN_FIELDS_STATUS;
+        case 1: return ACTIVE;
+        case 2: return INACTIVE;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<FieldsStatus>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        FieldsStatus> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<FieldsStatus>() {
+            public FieldsStatus findValueByNumber(int number) {
+              return FieldsStatus.forNumber(number);
+            }
+          };
+
+    private final int value;
+
+    private FieldsStatus(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:com.entities.pb.FieldsStatus)
   }
 
   public interface StockKeepingUnitOrBuilder extends
@@ -268,6 +277,16 @@ public final class InventoryProto {
      */
     com.google.protobuf.ByteString
         getUnitBytes();
+
+    /**
+     * <code>optional int64 createdAt = 13;</code>
+     */
+    long getCreatedAt();
+
+    /**
+     * <code>optional int64 updatedAt = 14;</code>
+     */
+    long getUpdatedAt();
   }
   /**
    * Protobuf type {@code com.entities.pb.StockKeepingUnit}
@@ -811,6 +830,52 @@ public final class InventoryProto {
       unit_ = value.toStringUtf8();
     }
 
+    public static final int CREATEDAT_FIELD_NUMBER = 13;
+    private long createdAt_;
+    /**
+     * <code>optional int64 createdAt = 13;</code>
+     */
+    public long getCreatedAt() {
+      return createdAt_;
+    }
+    /**
+     * <code>optional int64 createdAt = 13;</code>
+     */
+    private void setCreatedAt(long value) {
+      
+      createdAt_ = value;
+    }
+    /**
+     * <code>optional int64 createdAt = 13;</code>
+     */
+    private void clearCreatedAt() {
+      
+      createdAt_ = 0L;
+    }
+
+    public static final int UPDATEDAT_FIELD_NUMBER = 14;
+    private long updatedAt_;
+    /**
+     * <code>optional int64 updatedAt = 14;</code>
+     */
+    public long getUpdatedAt() {
+      return updatedAt_;
+    }
+    /**
+     * <code>optional int64 updatedAt = 14;</code>
+     */
+    private void setUpdatedAt(long value) {
+      
+      updatedAt_ = value;
+    }
+    /**
+     * <code>optional int64 updatedAt = 14;</code>
+     */
+    private void clearUpdatedAt() {
+      
+      updatedAt_ = 0L;
+    }
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!skuId_.isEmpty()) {
@@ -848,6 +913,12 @@ public final class InventoryProto {
       }
       if (!unit_.isEmpty()) {
         output.writeString(12, getUnit());
+      }
+      if (createdAt_ != 0L) {
+        output.writeInt64(13, createdAt_);
+      }
+      if (updatedAt_ != 0L) {
+        output.writeInt64(14, updatedAt_);
       }
     }
 
@@ -903,6 +974,14 @@ public final class InventoryProto {
       if (!unit_.isEmpty()) {
         size += com.google.protobuf.CodedOutputStream
           .computeStringSize(12, getUnit());
+      }
+      if (createdAt_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(13, createdAt_);
+      }
+      if (updatedAt_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(14, updatedAt_);
       }
       memoizedSerializedSize = size;
       return size;
@@ -1450,6 +1529,52 @@ public final class InventoryProto {
         return this;
       }
 
+      /**
+       * <code>optional int64 createdAt = 13;</code>
+       */
+      public long getCreatedAt() {
+        return instance.getCreatedAt();
+      }
+      /**
+       * <code>optional int64 createdAt = 13;</code>
+       */
+      public Builder setCreatedAt(long value) {
+        copyOnWrite();
+        instance.setCreatedAt(value);
+        return this;
+      }
+      /**
+       * <code>optional int64 createdAt = 13;</code>
+       */
+      public Builder clearCreatedAt() {
+        copyOnWrite();
+        instance.clearCreatedAt();
+        return this;
+      }
+
+      /**
+       * <code>optional int64 updatedAt = 14;</code>
+       */
+      public long getUpdatedAt() {
+        return instance.getUpdatedAt();
+      }
+      /**
+       * <code>optional int64 updatedAt = 14;</code>
+       */
+      public Builder setUpdatedAt(long value) {
+        copyOnWrite();
+        instance.setUpdatedAt(value);
+        return this;
+      }
+      /**
+       * <code>optional int64 updatedAt = 14;</code>
+       */
+      public Builder clearUpdatedAt() {
+        copyOnWrite();
+        instance.clearUpdatedAt();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:com.entities.pb.StockKeepingUnit)
     }
     protected final Object dynamicMethod(
@@ -1494,6 +1619,10 @@ public final class InventoryProto {
               !other.category_.isEmpty(), other.category_);
           unit_ = visitor.visitString(!unit_.isEmpty(), unit_,
               !other.unit_.isEmpty(), other.unit_);
+          createdAt_ = visitor.visitLong(createdAt_ != 0L, createdAt_,
+              other.createdAt_ != 0L, other.createdAt_);
+          updatedAt_ = visitor.visitLong(updatedAt_ != 0L, updatedAt_,
+              other.updatedAt_ != 0L, other.updatedAt_);
           if (visitor == MergeFromVisitor
               .INSTANCE) {
           }
@@ -1589,6 +1718,16 @@ public final class InventoryProto {
                   unit_ = s;
                   break;
                 }
+                case 104: {
+
+                  createdAt_ = input.readInt64();
+                  break;
+                }
+                case 112: {
+
+                  updatedAt_ = input.readInt64();
+                  break;
+                }
               }
             }
           } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -1678,6 +1817,34 @@ public final class InventoryProto {
      */
     com.google.protobuf.ByteString
         getUserIdBytes();
+
+    /**
+     * <code>optional .com.entities.pb.StockKeepingUnit sku = 6;</code>
+     */
+    boolean hasSku();
+    /**
+     * <code>optional .com.entities.pb.StockKeepingUnit sku = 6;</code>
+     */
+    StockKeepingUnit getSku();
+
+    /**
+     * <code>optional .com.entities.pb.SKUStatus status = 7;</code>
+     */
+    int getStatusValue();
+    /**
+     * <code>optional .com.entities.pb.SKUStatus status = 7;</code>
+     */
+    SKUStatus getStatus();
+
+    /**
+     * <code>optional int64 createdAt = 8;</code>
+     */
+    long getCreatedAt();
+
+    /**
+     * <code>optional int64 updatedAt = 9;</code>
+     */
+    long getUpdatedAt();
   }
   /**
    * Protobuf type {@code com.entities.pb.Inventory}
@@ -1876,6 +2043,143 @@ public final class InventoryProto {
       userId_ = value.toStringUtf8();
     }
 
+    public static final int SKU_FIELD_NUMBER = 6;
+    private StockKeepingUnit sku_;
+    /**
+     * <code>optional .com.entities.pb.StockKeepingUnit sku = 6;</code>
+     */
+    public boolean hasSku() {
+      return sku_ != null;
+    }
+    /**
+     * <code>optional .com.entities.pb.StockKeepingUnit sku = 6;</code>
+     */
+    public StockKeepingUnit getSku() {
+      return sku_ == null ? StockKeepingUnit.getDefaultInstance() : sku_;
+    }
+    /**
+     * <code>optional .com.entities.pb.StockKeepingUnit sku = 6;</code>
+     */
+    private void setSku(StockKeepingUnit value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      sku_ = value;
+      
+      }
+    /**
+     * <code>optional .com.entities.pb.StockKeepingUnit sku = 6;</code>
+     */
+    private void setSku(
+        StockKeepingUnit.Builder builderForValue) {
+      sku_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>optional .com.entities.pb.StockKeepingUnit sku = 6;</code>
+     */
+    private void mergeSku(StockKeepingUnit value) {
+      if (sku_ != null &&
+          sku_ != StockKeepingUnit.getDefaultInstance()) {
+        sku_ =
+          StockKeepingUnit.newBuilder(sku_).mergeFrom(value).buildPartial();
+      } else {
+        sku_ = value;
+      }
+      
+    }
+    /**
+     * <code>optional .com.entities.pb.StockKeepingUnit sku = 6;</code>
+     */
+    private void clearSku() {  sku_ = null;
+      
+    }
+
+    public static final int STATUS_FIELD_NUMBER = 7;
+    private int status_;
+    /**
+     * <code>optional .com.entities.pb.SKUStatus status = 7;</code>
+     */
+    public int getStatusValue() {
+      return status_;
+    }
+    /**
+     * <code>optional .com.entities.pb.SKUStatus status = 7;</code>
+     */
+    public SKUStatus getStatus() {
+      SKUStatus result = SKUStatus.forNumber(status_);
+      return result == null ? SKUStatus.UNRECOGNIZED : result;
+    }
+    /**
+     * <code>optional .com.entities.pb.SKUStatus status = 7;</code>
+     */
+    private void setStatusValue(int value) {
+        status_ = value;
+    }
+    /**
+     * <code>optional .com.entities.pb.SKUStatus status = 7;</code>
+     */
+    private void setStatus(SKUStatus value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      
+      status_ = value.getNumber();
+    }
+    /**
+     * <code>optional .com.entities.pb.SKUStatus status = 7;</code>
+     */
+    private void clearStatus() {
+      
+      status_ = 0;
+    }
+
+    public static final int CREATEDAT_FIELD_NUMBER = 8;
+    private long createdAt_;
+    /**
+     * <code>optional int64 createdAt = 8;</code>
+     */
+    public long getCreatedAt() {
+      return createdAt_;
+    }
+    /**
+     * <code>optional int64 createdAt = 8;</code>
+     */
+    private void setCreatedAt(long value) {
+      
+      createdAt_ = value;
+    }
+    /**
+     * <code>optional int64 createdAt = 8;</code>
+     */
+    private void clearCreatedAt() {
+      
+      createdAt_ = 0L;
+    }
+
+    public static final int UPDATEDAT_FIELD_NUMBER = 9;
+    private long updatedAt_;
+    /**
+     * <code>optional int64 updatedAt = 9;</code>
+     */
+    public long getUpdatedAt() {
+      return updatedAt_;
+    }
+    /**
+     * <code>optional int64 updatedAt = 9;</code>
+     */
+    private void setUpdatedAt(long value) {
+      
+      updatedAt_ = value;
+    }
+    /**
+     * <code>optional int64 updatedAt = 9;</code>
+     */
+    private void clearUpdatedAt() {
+      
+      updatedAt_ = 0L;
+    }
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!inventoryId_.isEmpty()) {
@@ -1892,6 +2196,18 @@ public final class InventoryProto {
       }
       if (!userId_.isEmpty()) {
         output.writeString(5, getUserId());
+      }
+      if (sku_ != null) {
+        output.writeMessage(6, getSku());
+      }
+      if (status_ != SKUStatus.UNKNOWN_KYU_STATUS.getNumber()) {
+        output.writeEnum(7, status_);
+      }
+      if (createdAt_ != 0L) {
+        output.writeInt64(8, createdAt_);
+      }
+      if (updatedAt_ != 0L) {
+        output.writeInt64(9, updatedAt_);
       }
     }
 
@@ -1919,6 +2235,22 @@ public final class InventoryProto {
       if (!userId_.isEmpty()) {
         size += com.google.protobuf.CodedOutputStream
           .computeStringSize(5, getUserId());
+      }
+      if (sku_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(6, getSku());
+      }
+      if (status_ != SKUStatus.UNKNOWN_KYU_STATUS.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(7, status_);
+      }
+      if (createdAt_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(8, createdAt_);
+      }
+      if (updatedAt_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(9, updatedAt_);
       }
       memoizedSerializedSize = size;
       return size;
@@ -2172,6 +2504,134 @@ public final class InventoryProto {
         return this;
       }
 
+      /**
+       * <code>optional .com.entities.pb.StockKeepingUnit sku = 6;</code>
+       */
+      public boolean hasSku() {
+        return instance.hasSku();
+      }
+      /**
+       * <code>optional .com.entities.pb.StockKeepingUnit sku = 6;</code>
+       */
+      public StockKeepingUnit getSku() {
+        return instance.getSku();
+      }
+      /**
+       * <code>optional .com.entities.pb.StockKeepingUnit sku = 6;</code>
+       */
+      public Builder setSku(StockKeepingUnit value) {
+        copyOnWrite();
+        instance.setSku(value);
+        return this;
+        }
+      /**
+       * <code>optional .com.entities.pb.StockKeepingUnit sku = 6;</code>
+       */
+      public Builder setSku(
+          StockKeepingUnit.Builder builderForValue) {
+        copyOnWrite();
+        instance.setSku(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .com.entities.pb.StockKeepingUnit sku = 6;</code>
+       */
+      public Builder mergeSku(StockKeepingUnit value) {
+        copyOnWrite();
+        instance.mergeSku(value);
+        return this;
+      }
+      /**
+       * <code>optional .com.entities.pb.StockKeepingUnit sku = 6;</code>
+       */
+      public Builder clearSku() {  copyOnWrite();
+        instance.clearSku();
+        return this;
+      }
+
+      /**
+       * <code>optional .com.entities.pb.SKUStatus status = 7;</code>
+       */
+      public int getStatusValue() {
+        return instance.getStatusValue();
+      }
+      /**
+       * <code>optional .com.entities.pb.SKUStatus status = 7;</code>
+       */
+      public Builder setStatusValue(int value) {
+        copyOnWrite();
+        instance.setStatusValue(value);
+        return this;
+      }
+      /**
+       * <code>optional .com.entities.pb.SKUStatus status = 7;</code>
+       */
+      public SKUStatus getStatus() {
+        return instance.getStatus();
+      }
+      /**
+       * <code>optional .com.entities.pb.SKUStatus status = 7;</code>
+       */
+      public Builder setStatus(SKUStatus value) {
+        copyOnWrite();
+        instance.setStatus(value);
+        return this;
+      }
+      /**
+       * <code>optional .com.entities.pb.SKUStatus status = 7;</code>
+       */
+      public Builder clearStatus() {
+        copyOnWrite();
+        instance.clearStatus();
+        return this;
+      }
+
+      /**
+       * <code>optional int64 createdAt = 8;</code>
+       */
+      public long getCreatedAt() {
+        return instance.getCreatedAt();
+      }
+      /**
+       * <code>optional int64 createdAt = 8;</code>
+       */
+      public Builder setCreatedAt(long value) {
+        copyOnWrite();
+        instance.setCreatedAt(value);
+        return this;
+      }
+      /**
+       * <code>optional int64 createdAt = 8;</code>
+       */
+      public Builder clearCreatedAt() {
+        copyOnWrite();
+        instance.clearCreatedAt();
+        return this;
+      }
+
+      /**
+       * <code>optional int64 updatedAt = 9;</code>
+       */
+      public long getUpdatedAt() {
+        return instance.getUpdatedAt();
+      }
+      /**
+       * <code>optional int64 updatedAt = 9;</code>
+       */
+      public Builder setUpdatedAt(long value) {
+        copyOnWrite();
+        instance.setUpdatedAt(value);
+        return this;
+      }
+      /**
+       * <code>optional int64 updatedAt = 9;</code>
+       */
+      public Builder clearUpdatedAt() {
+        copyOnWrite();
+        instance.clearUpdatedAt();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:com.entities.pb.Inventory)
     }
     protected final Object dynamicMethod(
@@ -2203,6 +2663,12 @@ public final class InventoryProto {
               !other.skuId_.isEmpty(), other.skuId_);
           userId_ = visitor.visitString(!userId_.isEmpty(), userId_,
               !other.userId_.isEmpty(), other.userId_);
+          sku_ = visitor.visitMessage(sku_, other.sku_);
+          status_ = visitor.visitInt(status_ != 0, status_,    other.status_ != 0, other.status_);
+          createdAt_ = visitor.visitLong(createdAt_ != 0L, createdAt_,
+              other.createdAt_ != 0L, other.createdAt_);
+          updatedAt_ = visitor.visitLong(updatedAt_ != 0L, updatedAt_,
+              other.updatedAt_ != 0L, other.updatedAt_);
           if (visitor == MergeFromVisitor
               .INSTANCE) {
           }
@@ -2253,6 +2719,35 @@ public final class InventoryProto {
                   String s = input.readStringRequireUtf8();
 
                   userId_ = s;
+                  break;
+                }
+                case 50: {
+                  StockKeepingUnit.Builder subBuilder = null;
+                  if (sku_ != null) {
+                    subBuilder = sku_.toBuilder();
+                  }
+                  sku_ = input.readMessage(StockKeepingUnit.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(sku_);
+                    sku_ = subBuilder.buildPartial();
+                  }
+
+                  break;
+                }
+                case 56: {
+                  int rawValue = input.readEnum();
+
+                  status_ = rawValue;
+                  break;
+                }
+                case 64: {
+
+                  createdAt_ = input.readInt64();
+                  break;
+                }
+                case 72: {
+
+                  updatedAt_ = input.readInt64();
                   break;
                 }
               }
@@ -2851,6 +3346,3178 @@ public final class InventoryProto {
     private static volatile com.google.protobuf.Parser<LicenseKeyManagement> PARSER;
 
     public static com.google.protobuf.Parser<LicenseKeyManagement> parser() {
+      return DEFAULT_INSTANCE.getParserForType();
+    }
+  }
+
+  public interface BrandOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.entities.pb.Brand)
+      com.google.protobuf.MessageLiteOrBuilder {
+
+    /**
+     * <code>optional string brandId = 1;</code>
+     */
+    String getBrandId();
+    /**
+     * <code>optional string brandId = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getBrandIdBytes();
+
+    /**
+     * <code>optional string name = 2;</code>
+     */
+    String getName();
+    /**
+     * <code>optional string name = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getNameBytes();
+
+    /**
+     * <code>optional .com.entities.pb.FieldsStatus status = 3;</code>
+     */
+    int getStatusValue();
+    /**
+     * <code>optional .com.entities.pb.FieldsStatus status = 3;</code>
+     */
+    FieldsStatus getStatus();
+
+    /**
+     * <code>optional int64 createdAt = 4;</code>
+     */
+    long getCreatedAt();
+
+    /**
+     * <code>optional int64 updatedAt = 5;</code>
+     */
+    long getUpdatedAt();
+
+    /**
+     * <code>optional string createdBy = 6;</code>
+     */
+    String getCreatedBy();
+    /**
+     * <code>optional string createdBy = 6;</code>
+     */
+    com.google.protobuf.ByteString
+        getCreatedByBytes();
+  }
+  /**
+   * Protobuf type {@code com.entities.pb.Brand}
+   */
+  public  static final class Brand extends
+      com.google.protobuf.GeneratedMessageLite<
+          Brand, Brand.Builder> implements
+      // @@protoc_insertion_point(message_implements:com.entities.pb.Brand)
+      BrandOrBuilder {
+    private Brand() {
+      brandId_ = "";
+      name_ = "";
+      createdBy_ = "";
+    }
+    public static final int BRANDID_FIELD_NUMBER = 1;
+    private String brandId_;
+    /**
+     * <code>optional string brandId = 1;</code>
+     */
+    public String getBrandId() {
+      return brandId_;
+    }
+    /**
+     * <code>optional string brandId = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getBrandIdBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(brandId_);
+    }
+    /**
+     * <code>optional string brandId = 1;</code>
+     */
+    private void setBrandId(
+        String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      brandId_ = value;
+    }
+    /**
+     * <code>optional string brandId = 1;</code>
+     */
+    private void clearBrandId() {
+      
+      brandId_ = getDefaultInstance().getBrandId();
+    }
+    /**
+     * <code>optional string brandId = 1;</code>
+     */
+    private void setBrandIdBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      brandId_ = value.toStringUtf8();
+    }
+
+    public static final int NAME_FIELD_NUMBER = 2;
+    private String name_;
+    /**
+     * <code>optional string name = 2;</code>
+     */
+    public String getName() {
+      return name_;
+    }
+    /**
+     * <code>optional string name = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getNameBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(name_);
+    }
+    /**
+     * <code>optional string name = 2;</code>
+     */
+    private void setName(
+        String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      name_ = value;
+    }
+    /**
+     * <code>optional string name = 2;</code>
+     */
+    private void clearName() {
+      
+      name_ = getDefaultInstance().getName();
+    }
+    /**
+     * <code>optional string name = 2;</code>
+     */
+    private void setNameBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      name_ = value.toStringUtf8();
+    }
+
+    public static final int STATUS_FIELD_NUMBER = 3;
+    private int status_;
+    /**
+     * <code>optional .com.entities.pb.FieldsStatus status = 3;</code>
+     */
+    public int getStatusValue() {
+      return status_;
+    }
+    /**
+     * <code>optional .com.entities.pb.FieldsStatus status = 3;</code>
+     */
+    public FieldsStatus getStatus() {
+      FieldsStatus result = FieldsStatus.forNumber(status_);
+      return result == null ? FieldsStatus.UNRECOGNIZED : result;
+    }
+    /**
+     * <code>optional .com.entities.pb.FieldsStatus status = 3;</code>
+     */
+    private void setStatusValue(int value) {
+        status_ = value;
+    }
+    /**
+     * <code>optional .com.entities.pb.FieldsStatus status = 3;</code>
+     */
+    private void setStatus(FieldsStatus value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      
+      status_ = value.getNumber();
+    }
+    /**
+     * <code>optional .com.entities.pb.FieldsStatus status = 3;</code>
+     */
+    private void clearStatus() {
+      
+      status_ = 0;
+    }
+
+    public static final int CREATEDAT_FIELD_NUMBER = 4;
+    private long createdAt_;
+    /**
+     * <code>optional int64 createdAt = 4;</code>
+     */
+    public long getCreatedAt() {
+      return createdAt_;
+    }
+    /**
+     * <code>optional int64 createdAt = 4;</code>
+     */
+    private void setCreatedAt(long value) {
+      
+      createdAt_ = value;
+    }
+    /**
+     * <code>optional int64 createdAt = 4;</code>
+     */
+    private void clearCreatedAt() {
+      
+      createdAt_ = 0L;
+    }
+
+    public static final int UPDATEDAT_FIELD_NUMBER = 5;
+    private long updatedAt_;
+    /**
+     * <code>optional int64 updatedAt = 5;</code>
+     */
+    public long getUpdatedAt() {
+      return updatedAt_;
+    }
+    /**
+     * <code>optional int64 updatedAt = 5;</code>
+     */
+    private void setUpdatedAt(long value) {
+      
+      updatedAt_ = value;
+    }
+    /**
+     * <code>optional int64 updatedAt = 5;</code>
+     */
+    private void clearUpdatedAt() {
+      
+      updatedAt_ = 0L;
+    }
+
+    public static final int CREATEDBY_FIELD_NUMBER = 6;
+    private String createdBy_;
+    /**
+     * <code>optional string createdBy = 6;</code>
+     */
+    public String getCreatedBy() {
+      return createdBy_;
+    }
+    /**
+     * <code>optional string createdBy = 6;</code>
+     */
+    public com.google.protobuf.ByteString
+        getCreatedByBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(createdBy_);
+    }
+    /**
+     * <code>optional string createdBy = 6;</code>
+     */
+    private void setCreatedBy(
+        String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      createdBy_ = value;
+    }
+    /**
+     * <code>optional string createdBy = 6;</code>
+     */
+    private void clearCreatedBy() {
+      
+      createdBy_ = getDefaultInstance().getCreatedBy();
+    }
+    /**
+     * <code>optional string createdBy = 6;</code>
+     */
+    private void setCreatedByBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      createdBy_ = value.toStringUtf8();
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!brandId_.isEmpty()) {
+        output.writeString(1, getBrandId());
+      }
+      if (!name_.isEmpty()) {
+        output.writeString(2, getName());
+      }
+      if (status_ != FieldsStatus.UNKNOWN_FIELDS_STATUS.getNumber()) {
+        output.writeEnum(3, status_);
+      }
+      if (createdAt_ != 0L) {
+        output.writeInt64(4, createdAt_);
+      }
+      if (updatedAt_ != 0L) {
+        output.writeInt64(5, updatedAt_);
+      }
+      if (!createdBy_.isEmpty()) {
+        output.writeString(6, getCreatedBy());
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!brandId_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeStringSize(1, getBrandId());
+      }
+      if (!name_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeStringSize(2, getName());
+      }
+      if (status_ != FieldsStatus.UNKNOWN_FIELDS_STATUS.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(3, status_);
+      }
+      if (createdAt_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(4, createdAt_);
+      }
+      if (updatedAt_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(5, updatedAt_);
+      }
+      if (!createdBy_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeStringSize(6, getCreatedBy());
+      }
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    public static Brand parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static Brand parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static Brand parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static Brand parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static Brand parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static Brand parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static Brand parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    }
+    public static Brand parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static Brand parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static Brand parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(Brand prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+
+    /**
+     * Protobuf type {@code com.entities.pb.Brand}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          Brand, Builder> implements
+        // @@protoc_insertion_point(builder_implements:com.entities.pb.Brand)
+        BrandOrBuilder {
+      // Construct using com.treeleaf.suchi.entities.InventoryProto.Brand.newBuilder()
+      private Builder() {
+        super(DEFAULT_INSTANCE);
+      }
+
+
+      /**
+       * <code>optional string brandId = 1;</code>
+       */
+      public String getBrandId() {
+        return instance.getBrandId();
+      }
+      /**
+       * <code>optional string brandId = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getBrandIdBytes() {
+        return instance.getBrandIdBytes();
+      }
+      /**
+       * <code>optional string brandId = 1;</code>
+       */
+      public Builder setBrandId(
+          String value) {
+        copyOnWrite();
+        instance.setBrandId(value);
+        return this;
+      }
+      /**
+       * <code>optional string brandId = 1;</code>
+       */
+      public Builder clearBrandId() {
+        copyOnWrite();
+        instance.clearBrandId();
+        return this;
+      }
+      /**
+       * <code>optional string brandId = 1;</code>
+       */
+      public Builder setBrandIdBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setBrandIdBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>optional string name = 2;</code>
+       */
+      public String getName() {
+        return instance.getName();
+      }
+      /**
+       * <code>optional string name = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getNameBytes() {
+        return instance.getNameBytes();
+      }
+      /**
+       * <code>optional string name = 2;</code>
+       */
+      public Builder setName(
+          String value) {
+        copyOnWrite();
+        instance.setName(value);
+        return this;
+      }
+      /**
+       * <code>optional string name = 2;</code>
+       */
+      public Builder clearName() {
+        copyOnWrite();
+        instance.clearName();
+        return this;
+      }
+      /**
+       * <code>optional string name = 2;</code>
+       */
+      public Builder setNameBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setNameBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>optional .com.entities.pb.FieldsStatus status = 3;</code>
+       */
+      public int getStatusValue() {
+        return instance.getStatusValue();
+      }
+      /**
+       * <code>optional .com.entities.pb.FieldsStatus status = 3;</code>
+       */
+      public Builder setStatusValue(int value) {
+        copyOnWrite();
+        instance.setStatusValue(value);
+        return this;
+      }
+      /**
+       * <code>optional .com.entities.pb.FieldsStatus status = 3;</code>
+       */
+      public FieldsStatus getStatus() {
+        return instance.getStatus();
+      }
+      /**
+       * <code>optional .com.entities.pb.FieldsStatus status = 3;</code>
+       */
+      public Builder setStatus(FieldsStatus value) {
+        copyOnWrite();
+        instance.setStatus(value);
+        return this;
+      }
+      /**
+       * <code>optional .com.entities.pb.FieldsStatus status = 3;</code>
+       */
+      public Builder clearStatus() {
+        copyOnWrite();
+        instance.clearStatus();
+        return this;
+      }
+
+      /**
+       * <code>optional int64 createdAt = 4;</code>
+       */
+      public long getCreatedAt() {
+        return instance.getCreatedAt();
+      }
+      /**
+       * <code>optional int64 createdAt = 4;</code>
+       */
+      public Builder setCreatedAt(long value) {
+        copyOnWrite();
+        instance.setCreatedAt(value);
+        return this;
+      }
+      /**
+       * <code>optional int64 createdAt = 4;</code>
+       */
+      public Builder clearCreatedAt() {
+        copyOnWrite();
+        instance.clearCreatedAt();
+        return this;
+      }
+
+      /**
+       * <code>optional int64 updatedAt = 5;</code>
+       */
+      public long getUpdatedAt() {
+        return instance.getUpdatedAt();
+      }
+      /**
+       * <code>optional int64 updatedAt = 5;</code>
+       */
+      public Builder setUpdatedAt(long value) {
+        copyOnWrite();
+        instance.setUpdatedAt(value);
+        return this;
+      }
+      /**
+       * <code>optional int64 updatedAt = 5;</code>
+       */
+      public Builder clearUpdatedAt() {
+        copyOnWrite();
+        instance.clearUpdatedAt();
+        return this;
+      }
+
+      /**
+       * <code>optional string createdBy = 6;</code>
+       */
+      public String getCreatedBy() {
+        return instance.getCreatedBy();
+      }
+      /**
+       * <code>optional string createdBy = 6;</code>
+       */
+      public com.google.protobuf.ByteString
+          getCreatedByBytes() {
+        return instance.getCreatedByBytes();
+      }
+      /**
+       * <code>optional string createdBy = 6;</code>
+       */
+      public Builder setCreatedBy(
+          String value) {
+        copyOnWrite();
+        instance.setCreatedBy(value);
+        return this;
+      }
+      /**
+       * <code>optional string createdBy = 6;</code>
+       */
+      public Builder clearCreatedBy() {
+        copyOnWrite();
+        instance.clearCreatedBy();
+        return this;
+      }
+      /**
+       * <code>optional string createdBy = 6;</code>
+       */
+      public Builder setCreatedByBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setCreatedByBytes(value);
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.entities.pb.Brand)
+    }
+    protected final Object dynamicMethod(
+        MethodToInvoke method,
+        Object arg0, Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new Brand();
+        }
+        case IS_INITIALIZED: {
+          return DEFAULT_INSTANCE;
+        }
+        case MAKE_IMMUTABLE: {
+          return null;
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case VISIT: {
+          Visitor visitor = (Visitor) arg0;
+          Brand other = (Brand) arg1;
+          brandId_ = visitor.visitString(!brandId_.isEmpty(), brandId_,
+              !other.brandId_.isEmpty(), other.brandId_);
+          name_ = visitor.visitString(!name_.isEmpty(), name_,
+              !other.name_.isEmpty(), other.name_);
+          status_ = visitor.visitInt(status_ != 0, status_,    other.status_ != 0, other.status_);
+          createdAt_ = visitor.visitLong(createdAt_ != 0L, createdAt_,
+              other.createdAt_ != 0L, other.createdAt_);
+          updatedAt_ = visitor.visitLong(updatedAt_ != 0L, updatedAt_,
+              other.updatedAt_ != 0L, other.updatedAt_);
+          createdBy_ = visitor.visitString(!createdBy_.isEmpty(), createdBy_,
+              !other.createdBy_.isEmpty(), other.createdBy_);
+          if (visitor == MergeFromVisitor
+              .INSTANCE) {
+          }
+          return this;
+        }
+        case MERGE_FROM_STREAM: {
+          com.google.protobuf.CodedInputStream input =
+              (com.google.protobuf.CodedInputStream) arg0;
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry =
+              (com.google.protobuf.ExtensionRegistryLite) arg1;
+          try {
+            boolean done = false;
+            while (!done) {
+              int tag = input.readTag();
+              switch (tag) {
+                case 0:
+                  done = true;
+                  break;
+                default: {
+                  if (!input.skipField(tag)) {
+                    done = true;
+                  }
+                  break;
+                }
+                case 10: {
+                  String s = input.readStringRequireUtf8();
+
+                  brandId_ = s;
+                  break;
+                }
+                case 18: {
+                  String s = input.readStringRequireUtf8();
+
+                  name_ = s;
+                  break;
+                }
+                case 24: {
+                  int rawValue = input.readEnum();
+
+                  status_ = rawValue;
+                  break;
+                }
+                case 32: {
+
+                  createdAt_ = input.readInt64();
+                  break;
+                }
+                case 40: {
+
+                  updatedAt_ = input.readInt64();
+                  break;
+                }
+                case 50: {
+                  String s = input.readStringRequireUtf8();
+
+                  createdBy_ = s;
+                  break;
+                }
+              }
+            }
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw new RuntimeException(e.setUnfinishedMessage(this));
+          } catch (java.io.IOException e) {
+            throw new RuntimeException(
+                new com.google.protobuf.InvalidProtocolBufferException(
+                    e.getMessage()).setUnfinishedMessage(this));
+          } finally {
+          }
+        }
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          if (PARSER == null) {    synchronized (Brand.class) {
+              if (PARSER == null) {
+                PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+              }
+            }
+          }
+          return PARSER;
+        }
+      }
+      throw new UnsupportedOperationException();
+    }
+
+
+    // @@protoc_insertion_point(class_scope:com.entities.pb.Brand)
+    private static final Brand DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new Brand();
+      DEFAULT_INSTANCE.makeImmutable();
+    }
+
+    public static Brand getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static volatile com.google.protobuf.Parser<Brand> PARSER;
+
+    public static com.google.protobuf.Parser<Brand> parser() {
+      return DEFAULT_INSTANCE.getParserForType();
+    }
+  }
+
+  public interface SubBrandOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.entities.pb.SubBrand)
+      com.google.protobuf.MessageLiteOrBuilder {
+
+    /**
+     * <code>optional string subBrandId = 1;</code>
+     */
+    String getSubBrandId();
+    /**
+     * <code>optional string subBrandId = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getSubBrandIdBytes();
+
+    /**
+     * <code>optional string name = 2;</code>
+     */
+    String getName();
+    /**
+     * <code>optional string name = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getNameBytes();
+
+    /**
+     * <code>optional string brandId = 3;</code>
+     */
+    String getBrandId();
+    /**
+     * <code>optional string brandId = 3;</code>
+     */
+    com.google.protobuf.ByteString
+        getBrandIdBytes();
+
+    /**
+     * <code>optional .com.entities.pb.FieldsStatus status = 4;</code>
+     */
+    int getStatusValue();
+    /**
+     * <code>optional .com.entities.pb.FieldsStatus status = 4;</code>
+     */
+    FieldsStatus getStatus();
+
+    /**
+     * <code>optional int64 createdAt = 5;</code>
+     */
+    long getCreatedAt();
+
+    /**
+     * <code>optional int64 updatedAt = 6;</code>
+     */
+    long getUpdatedAt();
+
+    /**
+     * <code>optional string createdBy = 7;</code>
+     */
+    String getCreatedBy();
+    /**
+     * <code>optional string createdBy = 7;</code>
+     */
+    com.google.protobuf.ByteString
+        getCreatedByBytes();
+  }
+  /**
+   * Protobuf type {@code com.entities.pb.SubBrand}
+   */
+  public  static final class SubBrand extends
+      com.google.protobuf.GeneratedMessageLite<
+          SubBrand, SubBrand.Builder> implements
+      // @@protoc_insertion_point(message_implements:com.entities.pb.SubBrand)
+      SubBrandOrBuilder {
+    private SubBrand() {
+      subBrandId_ = "";
+      name_ = "";
+      brandId_ = "";
+      createdBy_ = "";
+    }
+    public static final int SUBBRANDID_FIELD_NUMBER = 1;
+    private String subBrandId_;
+    /**
+     * <code>optional string subBrandId = 1;</code>
+     */
+    public String getSubBrandId() {
+      return subBrandId_;
+    }
+    /**
+     * <code>optional string subBrandId = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getSubBrandIdBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(subBrandId_);
+    }
+    /**
+     * <code>optional string subBrandId = 1;</code>
+     */
+    private void setSubBrandId(
+        String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      subBrandId_ = value;
+    }
+    /**
+     * <code>optional string subBrandId = 1;</code>
+     */
+    private void clearSubBrandId() {
+      
+      subBrandId_ = getDefaultInstance().getSubBrandId();
+    }
+    /**
+     * <code>optional string subBrandId = 1;</code>
+     */
+    private void setSubBrandIdBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      subBrandId_ = value.toStringUtf8();
+    }
+
+    public static final int NAME_FIELD_NUMBER = 2;
+    private String name_;
+    /**
+     * <code>optional string name = 2;</code>
+     */
+    public String getName() {
+      return name_;
+    }
+    /**
+     * <code>optional string name = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getNameBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(name_);
+    }
+    /**
+     * <code>optional string name = 2;</code>
+     */
+    private void setName(
+        String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      name_ = value;
+    }
+    /**
+     * <code>optional string name = 2;</code>
+     */
+    private void clearName() {
+      
+      name_ = getDefaultInstance().getName();
+    }
+    /**
+     * <code>optional string name = 2;</code>
+     */
+    private void setNameBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      name_ = value.toStringUtf8();
+    }
+
+    public static final int BRANDID_FIELD_NUMBER = 3;
+    private String brandId_;
+    /**
+     * <code>optional string brandId = 3;</code>
+     */
+    public String getBrandId() {
+      return brandId_;
+    }
+    /**
+     * <code>optional string brandId = 3;</code>
+     */
+    public com.google.protobuf.ByteString
+        getBrandIdBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(brandId_);
+    }
+    /**
+     * <code>optional string brandId = 3;</code>
+     */
+    private void setBrandId(
+        String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      brandId_ = value;
+    }
+    /**
+     * <code>optional string brandId = 3;</code>
+     */
+    private void clearBrandId() {
+      
+      brandId_ = getDefaultInstance().getBrandId();
+    }
+    /**
+     * <code>optional string brandId = 3;</code>
+     */
+    private void setBrandIdBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      brandId_ = value.toStringUtf8();
+    }
+
+    public static final int STATUS_FIELD_NUMBER = 4;
+    private int status_;
+    /**
+     * <code>optional .com.entities.pb.FieldsStatus status = 4;</code>
+     */
+    public int getStatusValue() {
+      return status_;
+    }
+    /**
+     * <code>optional .com.entities.pb.FieldsStatus status = 4;</code>
+     */
+    public FieldsStatus getStatus() {
+      FieldsStatus result = FieldsStatus.forNumber(status_);
+      return result == null ? FieldsStatus.UNRECOGNIZED : result;
+    }
+    /**
+     * <code>optional .com.entities.pb.FieldsStatus status = 4;</code>
+     */
+    private void setStatusValue(int value) {
+        status_ = value;
+    }
+    /**
+     * <code>optional .com.entities.pb.FieldsStatus status = 4;</code>
+     */
+    private void setStatus(FieldsStatus value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      
+      status_ = value.getNumber();
+    }
+    /**
+     * <code>optional .com.entities.pb.FieldsStatus status = 4;</code>
+     */
+    private void clearStatus() {
+      
+      status_ = 0;
+    }
+
+    public static final int CREATEDAT_FIELD_NUMBER = 5;
+    private long createdAt_;
+    /**
+     * <code>optional int64 createdAt = 5;</code>
+     */
+    public long getCreatedAt() {
+      return createdAt_;
+    }
+    /**
+     * <code>optional int64 createdAt = 5;</code>
+     */
+    private void setCreatedAt(long value) {
+      
+      createdAt_ = value;
+    }
+    /**
+     * <code>optional int64 createdAt = 5;</code>
+     */
+    private void clearCreatedAt() {
+      
+      createdAt_ = 0L;
+    }
+
+    public static final int UPDATEDAT_FIELD_NUMBER = 6;
+    private long updatedAt_;
+    /**
+     * <code>optional int64 updatedAt = 6;</code>
+     */
+    public long getUpdatedAt() {
+      return updatedAt_;
+    }
+    /**
+     * <code>optional int64 updatedAt = 6;</code>
+     */
+    private void setUpdatedAt(long value) {
+      
+      updatedAt_ = value;
+    }
+    /**
+     * <code>optional int64 updatedAt = 6;</code>
+     */
+    private void clearUpdatedAt() {
+      
+      updatedAt_ = 0L;
+    }
+
+    public static final int CREATEDBY_FIELD_NUMBER = 7;
+    private String createdBy_;
+    /**
+     * <code>optional string createdBy = 7;</code>
+     */
+    public String getCreatedBy() {
+      return createdBy_;
+    }
+    /**
+     * <code>optional string createdBy = 7;</code>
+     */
+    public com.google.protobuf.ByteString
+        getCreatedByBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(createdBy_);
+    }
+    /**
+     * <code>optional string createdBy = 7;</code>
+     */
+    private void setCreatedBy(
+        String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      createdBy_ = value;
+    }
+    /**
+     * <code>optional string createdBy = 7;</code>
+     */
+    private void clearCreatedBy() {
+      
+      createdBy_ = getDefaultInstance().getCreatedBy();
+    }
+    /**
+     * <code>optional string createdBy = 7;</code>
+     */
+    private void setCreatedByBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      createdBy_ = value.toStringUtf8();
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!subBrandId_.isEmpty()) {
+        output.writeString(1, getSubBrandId());
+      }
+      if (!name_.isEmpty()) {
+        output.writeString(2, getName());
+      }
+      if (!brandId_.isEmpty()) {
+        output.writeString(3, getBrandId());
+      }
+      if (status_ != FieldsStatus.UNKNOWN_FIELDS_STATUS.getNumber()) {
+        output.writeEnum(4, status_);
+      }
+      if (createdAt_ != 0L) {
+        output.writeInt64(5, createdAt_);
+      }
+      if (updatedAt_ != 0L) {
+        output.writeInt64(6, updatedAt_);
+      }
+      if (!createdBy_.isEmpty()) {
+        output.writeString(7, getCreatedBy());
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!subBrandId_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeStringSize(1, getSubBrandId());
+      }
+      if (!name_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeStringSize(2, getName());
+      }
+      if (!brandId_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeStringSize(3, getBrandId());
+      }
+      if (status_ != FieldsStatus.UNKNOWN_FIELDS_STATUS.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(4, status_);
+      }
+      if (createdAt_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(5, createdAt_);
+      }
+      if (updatedAt_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(6, updatedAt_);
+      }
+      if (!createdBy_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeStringSize(7, getCreatedBy());
+      }
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    public static SubBrand parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static SubBrand parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static SubBrand parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static SubBrand parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static SubBrand parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static SubBrand parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static SubBrand parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    }
+    public static SubBrand parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static SubBrand parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static SubBrand parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(SubBrand prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+
+    /**
+     * Protobuf type {@code com.entities.pb.SubBrand}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          SubBrand, Builder> implements
+        // @@protoc_insertion_point(builder_implements:com.entities.pb.SubBrand)
+        SubBrandOrBuilder {
+      // Construct using com.treeleaf.suchi.entities.InventoryProto.SubBrand.newBuilder()
+      private Builder() {
+        super(DEFAULT_INSTANCE);
+      }
+
+
+      /**
+       * <code>optional string subBrandId = 1;</code>
+       */
+      public String getSubBrandId() {
+        return instance.getSubBrandId();
+      }
+      /**
+       * <code>optional string subBrandId = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getSubBrandIdBytes() {
+        return instance.getSubBrandIdBytes();
+      }
+      /**
+       * <code>optional string subBrandId = 1;</code>
+       */
+      public Builder setSubBrandId(
+          String value) {
+        copyOnWrite();
+        instance.setSubBrandId(value);
+        return this;
+      }
+      /**
+       * <code>optional string subBrandId = 1;</code>
+       */
+      public Builder clearSubBrandId() {
+        copyOnWrite();
+        instance.clearSubBrandId();
+        return this;
+      }
+      /**
+       * <code>optional string subBrandId = 1;</code>
+       */
+      public Builder setSubBrandIdBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setSubBrandIdBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>optional string name = 2;</code>
+       */
+      public String getName() {
+        return instance.getName();
+      }
+      /**
+       * <code>optional string name = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getNameBytes() {
+        return instance.getNameBytes();
+      }
+      /**
+       * <code>optional string name = 2;</code>
+       */
+      public Builder setName(
+          String value) {
+        copyOnWrite();
+        instance.setName(value);
+        return this;
+      }
+      /**
+       * <code>optional string name = 2;</code>
+       */
+      public Builder clearName() {
+        copyOnWrite();
+        instance.clearName();
+        return this;
+      }
+      /**
+       * <code>optional string name = 2;</code>
+       */
+      public Builder setNameBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setNameBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>optional string brandId = 3;</code>
+       */
+      public String getBrandId() {
+        return instance.getBrandId();
+      }
+      /**
+       * <code>optional string brandId = 3;</code>
+       */
+      public com.google.protobuf.ByteString
+          getBrandIdBytes() {
+        return instance.getBrandIdBytes();
+      }
+      /**
+       * <code>optional string brandId = 3;</code>
+       */
+      public Builder setBrandId(
+          String value) {
+        copyOnWrite();
+        instance.setBrandId(value);
+        return this;
+      }
+      /**
+       * <code>optional string brandId = 3;</code>
+       */
+      public Builder clearBrandId() {
+        copyOnWrite();
+        instance.clearBrandId();
+        return this;
+      }
+      /**
+       * <code>optional string brandId = 3;</code>
+       */
+      public Builder setBrandIdBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setBrandIdBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>optional .com.entities.pb.FieldsStatus status = 4;</code>
+       */
+      public int getStatusValue() {
+        return instance.getStatusValue();
+      }
+      /**
+       * <code>optional .com.entities.pb.FieldsStatus status = 4;</code>
+       */
+      public Builder setStatusValue(int value) {
+        copyOnWrite();
+        instance.setStatusValue(value);
+        return this;
+      }
+      /**
+       * <code>optional .com.entities.pb.FieldsStatus status = 4;</code>
+       */
+      public FieldsStatus getStatus() {
+        return instance.getStatus();
+      }
+      /**
+       * <code>optional .com.entities.pb.FieldsStatus status = 4;</code>
+       */
+      public Builder setStatus(FieldsStatus value) {
+        copyOnWrite();
+        instance.setStatus(value);
+        return this;
+      }
+      /**
+       * <code>optional .com.entities.pb.FieldsStatus status = 4;</code>
+       */
+      public Builder clearStatus() {
+        copyOnWrite();
+        instance.clearStatus();
+        return this;
+      }
+
+      /**
+       * <code>optional int64 createdAt = 5;</code>
+       */
+      public long getCreatedAt() {
+        return instance.getCreatedAt();
+      }
+      /**
+       * <code>optional int64 createdAt = 5;</code>
+       */
+      public Builder setCreatedAt(long value) {
+        copyOnWrite();
+        instance.setCreatedAt(value);
+        return this;
+      }
+      /**
+       * <code>optional int64 createdAt = 5;</code>
+       */
+      public Builder clearCreatedAt() {
+        copyOnWrite();
+        instance.clearCreatedAt();
+        return this;
+      }
+
+      /**
+       * <code>optional int64 updatedAt = 6;</code>
+       */
+      public long getUpdatedAt() {
+        return instance.getUpdatedAt();
+      }
+      /**
+       * <code>optional int64 updatedAt = 6;</code>
+       */
+      public Builder setUpdatedAt(long value) {
+        copyOnWrite();
+        instance.setUpdatedAt(value);
+        return this;
+      }
+      /**
+       * <code>optional int64 updatedAt = 6;</code>
+       */
+      public Builder clearUpdatedAt() {
+        copyOnWrite();
+        instance.clearUpdatedAt();
+        return this;
+      }
+
+      /**
+       * <code>optional string createdBy = 7;</code>
+       */
+      public String getCreatedBy() {
+        return instance.getCreatedBy();
+      }
+      /**
+       * <code>optional string createdBy = 7;</code>
+       */
+      public com.google.protobuf.ByteString
+          getCreatedByBytes() {
+        return instance.getCreatedByBytes();
+      }
+      /**
+       * <code>optional string createdBy = 7;</code>
+       */
+      public Builder setCreatedBy(
+          String value) {
+        copyOnWrite();
+        instance.setCreatedBy(value);
+        return this;
+      }
+      /**
+       * <code>optional string createdBy = 7;</code>
+       */
+      public Builder clearCreatedBy() {
+        copyOnWrite();
+        instance.clearCreatedBy();
+        return this;
+      }
+      /**
+       * <code>optional string createdBy = 7;</code>
+       */
+      public Builder setCreatedByBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setCreatedByBytes(value);
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.entities.pb.SubBrand)
+    }
+    protected final Object dynamicMethod(
+        MethodToInvoke method,
+        Object arg0, Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new SubBrand();
+        }
+        case IS_INITIALIZED: {
+          return DEFAULT_INSTANCE;
+        }
+        case MAKE_IMMUTABLE: {
+          return null;
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case VISIT: {
+          Visitor visitor = (Visitor) arg0;
+          SubBrand other = (SubBrand) arg1;
+          subBrandId_ = visitor.visitString(!subBrandId_.isEmpty(), subBrandId_,
+              !other.subBrandId_.isEmpty(), other.subBrandId_);
+          name_ = visitor.visitString(!name_.isEmpty(), name_,
+              !other.name_.isEmpty(), other.name_);
+          brandId_ = visitor.visitString(!brandId_.isEmpty(), brandId_,
+              !other.brandId_.isEmpty(), other.brandId_);
+          status_ = visitor.visitInt(status_ != 0, status_,    other.status_ != 0, other.status_);
+          createdAt_ = visitor.visitLong(createdAt_ != 0L, createdAt_,
+              other.createdAt_ != 0L, other.createdAt_);
+          updatedAt_ = visitor.visitLong(updatedAt_ != 0L, updatedAt_,
+              other.updatedAt_ != 0L, other.updatedAt_);
+          createdBy_ = visitor.visitString(!createdBy_.isEmpty(), createdBy_,
+              !other.createdBy_.isEmpty(), other.createdBy_);
+          if (visitor == MergeFromVisitor
+              .INSTANCE) {
+          }
+          return this;
+        }
+        case MERGE_FROM_STREAM: {
+          com.google.protobuf.CodedInputStream input =
+              (com.google.protobuf.CodedInputStream) arg0;
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry =
+              (com.google.protobuf.ExtensionRegistryLite) arg1;
+          try {
+            boolean done = false;
+            while (!done) {
+              int tag = input.readTag();
+              switch (tag) {
+                case 0:
+                  done = true;
+                  break;
+                default: {
+                  if (!input.skipField(tag)) {
+                    done = true;
+                  }
+                  break;
+                }
+                case 10: {
+                  String s = input.readStringRequireUtf8();
+
+                  subBrandId_ = s;
+                  break;
+                }
+                case 18: {
+                  String s = input.readStringRequireUtf8();
+
+                  name_ = s;
+                  break;
+                }
+                case 26: {
+                  String s = input.readStringRequireUtf8();
+
+                  brandId_ = s;
+                  break;
+                }
+                case 32: {
+                  int rawValue = input.readEnum();
+
+                  status_ = rawValue;
+                  break;
+                }
+                case 40: {
+
+                  createdAt_ = input.readInt64();
+                  break;
+                }
+                case 48: {
+
+                  updatedAt_ = input.readInt64();
+                  break;
+                }
+                case 58: {
+                  String s = input.readStringRequireUtf8();
+
+                  createdBy_ = s;
+                  break;
+                }
+              }
+            }
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw new RuntimeException(e.setUnfinishedMessage(this));
+          } catch (java.io.IOException e) {
+            throw new RuntimeException(
+                new com.google.protobuf.InvalidProtocolBufferException(
+                    e.getMessage()).setUnfinishedMessage(this));
+          } finally {
+          }
+        }
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          if (PARSER == null) {    synchronized (SubBrand.class) {
+              if (PARSER == null) {
+                PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+              }
+            }
+          }
+          return PARSER;
+        }
+      }
+      throw new UnsupportedOperationException();
+    }
+
+
+    // @@protoc_insertion_point(class_scope:com.entities.pb.SubBrand)
+    private static final SubBrand DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new SubBrand();
+      DEFAULT_INSTANCE.makeImmutable();
+    }
+
+    public static SubBrand getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static volatile com.google.protobuf.Parser<SubBrand> PARSER;
+
+    public static com.google.protobuf.Parser<SubBrand> parser() {
+      return DEFAULT_INSTANCE.getParserForType();
+    }
+  }
+
+  public interface CategoryOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.entities.pb.Category)
+      com.google.protobuf.MessageLiteOrBuilder {
+
+    /**
+     * <code>optional string categoryId = 1;</code>
+     */
+    String getCategoryId();
+    /**
+     * <code>optional string categoryId = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getCategoryIdBytes();
+
+    /**
+     * <code>optional string name = 2;</code>
+     */
+    String getName();
+    /**
+     * <code>optional string name = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getNameBytes();
+
+    /**
+     * <code>optional .com.entities.pb.FieldsStatus status = 3;</code>
+     */
+    int getStatusValue();
+    /**
+     * <code>optional .com.entities.pb.FieldsStatus status = 3;</code>
+     */
+    FieldsStatus getStatus();
+
+    /**
+     * <code>optional int64 createdAt = 4;</code>
+     */
+    long getCreatedAt();
+
+    /**
+     * <code>optional int64 updatedAt = 5;</code>
+     */
+    long getUpdatedAt();
+
+    /**
+     * <code>optional string createdBy = 6;</code>
+     */
+    String getCreatedBy();
+    /**
+     * <code>optional string createdBy = 6;</code>
+     */
+    com.google.protobuf.ByteString
+        getCreatedByBytes();
+  }
+  /**
+   * Protobuf type {@code com.entities.pb.Category}
+   */
+  public  static final class Category extends
+      com.google.protobuf.GeneratedMessageLite<
+          Category, Category.Builder> implements
+      // @@protoc_insertion_point(message_implements:com.entities.pb.Category)
+      CategoryOrBuilder {
+    private Category() {
+      categoryId_ = "";
+      name_ = "";
+      createdBy_ = "";
+    }
+    public static final int CATEGORYID_FIELD_NUMBER = 1;
+    private String categoryId_;
+    /**
+     * <code>optional string categoryId = 1;</code>
+     */
+    public String getCategoryId() {
+      return categoryId_;
+    }
+    /**
+     * <code>optional string categoryId = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getCategoryIdBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(categoryId_);
+    }
+    /**
+     * <code>optional string categoryId = 1;</code>
+     */
+    private void setCategoryId(
+        String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      categoryId_ = value;
+    }
+    /**
+     * <code>optional string categoryId = 1;</code>
+     */
+    private void clearCategoryId() {
+      
+      categoryId_ = getDefaultInstance().getCategoryId();
+    }
+    /**
+     * <code>optional string categoryId = 1;</code>
+     */
+    private void setCategoryIdBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      categoryId_ = value.toStringUtf8();
+    }
+
+    public static final int NAME_FIELD_NUMBER = 2;
+    private String name_;
+    /**
+     * <code>optional string name = 2;</code>
+     */
+    public String getName() {
+      return name_;
+    }
+    /**
+     * <code>optional string name = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getNameBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(name_);
+    }
+    /**
+     * <code>optional string name = 2;</code>
+     */
+    private void setName(
+        String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      name_ = value;
+    }
+    /**
+     * <code>optional string name = 2;</code>
+     */
+    private void clearName() {
+      
+      name_ = getDefaultInstance().getName();
+    }
+    /**
+     * <code>optional string name = 2;</code>
+     */
+    private void setNameBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      name_ = value.toStringUtf8();
+    }
+
+    public static final int STATUS_FIELD_NUMBER = 3;
+    private int status_;
+    /**
+     * <code>optional .com.entities.pb.FieldsStatus status = 3;</code>
+     */
+    public int getStatusValue() {
+      return status_;
+    }
+    /**
+     * <code>optional .com.entities.pb.FieldsStatus status = 3;</code>
+     */
+    public FieldsStatus getStatus() {
+      FieldsStatus result = FieldsStatus.forNumber(status_);
+      return result == null ? FieldsStatus.UNRECOGNIZED : result;
+    }
+    /**
+     * <code>optional .com.entities.pb.FieldsStatus status = 3;</code>
+     */
+    private void setStatusValue(int value) {
+        status_ = value;
+    }
+    /**
+     * <code>optional .com.entities.pb.FieldsStatus status = 3;</code>
+     */
+    private void setStatus(FieldsStatus value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      
+      status_ = value.getNumber();
+    }
+    /**
+     * <code>optional .com.entities.pb.FieldsStatus status = 3;</code>
+     */
+    private void clearStatus() {
+      
+      status_ = 0;
+    }
+
+    public static final int CREATEDAT_FIELD_NUMBER = 4;
+    private long createdAt_;
+    /**
+     * <code>optional int64 createdAt = 4;</code>
+     */
+    public long getCreatedAt() {
+      return createdAt_;
+    }
+    /**
+     * <code>optional int64 createdAt = 4;</code>
+     */
+    private void setCreatedAt(long value) {
+      
+      createdAt_ = value;
+    }
+    /**
+     * <code>optional int64 createdAt = 4;</code>
+     */
+    private void clearCreatedAt() {
+      
+      createdAt_ = 0L;
+    }
+
+    public static final int UPDATEDAT_FIELD_NUMBER = 5;
+    private long updatedAt_;
+    /**
+     * <code>optional int64 updatedAt = 5;</code>
+     */
+    public long getUpdatedAt() {
+      return updatedAt_;
+    }
+    /**
+     * <code>optional int64 updatedAt = 5;</code>
+     */
+    private void setUpdatedAt(long value) {
+      
+      updatedAt_ = value;
+    }
+    /**
+     * <code>optional int64 updatedAt = 5;</code>
+     */
+    private void clearUpdatedAt() {
+      
+      updatedAt_ = 0L;
+    }
+
+    public static final int CREATEDBY_FIELD_NUMBER = 6;
+    private String createdBy_;
+    /**
+     * <code>optional string createdBy = 6;</code>
+     */
+    public String getCreatedBy() {
+      return createdBy_;
+    }
+    /**
+     * <code>optional string createdBy = 6;</code>
+     */
+    public com.google.protobuf.ByteString
+        getCreatedByBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(createdBy_);
+    }
+    /**
+     * <code>optional string createdBy = 6;</code>
+     */
+    private void setCreatedBy(
+        String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      createdBy_ = value;
+    }
+    /**
+     * <code>optional string createdBy = 6;</code>
+     */
+    private void clearCreatedBy() {
+      
+      createdBy_ = getDefaultInstance().getCreatedBy();
+    }
+    /**
+     * <code>optional string createdBy = 6;</code>
+     */
+    private void setCreatedByBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      createdBy_ = value.toStringUtf8();
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!categoryId_.isEmpty()) {
+        output.writeString(1, getCategoryId());
+      }
+      if (!name_.isEmpty()) {
+        output.writeString(2, getName());
+      }
+      if (status_ != FieldsStatus.UNKNOWN_FIELDS_STATUS.getNumber()) {
+        output.writeEnum(3, status_);
+      }
+      if (createdAt_ != 0L) {
+        output.writeInt64(4, createdAt_);
+      }
+      if (updatedAt_ != 0L) {
+        output.writeInt64(5, updatedAt_);
+      }
+      if (!createdBy_.isEmpty()) {
+        output.writeString(6, getCreatedBy());
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!categoryId_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeStringSize(1, getCategoryId());
+      }
+      if (!name_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeStringSize(2, getName());
+      }
+      if (status_ != FieldsStatus.UNKNOWN_FIELDS_STATUS.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(3, status_);
+      }
+      if (createdAt_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(4, createdAt_);
+      }
+      if (updatedAt_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(5, updatedAt_);
+      }
+      if (!createdBy_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeStringSize(6, getCreatedBy());
+      }
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    public static Category parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static Category parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static Category parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static Category parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static Category parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static Category parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static Category parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    }
+    public static Category parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static Category parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static Category parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(Category prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+
+    /**
+     * Protobuf type {@code com.entities.pb.Category}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          Category, Builder> implements
+        // @@protoc_insertion_point(builder_implements:com.entities.pb.Category)
+        CategoryOrBuilder {
+      // Construct using com.treeleaf.suchi.entities.InventoryProto.Category.newBuilder()
+      private Builder() {
+        super(DEFAULT_INSTANCE);
+      }
+
+
+      /**
+       * <code>optional string categoryId = 1;</code>
+       */
+      public String getCategoryId() {
+        return instance.getCategoryId();
+      }
+      /**
+       * <code>optional string categoryId = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getCategoryIdBytes() {
+        return instance.getCategoryIdBytes();
+      }
+      /**
+       * <code>optional string categoryId = 1;</code>
+       */
+      public Builder setCategoryId(
+          String value) {
+        copyOnWrite();
+        instance.setCategoryId(value);
+        return this;
+      }
+      /**
+       * <code>optional string categoryId = 1;</code>
+       */
+      public Builder clearCategoryId() {
+        copyOnWrite();
+        instance.clearCategoryId();
+        return this;
+      }
+      /**
+       * <code>optional string categoryId = 1;</code>
+       */
+      public Builder setCategoryIdBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setCategoryIdBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>optional string name = 2;</code>
+       */
+      public String getName() {
+        return instance.getName();
+      }
+      /**
+       * <code>optional string name = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getNameBytes() {
+        return instance.getNameBytes();
+      }
+      /**
+       * <code>optional string name = 2;</code>
+       */
+      public Builder setName(
+          String value) {
+        copyOnWrite();
+        instance.setName(value);
+        return this;
+      }
+      /**
+       * <code>optional string name = 2;</code>
+       */
+      public Builder clearName() {
+        copyOnWrite();
+        instance.clearName();
+        return this;
+      }
+      /**
+       * <code>optional string name = 2;</code>
+       */
+      public Builder setNameBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setNameBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>optional .com.entities.pb.FieldsStatus status = 3;</code>
+       */
+      public int getStatusValue() {
+        return instance.getStatusValue();
+      }
+      /**
+       * <code>optional .com.entities.pb.FieldsStatus status = 3;</code>
+       */
+      public Builder setStatusValue(int value) {
+        copyOnWrite();
+        instance.setStatusValue(value);
+        return this;
+      }
+      /**
+       * <code>optional .com.entities.pb.FieldsStatus status = 3;</code>
+       */
+      public FieldsStatus getStatus() {
+        return instance.getStatus();
+      }
+      /**
+       * <code>optional .com.entities.pb.FieldsStatus status = 3;</code>
+       */
+      public Builder setStatus(FieldsStatus value) {
+        copyOnWrite();
+        instance.setStatus(value);
+        return this;
+      }
+      /**
+       * <code>optional .com.entities.pb.FieldsStatus status = 3;</code>
+       */
+      public Builder clearStatus() {
+        copyOnWrite();
+        instance.clearStatus();
+        return this;
+      }
+
+      /**
+       * <code>optional int64 createdAt = 4;</code>
+       */
+      public long getCreatedAt() {
+        return instance.getCreatedAt();
+      }
+      /**
+       * <code>optional int64 createdAt = 4;</code>
+       */
+      public Builder setCreatedAt(long value) {
+        copyOnWrite();
+        instance.setCreatedAt(value);
+        return this;
+      }
+      /**
+       * <code>optional int64 createdAt = 4;</code>
+       */
+      public Builder clearCreatedAt() {
+        copyOnWrite();
+        instance.clearCreatedAt();
+        return this;
+      }
+
+      /**
+       * <code>optional int64 updatedAt = 5;</code>
+       */
+      public long getUpdatedAt() {
+        return instance.getUpdatedAt();
+      }
+      /**
+       * <code>optional int64 updatedAt = 5;</code>
+       */
+      public Builder setUpdatedAt(long value) {
+        copyOnWrite();
+        instance.setUpdatedAt(value);
+        return this;
+      }
+      /**
+       * <code>optional int64 updatedAt = 5;</code>
+       */
+      public Builder clearUpdatedAt() {
+        copyOnWrite();
+        instance.clearUpdatedAt();
+        return this;
+      }
+
+      /**
+       * <code>optional string createdBy = 6;</code>
+       */
+      public String getCreatedBy() {
+        return instance.getCreatedBy();
+      }
+      /**
+       * <code>optional string createdBy = 6;</code>
+       */
+      public com.google.protobuf.ByteString
+          getCreatedByBytes() {
+        return instance.getCreatedByBytes();
+      }
+      /**
+       * <code>optional string createdBy = 6;</code>
+       */
+      public Builder setCreatedBy(
+          String value) {
+        copyOnWrite();
+        instance.setCreatedBy(value);
+        return this;
+      }
+      /**
+       * <code>optional string createdBy = 6;</code>
+       */
+      public Builder clearCreatedBy() {
+        copyOnWrite();
+        instance.clearCreatedBy();
+        return this;
+      }
+      /**
+       * <code>optional string createdBy = 6;</code>
+       */
+      public Builder setCreatedByBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setCreatedByBytes(value);
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.entities.pb.Category)
+    }
+    protected final Object dynamicMethod(
+        MethodToInvoke method,
+        Object arg0, Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new Category();
+        }
+        case IS_INITIALIZED: {
+          return DEFAULT_INSTANCE;
+        }
+        case MAKE_IMMUTABLE: {
+          return null;
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case VISIT: {
+          Visitor visitor = (Visitor) arg0;
+          Category other = (Category) arg1;
+          categoryId_ = visitor.visitString(!categoryId_.isEmpty(), categoryId_,
+              !other.categoryId_.isEmpty(), other.categoryId_);
+          name_ = visitor.visitString(!name_.isEmpty(), name_,
+              !other.name_.isEmpty(), other.name_);
+          status_ = visitor.visitInt(status_ != 0, status_,    other.status_ != 0, other.status_);
+          createdAt_ = visitor.visitLong(createdAt_ != 0L, createdAt_,
+              other.createdAt_ != 0L, other.createdAt_);
+          updatedAt_ = visitor.visitLong(updatedAt_ != 0L, updatedAt_,
+              other.updatedAt_ != 0L, other.updatedAt_);
+          createdBy_ = visitor.visitString(!createdBy_.isEmpty(), createdBy_,
+              !other.createdBy_.isEmpty(), other.createdBy_);
+          if (visitor == MergeFromVisitor
+              .INSTANCE) {
+          }
+          return this;
+        }
+        case MERGE_FROM_STREAM: {
+          com.google.protobuf.CodedInputStream input =
+              (com.google.protobuf.CodedInputStream) arg0;
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry =
+              (com.google.protobuf.ExtensionRegistryLite) arg1;
+          try {
+            boolean done = false;
+            while (!done) {
+              int tag = input.readTag();
+              switch (tag) {
+                case 0:
+                  done = true;
+                  break;
+                default: {
+                  if (!input.skipField(tag)) {
+                    done = true;
+                  }
+                  break;
+                }
+                case 10: {
+                  String s = input.readStringRequireUtf8();
+
+                  categoryId_ = s;
+                  break;
+                }
+                case 18: {
+                  String s = input.readStringRequireUtf8();
+
+                  name_ = s;
+                  break;
+                }
+                case 24: {
+                  int rawValue = input.readEnum();
+
+                  status_ = rawValue;
+                  break;
+                }
+                case 32: {
+
+                  createdAt_ = input.readInt64();
+                  break;
+                }
+                case 40: {
+
+                  updatedAt_ = input.readInt64();
+                  break;
+                }
+                case 50: {
+                  String s = input.readStringRequireUtf8();
+
+                  createdBy_ = s;
+                  break;
+                }
+              }
+            }
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw new RuntimeException(e.setUnfinishedMessage(this));
+          } catch (java.io.IOException e) {
+            throw new RuntimeException(
+                new com.google.protobuf.InvalidProtocolBufferException(
+                    e.getMessage()).setUnfinishedMessage(this));
+          } finally {
+          }
+        }
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          if (PARSER == null) {    synchronized (Category.class) {
+              if (PARSER == null) {
+                PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+              }
+            }
+          }
+          return PARSER;
+        }
+      }
+      throw new UnsupportedOperationException();
+    }
+
+
+    // @@protoc_insertion_point(class_scope:com.entities.pb.Category)
+    private static final Category DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new Category();
+      DEFAULT_INSTANCE.makeImmutable();
+    }
+
+    public static Category getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static volatile com.google.protobuf.Parser<Category> PARSER;
+
+    public static com.google.protobuf.Parser<Category> parser() {
+      return DEFAULT_INSTANCE.getParserForType();
+    }
+  }
+
+  public interface UnitOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.entities.pb.Unit)
+      com.google.protobuf.MessageLiteOrBuilder {
+
+    /**
+     * <code>optional string unitId = 1;</code>
+     */
+    String getUnitId();
+    /**
+     * <code>optional string unitId = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getUnitIdBytes();
+
+    /**
+     * <code>optional string name = 2;</code>
+     */
+    String getName();
+    /**
+     * <code>optional string name = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getNameBytes();
+
+    /**
+     * <code>optional .com.entities.pb.FieldsStatus status = 3;</code>
+     */
+    int getStatusValue();
+    /**
+     * <code>optional .com.entities.pb.FieldsStatus status = 3;</code>
+     */
+    FieldsStatus getStatus();
+
+    /**
+     * <code>optional int64 createdAt = 4;</code>
+     */
+    long getCreatedAt();
+
+    /**
+     * <code>optional int64 updatedAt = 5;</code>
+     */
+    long getUpdatedAt();
+
+    /**
+     * <code>optional string createdBy = 6;</code>
+     */
+    String getCreatedBy();
+    /**
+     * <code>optional string createdBy = 6;</code>
+     */
+    com.google.protobuf.ByteString
+        getCreatedByBytes();
+  }
+  /**
+   * Protobuf type {@code com.entities.pb.Unit}
+   */
+  public  static final class Unit extends
+      com.google.protobuf.GeneratedMessageLite<
+          Unit, Unit.Builder> implements
+      // @@protoc_insertion_point(message_implements:com.entities.pb.Unit)
+      UnitOrBuilder {
+    private Unit() {
+      unitId_ = "";
+      name_ = "";
+      createdBy_ = "";
+    }
+    public static final int UNITID_FIELD_NUMBER = 1;
+    private String unitId_;
+    /**
+     * <code>optional string unitId = 1;</code>
+     */
+    public String getUnitId() {
+      return unitId_;
+    }
+    /**
+     * <code>optional string unitId = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getUnitIdBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(unitId_);
+    }
+    /**
+     * <code>optional string unitId = 1;</code>
+     */
+    private void setUnitId(
+        String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      unitId_ = value;
+    }
+    /**
+     * <code>optional string unitId = 1;</code>
+     */
+    private void clearUnitId() {
+      
+      unitId_ = getDefaultInstance().getUnitId();
+    }
+    /**
+     * <code>optional string unitId = 1;</code>
+     */
+    private void setUnitIdBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      unitId_ = value.toStringUtf8();
+    }
+
+    public static final int NAME_FIELD_NUMBER = 2;
+    private String name_;
+    /**
+     * <code>optional string name = 2;</code>
+     */
+    public String getName() {
+      return name_;
+    }
+    /**
+     * <code>optional string name = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getNameBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(name_);
+    }
+    /**
+     * <code>optional string name = 2;</code>
+     */
+    private void setName(
+        String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      name_ = value;
+    }
+    /**
+     * <code>optional string name = 2;</code>
+     */
+    private void clearName() {
+      
+      name_ = getDefaultInstance().getName();
+    }
+    /**
+     * <code>optional string name = 2;</code>
+     */
+    private void setNameBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      name_ = value.toStringUtf8();
+    }
+
+    public static final int STATUS_FIELD_NUMBER = 3;
+    private int status_;
+    /**
+     * <code>optional .com.entities.pb.FieldsStatus status = 3;</code>
+     */
+    public int getStatusValue() {
+      return status_;
+    }
+    /**
+     * <code>optional .com.entities.pb.FieldsStatus status = 3;</code>
+     */
+    public FieldsStatus getStatus() {
+      FieldsStatus result = FieldsStatus.forNumber(status_);
+      return result == null ? FieldsStatus.UNRECOGNIZED : result;
+    }
+    /**
+     * <code>optional .com.entities.pb.FieldsStatus status = 3;</code>
+     */
+    private void setStatusValue(int value) {
+        status_ = value;
+    }
+    /**
+     * <code>optional .com.entities.pb.FieldsStatus status = 3;</code>
+     */
+    private void setStatus(FieldsStatus value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      
+      status_ = value.getNumber();
+    }
+    /**
+     * <code>optional .com.entities.pb.FieldsStatus status = 3;</code>
+     */
+    private void clearStatus() {
+      
+      status_ = 0;
+    }
+
+    public static final int CREATEDAT_FIELD_NUMBER = 4;
+    private long createdAt_;
+    /**
+     * <code>optional int64 createdAt = 4;</code>
+     */
+    public long getCreatedAt() {
+      return createdAt_;
+    }
+    /**
+     * <code>optional int64 createdAt = 4;</code>
+     */
+    private void setCreatedAt(long value) {
+      
+      createdAt_ = value;
+    }
+    /**
+     * <code>optional int64 createdAt = 4;</code>
+     */
+    private void clearCreatedAt() {
+      
+      createdAt_ = 0L;
+    }
+
+    public static final int UPDATEDAT_FIELD_NUMBER = 5;
+    private long updatedAt_;
+    /**
+     * <code>optional int64 updatedAt = 5;</code>
+     */
+    public long getUpdatedAt() {
+      return updatedAt_;
+    }
+    /**
+     * <code>optional int64 updatedAt = 5;</code>
+     */
+    private void setUpdatedAt(long value) {
+      
+      updatedAt_ = value;
+    }
+    /**
+     * <code>optional int64 updatedAt = 5;</code>
+     */
+    private void clearUpdatedAt() {
+      
+      updatedAt_ = 0L;
+    }
+
+    public static final int CREATEDBY_FIELD_NUMBER = 6;
+    private String createdBy_;
+    /**
+     * <code>optional string createdBy = 6;</code>
+     */
+    public String getCreatedBy() {
+      return createdBy_;
+    }
+    /**
+     * <code>optional string createdBy = 6;</code>
+     */
+    public com.google.protobuf.ByteString
+        getCreatedByBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(createdBy_);
+    }
+    /**
+     * <code>optional string createdBy = 6;</code>
+     */
+    private void setCreatedBy(
+        String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      createdBy_ = value;
+    }
+    /**
+     * <code>optional string createdBy = 6;</code>
+     */
+    private void clearCreatedBy() {
+      
+      createdBy_ = getDefaultInstance().getCreatedBy();
+    }
+    /**
+     * <code>optional string createdBy = 6;</code>
+     */
+    private void setCreatedByBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      createdBy_ = value.toStringUtf8();
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!unitId_.isEmpty()) {
+        output.writeString(1, getUnitId());
+      }
+      if (!name_.isEmpty()) {
+        output.writeString(2, getName());
+      }
+      if (status_ != FieldsStatus.UNKNOWN_FIELDS_STATUS.getNumber()) {
+        output.writeEnum(3, status_);
+      }
+      if (createdAt_ != 0L) {
+        output.writeInt64(4, createdAt_);
+      }
+      if (updatedAt_ != 0L) {
+        output.writeInt64(5, updatedAt_);
+      }
+      if (!createdBy_.isEmpty()) {
+        output.writeString(6, getCreatedBy());
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!unitId_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeStringSize(1, getUnitId());
+      }
+      if (!name_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeStringSize(2, getName());
+      }
+      if (status_ != FieldsStatus.UNKNOWN_FIELDS_STATUS.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(3, status_);
+      }
+      if (createdAt_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(4, createdAt_);
+      }
+      if (updatedAt_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(5, updatedAt_);
+      }
+      if (!createdBy_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeStringSize(6, getCreatedBy());
+      }
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    public static Unit parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static Unit parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static Unit parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static Unit parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static Unit parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static Unit parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static Unit parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    }
+    public static Unit parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static Unit parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static Unit parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(Unit prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+
+    /**
+     * Protobuf type {@code com.entities.pb.Unit}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          Unit, Builder> implements
+        // @@protoc_insertion_point(builder_implements:com.entities.pb.Unit)
+        UnitOrBuilder {
+      // Construct using com.treeleaf.suchi.entities.InventoryProto.Unit.newBuilder()
+      private Builder() {
+        super(DEFAULT_INSTANCE);
+      }
+
+
+      /**
+       * <code>optional string unitId = 1;</code>
+       */
+      public String getUnitId() {
+        return instance.getUnitId();
+      }
+      /**
+       * <code>optional string unitId = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getUnitIdBytes() {
+        return instance.getUnitIdBytes();
+      }
+      /**
+       * <code>optional string unitId = 1;</code>
+       */
+      public Builder setUnitId(
+          String value) {
+        copyOnWrite();
+        instance.setUnitId(value);
+        return this;
+      }
+      /**
+       * <code>optional string unitId = 1;</code>
+       */
+      public Builder clearUnitId() {
+        copyOnWrite();
+        instance.clearUnitId();
+        return this;
+      }
+      /**
+       * <code>optional string unitId = 1;</code>
+       */
+      public Builder setUnitIdBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setUnitIdBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>optional string name = 2;</code>
+       */
+      public String getName() {
+        return instance.getName();
+      }
+      /**
+       * <code>optional string name = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getNameBytes() {
+        return instance.getNameBytes();
+      }
+      /**
+       * <code>optional string name = 2;</code>
+       */
+      public Builder setName(
+          String value) {
+        copyOnWrite();
+        instance.setName(value);
+        return this;
+      }
+      /**
+       * <code>optional string name = 2;</code>
+       */
+      public Builder clearName() {
+        copyOnWrite();
+        instance.clearName();
+        return this;
+      }
+      /**
+       * <code>optional string name = 2;</code>
+       */
+      public Builder setNameBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setNameBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>optional .com.entities.pb.FieldsStatus status = 3;</code>
+       */
+      public int getStatusValue() {
+        return instance.getStatusValue();
+      }
+      /**
+       * <code>optional .com.entities.pb.FieldsStatus status = 3;</code>
+       */
+      public Builder setStatusValue(int value) {
+        copyOnWrite();
+        instance.setStatusValue(value);
+        return this;
+      }
+      /**
+       * <code>optional .com.entities.pb.FieldsStatus status = 3;</code>
+       */
+      public FieldsStatus getStatus() {
+        return instance.getStatus();
+      }
+      /**
+       * <code>optional .com.entities.pb.FieldsStatus status = 3;</code>
+       */
+      public Builder setStatus(FieldsStatus value) {
+        copyOnWrite();
+        instance.setStatus(value);
+        return this;
+      }
+      /**
+       * <code>optional .com.entities.pb.FieldsStatus status = 3;</code>
+       */
+      public Builder clearStatus() {
+        copyOnWrite();
+        instance.clearStatus();
+        return this;
+      }
+
+      /**
+       * <code>optional int64 createdAt = 4;</code>
+       */
+      public long getCreatedAt() {
+        return instance.getCreatedAt();
+      }
+      /**
+       * <code>optional int64 createdAt = 4;</code>
+       */
+      public Builder setCreatedAt(long value) {
+        copyOnWrite();
+        instance.setCreatedAt(value);
+        return this;
+      }
+      /**
+       * <code>optional int64 createdAt = 4;</code>
+       */
+      public Builder clearCreatedAt() {
+        copyOnWrite();
+        instance.clearCreatedAt();
+        return this;
+      }
+
+      /**
+       * <code>optional int64 updatedAt = 5;</code>
+       */
+      public long getUpdatedAt() {
+        return instance.getUpdatedAt();
+      }
+      /**
+       * <code>optional int64 updatedAt = 5;</code>
+       */
+      public Builder setUpdatedAt(long value) {
+        copyOnWrite();
+        instance.setUpdatedAt(value);
+        return this;
+      }
+      /**
+       * <code>optional int64 updatedAt = 5;</code>
+       */
+      public Builder clearUpdatedAt() {
+        copyOnWrite();
+        instance.clearUpdatedAt();
+        return this;
+      }
+
+      /**
+       * <code>optional string createdBy = 6;</code>
+       */
+      public String getCreatedBy() {
+        return instance.getCreatedBy();
+      }
+      /**
+       * <code>optional string createdBy = 6;</code>
+       */
+      public com.google.protobuf.ByteString
+          getCreatedByBytes() {
+        return instance.getCreatedByBytes();
+      }
+      /**
+       * <code>optional string createdBy = 6;</code>
+       */
+      public Builder setCreatedBy(
+          String value) {
+        copyOnWrite();
+        instance.setCreatedBy(value);
+        return this;
+      }
+      /**
+       * <code>optional string createdBy = 6;</code>
+       */
+      public Builder clearCreatedBy() {
+        copyOnWrite();
+        instance.clearCreatedBy();
+        return this;
+      }
+      /**
+       * <code>optional string createdBy = 6;</code>
+       */
+      public Builder setCreatedByBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setCreatedByBytes(value);
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.entities.pb.Unit)
+    }
+    protected final Object dynamicMethod(
+        MethodToInvoke method,
+        Object arg0, Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new Unit();
+        }
+        case IS_INITIALIZED: {
+          return DEFAULT_INSTANCE;
+        }
+        case MAKE_IMMUTABLE: {
+          return null;
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case VISIT: {
+          Visitor visitor = (Visitor) arg0;
+          Unit other = (Unit) arg1;
+          unitId_ = visitor.visitString(!unitId_.isEmpty(), unitId_,
+              !other.unitId_.isEmpty(), other.unitId_);
+          name_ = visitor.visitString(!name_.isEmpty(), name_,
+              !other.name_.isEmpty(), other.name_);
+          status_ = visitor.visitInt(status_ != 0, status_,    other.status_ != 0, other.status_);
+          createdAt_ = visitor.visitLong(createdAt_ != 0L, createdAt_,
+              other.createdAt_ != 0L, other.createdAt_);
+          updatedAt_ = visitor.visitLong(updatedAt_ != 0L, updatedAt_,
+              other.updatedAt_ != 0L, other.updatedAt_);
+          createdBy_ = visitor.visitString(!createdBy_.isEmpty(), createdBy_,
+              !other.createdBy_.isEmpty(), other.createdBy_);
+          if (visitor == MergeFromVisitor
+              .INSTANCE) {
+          }
+          return this;
+        }
+        case MERGE_FROM_STREAM: {
+          com.google.protobuf.CodedInputStream input =
+              (com.google.protobuf.CodedInputStream) arg0;
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry =
+              (com.google.protobuf.ExtensionRegistryLite) arg1;
+          try {
+            boolean done = false;
+            while (!done) {
+              int tag = input.readTag();
+              switch (tag) {
+                case 0:
+                  done = true;
+                  break;
+                default: {
+                  if (!input.skipField(tag)) {
+                    done = true;
+                  }
+                  break;
+                }
+                case 10: {
+                  String s = input.readStringRequireUtf8();
+
+                  unitId_ = s;
+                  break;
+                }
+                case 18: {
+                  String s = input.readStringRequireUtf8();
+
+                  name_ = s;
+                  break;
+                }
+                case 24: {
+                  int rawValue = input.readEnum();
+
+                  status_ = rawValue;
+                  break;
+                }
+                case 32: {
+
+                  createdAt_ = input.readInt64();
+                  break;
+                }
+                case 40: {
+
+                  updatedAt_ = input.readInt64();
+                  break;
+                }
+                case 50: {
+                  String s = input.readStringRequireUtf8();
+
+                  createdBy_ = s;
+                  break;
+                }
+              }
+            }
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw new RuntimeException(e.setUnfinishedMessage(this));
+          } catch (java.io.IOException e) {
+            throw new RuntimeException(
+                new com.google.protobuf.InvalidProtocolBufferException(
+                    e.getMessage()).setUnfinishedMessage(this));
+          } finally {
+          }
+        }
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          if (PARSER == null) {    synchronized (Unit.class) {
+              if (PARSER == null) {
+                PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+              }
+            }
+          }
+          return PARSER;
+        }
+      }
+      throw new UnsupportedOperationException();
+    }
+
+
+    // @@protoc_insertion_point(class_scope:com.entities.pb.Unit)
+    private static final Unit DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new Unit();
+      DEFAULT_INSTANCE.makeImmutable();
+    }
+
+    public static Unit getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static volatile com.google.protobuf.Parser<Unit> PARSER;
+
+    public static com.google.protobuf.Parser<Unit> parser() {
       return DEFAULT_INSTANCE.getParserForType();
     }
   }

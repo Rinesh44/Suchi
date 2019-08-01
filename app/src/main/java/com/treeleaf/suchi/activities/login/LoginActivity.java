@@ -12,6 +12,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.activities.base.BaseActivity;
 import com.treeleaf.suchi.activities.dashboard.DashboardActivity;
+import com.treeleaf.suchi.activities.enterkey.EnterKeyActivity;
 import com.treeleaf.suchi.api.Endpoints;
 import com.treeleaf.suchi.entities.AccountProto;
 import com.treeleaf.suchi.realm.repo.Repo;
@@ -95,27 +96,57 @@ public class LoginActivity extends BaseActivity implements LoginView {
     public void loginSuccess(AccountProto.LoginResponse loginResponse) {
         AppUtils.showLog(TAG, "login success");
 
-        UserRepo.getInstance().saveUser(loginResponse, new Repo.Callback() {
-            @Override
-            public void success(Object o) {
-                AppUtils.showLog(TAG, "successfully saved user");
-                SharedPreferences.Editor editor = preferences.edit();
-                editor.putBoolean(Constants.LOGGED_IN, true);
-                editor.apply();
+        int loginStatus = loginResponse.getUser().getStatus().getNumber();
 
-                Intent i = new Intent(LoginActivity.this, DashboardActivity.class);
-                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(i);
+        switch (loginStatus) {
+            case 1:
+                gotoActivity(loginResponse, loginStatus);
+                break;
 
-            }
+            case 2:
+                showMessage("Sorry, your account has been suspended");
+                break;
 
-            @Override
-            public void fail() {
-                AppUtils.showLog(TAG, "User save failed");
-            }
-        });
+            case 3:
+                showMessage("Sorry, your account has been deleted");
+                break;
+
+            case 4:
+                gotoActivity(loginResponse, loginStatus);
+                break;
+
+        }
 
 
+    }
+
+    private void gotoActivity(AccountProto.LoginResponse loginResponse, int status) {
+
+        if (status == 1) {
+            UserRepo.getInstance().saveUser(loginResponse, new Repo.Callback() {
+                @Override
+                public void success(Object o) {
+                    AppUtils.showLog(TAG, "successfully saved user");
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putBoolean(Constants.LOGGED_IN, true);
+                    editor.apply();
+
+                    Intent i = new Intent(LoginActivity.this, DashboardActivity.class);
+                    i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(i);
+
+                }
+
+                @Override
+                public void fail() {
+                    AppUtils.showLog(TAG, "User save failed");
+                }
+            });
+        } else {
+            Intent i = new Intent(LoginActivity.this, EnterKeyActivity.class);
+            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(i);
+        }
     }
 
     @Override

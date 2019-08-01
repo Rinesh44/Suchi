@@ -9,7 +9,7 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.activities.base.BaseActivity;
-import com.treeleaf.suchi.activities.register.RegisterActivity;
+import com.treeleaf.suchi.activities.dashboard.DashboardActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -28,6 +28,7 @@ public class EnterKeyActivity extends BaseActivity implements View.OnClickListen
         setContentView(R.layout.activity_enter_key);
 
         ButterKnife.bind(this);
+
         mStart.setOnClickListener(this);
         mFreeTrail.setOnClickListener(this);
     }
@@ -39,7 +40,9 @@ public class EnterKeyActivity extends BaseActivity implements View.OnClickListen
                 break;
 
             case R.id.btn_free_trial:
-                startActivity(new Intent(EnterKeyActivity.this, RegisterActivity.class));
+                Intent i = new Intent(EnterKeyActivity.this, DashboardActivity.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(i);
                 finish();
                 break;
         }

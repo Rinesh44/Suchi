@@ -2,6 +2,7 @@ package com.treeleaf.suchi.activities.register;
 
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -12,6 +13,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.activities.base.BaseActivity;
+import com.treeleaf.suchi.activities.login.LoginActivity;
 import com.treeleaf.suchi.api.Endpoints;
 import com.treeleaf.suchi.utils.AppUtils;
 
@@ -78,7 +80,6 @@ public class RegisterActivity extends BaseActivity implements RegisterView {
             @Override
             public void onClick(View view) {
                 validateFieldsAndRegister();
-
             }
         });
     }
@@ -160,6 +161,9 @@ public class RegisterActivity extends BaseActivity implements RegisterView {
     public void registerSuccess() {
         AppUtils.showLog(TAG, "Registered successfully");
         Toast.makeText(this, "User registered", Toast.LENGTH_SHORT).show();
+        Intent i = new Intent(RegisterActivity.this, LoginActivity.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(i);
         finish();
     }
 

@@ -12,7 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.credit.CreditActivity"></activity>
+        <activity android:name=".activities.inventory.stock.StockEntryActivity"></activity>
+        <activity android:name=".activities.inventory.stock.SearchStock" />
+        <activity android:name=".activities.inventory.stock.StockActivity" />
+        <activity android:name=".activities.credit.CreditActivity" />
         <activity android:name=".activities.inventory.InventoryActivity" />
         <activity android:name=".activities.dashboard.DashboardActivity" />
         <activity android:name=".activities.enterkey.EnterKeyActivity" />

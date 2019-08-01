@@ -193,13 +193,13 @@ public final class AccountProto {
   public enum UserStatus
       implements com.google.protobuf.Internal.EnumLite {
     /**
-     * <code>PENDING_VERIFICATION = 0;</code>
+     * <code>UNKNOWN_USER_STATUS = 0;</code>
      */
-    PENDING_VERIFICATION(0),
+    UNKNOWN_USER_STATUS(0),
     /**
-     * <code>OK = 1;</code>
+     * <code>VERIFIED = 1;</code>
      */
-    OK(1),
+    VERIFIED(1),
     /**
      * <code>SUSPENDED = 2;</code>
      */
@@ -208,17 +208,21 @@ public final class AccountProto {
      * <code>DELETED = 3;</code>
      */
     DELETED(3),
+    /**
+     * <code>PENDING = 4;</code>
+     */
+    PENDING(4),
     UNRECOGNIZED(-1),
     ;
 
     /**
-     * <code>PENDING_VERIFICATION = 0;</code>
+     * <code>UNKNOWN_USER_STATUS = 0;</code>
      */
-    public static final int PENDING_VERIFICATION_VALUE = 0;
+    public static final int UNKNOWN_USER_STATUS_VALUE = 0;
     /**
-     * <code>OK = 1;</code>
+     * <code>VERIFIED = 1;</code>
      */
-    public static final int OK_VALUE = 1;
+    public static final int VERIFIED_VALUE = 1;
     /**
      * <code>SUSPENDED = 2;</code>
      */
@@ -227,6 +231,10 @@ public final class AccountProto {
      * <code>DELETED = 3;</code>
      */
     public static final int DELETED_VALUE = 3;
+    /**
+     * <code>PENDING = 4;</code>
+     */
+    public static final int PENDING_VALUE = 4;
 
 
     public final int getNumber() {
@@ -243,10 +251,11 @@ public final class AccountProto {
 
     public static UserStatus forNumber(int value) {
       switch (value) {
-        case 0: return PENDING_VERIFICATION;
-        case 1: return OK;
+        case 0: return UNKNOWN_USER_STATUS;
+        case 1: return VERIFIED;
         case 2: return SUSPENDED;
         case 3: return DELETED;
+        case 4: return PENDING;
         default: return null;
       }
     }
@@ -1022,7 +1031,7 @@ public final class AccountProto {
       if (!password_.isEmpty()) {
         output.writeString(4, getPassword());
       }
-      if (status_ != UserStatus.PENDING_VERIFICATION.getNumber()) {
+      if (status_ != UserStatus.UNKNOWN_USER_STATUS.getNumber()) {
         output.writeEnum(5, status_);
       }
       if (createdAt_ != 0L) {
@@ -1075,7 +1084,7 @@ public final class AccountProto {
         size += com.google.protobuf.CodedOutputStream
           .computeStringSize(4, getPassword());
       }
-      if (status_ != UserStatus.PENDING_VERIFICATION.getNumber()) {
+      if (status_ != UserStatus.UNKNOWN_USER_STATUS.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(5, status_);
       }
@@ -7195,7 +7204,7 @@ public final class AccountProto {
       if (!userId_.isEmpty()) {
         output.writeString(1, getUserId());
       }
-      if (userStatus_ != UserStatus.PENDING_VERIFICATION.getNumber()) {
+      if (userStatus_ != UserStatus.UNKNOWN_USER_STATUS.getNumber()) {
         output.writeEnum(2, userStatus_);
       }
     }
@@ -7209,7 +7218,7 @@ public final class AccountProto {
         size += com.google.protobuf.CodedOutputStream
           .computeStringSize(1, getUserId());
       }
-      if (userStatus_ != UserStatus.PENDING_VERIFICATION.getNumber()) {
+      if (userStatus_ != UserStatus.UNKNOWN_USER_STATUS.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(2, userStatus_);
       }

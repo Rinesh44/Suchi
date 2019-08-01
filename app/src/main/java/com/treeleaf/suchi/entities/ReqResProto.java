@@ -222,6 +222,42 @@ public final class ReqResProto {
      * <code>repeated .com.entities.pb.StockKeepingUnit stockKeepingUnits = 12;</code>
      */
     int getStockKeepingUnitsCount();
+
+    /**
+     * <code>optional .com.entities.pb.Brand brand = 13;</code>
+     */
+    boolean hasBrand();
+    /**
+     * <code>optional .com.entities.pb.Brand brand = 13;</code>
+     */
+    InventoryProto.Brand getBrand();
+
+    /**
+     * <code>optional .com.entities.pb.SubBrand subBrand = 14;</code>
+     */
+    boolean hasSubBrand();
+    /**
+     * <code>optional .com.entities.pb.SubBrand subBrand = 14;</code>
+     */
+    InventoryProto.SubBrand getSubBrand();
+
+    /**
+     * <code>optional .com.entities.pb.Unit unit = 15;</code>
+     */
+    boolean hasUnit();
+    /**
+     * <code>optional .com.entities.pb.Unit unit = 15;</code>
+     */
+    InventoryProto.Unit getUnit();
+
+    /**
+     * <code>optional .com.entities.pb.Category category = 16;</code>
+     */
+    boolean hasCategory();
+    /**
+     * <code>optional .com.entities.pb.Category category = 16;</code>
+     */
+    InventoryProto.Category getCategory();
   }
   /**
    * Protobuf type {@code com.entities.pb.Request}
@@ -801,6 +837,214 @@ public final class ReqResProto {
       stockKeepingUnits_.remove(index);
     }
 
+    public static final int BRAND_FIELD_NUMBER = 13;
+    private InventoryProto.Brand brand_;
+    /**
+     * <code>optional .com.entities.pb.Brand brand = 13;</code>
+     */
+    public boolean hasBrand() {
+      return brand_ != null;
+    }
+    /**
+     * <code>optional .com.entities.pb.Brand brand = 13;</code>
+     */
+    public InventoryProto.Brand getBrand() {
+      return brand_ == null ? InventoryProto.Brand.getDefaultInstance() : brand_;
+    }
+    /**
+     * <code>optional .com.entities.pb.Brand brand = 13;</code>
+     */
+    private void setBrand(InventoryProto.Brand value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      brand_ = value;
+      
+      }
+    /**
+     * <code>optional .com.entities.pb.Brand brand = 13;</code>
+     */
+    private void setBrand(
+        InventoryProto.Brand.Builder builderForValue) {
+      brand_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>optional .com.entities.pb.Brand brand = 13;</code>
+     */
+    private void mergeBrand(InventoryProto.Brand value) {
+      if (brand_ != null &&
+          brand_ != InventoryProto.Brand.getDefaultInstance()) {
+        brand_ =
+          InventoryProto.Brand.newBuilder(brand_).mergeFrom(value).buildPartial();
+      } else {
+        brand_ = value;
+      }
+      
+    }
+    /**
+     * <code>optional .com.entities.pb.Brand brand = 13;</code>
+     */
+    private void clearBrand() {  brand_ = null;
+      
+    }
+
+    public static final int SUBBRAND_FIELD_NUMBER = 14;
+    private InventoryProto.SubBrand subBrand_;
+    /**
+     * <code>optional .com.entities.pb.SubBrand subBrand = 14;</code>
+     */
+    public boolean hasSubBrand() {
+      return subBrand_ != null;
+    }
+    /**
+     * <code>optional .com.entities.pb.SubBrand subBrand = 14;</code>
+     */
+    public InventoryProto.SubBrand getSubBrand() {
+      return subBrand_ == null ? InventoryProto.SubBrand.getDefaultInstance() : subBrand_;
+    }
+    /**
+     * <code>optional .com.entities.pb.SubBrand subBrand = 14;</code>
+     */
+    private void setSubBrand(InventoryProto.SubBrand value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      subBrand_ = value;
+      
+      }
+    /**
+     * <code>optional .com.entities.pb.SubBrand subBrand = 14;</code>
+     */
+    private void setSubBrand(
+        InventoryProto.SubBrand.Builder builderForValue) {
+      subBrand_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>optional .com.entities.pb.SubBrand subBrand = 14;</code>
+     */
+    private void mergeSubBrand(InventoryProto.SubBrand value) {
+      if (subBrand_ != null &&
+          subBrand_ != InventoryProto.SubBrand.getDefaultInstance()) {
+        subBrand_ =
+          InventoryProto.SubBrand.newBuilder(subBrand_).mergeFrom(value).buildPartial();
+      } else {
+        subBrand_ = value;
+      }
+      
+    }
+    /**
+     * <code>optional .com.entities.pb.SubBrand subBrand = 14;</code>
+     */
+    private void clearSubBrand() {  subBrand_ = null;
+      
+    }
+
+    public static final int UNIT_FIELD_NUMBER = 15;
+    private InventoryProto.Unit unit_;
+    /**
+     * <code>optional .com.entities.pb.Unit unit = 15;</code>
+     */
+    public boolean hasUnit() {
+      return unit_ != null;
+    }
+    /**
+     * <code>optional .com.entities.pb.Unit unit = 15;</code>
+     */
+    public InventoryProto.Unit getUnit() {
+      return unit_ == null ? InventoryProto.Unit.getDefaultInstance() : unit_;
+    }
+    /**
+     * <code>optional .com.entities.pb.Unit unit = 15;</code>
+     */
+    private void setUnit(InventoryProto.Unit value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      unit_ = value;
+      
+      }
+    /**
+     * <code>optional .com.entities.pb.Unit unit = 15;</code>
+     */
+    private void setUnit(
+        InventoryProto.Unit.Builder builderForValue) {
+      unit_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>optional .com.entities.pb.Unit unit = 15;</code>
+     */
+    private void mergeUnit(InventoryProto.Unit value) {
+      if (unit_ != null &&
+          unit_ != InventoryProto.Unit.getDefaultInstance()) {
+        unit_ =
+          InventoryProto.Unit.newBuilder(unit_).mergeFrom(value).buildPartial();
+      } else {
+        unit_ = value;
+      }
+      
+    }
+    /**
+     * <code>optional .com.entities.pb.Unit unit = 15;</code>
+     */
+    private void clearUnit() {  unit_ = null;
+      
+    }
+
+    public static final int CATEGORY_FIELD_NUMBER = 16;
+    private InventoryProto.Category category_;
+    /**
+     * <code>optional .com.entities.pb.Category category = 16;</code>
+     */
+    public boolean hasCategory() {
+      return category_ != null;
+    }
+    /**
+     * <code>optional .com.entities.pb.Category category = 16;</code>
+     */
+    public InventoryProto.Category getCategory() {
+      return category_ == null ? InventoryProto.Category.getDefaultInstance() : category_;
+    }
+    /**
+     * <code>optional .com.entities.pb.Category category = 16;</code>
+     */
+    private void setCategory(InventoryProto.Category value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      category_ = value;
+      
+      }
+    /**
+     * <code>optional .com.entities.pb.Category category = 16;</code>
+     */
+    private void setCategory(
+        InventoryProto.Category.Builder builderForValue) {
+      category_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>optional .com.entities.pb.Category category = 16;</code>
+     */
+    private void mergeCategory(InventoryProto.Category value) {
+      if (category_ != null &&
+          category_ != InventoryProto.Category.getDefaultInstance()) {
+        category_ =
+          InventoryProto.Category.newBuilder(category_).mergeFrom(value).buildPartial();
+      } else {
+        category_ = value;
+      }
+      
+    }
+    /**
+     * <code>optional .com.entities.pb.Category category = 16;</code>
+     */
+    private void clearCategory() {  category_ = null;
+      
+    }
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!refId_.isEmpty()) {
@@ -838,6 +1082,18 @@ public final class ReqResProto {
       }
       for (int i = 0; i < stockKeepingUnits_.size(); i++) {
         output.writeMessage(12, stockKeepingUnits_.get(i));
+      }
+      if (brand_ != null) {
+        output.writeMessage(13, getBrand());
+      }
+      if (subBrand_ != null) {
+        output.writeMessage(14, getSubBrand());
+      }
+      if (unit_ != null) {
+        output.writeMessage(15, getUnit());
+      }
+      if (category_ != null) {
+        output.writeMessage(16, getCategory());
       }
     }
 
@@ -893,6 +1149,22 @@ public final class ReqResProto {
       for (int i = 0; i < stockKeepingUnits_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(12, stockKeepingUnits_.get(i));
+      }
+      if (brand_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(13, getBrand());
+      }
+      if (subBrand_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(14, getSubBrand());
+      }
+      if (unit_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(15, getUnit());
+      }
+      if (category_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(16, getCategory());
       }
       memoizedSerializedSize = size;
       return size;
@@ -1474,6 +1746,186 @@ public final class ReqResProto {
         return this;
       }
 
+      /**
+       * <code>optional .com.entities.pb.Brand brand = 13;</code>
+       */
+      public boolean hasBrand() {
+        return instance.hasBrand();
+      }
+      /**
+       * <code>optional .com.entities.pb.Brand brand = 13;</code>
+       */
+      public InventoryProto.Brand getBrand() {
+        return instance.getBrand();
+      }
+      /**
+       * <code>optional .com.entities.pb.Brand brand = 13;</code>
+       */
+      public Builder setBrand(InventoryProto.Brand value) {
+        copyOnWrite();
+        instance.setBrand(value);
+        return this;
+        }
+      /**
+       * <code>optional .com.entities.pb.Brand brand = 13;</code>
+       */
+      public Builder setBrand(
+          InventoryProto.Brand.Builder builderForValue) {
+        copyOnWrite();
+        instance.setBrand(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .com.entities.pb.Brand brand = 13;</code>
+       */
+      public Builder mergeBrand(InventoryProto.Brand value) {
+        copyOnWrite();
+        instance.mergeBrand(value);
+        return this;
+      }
+      /**
+       * <code>optional .com.entities.pb.Brand brand = 13;</code>
+       */
+      public Builder clearBrand() {  copyOnWrite();
+        instance.clearBrand();
+        return this;
+      }
+
+      /**
+       * <code>optional .com.entities.pb.SubBrand subBrand = 14;</code>
+       */
+      public boolean hasSubBrand() {
+        return instance.hasSubBrand();
+      }
+      /**
+       * <code>optional .com.entities.pb.SubBrand subBrand = 14;</code>
+       */
+      public InventoryProto.SubBrand getSubBrand() {
+        return instance.getSubBrand();
+      }
+      /**
+       * <code>optional .com.entities.pb.SubBrand subBrand = 14;</code>
+       */
+      public Builder setSubBrand(InventoryProto.SubBrand value) {
+        copyOnWrite();
+        instance.setSubBrand(value);
+        return this;
+        }
+      /**
+       * <code>optional .com.entities.pb.SubBrand subBrand = 14;</code>
+       */
+      public Builder setSubBrand(
+          InventoryProto.SubBrand.Builder builderForValue) {
+        copyOnWrite();
+        instance.setSubBrand(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .com.entities.pb.SubBrand subBrand = 14;</code>
+       */
+      public Builder mergeSubBrand(InventoryProto.SubBrand value) {
+        copyOnWrite();
+        instance.mergeSubBrand(value);
+        return this;
+      }
+      /**
+       * <code>optional .com.entities.pb.SubBrand subBrand = 14;</code>
+       */
+      public Builder clearSubBrand() {  copyOnWrite();
+        instance.clearSubBrand();
+        return this;
+      }
+
+      /**
+       * <code>optional .com.entities.pb.Unit unit = 15;</code>
+       */
+      public boolean hasUnit() {
+        return instance.hasUnit();
+      }
+      /**
+       * <code>optional .com.entities.pb.Unit unit = 15;</code>
+       */
+      public InventoryProto.Unit getUnit() {
+        return instance.getUnit();
+      }
+      /**
+       * <code>optional .com.entities.pb.Unit unit = 15;</code>
+       */
+      public Builder setUnit(InventoryProto.Unit value) {
+        copyOnWrite();
+        instance.setUnit(value);
+        return this;
+        }
+      /**
+       * <code>optional .com.entities.pb.Unit unit = 15;</code>
+       */
+      public Builder setUnit(
+          InventoryProto.Unit.Builder builderForValue) {
+        copyOnWrite();
+        instance.setUnit(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .com.entities.pb.Unit unit = 15;</code>
+       */
+      public Builder mergeUnit(InventoryProto.Unit value) {
+        copyOnWrite();
+        instance.mergeUnit(value);
+        return this;
+      }
+      /**
+       * <code>optional .com.entities.pb.Unit unit = 15;</code>
+       */
+      public Builder clearUnit() {  copyOnWrite();
+        instance.clearUnit();
+        return this;
+      }
+
+      /**
+       * <code>optional .com.entities.pb.Category category = 16;</code>
+       */
+      public boolean hasCategory() {
+        return instance.hasCategory();
+      }
+      /**
+       * <code>optional .com.entities.pb.Category category = 16;</code>
+       */
+      public InventoryProto.Category getCategory() {
+        return instance.getCategory();
+      }
+      /**
+       * <code>optional .com.entities.pb.Category category = 16;</code>
+       */
+      public Builder setCategory(InventoryProto.Category value) {
+        copyOnWrite();
+        instance.setCategory(value);
+        return this;
+        }
+      /**
+       * <code>optional .com.entities.pb.Category category = 16;</code>
+       */
+      public Builder setCategory(
+          InventoryProto.Category.Builder builderForValue) {
+        copyOnWrite();
+        instance.setCategory(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .com.entities.pb.Category category = 16;</code>
+       */
+      public Builder mergeCategory(InventoryProto.Category value) {
+        copyOnWrite();
+        instance.mergeCategory(value);
+        return this;
+      }
+      /**
+       * <code>optional .com.entities.pb.Category category = 16;</code>
+       */
+      public Builder clearCategory() {  copyOnWrite();
+        instance.clearCategory();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:com.entities.pb.Request)
     }
     protected final Object dynamicMethod(
@@ -1514,6 +1966,10 @@ public final class ReqResProto {
           passwordUpdateRequest_ = visitor.visitMessage(passwordUpdateRequest_, other.passwordUpdateRequest_);
           stockKeepingUnit_ = visitor.visitMessage(stockKeepingUnit_, other.stockKeepingUnit_);
           stockKeepingUnits_= visitor.visitList(stockKeepingUnits_, other.stockKeepingUnits_);
+          brand_ = visitor.visitMessage(brand_, other.brand_);
+          subBrand_ = visitor.visitMessage(subBrand_, other.subBrand_);
+          unit_ = visitor.visitMessage(unit_, other.unit_);
+          category_ = visitor.visitMessage(category_, other.category_);
           if (visitor == MergeFromVisitor
               .INSTANCE) {
             bitField0_ |= other.bitField0_;
@@ -1643,6 +2099,58 @@ public final class ReqResProto {
                   }
                   stockKeepingUnits_.add(
                       input.readMessage(InventoryProto.StockKeepingUnit.parser(), extensionRegistry));
+                  break;
+                }
+                case 106: {
+                  InventoryProto.Brand.Builder subBuilder = null;
+                  if (brand_ != null) {
+                    subBuilder = brand_.toBuilder();
+                  }
+                  brand_ = input.readMessage(InventoryProto.Brand.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(brand_);
+                    brand_ = subBuilder.buildPartial();
+                  }
+
+                  break;
+                }
+                case 114: {
+                  InventoryProto.SubBrand.Builder subBuilder = null;
+                  if (subBrand_ != null) {
+                    subBuilder = subBrand_.toBuilder();
+                  }
+                  subBrand_ = input.readMessage(InventoryProto.SubBrand.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(subBrand_);
+                    subBrand_ = subBuilder.buildPartial();
+                  }
+
+                  break;
+                }
+                case 122: {
+                  InventoryProto.Unit.Builder subBuilder = null;
+                  if (unit_ != null) {
+                    subBuilder = unit_.toBuilder();
+                  }
+                  unit_ = input.readMessage(InventoryProto.Unit.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(unit_);
+                    unit_ = subBuilder.buildPartial();
+                  }
+
+                  break;
+                }
+                case 130: {
+                  InventoryProto.Category.Builder subBuilder = null;
+                  if (category_ != null) {
+                    subBuilder = category_.toBuilder();
+                  }
+                  category_ = input.readMessage(InventoryProto.Category.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(category_);
+                    category_ = subBuilder.buildPartial();
+                  }
+
                   break;
                 }
               }
@@ -1837,6 +2345,121 @@ public final class ReqResProto {
      * <code>repeated .com.entities.pb.StockKeepingUnit stockKeepingUnits = 15;</code>
      */
     int getStockKeepingUnitsCount();
+
+    /**
+     * <code>optional .com.entities.pb.Inventory inventory = 16;</code>
+     */
+    boolean hasInventory();
+    /**
+     * <code>optional .com.entities.pb.Inventory inventory = 16;</code>
+     */
+    InventoryProto.Inventory getInventory();
+
+    /**
+     * <code>repeated .com.entities.pb.Inventory inventories = 17;</code>
+     */
+    java.util.List<InventoryProto.Inventory>
+        getInventoriesList();
+    /**
+     * <code>repeated .com.entities.pb.Inventory inventories = 17;</code>
+     */
+    InventoryProto.Inventory getInventories(int index);
+    /**
+     * <code>repeated .com.entities.pb.Inventory inventories = 17;</code>
+     */
+    int getInventoriesCount();
+
+    /**
+     * <code>optional .com.entities.pb.Brand brand = 18;</code>
+     */
+    boolean hasBrand();
+    /**
+     * <code>optional .com.entities.pb.Brand brand = 18;</code>
+     */
+    InventoryProto.Brand getBrand();
+
+    /**
+     * <code>repeated .com.entities.pb.Brand brands = 19;</code>
+     */
+    java.util.List<InventoryProto.Brand>
+        getBrandsList();
+    /**
+     * <code>repeated .com.entities.pb.Brand brands = 19;</code>
+     */
+    InventoryProto.Brand getBrands(int index);
+    /**
+     * <code>repeated .com.entities.pb.Brand brands = 19;</code>
+     */
+    int getBrandsCount();
+
+    /**
+     * <code>optional .com.entities.pb.SubBrand subBrand = 20;</code>
+     */
+    boolean hasSubBrand();
+    /**
+     * <code>optional .com.entities.pb.SubBrand subBrand = 20;</code>
+     */
+    InventoryProto.SubBrand getSubBrand();
+
+    /**
+     * <code>repeated .com.entities.pb.SubBrand subBrands = 21;</code>
+     */
+    java.util.List<InventoryProto.SubBrand>
+        getSubBrandsList();
+    /**
+     * <code>repeated .com.entities.pb.SubBrand subBrands = 21;</code>
+     */
+    InventoryProto.SubBrand getSubBrands(int index);
+    /**
+     * <code>repeated .com.entities.pb.SubBrand subBrands = 21;</code>
+     */
+    int getSubBrandsCount();
+
+    /**
+     * <code>optional .com.entities.pb.Unit unit = 22;</code>
+     */
+    boolean hasUnit();
+    /**
+     * <code>optional .com.entities.pb.Unit unit = 22;</code>
+     */
+    InventoryProto.Unit getUnit();
+
+    /**
+     * <code>repeated .com.entities.pb.Unit units = 23;</code>
+     */
+    java.util.List<InventoryProto.Unit>
+        getUnitsList();
+    /**
+     * <code>repeated .com.entities.pb.Unit units = 23;</code>
+     */
+    InventoryProto.Unit getUnits(int index);
+    /**
+     * <code>repeated .com.entities.pb.Unit units = 23;</code>
+     */
+    int getUnitsCount();
+
+    /**
+     * <code>optional .com.entities.pb.Category category = 24;</code>
+     */
+    boolean hasCategory();
+    /**
+     * <code>optional .com.entities.pb.Category category = 24;</code>
+     */
+    InventoryProto.Category getCategory();
+
+    /**
+     * <code>repeated .com.entities.pb.Category categories = 25;</code>
+     */
+    java.util.List<InventoryProto.Category>
+        getCategoriesList();
+    /**
+     * <code>repeated .com.entities.pb.Category categories = 25;</code>
+     */
+    InventoryProto.Category getCategories(int index);
+    /**
+     * <code>repeated .com.entities.pb.Category categories = 25;</code>
+     */
+    int getCategoriesCount();
   }
   /**
    * Protobuf type {@code com.entities.pb.Response}
@@ -1851,6 +2474,11 @@ public final class ReqResProto {
       users_ = emptyProtobufList();
       accessTokens_ = emptyProtobufList();
       stockKeepingUnits_ = emptyProtobufList();
+      inventories_ = emptyProtobufList();
+      brands_ = emptyProtobufList();
+      subBrands_ = emptyProtobufList();
+      units_ = emptyProtobufList();
+      categories_ = emptyProtobufList();
     }
     private int bitField0_;
     public static final int ERROR_FIELD_NUMBER = 1;
@@ -2760,6 +3388,866 @@ public final class ReqResProto {
       stockKeepingUnits_.remove(index);
     }
 
+    public static final int INVENTORY_FIELD_NUMBER = 16;
+    private InventoryProto.Inventory inventory_;
+    /**
+     * <code>optional .com.entities.pb.Inventory inventory = 16;</code>
+     */
+    public boolean hasInventory() {
+      return inventory_ != null;
+    }
+    /**
+     * <code>optional .com.entities.pb.Inventory inventory = 16;</code>
+     */
+    public InventoryProto.Inventory getInventory() {
+      return inventory_ == null ? InventoryProto.Inventory.getDefaultInstance() : inventory_;
+    }
+    /**
+     * <code>optional .com.entities.pb.Inventory inventory = 16;</code>
+     */
+    private void setInventory(InventoryProto.Inventory value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      inventory_ = value;
+      
+      }
+    /**
+     * <code>optional .com.entities.pb.Inventory inventory = 16;</code>
+     */
+    private void setInventory(
+        InventoryProto.Inventory.Builder builderForValue) {
+      inventory_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>optional .com.entities.pb.Inventory inventory = 16;</code>
+     */
+    private void mergeInventory(InventoryProto.Inventory value) {
+      if (inventory_ != null &&
+          inventory_ != InventoryProto.Inventory.getDefaultInstance()) {
+        inventory_ =
+          InventoryProto.Inventory.newBuilder(inventory_).mergeFrom(value).buildPartial();
+      } else {
+        inventory_ = value;
+      }
+      
+    }
+    /**
+     * <code>optional .com.entities.pb.Inventory inventory = 16;</code>
+     */
+    private void clearInventory() {  inventory_ = null;
+      
+    }
+
+    public static final int INVENTORIES_FIELD_NUMBER = 17;
+    private com.google.protobuf.Internal.ProtobufList<InventoryProto.Inventory> inventories_;
+    /**
+     * <code>repeated .com.entities.pb.Inventory inventories = 17;</code>
+     */
+    public java.util.List<InventoryProto.Inventory> getInventoriesList() {
+      return inventories_;
+    }
+    /**
+     * <code>repeated .com.entities.pb.Inventory inventories = 17;</code>
+     */
+    public java.util.List<? extends InventoryProto.InventoryOrBuilder>
+        getInventoriesOrBuilderList() {
+      return inventories_;
+    }
+    /**
+     * <code>repeated .com.entities.pb.Inventory inventories = 17;</code>
+     */
+    public int getInventoriesCount() {
+      return inventories_.size();
+    }
+    /**
+     * <code>repeated .com.entities.pb.Inventory inventories = 17;</code>
+     */
+    public InventoryProto.Inventory getInventories(int index) {
+      return inventories_.get(index);
+    }
+    /**
+     * <code>repeated .com.entities.pb.Inventory inventories = 17;</code>
+     */
+    public InventoryProto.InventoryOrBuilder getInventoriesOrBuilder(
+        int index) {
+      return inventories_.get(index);
+    }
+    private void ensureInventoriesIsMutable() {
+      if (!inventories_.isModifiable()) {
+        inventories_ =
+            com.google.protobuf.GeneratedMessageLite.mutableCopy(inventories_);
+       }
+    }
+
+    /**
+     * <code>repeated .com.entities.pb.Inventory inventories = 17;</code>
+     */
+    private void setInventories(
+        int index, InventoryProto.Inventory value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureInventoriesIsMutable();
+      inventories_.set(index, value);
+    }
+    /**
+     * <code>repeated .com.entities.pb.Inventory inventories = 17;</code>
+     */
+    private void setInventories(
+        int index, InventoryProto.Inventory.Builder builderForValue) {
+      ensureInventoriesIsMutable();
+      inventories_.set(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .com.entities.pb.Inventory inventories = 17;</code>
+     */
+    private void addInventories(InventoryProto.Inventory value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureInventoriesIsMutable();
+      inventories_.add(value);
+    }
+    /**
+     * <code>repeated .com.entities.pb.Inventory inventories = 17;</code>
+     */
+    private void addInventories(
+        int index, InventoryProto.Inventory value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureInventoriesIsMutable();
+      inventories_.add(index, value);
+    }
+    /**
+     * <code>repeated .com.entities.pb.Inventory inventories = 17;</code>
+     */
+    private void addInventories(
+        InventoryProto.Inventory.Builder builderForValue) {
+      ensureInventoriesIsMutable();
+      inventories_.add(builderForValue.build());
+    }
+    /**
+     * <code>repeated .com.entities.pb.Inventory inventories = 17;</code>
+     */
+    private void addInventories(
+        int index, InventoryProto.Inventory.Builder builderForValue) {
+      ensureInventoriesIsMutable();
+      inventories_.add(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .com.entities.pb.Inventory inventories = 17;</code>
+     */
+    private void addAllInventories(
+        Iterable<? extends InventoryProto.Inventory> values) {
+      ensureInventoriesIsMutable();
+      com.google.protobuf.AbstractMessageLite.addAll(
+          values, inventories_);
+    }
+    /**
+     * <code>repeated .com.entities.pb.Inventory inventories = 17;</code>
+     */
+    private void clearInventories() {
+      inventories_ = emptyProtobufList();
+    }
+    /**
+     * <code>repeated .com.entities.pb.Inventory inventories = 17;</code>
+     */
+    private void removeInventories(int index) {
+      ensureInventoriesIsMutable();
+      inventories_.remove(index);
+    }
+
+    public static final int BRAND_FIELD_NUMBER = 18;
+    private InventoryProto.Brand brand_;
+    /**
+     * <code>optional .com.entities.pb.Brand brand = 18;</code>
+     */
+    public boolean hasBrand() {
+      return brand_ != null;
+    }
+    /**
+     * <code>optional .com.entities.pb.Brand brand = 18;</code>
+     */
+    public InventoryProto.Brand getBrand() {
+      return brand_ == null ? InventoryProto.Brand.getDefaultInstance() : brand_;
+    }
+    /**
+     * <code>optional .com.entities.pb.Brand brand = 18;</code>
+     */
+    private void setBrand(InventoryProto.Brand value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      brand_ = value;
+      
+      }
+    /**
+     * <code>optional .com.entities.pb.Brand brand = 18;</code>
+     */
+    private void setBrand(
+        InventoryProto.Brand.Builder builderForValue) {
+      brand_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>optional .com.entities.pb.Brand brand = 18;</code>
+     */
+    private void mergeBrand(InventoryProto.Brand value) {
+      if (brand_ != null &&
+          brand_ != InventoryProto.Brand.getDefaultInstance()) {
+        brand_ =
+          InventoryProto.Brand.newBuilder(brand_).mergeFrom(value).buildPartial();
+      } else {
+        brand_ = value;
+      }
+      
+    }
+    /**
+     * <code>optional .com.entities.pb.Brand brand = 18;</code>
+     */
+    private void clearBrand() {  brand_ = null;
+      
+    }
+
+    public static final int BRANDS_FIELD_NUMBER = 19;
+    private com.google.protobuf.Internal.ProtobufList<InventoryProto.Brand> brands_;
+    /**
+     * <code>repeated .com.entities.pb.Brand brands = 19;</code>
+     */
+    public java.util.List<InventoryProto.Brand> getBrandsList() {
+      return brands_;
+    }
+    /**
+     * <code>repeated .com.entities.pb.Brand brands = 19;</code>
+     */
+    public java.util.List<? extends InventoryProto.BrandOrBuilder>
+        getBrandsOrBuilderList() {
+      return brands_;
+    }
+    /**
+     * <code>repeated .com.entities.pb.Brand brands = 19;</code>
+     */
+    public int getBrandsCount() {
+      return brands_.size();
+    }
+    /**
+     * <code>repeated .com.entities.pb.Brand brands = 19;</code>
+     */
+    public InventoryProto.Brand getBrands(int index) {
+      return brands_.get(index);
+    }
+    /**
+     * <code>repeated .com.entities.pb.Brand brands = 19;</code>
+     */
+    public InventoryProto.BrandOrBuilder getBrandsOrBuilder(
+        int index) {
+      return brands_.get(index);
+    }
+    private void ensureBrandsIsMutable() {
+      if (!brands_.isModifiable()) {
+        brands_ =
+            com.google.protobuf.GeneratedMessageLite.mutableCopy(brands_);
+       }
+    }
+
+    /**
+     * <code>repeated .com.entities.pb.Brand brands = 19;</code>
+     */
+    private void setBrands(
+        int index, InventoryProto.Brand value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureBrandsIsMutable();
+      brands_.set(index, value);
+    }
+    /**
+     * <code>repeated .com.entities.pb.Brand brands = 19;</code>
+     */
+    private void setBrands(
+        int index, InventoryProto.Brand.Builder builderForValue) {
+      ensureBrandsIsMutable();
+      brands_.set(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .com.entities.pb.Brand brands = 19;</code>
+     */
+    private void addBrands(InventoryProto.Brand value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureBrandsIsMutable();
+      brands_.add(value);
+    }
+    /**
+     * <code>repeated .com.entities.pb.Brand brands = 19;</code>
+     */
+    private void addBrands(
+        int index, InventoryProto.Brand value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureBrandsIsMutable();
+      brands_.add(index, value);
+    }
+    /**
+     * <code>repeated .com.entities.pb.Brand brands = 19;</code>
+     */
+    private void addBrands(
+        InventoryProto.Brand.Builder builderForValue) {
+      ensureBrandsIsMutable();
+      brands_.add(builderForValue.build());
+    }
+    /**
+     * <code>repeated .com.entities.pb.Brand brands = 19;</code>
+     */
+    private void addBrands(
+        int index, InventoryProto.Brand.Builder builderForValue) {
+      ensureBrandsIsMutable();
+      brands_.add(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .com.entities.pb.Brand brands = 19;</code>
+     */
+    private void addAllBrands(
+        Iterable<? extends InventoryProto.Brand> values) {
+      ensureBrandsIsMutable();
+      com.google.protobuf.AbstractMessageLite.addAll(
+          values, brands_);
+    }
+    /**
+     * <code>repeated .com.entities.pb.Brand brands = 19;</code>
+     */
+    private void clearBrands() {
+      brands_ = emptyProtobufList();
+    }
+    /**
+     * <code>repeated .com.entities.pb.Brand brands = 19;</code>
+     */
+    private void removeBrands(int index) {
+      ensureBrandsIsMutable();
+      brands_.remove(index);
+    }
+
+    public static final int SUBBRAND_FIELD_NUMBER = 20;
+    private InventoryProto.SubBrand subBrand_;
+    /**
+     * <code>optional .com.entities.pb.SubBrand subBrand = 20;</code>
+     */
+    public boolean hasSubBrand() {
+      return subBrand_ != null;
+    }
+    /**
+     * <code>optional .com.entities.pb.SubBrand subBrand = 20;</code>
+     */
+    public InventoryProto.SubBrand getSubBrand() {
+      return subBrand_ == null ? InventoryProto.SubBrand.getDefaultInstance() : subBrand_;
+    }
+    /**
+     * <code>optional .com.entities.pb.SubBrand subBrand = 20;</code>
+     */
+    private void setSubBrand(InventoryProto.SubBrand value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      subBrand_ = value;
+      
+      }
+    /**
+     * <code>optional .com.entities.pb.SubBrand subBrand = 20;</code>
+     */
+    private void setSubBrand(
+        InventoryProto.SubBrand.Builder builderForValue) {
+      subBrand_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>optional .com.entities.pb.SubBrand subBrand = 20;</code>
+     */
+    private void mergeSubBrand(InventoryProto.SubBrand value) {
+      if (subBrand_ != null &&
+          subBrand_ != InventoryProto.SubBrand.getDefaultInstance()) {
+        subBrand_ =
+          InventoryProto.SubBrand.newBuilder(subBrand_).mergeFrom(value).buildPartial();
+      } else {
+        subBrand_ = value;
+      }
+      
+    }
+    /**
+     * <code>optional .com.entities.pb.SubBrand subBrand = 20;</code>
+     */
+    private void clearSubBrand() {  subBrand_ = null;
+      
+    }
+
+    public static final int SUBBRANDS_FIELD_NUMBER = 21;
+    private com.google.protobuf.Internal.ProtobufList<InventoryProto.SubBrand> subBrands_;
+    /**
+     * <code>repeated .com.entities.pb.SubBrand subBrands = 21;</code>
+     */
+    public java.util.List<InventoryProto.SubBrand> getSubBrandsList() {
+      return subBrands_;
+    }
+    /**
+     * <code>repeated .com.entities.pb.SubBrand subBrands = 21;</code>
+     */
+    public java.util.List<? extends InventoryProto.SubBrandOrBuilder>
+        getSubBrandsOrBuilderList() {
+      return subBrands_;
+    }
+    /**
+     * <code>repeated .com.entities.pb.SubBrand subBrands = 21;</code>
+     */
+    public int getSubBrandsCount() {
+      return subBrands_.size();
+    }
+    /**
+     * <code>repeated .com.entities.pb.SubBrand subBrands = 21;</code>
+     */
+    public InventoryProto.SubBrand getSubBrands(int index) {
+      return subBrands_.get(index);
+    }
+    /**
+     * <code>repeated .com.entities.pb.SubBrand subBrands = 21;</code>
+     */
+    public InventoryProto.SubBrandOrBuilder getSubBrandsOrBuilder(
+        int index) {
+      return subBrands_.get(index);
+    }
+    private void ensureSubBrandsIsMutable() {
+      if (!subBrands_.isModifiable()) {
+        subBrands_ =
+            com.google.protobuf.GeneratedMessageLite.mutableCopy(subBrands_);
+       }
+    }
+
+    /**
+     * <code>repeated .com.entities.pb.SubBrand subBrands = 21;</code>
+     */
+    private void setSubBrands(
+        int index, InventoryProto.SubBrand value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureSubBrandsIsMutable();
+      subBrands_.set(index, value);
+    }
+    /**
+     * <code>repeated .com.entities.pb.SubBrand subBrands = 21;</code>
+     */
+    private void setSubBrands(
+        int index, InventoryProto.SubBrand.Builder builderForValue) {
+      ensureSubBrandsIsMutable();
+      subBrands_.set(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .com.entities.pb.SubBrand subBrands = 21;</code>
+     */
+    private void addSubBrands(InventoryProto.SubBrand value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureSubBrandsIsMutable();
+      subBrands_.add(value);
+    }
+    /**
+     * <code>repeated .com.entities.pb.SubBrand subBrands = 21;</code>
+     */
+    private void addSubBrands(
+        int index, InventoryProto.SubBrand value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureSubBrandsIsMutable();
+      subBrands_.add(index, value);
+    }
+    /**
+     * <code>repeated .com.entities.pb.SubBrand subBrands = 21;</code>
+     */
+    private void addSubBrands(
+        InventoryProto.SubBrand.Builder builderForValue) {
+      ensureSubBrandsIsMutable();
+      subBrands_.add(builderForValue.build());
+    }
+    /**
+     * <code>repeated .com.entities.pb.SubBrand subBrands = 21;</code>
+     */
+    private void addSubBrands(
+        int index, InventoryProto.SubBrand.Builder builderForValue) {
+      ensureSubBrandsIsMutable();
+      subBrands_.add(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .com.entities.pb.SubBrand subBrands = 21;</code>
+     */
+    private void addAllSubBrands(
+        Iterable<? extends InventoryProto.SubBrand> values) {
+      ensureSubBrandsIsMutable();
+      com.google.protobuf.AbstractMessageLite.addAll(
+          values, subBrands_);
+    }
+    /**
+     * <code>repeated .com.entities.pb.SubBrand subBrands = 21;</code>
+     */
+    private void clearSubBrands() {
+      subBrands_ = emptyProtobufList();
+    }
+    /**
+     * <code>repeated .com.entities.pb.SubBrand subBrands = 21;</code>
+     */
+    private void removeSubBrands(int index) {
+      ensureSubBrandsIsMutable();
+      subBrands_.remove(index);
+    }
+
+    public static final int UNIT_FIELD_NUMBER = 22;
+    private InventoryProto.Unit unit_;
+    /**
+     * <code>optional .com.entities.pb.Unit unit = 22;</code>
+     */
+    public boolean hasUnit() {
+      return unit_ != null;
+    }
+    /**
+     * <code>optional .com.entities.pb.Unit unit = 22;</code>
+     */
+    public InventoryProto.Unit getUnit() {
+      return unit_ == null ? InventoryProto.Unit.getDefaultInstance() : unit_;
+    }
+    /**
+     * <code>optional .com.entities.pb.Unit unit = 22;</code>
+     */
+    private void setUnit(InventoryProto.Unit value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      unit_ = value;
+      
+      }
+    /**
+     * <code>optional .com.entities.pb.Unit unit = 22;</code>
+     */
+    private void setUnit(
+        InventoryProto.Unit.Builder builderForValue) {
+      unit_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>optional .com.entities.pb.Unit unit = 22;</code>
+     */
+    private void mergeUnit(InventoryProto.Unit value) {
+      if (unit_ != null &&
+          unit_ != InventoryProto.Unit.getDefaultInstance()) {
+        unit_ =
+          InventoryProto.Unit.newBuilder(unit_).mergeFrom(value).buildPartial();
+      } else {
+        unit_ = value;
+      }
+      
+    }
+    /**
+     * <code>optional .com.entities.pb.Unit unit = 22;</code>
+     */
+    private void clearUnit() {  unit_ = null;
+      
+    }
+
+    public static final int UNITS_FIELD_NUMBER = 23;
+    private com.google.protobuf.Internal.ProtobufList<InventoryProto.Unit> units_;
+    /**
+     * <code>repeated .com.entities.pb.Unit units = 23;</code>
+     */
+    public java.util.List<InventoryProto.Unit> getUnitsList() {
+      return units_;
+    }
+    /**
+     * <code>repeated .com.entities.pb.Unit units = 23;</code>
+     */
+    public java.util.List<? extends InventoryProto.UnitOrBuilder>
+        getUnitsOrBuilderList() {
+      return units_;
+    }
+    /**
+     * <code>repeated .com.entities.pb.Unit units = 23;</code>
+     */
+    public int getUnitsCount() {
+      return units_.size();
+    }
+    /**
+     * <code>repeated .com.entities.pb.Unit units = 23;</code>
+     */
+    public InventoryProto.Unit getUnits(int index) {
+      return units_.get(index);
+    }
+    /**
+     * <code>repeated .com.entities.pb.Unit units = 23;</code>
+     */
+    public InventoryProto.UnitOrBuilder getUnitsOrBuilder(
+        int index) {
+      return units_.get(index);
+    }
+    private void ensureUnitsIsMutable() {
+      if (!units_.isModifiable()) {
+        units_ =
+            com.google.protobuf.GeneratedMessageLite.mutableCopy(units_);
+       }
+    }
+
+    /**
+     * <code>repeated .com.entities.pb.Unit units = 23;</code>
+     */
+    private void setUnits(
+        int index, InventoryProto.Unit value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureUnitsIsMutable();
+      units_.set(index, value);
+    }
+    /**
+     * <code>repeated .com.entities.pb.Unit units = 23;</code>
+     */
+    private void setUnits(
+        int index, InventoryProto.Unit.Builder builderForValue) {
+      ensureUnitsIsMutable();
+      units_.set(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .com.entities.pb.Unit units = 23;</code>
+     */
+    private void addUnits(InventoryProto.Unit value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureUnitsIsMutable();
+      units_.add(value);
+    }
+    /**
+     * <code>repeated .com.entities.pb.Unit units = 23;</code>
+     */
+    private void addUnits(
+        int index, InventoryProto.Unit value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureUnitsIsMutable();
+      units_.add(index, value);
+    }
+    /**
+     * <code>repeated .com.entities.pb.Unit units = 23;</code>
+     */
+    private void addUnits(
+        InventoryProto.Unit.Builder builderForValue) {
+      ensureUnitsIsMutable();
+      units_.add(builderForValue.build());
+    }
+    /**
+     * <code>repeated .com.entities.pb.Unit units = 23;</code>
+     */
+    private void addUnits(
+        int index, InventoryProto.Unit.Builder builderForValue) {
+      ensureUnitsIsMutable();
+      units_.add(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .com.entities.pb.Unit units = 23;</code>
+     */
+    private void addAllUnits(
+        Iterable<? extends InventoryProto.Unit> values) {
+      ensureUnitsIsMutable();
+      com.google.protobuf.AbstractMessageLite.addAll(
+          values, units_);
+    }
+    /**
+     * <code>repeated .com.entities.pb.Unit units = 23;</code>
+     */
+    private void clearUnits() {
+      units_ = emptyProtobufList();
+    }
+    /**
+     * <code>repeated .com.entities.pb.Unit units = 23;</code>
+     */
+    private void removeUnits(int index) {
+      ensureUnitsIsMutable();
+      units_.remove(index);
+    }
+
+    public static final int CATEGORY_FIELD_NUMBER = 24;
+    private InventoryProto.Category category_;
+    /**
+     * <code>optional .com.entities.pb.Category category = 24;</code>
+     */
+    public boolean hasCategory() {
+      return category_ != null;
+    }
+    /**
+     * <code>optional .com.entities.pb.Category category = 24;</code>
+     */
+    public InventoryProto.Category getCategory() {
+      return category_ == null ? InventoryProto.Category.getDefaultInstance() : category_;
+    }
+    /**
+     * <code>optional .com.entities.pb.Category category = 24;</code>
+     */
+    private void setCategory(InventoryProto.Category value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      category_ = value;
+      
+      }
+    /**
+     * <code>optional .com.entities.pb.Category category = 24;</code>
+     */
+    private void setCategory(
+        InventoryProto.Category.Builder builderForValue) {
+      category_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>optional .com.entities.pb.Category category = 24;</code>
+     */
+    private void mergeCategory(InventoryProto.Category value) {
+      if (category_ != null &&
+          category_ != InventoryProto.Category.getDefaultInstance()) {
+        category_ =
+          InventoryProto.Category.newBuilder(category_).mergeFrom(value).buildPartial();
+      } else {
+        category_ = value;
+      }
+      
+    }
+    /**
+     * <code>optional .com.entities.pb.Category category = 24;</code>
+     */
+    private void clearCategory() {  category_ = null;
+      
+    }
+
+    public static final int CATEGORIES_FIELD_NUMBER = 25;
+    private com.google.protobuf.Internal.ProtobufList<InventoryProto.Category> categories_;
+    /**
+     * <code>repeated .com.entities.pb.Category categories = 25;</code>
+     */
+    public java.util.List<InventoryProto.Category> getCategoriesList() {
+      return categories_;
+    }
+    /**
+     * <code>repeated .com.entities.pb.Category categories = 25;</code>
+     */
+    public java.util.List<? extends InventoryProto.CategoryOrBuilder>
+        getCategoriesOrBuilderList() {
+      return categories_;
+    }
+    /**
+     * <code>repeated .com.entities.pb.Category categories = 25;</code>
+     */
+    public int getCategoriesCount() {
+      return categories_.size();
+    }
+    /**
+     * <code>repeated .com.entities.pb.Category categories = 25;</code>
+     */
+    public InventoryProto.Category getCategories(int index) {
+      return categories_.get(index);
+    }
+    /**
+     * <code>repeated .com.entities.pb.Category categories = 25;</code>
+     */
+    public InventoryProto.CategoryOrBuilder getCategoriesOrBuilder(
+        int index) {
+      return categories_.get(index);
+    }
+    private void ensureCategoriesIsMutable() {
+      if (!categories_.isModifiable()) {
+        categories_ =
+            com.google.protobuf.GeneratedMessageLite.mutableCopy(categories_);
+       }
+    }
+
+    /**
+     * <code>repeated .com.entities.pb.Category categories = 25;</code>
+     */
+    private void setCategories(
+        int index, InventoryProto.Category value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureCategoriesIsMutable();
+      categories_.set(index, value);
+    }
+    /**
+     * <code>repeated .com.entities.pb.Category categories = 25;</code>
+     */
+    private void setCategories(
+        int index, InventoryProto.Category.Builder builderForValue) {
+      ensureCategoriesIsMutable();
+      categories_.set(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .com.entities.pb.Category categories = 25;</code>
+     */
+    private void addCategories(InventoryProto.Category value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureCategoriesIsMutable();
+      categories_.add(value);
+    }
+    /**
+     * <code>repeated .com.entities.pb.Category categories = 25;</code>
+     */
+    private void addCategories(
+        int index, InventoryProto.Category value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureCategoriesIsMutable();
+      categories_.add(index, value);
+    }
+    /**
+     * <code>repeated .com.entities.pb.Category categories = 25;</code>
+     */
+    private void addCategories(
+        InventoryProto.Category.Builder builderForValue) {
+      ensureCategoriesIsMutable();
+      categories_.add(builderForValue.build());
+    }
+    /**
+     * <code>repeated .com.entities.pb.Category categories = 25;</code>
+     */
+    private void addCategories(
+        int index, InventoryProto.Category.Builder builderForValue) {
+      ensureCategoriesIsMutable();
+      categories_.add(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .com.entities.pb.Category categories = 25;</code>
+     */
+    private void addAllCategories(
+        Iterable<? extends InventoryProto.Category> values) {
+      ensureCategoriesIsMutable();
+      com.google.protobuf.AbstractMessageLite.addAll(
+          values, categories_);
+    }
+    /**
+     * <code>repeated .com.entities.pb.Category categories = 25;</code>
+     */
+    private void clearCategories() {
+      categories_ = emptyProtobufList();
+    }
+    /**
+     * <code>repeated .com.entities.pb.Category categories = 25;</code>
+     */
+    private void removeCategories(int index) {
+      ensureCategoriesIsMutable();
+      categories_.remove(index);
+    }
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (error_ != false) {
@@ -2806,6 +4294,36 @@ public final class ReqResProto {
       }
       for (int i = 0; i < stockKeepingUnits_.size(); i++) {
         output.writeMessage(15, stockKeepingUnits_.get(i));
+      }
+      if (inventory_ != null) {
+        output.writeMessage(16, getInventory());
+      }
+      for (int i = 0; i < inventories_.size(); i++) {
+        output.writeMessage(17, inventories_.get(i));
+      }
+      if (brand_ != null) {
+        output.writeMessage(18, getBrand());
+      }
+      for (int i = 0; i < brands_.size(); i++) {
+        output.writeMessage(19, brands_.get(i));
+      }
+      if (subBrand_ != null) {
+        output.writeMessage(20, getSubBrand());
+      }
+      for (int i = 0; i < subBrands_.size(); i++) {
+        output.writeMessage(21, subBrands_.get(i));
+      }
+      if (unit_ != null) {
+        output.writeMessage(22, getUnit());
+      }
+      for (int i = 0; i < units_.size(); i++) {
+        output.writeMessage(23, units_.get(i));
+      }
+      if (category_ != null) {
+        output.writeMessage(24, getCategory());
+      }
+      for (int i = 0; i < categories_.size(); i++) {
+        output.writeMessage(25, categories_.get(i));
       }
     }
 
@@ -2873,6 +4391,46 @@ public final class ReqResProto {
       for (int i = 0; i < stockKeepingUnits_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(15, stockKeepingUnits_.get(i));
+      }
+      if (inventory_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(16, getInventory());
+      }
+      for (int i = 0; i < inventories_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(17, inventories_.get(i));
+      }
+      if (brand_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(18, getBrand());
+      }
+      for (int i = 0; i < brands_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(19, brands_.get(i));
+      }
+      if (subBrand_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(20, getSubBrand());
+      }
+      for (int i = 0; i < subBrands_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(21, subBrands_.get(i));
+      }
+      if (unit_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(22, getUnit());
+      }
+      for (int i = 0; i < units_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(23, units_.get(i));
+      }
+      if (category_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(24, getCategory());
+      }
+      for (int i = 0; i < categories_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(25, categories_.get(i));
       }
       memoizedSerializedSize = size;
       return size;
@@ -3734,6 +5292,716 @@ public final class ReqResProto {
         return this;
       }
 
+      /**
+       * <code>optional .com.entities.pb.Inventory inventory = 16;</code>
+       */
+      public boolean hasInventory() {
+        return instance.hasInventory();
+      }
+      /**
+       * <code>optional .com.entities.pb.Inventory inventory = 16;</code>
+       */
+      public InventoryProto.Inventory getInventory() {
+        return instance.getInventory();
+      }
+      /**
+       * <code>optional .com.entities.pb.Inventory inventory = 16;</code>
+       */
+      public Builder setInventory(InventoryProto.Inventory value) {
+        copyOnWrite();
+        instance.setInventory(value);
+        return this;
+        }
+      /**
+       * <code>optional .com.entities.pb.Inventory inventory = 16;</code>
+       */
+      public Builder setInventory(
+          InventoryProto.Inventory.Builder builderForValue) {
+        copyOnWrite();
+        instance.setInventory(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .com.entities.pb.Inventory inventory = 16;</code>
+       */
+      public Builder mergeInventory(InventoryProto.Inventory value) {
+        copyOnWrite();
+        instance.mergeInventory(value);
+        return this;
+      }
+      /**
+       * <code>optional .com.entities.pb.Inventory inventory = 16;</code>
+       */
+      public Builder clearInventory() {  copyOnWrite();
+        instance.clearInventory();
+        return this;
+      }
+
+      /**
+       * <code>repeated .com.entities.pb.Inventory inventories = 17;</code>
+       */
+      public java.util.List<InventoryProto.Inventory> getInventoriesList() {
+        return java.util.Collections.unmodifiableList(
+            instance.getInventoriesList());
+      }
+      /**
+       * <code>repeated .com.entities.pb.Inventory inventories = 17;</code>
+       */
+      public int getInventoriesCount() {
+        return instance.getInventoriesCount();
+      }/**
+       * <code>repeated .com.entities.pb.Inventory inventories = 17;</code>
+       */
+      public InventoryProto.Inventory getInventories(int index) {
+        return instance.getInventories(index);
+      }
+      /**
+       * <code>repeated .com.entities.pb.Inventory inventories = 17;</code>
+       */
+      public Builder setInventories(
+          int index, InventoryProto.Inventory value) {
+        copyOnWrite();
+        instance.setInventories(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Inventory inventories = 17;</code>
+       */
+      public Builder setInventories(
+          int index, InventoryProto.Inventory.Builder builderForValue) {
+        copyOnWrite();
+        instance.setInventories(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Inventory inventories = 17;</code>
+       */
+      public Builder addInventories(InventoryProto.Inventory value) {
+        copyOnWrite();
+        instance.addInventories(value);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Inventory inventories = 17;</code>
+       */
+      public Builder addInventories(
+          int index, InventoryProto.Inventory value) {
+        copyOnWrite();
+        instance.addInventories(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Inventory inventories = 17;</code>
+       */
+      public Builder addInventories(
+          InventoryProto.Inventory.Builder builderForValue) {
+        copyOnWrite();
+        instance.addInventories(builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Inventory inventories = 17;</code>
+       */
+      public Builder addInventories(
+          int index, InventoryProto.Inventory.Builder builderForValue) {
+        copyOnWrite();
+        instance.addInventories(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Inventory inventories = 17;</code>
+       */
+      public Builder addAllInventories(
+          Iterable<? extends InventoryProto.Inventory> values) {
+        copyOnWrite();
+        instance.addAllInventories(values);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Inventory inventories = 17;</code>
+       */
+      public Builder clearInventories() {
+        copyOnWrite();
+        instance.clearInventories();
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Inventory inventories = 17;</code>
+       */
+      public Builder removeInventories(int index) {
+        copyOnWrite();
+        instance.removeInventories(index);
+        return this;
+      }
+
+      /**
+       * <code>optional .com.entities.pb.Brand brand = 18;</code>
+       */
+      public boolean hasBrand() {
+        return instance.hasBrand();
+      }
+      /**
+       * <code>optional .com.entities.pb.Brand brand = 18;</code>
+       */
+      public InventoryProto.Brand getBrand() {
+        return instance.getBrand();
+      }
+      /**
+       * <code>optional .com.entities.pb.Brand brand = 18;</code>
+       */
+      public Builder setBrand(InventoryProto.Brand value) {
+        copyOnWrite();
+        instance.setBrand(value);
+        return this;
+        }
+      /**
+       * <code>optional .com.entities.pb.Brand brand = 18;</code>
+       */
+      public Builder setBrand(
+          InventoryProto.Brand.Builder builderForValue) {
+        copyOnWrite();
+        instance.setBrand(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .com.entities.pb.Brand brand = 18;</code>
+       */
+      public Builder mergeBrand(InventoryProto.Brand value) {
+        copyOnWrite();
+        instance.mergeBrand(value);
+        return this;
+      }
+      /**
+       * <code>optional .com.entities.pb.Brand brand = 18;</code>
+       */
+      public Builder clearBrand() {  copyOnWrite();
+        instance.clearBrand();
+        return this;
+      }
+
+      /**
+       * <code>repeated .com.entities.pb.Brand brands = 19;</code>
+       */
+      public java.util.List<InventoryProto.Brand> getBrandsList() {
+        return java.util.Collections.unmodifiableList(
+            instance.getBrandsList());
+      }
+      /**
+       * <code>repeated .com.entities.pb.Brand brands = 19;</code>
+       */
+      public int getBrandsCount() {
+        return instance.getBrandsCount();
+      }/**
+       * <code>repeated .com.entities.pb.Brand brands = 19;</code>
+       */
+      public InventoryProto.Brand getBrands(int index) {
+        return instance.getBrands(index);
+      }
+      /**
+       * <code>repeated .com.entities.pb.Brand brands = 19;</code>
+       */
+      public Builder setBrands(
+          int index, InventoryProto.Brand value) {
+        copyOnWrite();
+        instance.setBrands(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Brand brands = 19;</code>
+       */
+      public Builder setBrands(
+          int index, InventoryProto.Brand.Builder builderForValue) {
+        copyOnWrite();
+        instance.setBrands(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Brand brands = 19;</code>
+       */
+      public Builder addBrands(InventoryProto.Brand value) {
+        copyOnWrite();
+        instance.addBrands(value);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Brand brands = 19;</code>
+       */
+      public Builder addBrands(
+          int index, InventoryProto.Brand value) {
+        copyOnWrite();
+        instance.addBrands(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Brand brands = 19;</code>
+       */
+      public Builder addBrands(
+          InventoryProto.Brand.Builder builderForValue) {
+        copyOnWrite();
+        instance.addBrands(builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Brand brands = 19;</code>
+       */
+      public Builder addBrands(
+          int index, InventoryProto.Brand.Builder builderForValue) {
+        copyOnWrite();
+        instance.addBrands(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Brand brands = 19;</code>
+       */
+      public Builder addAllBrands(
+          Iterable<? extends InventoryProto.Brand> values) {
+        copyOnWrite();
+        instance.addAllBrands(values);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Brand brands = 19;</code>
+       */
+      public Builder clearBrands() {
+        copyOnWrite();
+        instance.clearBrands();
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Brand brands = 19;</code>
+       */
+      public Builder removeBrands(int index) {
+        copyOnWrite();
+        instance.removeBrands(index);
+        return this;
+      }
+
+      /**
+       * <code>optional .com.entities.pb.SubBrand subBrand = 20;</code>
+       */
+      public boolean hasSubBrand() {
+        return instance.hasSubBrand();
+      }
+      /**
+       * <code>optional .com.entities.pb.SubBrand subBrand = 20;</code>
+       */
+      public InventoryProto.SubBrand getSubBrand() {
+        return instance.getSubBrand();
+      }
+      /**
+       * <code>optional .com.entities.pb.SubBrand subBrand = 20;</code>
+       */
+      public Builder setSubBrand(InventoryProto.SubBrand value) {
+        copyOnWrite();
+        instance.setSubBrand(value);
+        return this;
+        }
+      /**
+       * <code>optional .com.entities.pb.SubBrand subBrand = 20;</code>
+       */
+      public Builder setSubBrand(
+          InventoryProto.SubBrand.Builder builderForValue) {
+        copyOnWrite();
+        instance.setSubBrand(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .com.entities.pb.SubBrand subBrand = 20;</code>
+       */
+      public Builder mergeSubBrand(InventoryProto.SubBrand value) {
+        copyOnWrite();
+        instance.mergeSubBrand(value);
+        return this;
+      }
+      /**
+       * <code>optional .com.entities.pb.SubBrand subBrand = 20;</code>
+       */
+      public Builder clearSubBrand() {  copyOnWrite();
+        instance.clearSubBrand();
+        return this;
+      }
+
+      /**
+       * <code>repeated .com.entities.pb.SubBrand subBrands = 21;</code>
+       */
+      public java.util.List<InventoryProto.SubBrand> getSubBrandsList() {
+        return java.util.Collections.unmodifiableList(
+            instance.getSubBrandsList());
+      }
+      /**
+       * <code>repeated .com.entities.pb.SubBrand subBrands = 21;</code>
+       */
+      public int getSubBrandsCount() {
+        return instance.getSubBrandsCount();
+      }/**
+       * <code>repeated .com.entities.pb.SubBrand subBrands = 21;</code>
+       */
+      public InventoryProto.SubBrand getSubBrands(int index) {
+        return instance.getSubBrands(index);
+      }
+      /**
+       * <code>repeated .com.entities.pb.SubBrand subBrands = 21;</code>
+       */
+      public Builder setSubBrands(
+          int index, InventoryProto.SubBrand value) {
+        copyOnWrite();
+        instance.setSubBrands(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.SubBrand subBrands = 21;</code>
+       */
+      public Builder setSubBrands(
+          int index, InventoryProto.SubBrand.Builder builderForValue) {
+        copyOnWrite();
+        instance.setSubBrands(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.SubBrand subBrands = 21;</code>
+       */
+      public Builder addSubBrands(InventoryProto.SubBrand value) {
+        copyOnWrite();
+        instance.addSubBrands(value);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.SubBrand subBrands = 21;</code>
+       */
+      public Builder addSubBrands(
+          int index, InventoryProto.SubBrand value) {
+        copyOnWrite();
+        instance.addSubBrands(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.SubBrand subBrands = 21;</code>
+       */
+      public Builder addSubBrands(
+          InventoryProto.SubBrand.Builder builderForValue) {
+        copyOnWrite();
+        instance.addSubBrands(builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.SubBrand subBrands = 21;</code>
+       */
+      public Builder addSubBrands(
+          int index, InventoryProto.SubBrand.Builder builderForValue) {
+        copyOnWrite();
+        instance.addSubBrands(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.SubBrand subBrands = 21;</code>
+       */
+      public Builder addAllSubBrands(
+          Iterable<? extends InventoryProto.SubBrand> values) {
+        copyOnWrite();
+        instance.addAllSubBrands(values);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.SubBrand subBrands = 21;</code>
+       */
+      public Builder clearSubBrands() {
+        copyOnWrite();
+        instance.clearSubBrands();
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.SubBrand subBrands = 21;</code>
+       */
+      public Builder removeSubBrands(int index) {
+        copyOnWrite();
+        instance.removeSubBrands(index);
+        return this;
+      }
+
+      /**
+       * <code>optional .com.entities.pb.Unit unit = 22;</code>
+       */
+      public boolean hasUnit() {
+        return instance.hasUnit();
+      }
+      /**
+       * <code>optional .com.entities.pb.Unit unit = 22;</code>
+       */
+      public InventoryProto.Unit getUnit() {
+        return instance.getUnit();
+      }
+      /**
+       * <code>optional .com.entities.pb.Unit unit = 22;</code>
+       */
+      public Builder setUnit(InventoryProto.Unit value) {
+        copyOnWrite();
+        instance.setUnit(value);
+        return this;
+        }
+      /**
+       * <code>optional .com.entities.pb.Unit unit = 22;</code>
+       */
+      public Builder setUnit(
+          InventoryProto.Unit.Builder builderForValue) {
+        copyOnWrite();
+        instance.setUnit(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .com.entities.pb.Unit unit = 22;</code>
+       */
+      public Builder mergeUnit(InventoryProto.Unit value) {
+        copyOnWrite();
+        instance.mergeUnit(value);
+        return this;
+      }
+      /**
+       * <code>optional .com.entities.pb.Unit unit = 22;</code>
+       */
+      public Builder clearUnit() {  copyOnWrite();
+        instance.clearUnit();
+        return this;
+      }
+
+      /**
+       * <code>repeated .com.entities.pb.Unit units = 23;</code>
+       */
+      public java.util.List<InventoryProto.Unit> getUnitsList() {
+        return java.util.Collections.unmodifiableList(
+            instance.getUnitsList());
+      }
+      /**
+       * <code>repeated .com.entities.pb.Unit units = 23;</code>
+       */
+      public int getUnitsCount() {
+        return instance.getUnitsCount();
+      }/**
+       * <code>repeated .com.entities.pb.Unit units = 23;</code>
+       */
+      public InventoryProto.Unit getUnits(int index) {
+        return instance.getUnits(index);
+      }
+      /**
+       * <code>repeated .com.entities.pb.Unit units = 23;</code>
+       */
+      public Builder setUnits(
+          int index, InventoryProto.Unit value) {
+        copyOnWrite();
+        instance.setUnits(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Unit units = 23;</code>
+       */
+      public Builder setUnits(
+          int index, InventoryProto.Unit.Builder builderForValue) {
+        copyOnWrite();
+        instance.setUnits(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Unit units = 23;</code>
+       */
+      public Builder addUnits(InventoryProto.Unit value) {
+        copyOnWrite();
+        instance.addUnits(value);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Unit units = 23;</code>
+       */
+      public Builder addUnits(
+          int index, InventoryProto.Unit value) {
+        copyOnWrite();
+        instance.addUnits(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Unit units = 23;</code>
+       */
+      public Builder addUnits(
+          InventoryProto.Unit.Builder builderForValue) {
+        copyOnWrite();
+        instance.addUnits(builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Unit units = 23;</code>
+       */
+      public Builder addUnits(
+          int index, InventoryProto.Unit.Builder builderForValue) {
+        copyOnWrite();
+        instance.addUnits(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Unit units = 23;</code>
+       */
+      public Builder addAllUnits(
+          Iterable<? extends InventoryProto.Unit> values) {
+        copyOnWrite();
+        instance.addAllUnits(values);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Unit units = 23;</code>
+       */
+      public Builder clearUnits() {
+        copyOnWrite();
+        instance.clearUnits();
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Unit units = 23;</code>
+       */
+      public Builder removeUnits(int index) {
+        copyOnWrite();
+        instance.removeUnits(index);
+        return this;
+      }
+
+      /**
+       * <code>optional .com.entities.pb.Category category = 24;</code>
+       */
+      public boolean hasCategory() {
+        return instance.hasCategory();
+      }
+      /**
+       * <code>optional .com.entities.pb.Category category = 24;</code>
+       */
+      public InventoryProto.Category getCategory() {
+        return instance.getCategory();
+      }
+      /**
+       * <code>optional .com.entities.pb.Category category = 24;</code>
+       */
+      public Builder setCategory(InventoryProto.Category value) {
+        copyOnWrite();
+        instance.setCategory(value);
+        return this;
+        }
+      /**
+       * <code>optional .com.entities.pb.Category category = 24;</code>
+       */
+      public Builder setCategory(
+          InventoryProto.Category.Builder builderForValue) {
+        copyOnWrite();
+        instance.setCategory(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .com.entities.pb.Category category = 24;</code>
+       */
+      public Builder mergeCategory(InventoryProto.Category value) {
+        copyOnWrite();
+        instance.mergeCategory(value);
+        return this;
+      }
+      /**
+       * <code>optional .com.entities.pb.Category category = 24;</code>
+       */
+      public Builder clearCategory() {  copyOnWrite();
+        instance.clearCategory();
+        return this;
+      }
+
+      /**
+       * <code>repeated .com.entities.pb.Category categories = 25;</code>
+       */
+      public java.util.List<InventoryProto.Category> getCategoriesList() {
+        return java.util.Collections.unmodifiableList(
+            instance.getCategoriesList());
+      }
+      /**
+       * <code>repeated .com.entities.pb.Category categories = 25;</code>
+       */
+      public int getCategoriesCount() {
+        return instance.getCategoriesCount();
+      }/**
+       * <code>repeated .com.entities.pb.Category categories = 25;</code>
+       */
+      public InventoryProto.Category getCategories(int index) {
+        return instance.getCategories(index);
+      }
+      /**
+       * <code>repeated .com.entities.pb.Category categories = 25;</code>
+       */
+      public Builder setCategories(
+          int index, InventoryProto.Category value) {
+        copyOnWrite();
+        instance.setCategories(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Category categories = 25;</code>
+       */
+      public Builder setCategories(
+          int index, InventoryProto.Category.Builder builderForValue) {
+        copyOnWrite();
+        instance.setCategories(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Category categories = 25;</code>
+       */
+      public Builder addCategories(InventoryProto.Category value) {
+        copyOnWrite();
+        instance.addCategories(value);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Category categories = 25;</code>
+       */
+      public Builder addCategories(
+          int index, InventoryProto.Category value) {
+        copyOnWrite();
+        instance.addCategories(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Category categories = 25;</code>
+       */
+      public Builder addCategories(
+          InventoryProto.Category.Builder builderForValue) {
+        copyOnWrite();
+        instance.addCategories(builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Category categories = 25;</code>
+       */
+      public Builder addCategories(
+          int index, InventoryProto.Category.Builder builderForValue) {
+        copyOnWrite();
+        instance.addCategories(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Category categories = 25;</code>
+       */
+      public Builder addAllCategories(
+          Iterable<? extends InventoryProto.Category> values) {
+        copyOnWrite();
+        instance.addAllCategories(values);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Category categories = 25;</code>
+       */
+      public Builder clearCategories() {
+        copyOnWrite();
+        instance.clearCategories();
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Category categories = 25;</code>
+       */
+      public Builder removeCategories(int index) {
+        copyOnWrite();
+        instance.removeCategories(index);
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:com.entities.pb.Response)
     }
     protected final Object dynamicMethod(
@@ -3750,6 +6018,11 @@ public final class ReqResProto {
           users_.makeImmutable();
           accessTokens_.makeImmutable();
           stockKeepingUnits_.makeImmutable();
+          inventories_.makeImmutable();
+          brands_.makeImmutable();
+          subBrands_.makeImmutable();
+          units_.makeImmutable();
+          categories_.makeImmutable();
           return null;
         }
         case NEW_BUILDER: {
@@ -3776,6 +6049,16 @@ public final class ReqResProto {
           accessTokens_= visitor.visitList(accessTokens_, other.accessTokens_);
           stockKeepingUnit_ = visitor.visitMessage(stockKeepingUnit_, other.stockKeepingUnit_);
           stockKeepingUnits_= visitor.visitList(stockKeepingUnits_, other.stockKeepingUnits_);
+          inventory_ = visitor.visitMessage(inventory_, other.inventory_);
+          inventories_= visitor.visitList(inventories_, other.inventories_);
+          brand_ = visitor.visitMessage(brand_, other.brand_);
+          brands_= visitor.visitList(brands_, other.brands_);
+          subBrand_ = visitor.visitMessage(subBrand_, other.subBrand_);
+          subBrands_= visitor.visitList(subBrands_, other.subBrands_);
+          unit_ = visitor.visitMessage(unit_, other.unit_);
+          units_= visitor.visitList(units_, other.units_);
+          category_ = visitor.visitMessage(category_, other.category_);
+          categories_= visitor.visitList(categories_, other.categories_);
           if (visitor == MergeFromVisitor
               .INSTANCE) {
             bitField0_ |= other.bitField0_;
@@ -3952,6 +6235,116 @@ public final class ReqResProto {
                   }
                   stockKeepingUnits_.add(
                       input.readMessage(InventoryProto.StockKeepingUnit.parser(), extensionRegistry));
+                  break;
+                }
+                case 130: {
+                  InventoryProto.Inventory.Builder subBuilder = null;
+                  if (inventory_ != null) {
+                    subBuilder = inventory_.toBuilder();
+                  }
+                  inventory_ = input.readMessage(InventoryProto.Inventory.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(inventory_);
+                    inventory_ = subBuilder.buildPartial();
+                  }
+
+                  break;
+                }
+                case 138: {
+                  if (!inventories_.isModifiable()) {
+                    inventories_ =
+                        com.google.protobuf.GeneratedMessageLite.mutableCopy(inventories_);
+                  }
+                  inventories_.add(
+                      input.readMessage(InventoryProto.Inventory.parser(), extensionRegistry));
+                  break;
+                }
+                case 146: {
+                  InventoryProto.Brand.Builder subBuilder = null;
+                  if (brand_ != null) {
+                    subBuilder = brand_.toBuilder();
+                  }
+                  brand_ = input.readMessage(InventoryProto.Brand.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(brand_);
+                    brand_ = subBuilder.buildPartial();
+                  }
+
+                  break;
+                }
+                case 154: {
+                  if (!brands_.isModifiable()) {
+                    brands_ =
+                        com.google.protobuf.GeneratedMessageLite.mutableCopy(brands_);
+                  }
+                  brands_.add(
+                      input.readMessage(InventoryProto.Brand.parser(), extensionRegistry));
+                  break;
+                }
+                case 162: {
+                  InventoryProto.SubBrand.Builder subBuilder = null;
+                  if (subBrand_ != null) {
+                    subBuilder = subBrand_.toBuilder();
+                  }
+                  subBrand_ = input.readMessage(InventoryProto.SubBrand.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(subBrand_);
+                    subBrand_ = subBuilder.buildPartial();
+                  }
+
+                  break;
+                }
+                case 170: {
+                  if (!subBrands_.isModifiable()) {
+                    subBrands_ =
+                        com.google.protobuf.GeneratedMessageLite.mutableCopy(subBrands_);
+                  }
+                  subBrands_.add(
+                      input.readMessage(InventoryProto.SubBrand.parser(), extensionRegistry));
+                  break;
+                }
+                case 178: {
+                  InventoryProto.Unit.Builder subBuilder = null;
+                  if (unit_ != null) {
+                    subBuilder = unit_.toBuilder();
+                  }
+                  unit_ = input.readMessage(InventoryProto.Unit.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(unit_);
+                    unit_ = subBuilder.buildPartial();
+                  }
+
+                  break;
+                }
+                case 186: {
+                  if (!units_.isModifiable()) {
+                    units_ =
+                        com.google.protobuf.GeneratedMessageLite.mutableCopy(units_);
+                  }
+                  units_.add(
+                      input.readMessage(InventoryProto.Unit.parser(), extensionRegistry));
+                  break;
+                }
+                case 194: {
+                  InventoryProto.Category.Builder subBuilder = null;
+                  if (category_ != null) {
+                    subBuilder = category_.toBuilder();
+                  }
+                  category_ = input.readMessage(InventoryProto.Category.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(category_);
+                    category_ = subBuilder.buildPartial();
+                  }
+
+                  break;
+                }
+                case 202: {
+                  if (!categories_.isModifiable()) {
+                    categories_ =
+                        com.google.protobuf.GeneratedMessageLite.mutableCopy(categories_);
+                  }
+                  categories_.add(
+                      input.readMessage(InventoryProto.Category.parser(), extensionRegistry));
                   break;
                 }
               }
