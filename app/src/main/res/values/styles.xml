@@ -39,7 +39,7 @@
         <item name="actionMenuTextColor">@android:color/white</item>
     </style>
 
-    <style name="SplashTheme" parent="Theme.MaterialComponents.NoActionBar">
+    <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
         <item name="android:windowBackground">@drawable/splash_screen</item>
     </style>
 
@@ -51,13 +51,13 @@
         <item name="color">@color/white</item>
     </style>
 
- <!--   <style name="AppBottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
-        <item name="bottomSheetStyle">@style/AppModalStyle</item>
-    </style>
+    <!--   <style name="AppBottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+           <item name="bottomSheetStyle">@style/AppModalStyle</item>
+       </style>
 
-    <style name="AppModalStyle" parent="Widget.Design.BottomSheet.Modal">
-        <item name="android:background">@drawable/rounded_bottomsheet</item>
-    </style>-->
+       <style name="AppModalStyle" parent="Widget.Design.BottomSheet.Modal">
+           <item name="android:background">@drawable/rounded_bottomsheet</item>
+       </style>-->
 
     <style name="AppTheme.Quiqpay.NoActionBar">
         <item name="windowActionBar">false</item>

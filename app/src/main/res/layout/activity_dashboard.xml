@@ -17,21 +17,21 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_inventory"
-            android:layout_width="250dp"
-            android:layout_height="120dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:text="@string/inventory"
             app:cornerRadius="16dp"
             app:rippleColor="@color/colorPrimary" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_credit"
-            android:layout_width="250dp"
-            android:layout_height="120dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:layout_below="@+id/btn_inventory"
             android:layout_marginTop="10dp"
             android:text="@string/credit"
             app:cornerRadius="16dp"
-            app:rippleColor="@color/colorPrimary"  />
+            app:rippleColor="@color/colorPrimary" />
 
 
     </RelativeLayout>

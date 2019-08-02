@@ -1,9 +1,12 @@
 package com.treeleaf.suchi.realm.models;
 
-import io.realm.RealmObject;
-import io.realm.annotations.PrimaryKey;
+import androidx.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
-public class Token extends RealmObject {
+@Entity(tableName = "token_table")
+public class Token {
+    @NonNull
     @PrimaryKey
     private String token;
     private User user;

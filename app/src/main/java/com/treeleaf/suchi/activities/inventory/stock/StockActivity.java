@@ -1,6 +1,8 @@
 package com.treeleaf.suchi.activities.inventory.stock;
 
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,8 +16,9 @@ import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.activities.base.BaseActivity;
 import com.treeleaf.suchi.adapter.StockAdapter;
 import com.treeleaf.suchi.realm.models.Stock;
+import com.treeleaf.suchi.viewmodel.StockViewModel;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 import butterknife.BindView;
@@ -33,6 +36,8 @@ public class StockActivity extends BaseActivity {
 
 
     private StockAdapter mStockAdapter;
+    public StockViewModel stockViewModel;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,12 +54,15 @@ public class StockActivity extends BaseActivity {
         mStockAdapter = new StockAdapter();
         mRecyclerViewStock.setAdapter(mStockAdapter);
 
+        stockViewModel = ViewModelProviders.of(this).get(StockViewModel.class);
+        stockViewModel.getAllStocks().observe(this, new Observer<List<Stock>>() {
+            @Override
+            public void onChanged(List<Stock> stocks) {
+                //update recycler view
+                mStockAdapter.setStocks(stocks);
+            }
+        });
 
-        Stock stock = new Stock("1", "Kolin", "4", "250");
-        List<Stock> stockList = new ArrayList<>();
-        stockList.add(stock);
-
-        mStockAdapter.setStocks(stockList);
 
         mAddStock.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,6 +81,8 @@ public class StockActivity extends BaseActivity {
             getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
         mToolbarTitle.setText("Stocks");
+
+
     }
 
     @Override

@@ -24,7 +24,7 @@ public class UserRepo extends Repo {
         try {
             realm.executeTransaction(new Realm.Transaction() {
                 @Override
-                public void execute(Realm realm1) {
+                    public void execute(Realm realm1) {
                     User user = setUser(loginResponse.getUser(), realm1);
                     realm1.copyToRealmOrUpdate(user);
                     setToken(loginResponse.getToken(), user, realm1);

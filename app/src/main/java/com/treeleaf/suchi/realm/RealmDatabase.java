@@ -6,8 +6,8 @@ import io.realm.Realm;
 import io.realm.RealmConfiguration;
 
 public class RealmDatabase {
-    private static RealmDatabase database;
 
+    private static RealmDatabase database;
     public static void init(Context context){
         Realm.init(context);
         RealmConfiguration configuration = new RealmConfiguration.Builder()

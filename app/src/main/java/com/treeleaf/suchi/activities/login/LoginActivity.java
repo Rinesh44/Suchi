@@ -14,9 +14,13 @@ import com.treeleaf.suchi.activities.base.BaseActivity;
 import com.treeleaf.suchi.activities.dashboard.DashboardActivity;
 import com.treeleaf.suchi.activities.enterkey.EnterKeyActivity;
 import com.treeleaf.suchi.api.Endpoints;
+import com.treeleaf.suchi.dao.StockDao;
 import com.treeleaf.suchi.entities.AccountProto;
 import com.treeleaf.suchi.realm.repo.Repo;
 import com.treeleaf.suchi.realm.repo.UserRepo;
+import com.treeleaf.suchi.repository.StockRepository;
+import com.treeleaf.suchi.repository.UserRepository;
+import com.treeleaf.suchi.room.StockDatabase;
 import com.treeleaf.suchi.utils.AppUtils;
 import com.treeleaf.suchi.utils.Constants;
 
@@ -123,6 +127,7 @@ public class LoginActivity extends BaseActivity implements LoginView {
     private void gotoActivity(AccountProto.LoginResponse loginResponse, int status) {
 
         if (status == 1) {
+
             UserRepo.getInstance().saveUser(loginResponse, new Repo.Callback() {
                 @Override
                 public void success(Object o) {

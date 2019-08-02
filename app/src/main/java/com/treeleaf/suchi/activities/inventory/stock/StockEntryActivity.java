@@ -56,7 +56,7 @@ public class StockEntryActivity extends BaseActivity {
         ButterKnife.bind(this);
 
         setUpToolbar(mToolbar);
-        if (null == getSupportActionBar()) {
+        if (null != getSupportActionBar()) {
             getSupportActionBar().setDisplayShowTitleEnabled(false);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setHomeButtonEnabled(true);
@@ -64,5 +64,11 @@ public class StockEntryActivity extends BaseActivity {
 
         mToolbarTitle.setText("SKU Entry Form");
 
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }
