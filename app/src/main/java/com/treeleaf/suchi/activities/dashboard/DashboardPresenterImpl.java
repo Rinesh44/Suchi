@@ -22,6 +22,7 @@ public class DashboardPresenterImpl implements DashboardPresenter {
         endpoints.logout(token).enqueue(new Callback<ReqResProto.Response>() {
             @Override
             public void onResponse(Call<ReqResProto.Response> call, Response<ReqResProto.Response> response) {
+                activity.hideLoading();
                 ReqResProto.Response baseResponse = response.body();
 
                 activity.hideLoading();

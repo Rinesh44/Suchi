@@ -13,7 +13,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import com.google.android.material.button.MaterialButton;
 import com.treeleaf.suchi.MainActivity;
 import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.activities.base.BaseActivity;
@@ -40,9 +39,9 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
     @BindView(R.id.toolbar_title)
     TextView mToolbarTitle;
     @BindView(R.id.btn_inventory)
-    MaterialButton mInventory;
+    TextView mInventory;
     @BindView(R.id.btn_credit)
-    MaterialButton mCredit;
+    TextView mCredit;
 
     private DashboardPresenter presenter;
     private SharedPreferences preferences;
@@ -125,6 +124,7 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         Token token = UserRepo.getInstance().getToken();
+                        showLoading();
                         presenter.logout(token.getToken());
 
                     }

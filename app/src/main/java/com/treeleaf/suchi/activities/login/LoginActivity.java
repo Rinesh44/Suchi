@@ -14,13 +14,11 @@ import com.treeleaf.suchi.activities.base.BaseActivity;
 import com.treeleaf.suchi.activities.dashboard.DashboardActivity;
 import com.treeleaf.suchi.activities.enterkey.EnterKeyActivity;
 import com.treeleaf.suchi.api.Endpoints;
-import com.treeleaf.suchi.dao.StockDao;
 import com.treeleaf.suchi.entities.AccountProto;
+import com.treeleaf.suchi.realm.models.Token;
 import com.treeleaf.suchi.realm.repo.Repo;
 import com.treeleaf.suchi.realm.repo.UserRepo;
-import com.treeleaf.suchi.repository.StockRepository;
-import com.treeleaf.suchi.repository.UserRepository;
-import com.treeleaf.suchi.room.StockDatabase;
+
 import com.treeleaf.suchi.utils.AppUtils;
 import com.treeleaf.suchi.utils.Constants;
 
@@ -132,13 +130,10 @@ public class LoginActivity extends BaseActivity implements LoginView {
                 @Override
                 public void success(Object o) {
                     AppUtils.showLog(TAG, "successfully saved user");
-                    SharedPreferences.Editor editor = preferences.edit();
-                    editor.putBoolean(Constants.LOGGED_IN, true);
-                    editor.apply();
 
-                    Intent i = new Intent(LoginActivity.this, DashboardActivity.class);
-                    i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(i);
+                    showLoading();
+                    Token token = UserRepo.getInstance().getToken();
+                    presenter.getAllData(token.getToken());
 
                 }
 
@@ -156,6 +151,24 @@ public class LoginActivity extends BaseActivity implements LoginView {
 
     @Override
     public void loginFail(String msg) {
+        showMessage(msg);
+    }
+
+    @Override
+    public void getAllDataSuccess() {
+        AppUtils.showLog(TAG, "get all data succeeded");
+
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean(Constants.LOGGED_IN, true);
+        editor.apply();
+
+        Intent i = new Intent(LoginActivity.this, DashboardActivity.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(i);
+    }
+
+    @Override
+    public void getAllDataFail(String msg) {
         showMessage(msg);
     }
 }

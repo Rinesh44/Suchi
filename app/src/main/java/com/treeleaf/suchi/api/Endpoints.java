@@ -6,6 +6,7 @@ import com.treeleaf.suchi.entities.ReqResProto;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
+import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
@@ -19,6 +20,7 @@ public interface Endpoints {
     String LOGIN = "account/login";
     String REGISTER = "user/register";
     String LOGOUT = "account/logout";
+    String GET_ALL_DATA = "inventory/data/all";
 
 
     @Headers({CONTENT_TYPE})
@@ -30,4 +32,7 @@ public interface Endpoints {
 
     @DELETE(API_BASE_URL + LOGOUT)
     Call<ReqResProto.Response> logout(@Header(AUTHORIZATION) String authorization);
+
+    @GET(API_BASE_URL + GET_ALL_DATA)
+    Call<ReqResProto.Response> getAllData(@Header(AUTHORIZATION) String authorization);
 }

@@ -6,16 +6,34 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.DiffUtil;
+import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.realm.models.Stock;
 
-import java.util.ArrayList;
-import java.util.List;
+public class StockAdapter extends ListAdapter<Stock, StockAdapter.StockHolder> {
+    private OnItemClickListener listener;
 
-public class StockAdapter extends RecyclerView.Adapter<StockAdapter.StockHolder> {
-    private List<Stock> stocks = new ArrayList<>();
+    public StockAdapter() {
+        super(DIFF_CALLBACK);
+    }
+
+
+    private static final DiffUtil.ItemCallback<Stock> DIFF_CALLBACK = new DiffUtil.ItemCallback<Stock>() {
+        @Override
+        public boolean areItemsTheSame(@NonNull Stock oldItem, @NonNull Stock newItem) {
+            return oldItem.getSn().equals(newItem.getSn());
+        }
+
+        @Override
+        public boolean areContentsTheSame(@NonNull Stock oldItem, @NonNull Stock newItem) {
+            return oldItem.getPrice().equals(newItem.getPrice()) && oldItem.getQuantity().equals(newItem.getQuantity())
+                    && oldItem.getSku().equals(newItem.getSku());
+        }
+    };
+
 
     @NonNull
     @Override
@@ -26,7 +44,7 @@ public class StockAdapter extends RecyclerView.Adapter<StockAdapter.StockHolder>
 
     @Override
     public void onBindViewHolder(@NonNull StockHolder holder, int position) {
-        Stock currentStock = stocks.get(position);
+        Stock currentStock = getItem(position);
         holder.serialNo.setText(currentStock.getSn());
         holder.sku.setText(currentStock.getSku());
         holder.qty.setText(currentStock.getQuantity());
@@ -34,14 +52,9 @@ public class StockAdapter extends RecyclerView.Adapter<StockAdapter.StockHolder>
 
     }
 
-    @Override
-    public int getItemCount() {
-        return stocks.size();
-    }
 
-    public void setStocks(List<Stock> stocks) {
-        this.stocks = stocks;
-        notifyDataSetChanged();
+    public Stock getStock(int position) {
+        return getItem(position);
     }
 
     class StockHolder extends RecyclerView.ViewHolder {
@@ -59,7 +72,25 @@ public class StockAdapter extends RecyclerView.Adapter<StockAdapter.StockHolder>
             qty = itemView.findViewById(R.id.tv_qty);
             price = itemView.findViewById(R.id.tv_price);
 
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position = getAdapterPosition();
+                    if (listener != null && position != RecyclerView.NO_POSITION) {
+                        listener.onItemClick(getItem(position));
+                    }
+                }
+            });
+
 
         }
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(Stock stock);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
     }
 }

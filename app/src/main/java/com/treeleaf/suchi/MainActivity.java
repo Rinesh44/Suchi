@@ -7,10 +7,10 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
+import android.widget.TextView;
 
 import com.google.android.material.button.MaterialButton;
 import com.treeleaf.suchi.activities.dashboard.DashboardActivity;
-import com.treeleaf.suchi.activities.enterkey.EnterKeyActivity;
 import com.treeleaf.suchi.activities.login.LoginActivity;
 import com.treeleaf.suchi.activities.register.RegisterActivity;
 import com.treeleaf.suchi.utils.Constants;
@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @BindView(R.id.btn_login)
     MaterialButton mLogin;
     @BindView(R.id.btn_sign_up)
-    MaterialButton mSignUp;
+    TextView mSignUp;
 
     private SharedPreferences preferences;
 

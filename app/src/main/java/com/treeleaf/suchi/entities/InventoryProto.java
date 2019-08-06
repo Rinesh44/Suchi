@@ -165,14 +165,9 @@ public final class InventoryProto {
       com.google.protobuf.MessageLiteOrBuilder {
 
     /**
-     * <code>optional string skuId = 1;</code>
+     * <code>optional int64 skuId = 1;</code>
      */
-    String getSkuId();
-    /**
-     * <code>optional string skuId = 1;</code>
-     */
-    com.google.protobuf.ByteString
-        getSkuIdBytes();
+    long getSkuId();
 
     /**
      * <code>optional string name = 2;</code>
@@ -195,24 +190,24 @@ public final class InventoryProto {
         getPhotoBytes();
 
     /**
-     * <code>optional string brand = 4;</code>
+     * <code>optional string brand_id = 4;</code>
      */
-    String getBrand();
+    String getBrandId();
     /**
-     * <code>optional string brand = 4;</code>
+     * <code>optional string brand_id = 4;</code>
      */
     com.google.protobuf.ByteString
-        getBrandBytes();
+        getBrandIdBytes();
 
     /**
-     * <code>optional string subBrand = 5;</code>
+     * <code>optional string subBrand_id = 5;</code>
      */
-    String getSubBrand();
+    String getSubBrandId();
     /**
-     * <code>optional string subBrand = 5;</code>
+     * <code>optional string subBrand_id = 5;</code>
      */
     com.google.protobuf.ByteString
-        getSubBrandBytes();
+        getSubBrandIdBytes();
 
     /**
      * <code>optional string code = 6;</code>
@@ -259,24 +254,24 @@ public final class InventoryProto {
         getCreatedByBytes();
 
     /**
-     * <code>optional string category = 11;</code>
+     * <code>optional string category_id = 11;</code>
      */
-    String getCategory();
+    String getCategoryId();
     /**
-     * <code>optional string category = 11;</code>
+     * <code>optional string category_id = 11;</code>
      */
     com.google.protobuf.ByteString
-        getCategoryBytes();
+        getCategoryIdBytes();
 
     /**
-     * <code>optional string unit = 12;</code>
+     * <code>optional string unit_id = 12;</code>
      */
-    String getUnit();
+    String getUnitId();
     /**
-     * <code>optional string unit = 12;</code>
+     * <code>optional string unit_id = 12;</code>
      */
     com.google.protobuf.ByteString
-        getUnitBytes();
+        getUnitIdBytes();
 
     /**
      * <code>optional int64 createdAt = 13;</code>
@@ -287,6 +282,47 @@ public final class InventoryProto {
      * <code>optional int64 updatedAt = 14;</code>
      */
     long getUpdatedAt();
+
+    /**
+     * <code>optional bool sync = 15;</code>
+     */
+    boolean getSync();
+
+    /**
+     * <code>optional .com.entities.pb.Brand brand = 16;</code>
+     */
+    boolean hasBrand();
+    /**
+     * <code>optional .com.entities.pb.Brand brand = 16;</code>
+     */
+    Brand getBrand();
+
+    /**
+     * <code>optional .com.entities.pb.SubBrand subBrand = 17;</code>
+     */
+    boolean hasSubBrand();
+    /**
+     * <code>optional .com.entities.pb.SubBrand subBrand = 17;</code>
+     */
+    SubBrand getSubBrand();
+
+    /**
+     * <code>optional .com.entities.pb.Unit unit = 18;</code>
+     */
+    boolean hasUnit();
+    /**
+     * <code>optional .com.entities.pb.Unit unit = 18;</code>
+     */
+    Unit getUnit();
+
+    /**
+     * <code>optional .com.entities.pb.Category category = 19;</code>
+     */
+    boolean hasCategory();
+    /**
+     * <code>optional .com.entities.pb.Category category = 19;</code>
+     */
+    Category getCategory();
   }
   /**
    * Protobuf type {@code com.entities.pb.StockKeepingUnit}
@@ -297,61 +333,37 @@ public final class InventoryProto {
       // @@protoc_insertion_point(message_implements:com.entities.pb.StockKeepingUnit)
       StockKeepingUnitOrBuilder {
     private StockKeepingUnit() {
-      skuId_ = "";
       name_ = "";
       photo_ = "";
-      brand_ = "";
-      subBrand_ = "";
+      brandId_ = "";
+      subBrandId_ = "";
       code_ = "";
       description_ = "";
       createdBy_ = "";
-      category_ = "";
-      unit_ = "";
+      categoryId_ = "";
+      unitId_ = "";
     }
     public static final int SKUID_FIELD_NUMBER = 1;
-    private String skuId_;
+    private long skuId_;
     /**
-     * <code>optional string skuId = 1;</code>
+     * <code>optional int64 skuId = 1;</code>
      */
-    public String getSkuId() {
+    public long getSkuId() {
       return skuId_;
     }
     /**
-     * <code>optional string skuId = 1;</code>
+     * <code>optional int64 skuId = 1;</code>
      */
-    public com.google.protobuf.ByteString
-        getSkuIdBytes() {
-      return com.google.protobuf.ByteString.copyFromUtf8(skuId_);
-    }
-    /**
-     * <code>optional string skuId = 1;</code>
-     */
-    private void setSkuId(
-        String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
+    private void setSkuId(long value) {
+      
       skuId_ = value;
     }
     /**
-     * <code>optional string skuId = 1;</code>
+     * <code>optional int64 skuId = 1;</code>
      */
     private void clearSkuId() {
       
-      skuId_ = getDefaultInstance().getSkuId();
-    }
-    /**
-     * <code>optional string skuId = 1;</code>
-     */
-    private void setSkuIdBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      skuId_ = value.toStringUtf8();
+      skuId_ = 0L;
     }
 
     public static final int NAME_FIELD_NUMBER = 2;
@@ -446,96 +458,96 @@ public final class InventoryProto {
       photo_ = value.toStringUtf8();
     }
 
-    public static final int BRAND_FIELD_NUMBER = 4;
-    private String brand_;
+    public static final int BRAND_ID_FIELD_NUMBER = 4;
+    private String brandId_;
     /**
-     * <code>optional string brand = 4;</code>
+     * <code>optional string brand_id = 4;</code>
      */
-    public String getBrand() {
-      return brand_;
+    public String getBrandId() {
+      return brandId_;
     }
     /**
-     * <code>optional string brand = 4;</code>
+     * <code>optional string brand_id = 4;</code>
      */
     public com.google.protobuf.ByteString
-        getBrandBytes() {
-      return com.google.protobuf.ByteString.copyFromUtf8(brand_);
+        getBrandIdBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(brandId_);
     }
     /**
-     * <code>optional string brand = 4;</code>
+     * <code>optional string brand_id = 4;</code>
      */
-    private void setBrand(
+    private void setBrandId(
         String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      brand_ = value;
+      brandId_ = value;
     }
     /**
-     * <code>optional string brand = 4;</code>
+     * <code>optional string brand_id = 4;</code>
      */
-    private void clearBrand() {
+    private void clearBrandId() {
       
-      brand_ = getDefaultInstance().getBrand();
+      brandId_ = getDefaultInstance().getBrandId();
     }
     /**
-     * <code>optional string brand = 4;</code>
+     * <code>optional string brand_id = 4;</code>
      */
-    private void setBrandBytes(
+    private void setBrandIdBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      brand_ = value.toStringUtf8();
+      brandId_ = value.toStringUtf8();
     }
 
-    public static final int SUBBRAND_FIELD_NUMBER = 5;
-    private String subBrand_;
+    public static final int SUBBRAND_ID_FIELD_NUMBER = 5;
+    private String subBrandId_;
     /**
-     * <code>optional string subBrand = 5;</code>
+     * <code>optional string subBrand_id = 5;</code>
      */
-    public String getSubBrand() {
-      return subBrand_;
+    public String getSubBrandId() {
+      return subBrandId_;
     }
     /**
-     * <code>optional string subBrand = 5;</code>
+     * <code>optional string subBrand_id = 5;</code>
      */
     public com.google.protobuf.ByteString
-        getSubBrandBytes() {
-      return com.google.protobuf.ByteString.copyFromUtf8(subBrand_);
+        getSubBrandIdBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(subBrandId_);
     }
     /**
-     * <code>optional string subBrand = 5;</code>
+     * <code>optional string subBrand_id = 5;</code>
      */
-    private void setSubBrand(
+    private void setSubBrandId(
         String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      subBrand_ = value;
+      subBrandId_ = value;
     }
     /**
-     * <code>optional string subBrand = 5;</code>
+     * <code>optional string subBrand_id = 5;</code>
      */
-    private void clearSubBrand() {
+    private void clearSubBrandId() {
       
-      subBrand_ = getDefaultInstance().getSubBrand();
+      subBrandId_ = getDefaultInstance().getSubBrandId();
     }
     /**
-     * <code>optional string subBrand = 5;</code>
+     * <code>optional string subBrand_id = 5;</code>
      */
-    private void setSubBrandBytes(
+    private void setSubBrandIdBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      subBrand_ = value.toStringUtf8();
+      subBrandId_ = value.toStringUtf8();
     }
 
     public static final int CODE_FIELD_NUMBER = 6;
@@ -738,96 +750,96 @@ public final class InventoryProto {
       createdBy_ = value.toStringUtf8();
     }
 
-    public static final int CATEGORY_FIELD_NUMBER = 11;
-    private String category_;
+    public static final int CATEGORY_ID_FIELD_NUMBER = 11;
+    private String categoryId_;
     /**
-     * <code>optional string category = 11;</code>
+     * <code>optional string category_id = 11;</code>
      */
-    public String getCategory() {
-      return category_;
+    public String getCategoryId() {
+      return categoryId_;
     }
     /**
-     * <code>optional string category = 11;</code>
+     * <code>optional string category_id = 11;</code>
      */
     public com.google.protobuf.ByteString
-        getCategoryBytes() {
-      return com.google.protobuf.ByteString.copyFromUtf8(category_);
+        getCategoryIdBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(categoryId_);
     }
     /**
-     * <code>optional string category = 11;</code>
+     * <code>optional string category_id = 11;</code>
      */
-    private void setCategory(
+    private void setCategoryId(
         String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      category_ = value;
+      categoryId_ = value;
     }
     /**
-     * <code>optional string category = 11;</code>
+     * <code>optional string category_id = 11;</code>
      */
-    private void clearCategory() {
+    private void clearCategoryId() {
       
-      category_ = getDefaultInstance().getCategory();
+      categoryId_ = getDefaultInstance().getCategoryId();
     }
     /**
-     * <code>optional string category = 11;</code>
+     * <code>optional string category_id = 11;</code>
      */
-    private void setCategoryBytes(
+    private void setCategoryIdBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      category_ = value.toStringUtf8();
+      categoryId_ = value.toStringUtf8();
     }
 
-    public static final int UNIT_FIELD_NUMBER = 12;
-    private String unit_;
+    public static final int UNIT_ID_FIELD_NUMBER = 12;
+    private String unitId_;
     /**
-     * <code>optional string unit = 12;</code>
+     * <code>optional string unit_id = 12;</code>
      */
-    public String getUnit() {
-      return unit_;
+    public String getUnitId() {
+      return unitId_;
     }
     /**
-     * <code>optional string unit = 12;</code>
+     * <code>optional string unit_id = 12;</code>
      */
     public com.google.protobuf.ByteString
-        getUnitBytes() {
-      return com.google.protobuf.ByteString.copyFromUtf8(unit_);
+        getUnitIdBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(unitId_);
     }
     /**
-     * <code>optional string unit = 12;</code>
+     * <code>optional string unit_id = 12;</code>
      */
-    private void setUnit(
+    private void setUnitId(
         String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      unit_ = value;
+      unitId_ = value;
     }
     /**
-     * <code>optional string unit = 12;</code>
+     * <code>optional string unit_id = 12;</code>
      */
-    private void clearUnit() {
+    private void clearUnitId() {
       
-      unit_ = getDefaultInstance().getUnit();
+      unitId_ = getDefaultInstance().getUnitId();
     }
     /**
-     * <code>optional string unit = 12;</code>
+     * <code>optional string unit_id = 12;</code>
      */
-    private void setUnitBytes(
+    private void setUnitIdBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      unit_ = value.toStringUtf8();
+      unitId_ = value.toStringUtf8();
     }
 
     public static final int CREATEDAT_FIELD_NUMBER = 13;
@@ -876,10 +888,241 @@ public final class InventoryProto {
       updatedAt_ = 0L;
     }
 
+    public static final int SYNC_FIELD_NUMBER = 15;
+    private boolean sync_;
+    /**
+     * <code>optional bool sync = 15;</code>
+     */
+    public boolean getSync() {
+      return sync_;
+    }
+    /**
+     * <code>optional bool sync = 15;</code>
+     */
+    private void setSync(boolean value) {
+      
+      sync_ = value;
+    }
+    /**
+     * <code>optional bool sync = 15;</code>
+     */
+    private void clearSync() {
+      
+      sync_ = false;
+    }
+
+    public static final int BRAND_FIELD_NUMBER = 16;
+    private Brand brand_;
+    /**
+     * <code>optional .com.entities.pb.Brand brand = 16;</code>
+     */
+    public boolean hasBrand() {
+      return brand_ != null;
+    }
+    /**
+     * <code>optional .com.entities.pb.Brand brand = 16;</code>
+     */
+    public Brand getBrand() {
+      return brand_ == null ? Brand.getDefaultInstance() : brand_;
+    }
+    /**
+     * <code>optional .com.entities.pb.Brand brand = 16;</code>
+     */
+    private void setBrand(Brand value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      brand_ = value;
+      
+      }
+    /**
+     * <code>optional .com.entities.pb.Brand brand = 16;</code>
+     */
+    private void setBrand(
+        Brand.Builder builderForValue) {
+      brand_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>optional .com.entities.pb.Brand brand = 16;</code>
+     */
+    private void mergeBrand(Brand value) {
+      if (brand_ != null &&
+          brand_ != Brand.getDefaultInstance()) {
+        brand_ =
+          Brand.newBuilder(brand_).mergeFrom(value).buildPartial();
+      } else {
+        brand_ = value;
+      }
+      
+    }
+    /**
+     * <code>optional .com.entities.pb.Brand brand = 16;</code>
+     */
+    private void clearBrand() {  brand_ = null;
+      
+    }
+
+    public static final int SUBBRAND_FIELD_NUMBER = 17;
+    private SubBrand subBrand_;
+    /**
+     * <code>optional .com.entities.pb.SubBrand subBrand = 17;</code>
+     */
+    public boolean hasSubBrand() {
+      return subBrand_ != null;
+    }
+    /**
+     * <code>optional .com.entities.pb.SubBrand subBrand = 17;</code>
+     */
+    public SubBrand getSubBrand() {
+      return subBrand_ == null ? SubBrand.getDefaultInstance() : subBrand_;
+    }
+    /**
+     * <code>optional .com.entities.pb.SubBrand subBrand = 17;</code>
+     */
+    private void setSubBrand(SubBrand value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      subBrand_ = value;
+      
+      }
+    /**
+     * <code>optional .com.entities.pb.SubBrand subBrand = 17;</code>
+     */
+    private void setSubBrand(
+        SubBrand.Builder builderForValue) {
+      subBrand_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>optional .com.entities.pb.SubBrand subBrand = 17;</code>
+     */
+    private void mergeSubBrand(SubBrand value) {
+      if (subBrand_ != null &&
+          subBrand_ != SubBrand.getDefaultInstance()) {
+        subBrand_ =
+          SubBrand.newBuilder(subBrand_).mergeFrom(value).buildPartial();
+      } else {
+        subBrand_ = value;
+      }
+      
+    }
+    /**
+     * <code>optional .com.entities.pb.SubBrand subBrand = 17;</code>
+     */
+    private void clearSubBrand() {  subBrand_ = null;
+      
+    }
+
+    public static final int UNIT_FIELD_NUMBER = 18;
+    private Unit unit_;
+    /**
+     * <code>optional .com.entities.pb.Unit unit = 18;</code>
+     */
+    public boolean hasUnit() {
+      return unit_ != null;
+    }
+    /**
+     * <code>optional .com.entities.pb.Unit unit = 18;</code>
+     */
+    public Unit getUnit() {
+      return unit_ == null ? Unit.getDefaultInstance() : unit_;
+    }
+    /**
+     * <code>optional .com.entities.pb.Unit unit = 18;</code>
+     */
+    private void setUnit(Unit value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      unit_ = value;
+      
+      }
+    /**
+     * <code>optional .com.entities.pb.Unit unit = 18;</code>
+     */
+    private void setUnit(
+        Unit.Builder builderForValue) {
+      unit_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>optional .com.entities.pb.Unit unit = 18;</code>
+     */
+    private void mergeUnit(Unit value) {
+      if (unit_ != null &&
+          unit_ != Unit.getDefaultInstance()) {
+        unit_ =
+          Unit.newBuilder(unit_).mergeFrom(value).buildPartial();
+      } else {
+        unit_ = value;
+      }
+      
+    }
+    /**
+     * <code>optional .com.entities.pb.Unit unit = 18;</code>
+     */
+    private void clearUnit() {  unit_ = null;
+      
+    }
+
+    public static final int CATEGORY_FIELD_NUMBER = 19;
+    private Category category_;
+    /**
+     * <code>optional .com.entities.pb.Category category = 19;</code>
+     */
+    public boolean hasCategory() {
+      return category_ != null;
+    }
+    /**
+     * <code>optional .com.entities.pb.Category category = 19;</code>
+     */
+    public Category getCategory() {
+      return category_ == null ? Category.getDefaultInstance() : category_;
+    }
+    /**
+     * <code>optional .com.entities.pb.Category category = 19;</code>
+     */
+    private void setCategory(Category value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      category_ = value;
+      
+      }
+    /**
+     * <code>optional .com.entities.pb.Category category = 19;</code>
+     */
+    private void setCategory(
+        Category.Builder builderForValue) {
+      category_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>optional .com.entities.pb.Category category = 19;</code>
+     */
+    private void mergeCategory(Category value) {
+      if (category_ != null &&
+          category_ != Category.getDefaultInstance()) {
+        category_ =
+          Category.newBuilder(category_).mergeFrom(value).buildPartial();
+      } else {
+        category_ = value;
+      }
+      
+    }
+    /**
+     * <code>optional .com.entities.pb.Category category = 19;</code>
+     */
+    private void clearCategory() {  category_ = null;
+      
+    }
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!skuId_.isEmpty()) {
-        output.writeString(1, getSkuId());
+      if (skuId_ != 0L) {
+        output.writeInt64(1, skuId_);
       }
       if (!name_.isEmpty()) {
         output.writeString(2, getName());
@@ -887,11 +1130,11 @@ public final class InventoryProto {
       if (!photo_.isEmpty()) {
         output.writeString(3, getPhoto());
       }
-      if (!brand_.isEmpty()) {
-        output.writeString(4, getBrand());
+      if (!brandId_.isEmpty()) {
+        output.writeString(4, getBrandId());
       }
-      if (!subBrand_.isEmpty()) {
-        output.writeString(5, getSubBrand());
+      if (!subBrandId_.isEmpty()) {
+        output.writeString(5, getSubBrandId());
       }
       if (!code_.isEmpty()) {
         output.writeString(6, getCode());
@@ -908,17 +1151,32 @@ public final class InventoryProto {
       if (!createdBy_.isEmpty()) {
         output.writeString(10, getCreatedBy());
       }
-      if (!category_.isEmpty()) {
-        output.writeString(11, getCategory());
+      if (!categoryId_.isEmpty()) {
+        output.writeString(11, getCategoryId());
       }
-      if (!unit_.isEmpty()) {
-        output.writeString(12, getUnit());
+      if (!unitId_.isEmpty()) {
+        output.writeString(12, getUnitId());
       }
       if (createdAt_ != 0L) {
         output.writeInt64(13, createdAt_);
       }
       if (updatedAt_ != 0L) {
         output.writeInt64(14, updatedAt_);
+      }
+      if (sync_ != false) {
+        output.writeBool(15, sync_);
+      }
+      if (brand_ != null) {
+        output.writeMessage(16, getBrand());
+      }
+      if (subBrand_ != null) {
+        output.writeMessage(17, getSubBrand());
+      }
+      if (unit_ != null) {
+        output.writeMessage(18, getUnit());
+      }
+      if (category_ != null) {
+        output.writeMessage(19, getCategory());
       }
     }
 
@@ -927,9 +1185,9 @@ public final class InventoryProto {
       if (size != -1) return size;
 
       size = 0;
-      if (!skuId_.isEmpty()) {
+      if (skuId_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeStringSize(1, getSkuId());
+          .computeInt64Size(1, skuId_);
       }
       if (!name_.isEmpty()) {
         size += com.google.protobuf.CodedOutputStream
@@ -939,13 +1197,13 @@ public final class InventoryProto {
         size += com.google.protobuf.CodedOutputStream
           .computeStringSize(3, getPhoto());
       }
-      if (!brand_.isEmpty()) {
+      if (!brandId_.isEmpty()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeStringSize(4, getBrand());
+          .computeStringSize(4, getBrandId());
       }
-      if (!subBrand_.isEmpty()) {
+      if (!subBrandId_.isEmpty()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeStringSize(5, getSubBrand());
+          .computeStringSize(5, getSubBrandId());
       }
       if (!code_.isEmpty()) {
         size += com.google.protobuf.CodedOutputStream
@@ -967,13 +1225,13 @@ public final class InventoryProto {
         size += com.google.protobuf.CodedOutputStream
           .computeStringSize(10, getCreatedBy());
       }
-      if (!category_.isEmpty()) {
+      if (!categoryId_.isEmpty()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeStringSize(11, getCategory());
+          .computeStringSize(11, getCategoryId());
       }
-      if (!unit_.isEmpty()) {
+      if (!unitId_.isEmpty()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeStringSize(12, getUnit());
+          .computeStringSize(12, getUnitId());
       }
       if (createdAt_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
@@ -982,6 +1240,26 @@ public final class InventoryProto {
       if (updatedAt_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(14, updatedAt_);
+      }
+      if (sync_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(15, sync_);
+      }
+      if (brand_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(16, getBrand());
+      }
+      if (subBrand_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(17, getSubBrand());
+      }
+      if (unit_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(18, getUnit());
+      }
+      if (category_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(19, getCategory());
       }
       memoizedSerializedSize = size;
       return size;
@@ -1070,42 +1348,25 @@ public final class InventoryProto {
 
 
       /**
-       * <code>optional string skuId = 1;</code>
+       * <code>optional int64 skuId = 1;</code>
        */
-      public String getSkuId() {
+      public long getSkuId() {
         return instance.getSkuId();
       }
       /**
-       * <code>optional string skuId = 1;</code>
+       * <code>optional int64 skuId = 1;</code>
        */
-      public com.google.protobuf.ByteString
-          getSkuIdBytes() {
-        return instance.getSkuIdBytes();
-      }
-      /**
-       * <code>optional string skuId = 1;</code>
-       */
-      public Builder setSkuId(
-          String value) {
+      public Builder setSkuId(long value) {
         copyOnWrite();
         instance.setSkuId(value);
         return this;
       }
       /**
-       * <code>optional string skuId = 1;</code>
+       * <code>optional int64 skuId = 1;</code>
        */
       public Builder clearSkuId() {
         copyOnWrite();
         instance.clearSkuId();
-        return this;
-      }
-      /**
-       * <code>optional string skuId = 1;</code>
-       */
-      public Builder setSkuIdBytes(
-          com.google.protobuf.ByteString value) {
-        copyOnWrite();
-        instance.setSkuIdBytes(value);
         return this;
       }
 
@@ -1190,82 +1451,82 @@ public final class InventoryProto {
       }
 
       /**
-       * <code>optional string brand = 4;</code>
+       * <code>optional string brand_id = 4;</code>
        */
-      public String getBrand() {
-        return instance.getBrand();
+      public String getBrandId() {
+        return instance.getBrandId();
       }
       /**
-       * <code>optional string brand = 4;</code>
+       * <code>optional string brand_id = 4;</code>
        */
       public com.google.protobuf.ByteString
-          getBrandBytes() {
-        return instance.getBrandBytes();
+          getBrandIdBytes() {
+        return instance.getBrandIdBytes();
       }
       /**
-       * <code>optional string brand = 4;</code>
+       * <code>optional string brand_id = 4;</code>
        */
-      public Builder setBrand(
+      public Builder setBrandId(
           String value) {
         copyOnWrite();
-        instance.setBrand(value);
+        instance.setBrandId(value);
         return this;
       }
       /**
-       * <code>optional string brand = 4;</code>
+       * <code>optional string brand_id = 4;</code>
        */
-      public Builder clearBrand() {
+      public Builder clearBrandId() {
         copyOnWrite();
-        instance.clearBrand();
+        instance.clearBrandId();
         return this;
       }
       /**
-       * <code>optional string brand = 4;</code>
+       * <code>optional string brand_id = 4;</code>
        */
-      public Builder setBrandBytes(
+      public Builder setBrandIdBytes(
           com.google.protobuf.ByteString value) {
         copyOnWrite();
-        instance.setBrandBytes(value);
+        instance.setBrandIdBytes(value);
         return this;
       }
 
       /**
-       * <code>optional string subBrand = 5;</code>
+       * <code>optional string subBrand_id = 5;</code>
        */
-      public String getSubBrand() {
-        return instance.getSubBrand();
+      public String getSubBrandId() {
+        return instance.getSubBrandId();
       }
       /**
-       * <code>optional string subBrand = 5;</code>
+       * <code>optional string subBrand_id = 5;</code>
        */
       public com.google.protobuf.ByteString
-          getSubBrandBytes() {
-        return instance.getSubBrandBytes();
+          getSubBrandIdBytes() {
+        return instance.getSubBrandIdBytes();
       }
       /**
-       * <code>optional string subBrand = 5;</code>
+       * <code>optional string subBrand_id = 5;</code>
        */
-      public Builder setSubBrand(
+      public Builder setSubBrandId(
           String value) {
         copyOnWrite();
-        instance.setSubBrand(value);
+        instance.setSubBrandId(value);
         return this;
       }
       /**
-       * <code>optional string subBrand = 5;</code>
+       * <code>optional string subBrand_id = 5;</code>
        */
-      public Builder clearSubBrand() {
+      public Builder clearSubBrandId() {
         copyOnWrite();
-        instance.clearSubBrand();
+        instance.clearSubBrandId();
         return this;
       }
       /**
-       * <code>optional string subBrand = 5;</code>
+       * <code>optional string subBrand_id = 5;</code>
        */
-      public Builder setSubBrandBytes(
+      public Builder setSubBrandIdBytes(
           com.google.protobuf.ByteString value) {
         copyOnWrite();
-        instance.setSubBrandBytes(value);
+        instance.setSubBrandIdBytes(value);
         return this;
       }
 
@@ -1450,82 +1711,82 @@ public final class InventoryProto {
       }
 
       /**
-       * <code>optional string category = 11;</code>
+       * <code>optional string category_id = 11;</code>
        */
-      public String getCategory() {
-        return instance.getCategory();
+      public String getCategoryId() {
+        return instance.getCategoryId();
       }
       /**
-       * <code>optional string category = 11;</code>
+       * <code>optional string category_id = 11;</code>
        */
       public com.google.protobuf.ByteString
-          getCategoryBytes() {
-        return instance.getCategoryBytes();
+          getCategoryIdBytes() {
+        return instance.getCategoryIdBytes();
       }
       /**
-       * <code>optional string category = 11;</code>
+       * <code>optional string category_id = 11;</code>
        */
-      public Builder setCategory(
+      public Builder setCategoryId(
           String value) {
         copyOnWrite();
-        instance.setCategory(value);
+        instance.setCategoryId(value);
         return this;
       }
       /**
-       * <code>optional string category = 11;</code>
+       * <code>optional string category_id = 11;</code>
        */
-      public Builder clearCategory() {
+      public Builder clearCategoryId() {
         copyOnWrite();
-        instance.clearCategory();
+        instance.clearCategoryId();
         return this;
       }
       /**
-       * <code>optional string category = 11;</code>
+       * <code>optional string category_id = 11;</code>
        */
-      public Builder setCategoryBytes(
+      public Builder setCategoryIdBytes(
           com.google.protobuf.ByteString value) {
         copyOnWrite();
-        instance.setCategoryBytes(value);
+        instance.setCategoryIdBytes(value);
         return this;
       }
 
       /**
-       * <code>optional string unit = 12;</code>
+       * <code>optional string unit_id = 12;</code>
        */
-      public String getUnit() {
-        return instance.getUnit();
+      public String getUnitId() {
+        return instance.getUnitId();
       }
       /**
-       * <code>optional string unit = 12;</code>
+       * <code>optional string unit_id = 12;</code>
        */
       public com.google.protobuf.ByteString
-          getUnitBytes() {
-        return instance.getUnitBytes();
+          getUnitIdBytes() {
+        return instance.getUnitIdBytes();
       }
       /**
-       * <code>optional string unit = 12;</code>
+       * <code>optional string unit_id = 12;</code>
        */
-      public Builder setUnit(
+      public Builder setUnitId(
           String value) {
         copyOnWrite();
-        instance.setUnit(value);
+        instance.setUnitId(value);
         return this;
       }
       /**
-       * <code>optional string unit = 12;</code>
+       * <code>optional string unit_id = 12;</code>
        */
-      public Builder clearUnit() {
+      public Builder clearUnitId() {
         copyOnWrite();
-        instance.clearUnit();
+        instance.clearUnitId();
         return this;
       }
       /**
-       * <code>optional string unit = 12;</code>
+       * <code>optional string unit_id = 12;</code>
        */
-      public Builder setUnitBytes(
+      public Builder setUnitIdBytes(
           com.google.protobuf.ByteString value) {
         copyOnWrite();
-        instance.setUnitBytes(value);
+        instance.setUnitIdBytes(value);
         return this;
       }
 
@@ -1575,6 +1836,209 @@ public final class InventoryProto {
         return this;
       }
 
+      /**
+       * <code>optional bool sync = 15;</code>
+       */
+      public boolean getSync() {
+        return instance.getSync();
+      }
+      /**
+       * <code>optional bool sync = 15;</code>
+       */
+      public Builder setSync(boolean value) {
+        copyOnWrite();
+        instance.setSync(value);
+        return this;
+      }
+      /**
+       * <code>optional bool sync = 15;</code>
+       */
+      public Builder clearSync() {
+        copyOnWrite();
+        instance.clearSync();
+        return this;
+      }
+
+      /**
+       * <code>optional .com.entities.pb.Brand brand = 16;</code>
+       */
+      public boolean hasBrand() {
+        return instance.hasBrand();
+      }
+      /**
+       * <code>optional .com.entities.pb.Brand brand = 16;</code>
+       */
+      public Brand getBrand() {
+        return instance.getBrand();
+      }
+      /**
+       * <code>optional .com.entities.pb.Brand brand = 16;</code>
+       */
+      public Builder setBrand(Brand value) {
+        copyOnWrite();
+        instance.setBrand(value);
+        return this;
+        }
+      /**
+       * <code>optional .com.entities.pb.Brand brand = 16;</code>
+       */
+      public Builder setBrand(
+          Brand.Builder builderForValue) {
+        copyOnWrite();
+        instance.setBrand(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .com.entities.pb.Brand brand = 16;</code>
+       */
+      public Builder mergeBrand(Brand value) {
+        copyOnWrite();
+        instance.mergeBrand(value);
+        return this;
+      }
+      /**
+       * <code>optional .com.entities.pb.Brand brand = 16;</code>
+       */
+      public Builder clearBrand() {  copyOnWrite();
+        instance.clearBrand();
+        return this;
+      }
+
+      /**
+       * <code>optional .com.entities.pb.SubBrand subBrand = 17;</code>
+       */
+      public boolean hasSubBrand() {
+        return instance.hasSubBrand();
+      }
+      /**
+       * <code>optional .com.entities.pb.SubBrand subBrand = 17;</code>
+       */
+      public SubBrand getSubBrand() {
+        return instance.getSubBrand();
+      }
+      /**
+       * <code>optional .com.entities.pb.SubBrand subBrand = 17;</code>
+       */
+      public Builder setSubBrand(SubBrand value) {
+        copyOnWrite();
+        instance.setSubBrand(value);
+        return this;
+        }
+      /**
+       * <code>optional .com.entities.pb.SubBrand subBrand = 17;</code>
+       */
+      public Builder setSubBrand(
+          SubBrand.Builder builderForValue) {
+        copyOnWrite();
+        instance.setSubBrand(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .com.entities.pb.SubBrand subBrand = 17;</code>
+       */
+      public Builder mergeSubBrand(SubBrand value) {
+        copyOnWrite();
+        instance.mergeSubBrand(value);
+        return this;
+      }
+      /**
+       * <code>optional .com.entities.pb.SubBrand subBrand = 17;</code>
+       */
+      public Builder clearSubBrand() {  copyOnWrite();
+        instance.clearSubBrand();
+        return this;
+      }
+
+      /**
+       * <code>optional .com.entities.pb.Unit unit = 18;</code>
+       */
+      public boolean hasUnit() {
+        return instance.hasUnit();
+      }
+      /**
+       * <code>optional .com.entities.pb.Unit unit = 18;</code>
+       */
+      public Unit getUnit() {
+        return instance.getUnit();
+      }
+      /**
+       * <code>optional .com.entities.pb.Unit unit = 18;</code>
+       */
+      public Builder setUnit(Unit value) {
+        copyOnWrite();
+        instance.setUnit(value);
+        return this;
+        }
+      /**
+       * <code>optional .com.entities.pb.Unit unit = 18;</code>
+       */
+      public Builder setUnit(
+          Unit.Builder builderForValue) {
+        copyOnWrite();
+        instance.setUnit(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .com.entities.pb.Unit unit = 18;</code>
+       */
+      public Builder mergeUnit(Unit value) {
+        copyOnWrite();
+        instance.mergeUnit(value);
+        return this;
+      }
+      /**
+       * <code>optional .com.entities.pb.Unit unit = 18;</code>
+       */
+      public Builder clearUnit() {  copyOnWrite();
+        instance.clearUnit();
+        return this;
+      }
+
+      /**
+       * <code>optional .com.entities.pb.Category category = 19;</code>
+       */
+      public boolean hasCategory() {
+        return instance.hasCategory();
+      }
+      /**
+       * <code>optional .com.entities.pb.Category category = 19;</code>
+       */
+      public Category getCategory() {
+        return instance.getCategory();
+      }
+      /**
+       * <code>optional .com.entities.pb.Category category = 19;</code>
+       */
+      public Builder setCategory(Category value) {
+        copyOnWrite();
+        instance.setCategory(value);
+        return this;
+        }
+      /**
+       * <code>optional .com.entities.pb.Category category = 19;</code>
+       */
+      public Builder setCategory(
+          Category.Builder builderForValue) {
+        copyOnWrite();
+        instance.setCategory(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .com.entities.pb.Category category = 19;</code>
+       */
+      public Builder mergeCategory(Category value) {
+        copyOnWrite();
+        instance.mergeCategory(value);
+        return this;
+      }
+      /**
+       * <code>optional .com.entities.pb.Category category = 19;</code>
+       */
+      public Builder clearCategory() {  copyOnWrite();
+        instance.clearCategory();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:com.entities.pb.StockKeepingUnit)
     }
     protected final Object dynamicMethod(
@@ -1596,16 +2060,16 @@ public final class InventoryProto {
         case VISIT: {
           Visitor visitor = (Visitor) arg0;
           StockKeepingUnit other = (StockKeepingUnit) arg1;
-          skuId_ = visitor.visitString(!skuId_.isEmpty(), skuId_,
-              !other.skuId_.isEmpty(), other.skuId_);
+          skuId_ = visitor.visitLong(skuId_ != 0L, skuId_,
+              other.skuId_ != 0L, other.skuId_);
           name_ = visitor.visitString(!name_.isEmpty(), name_,
               !other.name_.isEmpty(), other.name_);
           photo_ = visitor.visitString(!photo_.isEmpty(), photo_,
               !other.photo_.isEmpty(), other.photo_);
-          brand_ = visitor.visitString(!brand_.isEmpty(), brand_,
-              !other.brand_.isEmpty(), other.brand_);
-          subBrand_ = visitor.visitString(!subBrand_.isEmpty(), subBrand_,
-              !other.subBrand_.isEmpty(), other.subBrand_);
+          brandId_ = visitor.visitString(!brandId_.isEmpty(), brandId_,
+              !other.brandId_.isEmpty(), other.brandId_);
+          subBrandId_ = visitor.visitString(!subBrandId_.isEmpty(), subBrandId_,
+              !other.subBrandId_.isEmpty(), other.subBrandId_);
           code_ = visitor.visitString(!code_.isEmpty(), code_,
               !other.code_.isEmpty(), other.code_);
           description_ = visitor.visitString(!description_.isEmpty(), description_,
@@ -1615,14 +2079,20 @@ public final class InventoryProto {
           status_ = visitor.visitInt(status_ != 0, status_,    other.status_ != 0, other.status_);
           createdBy_ = visitor.visitString(!createdBy_.isEmpty(), createdBy_,
               !other.createdBy_.isEmpty(), other.createdBy_);
-          category_ = visitor.visitString(!category_.isEmpty(), category_,
-              !other.category_.isEmpty(), other.category_);
-          unit_ = visitor.visitString(!unit_.isEmpty(), unit_,
-              !other.unit_.isEmpty(), other.unit_);
+          categoryId_ = visitor.visitString(!categoryId_.isEmpty(), categoryId_,
+              !other.categoryId_.isEmpty(), other.categoryId_);
+          unitId_ = visitor.visitString(!unitId_.isEmpty(), unitId_,
+              !other.unitId_.isEmpty(), other.unitId_);
           createdAt_ = visitor.visitLong(createdAt_ != 0L, createdAt_,
               other.createdAt_ != 0L, other.createdAt_);
           updatedAt_ = visitor.visitLong(updatedAt_ != 0L, updatedAt_,
               other.updatedAt_ != 0L, other.updatedAt_);
+          sync_ = visitor.visitBoolean(sync_ != false, sync_,
+              other.sync_ != false, other.sync_);
+          brand_ = visitor.visitMessage(brand_, other.brand_);
+          subBrand_ = visitor.visitMessage(subBrand_, other.subBrand_);
+          unit_ = visitor.visitMessage(unit_, other.unit_);
+          category_ = visitor.visitMessage(category_, other.category_);
           if (visitor == MergeFromVisitor
               .INSTANCE) {
           }
@@ -1647,10 +2117,9 @@ public final class InventoryProto {
                   }
                   break;
                 }
-                case 10: {
-                  String s = input.readStringRequireUtf8();
+                case 8: {
 
-                  skuId_ = s;
+                  skuId_ = input.readInt64();
                   break;
                 }
                 case 18: {
@@ -1668,13 +2137,13 @@ public final class InventoryProto {
                 case 34: {
                   String s = input.readStringRequireUtf8();
 
-                  brand_ = s;
+                  brandId_ = s;
                   break;
                 }
                 case 42: {
                   String s = input.readStringRequireUtf8();
 
-                  subBrand_ = s;
+                  subBrandId_ = s;
                   break;
                 }
                 case 50: {
@@ -1709,13 +2178,13 @@ public final class InventoryProto {
                 case 90: {
                   String s = input.readStringRequireUtf8();
 
-                  category_ = s;
+                  categoryId_ = s;
                   break;
                 }
                 case 98: {
                   String s = input.readStringRequireUtf8();
 
-                  unit_ = s;
+                  unitId_ = s;
                   break;
                 }
                 case 104: {
@@ -1726,6 +2195,63 @@ public final class InventoryProto {
                 case 112: {
 
                   updatedAt_ = input.readInt64();
+                  break;
+                }
+                case 120: {
+
+                  sync_ = input.readBool();
+                  break;
+                }
+                case 130: {
+                  Brand.Builder subBuilder = null;
+                  if (brand_ != null) {
+                    subBuilder = brand_.toBuilder();
+                  }
+                  brand_ = input.readMessage(Brand.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(brand_);
+                    brand_ = subBuilder.buildPartial();
+                  }
+
+                  break;
+                }
+                case 138: {
+                  SubBrand.Builder subBuilder = null;
+                  if (subBrand_ != null) {
+                    subBuilder = subBrand_.toBuilder();
+                  }
+                  subBrand_ = input.readMessage(SubBrand.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(subBrand_);
+                    subBrand_ = subBuilder.buildPartial();
+                  }
+
+                  break;
+                }
+                case 146: {
+                  Unit.Builder subBuilder = null;
+                  if (unit_ != null) {
+                    subBuilder = unit_.toBuilder();
+                  }
+                  unit_ = input.readMessage(Unit.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(unit_);
+                    unit_ = subBuilder.buildPartial();
+                  }
+
+                  break;
+                }
+                case 154: {
+                  Category.Builder subBuilder = null;
+                  if (category_ != null) {
+                    subBuilder = category_.toBuilder();
+                  }
+                  category_ = input.readMessage(Category.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(category_);
+                    category_ = subBuilder.buildPartial();
+                  }
+
                   break;
                 }
               }
@@ -1845,6 +2371,21 @@ public final class InventoryProto {
      * <code>optional int64 updatedAt = 9;</code>
      */
     long getUpdatedAt();
+
+    /**
+     * <code>optional bool sync = 10;</code>
+     */
+    boolean getSync();
+
+    /**
+     * <code>optional double marked_price = 11;</code>
+     */
+    double getMarkedPrice();
+
+    /**
+     * <code>optional double sales_price = 12;</code>
+     */
+    double getSalesPrice();
   }
   /**
    * Protobuf type {@code com.entities.pb.Inventory}
@@ -2180,6 +2721,75 @@ public final class InventoryProto {
       updatedAt_ = 0L;
     }
 
+    public static final int SYNC_FIELD_NUMBER = 10;
+    private boolean sync_;
+    /**
+     * <code>optional bool sync = 10;</code>
+     */
+    public boolean getSync() {
+      return sync_;
+    }
+    /**
+     * <code>optional bool sync = 10;</code>
+     */
+    private void setSync(boolean value) {
+      
+      sync_ = value;
+    }
+    /**
+     * <code>optional bool sync = 10;</code>
+     */
+    private void clearSync() {
+      
+      sync_ = false;
+    }
+
+    public static final int MARKED_PRICE_FIELD_NUMBER = 11;
+    private double markedPrice_;
+    /**
+     * <code>optional double marked_price = 11;</code>
+     */
+    public double getMarkedPrice() {
+      return markedPrice_;
+    }
+    /**
+     * <code>optional double marked_price = 11;</code>
+     */
+    private void setMarkedPrice(double value) {
+      
+      markedPrice_ = value;
+    }
+    /**
+     * <code>optional double marked_price = 11;</code>
+     */
+    private void clearMarkedPrice() {
+      
+      markedPrice_ = 0D;
+    }
+
+    public static final int SALES_PRICE_FIELD_NUMBER = 12;
+    private double salesPrice_;
+    /**
+     * <code>optional double sales_price = 12;</code>
+     */
+    public double getSalesPrice() {
+      return salesPrice_;
+    }
+    /**
+     * <code>optional double sales_price = 12;</code>
+     */
+    private void setSalesPrice(double value) {
+      
+      salesPrice_ = value;
+    }
+    /**
+     * <code>optional double sales_price = 12;</code>
+     */
+    private void clearSalesPrice() {
+      
+      salesPrice_ = 0D;
+    }
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!inventoryId_.isEmpty()) {
@@ -2208,6 +2818,15 @@ public final class InventoryProto {
       }
       if (updatedAt_ != 0L) {
         output.writeInt64(9, updatedAt_);
+      }
+      if (sync_ != false) {
+        output.writeBool(10, sync_);
+      }
+      if (markedPrice_ != 0D) {
+        output.writeDouble(11, markedPrice_);
+      }
+      if (salesPrice_ != 0D) {
+        output.writeDouble(12, salesPrice_);
       }
     }
 
@@ -2251,6 +2870,18 @@ public final class InventoryProto {
       if (updatedAt_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(9, updatedAt_);
+      }
+      if (sync_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(10, sync_);
+      }
+      if (markedPrice_ != 0D) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(11, markedPrice_);
+      }
+      if (salesPrice_ != 0D) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(12, salesPrice_);
       }
       memoizedSerializedSize = size;
       return size;
@@ -2632,6 +3263,75 @@ public final class InventoryProto {
         return this;
       }
 
+      /**
+       * <code>optional bool sync = 10;</code>
+       */
+      public boolean getSync() {
+        return instance.getSync();
+      }
+      /**
+       * <code>optional bool sync = 10;</code>
+       */
+      public Builder setSync(boolean value) {
+        copyOnWrite();
+        instance.setSync(value);
+        return this;
+      }
+      /**
+       * <code>optional bool sync = 10;</code>
+       */
+      public Builder clearSync() {
+        copyOnWrite();
+        instance.clearSync();
+        return this;
+      }
+
+      /**
+       * <code>optional double marked_price = 11;</code>
+       */
+      public double getMarkedPrice() {
+        return instance.getMarkedPrice();
+      }
+      /**
+       * <code>optional double marked_price = 11;</code>
+       */
+      public Builder setMarkedPrice(double value) {
+        copyOnWrite();
+        instance.setMarkedPrice(value);
+        return this;
+      }
+      /**
+       * <code>optional double marked_price = 11;</code>
+       */
+      public Builder clearMarkedPrice() {
+        copyOnWrite();
+        instance.clearMarkedPrice();
+        return this;
+      }
+
+      /**
+       * <code>optional double sales_price = 12;</code>
+       */
+      public double getSalesPrice() {
+        return instance.getSalesPrice();
+      }
+      /**
+       * <code>optional double sales_price = 12;</code>
+       */
+      public Builder setSalesPrice(double value) {
+        copyOnWrite();
+        instance.setSalesPrice(value);
+        return this;
+      }
+      /**
+       * <code>optional double sales_price = 12;</code>
+       */
+      public Builder clearSalesPrice() {
+        copyOnWrite();
+        instance.clearSalesPrice();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:com.entities.pb.Inventory)
     }
     protected final Object dynamicMethod(
@@ -2669,6 +3369,12 @@ public final class InventoryProto {
               other.createdAt_ != 0L, other.createdAt_);
           updatedAt_ = visitor.visitLong(updatedAt_ != 0L, updatedAt_,
               other.updatedAt_ != 0L, other.updatedAt_);
+          sync_ = visitor.visitBoolean(sync_ != false, sync_,
+              other.sync_ != false, other.sync_);
+          markedPrice_ = visitor.visitDouble(markedPrice_ != 0D, markedPrice_,
+              other.markedPrice_ != 0D, other.markedPrice_);
+          salesPrice_ = visitor.visitDouble(salesPrice_ != 0D, salesPrice_,
+              other.salesPrice_ != 0D, other.salesPrice_);
           if (visitor == MergeFromVisitor
               .INSTANCE) {
           }
@@ -2748,6 +3454,21 @@ public final class InventoryProto {
                 case 72: {
 
                   updatedAt_ = input.readInt64();
+                  break;
+                }
+                case 80: {
+
+                  sync_ = input.readBool();
+                  break;
+                }
+                case 89: {
+
+                  markedPrice_ = input.readDouble();
+                  break;
+                }
+                case 97: {
+
+                  salesPrice_ = input.readDouble();
                   break;
                 }
               }

@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.google.android.material.button.MaterialButton;
+import com.google.android.material.card.MaterialCardView;
 import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.activities.base.BaseActivity;
 import com.treeleaf.suchi.activities.inventory.stock.StockActivity;
@@ -21,11 +21,11 @@ public class InventoryActivity extends BaseActivity implements View.OnClickListe
     @BindView(R.id.toolbar_title)
     TextView mToolbarTitle;
     @BindView(R.id.btn_sales)
-    MaterialButton mSales;
-    @BindView(R.id.btn_stock)
-    MaterialButton mStock;
+    MaterialCardView mSales;
+    @BindView(R.id.btn_stocks)
+    MaterialCardView mStock;
     @BindView(R.id.btn_reports)
-    MaterialButton mReports;
+    MaterialCardView mReports;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +63,7 @@ public class InventoryActivity extends BaseActivity implements View.OnClickListe
             case R.id.btn_sales:
 
                 break;
-            case R.id.btn_stock:
+            case R.id.btn_stocks:
                 startActivity(new Intent(InventoryActivity.this, StockActivity.class));
                 break;
 

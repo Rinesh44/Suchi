@@ -61,7 +61,7 @@ public class CreditActivity extends BaseActivity implements View.OnClickListener
             case R.id.btn_sales:
                 break;
 
-            case R.id.btn_stock:
+            case R.id.btn_stocks:
                 break;
 
             case R.id.btn_reports:

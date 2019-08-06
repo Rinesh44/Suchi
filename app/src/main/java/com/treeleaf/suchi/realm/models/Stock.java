@@ -1,22 +1,15 @@
 package com.treeleaf.suchi.realm.models;
 
-import androidx.annotation.NonNull;
-import androidx.room.Entity;
-import androidx.room.Ignore;
-import androidx.room.PrimaryKey;
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
-
-@Entity(tableName = "stock_table")
-public class Stock {
-
-    @NonNull
+public class Stock extends RealmObject {
     @PrimaryKey
     private String sn;
     private String sku;
     private String quantity;
     private String price;
 
-    @Ignore
     public Stock() {
     }
 

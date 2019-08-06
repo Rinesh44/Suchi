@@ -1,15 +1,10 @@
 package com.treeleaf.suchi.realm.models;
 
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
-import androidx.annotation.NonNull;
-import androidx.room.Entity;
-import androidx.room.Ignore;
-import androidx.room.PrimaryKey;
-
-@Entity(tableName = "user_table")
-public class User {
+public class User extends RealmObject {
     public final static String USER_ID = "userId";
-    @NonNull
     @PrimaryKey
     private String userId;
     private String storeName;
@@ -19,7 +14,6 @@ public class User {
     private String userName;
     private String userStatus;
 
-    @Ignore
     public User() {
     }
 

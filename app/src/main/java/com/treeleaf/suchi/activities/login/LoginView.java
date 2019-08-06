@@ -7,4 +7,8 @@ public interface LoginView {
     void loginSuccess(AccountProto.LoginResponse loginResponse);
 
     void loginFail(String msg);
+
+    void getAllDataSuccess();
+
+    void getAllDataFail(String msg);
 }
