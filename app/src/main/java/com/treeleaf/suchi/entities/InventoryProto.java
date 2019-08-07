@@ -7243,6 +7243,706 @@ public final class InventoryProto {
     }
   }
 
+  public interface SyncRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.entities.pb.SyncRequest)
+      com.google.protobuf.MessageLiteOrBuilder {
+
+    /**
+     * <code>repeated .com.entities.pb.Inventory inventories = 1;</code>
+     */
+    java.util.List<Inventory>
+        getInventoriesList();
+    /**
+     * <code>repeated .com.entities.pb.Inventory inventories = 1;</code>
+     */
+    Inventory getInventories(int index);
+    /**
+     * <code>repeated .com.entities.pb.Inventory inventories = 1;</code>
+     */
+    int getInventoriesCount();
+
+    /**
+     * <code>repeated .com.entities.pb.StockKeepingUnit stockKeepingUnits = 2;</code>
+     */
+    java.util.List<StockKeepingUnit>
+        getStockKeepingUnitsList();
+    /**
+     * <code>repeated .com.entities.pb.StockKeepingUnit stockKeepingUnits = 2;</code>
+     */
+    StockKeepingUnit getStockKeepingUnits(int index);
+    /**
+     * <code>repeated .com.entities.pb.StockKeepingUnit stockKeepingUnits = 2;</code>
+     */
+    int getStockKeepingUnitsCount();
+  }
+  /**
+   * Protobuf type {@code com.entities.pb.SyncRequest}
+   */
+  public  static final class SyncRequest extends
+      com.google.protobuf.GeneratedMessageLite<
+          SyncRequest, SyncRequest.Builder> implements
+      // @@protoc_insertion_point(message_implements:com.entities.pb.SyncRequest)
+      SyncRequestOrBuilder {
+    private SyncRequest() {
+      inventories_ = emptyProtobufList();
+      stockKeepingUnits_ = emptyProtobufList();
+    }
+    public static final int INVENTORIES_FIELD_NUMBER = 1;
+    private com.google.protobuf.Internal.ProtobufList<Inventory> inventories_;
+    /**
+     * <code>repeated .com.entities.pb.Inventory inventories = 1;</code>
+     */
+    public java.util.List<Inventory> getInventoriesList() {
+      return inventories_;
+    }
+    /**
+     * <code>repeated .com.entities.pb.Inventory inventories = 1;</code>
+     */
+    public java.util.List<? extends InventoryOrBuilder>
+        getInventoriesOrBuilderList() {
+      return inventories_;
+    }
+    /**
+     * <code>repeated .com.entities.pb.Inventory inventories = 1;</code>
+     */
+    public int getInventoriesCount() {
+      return inventories_.size();
+    }
+    /**
+     * <code>repeated .com.entities.pb.Inventory inventories = 1;</code>
+     */
+    public Inventory getInventories(int index) {
+      return inventories_.get(index);
+    }
+    /**
+     * <code>repeated .com.entities.pb.Inventory inventories = 1;</code>
+     */
+    public InventoryOrBuilder getInventoriesOrBuilder(
+        int index) {
+      return inventories_.get(index);
+    }
+    private void ensureInventoriesIsMutable() {
+      if (!inventories_.isModifiable()) {
+        inventories_ =
+            com.google.protobuf.GeneratedMessageLite.mutableCopy(inventories_);
+       }
+    }
+
+    /**
+     * <code>repeated .com.entities.pb.Inventory inventories = 1;</code>
+     */
+    private void setInventories(
+        int index, Inventory value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureInventoriesIsMutable();
+      inventories_.set(index, value);
+    }
+    /**
+     * <code>repeated .com.entities.pb.Inventory inventories = 1;</code>
+     */
+    private void setInventories(
+        int index, Inventory.Builder builderForValue) {
+      ensureInventoriesIsMutable();
+      inventories_.set(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .com.entities.pb.Inventory inventories = 1;</code>
+     */
+    private void addInventories(Inventory value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureInventoriesIsMutable();
+      inventories_.add(value);
+    }
+    /**
+     * <code>repeated .com.entities.pb.Inventory inventories = 1;</code>
+     */
+    private void addInventories(
+        int index, Inventory value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureInventoriesIsMutable();
+      inventories_.add(index, value);
+    }
+    /**
+     * <code>repeated .com.entities.pb.Inventory inventories = 1;</code>
+     */
+    private void addInventories(
+        Inventory.Builder builderForValue) {
+      ensureInventoriesIsMutable();
+      inventories_.add(builderForValue.build());
+    }
+    /**
+     * <code>repeated .com.entities.pb.Inventory inventories = 1;</code>
+     */
+    private void addInventories(
+        int index, Inventory.Builder builderForValue) {
+      ensureInventoriesIsMutable();
+      inventories_.add(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .com.entities.pb.Inventory inventories = 1;</code>
+     */
+    private void addAllInventories(
+        Iterable<? extends Inventory> values) {
+      ensureInventoriesIsMutable();
+      com.google.protobuf.AbstractMessageLite.addAll(
+          values, inventories_);
+    }
+    /**
+     * <code>repeated .com.entities.pb.Inventory inventories = 1;</code>
+     */
+    private void clearInventories() {
+      inventories_ = emptyProtobufList();
+    }
+    /**
+     * <code>repeated .com.entities.pb.Inventory inventories = 1;</code>
+     */
+    private void removeInventories(int index) {
+      ensureInventoriesIsMutable();
+      inventories_.remove(index);
+    }
+
+    public static final int STOCKKEEPINGUNITS_FIELD_NUMBER = 2;
+    private com.google.protobuf.Internal.ProtobufList<StockKeepingUnit> stockKeepingUnits_;
+    /**
+     * <code>repeated .com.entities.pb.StockKeepingUnit stockKeepingUnits = 2;</code>
+     */
+    public java.util.List<StockKeepingUnit> getStockKeepingUnitsList() {
+      return stockKeepingUnits_;
+    }
+    /**
+     * <code>repeated .com.entities.pb.StockKeepingUnit stockKeepingUnits = 2;</code>
+     */
+    public java.util.List<? extends StockKeepingUnitOrBuilder>
+        getStockKeepingUnitsOrBuilderList() {
+      return stockKeepingUnits_;
+    }
+    /**
+     * <code>repeated .com.entities.pb.StockKeepingUnit stockKeepingUnits = 2;</code>
+     */
+    public int getStockKeepingUnitsCount() {
+      return stockKeepingUnits_.size();
+    }
+    /**
+     * <code>repeated .com.entities.pb.StockKeepingUnit stockKeepingUnits = 2;</code>
+     */
+    public StockKeepingUnit getStockKeepingUnits(int index) {
+      return stockKeepingUnits_.get(index);
+    }
+    /**
+     * <code>repeated .com.entities.pb.StockKeepingUnit stockKeepingUnits = 2;</code>
+     */
+    public StockKeepingUnitOrBuilder getStockKeepingUnitsOrBuilder(
+        int index) {
+      return stockKeepingUnits_.get(index);
+    }
+    private void ensureStockKeepingUnitsIsMutable() {
+      if (!stockKeepingUnits_.isModifiable()) {
+        stockKeepingUnits_ =
+            com.google.protobuf.GeneratedMessageLite.mutableCopy(stockKeepingUnits_);
+       }
+    }
+
+    /**
+     * <code>repeated .com.entities.pb.StockKeepingUnit stockKeepingUnits = 2;</code>
+     */
+    private void setStockKeepingUnits(
+        int index, StockKeepingUnit value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureStockKeepingUnitsIsMutable();
+      stockKeepingUnits_.set(index, value);
+    }
+    /**
+     * <code>repeated .com.entities.pb.StockKeepingUnit stockKeepingUnits = 2;</code>
+     */
+    private void setStockKeepingUnits(
+        int index, StockKeepingUnit.Builder builderForValue) {
+      ensureStockKeepingUnitsIsMutable();
+      stockKeepingUnits_.set(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .com.entities.pb.StockKeepingUnit stockKeepingUnits = 2;</code>
+     */
+    private void addStockKeepingUnits(StockKeepingUnit value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureStockKeepingUnitsIsMutable();
+      stockKeepingUnits_.add(value);
+    }
+    /**
+     * <code>repeated .com.entities.pb.StockKeepingUnit stockKeepingUnits = 2;</code>
+     */
+    private void addStockKeepingUnits(
+        int index, StockKeepingUnit value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureStockKeepingUnitsIsMutable();
+      stockKeepingUnits_.add(index, value);
+    }
+    /**
+     * <code>repeated .com.entities.pb.StockKeepingUnit stockKeepingUnits = 2;</code>
+     */
+    private void addStockKeepingUnits(
+        StockKeepingUnit.Builder builderForValue) {
+      ensureStockKeepingUnitsIsMutable();
+      stockKeepingUnits_.add(builderForValue.build());
+    }
+    /**
+     * <code>repeated .com.entities.pb.StockKeepingUnit stockKeepingUnits = 2;</code>
+     */
+    private void addStockKeepingUnits(
+        int index, StockKeepingUnit.Builder builderForValue) {
+      ensureStockKeepingUnitsIsMutable();
+      stockKeepingUnits_.add(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .com.entities.pb.StockKeepingUnit stockKeepingUnits = 2;</code>
+     */
+    private void addAllStockKeepingUnits(
+        Iterable<? extends StockKeepingUnit> values) {
+      ensureStockKeepingUnitsIsMutable();
+      com.google.protobuf.AbstractMessageLite.addAll(
+          values, stockKeepingUnits_);
+    }
+    /**
+     * <code>repeated .com.entities.pb.StockKeepingUnit stockKeepingUnits = 2;</code>
+     */
+    private void clearStockKeepingUnits() {
+      stockKeepingUnits_ = emptyProtobufList();
+    }
+    /**
+     * <code>repeated .com.entities.pb.StockKeepingUnit stockKeepingUnits = 2;</code>
+     */
+    private void removeStockKeepingUnits(int index) {
+      ensureStockKeepingUnitsIsMutable();
+      stockKeepingUnits_.remove(index);
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      for (int i = 0; i < inventories_.size(); i++) {
+        output.writeMessage(1, inventories_.get(i));
+      }
+      for (int i = 0; i < stockKeepingUnits_.size(); i++) {
+        output.writeMessage(2, stockKeepingUnits_.get(i));
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < inventories_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, inventories_.get(i));
+      }
+      for (int i = 0; i < stockKeepingUnits_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, stockKeepingUnits_.get(i));
+      }
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    public static SyncRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static SyncRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static SyncRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static SyncRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static SyncRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static SyncRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static SyncRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    }
+    public static SyncRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static SyncRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static SyncRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(SyncRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+
+    /**
+     * Protobuf type {@code com.entities.pb.SyncRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          SyncRequest, Builder> implements
+        // @@protoc_insertion_point(builder_implements:com.entities.pb.SyncRequest)
+        SyncRequestOrBuilder {
+      // Construct using com.treeleaf.suchi.entities.InventoryProto.SyncRequest.newBuilder()
+      private Builder() {
+        super(DEFAULT_INSTANCE);
+      }
+
+
+      /**
+       * <code>repeated .com.entities.pb.Inventory inventories = 1;</code>
+       */
+      public java.util.List<Inventory> getInventoriesList() {
+        return java.util.Collections.unmodifiableList(
+            instance.getInventoriesList());
+      }
+      /**
+       * <code>repeated .com.entities.pb.Inventory inventories = 1;</code>
+       */
+      public int getInventoriesCount() {
+        return instance.getInventoriesCount();
+      }/**
+       * <code>repeated .com.entities.pb.Inventory inventories = 1;</code>
+       */
+      public Inventory getInventories(int index) {
+        return instance.getInventories(index);
+      }
+      /**
+       * <code>repeated .com.entities.pb.Inventory inventories = 1;</code>
+       */
+      public Builder setInventories(
+          int index, Inventory value) {
+        copyOnWrite();
+        instance.setInventories(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Inventory inventories = 1;</code>
+       */
+      public Builder setInventories(
+          int index, Inventory.Builder builderForValue) {
+        copyOnWrite();
+        instance.setInventories(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Inventory inventories = 1;</code>
+       */
+      public Builder addInventories(Inventory value) {
+        copyOnWrite();
+        instance.addInventories(value);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Inventory inventories = 1;</code>
+       */
+      public Builder addInventories(
+          int index, Inventory value) {
+        copyOnWrite();
+        instance.addInventories(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Inventory inventories = 1;</code>
+       */
+      public Builder addInventories(
+          Inventory.Builder builderForValue) {
+        copyOnWrite();
+        instance.addInventories(builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Inventory inventories = 1;</code>
+       */
+      public Builder addInventories(
+          int index, Inventory.Builder builderForValue) {
+        copyOnWrite();
+        instance.addInventories(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Inventory inventories = 1;</code>
+       */
+      public Builder addAllInventories(
+          Iterable<? extends Inventory> values) {
+        copyOnWrite();
+        instance.addAllInventories(values);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Inventory inventories = 1;</code>
+       */
+      public Builder clearInventories() {
+        copyOnWrite();
+        instance.clearInventories();
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Inventory inventories = 1;</code>
+       */
+      public Builder removeInventories(int index) {
+        copyOnWrite();
+        instance.removeInventories(index);
+        return this;
+      }
+
+      /**
+       * <code>repeated .com.entities.pb.StockKeepingUnit stockKeepingUnits = 2;</code>
+       */
+      public java.util.List<StockKeepingUnit> getStockKeepingUnitsList() {
+        return java.util.Collections.unmodifiableList(
+            instance.getStockKeepingUnitsList());
+      }
+      /**
+       * <code>repeated .com.entities.pb.StockKeepingUnit stockKeepingUnits = 2;</code>
+       */
+      public int getStockKeepingUnitsCount() {
+        return instance.getStockKeepingUnitsCount();
+      }/**
+       * <code>repeated .com.entities.pb.StockKeepingUnit stockKeepingUnits = 2;</code>
+       */
+      public StockKeepingUnit getStockKeepingUnits(int index) {
+        return instance.getStockKeepingUnits(index);
+      }
+      /**
+       * <code>repeated .com.entities.pb.StockKeepingUnit stockKeepingUnits = 2;</code>
+       */
+      public Builder setStockKeepingUnits(
+          int index, StockKeepingUnit value) {
+        copyOnWrite();
+        instance.setStockKeepingUnits(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.StockKeepingUnit stockKeepingUnits = 2;</code>
+       */
+      public Builder setStockKeepingUnits(
+          int index, StockKeepingUnit.Builder builderForValue) {
+        copyOnWrite();
+        instance.setStockKeepingUnits(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.StockKeepingUnit stockKeepingUnits = 2;</code>
+       */
+      public Builder addStockKeepingUnits(StockKeepingUnit value) {
+        copyOnWrite();
+        instance.addStockKeepingUnits(value);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.StockKeepingUnit stockKeepingUnits = 2;</code>
+       */
+      public Builder addStockKeepingUnits(
+          int index, StockKeepingUnit value) {
+        copyOnWrite();
+        instance.addStockKeepingUnits(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.StockKeepingUnit stockKeepingUnits = 2;</code>
+       */
+      public Builder addStockKeepingUnits(
+          StockKeepingUnit.Builder builderForValue) {
+        copyOnWrite();
+        instance.addStockKeepingUnits(builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.StockKeepingUnit stockKeepingUnits = 2;</code>
+       */
+      public Builder addStockKeepingUnits(
+          int index, StockKeepingUnit.Builder builderForValue) {
+        copyOnWrite();
+        instance.addStockKeepingUnits(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.StockKeepingUnit stockKeepingUnits = 2;</code>
+       */
+      public Builder addAllStockKeepingUnits(
+          Iterable<? extends StockKeepingUnit> values) {
+        copyOnWrite();
+        instance.addAllStockKeepingUnits(values);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.StockKeepingUnit stockKeepingUnits = 2;</code>
+       */
+      public Builder clearStockKeepingUnits() {
+        copyOnWrite();
+        instance.clearStockKeepingUnits();
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.StockKeepingUnit stockKeepingUnits = 2;</code>
+       */
+      public Builder removeStockKeepingUnits(int index) {
+        copyOnWrite();
+        instance.removeStockKeepingUnits(index);
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.entities.pb.SyncRequest)
+    }
+    protected final Object dynamicMethod(
+        MethodToInvoke method,
+        Object arg0, Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new SyncRequest();
+        }
+        case IS_INITIALIZED: {
+          return DEFAULT_INSTANCE;
+        }
+        case MAKE_IMMUTABLE: {
+          inventories_.makeImmutable();
+          stockKeepingUnits_.makeImmutable();
+          return null;
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case VISIT: {
+          Visitor visitor = (Visitor) arg0;
+          SyncRequest other = (SyncRequest) arg1;
+          inventories_= visitor.visitList(inventories_, other.inventories_);
+          stockKeepingUnits_= visitor.visitList(stockKeepingUnits_, other.stockKeepingUnits_);
+          if (visitor == MergeFromVisitor
+              .INSTANCE) {
+          }
+          return this;
+        }
+        case MERGE_FROM_STREAM: {
+          com.google.protobuf.CodedInputStream input =
+              (com.google.protobuf.CodedInputStream) arg0;
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry =
+              (com.google.protobuf.ExtensionRegistryLite) arg1;
+          try {
+            boolean done = false;
+            while (!done) {
+              int tag = input.readTag();
+              switch (tag) {
+                case 0:
+                  done = true;
+                  break;
+                default: {
+                  if (!input.skipField(tag)) {
+                    done = true;
+                  }
+                  break;
+                }
+                case 10: {
+                  if (!inventories_.isModifiable()) {
+                    inventories_ =
+                        com.google.protobuf.GeneratedMessageLite.mutableCopy(inventories_);
+                  }
+                  inventories_.add(
+                      input.readMessage(Inventory.parser(), extensionRegistry));
+                  break;
+                }
+                case 18: {
+                  if (!stockKeepingUnits_.isModifiable()) {
+                    stockKeepingUnits_ =
+                        com.google.protobuf.GeneratedMessageLite.mutableCopy(stockKeepingUnits_);
+                  }
+                  stockKeepingUnits_.add(
+                      input.readMessage(StockKeepingUnit.parser(), extensionRegistry));
+                  break;
+                }
+              }
+            }
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw new RuntimeException(e.setUnfinishedMessage(this));
+          } catch (java.io.IOException e) {
+            throw new RuntimeException(
+                new com.google.protobuf.InvalidProtocolBufferException(
+                    e.getMessage()).setUnfinishedMessage(this));
+          } finally {
+          }
+        }
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          if (PARSER == null) {    synchronized (SyncRequest.class) {
+              if (PARSER == null) {
+                PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+              }
+            }
+          }
+          return PARSER;
+        }
+      }
+      throw new UnsupportedOperationException();
+    }
+
+
+    // @@protoc_insertion_point(class_scope:com.entities.pb.SyncRequest)
+    private static final SyncRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new SyncRequest();
+      DEFAULT_INSTANCE.makeImmutable();
+    }
+
+    public static SyncRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static volatile com.google.protobuf.Parser<SyncRequest> PARSER;
+
+    public static com.google.protobuf.Parser<SyncRequest> parser() {
+      return DEFAULT_INSTANCE.getParserForType();
+    }
+  }
+
 
   static {
   }

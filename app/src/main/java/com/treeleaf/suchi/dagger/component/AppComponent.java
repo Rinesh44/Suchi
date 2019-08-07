@@ -1,6 +1,7 @@
 package com.treeleaf.suchi.dagger.component;
 
 import com.treeleaf.suchi.activities.dashboard.DashboardActivity;
+import com.treeleaf.suchi.activities.inventory.stock.SearchStock;
 import com.treeleaf.suchi.activities.login.LoginActivity;
 import com.treeleaf.suchi.activities.register.RegisterActivity;
 import com.treeleaf.suchi.dagger.component.module.NetModule;
@@ -18,4 +19,6 @@ public interface AppComponent {
     void inject(LoginActivity loginActivity);
 
     void inject(DashboardActivity dashboardActivity);
+
+    void inject(SearchStock searchStock);
 }

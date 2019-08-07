@@ -267,6 +267,29 @@ public final class ReqResProto {
      * <code>optional .com.entities.pb.Creditor creditor = 17;</code>
      */
     AccountProto.Creditor getCreditor();
+
+    /**
+     * <code>optional .com.entities.pb.Inventory inventory = 18;</code>
+     */
+    boolean hasInventory();
+    /**
+     * <code>optional .com.entities.pb.Inventory inventory = 18;</code>
+     */
+    InventoryProto.Inventory getInventory();
+
+    /**
+     * <code>repeated .com.entities.pb.Inventory inventories = 19;</code>
+     */
+    java.util.List<InventoryProto.Inventory>
+        getInventoriesList();
+    /**
+     * <code>repeated .com.entities.pb.Inventory inventories = 19;</code>
+     */
+    InventoryProto.Inventory getInventories(int index);
+    /**
+     * <code>repeated .com.entities.pb.Inventory inventories = 19;</code>
+     */
+    int getInventoriesCount();
   }
   /**
    * Protobuf type {@code com.entities.pb.Request}
@@ -280,6 +303,7 @@ public final class ReqResProto {
       refId_ = "";
       stringValue_ = "";
       stockKeepingUnits_ = emptyProtobufList();
+      inventories_ = emptyProtobufList();
     }
     private int bitField0_;
     public static final int REFID_FIELD_NUMBER = 1;
@@ -1106,6 +1130,178 @@ public final class ReqResProto {
       
     }
 
+    public static final int INVENTORY_FIELD_NUMBER = 18;
+    private InventoryProto.Inventory inventory_;
+    /**
+     * <code>optional .com.entities.pb.Inventory inventory = 18;</code>
+     */
+    public boolean hasInventory() {
+      return inventory_ != null;
+    }
+    /**
+     * <code>optional .com.entities.pb.Inventory inventory = 18;</code>
+     */
+    public InventoryProto.Inventory getInventory() {
+      return inventory_ == null ? InventoryProto.Inventory.getDefaultInstance() : inventory_;
+    }
+    /**
+     * <code>optional .com.entities.pb.Inventory inventory = 18;</code>
+     */
+    private void setInventory(InventoryProto.Inventory value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      inventory_ = value;
+      
+      }
+    /**
+     * <code>optional .com.entities.pb.Inventory inventory = 18;</code>
+     */
+    private void setInventory(
+        InventoryProto.Inventory.Builder builderForValue) {
+      inventory_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>optional .com.entities.pb.Inventory inventory = 18;</code>
+     */
+    private void mergeInventory(InventoryProto.Inventory value) {
+      if (inventory_ != null &&
+          inventory_ != InventoryProto.Inventory.getDefaultInstance()) {
+        inventory_ =
+          InventoryProto.Inventory.newBuilder(inventory_).mergeFrom(value).buildPartial();
+      } else {
+        inventory_ = value;
+      }
+      
+    }
+    /**
+     * <code>optional .com.entities.pb.Inventory inventory = 18;</code>
+     */
+    private void clearInventory() {  inventory_ = null;
+      
+    }
+
+    public static final int INVENTORIES_FIELD_NUMBER = 19;
+    private com.google.protobuf.Internal.ProtobufList<InventoryProto.Inventory> inventories_;
+    /**
+     * <code>repeated .com.entities.pb.Inventory inventories = 19;</code>
+     */
+    public java.util.List<InventoryProto.Inventory> getInventoriesList() {
+      return inventories_;
+    }
+    /**
+     * <code>repeated .com.entities.pb.Inventory inventories = 19;</code>
+     */
+    public java.util.List<? extends InventoryProto.InventoryOrBuilder>
+        getInventoriesOrBuilderList() {
+      return inventories_;
+    }
+    /**
+     * <code>repeated .com.entities.pb.Inventory inventories = 19;</code>
+     */
+    public int getInventoriesCount() {
+      return inventories_.size();
+    }
+    /**
+     * <code>repeated .com.entities.pb.Inventory inventories = 19;</code>
+     */
+    public InventoryProto.Inventory getInventories(int index) {
+      return inventories_.get(index);
+    }
+    /**
+     * <code>repeated .com.entities.pb.Inventory inventories = 19;</code>
+     */
+    public InventoryProto.InventoryOrBuilder getInventoriesOrBuilder(
+        int index) {
+      return inventories_.get(index);
+    }
+    private void ensureInventoriesIsMutable() {
+      if (!inventories_.isModifiable()) {
+        inventories_ =
+            com.google.protobuf.GeneratedMessageLite.mutableCopy(inventories_);
+       }
+    }
+
+    /**
+     * <code>repeated .com.entities.pb.Inventory inventories = 19;</code>
+     */
+    private void setInventories(
+        int index, InventoryProto.Inventory value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureInventoriesIsMutable();
+      inventories_.set(index, value);
+    }
+    /**
+     * <code>repeated .com.entities.pb.Inventory inventories = 19;</code>
+     */
+    private void setInventories(
+        int index, InventoryProto.Inventory.Builder builderForValue) {
+      ensureInventoriesIsMutable();
+      inventories_.set(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .com.entities.pb.Inventory inventories = 19;</code>
+     */
+    private void addInventories(InventoryProto.Inventory value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureInventoriesIsMutable();
+      inventories_.add(value);
+    }
+    /**
+     * <code>repeated .com.entities.pb.Inventory inventories = 19;</code>
+     */
+    private void addInventories(
+        int index, InventoryProto.Inventory value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureInventoriesIsMutable();
+      inventories_.add(index, value);
+    }
+    /**
+     * <code>repeated .com.entities.pb.Inventory inventories = 19;</code>
+     */
+    private void addInventories(
+        InventoryProto.Inventory.Builder builderForValue) {
+      ensureInventoriesIsMutable();
+      inventories_.add(builderForValue.build());
+    }
+    /**
+     * <code>repeated .com.entities.pb.Inventory inventories = 19;</code>
+     */
+    private void addInventories(
+        int index, InventoryProto.Inventory.Builder builderForValue) {
+      ensureInventoriesIsMutable();
+      inventories_.add(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .com.entities.pb.Inventory inventories = 19;</code>
+     */
+    private void addAllInventories(
+        Iterable<? extends InventoryProto.Inventory> values) {
+      ensureInventoriesIsMutable();
+      com.google.protobuf.AbstractMessageLite.addAll(
+          values, inventories_);
+    }
+    /**
+     * <code>repeated .com.entities.pb.Inventory inventories = 19;</code>
+     */
+    private void clearInventories() {
+      inventories_ = emptyProtobufList();
+    }
+    /**
+     * <code>repeated .com.entities.pb.Inventory inventories = 19;</code>
+     */
+    private void removeInventories(int index) {
+      ensureInventoriesIsMutable();
+      inventories_.remove(index);
+    }
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!refId_.isEmpty()) {
@@ -1158,6 +1354,12 @@ public final class ReqResProto {
       }
       if (creditor_ != null) {
         output.writeMessage(17, getCreditor());
+      }
+      if (inventory_ != null) {
+        output.writeMessage(18, getInventory());
+      }
+      for (int i = 0; i < inventories_.size(); i++) {
+        output.writeMessage(19, inventories_.get(i));
       }
     }
 
@@ -1233,6 +1435,14 @@ public final class ReqResProto {
       if (creditor_ != null) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(17, getCreditor());
+      }
+      if (inventory_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(18, getInventory());
+      }
+      for (int i = 0; i < inventories_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(19, inventories_.get(i));
       }
       memoizedSerializedSize = size;
       return size;
@@ -2039,6 +2249,148 @@ public final class ReqResProto {
         return this;
       }
 
+      /**
+       * <code>optional .com.entities.pb.Inventory inventory = 18;</code>
+       */
+      public boolean hasInventory() {
+        return instance.hasInventory();
+      }
+      /**
+       * <code>optional .com.entities.pb.Inventory inventory = 18;</code>
+       */
+      public InventoryProto.Inventory getInventory() {
+        return instance.getInventory();
+      }
+      /**
+       * <code>optional .com.entities.pb.Inventory inventory = 18;</code>
+       */
+      public Builder setInventory(InventoryProto.Inventory value) {
+        copyOnWrite();
+        instance.setInventory(value);
+        return this;
+        }
+      /**
+       * <code>optional .com.entities.pb.Inventory inventory = 18;</code>
+       */
+      public Builder setInventory(
+          InventoryProto.Inventory.Builder builderForValue) {
+        copyOnWrite();
+        instance.setInventory(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .com.entities.pb.Inventory inventory = 18;</code>
+       */
+      public Builder mergeInventory(InventoryProto.Inventory value) {
+        copyOnWrite();
+        instance.mergeInventory(value);
+        return this;
+      }
+      /**
+       * <code>optional .com.entities.pb.Inventory inventory = 18;</code>
+       */
+      public Builder clearInventory() {  copyOnWrite();
+        instance.clearInventory();
+        return this;
+      }
+
+      /**
+       * <code>repeated .com.entities.pb.Inventory inventories = 19;</code>
+       */
+      public java.util.List<InventoryProto.Inventory> getInventoriesList() {
+        return java.util.Collections.unmodifiableList(
+            instance.getInventoriesList());
+      }
+      /**
+       * <code>repeated .com.entities.pb.Inventory inventories = 19;</code>
+       */
+      public int getInventoriesCount() {
+        return instance.getInventoriesCount();
+      }/**
+       * <code>repeated .com.entities.pb.Inventory inventories = 19;</code>
+       */
+      public InventoryProto.Inventory getInventories(int index) {
+        return instance.getInventories(index);
+      }
+      /**
+       * <code>repeated .com.entities.pb.Inventory inventories = 19;</code>
+       */
+      public Builder setInventories(
+          int index, InventoryProto.Inventory value) {
+        copyOnWrite();
+        instance.setInventories(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Inventory inventories = 19;</code>
+       */
+      public Builder setInventories(
+          int index, InventoryProto.Inventory.Builder builderForValue) {
+        copyOnWrite();
+        instance.setInventories(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Inventory inventories = 19;</code>
+       */
+      public Builder addInventories(InventoryProto.Inventory value) {
+        copyOnWrite();
+        instance.addInventories(value);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Inventory inventories = 19;</code>
+       */
+      public Builder addInventories(
+          int index, InventoryProto.Inventory value) {
+        copyOnWrite();
+        instance.addInventories(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Inventory inventories = 19;</code>
+       */
+      public Builder addInventories(
+          InventoryProto.Inventory.Builder builderForValue) {
+        copyOnWrite();
+        instance.addInventories(builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Inventory inventories = 19;</code>
+       */
+      public Builder addInventories(
+          int index, InventoryProto.Inventory.Builder builderForValue) {
+        copyOnWrite();
+        instance.addInventories(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Inventory inventories = 19;</code>
+       */
+      public Builder addAllInventories(
+          Iterable<? extends InventoryProto.Inventory> values) {
+        copyOnWrite();
+        instance.addAllInventories(values);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Inventory inventories = 19;</code>
+       */
+      public Builder clearInventories() {
+        copyOnWrite();
+        instance.clearInventories();
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Inventory inventories = 19;</code>
+       */
+      public Builder removeInventories(int index) {
+        copyOnWrite();
+        instance.removeInventories(index);
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:com.entities.pb.Request)
     }
     protected final Object dynamicMethod(
@@ -2053,6 +2405,7 @@ public final class ReqResProto {
         }
         case MAKE_IMMUTABLE: {
           stockKeepingUnits_.makeImmutable();
+          inventories_.makeImmutable();
           return null;
         }
         case NEW_BUILDER: {
@@ -2084,6 +2437,8 @@ public final class ReqResProto {
           unit_ = visitor.visitMessage(unit_, other.unit_);
           category_ = visitor.visitMessage(category_, other.category_);
           creditor_ = visitor.visitMessage(creditor_, other.creditor_);
+          inventory_ = visitor.visitMessage(inventory_, other.inventory_);
+          inventories_= visitor.visitList(inventories_, other.inventories_);
           if (visitor == MergeFromVisitor
               .INSTANCE) {
             bitField0_ |= other.bitField0_;
@@ -2278,6 +2633,28 @@ public final class ReqResProto {
                     creditor_ = subBuilder.buildPartial();
                   }
 
+                  break;
+                }
+                case 146: {
+                  InventoryProto.Inventory.Builder subBuilder = null;
+                  if (inventory_ != null) {
+                    subBuilder = inventory_.toBuilder();
+                  }
+                  inventory_ = input.readMessage(InventoryProto.Inventory.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(inventory_);
+                    inventory_ = subBuilder.buildPartial();
+                  }
+
+                  break;
+                }
+                case 154: {
+                  if (!inventories_.isModifiable()) {
+                    inventories_ =
+                        com.google.protobuf.GeneratedMessageLite.mutableCopy(inventories_);
+                  }
+                  inventories_.add(
+                      input.readMessage(InventoryProto.Inventory.parser(), extensionRegistry));
                   break;
                 }
               }

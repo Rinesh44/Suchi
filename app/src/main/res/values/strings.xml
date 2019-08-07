@@ -41,4 +41,8 @@
     <string name="view_report_details">View Report details</string>
     <string name="view_stock_details">View stock details</string>
     <string name="view_sales_details">View sale details</string>
+    <string name="quantity">Quantity</string>
+    <string name="expiry_date">Expiry Date</string>
+    <string name="marked_price">Marked Price</string>
+    <string name="selling_price">Selling price</string>
 </resources>

@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.android.material.card.MaterialCardView;
 import com.treeleaf.suchi.MainActivity;
 import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.activities.base.BaseActivity;
@@ -39,9 +40,9 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
     @BindView(R.id.toolbar_title)
     TextView mToolbarTitle;
     @BindView(R.id.btn_inventory)
-    TextView mInventory;
+    MaterialCardView mInventory;
     @BindView(R.id.btn_credit)
-    TextView mCredit;
+    MaterialCardView mCredit;
 
     private DashboardPresenter presenter;
     private SharedPreferences preferences;

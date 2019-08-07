@@ -44,8 +44,7 @@ public class BrandRepo extends Repo {
     public List<Brands> getAllBrands() {
         Realm realm = RealmDatabase.getInstance().getRealm();
         try {
-            List<Brands> brandList = new ArrayList<>(realm.where(Brands.class).findAll());
-            return brandList;
+            return new ArrayList<>(realm.where(Brands.class).findAll());
 
         } catch (Throwable throwable) {
             throwable.printStackTrace();

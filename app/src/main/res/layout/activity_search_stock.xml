@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/gray"
@@ -8,61 +9,263 @@
 
     <include layout="@layout/toolbar" />
 
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="20dp">
+        android:fillViewport="true">
 
-        <TextView
-            android:id="@+id/tv_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:textStyle="bold"
-            android:text="Select SKU"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
-
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_text"
-            android:orientation="horizontal"
-            android:weightSum="5">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="15dp">
 
-            <com.toptoche.searchablespinnerlibrary.SearchableSpinner
-                android:id="@+id/sp_sku"
-                android:layout_width="0dp"
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/mcv_sku_details"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_text"
-                android:layout_weight="4"
-                android:background="@android:drawable/btn_dropdown"
-                android:spinnerMode="dropdown">
-
-            </com.toptoche.searchablespinnerlibrary.SearchableSpinner>
-
-            <ImageView
-                android:id="@+id/iv_barcode"
-                android:layout_width="0dp"
-                android:layout_gravity="center"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:src="@drawable/ic_barcode" />
-
-        </LinearLayout>
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab_add_sku"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:src="@drawable/ic_add_fab" />
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="6dp"
+                app:cardUseCompatPadding="true">
 
 
-    </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp">
+
+
+                    <ImageView
+                        android:id="@+id/iv_sku"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:src="@drawable/ic_reort" />
+
+
+                    <TextView
+                        android:id="@+id/tv_name_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/iv_sku"
+                        android:text="Name"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tv_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_name_title"
+                        android:layout_toRightOf="@+id/iv_sku"
+                        android:text="Kolin"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tv_brand_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_name"
+                        android:layout_marginTop="5dp"
+                        android:layout_toRightOf="@+id/iv_sku"
+                        android:text="Brand"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tv_brand"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_brand_title"
+                        android:layout_toRightOf="@+id/iv_sku"
+                        android:text="LG"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tv_sub_brand_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_brand"
+                        android:layout_marginTop="5dp"
+                        android:layout_toRightOf="@+id/iv_sku"
+                        android:text="Sub Brand"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tv_sub_brand"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_sub_brand_title"
+                        android:layout_toRightOf="@+id/iv_sku"
+                        android:text="Sony"
+                        android:textColor="@color/black" />
+
+
+                    <TextView
+                        android:id="@+id/tv_unit_price_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="10dp"
+                        android:text="Unit Price (Rs.)"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tv_unit_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_unit_price_text"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="10dp"
+                        android:text="100"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tv_category_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_unit_price"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="10dp"
+                        android:text="Category"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tv_category"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_category_text"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="10dp"
+                        android:text="Dummy"
+                        android:textColor="@color/black" />
+
+                    <!--    <TextView
+                            android:id="@+id/tv_description_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:textSize="12sp"
+                            android:gravity="center"
+                            android:layout_below="@+id/tv_sub_brand"
+                            android:text="Description"/>
+
+                        <TextView
+                            android:id="@+id/tv_description"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tv_description_title"
+                            android:layout_margin="10dp"
+                            android:background="@drawable/light_bg"
+                            android:gravity="center"
+                            android:padding="10dp"
+                            android:text="This is description field"
+                            android:textColor="@color/black" />-->
+
+
+                </RelativeLayout>
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/tv_add_to_inventory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/mcv_sku_details"
+                android:layout_marginTop="10dp"
+                android:text="Add to inventory"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/il_quantity"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_add_to_inventory"
+                android:layout_marginTop="20dp"
+                android:hint="@string/quantity">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_quantity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/il_expiry_date"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/il_selling_price"
+                android:layout_marginTop="20dp"
+                android:hint="@string/expiry_date">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_expiry_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/il_marked_price"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/il_quantity"
+                android:layout_marginTop="20dp"
+                android:hint="@string/marked_price">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_marked_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/il_selling_price"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/il_marked_price"
+                android:layout_marginTop="20dp"
+                android:hint="@string/selling_price">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_selling_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_add"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_below="@+id/il_expiry_date"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="Add" />
+
+        </RelativeLayout>
+
+    </ScrollView>
 
 
 </LinearLayout>

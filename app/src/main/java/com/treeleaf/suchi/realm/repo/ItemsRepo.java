@@ -2,6 +2,7 @@ package com.treeleaf.suchi.realm.repo;
 
 import com.treeleaf.suchi.realm.RealmDatabase;
 import com.treeleaf.suchi.realm.models.Items;
+import com.treeleaf.suchi.realm.models.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,6 +47,19 @@ public class ItemsRepo extends Repo {
             List<Items> itemsList = new ArrayList<>(realm.where(Items.class).findAll());
             return itemsList;
 
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+            return null;
+        } finally {
+            close(realm);
+        }
+    }
+
+    public Items getItemById(String id) {
+        Realm realm = RealmDatabase.getInstance().getRealm();
+        try {
+            return realm.where(Items.class).equalTo("id", id)
+                    .findFirst();
         } catch (Throwable throwable) {
             throwable.printStackTrace();
             return null;

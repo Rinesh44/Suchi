@@ -15,6 +15,7 @@ import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.activities.base.BaseActivity;
 import com.treeleaf.suchi.adapter.StockAdapter;
 import com.treeleaf.suchi.realm.models.Stock;
+import com.treeleaf.suchi.utils.CustomDialogClass;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,7 +62,9 @@ public class StockActivity extends BaseActivity {
         mAddStock.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(StockActivity.this, SearchStock.class));
+//                startActivity(new Intent(StockActivity.this, SearchStock.class));
+                CustomDialogClass customDialog = new CustomDialogClass(StockActivity.this);
+                customDialog.show();
             }
         });
 

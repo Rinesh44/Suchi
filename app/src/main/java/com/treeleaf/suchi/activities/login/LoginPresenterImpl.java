@@ -55,6 +55,8 @@ public class LoginPresenterImpl implements LoginPresenter {
 
                 AppUtils.showLog(TAG, "loginResponse: " + baseResponse);
 
+                AppUtils.showLog(TAG, "skuResponse: " + baseResponse.getStockKeepingUnitsList());
+
                 if (baseResponse == null) {
                     activity.loginFail("Login failed");
                     return;
@@ -103,7 +105,6 @@ public class LoginPresenterImpl implements LoginPresenter {
                 mapCategories(baseResponse.getCategoriesList());
                 mapUnits(baseResponse.getUnitsList());
 
-
                 activity.getAllDataSuccess();
 
             }
@@ -128,7 +129,6 @@ public class LoginPresenterImpl implements LoginPresenter {
             items.setCode(itemsPb.getCode());
             items.setDesc(itemsPb.getDescription());
             items.setUnitPrice(String.valueOf(itemsPb.getUnitPrice()));
-            items.setCategory(String.valueOf(itemsPb.getCategory()));
 
             Brands brands = new Brands();
             brands.setId(itemsPb.getBrand().getBrandId());
@@ -143,9 +143,14 @@ public class LoginPresenterImpl implements LoginPresenter {
             units.setId(itemsPb.getUnit().getUnitId());
             units.setName(itemsPb.getUnit().getName());
 
+            Categories categories = new Categories();
+            categories.setId(itemsPb.getCategory().getCategoryId());
+            categories.setName(itemsPb.getCategory().getName());
+
             items.setBrand(brands);
             items.setSubBrands(subBrands);
             items.setUnits(units);
+            items.setCategories(categories);
 
             itemsList.add(items);
 
