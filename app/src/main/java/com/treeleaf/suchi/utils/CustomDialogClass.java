@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
 import com.treeleaf.suchi.R;
@@ -27,14 +28,14 @@ import butterknife.ButterKnife;
 
 public class CustomDialogClass extends Dialog implements
         android.view.View.OnClickListener {
+    private static final String TAG = "CustomDialogClass";
 
     public Activity activity;
     public Dialog dialog;
-
     @BindView(R.id.actv_sku)
     AutoCompleteTextView mSearchSku;
-    @BindView(R.id.iv_barcode)
-    public ImageView mBarcode;
+    @BindView(R.id.iv_go)
+    public ImageView mGo;
     @BindView(R.id.btn_add_sku)
     public MaterialButton mCreateSku;
 
@@ -55,7 +56,7 @@ public class CustomDialogClass extends Dialog implements
 
         ButterKnife.bind(this);
 
-        mBarcode.setOnClickListener(this);
+        mGo.setOnClickListener(this);
         mCreateSku.setOnClickListener(this);
 
         mSkuItems = ItemsRepo.getInstance().getAllItems();
@@ -81,7 +82,13 @@ public class CustomDialogClass extends Dialog implements
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 dismiss();
-                Items item = mSkuItems.get(i);
+
+                String selectedItem = (String) adapterView.getItemAtPosition(i);
+
+                int itemPosition = skuList.indexOf(selectedItem);
+                AppUtils.showLog(TAG, "itemId: " + itemPosition);
+
+                Items item = mSkuItems.get(itemPosition);
 
                 Intent intent = new Intent(activity, SearchStock.class);
                 intent.putExtra("selected_sku", item);
@@ -96,7 +103,8 @@ public class CustomDialogClass extends Dialog implements
     public void onClick(View v) {
         switch (v.getId()) {
 
-            case R.id.iv_barcode:
+            case R.id.iv_go:
+
                 break;
 
             case R.id.btn_add_sku:

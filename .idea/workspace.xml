@@ -175,45 +175,17 @@
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/classAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/dashboard/DashboardActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/dashboard/DashboardActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/SearchStock.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/SearchStock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/SearchStockPresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/SearchStockPresenter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/SearchStockPresenterImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/SearchStockPresenterImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/StockActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/StockActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/login/LoginPresenterImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/login/LoginPresenterImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/api/Endpoints.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/api/Endpoints.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/dagger/component/AppComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/dagger/component/AppComponent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/entities/InventoryProto.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/entities/InventoryProto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/entities/ReqResProto.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/entities/ReqResProto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/realm/models/Brands.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/realm/models/Brands.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/realm/models/Categories.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/realm/models/Categories.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/realm/models/Items.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/realm/models/Items.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/realm/models/SubBrands.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/realm/models/SubBrands.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/realm/models/Units.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/realm/models/Units.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/realm/repo/BrandRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/realm/repo/BrandRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/realm/repo/ItemsRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/realm/repo/ItemsRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_sales.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_sales.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_dashboard.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_dashboard.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_inventory.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_inventory.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/utils/CustomDialogClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/utils/CustomDialogClass.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_search_stock.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_search_stock.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher_round.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher_round.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher_round.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher_round.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/custom_dialog.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/custom_dialog.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -233,7 +205,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/InventoryActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
+            <state>
               <caret line="25" column="28" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -245,8 +217,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/StockActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="63" column="44" selection-start-line="63" selection-start-column="44" selection-end-line="63" selection-end-column="44" />
+            <state relative-caret-position="330">
+              <caret line="62" column="62" selection-start-line="62" selection-start-column="62" selection-end-line="62" selection-end-column="62" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -257,25 +229,59 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/utils/CustomDialogClass.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="508">
-              <caret line="87" column="47" lean-forward="true" selection-start-line="87" selection-start-column="47" selection-end-line="87" selection-end-column="47" />
+            <state relative-caret-position="656">
+              <caret line="106" selection-start-line="106" selection-end-line="106" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1831#1839#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_stock.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="144">
+              <caret line="8" column="19" lean-forward="true" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer2" />
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/SearchStock.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="351">
-              <caret line="159" column="63" lean-forward="true" selection-start-line="159" selection-start-column="63" selection-end-line="159" selection-end-column="63" />
+            <state relative-caret-position="279">
+              <caret line="67" column="27" lean-forward="true" selection-start-line="67" selection-start-column="27" selection-end-line="67" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3474#3475#0" expanded="true" />
-                <element signature="e#3530#3531#0" expanded="true" />
+                <element signature="e#3893#3901#0" expanded="true" />
+                <element signature="e#10644#10645#0" expanded="true" />
+                <element signature="e#10676#10677#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_search_stock.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="347">
+              <caret line="258" column="43" lean-forward="true" selection-start-line="258" selection-start-column="43" selection-end-line="258" selection-end-column="43" />
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer2" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/realm/repo/UserRepo.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-253">
+              <caret line="19" selection-start-line="19" selection-end-line="19" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#430#431#0" expanded="true" />
+                <element signature="e#461#462#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -296,20 +302,12 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>stock</find>
-      <find>logout</find>
-      <find>adapter</find>
-      <find>ripple</find>
-      <find>launcher</find>
-      <find>startAC</find>
       <find>presenterIm</find>
       <find>margin</find>
       <find>token</find>
-      <find>success</find>
       <find>name</find>
       <find>p</find>
       <find>brand</find>
-      <find>presenter</find>
       <find>failed</find>
       <find>catego</find>
       <find>imageUrl</find>
@@ -326,6 +324,14 @@
       <find>mSkuItems</find>
       <find>d</find>
       <find>searchable</find>
+      <find>onoptionsItem</find>
+      <find>sku det</find>
+      <find>btn_add</find>
+      <find>skuId</find>
+      <find>presenter</find>
+      <find>success</find>
+      <find>add</find>
+      <find>datePick</find>
     </findStrings>
     <replaceStrings>
       <replace>User</replace>
@@ -372,21 +378,21 @@
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/SearchStockView.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/dagger/component/AppComponent.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/SearchStockPresenter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/SearchStockPresenterImpl.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/api/Endpoints.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/login/LoginPresenterImpl.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_inventory.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/entities/AccessProto.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/StockActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_search_stock.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/custom_dialog.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/utils/CustomDialogClass.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/realm/models/Items.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/realm/models/Brands.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/realm/models/SubBrands.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/realm/models/Units.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/realm/models/Categories.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/api/Endpoints.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/SearchStockPresenter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/SearchStockPresenterImpl.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/custom_dialog.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/utils/CustomDialogClass.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/StockActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_search_stock.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/SearchStock.java" />
       </list>
     </option>
@@ -402,56 +408,17 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane" />
-      <pane id="AndroidView">
-        <subPane>
-          <expand>
-            <path>
-              <item name="suchi_android_app" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-            </path>
-            <path>
-              <item name="suchi_android_app" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-            </path>
-            <path>
-              <item name="suchi_android_app" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="suchi" type="cbb59c9e:AndroidPsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="suchi_android_app" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="suchi" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="entities" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="suchi_android_app" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-            </path>
-            <path>
-              <item name="suchi_android_app" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-              <item name="drawable" type="ddeffd01:AndroidResFolderTypeNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="android.project.structure.last.selected" value="SDK Location" />
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
-    <property name="device.picker.selection" value="52034ba6fa9f5323" />
+    <property name="device.picker.selection" value="520351c9f00ca3eb" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Dependencies" />
@@ -608,32 +575,31 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="2048" height="1152" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.19639279" />
-      <window_info id="Structure" order="2" side_tool="true" />
-      <window_info id="Favorites" order="3" side_tool="true" />
-      <window_info id="Build Variants" order="4" side_tool="true" />
-      <window_info id="Image Layers" order="5" />
-      <window_info id="Designer" order="6" />
+      <window_info id="Captures" order="0" sideWeight="0.50096714" side_tool="true" weight="0.17885771" />
+      <window_info id="Structure" order="1" side_tool="true" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info id="Build Variants" order="3" side_tool="true" />
+      <window_info id="Image Layers" order="4" />
+      <window_info id="Designer" order="5" />
+      <window_info content_ui="combo" id="Project" order="6" sideWeight="0.49903288" weight="0.17885771" />
       <window_info id="Resources Explorer" order="7" weight="0.3296593" />
       <window_info id="Capture Tool" order="8" />
       <window_info anchor="bottom" id="Run" order="0" />
-      <window_info anchor="bottom" id="Logcat" order="1" weight="0.5367505" />
+      <window_info active="true" anchor="bottom" id="Logcat" order="1" visible="true" weight="0.34139264" />
       <window_info anchor="bottom" id="TODO" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" />
       <window_info anchor="bottom" id="Terminal" order="4" weight="0.32978722" />
       <window_info anchor="bottom" id="Event Log" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="6" />
-      <window_info anchor="bottom" id="Build" order="7" weight="0.23597679" />
+      <window_info anchor="bottom" id="Build" order="7" weight="0.2052275" />
       <window_info anchor="bottom" id="Find" order="8" />
       <window_info anchor="bottom" id="Android Profiler" order="9" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
       <window_info anchor="right" id="Gradle" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info anchor="right" id="Preview" order="4" weight="0.32815632" />
+      <window_info anchor="right" id="Preview" order="4" weight="0.29559118" />
       <window_info anchor="right" id="Palette&#9;" order="5" />
     </layout>
     <layout-to-restore>
@@ -666,12 +632,12 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_enter_key.xml">
-      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
           <caret line="31" column="43" lean-forward="true" selection-start-line="31" selection-start-column="43" selection-end-line="31" selection-end-column="43" />
         </state>
       </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_inventory.png">
       <provider selected="true" editor-type-id="images" />
@@ -782,18 +748,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/realm/repo/UserRepo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="92" column="25" lean-forward="true" selection-start-line="92" selection-start-column="25" selection-end-line="92" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#430#431#0" expanded="true" />
-            <element signature="e#461#462#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/realm/repo/BrandRepo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="694">
@@ -816,24 +770,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_stock.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="25" column="47" lean-forward="true" selection-start-line="25" selection-start-column="47" selection-end-line="25" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/InventoryActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="25" column="28" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/light_bg.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
@@ -849,28 +785,28 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu_logout.xml">
-      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
           <caret line="1" selection-start-line="1" selection-end-line="8" selection-end-column="7" />
         </state>
       </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu_add.xml">
-      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="5" column="45" lean-forward="true" selection-start-line="5" selection-start-column="45" selection-end-line="5" selection-end-column="45" />
         </state>
       </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_register.xml">
-      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
           <caret line="35" column="63" lean-forward="true" selection-start-line="35" selection-start-column="63" selection-end-line="35" selection-end-column="63" />
         </state>
       </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/utils/DatePicker.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -931,23 +867,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/SearchStockPresenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/SearchStockPresenterImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="828">
-          <caret line="46" column="58" lean-forward="true" selection-start-line="46" selection-start-column="58" selection-end-line="46" selection-end-column="58" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/login/LoginActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="63">
@@ -955,13 +874,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/api/Endpoints.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="10" column="30" lean-forward="true" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
         </state>
       </provider>
     </entry>
@@ -973,51 +885,25 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_dashboard.xml">
-      <provider selected="true" editor-type-id="android-designer2" />
       <provider editor-type-id="text-editor">
         <state relative-caret-position="1512">
           <caret line="84" column="25" lean-forward="true" selection-start-line="84" selection-start-column="25" selection-end-line="84" selection-end-column="25" />
         </state>
       </provider>
+      <provider selected="true" editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_inventory.xml">
-      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1241">
           <caret line="69" lean-forward="true" selection-start-line="69" selection-end-line="70" selection-end-column="23" />
         </state>
       </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/entities/AccessProto.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
           <caret line="7" column="43" lean-forward="true" selection-start-line="7" selection-start-column="43" selection-end-line="7" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/StockActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="63" column="44" selection-start-line="63" selection-start-column="44" selection-end-line="63" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_search_stock.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="14" column="36" lean-forward="true" selection-start-line="14" selection-start-column="36" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/custom_dialog.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="10" column="17" lean-forward="true" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -1182,25 +1068,111 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/utils/CustomDialogClass.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/InventoryActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="508">
-          <caret line="87" column="47" lean-forward="true" selection-start-line="87" selection-start-column="47" selection-end-line="87" selection-end-column="47" />
+        <state>
+          <caret line="25" column="28" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1831#1839#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/SearchStock.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/api/Endpoints.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="159" column="63" lean-forward="true" selection-start-line="159" selection-start-column="63" selection-end-line="159" selection-end-column="63" />
+        <state relative-caret-position="684">
+          <caret line="38" column="87" lean-forward="true" selection-start-line="38" selection-start-column="87" selection-end-line="38" selection-end-column="87" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3474#3475#0" expanded="true" />
-            <element signature="e#3530#3531#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/SearchStockPresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="5" column="39" lean-forward="true" selection-start-line="5" selection-start-column="39" selection-end-line="5" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/SearchStockPresenterImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/realm/repo/UserRepo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-253">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#430#431#0" expanded="true" />
+            <element signature="e#461#462#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/custom_dialog.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="87">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_stock.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="8" column="19" lean-forward="true" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/utils/CustomDialogClass.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="656">
+          <caret line="106" selection-start-line="106" selection-end-line="106" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/StockActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="62" column="62" selection-start-line="62" selection-start-column="62" selection-end-line="62" selection-end-column="62" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_search_stock.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="347">
+          <caret line="258" column="43" lean-forward="true" selection-start-line="258" selection-start-column="43" selection-end-line="258" selection-end-column="43" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/SearchStock.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="67" column="27" lean-forward="true" selection-start-line="67" selection-start-column="27" selection-end-line="67" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3893#3901#0" expanded="true" />
+            <element signature="e#10644#10645#0" expanded="true" />
+            <element signature="e#10676#10677#0" expanded="true" />
           </folding>
         </state>
       </provider>

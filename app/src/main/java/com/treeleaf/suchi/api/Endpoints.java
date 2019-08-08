@@ -1,6 +1,7 @@
 package com.treeleaf.suchi.api;
 
 import com.treeleaf.suchi.entities.AccountProto;
+import com.treeleaf.suchi.entities.InventoryProto;
 import com.treeleaf.suchi.entities.ReqResProto;
 
 import retrofit2.Call;
@@ -39,5 +40,5 @@ public interface Endpoints {
 
     @POST(API_BASE_URL + ADD_TO_INVENTORY)
     Call<ReqResProto.Response> addInventory(@Header(AUTHORIZATION) String authorization,
-                                            @Body ReqResProto.Request addInventoryRequest);
+                                            @Body InventoryProto.Inventory inventory);
 }

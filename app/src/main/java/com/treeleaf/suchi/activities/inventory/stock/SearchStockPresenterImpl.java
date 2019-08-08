@@ -1,6 +1,7 @@
 package com.treeleaf.suchi.activities.inventory.stock;
 
 import com.treeleaf.suchi.api.Endpoints;
+import com.treeleaf.suchi.entities.InventoryProto;
 import com.treeleaf.suchi.entities.ReqResProto;
 import com.treeleaf.suchi.utils.AppUtils;
 import com.treeleaf.suchi.utils.CallbackWrapper;
@@ -19,8 +20,8 @@ public class SearchStockPresenterImpl implements SearchStockPresenter {
 
 
     @Override
-    public void addStock(String token, ReqResProto.Request addInventoryRequest) {
-        endpoints.addInventory(token, addInventoryRequest).enqueue(new CallbackWrapper<>(activity, new CallbackWrapper.Wrapper<ReqResProto.Response>() {
+    public void addStock(String token, InventoryProto.Inventory inventory) {
+        endpoints.addInventory(token, inventory).enqueue(new CallbackWrapper<>(activity, new CallbackWrapper.Wrapper<ReqResProto.Response>() {
             @Override
             public void onSuccessResult(Response<ReqResProto.Response> response) {
                 activity.hideLoading();

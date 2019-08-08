@@ -2,15 +2,18 @@ package com.treeleaf.suchi.activities.inventory.stock;
 
 import androidx.appcompat.widget.Toolbar;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -22,9 +25,10 @@ import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.activities.base.BaseActivity;
 import com.treeleaf.suchi.api.Endpoints;
 import com.treeleaf.suchi.entities.InventoryProto;
-import com.treeleaf.suchi.entities.ReqResProto;
 import com.treeleaf.suchi.realm.models.Items;
 import com.treeleaf.suchi.realm.models.Token;
+import com.treeleaf.suchi.realm.models.User;
+import com.treeleaf.suchi.realm.repo.ItemsRepo;
 import com.treeleaf.suchi.realm.repo.UserRepo;
 import com.treeleaf.suchi.utils.AppUtils;
 import com.treeleaf.suchi.utils.DatePicker;
@@ -40,7 +44,7 @@ import butterknife.ButterKnife;
 
 import static com.treeleaf.suchi.SuchiApp.getMyApplication;
 
-public class SearchStock extends BaseActivity implements SearchStockView {
+public class SearchStock extends BaseActivity implements SearchStockView, View.OnClickListener {
     private static final String TAG = "SearchStock";
     @Inject
     Endpoints endpoints;
@@ -58,10 +62,12 @@ public class SearchStock extends BaseActivity implements SearchStockView {
     TextView mUnitPrice;
     @BindView(R.id.tv_category)
     TextView mCategory;
-    @BindView(R.id.il_quantity)
-    TextInputLayout mQuantityLayout;
-    @BindView(R.id.et_quantity)
-    TextInputEditText mQuantity;
+    @BindView(R.id.btn_increment)
+    ImageButton mIncrement;
+    @BindView(R.id.btn_decrement)
+    ImageButton mDecrement;
+    @BindView(R.id.tv_quantity)
+    EditText mQuantity;
     @BindView(R.id.il_expiry_date)
     TextInputLayout mExpiryDateLayout;
     @BindView(R.id.et_expiry_date)
@@ -78,6 +84,15 @@ public class SearchStock extends BaseActivity implements SearchStockView {
     TextInputLayout mSellingPriceLayout;
     @BindView(R.id.et_selling_price)
     TextInputEditText mSellingPrice;
+    @BindView(R.id.tv_unit)
+    TextView mUnit;
+    @BindView(R.id.tv_quantity_unit)
+    TextView mQuantityUnit;
+    @BindView(R.id.actv_sku)
+    AutoCompleteTextView mSearchSku;
+    @BindView(R.id.iv_go)
+    public ImageView mGo;
+    private DatePicker datePicker;
 
 
 /*    @BindView(R.id.tv_description)
@@ -97,65 +112,78 @@ public class SearchStock extends BaseActivity implements SearchStockView {
 
         initialize();
 
+        mAdd.setOnClickListener(this);
+        mIncrement.setOnClickListener(this);
+        mDecrement.setOnClickListener(this);
+        mGo.setOnClickListener(this);
+        mExpiryDate.setOnClickListener(this);
+
         presenter = new SearchStockPresenterImpl(endpoints, this);
 
-        final DatePicker datePicker = new DatePicker(this, R.id.et_expiry_date);
+        mSkuItems = ItemsRepo.getInstance().getAllItems();
+        List<String> skuList = new ArrayList<>();
+        for (Items item : mSkuItems
+        ) {
+            skuList.add(item.getName());
+        }
 
-        mExpiryDate.setOnClickListener(new View.OnClickListener() {
+        ArrayAdapter<String> skuListAdapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, skuList) {
             @Override
-            public void onClick(View view) {
-                datePicker.onClick(view);
+            public View getView(int position, View convertView, ViewGroup parent) {
+                View view = super.getView(position, convertView, parent);
+//                TextView name = (TextView) view.findViewById(android.R.id.text1);
+                return view;
             }
-        });
+        };
 
-        getIntentData();
+        mSearchSku.setAdapter(skuListAdapter);
 
-        mAdd.setOnClickListener(new View.OnClickListener() {
+        mSearchSku.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                validateFieldsThenAdd();
+                String item = (String) adapterView.getItemAtPosition(i);
 
-            }
-        });
-    }
+                int itemPosition = skuList.indexOf(item);
+                AppUtils.showLog(TAG, "itemId: " + itemPosition);
 
-    private void getIntentData() {
-        Intent i = getIntent();
-        Items selectedItem = i.getParcelableExtra("selected_sku");
-        selectedItemId = selectedItem.getId();
+                Items selectedItem = mSkuItems.get(itemPosition);
+
+                mSkuName.setText(selectedItem.getName());
+                mBrand.setText(selectedItem.getBrand().getName());
+                mSubBrand.setText(selectedItem.getSubBrands().getName());
+                mUnitPrice.setText(selectedItem.getUnitPrice());
+                mCategory.setText(selectedItem.getCategories().getName());
+                mUnit.setText(selectedItem.getUnits().getName());
 
 
-        mSkuName.setText(selectedItem.getName());
-        mBrand.setText(selectedItem.getBrand().getName());
-        mSubBrand.setText(selectedItem.getSubBrands().getName());
-        mUnitPrice.setText(selectedItem.getUnitPrice());
-        mCategory.setText(selectedItem.getCategories().getName());
+                StringBuilder quantityUnitBuilder = new StringBuilder();
+                quantityUnitBuilder.append(" (");
+                quantityUnitBuilder.append(selectedItem.getUnits().getName());
+                quantityUnitBuilder.append(") ");
+                mQuantityUnit.setText(quantityUnitBuilder);
 //        mDescription.setText(selectedItem.getDesc());
 
-        String imageUrl = selectedItem.getPhoto_url();
-        AppUtils.showLog(TAG, "ImageUrl: " + imageUrl);
-        if (!imageUrl.isEmpty()) {
-            RequestOptions options = new RequestOptions()
-                    .fitCenter()
-                    .placeholder(R.drawable.ic_stock)
-                    .error(R.drawable.ic_stock);
+                String imageUrl = selectedItem.getPhoto_url();
+                AppUtils.showLog(TAG, "ImageUrl: " + imageUrl);
+                if (!imageUrl.isEmpty()) {
+                    RequestOptions options = new RequestOptions()
+                            .fitCenter()
+                            .placeholder(R.drawable.ic_stock)
+                            .error(R.drawable.ic_stock);
 
-            Glide.with(SearchStock.this).load(imageUrl).apply(options).into(mSkuImage);
-        }
+                    Glide.with(SearchStock.this).load(imageUrl).apply(options).into(mSkuImage);
+                }
+
+            }
+        });
+
+        datePicker = new DatePicker(this, R.id.et_expiry_date);
 
     }
 
-    private void validateFieldsThenAdd() {
 
-        if (mQuantity.getText().toString().isEmpty() || mQuantity.getText().toString().equals("0")) {
-            mQuantityLayout.setErrorEnabled(true);
-            mQuantityLayout.setError("This field is required");
-            mQuantityLayout.requestFocus();
-            return;
-        } else {
-            mQuantityLayout.setErrorEnabled(false);
-        }
+    private void validateFieldsThenAdd() {
 
         if (mMarkedPrice.getText().toString().isEmpty() || mMarkedPrice.getText().toString().equals("0")) {
             mMarkedPriceLayout.setErrorEnabled(true);
@@ -187,26 +215,26 @@ public class SearchStock extends BaseActivity implements SearchStockView {
 
         showLoading();
         Token token = UserRepo.getInstance().getToken();
+        User user = token.getUser();
 
         String randomInventoryId = UUID.randomUUID().toString();
+        String inventoryId = randomInventoryId.replace("-", "");
 
-        AppUtils.showLog(TAG, "inventoryId: " + randomInventoryId);
+        AppUtils.showLog(TAG, "inventoryId: " + inventoryId);
         AppUtils.showLog(TAG, "skuId: " + selectedItemId);
 
         InventoryProto.Inventory inventory = InventoryProto.Inventory.newBuilder()
-                .setInventoryId(randomInventoryId)
+                .setInventoryId(inventoryId)
                 .setSkuId(selectedItemId)
+                .setUserId(user.getUserId())
+                .setStatus(InventoryProto.SKUStatus.AVAILABLE)
                 .setMarkedPrice(Double.valueOf(mMarkedPrice.getText().toString()))
                 .setSalesPrice(Double.valueOf(mSellingPrice.getText().toString()))
                 .setQuantity(Integer.valueOf(mQuantity.getText().toString()))
                 .setExpiryDate(System.currentTimeMillis())
                 .build();
 
-        ReqResProto.Request request = ReqResProto.Request.newBuilder()
-                .setInventory(inventory)
-                .build();
-
-        presenter.addStock(token.getToken(), request);
+        presenter.addStock(token.getToken(), inventory);
 
     }
 
@@ -218,7 +246,7 @@ public class SearchStock extends BaseActivity implements SearchStockView {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
-        mToolbarTitle.setText("SKU Details");
+        mToolbarTitle.setText("Select Item");
 
         getMyApplication(this).getAppComponent().inject(this);
 
@@ -234,10 +262,46 @@ public class SearchStock extends BaseActivity implements SearchStockView {
     @Override
     public void addStockSuccess() {
         AppUtils.showLog(TAG, "Stock add success");
+        Toast.makeText(this, "Inventory added", Toast.LENGTH_SHORT).show();
+        finish();
     }
 
     @Override
     public void addStockFail(String msg) {
         showMessage(msg);
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.iv_go:
+                if (!mSearchSku.isPopupShowing()) {
+                    Toast.makeText(SearchStock.this, "Item not found", Toast.LENGTH_SHORT).show();
+                }
+                break;
+
+            case R.id.btn_add:
+                validateFieldsThenAdd();
+                break;
+
+            case R.id.btn_increment:
+                int value = Integer.valueOf(mQuantity.getText().toString());
+                value++;
+                mQuantity.setText(String.valueOf(value));
+                break;
+
+            case R.id.btn_decrement:
+                int value1 = Integer.valueOf(mQuantity.getText().toString());
+                if (value1 != 1) {
+                    value1--;
+                    mQuantity.setText(String.valueOf(value1));
+                }
+                break;
+
+            case R.id.et_expiry_date:
+                datePicker.onClick(view);
+                break;
+
+        }
     }
 }

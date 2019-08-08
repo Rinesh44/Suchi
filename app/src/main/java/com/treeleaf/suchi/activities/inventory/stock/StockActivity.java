@@ -50,10 +50,8 @@ public class StockActivity extends BaseActivity {
         mRecyclerViewStock.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerViewStock.setHasFixedSize(true);
 
-
         mStockAdapter = new StockAdapter();
         mRecyclerViewStock.setAdapter(mStockAdapter);
-
 
         Stock stock = new Stock("1", "Kolin", "3", "120");
         stockList.add(stock);
@@ -62,9 +60,7 @@ public class StockActivity extends BaseActivity {
         mAddStock.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                startActivity(new Intent(StockActivity.this, SearchStock.class));
-                CustomDialogClass customDialog = new CustomDialogClass(StockActivity.this);
-                customDialog.show();
+                startActivity(new Intent(StockActivity.this, SearchStock.class));
             }
         });
 
