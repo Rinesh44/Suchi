@@ -11,9 +11,10 @@ import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.treeleaf.suchi.R;
-import com.treeleaf.suchi.realm.models.Stock;
+import com.treeleaf.suchi.realm.models.Items;
 
-public class StockAdapter extends ListAdapter<Stock, StockAdapter.StockHolder> {
+
+public class StockAdapter extends ListAdapter<Items, StockAdapter.StockHolder> {
     private OnItemClickListener listener;
 
     public StockAdapter() {
@@ -21,16 +22,22 @@ public class StockAdapter extends ListAdapter<Stock, StockAdapter.StockHolder> {
     }
 
 
-    private static final DiffUtil.ItemCallback<Stock> DIFF_CALLBACK = new DiffUtil.ItemCallback<Stock>() {
+    private static final DiffUtil.ItemCallback<Items> DIFF_CALLBACK = new DiffUtil.ItemCallback<Items>() {
         @Override
-        public boolean areItemsTheSame(@NonNull Stock oldItem, @NonNull Stock newItem) {
-            return oldItem.getSn().equals(newItem.getSn());
+        public boolean areItemsTheSame(@NonNull Items oldItem, @NonNull Items newItem) {
+            return oldItem.getId().equals(newItem.getId());
         }
 
         @Override
-        public boolean areContentsTheSame(@NonNull Stock oldItem, @NonNull Stock newItem) {
-            return oldItem.getPrice().equals(newItem.getPrice()) && oldItem.getQuantity().equals(newItem.getQuantity())
-                    && oldItem.getSku().equals(newItem.getSku());
+        public boolean areContentsTheSame(@NonNull Items oldItem, @NonNull Items newItem) {
+            return oldItem.getName().equals(newItem.getName()) && oldItem.getQuantity().equals(newItem.getQuantity())
+                    && oldItem.getPhoto_url().equals(newItem.getPhoto_url())
+                    && oldItem.getCode().equals(newItem.getCode())
+                    && oldItem.getDesc().equals(newItem.getDesc())
+                    && oldItem.getUnitPrice().equals(newItem.getUnitPrice())
+                    && oldItem.getMarkedPrice().equals(newItem.getMarkedPrice())
+                    && oldItem.getSellingPrice().equals(newItem.getSellingPrice())
+                    && oldItem.getExpiryDate().equals(newItem.getExpiryDate());
         }
     };
 
@@ -44,21 +51,21 @@ public class StockAdapter extends ListAdapter<Stock, StockAdapter.StockHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull StockHolder holder, int position) {
-        Stock currentStock = getItem(position);
-        holder.serialNo.setText(currentStock.getSn());
-        holder.sku.setText(currentStock.getSku());
-        holder.qty.setText(currentStock.getQuantity());
-        holder.price.setText(currentStock.getPrice());
+        Items current = getItem(position);
+        holder.unit.setText(current.getUnits().getName());
+        holder.sku.setText(current.getName());
+        holder.qty.setText(current.getQuantity());
+        holder.price.setText(current.getUnitPrice());
 
     }
 
 
-    public Stock getStock(int position) {
+    public Items getStock(int position) {
         return getItem(position);
     }
 
     class StockHolder extends RecyclerView.ViewHolder {
-        private TextView serialNo;
+        private TextView unit;
         private TextView sku;
         private TextView qty;
         private TextView price;
@@ -67,7 +74,7 @@ public class StockAdapter extends ListAdapter<Stock, StockAdapter.StockHolder> {
         public StockHolder(@NonNull View itemView) {
             super(itemView);
 
-            serialNo = itemView.findViewById(R.id.tv_sn);
+            unit = itemView.findViewById(R.id.tv_unit);
             sku = itemView.findViewById(R.id.tv_sku);
             qty = itemView.findViewById(R.id.tv_qty);
             price = itemView.findViewById(R.id.tv_price);
@@ -87,7 +94,7 @@ public class StockAdapter extends ListAdapter<Stock, StockAdapter.StockHolder> {
     }
 
     public interface OnItemClickListener {
-        void onItemClick(Stock stock);
+        void onItemClick(Items stock);
     }
 
     public void setOnItemClickListener(OnItemClickListener listener) {

@@ -22,7 +22,8 @@ public interface Endpoints {
     String REGISTER = "user/register";
     String LOGOUT = "account/logout";
     String GET_ALL_DATA = "inventory/data/all";
-    String ADD_TO_INVENTORY = "inventory";
+    String INVENTORY = "inventory";
+    String ADD_SKU = "sku";
 
 
     @Headers({CONTENT_TYPE})
@@ -38,7 +39,14 @@ public interface Endpoints {
     @GET(API_BASE_URL + GET_ALL_DATA)
     Call<ReqResProto.Response> getAllData(@Header(AUTHORIZATION) String authorization);
 
-    @POST(API_BASE_URL + ADD_TO_INVENTORY)
+    @POST(API_BASE_URL + INVENTORY)
     Call<ReqResProto.Response> addInventory(@Header(AUTHORIZATION) String authorization,
                                             @Body InventoryProto.Inventory inventory);
+
+    @GET(API_BASE_URL + INVENTORY)
+    Call<ReqResProto.Response> getInventory(@Header(AUTHORIZATION) String authorization);
+
+    @POST(API_BASE_URL + ADD_SKU)
+    Call<ReqResProto.Response> addSku(@Header(AUTHORIZATION) String auth,
+                                      @Body InventoryProto.StockKeepingUnit stockKeepingUnit);
 }

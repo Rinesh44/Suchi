@@ -9,15 +9,17 @@ public class Stock extends RealmObject {
     private String sku;
     private String quantity;
     private String price;
+    private String unit;
 
     public Stock() {
     }
 
-    public Stock(String sn, String sku, String quantity, String price) {
+    public Stock(String sn, String sku, String quantity, String price, String unit) {
         this.sn = sn;
         this.sku = sku;
         this.quantity = quantity;
         this.price = price;
+        this.unit = unit;
     }
 
     public String getSn() {
@@ -50,5 +52,13 @@ public class Stock extends RealmObject {
 
     public void setPrice(String price) {
         this.price = price;
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
     }
 }

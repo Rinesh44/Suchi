@@ -9302,6 +9302,16 @@ public final class AccountProto {
      * <code>optional bool sync = 7;</code>
      */
     boolean getSync();
+
+    /**
+     * <code>optional string sale_id = 8;</code>
+     */
+    String getSaleId();
+    /**
+     * <code>optional string sale_id = 8;</code>
+     */
+    com.google.protobuf.ByteString
+        getSaleIdBytes();
   }
   /**
    * Protobuf type {@code com.entities.pb.CreditDetail}
@@ -9315,6 +9325,7 @@ public final class AccountProto {
       creditId_ = "";
       creditorId_ = "";
       description_ = "";
+      saleId_ = "";
     }
     public static final int CREDITID_FIELD_NUMBER = 1;
     private String creditId_;
@@ -9546,6 +9557,52 @@ public final class AccountProto {
       sync_ = false;
     }
 
+    public static final int SALE_ID_FIELD_NUMBER = 8;
+    private String saleId_;
+    /**
+     * <code>optional string sale_id = 8;</code>
+     */
+    public String getSaleId() {
+      return saleId_;
+    }
+    /**
+     * <code>optional string sale_id = 8;</code>
+     */
+    public com.google.protobuf.ByteString
+        getSaleIdBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(saleId_);
+    }
+    /**
+     * <code>optional string sale_id = 8;</code>
+     */
+    private void setSaleId(
+        String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      saleId_ = value;
+    }
+    /**
+     * <code>optional string sale_id = 8;</code>
+     */
+    private void clearSaleId() {
+      
+      saleId_ = getDefaultInstance().getSaleId();
+    }
+    /**
+     * <code>optional string sale_id = 8;</code>
+     */
+    private void setSaleIdBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      saleId_ = value.toStringUtf8();
+    }
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!creditId_.isEmpty()) {
@@ -9568,6 +9625,9 @@ public final class AccountProto {
       }
       if (sync_ != false) {
         output.writeBool(7, sync_);
+      }
+      if (!saleId_.isEmpty()) {
+        output.writeString(8, getSaleId());
       }
     }
 
@@ -9603,6 +9663,10 @@ public final class AccountProto {
       if (sync_ != false) {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(7, sync_);
+      }
+      if (!saleId_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeStringSize(8, getSaleId());
       }
       memoizedSerializedSize = size;
       return size;
@@ -9902,6 +9966,46 @@ public final class AccountProto {
         return this;
       }
 
+      /**
+       * <code>optional string sale_id = 8;</code>
+       */
+      public String getSaleId() {
+        return instance.getSaleId();
+      }
+      /**
+       * <code>optional string sale_id = 8;</code>
+       */
+      public com.google.protobuf.ByteString
+          getSaleIdBytes() {
+        return instance.getSaleIdBytes();
+      }
+      /**
+       * <code>optional string sale_id = 8;</code>
+       */
+      public Builder setSaleId(
+          String value) {
+        copyOnWrite();
+        instance.setSaleId(value);
+        return this;
+      }
+      /**
+       * <code>optional string sale_id = 8;</code>
+       */
+      public Builder clearSaleId() {
+        copyOnWrite();
+        instance.clearSaleId();
+        return this;
+      }
+      /**
+       * <code>optional string sale_id = 8;</code>
+       */
+      public Builder setSaleIdBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setSaleIdBytes(value);
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:com.entities.pb.CreditDetail)
     }
     protected final Object dynamicMethod(
@@ -9937,6 +10041,8 @@ public final class AccountProto {
               other.updatedAt_ != 0L, other.updatedAt_);
           sync_ = visitor.visitBoolean(sync_ != false, sync_,
               other.sync_ != false, other.sync_);
+          saleId_ = visitor.visitString(!saleId_.isEmpty(), saleId_,
+              !other.saleId_.isEmpty(), other.saleId_);
           if (visitor == MergeFromVisitor
               .INSTANCE) {
           }
@@ -9997,6 +10103,12 @@ public final class AccountProto {
                 case 56: {
 
                   sync_ = input.readBool();
+                  break;
+                }
+                case 66: {
+                  String s = input.readStringRequireUtf8();
+
+                  saleId_ = s;
                   break;
                 }
               }

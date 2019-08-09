@@ -2386,6 +2386,25 @@ public final class InventoryProto {
      * <code>optional double sales_price = 12;</code>
      */
     double getSalesPrice();
+
+    /**
+     * <code>optional .com.entities.pb.Unit unit = 13;</code>
+     */
+    boolean hasUnit();
+    /**
+     * <code>optional .com.entities.pb.Unit unit = 13;</code>
+     */
+    Unit getUnit();
+
+    /**
+     * <code>optional string unitId = 14;</code>
+     */
+    String getUnitId();
+    /**
+     * <code>optional string unitId = 14;</code>
+     */
+    com.google.protobuf.ByteString
+        getUnitIdBytes();
   }
   /**
    * Protobuf type {@code com.entities.pb.Inventory}
@@ -2399,6 +2418,7 @@ public final class InventoryProto {
       inventoryId_ = "";
       skuId_ = "";
       userId_ = "";
+      unitId_ = "";
     }
     public static final int INVENTORYID_FIELD_NUMBER = 1;
     private String inventoryId_;
@@ -2790,6 +2810,104 @@ public final class InventoryProto {
       salesPrice_ = 0D;
     }
 
+    public static final int UNIT_FIELD_NUMBER = 13;
+    private Unit unit_;
+    /**
+     * <code>optional .com.entities.pb.Unit unit = 13;</code>
+     */
+    public boolean hasUnit() {
+      return unit_ != null;
+    }
+    /**
+     * <code>optional .com.entities.pb.Unit unit = 13;</code>
+     */
+    public Unit getUnit() {
+      return unit_ == null ? Unit.getDefaultInstance() : unit_;
+    }
+    /**
+     * <code>optional .com.entities.pb.Unit unit = 13;</code>
+     */
+    private void setUnit(Unit value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      unit_ = value;
+      
+      }
+    /**
+     * <code>optional .com.entities.pb.Unit unit = 13;</code>
+     */
+    private void setUnit(
+        Unit.Builder builderForValue) {
+      unit_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>optional .com.entities.pb.Unit unit = 13;</code>
+     */
+    private void mergeUnit(Unit value) {
+      if (unit_ != null &&
+          unit_ != Unit.getDefaultInstance()) {
+        unit_ =
+          Unit.newBuilder(unit_).mergeFrom(value).buildPartial();
+      } else {
+        unit_ = value;
+      }
+      
+    }
+    /**
+     * <code>optional .com.entities.pb.Unit unit = 13;</code>
+     */
+    private void clearUnit() {  unit_ = null;
+      
+    }
+
+    public static final int UNITID_FIELD_NUMBER = 14;
+    private String unitId_;
+    /**
+     * <code>optional string unitId = 14;</code>
+     */
+    public String getUnitId() {
+      return unitId_;
+    }
+    /**
+     * <code>optional string unitId = 14;</code>
+     */
+    public com.google.protobuf.ByteString
+        getUnitIdBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(unitId_);
+    }
+    /**
+     * <code>optional string unitId = 14;</code>
+     */
+    private void setUnitId(
+        String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      unitId_ = value;
+    }
+    /**
+     * <code>optional string unitId = 14;</code>
+     */
+    private void clearUnitId() {
+      
+      unitId_ = getDefaultInstance().getUnitId();
+    }
+    /**
+     * <code>optional string unitId = 14;</code>
+     */
+    private void setUnitIdBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      unitId_ = value.toStringUtf8();
+    }
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!inventoryId_.isEmpty()) {
@@ -2827,6 +2945,12 @@ public final class InventoryProto {
       }
       if (salesPrice_ != 0D) {
         output.writeDouble(12, salesPrice_);
+      }
+      if (unit_ != null) {
+        output.writeMessage(13, getUnit());
+      }
+      if (!unitId_.isEmpty()) {
+        output.writeString(14, getUnitId());
       }
     }
 
@@ -2882,6 +3006,14 @@ public final class InventoryProto {
       if (salesPrice_ != 0D) {
         size += com.google.protobuf.CodedOutputStream
           .computeDoubleSize(12, salesPrice_);
+      }
+      if (unit_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(13, getUnit());
+      }
+      if (!unitId_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeStringSize(14, getUnitId());
       }
       memoizedSerializedSize = size;
       return size;
@@ -3332,6 +3464,91 @@ public final class InventoryProto {
         return this;
       }
 
+      /**
+       * <code>optional .com.entities.pb.Unit unit = 13;</code>
+       */
+      public boolean hasUnit() {
+        return instance.hasUnit();
+      }
+      /**
+       * <code>optional .com.entities.pb.Unit unit = 13;</code>
+       */
+      public Unit getUnit() {
+        return instance.getUnit();
+      }
+      /**
+       * <code>optional .com.entities.pb.Unit unit = 13;</code>
+       */
+      public Builder setUnit(Unit value) {
+        copyOnWrite();
+        instance.setUnit(value);
+        return this;
+        }
+      /**
+       * <code>optional .com.entities.pb.Unit unit = 13;</code>
+       */
+      public Builder setUnit(
+          Unit.Builder builderForValue) {
+        copyOnWrite();
+        instance.setUnit(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .com.entities.pb.Unit unit = 13;</code>
+       */
+      public Builder mergeUnit(Unit value) {
+        copyOnWrite();
+        instance.mergeUnit(value);
+        return this;
+      }
+      /**
+       * <code>optional .com.entities.pb.Unit unit = 13;</code>
+       */
+      public Builder clearUnit() {  copyOnWrite();
+        instance.clearUnit();
+        return this;
+      }
+
+      /**
+       * <code>optional string unitId = 14;</code>
+       */
+      public String getUnitId() {
+        return instance.getUnitId();
+      }
+      /**
+       * <code>optional string unitId = 14;</code>
+       */
+      public com.google.protobuf.ByteString
+          getUnitIdBytes() {
+        return instance.getUnitIdBytes();
+      }
+      /**
+       * <code>optional string unitId = 14;</code>
+       */
+      public Builder setUnitId(
+          String value) {
+        copyOnWrite();
+        instance.setUnitId(value);
+        return this;
+      }
+      /**
+       * <code>optional string unitId = 14;</code>
+       */
+      public Builder clearUnitId() {
+        copyOnWrite();
+        instance.clearUnitId();
+        return this;
+      }
+      /**
+       * <code>optional string unitId = 14;</code>
+       */
+      public Builder setUnitIdBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setUnitIdBytes(value);
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:com.entities.pb.Inventory)
     }
     protected final Object dynamicMethod(
@@ -3375,6 +3592,9 @@ public final class InventoryProto {
               other.markedPrice_ != 0D, other.markedPrice_);
           salesPrice_ = visitor.visitDouble(salesPrice_ != 0D, salesPrice_,
               other.salesPrice_ != 0D, other.salesPrice_);
+          unit_ = visitor.visitMessage(unit_, other.unit_);
+          unitId_ = visitor.visitString(!unitId_.isEmpty(), unitId_,
+              !other.unitId_.isEmpty(), other.unitId_);
           if (visitor == MergeFromVisitor
               .INSTANCE) {
           }
@@ -3469,6 +3689,25 @@ public final class InventoryProto {
                 case 97: {
 
                   salesPrice_ = input.readDouble();
+                  break;
+                }
+                case 106: {
+                  Unit.Builder subBuilder = null;
+                  if (unit_ != null) {
+                    subBuilder = unit_.toBuilder();
+                  }
+                  unit_ = input.readMessage(Unit.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(unit_);
+                    unit_ = subBuilder.buildPartial();
+                  }
+
+                  break;
+                }
+                case 114: {
+                  String s = input.readStringRequireUtf8();
+
+                  unitId_ = s;
                   break;
                 }
               }
@@ -7939,6 +8178,1787 @@ public final class InventoryProto {
     private static volatile com.google.protobuf.Parser<SyncRequest> PARSER;
 
     public static com.google.protobuf.Parser<SyncRequest> parser() {
+      return DEFAULT_INSTANCE.getParserForType();
+    }
+  }
+
+  public interface SaleOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.entities.pb.Sale)
+      com.google.protobuf.MessageLiteOrBuilder {
+
+    /**
+     * <code>optional string sale_id = 1;</code>
+     */
+    String getSaleId();
+    /**
+     * <code>optional string sale_id = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getSaleIdBytes();
+
+    /**
+     * <code>optional double amount = 2;</code>
+     */
+    double getAmount();
+
+    /**
+     * <code>optional string description = 3;</code>
+     */
+    String getDescription();
+    /**
+     * <code>optional string description = 3;</code>
+     */
+    com.google.protobuf.ByteString
+        getDescriptionBytes();
+
+    /**
+     * <code>optional int64 created_at = 4;</code>
+     */
+    long getCreatedAt();
+
+    /**
+     * <code>optional int64 updated_at = 5;</code>
+     */
+    long getUpdatedAt();
+
+    /**
+     * <code>optional bool sync = 6;</code>
+     */
+    boolean getSync();
+
+    /**
+     * <code>optional bool isCredit = 7;</code>
+     */
+    boolean getIsCredit();
+
+    /**
+     * <code>optional string creditor_id = 8;</code>
+     */
+    String getCreditorId();
+    /**
+     * <code>optional string creditor_id = 8;</code>
+     */
+    com.google.protobuf.ByteString
+        getCreditorIdBytes();
+
+    /**
+     * <code>optional .com.entities.pb.Creditor creditor = 9;</code>
+     */
+    boolean hasCreditor();
+    /**
+     * <code>optional .com.entities.pb.Creditor creditor = 9;</code>
+     */
+    AccountProto.Creditor getCreditor();
+  }
+  /**
+   * Protobuf type {@code com.entities.pb.Sale}
+   */
+  public  static final class Sale extends
+      com.google.protobuf.GeneratedMessageLite<
+          Sale, Sale.Builder> implements
+      // @@protoc_insertion_point(message_implements:com.entities.pb.Sale)
+      SaleOrBuilder {
+    private Sale() {
+      saleId_ = "";
+      description_ = "";
+      creditorId_ = "";
+    }
+    public static final int SALE_ID_FIELD_NUMBER = 1;
+    private String saleId_;
+    /**
+     * <code>optional string sale_id = 1;</code>
+     */
+    public String getSaleId() {
+      return saleId_;
+    }
+    /**
+     * <code>optional string sale_id = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getSaleIdBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(saleId_);
+    }
+    /**
+     * <code>optional string sale_id = 1;</code>
+     */
+    private void setSaleId(
+        String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      saleId_ = value;
+    }
+    /**
+     * <code>optional string sale_id = 1;</code>
+     */
+    private void clearSaleId() {
+      
+      saleId_ = getDefaultInstance().getSaleId();
+    }
+    /**
+     * <code>optional string sale_id = 1;</code>
+     */
+    private void setSaleIdBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      saleId_ = value.toStringUtf8();
+    }
+
+    public static final int AMOUNT_FIELD_NUMBER = 2;
+    private double amount_;
+    /**
+     * <code>optional double amount = 2;</code>
+     */
+    public double getAmount() {
+      return amount_;
+    }
+    /**
+     * <code>optional double amount = 2;</code>
+     */
+    private void setAmount(double value) {
+      
+      amount_ = value;
+    }
+    /**
+     * <code>optional double amount = 2;</code>
+     */
+    private void clearAmount() {
+      
+      amount_ = 0D;
+    }
+
+    public static final int DESCRIPTION_FIELD_NUMBER = 3;
+    private String description_;
+    /**
+     * <code>optional string description = 3;</code>
+     */
+    public String getDescription() {
+      return description_;
+    }
+    /**
+     * <code>optional string description = 3;</code>
+     */
+    public com.google.protobuf.ByteString
+        getDescriptionBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(description_);
+    }
+    /**
+     * <code>optional string description = 3;</code>
+     */
+    private void setDescription(
+        String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      description_ = value;
+    }
+    /**
+     * <code>optional string description = 3;</code>
+     */
+    private void clearDescription() {
+      
+      description_ = getDefaultInstance().getDescription();
+    }
+    /**
+     * <code>optional string description = 3;</code>
+     */
+    private void setDescriptionBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      description_ = value.toStringUtf8();
+    }
+
+    public static final int CREATED_AT_FIELD_NUMBER = 4;
+    private long createdAt_;
+    /**
+     * <code>optional int64 created_at = 4;</code>
+     */
+    public long getCreatedAt() {
+      return createdAt_;
+    }
+    /**
+     * <code>optional int64 created_at = 4;</code>
+     */
+    private void setCreatedAt(long value) {
+      
+      createdAt_ = value;
+    }
+    /**
+     * <code>optional int64 created_at = 4;</code>
+     */
+    private void clearCreatedAt() {
+      
+      createdAt_ = 0L;
+    }
+
+    public static final int UPDATED_AT_FIELD_NUMBER = 5;
+    private long updatedAt_;
+    /**
+     * <code>optional int64 updated_at = 5;</code>
+     */
+    public long getUpdatedAt() {
+      return updatedAt_;
+    }
+    /**
+     * <code>optional int64 updated_at = 5;</code>
+     */
+    private void setUpdatedAt(long value) {
+      
+      updatedAt_ = value;
+    }
+    /**
+     * <code>optional int64 updated_at = 5;</code>
+     */
+    private void clearUpdatedAt() {
+      
+      updatedAt_ = 0L;
+    }
+
+    public static final int SYNC_FIELD_NUMBER = 6;
+    private boolean sync_;
+    /**
+     * <code>optional bool sync = 6;</code>
+     */
+    public boolean getSync() {
+      return sync_;
+    }
+    /**
+     * <code>optional bool sync = 6;</code>
+     */
+    private void setSync(boolean value) {
+      
+      sync_ = value;
+    }
+    /**
+     * <code>optional bool sync = 6;</code>
+     */
+    private void clearSync() {
+      
+      sync_ = false;
+    }
+
+    public static final int ISCREDIT_FIELD_NUMBER = 7;
+    private boolean isCredit_;
+    /**
+     * <code>optional bool isCredit = 7;</code>
+     */
+    public boolean getIsCredit() {
+      return isCredit_;
+    }
+    /**
+     * <code>optional bool isCredit = 7;</code>
+     */
+    private void setIsCredit(boolean value) {
+      
+      isCredit_ = value;
+    }
+    /**
+     * <code>optional bool isCredit = 7;</code>
+     */
+    private void clearIsCredit() {
+      
+      isCredit_ = false;
+    }
+
+    public static final int CREDITOR_ID_FIELD_NUMBER = 8;
+    private String creditorId_;
+    /**
+     * <code>optional string creditor_id = 8;</code>
+     */
+    public String getCreditorId() {
+      return creditorId_;
+    }
+    /**
+     * <code>optional string creditor_id = 8;</code>
+     */
+    public com.google.protobuf.ByteString
+        getCreditorIdBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(creditorId_);
+    }
+    /**
+     * <code>optional string creditor_id = 8;</code>
+     */
+    private void setCreditorId(
+        String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      creditorId_ = value;
+    }
+    /**
+     * <code>optional string creditor_id = 8;</code>
+     */
+    private void clearCreditorId() {
+      
+      creditorId_ = getDefaultInstance().getCreditorId();
+    }
+    /**
+     * <code>optional string creditor_id = 8;</code>
+     */
+    private void setCreditorIdBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      creditorId_ = value.toStringUtf8();
+    }
+
+    public static final int CREDITOR_FIELD_NUMBER = 9;
+    private AccountProto.Creditor creditor_;
+    /**
+     * <code>optional .com.entities.pb.Creditor creditor = 9;</code>
+     */
+    public boolean hasCreditor() {
+      return creditor_ != null;
+    }
+    /**
+     * <code>optional .com.entities.pb.Creditor creditor = 9;</code>
+     */
+    public AccountProto.Creditor getCreditor() {
+      return creditor_ == null ? AccountProto.Creditor.getDefaultInstance() : creditor_;
+    }
+    /**
+     * <code>optional .com.entities.pb.Creditor creditor = 9;</code>
+     */
+    private void setCreditor(AccountProto.Creditor value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      creditor_ = value;
+      
+      }
+    /**
+     * <code>optional .com.entities.pb.Creditor creditor = 9;</code>
+     */
+    private void setCreditor(
+        AccountProto.Creditor.Builder builderForValue) {
+      creditor_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>optional .com.entities.pb.Creditor creditor = 9;</code>
+     */
+    private void mergeCreditor(AccountProto.Creditor value) {
+      if (creditor_ != null &&
+          creditor_ != AccountProto.Creditor.getDefaultInstance()) {
+        creditor_ =
+          AccountProto.Creditor.newBuilder(creditor_).mergeFrom(value).buildPartial();
+      } else {
+        creditor_ = value;
+      }
+      
+    }
+    /**
+     * <code>optional .com.entities.pb.Creditor creditor = 9;</code>
+     */
+    private void clearCreditor() {  creditor_ = null;
+      
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!saleId_.isEmpty()) {
+        output.writeString(1, getSaleId());
+      }
+      if (amount_ != 0D) {
+        output.writeDouble(2, amount_);
+      }
+      if (!description_.isEmpty()) {
+        output.writeString(3, getDescription());
+      }
+      if (createdAt_ != 0L) {
+        output.writeInt64(4, createdAt_);
+      }
+      if (updatedAt_ != 0L) {
+        output.writeInt64(5, updatedAt_);
+      }
+      if (sync_ != false) {
+        output.writeBool(6, sync_);
+      }
+      if (isCredit_ != false) {
+        output.writeBool(7, isCredit_);
+      }
+      if (!creditorId_.isEmpty()) {
+        output.writeString(8, getCreditorId());
+      }
+      if (creditor_ != null) {
+        output.writeMessage(9, getCreditor());
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!saleId_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeStringSize(1, getSaleId());
+      }
+      if (amount_ != 0D) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(2, amount_);
+      }
+      if (!description_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeStringSize(3, getDescription());
+      }
+      if (createdAt_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(4, createdAt_);
+      }
+      if (updatedAt_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(5, updatedAt_);
+      }
+      if (sync_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(6, sync_);
+      }
+      if (isCredit_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(7, isCredit_);
+      }
+      if (!creditorId_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeStringSize(8, getCreditorId());
+      }
+      if (creditor_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(9, getCreditor());
+      }
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    public static Sale parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static Sale parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static Sale parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static Sale parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static Sale parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static Sale parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static Sale parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    }
+    public static Sale parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static Sale parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static Sale parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(Sale prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+
+    /**
+     * Protobuf type {@code com.entities.pb.Sale}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          Sale, Builder> implements
+        // @@protoc_insertion_point(builder_implements:com.entities.pb.Sale)
+        SaleOrBuilder {
+      // Construct using com.treeleaf.suchi.entities.InventoryProto.Sale.newBuilder()
+      private Builder() {
+        super(DEFAULT_INSTANCE);
+      }
+
+
+      /**
+       * <code>optional string sale_id = 1;</code>
+       */
+      public String getSaleId() {
+        return instance.getSaleId();
+      }
+      /**
+       * <code>optional string sale_id = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getSaleIdBytes() {
+        return instance.getSaleIdBytes();
+      }
+      /**
+       * <code>optional string sale_id = 1;</code>
+       */
+      public Builder setSaleId(
+          String value) {
+        copyOnWrite();
+        instance.setSaleId(value);
+        return this;
+      }
+      /**
+       * <code>optional string sale_id = 1;</code>
+       */
+      public Builder clearSaleId() {
+        copyOnWrite();
+        instance.clearSaleId();
+        return this;
+      }
+      /**
+       * <code>optional string sale_id = 1;</code>
+       */
+      public Builder setSaleIdBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setSaleIdBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>optional double amount = 2;</code>
+       */
+      public double getAmount() {
+        return instance.getAmount();
+      }
+      /**
+       * <code>optional double amount = 2;</code>
+       */
+      public Builder setAmount(double value) {
+        copyOnWrite();
+        instance.setAmount(value);
+        return this;
+      }
+      /**
+       * <code>optional double amount = 2;</code>
+       */
+      public Builder clearAmount() {
+        copyOnWrite();
+        instance.clearAmount();
+        return this;
+      }
+
+      /**
+       * <code>optional string description = 3;</code>
+       */
+      public String getDescription() {
+        return instance.getDescription();
+      }
+      /**
+       * <code>optional string description = 3;</code>
+       */
+      public com.google.protobuf.ByteString
+          getDescriptionBytes() {
+        return instance.getDescriptionBytes();
+      }
+      /**
+       * <code>optional string description = 3;</code>
+       */
+      public Builder setDescription(
+          String value) {
+        copyOnWrite();
+        instance.setDescription(value);
+        return this;
+      }
+      /**
+       * <code>optional string description = 3;</code>
+       */
+      public Builder clearDescription() {
+        copyOnWrite();
+        instance.clearDescription();
+        return this;
+      }
+      /**
+       * <code>optional string description = 3;</code>
+       */
+      public Builder setDescriptionBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setDescriptionBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>optional int64 created_at = 4;</code>
+       */
+      public long getCreatedAt() {
+        return instance.getCreatedAt();
+      }
+      /**
+       * <code>optional int64 created_at = 4;</code>
+       */
+      public Builder setCreatedAt(long value) {
+        copyOnWrite();
+        instance.setCreatedAt(value);
+        return this;
+      }
+      /**
+       * <code>optional int64 created_at = 4;</code>
+       */
+      public Builder clearCreatedAt() {
+        copyOnWrite();
+        instance.clearCreatedAt();
+        return this;
+      }
+
+      /**
+       * <code>optional int64 updated_at = 5;</code>
+       */
+      public long getUpdatedAt() {
+        return instance.getUpdatedAt();
+      }
+      /**
+       * <code>optional int64 updated_at = 5;</code>
+       */
+      public Builder setUpdatedAt(long value) {
+        copyOnWrite();
+        instance.setUpdatedAt(value);
+        return this;
+      }
+      /**
+       * <code>optional int64 updated_at = 5;</code>
+       */
+      public Builder clearUpdatedAt() {
+        copyOnWrite();
+        instance.clearUpdatedAt();
+        return this;
+      }
+
+      /**
+       * <code>optional bool sync = 6;</code>
+       */
+      public boolean getSync() {
+        return instance.getSync();
+      }
+      /**
+       * <code>optional bool sync = 6;</code>
+       */
+      public Builder setSync(boolean value) {
+        copyOnWrite();
+        instance.setSync(value);
+        return this;
+      }
+      /**
+       * <code>optional bool sync = 6;</code>
+       */
+      public Builder clearSync() {
+        copyOnWrite();
+        instance.clearSync();
+        return this;
+      }
+
+      /**
+       * <code>optional bool isCredit = 7;</code>
+       */
+      public boolean getIsCredit() {
+        return instance.getIsCredit();
+      }
+      /**
+       * <code>optional bool isCredit = 7;</code>
+       */
+      public Builder setIsCredit(boolean value) {
+        copyOnWrite();
+        instance.setIsCredit(value);
+        return this;
+      }
+      /**
+       * <code>optional bool isCredit = 7;</code>
+       */
+      public Builder clearIsCredit() {
+        copyOnWrite();
+        instance.clearIsCredit();
+        return this;
+      }
+
+      /**
+       * <code>optional string creditor_id = 8;</code>
+       */
+      public String getCreditorId() {
+        return instance.getCreditorId();
+      }
+      /**
+       * <code>optional string creditor_id = 8;</code>
+       */
+      public com.google.protobuf.ByteString
+          getCreditorIdBytes() {
+        return instance.getCreditorIdBytes();
+      }
+      /**
+       * <code>optional string creditor_id = 8;</code>
+       */
+      public Builder setCreditorId(
+          String value) {
+        copyOnWrite();
+        instance.setCreditorId(value);
+        return this;
+      }
+      /**
+       * <code>optional string creditor_id = 8;</code>
+       */
+      public Builder clearCreditorId() {
+        copyOnWrite();
+        instance.clearCreditorId();
+        return this;
+      }
+      /**
+       * <code>optional string creditor_id = 8;</code>
+       */
+      public Builder setCreditorIdBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setCreditorIdBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>optional .com.entities.pb.Creditor creditor = 9;</code>
+       */
+      public boolean hasCreditor() {
+        return instance.hasCreditor();
+      }
+      /**
+       * <code>optional .com.entities.pb.Creditor creditor = 9;</code>
+       */
+      public AccountProto.Creditor getCreditor() {
+        return instance.getCreditor();
+      }
+      /**
+       * <code>optional .com.entities.pb.Creditor creditor = 9;</code>
+       */
+      public Builder setCreditor(AccountProto.Creditor value) {
+        copyOnWrite();
+        instance.setCreditor(value);
+        return this;
+        }
+      /**
+       * <code>optional .com.entities.pb.Creditor creditor = 9;</code>
+       */
+      public Builder setCreditor(
+          AccountProto.Creditor.Builder builderForValue) {
+        copyOnWrite();
+        instance.setCreditor(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .com.entities.pb.Creditor creditor = 9;</code>
+       */
+      public Builder mergeCreditor(AccountProto.Creditor value) {
+        copyOnWrite();
+        instance.mergeCreditor(value);
+        return this;
+      }
+      /**
+       * <code>optional .com.entities.pb.Creditor creditor = 9;</code>
+       */
+      public Builder clearCreditor() {  copyOnWrite();
+        instance.clearCreditor();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.entities.pb.Sale)
+    }
+    protected final Object dynamicMethod(
+        MethodToInvoke method,
+        Object arg0, Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new Sale();
+        }
+        case IS_INITIALIZED: {
+          return DEFAULT_INSTANCE;
+        }
+        case MAKE_IMMUTABLE: {
+          return null;
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case VISIT: {
+          Visitor visitor = (Visitor) arg0;
+          Sale other = (Sale) arg1;
+          saleId_ = visitor.visitString(!saleId_.isEmpty(), saleId_,
+              !other.saleId_.isEmpty(), other.saleId_);
+          amount_ = visitor.visitDouble(amount_ != 0D, amount_,
+              other.amount_ != 0D, other.amount_);
+          description_ = visitor.visitString(!description_.isEmpty(), description_,
+              !other.description_.isEmpty(), other.description_);
+          createdAt_ = visitor.visitLong(createdAt_ != 0L, createdAt_,
+              other.createdAt_ != 0L, other.createdAt_);
+          updatedAt_ = visitor.visitLong(updatedAt_ != 0L, updatedAt_,
+              other.updatedAt_ != 0L, other.updatedAt_);
+          sync_ = visitor.visitBoolean(sync_ != false, sync_,
+              other.sync_ != false, other.sync_);
+          isCredit_ = visitor.visitBoolean(isCredit_ != false, isCredit_,
+              other.isCredit_ != false, other.isCredit_);
+          creditorId_ = visitor.visitString(!creditorId_.isEmpty(), creditorId_,
+              !other.creditorId_.isEmpty(), other.creditorId_);
+          creditor_ = visitor.visitMessage(creditor_, other.creditor_);
+          if (visitor == MergeFromVisitor
+              .INSTANCE) {
+          }
+          return this;
+        }
+        case MERGE_FROM_STREAM: {
+          com.google.protobuf.CodedInputStream input =
+              (com.google.protobuf.CodedInputStream) arg0;
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry =
+              (com.google.protobuf.ExtensionRegistryLite) arg1;
+          try {
+            boolean done = false;
+            while (!done) {
+              int tag = input.readTag();
+              switch (tag) {
+                case 0:
+                  done = true;
+                  break;
+                default: {
+                  if (!input.skipField(tag)) {
+                    done = true;
+                  }
+                  break;
+                }
+                case 10: {
+                  String s = input.readStringRequireUtf8();
+
+                  saleId_ = s;
+                  break;
+                }
+                case 17: {
+
+                  amount_ = input.readDouble();
+                  break;
+                }
+                case 26: {
+                  String s = input.readStringRequireUtf8();
+
+                  description_ = s;
+                  break;
+                }
+                case 32: {
+
+                  createdAt_ = input.readInt64();
+                  break;
+                }
+                case 40: {
+
+                  updatedAt_ = input.readInt64();
+                  break;
+                }
+                case 48: {
+
+                  sync_ = input.readBool();
+                  break;
+                }
+                case 56: {
+
+                  isCredit_ = input.readBool();
+                  break;
+                }
+                case 66: {
+                  String s = input.readStringRequireUtf8();
+
+                  creditorId_ = s;
+                  break;
+                }
+                case 74: {
+                  AccountProto.Creditor.Builder subBuilder = null;
+                  if (creditor_ != null) {
+                    subBuilder = creditor_.toBuilder();
+                  }
+                  creditor_ = input.readMessage(AccountProto.Creditor.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(creditor_);
+                    creditor_ = subBuilder.buildPartial();
+                  }
+
+                  break;
+                }
+              }
+            }
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw new RuntimeException(e.setUnfinishedMessage(this));
+          } catch (java.io.IOException e) {
+            throw new RuntimeException(
+                new com.google.protobuf.InvalidProtocolBufferException(
+                    e.getMessage()).setUnfinishedMessage(this));
+          } finally {
+          }
+        }
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          if (PARSER == null) {    synchronized (Sale.class) {
+              if (PARSER == null) {
+                PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+              }
+            }
+          }
+          return PARSER;
+        }
+      }
+      throw new UnsupportedOperationException();
+    }
+
+
+    // @@protoc_insertion_point(class_scope:com.entities.pb.Sale)
+    private static final Sale DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new Sale();
+      DEFAULT_INSTANCE.makeImmutable();
+    }
+
+    public static Sale getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static volatile com.google.protobuf.Parser<Sale> PARSER;
+
+    public static com.google.protobuf.Parser<Sale> parser() {
+      return DEFAULT_INSTANCE.getParserForType();
+    }
+  }
+
+  public interface Sale_inventoryOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.entities.pb.Sale_inventory)
+      com.google.protobuf.MessageLiteOrBuilder {
+
+    /**
+     * <code>optional string sale_inventory_id = 1;</code>
+     */
+    String getSaleInventoryId();
+    /**
+     * <code>optional string sale_inventory_id = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getSaleInventoryIdBytes();
+
+    /**
+     * <code>optional string inventory_id = 2;</code>
+     */
+    String getInventoryId();
+    /**
+     * <code>optional string inventory_id = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getInventoryIdBytes();
+
+    /**
+     * <code>optional int32 quantity = 3;</code>
+     */
+    int getQuantity();
+
+    /**
+     * <code>optional double amount = 4;</code>
+     */
+    double getAmount();
+
+    /**
+     * <code>optional .com.entities.pb.Inventory inventory = 5;</code>
+     */
+    boolean hasInventory();
+    /**
+     * <code>optional .com.entities.pb.Inventory inventory = 5;</code>
+     */
+    Inventory getInventory();
+
+    /**
+     * <code>optional string sale_id = 6;</code>
+     */
+    String getSaleId();
+    /**
+     * <code>optional string sale_id = 6;</code>
+     */
+    com.google.protobuf.ByteString
+        getSaleIdBytes();
+  }
+  /**
+   * Protobuf type {@code com.entities.pb.Sale_inventory}
+   */
+  public  static final class Sale_inventory extends
+      com.google.protobuf.GeneratedMessageLite<
+          Sale_inventory, Sale_inventory.Builder> implements
+      // @@protoc_insertion_point(message_implements:com.entities.pb.Sale_inventory)
+      Sale_inventoryOrBuilder {
+    private Sale_inventory() {
+      saleInventoryId_ = "";
+      inventoryId_ = "";
+      saleId_ = "";
+    }
+    public static final int SALE_INVENTORY_ID_FIELD_NUMBER = 1;
+    private String saleInventoryId_;
+    /**
+     * <code>optional string sale_inventory_id = 1;</code>
+     */
+    public String getSaleInventoryId() {
+      return saleInventoryId_;
+    }
+    /**
+     * <code>optional string sale_inventory_id = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getSaleInventoryIdBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(saleInventoryId_);
+    }
+    /**
+     * <code>optional string sale_inventory_id = 1;</code>
+     */
+    private void setSaleInventoryId(
+        String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      saleInventoryId_ = value;
+    }
+    /**
+     * <code>optional string sale_inventory_id = 1;</code>
+     */
+    private void clearSaleInventoryId() {
+      
+      saleInventoryId_ = getDefaultInstance().getSaleInventoryId();
+    }
+    /**
+     * <code>optional string sale_inventory_id = 1;</code>
+     */
+    private void setSaleInventoryIdBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      saleInventoryId_ = value.toStringUtf8();
+    }
+
+    public static final int INVENTORY_ID_FIELD_NUMBER = 2;
+    private String inventoryId_;
+    /**
+     * <code>optional string inventory_id = 2;</code>
+     */
+    public String getInventoryId() {
+      return inventoryId_;
+    }
+    /**
+     * <code>optional string inventory_id = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getInventoryIdBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(inventoryId_);
+    }
+    /**
+     * <code>optional string inventory_id = 2;</code>
+     */
+    private void setInventoryId(
+        String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      inventoryId_ = value;
+    }
+    /**
+     * <code>optional string inventory_id = 2;</code>
+     */
+    private void clearInventoryId() {
+      
+      inventoryId_ = getDefaultInstance().getInventoryId();
+    }
+    /**
+     * <code>optional string inventory_id = 2;</code>
+     */
+    private void setInventoryIdBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      inventoryId_ = value.toStringUtf8();
+    }
+
+    public static final int QUANTITY_FIELD_NUMBER = 3;
+    private int quantity_;
+    /**
+     * <code>optional int32 quantity = 3;</code>
+     */
+    public int getQuantity() {
+      return quantity_;
+    }
+    /**
+     * <code>optional int32 quantity = 3;</code>
+     */
+    private void setQuantity(int value) {
+      
+      quantity_ = value;
+    }
+    /**
+     * <code>optional int32 quantity = 3;</code>
+     */
+    private void clearQuantity() {
+      
+      quantity_ = 0;
+    }
+
+    public static final int AMOUNT_FIELD_NUMBER = 4;
+    private double amount_;
+    /**
+     * <code>optional double amount = 4;</code>
+     */
+    public double getAmount() {
+      return amount_;
+    }
+    /**
+     * <code>optional double amount = 4;</code>
+     */
+    private void setAmount(double value) {
+      
+      amount_ = value;
+    }
+    /**
+     * <code>optional double amount = 4;</code>
+     */
+    private void clearAmount() {
+      
+      amount_ = 0D;
+    }
+
+    public static final int INVENTORY_FIELD_NUMBER = 5;
+    private Inventory inventory_;
+    /**
+     * <code>optional .com.entities.pb.Inventory inventory = 5;</code>
+     */
+    public boolean hasInventory() {
+      return inventory_ != null;
+    }
+    /**
+     * <code>optional .com.entities.pb.Inventory inventory = 5;</code>
+     */
+    public Inventory getInventory() {
+      return inventory_ == null ? Inventory.getDefaultInstance() : inventory_;
+    }
+    /**
+     * <code>optional .com.entities.pb.Inventory inventory = 5;</code>
+     */
+    private void setInventory(Inventory value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      inventory_ = value;
+      
+      }
+    /**
+     * <code>optional .com.entities.pb.Inventory inventory = 5;</code>
+     */
+    private void setInventory(
+        Inventory.Builder builderForValue) {
+      inventory_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>optional .com.entities.pb.Inventory inventory = 5;</code>
+     */
+    private void mergeInventory(Inventory value) {
+      if (inventory_ != null &&
+          inventory_ != Inventory.getDefaultInstance()) {
+        inventory_ =
+          Inventory.newBuilder(inventory_).mergeFrom(value).buildPartial();
+      } else {
+        inventory_ = value;
+      }
+      
+    }
+    /**
+     * <code>optional .com.entities.pb.Inventory inventory = 5;</code>
+     */
+    private void clearInventory() {  inventory_ = null;
+      
+    }
+
+    public static final int SALE_ID_FIELD_NUMBER = 6;
+    private String saleId_;
+    /**
+     * <code>optional string sale_id = 6;</code>
+     */
+    public String getSaleId() {
+      return saleId_;
+    }
+    /**
+     * <code>optional string sale_id = 6;</code>
+     */
+    public com.google.protobuf.ByteString
+        getSaleIdBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(saleId_);
+    }
+    /**
+     * <code>optional string sale_id = 6;</code>
+     */
+    private void setSaleId(
+        String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      saleId_ = value;
+    }
+    /**
+     * <code>optional string sale_id = 6;</code>
+     */
+    private void clearSaleId() {
+      
+      saleId_ = getDefaultInstance().getSaleId();
+    }
+    /**
+     * <code>optional string sale_id = 6;</code>
+     */
+    private void setSaleIdBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      saleId_ = value.toStringUtf8();
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!saleInventoryId_.isEmpty()) {
+        output.writeString(1, getSaleInventoryId());
+      }
+      if (!inventoryId_.isEmpty()) {
+        output.writeString(2, getInventoryId());
+      }
+      if (quantity_ != 0) {
+        output.writeInt32(3, quantity_);
+      }
+      if (amount_ != 0D) {
+        output.writeDouble(4, amount_);
+      }
+      if (inventory_ != null) {
+        output.writeMessage(5, getInventory());
+      }
+      if (!saleId_.isEmpty()) {
+        output.writeString(6, getSaleId());
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!saleInventoryId_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeStringSize(1, getSaleInventoryId());
+      }
+      if (!inventoryId_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeStringSize(2, getInventoryId());
+      }
+      if (quantity_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, quantity_);
+      }
+      if (amount_ != 0D) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(4, amount_);
+      }
+      if (inventory_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(5, getInventory());
+      }
+      if (!saleId_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeStringSize(6, getSaleId());
+      }
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    public static Sale_inventory parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static Sale_inventory parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static Sale_inventory parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static Sale_inventory parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static Sale_inventory parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static Sale_inventory parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static Sale_inventory parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    }
+    public static Sale_inventory parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static Sale_inventory parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static Sale_inventory parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(Sale_inventory prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+
+    /**
+     * Protobuf type {@code com.entities.pb.Sale_inventory}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          Sale_inventory, Builder> implements
+        // @@protoc_insertion_point(builder_implements:com.entities.pb.Sale_inventory)
+        Sale_inventoryOrBuilder {
+      // Construct using com.treeleaf.suchi.entities.InventoryProto.Sale_inventory.newBuilder()
+      private Builder() {
+        super(DEFAULT_INSTANCE);
+      }
+
+
+      /**
+       * <code>optional string sale_inventory_id = 1;</code>
+       */
+      public String getSaleInventoryId() {
+        return instance.getSaleInventoryId();
+      }
+      /**
+       * <code>optional string sale_inventory_id = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getSaleInventoryIdBytes() {
+        return instance.getSaleInventoryIdBytes();
+      }
+      /**
+       * <code>optional string sale_inventory_id = 1;</code>
+       */
+      public Builder setSaleInventoryId(
+          String value) {
+        copyOnWrite();
+        instance.setSaleInventoryId(value);
+        return this;
+      }
+      /**
+       * <code>optional string sale_inventory_id = 1;</code>
+       */
+      public Builder clearSaleInventoryId() {
+        copyOnWrite();
+        instance.clearSaleInventoryId();
+        return this;
+      }
+      /**
+       * <code>optional string sale_inventory_id = 1;</code>
+       */
+      public Builder setSaleInventoryIdBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setSaleInventoryIdBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>optional string inventory_id = 2;</code>
+       */
+      public String getInventoryId() {
+        return instance.getInventoryId();
+      }
+      /**
+       * <code>optional string inventory_id = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getInventoryIdBytes() {
+        return instance.getInventoryIdBytes();
+      }
+      /**
+       * <code>optional string inventory_id = 2;</code>
+       */
+      public Builder setInventoryId(
+          String value) {
+        copyOnWrite();
+        instance.setInventoryId(value);
+        return this;
+      }
+      /**
+       * <code>optional string inventory_id = 2;</code>
+       */
+      public Builder clearInventoryId() {
+        copyOnWrite();
+        instance.clearInventoryId();
+        return this;
+      }
+      /**
+       * <code>optional string inventory_id = 2;</code>
+       */
+      public Builder setInventoryIdBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setInventoryIdBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>optional int32 quantity = 3;</code>
+       */
+      public int getQuantity() {
+        return instance.getQuantity();
+      }
+      /**
+       * <code>optional int32 quantity = 3;</code>
+       */
+      public Builder setQuantity(int value) {
+        copyOnWrite();
+        instance.setQuantity(value);
+        return this;
+      }
+      /**
+       * <code>optional int32 quantity = 3;</code>
+       */
+      public Builder clearQuantity() {
+        copyOnWrite();
+        instance.clearQuantity();
+        return this;
+      }
+
+      /**
+       * <code>optional double amount = 4;</code>
+       */
+      public double getAmount() {
+        return instance.getAmount();
+      }
+      /**
+       * <code>optional double amount = 4;</code>
+       */
+      public Builder setAmount(double value) {
+        copyOnWrite();
+        instance.setAmount(value);
+        return this;
+      }
+      /**
+       * <code>optional double amount = 4;</code>
+       */
+      public Builder clearAmount() {
+        copyOnWrite();
+        instance.clearAmount();
+        return this;
+      }
+
+      /**
+       * <code>optional .com.entities.pb.Inventory inventory = 5;</code>
+       */
+      public boolean hasInventory() {
+        return instance.hasInventory();
+      }
+      /**
+       * <code>optional .com.entities.pb.Inventory inventory = 5;</code>
+       */
+      public Inventory getInventory() {
+        return instance.getInventory();
+      }
+      /**
+       * <code>optional .com.entities.pb.Inventory inventory = 5;</code>
+       */
+      public Builder setInventory(Inventory value) {
+        copyOnWrite();
+        instance.setInventory(value);
+        return this;
+        }
+      /**
+       * <code>optional .com.entities.pb.Inventory inventory = 5;</code>
+       */
+      public Builder setInventory(
+          Inventory.Builder builderForValue) {
+        copyOnWrite();
+        instance.setInventory(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .com.entities.pb.Inventory inventory = 5;</code>
+       */
+      public Builder mergeInventory(Inventory value) {
+        copyOnWrite();
+        instance.mergeInventory(value);
+        return this;
+      }
+      /**
+       * <code>optional .com.entities.pb.Inventory inventory = 5;</code>
+       */
+      public Builder clearInventory() {  copyOnWrite();
+        instance.clearInventory();
+        return this;
+      }
+
+      /**
+       * <code>optional string sale_id = 6;</code>
+       */
+      public String getSaleId() {
+        return instance.getSaleId();
+      }
+      /**
+       * <code>optional string sale_id = 6;</code>
+       */
+      public com.google.protobuf.ByteString
+          getSaleIdBytes() {
+        return instance.getSaleIdBytes();
+      }
+      /**
+       * <code>optional string sale_id = 6;</code>
+       */
+      public Builder setSaleId(
+          String value) {
+        copyOnWrite();
+        instance.setSaleId(value);
+        return this;
+      }
+      /**
+       * <code>optional string sale_id = 6;</code>
+       */
+      public Builder clearSaleId() {
+        copyOnWrite();
+        instance.clearSaleId();
+        return this;
+      }
+      /**
+       * <code>optional string sale_id = 6;</code>
+       */
+      public Builder setSaleIdBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setSaleIdBytes(value);
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.entities.pb.Sale_inventory)
+    }
+    protected final Object dynamicMethod(
+        MethodToInvoke method,
+        Object arg0, Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new Sale_inventory();
+        }
+        case IS_INITIALIZED: {
+          return DEFAULT_INSTANCE;
+        }
+        case MAKE_IMMUTABLE: {
+          return null;
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case VISIT: {
+          Visitor visitor = (Visitor) arg0;
+          Sale_inventory other = (Sale_inventory) arg1;
+          saleInventoryId_ = visitor.visitString(!saleInventoryId_.isEmpty(), saleInventoryId_,
+              !other.saleInventoryId_.isEmpty(), other.saleInventoryId_);
+          inventoryId_ = visitor.visitString(!inventoryId_.isEmpty(), inventoryId_,
+              !other.inventoryId_.isEmpty(), other.inventoryId_);
+          quantity_ = visitor.visitInt(quantity_ != 0, quantity_,
+              other.quantity_ != 0, other.quantity_);
+          amount_ = visitor.visitDouble(amount_ != 0D, amount_,
+              other.amount_ != 0D, other.amount_);
+          inventory_ = visitor.visitMessage(inventory_, other.inventory_);
+          saleId_ = visitor.visitString(!saleId_.isEmpty(), saleId_,
+              !other.saleId_.isEmpty(), other.saleId_);
+          if (visitor == MergeFromVisitor
+              .INSTANCE) {
+          }
+          return this;
+        }
+        case MERGE_FROM_STREAM: {
+          com.google.protobuf.CodedInputStream input =
+              (com.google.protobuf.CodedInputStream) arg0;
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry =
+              (com.google.protobuf.ExtensionRegistryLite) arg1;
+          try {
+            boolean done = false;
+            while (!done) {
+              int tag = input.readTag();
+              switch (tag) {
+                case 0:
+                  done = true;
+                  break;
+                default: {
+                  if (!input.skipField(tag)) {
+                    done = true;
+                  }
+                  break;
+                }
+                case 10: {
+                  String s = input.readStringRequireUtf8();
+
+                  saleInventoryId_ = s;
+                  break;
+                }
+                case 18: {
+                  String s = input.readStringRequireUtf8();
+
+                  inventoryId_ = s;
+                  break;
+                }
+                case 24: {
+
+                  quantity_ = input.readInt32();
+                  break;
+                }
+                case 33: {
+
+                  amount_ = input.readDouble();
+                  break;
+                }
+                case 42: {
+                  Inventory.Builder subBuilder = null;
+                  if (inventory_ != null) {
+                    subBuilder = inventory_.toBuilder();
+                  }
+                  inventory_ = input.readMessage(Inventory.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(inventory_);
+                    inventory_ = subBuilder.buildPartial();
+                  }
+
+                  break;
+                }
+                case 50: {
+                  String s = input.readStringRequireUtf8();
+
+                  saleId_ = s;
+                  break;
+                }
+              }
+            }
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw new RuntimeException(e.setUnfinishedMessage(this));
+          } catch (java.io.IOException e) {
+            throw new RuntimeException(
+                new com.google.protobuf.InvalidProtocolBufferException(
+                    e.getMessage()).setUnfinishedMessage(this));
+          } finally {
+          }
+        }
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          if (PARSER == null) {    synchronized (Sale_inventory.class) {
+              if (PARSER == null) {
+                PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+              }
+            }
+          }
+          return PARSER;
+        }
+      }
+      throw new UnsupportedOperationException();
+    }
+
+
+    // @@protoc_insertion_point(class_scope:com.entities.pb.Sale_inventory)
+    private static final Sale_inventory DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new Sale_inventory();
+      DEFAULT_INSTANCE.makeImmutable();
+    }
+
+    public static Sale_inventory getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static volatile com.google.protobuf.Parser<Sale_inventory> PARSER;
+
+    public static com.google.protobuf.Parser<Sale_inventory> parser() {
       return DEFAULT_INSTANCE.getParserForType();
     }
   }

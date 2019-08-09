@@ -5,6 +5,7 @@ import android.os.Parcelable;
 
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
+
 public class Items extends RealmObject implements Parcelable {
     @PrimaryKey
     private String id;
@@ -13,6 +14,10 @@ public class Items extends RealmObject implements Parcelable {
     private String code;
     private String desc;
     private String unitPrice;
+    private String quantity;
+    private String markedPrice;
+    private String sellingPrice;
+    private String expiryDate;
     private Brands brand;
     private SubBrands subBrands;
     private Units units;
@@ -23,13 +28,17 @@ public class Items extends RealmObject implements Parcelable {
     }
 
 
-    public Items(String id, String name, String photo_url, String code, String desc, String unitPrice, Brands brand, SubBrands subBrands, Units units, Categories categories) {
+    public Items(String id, String name, String photo_url, String code, String desc, String unitPrice, String quantity, String markedPrice, String sellingPrice, String expiryDate, Brands brand, SubBrands subBrands, Units units, Categories categories) {
         this.id = id;
         this.name = name;
         this.photo_url = photo_url;
         this.code = code;
         this.desc = desc;
         this.unitPrice = unitPrice;
+        this.quantity = quantity;
+        this.markedPrice = markedPrice;
+        this.sellingPrice = sellingPrice;
+        this.expiryDate = expiryDate;
         this.brand = brand;
         this.subBrands = subBrands;
         this.units = units;
@@ -116,6 +125,38 @@ public class Items extends RealmObject implements Parcelable {
         this.categories = categories;
     }
 
+    public String getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(String quantity) {
+        this.quantity = quantity;
+    }
+
+    public String getMarkedPrice() {
+        return markedPrice;
+    }
+
+    public void setMarkedPrice(String markedPrice) {
+        this.markedPrice = markedPrice;
+    }
+
+    public String getSellingPrice() {
+        return sellingPrice;
+    }
+
+    public void setSellingPrice(String sellingPrice) {
+        this.sellingPrice = sellingPrice;
+    }
+
+    public String getExpiryDate() {
+        return expiryDate;
+    }
+
+    public void setExpiryDate(String expiryDate) {
+        this.expiryDate = expiryDate;
+    }
+
     protected Items(Parcel in) {
         id = in.readString();
         name = in.readString();
@@ -123,6 +164,10 @@ public class Items extends RealmObject implements Parcelable {
         code = in.readString();
         desc = in.readString();
         unitPrice = in.readString();
+        quantity = in.readString();
+        markedPrice = in.readString();
+        sellingPrice = in.readString();
+        expiryDate = in.readString();
         brand = (Brands) in.readValue(Brands.class.getClassLoader());
         subBrands = (SubBrands) in.readValue(SubBrands.class.getClassLoader());
         units = (Units) in.readValue(Units.class.getClassLoader());
@@ -142,6 +187,10 @@ public class Items extends RealmObject implements Parcelable {
         dest.writeString(code);
         dest.writeString(desc);
         dest.writeString(unitPrice);
+        dest.writeString(quantity);
+        dest.writeString(markedPrice);
+        dest.writeString(sellingPrice);
+        dest.writeString(expiryDate);
         dest.writeValue(brand);
         dest.writeValue(subBrands);
         dest.writeValue(units);

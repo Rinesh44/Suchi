@@ -22,43 +22,53 @@
             android:orientation="vertical"
             android:padding="15dp">
 
-            <LinearLayout
-                android:id="@+id/sku_selection_holder"
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/mcv_search_holder"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal"
-                android:weightSum="7">
+                app:cardCornerRadius="6dp"
+                app:cardUseCompatPadding="true">
 
-                <androidx.appcompat.widget.AppCompatAutoCompleteTextView
-                    android:id="@+id/actv_sku"
-                    android:layout_width="0dp"
+                <LinearLayout
+                    android:id="@+id/sku_selection_holder"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="6"
-                    android:completionThreshold="1"
-                    android:drawableStart="@drawable/ic_search"
-                    android:drawablePadding="10dp"
-                    android:hint="Search SKU" />
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="horizontal"
+                    android:weightSum="7">
 
-                <ImageView
-                    android:id="@+id/iv_go"
-                    android:layout_width="0dp"
-                    android:layout_height="25dp"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:foreground="?attr/selectableItemBackground"
-                    android:src="@drawable/ic_done" />
+                    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                        android:id="@+id/actv_sku"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="6"
+                        android:completionThreshold="1"
+                        android:drawablePadding="10dp"
+                        android:hint="Search SKU" />
 
-            </LinearLayout>
+                    <ImageView
+                        android:id="@+id/iv_go"
+                        android:layout_width="0dp"
+                        android:layout_height="25dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:src="@drawable/ic_search" />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
 
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/mcv_sku_details"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/sku_selection_holder"
+                android:layout_below="@id/mcv_search_holder"
                 android:layout_marginTop="10dp"
                 android:visibility="gone"
                 app:cardCornerRadius="6dp"
@@ -212,28 +222,30 @@
 
             </com.google.android.material.card.MaterialCardView>
 
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_add_to_inventory"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_below="@+id/mcv_sku_details"
+                android:layout_marginTop="10dp"
+                android:text="Add to inventory"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:visibility="gone" />
+
             <RelativeLayout
+                android:id="@+id/add_inventory_holder"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/mcv_sku_details"
                 android:visibility="gone">
-
-                <TextView
-                    android:id="@+id/tv_add_to_inventory"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="Add to inventory"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
 
 
                 <TextView
                     android:id="@+id/tv_quantity_title"
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
-                    android:layout_below="@+id/tv_add_to_inventory"
                     android:layout_marginTop="15dp"
                     android:text="Quantity" />
 
@@ -241,17 +253,14 @@
                     android:id="@+id/tv_quantity_unit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/tv_add_to_inventory"
                     android:layout_marginTop="15dp"
-                    android:layout_toRightOf="@+id/tv_quantity_title"
-                    android:text="asdfg" />
+                    android:layout_toRightOf="@+id/tv_quantity_title" />
 
 
                 <androidx.appcompat.widget.AppCompatImageButton
                     android:id="@+id/btn_decrement"
                     android:layout_width="30dp"
                     android:layout_height="50dp"
-                    android:layout_below="@+id/tv_add_to_inventory"
                     android:layout_toStartOf="@+id/tv_quantity"
                     android:background="@color/transparent"
                     android:clickable="true"
@@ -262,12 +271,11 @@
 
                 <EditText
                     android:id="@+id/tv_quantity"
-                    android:layout_width="70dp"
+                    android:layout_width="100dp"
                     android:layout_height="50dp"
-                    android:layout_below="@+id/tv_add_to_inventory"
-                    android:layout_centerVertical="true"
                     android:layout_toStartOf="@+id/btn_increment"
                     android:gravity="center"
+                    android:inputType="number"
                     android:text="1"
                     android:textColor="@color/black"
                     android:textSize="25dp" />
@@ -276,7 +284,6 @@
                     android:id="@+id/btn_increment"
                     android:layout_width="30dp"
                     android:layout_height="50dp"
-                    android:layout_below="@+id/tv_add_to_inventory"
                     android:layout_alignParentEnd="true"
                     android:background="@color/transparent"
                     android:clickable="true"
@@ -291,14 +298,15 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/il_selling_price"
+                    android:layout_below="@+id/il_marked_price"
                     android:layout_marginTop="20dp"
                     android:hint="@string/expiry_date">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/et_expiry_date"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:editable="false" />
 
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -309,7 +317,7 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/tv_quantity"
+                    android:layout_below="@+id/il_selling_price"
                     android:layout_marginTop="10dp"
                     android:hint="@string/marked_price">
 
@@ -327,7 +335,7 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/il_marked_price"
+                    android:layout_below="@+id/tv_quantity"
                     android:layout_marginTop="20dp"
                     android:hint="@string/selling_price">
 

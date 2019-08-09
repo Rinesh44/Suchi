@@ -99,6 +99,8 @@ public class LoginPresenterImpl implements LoginPresenter {
 
                 AppUtils.showLog(TAG, "allDataResponse: " + baseResponse);
 
+                AppUtils.showLog(TAG, "subBrands: " + baseResponse.getSubBrandsList().toString());
+
                 mapStockKeepingUnits(baseResponse.getStockKeepingUnitsList());
                 mapBrands(baseResponse.getBrandsList());
                 mapSubBrands(baseResponse.getSubBrandsList());

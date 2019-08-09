@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
@@ -132,8 +133,18 @@ public class LoginActivity extends BaseActivity implements LoginView {
                     AppUtils.showLog(TAG, "successfully saved user");
 
                     showLoading();
-                    Token token = UserRepo.getInstance().getToken();
-                    presenter.getAllData(token.getToken());
+                    //save to shared prefs
+
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putString(Constants.TOKEN, loginResponse.getToken());
+                    editor.putString(Constants.USER_ID, loginResponse.getUser().getUserId());
+                    editor.apply();
+
+
+                    String token = preferences.getString(Constants.TOKEN, "");
+                    if (token != null) presenter.getAllData(token);
+                    else
+                        Toast.makeText(LoginActivity.this, "Unable to get token", Toast.LENGTH_SHORT).show();
 
                 }
 

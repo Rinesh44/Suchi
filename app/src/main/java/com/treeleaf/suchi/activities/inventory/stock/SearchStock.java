@@ -2,7 +2,13 @@ package com.treeleaf.suchi.activities.inventory.stock;
 
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -12,6 +18,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +26,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.android.material.button.MaterialButton;
 
+import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.treeleaf.suchi.R;
@@ -31,6 +39,7 @@ import com.treeleaf.suchi.realm.models.User;
 import com.treeleaf.suchi.realm.repo.ItemsRepo;
 import com.treeleaf.suchi.realm.repo.UserRepo;
 import com.treeleaf.suchi.utils.AppUtils;
+import com.treeleaf.suchi.utils.Constants;
 import com.treeleaf.suchi.utils.DatePicker;
 
 import java.util.ArrayList;
@@ -92,6 +101,14 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
     AutoCompleteTextView mSearchSku;
     @BindView(R.id.iv_go)
     public ImageView mGo;
+    @BindView(R.id.mcv_sku_details)
+    MaterialCardView mSkuDetails;
+    @BindView(R.id.add_inventory_holder)
+    RelativeLayout mAddInventoryHolder;
+    @BindView(R.id.btn_add_to_inventory)
+    MaterialButton mAddToInventory;
+
+
     private DatePicker datePicker;
 
 
@@ -101,6 +118,8 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
     private SearchStockPresenter presenter;
     private List<Items> mSkuItems = new ArrayList<>();
     private String selectedItemId;
+
+    private SharedPreferences sharedPreferences;
 
 
     @Override
@@ -117,6 +136,7 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
         mDecrement.setOnClickListener(this);
         mGo.setOnClickListener(this);
         mExpiryDate.setOnClickListener(this);
+        mAddToInventory.setOnClickListener(this);
 
         presenter = new SearchStockPresenterImpl(endpoints, this);
 
@@ -141,13 +161,15 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
         mSearchSku.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
+                hideKeyboard();
                 String item = (String) adapterView.getItemAtPosition(i);
 
                 int itemPosition = skuList.indexOf(item);
                 AppUtils.showLog(TAG, "itemId: " + itemPosition);
 
                 Items selectedItem = mSkuItems.get(itemPosition);
+
+                selectedItemId = selectedItem.getId();
 
                 mSkuName.setText(selectedItem.getName());
                 mBrand.setText(selectedItem.getBrand().getName());
@@ -175,6 +197,10 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
                     Glide.with(SearchStock.this).load(imageUrl).apply(options).into(mSkuImage);
                 }
 
+                mSkuDetails.setVisibility(View.VISIBLE);
+                mAddToInventory.setVisibility(View.VISIBLE);
+                mAddInventoryHolder.setVisibility(View.GONE);
+
             }
         });
 
@@ -182,8 +208,30 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_create_new_sku, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_add_new_sku:
+                startActivity(new Intent(SearchStock.this, StockEntryActivity.class));
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
     private void validateFieldsThenAdd() {
+
+        if (mQuantity.getText().toString().isEmpty() || mQuantity.getText().toString().equals("0")) {
+            showMessage("Quantity is required");
+            return;
+        }
 
         if (mMarkedPrice.getText().toString().isEmpty() || mMarkedPrice.getText().toString().equals("0")) {
             mMarkedPriceLayout.setErrorEnabled(true);
@@ -203,19 +251,19 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
             mSellingPriceLayout.setErrorEnabled(false);
         }
 
-        if (mExpiryDate.getText().toString().isEmpty()) {
+  /*      if (mExpiryDate.getText().toString().isEmpty()) {
             mExpiryDateLayout.setErrorEnabled(true);
             mExpiryDateLayout.setError("This field is required");
             mExpiryDateLayout.requestFocus();
             return;
         } else {
             mExpiryDateLayout.setErrorEnabled(false);
-        }
+        }*/
 
 
         showLoading();
-        Token token = UserRepo.getInstance().getToken();
-        User user = token.getUser();
+        String token = sharedPreferences.getString(Constants.TOKEN, "");
+        String userID = sharedPreferences.getString(Constants.USER_ID, "");
 
         String randomInventoryId = UUID.randomUUID().toString();
         String inventoryId = randomInventoryId.replace("-", "");
@@ -226,7 +274,7 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
         InventoryProto.Inventory inventory = InventoryProto.Inventory.newBuilder()
                 .setInventoryId(inventoryId)
                 .setSkuId(selectedItemId)
-                .setUserId(user.getUserId())
+                .setUserId(userID)
                 .setStatus(InventoryProto.SKUStatus.AVAILABLE)
                 .setMarkedPrice(Double.valueOf(mMarkedPrice.getText().toString()))
                 .setSalesPrice(Double.valueOf(mSellingPrice.getText().toString()))
@@ -234,7 +282,8 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
                 .setExpiryDate(System.currentTimeMillis())
                 .build();
 
-        presenter.addStock(token.getToken(), inventory);
+        if (token != null) presenter.addStock(token, inventory);
+        else Toast.makeText(this, "Unable to get token", Toast.LENGTH_SHORT).show();
 
     }
 
@@ -249,6 +298,8 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
         mToolbarTitle.setText("Select Item");
 
         getMyApplication(this).getAppComponent().inject(this);
+
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
     }
 
@@ -300,6 +351,11 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
 
             case R.id.et_expiry_date:
                 datePicker.onClick(view);
+                break;
+
+            case R.id.btn_add_to_inventory:
+                mAddToInventory.setVisibility(View.GONE);
+                mAddInventoryHolder.setVisibility(View.VISIBLE);
                 break;
 
         }

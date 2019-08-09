@@ -5,7 +5,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,16 +16,27 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.activities.base.BaseActivity;
 import com.treeleaf.suchi.adapter.StockAdapter;
+import com.treeleaf.suchi.api.Endpoints;
+import com.treeleaf.suchi.entities.InventoryProto;
+import com.treeleaf.suchi.realm.models.Items;
 import com.treeleaf.suchi.realm.models.Stock;
-import com.treeleaf.suchi.utils.CustomDialogClass;
+import com.treeleaf.suchi.utils.AppUtils;
+import com.treeleaf.suchi.utils.Constants;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class StockActivity extends BaseActivity {
+import static com.treeleaf.suchi.SuchiApp.getMyApplication;
+
+public class StockActivity extends BaseActivity implements StockView {
+    private static final String TAG = "StockActivity";
+    @Inject
+    Endpoints endpoints;
     @BindView(R.id.rv_stock)
     RecyclerView mRecyclerViewStock;
     @BindView(R.id.fab_add)
@@ -35,8 +48,9 @@ public class StockActivity extends BaseActivity {
 
 
     private StockAdapter mStockAdapter;
-    private List<Stock> stockList = new ArrayList<>();
-
+    private StockPresenter presenter;
+    private String token;
+    private SharedPreferences preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,15 +61,12 @@ public class StockActivity extends BaseActivity {
 
         init();
 
+        token = preferences.getString(Constants.TOKEN, "");
         mRecyclerViewStock.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerViewStock.setHasFixedSize(true);
 
         mStockAdapter = new StockAdapter();
         mRecyclerViewStock.setAdapter(mStockAdapter);
-
-        Stock stock = new Stock("1", "Kolin", "3", "120");
-        stockList.add(stock);
-        mStockAdapter.submitList(stockList);
 
         mAddStock.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,12 +77,14 @@ public class StockActivity extends BaseActivity {
 
         mStockAdapter.setOnItemClickListener(new StockAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(Stock stock) {
+            public void onItemClick(Items items) {
                 //TODO
                 //show stock details activity
                 Toast.makeText(StockActivity.this, "item clicked", Toast.LENGTH_SHORT).show();
             }
         });
+
+
     }
 
     private void init() {
@@ -84,12 +97,40 @@ public class StockActivity extends BaseActivity {
         }
         mToolbarTitle.setText("Stocks");
 
+        getMyApplication(this).getAppComponent().inject(this);
+        preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        presenter = new StockPresenterImpl(this, endpoints);
 
     }
+
+
 
     @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (token != null) {
+            showLoading();
+            presenter.getStockItems(token);
+        } else Toast.makeText(this, "Unable to get token", Toast.LENGTH_SHORT).show();
+
+    }
+
+    @Override
+    public void getStockItemsSuccess(List<Items> inventoryList) {
+        AppUtils.showLog(TAG, "get stocks success");
+        mStockAdapter.submitList(inventoryList);
+
+    }
+
+    @Override
+    public void getStockItemsFail(String msg) {
+        showMessage(msg);
     }
 }

@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.card.MaterialCardView;
 import com.treeleaf.suchi.MainActivity;
@@ -23,6 +24,7 @@ import com.treeleaf.suchi.api.Endpoints;
 import com.treeleaf.suchi.realm.models.Token;
 import com.treeleaf.suchi.realm.repo.UserRepo;
 import com.treeleaf.suchi.utils.AppUtils;
+import com.treeleaf.suchi.utils.Constants;
 
 import javax.inject.Inject;
 
@@ -124,9 +126,10 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
                 "Yes",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        Token token = UserRepo.getInstance().getToken();
+                        String token = preferences.getString(Constants.TOKEN, "");
                         showLoading();
-                        presenter.logout(token.getToken());
+                        if (token != null) presenter.logout(token);
+                        else Toast.makeText(DashboardActivity.this, "Unable to get token", Toast.LENGTH_SHORT).show();
 
                     }
                 });
