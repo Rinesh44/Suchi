@@ -5,7 +5,8 @@ import com.treeleaf.suchi.entities.InventoryProto;
 import com.treeleaf.suchi.entities.ReqResProto;
 import com.treeleaf.suchi.realm.models.Brands;
 import com.treeleaf.suchi.realm.models.Categories;
-import com.treeleaf.suchi.realm.models.Items;
+import com.treeleaf.suchi.realm.models.Inventory;
+import com.treeleaf.suchi.realm.models.StockKeepingUnit;
 import com.treeleaf.suchi.realm.models.SubBrands;
 import com.treeleaf.suchi.realm.models.Units;
 import com.treeleaf.suchi.utils.AppUtils;
@@ -46,8 +47,8 @@ public class StockPresenterImpl implements StockPresenter {
 
                 AppUtils.showLog(TAG, "getInventoryResponse: " + baseResponse);
 
-                List<Items> itemsList = mapInventoryPbToModel(baseResponse.getInventoriesList());
-                activity.getStockItemsSuccess(itemsList);
+                List<Inventory> inventoryList = mapInventoryPbToModel(baseResponse.getInventoriesList());
+                activity.getStockItemsSuccess(inventoryList);
             }
 
             @Override
@@ -59,43 +60,52 @@ public class StockPresenterImpl implements StockPresenter {
         }));
     }
 
-    private List<Items> mapInventoryPbToModel(List<InventoryProto.Inventory> inventoriesList) {
-        List<Items> itemsList = new ArrayList<>();
-        for (InventoryProto.Inventory inventory : inventoriesList
+    private List<Inventory> mapInventoryPbToModel(List<InventoryProto.Inventory> inventoriesListPb) {
+        List<Inventory> inventoryList = new ArrayList<>();
+        for (InventoryProto.Inventory inventoryPb : inventoriesListPb
         ) {
-            Items items = new Items();
-            items.setId(inventory.getInventoryId());
-            items.setName(inventory.getSku().getName());
-            items.setPhoto_url(inventory.getSku().getPhoto());
-            items.setCode(inventory.getSku().getCode());
-            items.setDesc(inventory.getSku().getDescription());
-            items.setUnitPrice(String.valueOf(inventory.getSku().getUnitPrice()));
-            items.setQuantity(String.valueOf(inventory.getQuantity()));
-            items.setMarkedPrice(String.valueOf(inventory.getMarkedPrice()));
-            items.setSellingPrice(String.valueOf(inventory.getSalesPrice()));
-            items.setExpiryDate(String.valueOf(inventory.getExpiryDate()));
+            Inventory inventory = new Inventory();
+            inventory.setInventory_id(inventoryPb.getInventoryId());
+            inventory.setUser_id(inventoryPb.getUserId());
+            inventory.setSynced(inventoryPb.getSync());
+            inventory.setQuantity(String.valueOf(inventoryPb.getQuantity()));
+            inventory.setMarkedPrice(String.valueOf(inventoryPb.getMarkedPrice()));
+            inventory.setSalesPrice(String.valueOf(inventoryPb.getSalesPrice()));
+            inventory.setExpiryDate(String.valueOf(inventoryPb.getExpiryDate()));
 
-            InventoryProto.Brand brandPb = inventory.getSku().getBrand();
+            InventoryProto.StockKeepingUnit stockKeepingUnitPb = inventoryPb.getSku();
+            StockKeepingUnit stockKeepingUnit = new StockKeepingUnit();
+            stockKeepingUnit.setId(String.valueOf(stockKeepingUnitPb.getSkuId()));
+            stockKeepingUnit.setName(stockKeepingUnitPb.getName());
+            stockKeepingUnit.setPhoto_url(stockKeepingUnitPb.getPhoto());
+            stockKeepingUnit.setCode(stockKeepingUnitPb.getCode());
+            stockKeepingUnit.setDesc(stockKeepingUnitPb.getDescription());
+            stockKeepingUnit.setUnitPrice(String.valueOf(stockKeepingUnitPb.getUnitPrice()));
+            stockKeepingUnit.setSynced(stockKeepingUnitPb.getSync());
+
+            InventoryProto.Brand brandPb = inventoryPb.getSku().getBrand();
             Brands brands = new Brands(brandPb.getBrandId(), brandPb.getName());
-            items.setBrand(brands);
+            stockKeepingUnit.setBrand(brands);
 
-            InventoryProto.SubBrand subBrandPb = inventory.getSku().getSubBrand();
+            InventoryProto.SubBrand subBrandPb = inventoryPb.getSku().getSubBrand();
             SubBrands subBrands = new SubBrands(subBrandPb.getSubBrandId(), subBrandPb.getBrandId(),
                     subBrandPb.getName());
-            items.setSubBrands(subBrands);
+            stockKeepingUnit.setSubBrands(subBrands);
 
-            InventoryProto.Unit unitPb = inventory.getSku().getUnit();
+            InventoryProto.Unit unitPb = inventoryPb.getSku().getUnit();
             Units units = new Units(unitPb.getUnitId(), unitPb.getName());
-            items.setUnits(units);
+            stockKeepingUnit.setUnits(units);
 
-            InventoryProto.Category categoryPb = inventory.getSku().getCategory();
+            InventoryProto.Category categoryPb = inventoryPb.getSku().getCategory();
             Categories categories = new Categories(categoryPb.getCategoryId(), categoryPb.getName());
-            items.setCategories(categories);
+            stockKeepingUnit.setCategories(categories);
 
-            itemsList.add(items);
+            inventory.setSku(stockKeepingUnit);
+
+            inventoryList.add(inventory);
 
         }
 
-        return itemsList;
+        return inventoryList;
     }
 }

@@ -11,14 +11,13 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
 import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.activities.inventory.stock.SearchStock;
 import com.treeleaf.suchi.activities.inventory.stock.StockEntryActivity;
-import com.treeleaf.suchi.realm.models.Items;
-import com.treeleaf.suchi.realm.repo.ItemsRepo;
+import com.treeleaf.suchi.realm.models.StockKeepingUnit;
+import com.treeleaf.suchi.realm.repo.StockKeepingUnitRepo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +38,7 @@ public class CustomDialogClass extends Dialog implements
     @BindView(R.id.btn_add_sku)
     public MaterialButton mCreateSku;
 
-    public List<Items> mSkuItems = new ArrayList<>();
+    public List<StockKeepingUnit> mSkuItems = new ArrayList<>();
 
 
     public CustomDialogClass(Activity activity) {
@@ -59,9 +58,9 @@ public class CustomDialogClass extends Dialog implements
         mGo.setOnClickListener(this);
         mCreateSku.setOnClickListener(this);
 
-        mSkuItems = ItemsRepo.getInstance().getAllItems();
+        mSkuItems = StockKeepingUnitRepo.getInstance().getAllSkuList();
         List<String> skuList = new ArrayList<>();
-        for (Items item : mSkuItems
+        for (StockKeepingUnit item : mSkuItems
         ) {
             skuList.add(item.getName());
         }
@@ -88,7 +87,7 @@ public class CustomDialogClass extends Dialog implements
                 int itemPosition = skuList.indexOf(selectedItem);
                 AppUtils.showLog(TAG, "itemId: " + itemPosition);
 
-                Items item = mSkuItems.get(itemPosition);
+                StockKeepingUnit item = mSkuItems.get(itemPosition);
 
                 Intent intent = new Intent(activity, SearchStock.class);
                 intent.putExtra("selected_sku", item);

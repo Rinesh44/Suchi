@@ -25,13 +25,14 @@
             android:layout_weight="1"
             android:padding="10dp"
             app:cardBackgroundColor="@color/greyish"
-
             app:cardCornerRadius="16dp"
             app:cardUseCompatPadding="true">
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
                 android:gravity="center">
 
 
@@ -40,7 +41,8 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_centerHorizontal="true"
-                    android:src="@drawable/ic_inventory" />
+                    android:src="@drawable/ic_inventory"
+                    android:tint="@color/colorPrimaryDark" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -50,7 +52,7 @@
                     android:layout_marginTop="10dp"
                     android:text="Inventory"
                     android:textAllCaps="true"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textStyle="bold" />
 
             </RelativeLayout>
@@ -72,6 +74,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
                 android:gravity="center">
 
 
@@ -80,7 +84,8 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_centerHorizontal="true"
-                    android:src="@drawable/ic_credit" />
+                    android:src="@drawable/ic_credit"
+                    android:tint="@color/colorPrimaryDark" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -90,7 +95,7 @@
                     android:layout_marginTop="10dp"
                     android:text="Credit"
                     android:textAllCaps="true"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textStyle="bold" />
 
             </RelativeLayout>

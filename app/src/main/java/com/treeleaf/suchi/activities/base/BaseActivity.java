@@ -74,11 +74,6 @@ public abstract class BaseActivity extends AppCompatActivity implements com.tree
         }
     }
 
-    public static void showLog(String tag, String msg){
-        if(tag != null && msg != null)
-            Log.d(tag, "APP_FLOW --> " + msg);
-    }
-
     @Override
     public void showMessage(String message) {
 //        hideKeyboard();

@@ -18,7 +18,9 @@
             android:id="@+id/rv_stock"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/toolbar" />
+            android:layout_below="@+id/toolbar"
+            android:clipToPadding="false"
+            android:paddingBottom="10dp" />
 
 
         <TextView
@@ -27,7 +29,7 @@
             android:layout_height="match_parent"
             android:layout_marginBottom="60dp"
             android:gravity="center"
-            android:text="No items found"
+            android:text="No stockKeepingUnit found"
             android:textSize="20sp"
             android:visibility="gone" />
 

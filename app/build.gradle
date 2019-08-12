@@ -92,5 +92,9 @@ dependencies {
     //image Cropper
     api 'com.theartofdev.edmodo:android-image-cropper:2.7.0'
 
+    //circular imageview
+    implementation 'de.hdodenhof:circleimageview:3.0.0'
+
+
 
 }

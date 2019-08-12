@@ -7,7 +7,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,14 +32,15 @@ import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.activities.base.BaseActivity;
 import com.treeleaf.suchi.api.Endpoints;
 import com.treeleaf.suchi.entities.InventoryProto;
-import com.treeleaf.suchi.realm.models.Items;
-import com.treeleaf.suchi.realm.models.Token;
-import com.treeleaf.suchi.realm.models.User;
-import com.treeleaf.suchi.realm.repo.ItemsRepo;
-import com.treeleaf.suchi.realm.repo.UserRepo;
+import com.treeleaf.suchi.realm.models.Inventory;
+import com.treeleaf.suchi.realm.models.StockKeepingUnit;
+import com.treeleaf.suchi.realm.repo.InventoryRepo;
+import com.treeleaf.suchi.realm.repo.Repo;
+import com.treeleaf.suchi.realm.repo.StockKeepingUnitRepo;
 import com.treeleaf.suchi.utils.AppUtils;
 import com.treeleaf.suchi.utils.Constants;
 import com.treeleaf.suchi.utils.DatePicker;
+import com.treeleaf.suchi.utils.NetworkUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -116,8 +116,8 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
     TextView mDescription;*/
 
     private SearchStockPresenter presenter;
-    private List<Items> mSkuItems = new ArrayList<>();
-    private String selectedItemId;
+    private List<StockKeepingUnit> mSkuItems = new ArrayList<>();
+    private String selectedItemId, selectedItemUnitId;
 
     private SharedPreferences sharedPreferences;
 
@@ -140,9 +140,9 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
 
         presenter = new SearchStockPresenterImpl(endpoints, this);
 
-        mSkuItems = ItemsRepo.getInstance().getAllItems();
+        mSkuItems = StockKeepingUnitRepo.getInstance().getAllSkuList();
         List<String> skuList = new ArrayList<>();
-        for (Items item : mSkuItems
+        for (StockKeepingUnit item : mSkuItems
         ) {
             skuList.add(item.getName());
         }
@@ -167,7 +167,7 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
                 int itemPosition = skuList.indexOf(item);
                 AppUtils.showLog(TAG, "itemId: " + itemPosition);
 
-                Items selectedItem = mSkuItems.get(itemPosition);
+                StockKeepingUnit selectedItem = mSkuItems.get(itemPosition);
 
                 selectedItemId = selectedItem.getId();
 
@@ -177,6 +177,8 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
                 mUnitPrice.setText(selectedItem.getUnitPrice());
                 mCategory.setText(selectedItem.getCategories().getName());
                 mUnit.setText(selectedItem.getUnits().getName());
+
+                selectedItemUnitId = selectedItem.getUnits().getId();
 
 
                 StringBuilder quantityUnitBuilder = new StringBuilder();
@@ -261,7 +263,6 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
         }*/
 
 
-        showLoading();
         String token = sharedPreferences.getString(Constants.TOKEN, "");
         String userID = sharedPreferences.getString(Constants.USER_ID, "");
 
@@ -275,15 +276,50 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
                 .setInventoryId(inventoryId)
                 .setSkuId(selectedItemId)
                 .setUserId(userID)
+                .setUnitId(selectedItemUnitId)
                 .setStatus(InventoryProto.SKUStatus.AVAILABLE)
-                .setMarkedPrice(Double.valueOf(mMarkedPrice.getText().toString()))
-                .setSalesPrice(Double.valueOf(mSellingPrice.getText().toString()))
-                .setQuantity(Integer.valueOf(mQuantity.getText().toString()))
+                .setMarkedPrice(Double.valueOf(mMarkedPrice.getText().toString().trim()))
+                .setSalesPrice(Double.valueOf(mSellingPrice.getText().toString().trim()))
+                .setQuantity(Integer.valueOf(mQuantity.getText().toString().trim()))
                 .setExpiryDate(System.currentTimeMillis())
                 .build();
 
-        if (token != null) presenter.addStock(token, inventory);
-        else Toast.makeText(this, "Unable to get token", Toast.LENGTH_SHORT).show();
+        if (NetworkUtils.isNetworkConnected(this)) {
+            showLoading();
+            if (token != null) {
+
+                presenter.addStock(token, inventory);
+
+            } else Toast.makeText(this, "Unable to get token", Toast.LENGTH_SHORT).show();
+        } else {
+            //network is not connected, so save to realm as unsynced
+            Inventory inventoryOffline = new Inventory();
+            inventoryOffline.setInventory_id(inventoryId);
+            inventoryOffline.setExpiryDate(String.valueOf(System.currentTimeMillis()));
+            inventoryOffline.setMarkedPrice(mMarkedPrice.getText().toString().trim());
+            inventoryOffline.setSalesPrice(mSellingPrice.getText().toString().trim());
+            inventoryOffline.setQuantity(mQuantity.getText().toString().trim());
+            inventoryOffline.setUser_id(userID);
+            inventoryOffline.setSkuId(selectedItemId);
+            inventoryOffline.setUnitId(selectedItemUnitId);
+            inventoryOffline.setSynced(false);
+
+            InventoryRepo.getInstance().saveInventory(inventoryOffline, new Repo.Callback() {
+                @Override
+                public void success(Object o) {
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putBoolean(Constants.DATA_REMAINING_TO_SYNC, true);
+                    editor.apply();
+                }
+
+                @Override
+                public void fail() {
+                    AppUtils.showLog(TAG, "failed to save inventory");
+                }
+            });
+
+
+        }
 
     }
 

@@ -6,8 +6,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Network;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,11 +20,12 @@ import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.activities.base.BaseActivity;
 import com.treeleaf.suchi.adapter.StockAdapter;
 import com.treeleaf.suchi.api.Endpoints;
-import com.treeleaf.suchi.entities.InventoryProto;
-import com.treeleaf.suchi.realm.models.Items;
-import com.treeleaf.suchi.realm.models.Stock;
+import com.treeleaf.suchi.realm.models.Inventory;
+import com.treeleaf.suchi.realm.repo.InventoryRepo;
+import com.treeleaf.suchi.realm.repo.Repo;
 import com.treeleaf.suchi.utils.AppUtils;
 import com.treeleaf.suchi.utils.Constants;
+import com.treeleaf.suchi.utils.NetworkUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +34,7 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.realm.Realm;
 
 import static com.treeleaf.suchi.SuchiApp.getMyApplication;
 
@@ -65,7 +70,7 @@ public class StockActivity extends BaseActivity implements StockView {
         mRecyclerViewStock.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerViewStock.setHasFixedSize(true);
 
-        mStockAdapter = new StockAdapter();
+        mStockAdapter = new StockAdapter(this);
         mRecyclerViewStock.setAdapter(mStockAdapter);
 
         mAddStock.setOnClickListener(new View.OnClickListener() {
@@ -77,14 +82,34 @@ public class StockActivity extends BaseActivity implements StockView {
 
         mStockAdapter.setOnItemClickListener(new StockAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(Items items) {
+            public void onItemClick(Inventory inventory) {
                 //TODO
                 //show stock details activity
                 Toast.makeText(StockActivity.this, "item clicked", Toast.LENGTH_SHORT).show();
             }
         });
 
+        hideFabWhenScrolled();
 
+    }
+
+    private void hideFabWhenScrolled() {
+
+        mRecyclerViewStock.addOnScrollListener(new RecyclerView.OnScrollListener() {
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                if (dy > 0 || dy < 0 && mAddStock.isShown())
+                    mAddStock.hide();
+            }
+
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                if (newState == RecyclerView.SCROLL_STATE_IDLE)
+                    mAddStock.show();
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+        });
     }
 
     private void init() {
@@ -104,7 +129,6 @@ public class StockActivity extends BaseActivity implements StockView {
     }
 
 
-
     @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();
@@ -115,22 +139,73 @@ public class StockActivity extends BaseActivity implements StockView {
     protected void onResume() {
         super.onResume();
 
-        if (token != null) {
-            showLoading();
-            presenter.getStockItems(token);
-        } else Toast.makeText(this, "Unable to get token", Toast.LENGTH_SHORT).show();
+        if (NetworkUtils.isNetworkConnected(this)) {
+            if (token != null) {
+                showLoading();
+                presenter.getStockItems(token);
+            } else Toast.makeText(this, "Unable to get token", Toast.LENGTH_SHORT).show();
+        } else {
+            loadOfflineData();
+        }
 
     }
 
+    private void loadOfflineData() {
+        Realm backgroundRealm = Realm.getDefaultInstance();
+        try {
+            List<Inventory> InventoryList = new ArrayList<>(backgroundRealm.where(Inventory.class).findAll());
+            mStockAdapter.submitList(InventoryList);
+
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+        } finally {
+            backgroundRealm.close();
+        }
+    }
+
     @Override
-    public void getStockItemsSuccess(List<Items> inventoryList) {
+    public void getStockItemsSuccess(List<Inventory> inventoryList) {
         AppUtils.showLog(TAG, "get stocks success");
         mStockAdapter.submitList(inventoryList);
+
+        InventoryRepo.getInstance().saveInventoryList(inventoryList, new Repo.Callback() {
+            @Override
+            public void success(Object o) {
+
+            }
+
+            @Override
+            public void fail() {
+                AppUtils.showLog(TAG, "failed to save inventory list");
+            }
+        });
 
     }
 
     @Override
     public void getStockItemsFail(String msg) {
         showMessage(msg);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        if (preferences.getBoolean(Constants.DATA_REMAINING_TO_SYNC, false))
+            getMenuInflater().inflate(R.menu.menu_sync, menu);
+        return true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_sync:
+                //todo check internet connection and call api
+                Toast.makeText(this, "Sync clicked", Toast.LENGTH_SHORT).show();
+                return true;
+
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

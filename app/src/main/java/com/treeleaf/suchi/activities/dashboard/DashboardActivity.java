@@ -21,8 +21,6 @@ import com.treeleaf.suchi.activities.base.BaseActivity;
 import com.treeleaf.suchi.activities.credit.CreditActivity;
 import com.treeleaf.suchi.activities.inventory.InventoryActivity;
 import com.treeleaf.suchi.api.Endpoints;
-import com.treeleaf.suchi.realm.models.Token;
-import com.treeleaf.suchi.realm.repo.UserRepo;
 import com.treeleaf.suchi.utils.AppUtils;
 import com.treeleaf.suchi.utils.Constants;
 

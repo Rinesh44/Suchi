@@ -16,7 +16,6 @@ import com.treeleaf.suchi.activities.dashboard.DashboardActivity;
 import com.treeleaf.suchi.activities.enterkey.EnterKeyActivity;
 import com.treeleaf.suchi.api.Endpoints;
 import com.treeleaf.suchi.entities.AccountProto;
-import com.treeleaf.suchi.realm.models.Token;
 import com.treeleaf.suchi.realm.repo.Repo;
 import com.treeleaf.suchi.realm.repo.UserRepo;
 
