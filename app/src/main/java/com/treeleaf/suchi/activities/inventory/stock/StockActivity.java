@@ -91,6 +91,15 @@ public class StockActivity extends BaseActivity implements StockView {
 
         hideFabWhenScrolled();
 
+        if (NetworkUtils.isNetworkConnected(this)) {
+            if (token != null) {
+                showLoading();
+                presenter.getStockItems(token);
+            } else Toast.makeText(this, "Unable to get token", Toast.LENGTH_SHORT).show();
+        } else {
+            loadOfflineData();
+        }
+
     }
 
     private void hideFabWhenScrolled() {
@@ -139,28 +148,11 @@ public class StockActivity extends BaseActivity implements StockView {
     protected void onResume() {
         super.onResume();
 
-        if (NetworkUtils.isNetworkConnected(this)) {
-            if (token != null) {
-                showLoading();
-                presenter.getStockItems(token);
-            } else Toast.makeText(this, "Unable to get token", Toast.LENGTH_SHORT).show();
-        } else {
-            loadOfflineData();
-        }
-
     }
 
     private void loadOfflineData() {
-        Realm backgroundRealm = Realm.getDefaultInstance();
-        try {
-            List<Inventory> InventoryList = new ArrayList<>(backgroundRealm.where(Inventory.class).findAll());
-            mStockAdapter.submitList(InventoryList);
-
-        } catch (Throwable throwable) {
-            throwable.printStackTrace();
-        } finally {
-            backgroundRealm.close();
-        }
+        List<Inventory> inventoryListOffline = InventoryRepo.getInstance().getAllInventories();
+        mStockAdapter.submitList(inventoryListOffline);
     }
 
     @Override
@@ -188,6 +180,17 @@ public class StockActivity extends BaseActivity implements StockView {
     }
 
     @Override
+    public void addUnsyncedInventoriesSuccess() {
+        AppUtils.showLog(TAG, "add unsynced inventories success");
+        Toast.makeText(this, "Items synced", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void addUnsyncedInventoriesFail(String msg) {
+        showMessage(msg);
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         if (preferences.getBoolean(Constants.DATA_REMAINING_TO_SYNC, false))
             getMenuInflater().inflate(R.menu.menu_sync, menu);
@@ -199,8 +202,17 @@ public class StockActivity extends BaseActivity implements StockView {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_sync:
-                //todo check internet connection and call api
-                Toast.makeText(this, "Sync clicked", Toast.LENGTH_SHORT).show();
+                if (NetworkUtils.isNetworkConnected(this)) {
+                    List<Inventory> unsyncedInventories = InventoryRepo.getInstance().getUnsyncedInventories();
+                    if (token != null && !unsyncedInventories.isEmpty()) {
+                        showLoading();
+                        presenter.addUnsyncedInventories(token, unsyncedInventories);
+                    } else {
+                        Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(this, "Please connect to internet.", Toast.LENGTH_SHORT).show();
+                }
                 return true;
 
 

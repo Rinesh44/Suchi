@@ -54,6 +54,18 @@ public class UnitRepo extends Repo {
         }
     }
 
+    public Units getUnitById(String unitId) {
+        Realm realm = RealmDatabase.getInstance().getRealm();
+        try {
+            return realm.where(Units.class).equalTo("id", unitId).findFirst();
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+            return null;
+        } finally {
+            close(realm);
+        }
+    }
+
 
     public void deleteAllUnits(final Callback callback) {
         final Realm realm = RealmDatabase.getInstance().getRealm();

@@ -8,4 +8,8 @@ public interface StockView {
     void getStockItemsSuccess(List<Inventory> inventoryList);
 
     void getStockItemsFail(String msg);
+
+    void addUnsyncedInventoriesSuccess();
+
+    void addUnsyncedInventoriesFail(String msg);
 }

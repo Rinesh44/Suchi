@@ -15,6 +15,10 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.realm.models.Inventory;
+import com.treeleaf.suchi.realm.models.StockKeepingUnit;
+import com.treeleaf.suchi.realm.models.Units;
+import com.treeleaf.suchi.realm.repo.StockKeepingUnitRepo;
+import com.treeleaf.suchi.realm.repo.UnitRepo;
 import com.treeleaf.suchi.utils.AppUtils;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -24,6 +28,7 @@ public class StockAdapter extends ListAdapter<Inventory, StockAdapter.StockHolde
     private static final String TAG = "StockAdapter";
     private OnItemClickListener listener;
     private Context context;
+    private String imageUrl;
 
     public StockAdapter(Context context) {
         super(DIFF_CALLBACK);
@@ -57,18 +62,26 @@ public class StockAdapter extends ListAdapter<Inventory, StockAdapter.StockHolde
     @Override
     public void onBindViewHolder(@NonNull StockHolder holder, int position) {
         Inventory current = getItem(position);
-        holder.unit.setText(current.getSku().getUnits().getName());
-        holder.sku.setText(current.getSku().getName());
-        holder.qty.setText(current.getQuantity());
-        holder.price.setText(current.getSku().getUnitPrice());
-
         if (current.isSynced()) {
+            holder.sku.setText(current.getSku().getName());
+            holder.unit.setText(current.getSku().getUnits().getName());
+            holder.price.setText(current.getSku().getUnitPrice());
             holder.itemImage.setBorderColor(context.getResources().getColor(android.R.color.holo_green_light));
+            imageUrl = current.getSku().getPhoto_url();
         } else {
+            Units unit = UnitRepo.getInstance().getUnitById(current.getUnitId());
+            StockKeepingUnit stockKeepingUnit = StockKeepingUnitRepo.getInstance().getSkuById(current.getSkuId());
+
+            holder.sku.setText(stockKeepingUnit.getName());
+            holder.unit.setText(unit.getName());
             holder.itemImage.setBorderColor(context.getResources().getColor(android.R.color.holo_red_light));
+            holder.price.setText(stockKeepingUnit.getUnitPrice());
+
+            imageUrl = stockKeepingUnit.getPhoto_url();
         }
 
-        String imageUrl = current.getSku().getPhoto_url();
+        holder.qty.setText(current.getQuantity());
+
         AppUtils.showLog(TAG, "ImageUrl: " + imageUrl);
         if (!imageUrl.isEmpty()) {
             RequestOptions options = new RequestOptions()

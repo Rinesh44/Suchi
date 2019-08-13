@@ -75,6 +75,20 @@ public class InventoryRepo extends Repo {
         }
     }
 
+    public List<Inventory> getUnsyncedInventories() {
+        Realm realm = RealmDatabase.getInstance().getRealm();
+        try {
+            return new ArrayList<>(realm.where(Inventory.class)
+                    .equalTo("synced", false).findAll());
+
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+            return null;
+        } finally {
+            close(realm);
+        }
+    }
+
     public Inventory getInventoryById(String id) {
         Realm realm = RealmDatabase.getInstance().getRealm();
         try {

@@ -60,6 +60,7 @@ public class StockPresenterImpl implements StockPresenter {
         }));
     }
 
+
     private List<Inventory> mapInventoryPbToModel(List<InventoryProto.Inventory> inventoriesListPb) {
         List<Inventory> inventoryList = new ArrayList<>();
         for (InventoryProto.Inventory inventoryPb : inventoriesListPb
@@ -107,5 +108,59 @@ public class StockPresenterImpl implements StockPresenter {
         }
 
         return inventoryList;
+    }
+
+    @Override
+    public void addUnsyncedInventories(String token, List<Inventory> inventoryList) {
+        List<InventoryProto.Inventory> inventoryListProto = mapInventoryModelToProto(inventoryList);
+        endpoints.addUnSyncedInventories(token, inventoryListProto).enqueue(new CallbackWrapper<>(activity, new CallbackWrapper.Wrapper<ReqResProto.Response>() {
+            @Override
+            public void onSuccessResult(Response<ReqResProto.Response> response) {
+                activity.hideLoading();
+                ReqResProto.Response baseResponse = response.body();
+
+                if (baseResponse == null) {
+                    activity.addUnsyncedInventoriesFail("sync inventory failed");
+                    return;
+                }
+
+                if (baseResponse.getError()) {
+                    activity.addUnsyncedInventoriesFail(baseResponse.getMsg());
+                    return;
+                }
+
+                AppUtils.showLog(TAG, "syncInventoryResponse: " + baseResponse.toString());
+
+                activity.addUnsyncedInventoriesSuccess();
+            }
+
+            @Override
+            public void onFailureResult() {
+                activity.hideLoading();
+                activity.addUnsyncedInventoriesFail("sync inventory failed");
+            }
+        }));
+    }
+
+    private List<InventoryProto.Inventory> mapInventoryModelToProto(List<Inventory> inventoryList) {
+        List<InventoryProto.Inventory> inventoryListProto = new ArrayList<>();
+        for (Inventory inventory : inventoryList
+        ) {
+            InventoryProto.Inventory inventoryProto = InventoryProto.Inventory.newBuilder()
+                    .setInventoryId(inventory.getInventory_id())
+                    .setSkuId(inventory.getSkuId())
+                    .setUserId(inventory.getUser_id())
+                    .setUnitId(inventory.getUnitId())
+                    .setStatus(InventoryProto.SKUStatus.AVAILABLE)
+                    .setMarkedPrice(Double.valueOf(inventory.getMarkedPrice()))
+                    .setSalesPrice(Double.valueOf(inventory.getSalesPrice()))
+                    .setQuantity(Integer.valueOf(inventory.getQuantity()))
+                    .setExpiryDate(Long.valueOf(inventory.getExpiryDate()))
+                    .build();
+
+            inventoryListProto.add(inventoryProto);
+        }
+
+        return inventoryListProto;
     }
 }

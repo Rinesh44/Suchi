@@ -4,6 +4,8 @@ import com.treeleaf.suchi.entities.AccountProto;
 import com.treeleaf.suchi.entities.InventoryProto;
 import com.treeleaf.suchi.entities.ReqResProto;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -25,6 +27,8 @@ public interface Endpoints {
     String INVENTORY = "inventory";
     String ADD_SKU = "sku";
 
+    String ADD_UNSYNCED_INVENTORIES = "inventory/sync";
+
 
     @Headers({CONTENT_TYPE})
     @POST(API_BASE_URL + LOGIN)
@@ -42,6 +46,10 @@ public interface Endpoints {
     @POST(API_BASE_URL + INVENTORY)
     Call<ReqResProto.Response> addInventory(@Header(AUTHORIZATION) String authorization,
                                             @Body InventoryProto.Inventory inventory);
+
+    @POST(API_BASE_URL + ADD_UNSYNCED_INVENTORIES)
+    Call<ReqResProto.Response> addUnSyncedInventories(@Header(AUTHORIZATION) String auth,
+                                                      @Body List<InventoryProto.Inventory> inventoryList);
 
     @GET(API_BASE_URL + INVENTORY)
     Call<ReqResProto.Response> getInventory(@Header(AUTHORIZATION) String authorization);

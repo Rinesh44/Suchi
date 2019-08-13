@@ -239,21 +239,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/mcv_sku_details"
-                android:visibility="gone">
+                android:visibility="visible">
 
 
                 <TextView
                     android:id="@+id/tv_quantity_title"
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="25dp"
                     android:text="Quantity" />
 
                 <TextView
                     android:id="@+id/tv_quantity_unit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="25dp"
                     android:layout_toRightOf="@+id/tv_quantity_title" />
 
 
@@ -261,6 +261,7 @@
                     android:id="@+id/btn_decrement"
                     android:layout_width="30dp"
                     android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
                     android:layout_toStartOf="@+id/tv_quantity"
                     android:background="@color/transparent"
                     android:clickable="true"
@@ -273,6 +274,7 @@
                     android:id="@+id/tv_quantity"
                     android:layout_width="100dp"
                     android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
                     android:layout_toStartOf="@+id/btn_increment"
                     android:gravity="center"
                     android:inputType="number"
@@ -285,6 +287,7 @@
                     android:layout_width="30dp"
                     android:layout_height="50dp"
                     android:layout_alignParentEnd="true"
+                    android:layout_marginTop="10dp"
                     android:background="@color/transparent"
                     android:clickable="true"
                     android:focusable="true"
@@ -306,7 +309,7 @@
                         android:id="@+id/et_expiry_date"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:editable="false" />
+                        android:focusableInTouchMode="false" />
 
 
                 </com.google.android.material.textfield.TextInputLayout>

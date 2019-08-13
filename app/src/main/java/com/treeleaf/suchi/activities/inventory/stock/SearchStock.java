@@ -235,14 +235,6 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
             return;
         }
 
-        if (mMarkedPrice.getText().toString().isEmpty() || mMarkedPrice.getText().toString().equals("0")) {
-            mMarkedPriceLayout.setErrorEnabled(true);
-            mMarkedPriceLayout.setError("This field is required");
-            mMarkedPriceLayout.requestFocus();
-            return;
-        } else {
-            mMarkedPriceLayout.setErrorEnabled(false);
-        }
 
         if (mSellingPrice.getText().toString().isEmpty() || mSellingPrice.getText().toString().equals("0")) {
             mSellingPriceLayout.setErrorEnabled(true);
@@ -251,6 +243,15 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
             return;
         } else {
             mSellingPriceLayout.setErrorEnabled(false);
+        }
+
+        if (mMarkedPrice.getText().toString().isEmpty() || mMarkedPrice.getText().toString().equals("0")) {
+            mMarkedPriceLayout.setErrorEnabled(true);
+            mMarkedPriceLayout.setError("This field is required");
+            mMarkedPriceLayout.requestFocus();
+            return;
+        } else {
+            mMarkedPriceLayout.setErrorEnabled(false);
         }
 
   /*      if (mExpiryDate.getText().toString().isEmpty()) {
