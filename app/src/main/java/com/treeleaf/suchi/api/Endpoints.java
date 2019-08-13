@@ -49,7 +49,7 @@ public interface Endpoints {
 
     @POST(API_BASE_URL + ADD_UNSYNCED_INVENTORIES)
     Call<ReqResProto.Response> addUnSyncedInventories(@Header(AUTHORIZATION) String auth,
-                                                      @Body List<InventoryProto.Inventory> inventoryList);
+                                                      @Body InventoryProto.SyncRequest syncRequest);
 
     @GET(API_BASE_URL + INVENTORY)
     Call<ReqResProto.Response> getInventory(@Header(AUTHORIZATION) String authorization);

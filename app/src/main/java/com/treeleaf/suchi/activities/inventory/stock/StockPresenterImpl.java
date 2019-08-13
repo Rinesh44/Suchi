@@ -113,7 +113,12 @@ public class StockPresenterImpl implements StockPresenter {
     @Override
     public void addUnsyncedInventories(String token, List<Inventory> inventoryList) {
         List<InventoryProto.Inventory> inventoryListProto = mapInventoryModelToProto(inventoryList);
-        endpoints.addUnSyncedInventories(token, inventoryListProto).enqueue(new CallbackWrapper<>(activity, new CallbackWrapper.Wrapper<ReqResProto.Response>() {
+
+        InventoryProto.SyncRequest syncRequest = InventoryProto.SyncRequest.newBuilder()
+                .addAllInventories(inventoryListProto)
+                .build();
+
+        endpoints.addUnSyncedInventories(token, syncRequest).enqueue(new CallbackWrapper<>(activity, new CallbackWrapper.Wrapper<ReqResProto.Response>() {
             @Override
             public void onSuccessResult(Response<ReqResProto.Response> response) {
                 activity.hideLoading();

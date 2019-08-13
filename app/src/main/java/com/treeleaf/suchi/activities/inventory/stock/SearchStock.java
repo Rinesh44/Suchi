@@ -125,6 +125,8 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        getWindow().setBackgroundDrawable(getResources().getDrawable(R.drawable.bg_for_keyboard_glitch));
         setContentView(R.layout.activity_search_stock);
 
         ButterKnife.bind(this);

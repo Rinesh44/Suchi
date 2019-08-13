@@ -1,6 +1,8 @@
 package com.treeleaf.suchi.activities.inventory.stock;
 
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,21 +22,26 @@ import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.activities.base.BaseActivity;
 import com.treeleaf.suchi.adapter.StockAdapter;
 import com.treeleaf.suchi.api.Endpoints;
+
 import com.treeleaf.suchi.realm.models.Inventory;
 import com.treeleaf.suchi.realm.repo.InventoryRepo;
 import com.treeleaf.suchi.realm.repo.Repo;
 import com.treeleaf.suchi.utils.AppUtils;
 import com.treeleaf.suchi.utils.Constants;
 import com.treeleaf.suchi.utils.NetworkUtils;
+import com.treeleaf.suchi.viewmodel.InventoryListViewModel;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import io.realm.Realm;
+
+import io.realm.RealmChangeListener;
+
+import io.realm.RealmResults;
 
 import static com.treeleaf.suchi.SuchiApp.getMyApplication;
 
@@ -56,6 +63,8 @@ public class StockActivity extends BaseActivity implements StockView {
     private StockPresenter presenter;
     private String token;
     private SharedPreferences preferences;
+    private RealmResults<Inventory> inventoryListOffline;
+    private InventoryListViewModel inventoryListViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +81,18 @@ public class StockActivity extends BaseActivity implements StockView {
 
         mStockAdapter = new StockAdapter(this);
         mRecyclerViewStock.setAdapter(mStockAdapter);
+
+        inventoryListViewModel = ViewModelProviders.of(this).get(InventoryListViewModel.class);
+
+        inventoryListViewModel.getInventories().observe(this, new Observer<RealmResults<Inventory>>() {
+            @Override
+            public void onChanged(RealmResults<Inventory> inventories) {
+                Toast.makeText(StockActivity.this, "on changed", Toast.LENGTH_SHORT).show();
+                mStockAdapter.submitList(inventories);
+
+            }
+        });
+
 
         mAddStock.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,6 +142,7 @@ public class StockActivity extends BaseActivity implements StockView {
         });
     }
 
+
     private void init() {
         setUpToolbar(mToolbar);
         if (null != getSupportActionBar()) {
@@ -147,23 +169,22 @@ public class StockActivity extends BaseActivity implements StockView {
     @Override
     protected void onResume() {
         super.onResume();
-
     }
 
     private void loadOfflineData() {
-        List<Inventory> inventoryListOffline = InventoryRepo.getInstance().getAllInventories();
-        mStockAdapter.submitList(inventoryListOffline);
+        AppUtils.showLog(TAG, "loadOfflineData()");
+
+//        if (!inventoryListOffline.isEmpty()) mStockAdapter.submitList(inventoryListOffline);
+
     }
 
     @Override
     public void getStockItemsSuccess(List<Inventory> inventoryList) {
         AppUtils.showLog(TAG, "get stocks success");
-        mStockAdapter.submitList(inventoryList);
 
         InventoryRepo.getInstance().saveInventoryList(inventoryList, new Repo.Callback() {
             @Override
             public void success(Object o) {
-
             }
 
             @Override
@@ -172,18 +193,26 @@ public class StockActivity extends BaseActivity implements StockView {
             }
         });
 
+
     }
 
     @Override
     public void getStockItemsFail(String msg) {
         showMessage(msg);
+        loadOfflineData();
     }
 
     @Override
     public void addUnsyncedInventoriesSuccess() {
         AppUtils.showLog(TAG, "add unsynced inventories success");
         Toast.makeText(this, "Items synced", Toast.LENGTH_SHORT).show();
+
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean(Constants.DATA_REMAINING_TO_SYNC, false);
+        editor.apply();
+
     }
+
 
     @Override
     public void addUnsyncedInventoriesFail(String msg) {
@@ -204,12 +233,14 @@ public class StockActivity extends BaseActivity implements StockView {
             case R.id.action_sync:
                 if (NetworkUtils.isNetworkConnected(this)) {
                     List<Inventory> unsyncedInventories = InventoryRepo.getInstance().getUnsyncedInventories();
-                    if (token != null && !unsyncedInventories.isEmpty()) {
-                        showLoading();
-                        presenter.addUnsyncedInventories(token, unsyncedInventories);
-                    } else {
-                        Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show();
-                    }
+                    if (token != null) {
+                        if (!unsyncedInventories.isEmpty()) {
+                            showLoading();
+                            presenter.addUnsyncedInventories(token, unsyncedInventories);
+                        } else
+                            Toast.makeText(this, "No data found to sync", Toast.LENGTH_SHORT).show();
+                    } else Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show();
+
                 } else {
                     Toast.makeText(this, "Please connect to internet.", Toast.LENGTH_SHORT).show();
                 }

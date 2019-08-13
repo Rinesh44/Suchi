@@ -1,12 +1,16 @@
 package com.treeleaf.suchi.realm.repo;
 
+import androidx.lifecycle.LiveData;
+
 import com.treeleaf.suchi.realm.RealmDatabase;
 import com.treeleaf.suchi.realm.models.Inventory;
+import com.treeleaf.suchi.utils.RealmLiveData;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import io.realm.Realm;
+import io.realm.RealmList;
 import io.realm.RealmResults;
 
 public class InventoryRepo extends Repo {
@@ -61,17 +65,14 @@ public class InventoryRepo extends Repo {
         }
     }
 
-    public List<Inventory> getAllInventories() {
+    public LiveData<RealmResults<Inventory>> getAllInventories() {
         Realm realm = RealmDatabase.getInstance().getRealm();
         try {
-            List<Inventory> InventoryList = new ArrayList<>(realm.where(Inventory.class).findAll());
-            return InventoryList;
+            return new RealmLiveData<>(realm.where(Inventory.class).findAllAsync());
 
         } catch (Throwable throwable) {
             throwable.printStackTrace();
             return null;
-        } finally {
-            close(realm);
         }
     }
 

@@ -239,7 +239,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/mcv_sku_details"
-                android:visibility="visible">
+                android:visibility="gone">
 
 
                 <TextView
@@ -302,7 +302,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/il_marked_price"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="10dp"
                     android:hint="@string/expiry_date">
 
                     <com.google.android.material.textfield.TextInputEditText
