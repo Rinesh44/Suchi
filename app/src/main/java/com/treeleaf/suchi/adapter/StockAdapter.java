@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,8 +21,14 @@ import com.treeleaf.suchi.realm.models.Units;
 import com.treeleaf.suchi.realm.repo.StockKeepingUnitRepo;
 import com.treeleaf.suchi.realm.repo.UnitRepo;
 import com.treeleaf.suchi.utils.AppUtils;
+import com.treeleaf.suchi.utils.RealmLiveData;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import io.realm.RealmList;
+import io.realm.RealmResults;
 
 
 public class StockAdapter extends ListAdapter<Inventory, StockAdapter.StockHolder> {
@@ -44,7 +51,9 @@ public class StockAdapter extends ListAdapter<Inventory, StockAdapter.StockHolde
 
         @Override
         public boolean areContentsTheSame(@NonNull Inventory oldItem, @NonNull Inventory newItem) {
-            return oldItem.getUser_id().equals(newItem.getUser_id()) && oldItem.getQuantity().equals(newItem.getQuantity())
+            return oldItem.isSynced() == newItem.isSynced()
+                    && oldItem.getUser_id().equals(newItem.getUser_id())
+                    && oldItem.getQuantity().equals(newItem.getQuantity())
                     && oldItem.getMarkedPrice().equals(newItem.getMarkedPrice())
                     && oldItem.getSalesPrice().equals(newItem.getSalesPrice())
                     && oldItem.getExpiryDate().equals(newItem.getExpiryDate());
@@ -68,14 +77,16 @@ public class StockAdapter extends ListAdapter<Inventory, StockAdapter.StockHolde
             holder.price.setText(current.getSku().getUnitPrice());
             holder.itemImage.setBorderColor(context.getResources().getColor(android.R.color.holo_green_light));
             imageUrl = current.getSku().getPhoto_url();
+            holder.itemView.setBackgroundColor(context.getResources().getColor(R.color.white));
         } else {
             Units unit = UnitRepo.getInstance().getUnitById(current.getUnitId());
             StockKeepingUnit stockKeepingUnit = StockKeepingUnitRepo.getInstance().getSkuById(current.getSkuId());
 
             holder.sku.setText(stockKeepingUnit.getName());
             holder.unit.setText(unit.getName());
-            holder.itemImage.setBorderColor(context.getResources().getColor(android.R.color.holo_red_light));
+            holder.itemView.setBackgroundColor(context.getResources().getColor(R.color.disabled));
             holder.price.setText(stockKeepingUnit.getUnitPrice());
+            holder.itemImage.setBorderColor(context.getResources().getColor(android.R.color.transparent));
 
             imageUrl = stockKeepingUnit.getPhoto_url();
         }
@@ -96,7 +107,7 @@ public class StockAdapter extends ListAdapter<Inventory, StockAdapter.StockHolde
     }
 
 
-    public Inventory getStock(int position) {
+    public Inventory getStockAt(int position) {
         return getItem(position);
     }
 

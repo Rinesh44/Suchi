@@ -27,39 +27,44 @@ public class StockPresenterImpl implements StockPresenter {
         this.endpoints = endpoints;
     }
 
+
     @Override
-    public void getStockItems(String token) {
-        endpoints.getInventory(token).enqueue(new CallbackWrapper<>(activity, new CallbackWrapper.Wrapper<ReqResProto.Response>() {
+    public void addUnsyncedInventories(String token, List<Inventory> inventoryList) {
+        List<InventoryProto.Inventory> inventoryListProto = mapInventoryModelToProto(inventoryList);
+
+        InventoryProto.SyncRequest syncRequest = InventoryProto.SyncRequest.newBuilder()
+                .addAllInventories(inventoryListProto)
+                .build();
+
+        endpoints.addUnSyncedInventories(token, syncRequest).enqueue(new CallbackWrapper<>(activity, new CallbackWrapper.Wrapper<ReqResProto.Response>() {
             @Override
             public void onSuccessResult(Response<ReqResProto.Response> response) {
                 activity.hideLoading();
                 ReqResProto.Response baseResponse = response.body();
 
                 if (baseResponse == null) {
-                    activity.getStockItemsFail("get inventory failed");
+                    activity.addUnsyncedInventoriesFail("sync inventory failed");
                     return;
                 }
 
                 if (baseResponse.getError()) {
-                    activity.getStockItemsFail(baseResponse.getMsg());
+                    activity.addUnsyncedInventoriesFail(baseResponse.getMsg());
                     return;
                 }
 
-                AppUtils.showLog(TAG, "getInventoryResponse: " + baseResponse);
+                AppUtils.showLog(TAG, "syncInventoryResponse: " + baseResponse.toString());
 
                 List<Inventory> inventoryList = mapInventoryPbToModel(baseResponse.getInventoriesList());
-                activity.getStockItemsSuccess(inventoryList);
+                activity.addUnsyncedInventoriesSuccess(inventoryList);
             }
 
             @Override
             public void onFailureResult() {
                 activity.hideLoading();
-                activity.getStockItemsFail("failed");
-
+                activity.addUnsyncedInventoriesFail("sync inventory failed");
             }
         }));
     }
-
 
     private List<Inventory> mapInventoryPbToModel(List<InventoryProto.Inventory> inventoriesListPb) {
         List<Inventory> inventoryList = new ArrayList<>();
@@ -108,43 +113,6 @@ public class StockPresenterImpl implements StockPresenter {
         }
 
         return inventoryList;
-    }
-
-    @Override
-    public void addUnsyncedInventories(String token, List<Inventory> inventoryList) {
-        List<InventoryProto.Inventory> inventoryListProto = mapInventoryModelToProto(inventoryList);
-
-        InventoryProto.SyncRequest syncRequest = InventoryProto.SyncRequest.newBuilder()
-                .addAllInventories(inventoryListProto)
-                .build();
-
-        endpoints.addUnSyncedInventories(token, syncRequest).enqueue(new CallbackWrapper<>(activity, new CallbackWrapper.Wrapper<ReqResProto.Response>() {
-            @Override
-            public void onSuccessResult(Response<ReqResProto.Response> response) {
-                activity.hideLoading();
-                ReqResProto.Response baseResponse = response.body();
-
-                if (baseResponse == null) {
-                    activity.addUnsyncedInventoriesFail("sync inventory failed");
-                    return;
-                }
-
-                if (baseResponse.getError()) {
-                    activity.addUnsyncedInventoriesFail(baseResponse.getMsg());
-                    return;
-                }
-
-                AppUtils.showLog(TAG, "syncInventoryResponse: " + baseResponse.toString());
-
-                activity.addUnsyncedInventoriesSuccess();
-            }
-
-            @Override
-            public void onFailureResult() {
-                activity.hideLoading();
-                activity.addUnsyncedInventoriesFail("sync inventory failed");
-            }
-        }));
     }
 
     private List<InventoryProto.Inventory> mapInventoryModelToProto(List<Inventory> inventoryList) {

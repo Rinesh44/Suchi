@@ -29,4 +29,5 @@ public class InventoryListViewModel extends AndroidViewModel {
     public LiveData<RealmResults<Inventory>> getInventories() {
         return inventories;
     }
+
 }

@@ -7,6 +7,7 @@ import io.realm.RealmModel;
 import io.realm.RealmResults;
 
 public class RealmLiveData<T extends RealmModel> extends LiveData<RealmResults<T>> {
+    private static final String TAG = "RealmLiveData";
     private RealmResults<T> results;
     private final RealmChangeListener<RealmResults<T>> listener =
             new RealmChangeListener<RealmResults<T>>() {
@@ -17,16 +18,24 @@ public class RealmLiveData<T extends RealmModel> extends LiveData<RealmResults<T
             };
 
     public RealmLiveData(RealmResults<T> realmResults) {
+
         results = realmResults;
+        if (results.isLoaded()) {
+            // we should not notify observers when results aren't ready yet (async query).
+            // however, synchronous query should be set explicitly.
+            setValue(results);
+        }
     }
 
     @Override
     protected void onActive() {
-        results.addChangeListener(listener);
+        if (results.isValid())
+            results.addChangeListener(listener);
     }
 
     @Override
     protected void onInactive() {
-        results.removeChangeListener(listener);
+        if (results.isValid())
+            results.removeChangeListener(listener);
     }
 }

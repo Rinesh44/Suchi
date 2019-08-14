@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Network;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.Menu;
@@ -39,8 +38,6 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-import io.realm.RealmChangeListener;
-
 import io.realm.RealmResults;
 
 import static com.treeleaf.suchi.SuchiApp.getMyApplication;
@@ -63,7 +60,6 @@ public class StockActivity extends BaseActivity implements StockView {
     private StockPresenter presenter;
     private String token;
     private SharedPreferences preferences;
-    private RealmResults<Inventory> inventoryListOffline;
     private InventoryListViewModel inventoryListViewModel;
 
     @Override
@@ -77,7 +73,6 @@ public class StockActivity extends BaseActivity implements StockView {
 
         token = preferences.getString(Constants.TOKEN, "");
         mRecyclerViewStock.setLayoutManager(new LinearLayoutManager(this));
-        mRecyclerViewStock.setHasFixedSize(true);
 
         mStockAdapter = new StockAdapter(this);
         mRecyclerViewStock.setAdapter(mStockAdapter);
@@ -87,7 +82,8 @@ public class StockActivity extends BaseActivity implements StockView {
         inventoryListViewModel.getInventories().observe(this, new Observer<RealmResults<Inventory>>() {
             @Override
             public void onChanged(RealmResults<Inventory> inventories) {
-                Toast.makeText(StockActivity.this, "on changed", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(StockActivity.this, "on changed", Toast.LENGTH_SHORT).show();
+                AppUtils.showLog(TAG, "inventory size: " + inventories.size());
                 mStockAdapter.submitList(inventories);
 
             }
@@ -104,22 +100,26 @@ public class StockActivity extends BaseActivity implements StockView {
         mStockAdapter.setOnItemClickListener(new StockAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Inventory inventory) {
-                //TODO
-                //show stock details activity
-                Toast.makeText(StockActivity.this, "item clicked", Toast.LENGTH_SHORT).show();
+                if (!inventory.isSynced()) {
+                    Toast.makeText(StockActivity.this, "Please sync item to view details", Toast.LENGTH_SHORT).show();
+                } else {
+                    Intent i = new Intent(StockActivity.this, StockDetails.class);
+                    i.putExtra("inventory_object", inventory);
+                    startActivity(i);
+                }
             }
         });
 
         hideFabWhenScrolled();
 
-        if (NetworkUtils.isNetworkConnected(this)) {
+    /*    if (NetworkUtils.isNetworkConnected(this)) {
             if (token != null) {
                 showLoading();
                 presenter.getStockItems(token);
             } else Toast.makeText(this, "Unable to get token", Toast.LENGTH_SHORT).show();
         } else {
             loadOfflineData();
-        }
+        }*/
 
     }
 
@@ -169,47 +169,35 @@ public class StockActivity extends BaseActivity implements StockView {
     @Override
     protected void onResume() {
         super.onResume();
-    }
 
-    private void loadOfflineData() {
-        AppUtils.showLog(TAG, "loadOfflineData()");
-
-//        if (!inventoryListOffline.isEmpty()) mStockAdapter.submitList(inventoryListOffline);
+        invalidateOptionsMenu();
 
     }
+
 
     @Override
-    public void getStockItemsSuccess(List<Inventory> inventoryList) {
-        AppUtils.showLog(TAG, "get stocks success");
-
-        InventoryRepo.getInstance().saveInventoryList(inventoryList, new Repo.Callback() {
-            @Override
-            public void success(Object o) {
-            }
-
-            @Override
-            public void fail() {
-                AppUtils.showLog(TAG, "failed to save inventory list");
-            }
-        });
-
-
-    }
-
-    @Override
-    public void getStockItemsFail(String msg) {
-        showMessage(msg);
-        loadOfflineData();
-    }
-
-    @Override
-    public void addUnsyncedInventoriesSuccess() {
+    public void addUnsyncedInventoriesSuccess(List<Inventory> inventoryList) {
         AppUtils.showLog(TAG, "add unsynced inventories success");
         Toast.makeText(this, "Items synced", Toast.LENGTH_SHORT).show();
 
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean(Constants.DATA_REMAINING_TO_SYNC, false);
         editor.apply();
+
+        invalidateOptionsMenu();
+        mStockAdapter.notifyDataSetChanged();
+
+        InventoryRepo.getInstance().saveInventoryList(inventoryList, new Repo.Callback() {
+            @Override
+            public void success(Object o) {
+
+            }
+
+            @Override
+            public void fail() {
+                AppUtils.showLog(TAG, "failed to save synced inventory list");
+            }
+        });
 
     }
 
@@ -219,8 +207,9 @@ public class StockActivity extends BaseActivity implements StockView {
         showMessage(msg);
     }
 
+
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onPrepareOptionsMenu(Menu menu) {
         if (preferences.getBoolean(Constants.DATA_REMAINING_TO_SYNC, false))
             getMenuInflater().inflate(R.menu.menu_sync, menu);
         return true;

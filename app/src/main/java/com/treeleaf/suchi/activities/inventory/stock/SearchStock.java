@@ -110,6 +110,7 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
 
 
     private DatePicker datePicker;
+    private String token;
 
 
 /*    @BindView(R.id.tv_description)
@@ -120,6 +121,7 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
     private String selectedItemId, selectedItemUnitId;
 
     private SharedPreferences sharedPreferences;
+    private String userId, inventoryId;
 
 
     @Override
@@ -266,11 +268,11 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
         }*/
 
 
-        String token = sharedPreferences.getString(Constants.TOKEN, "");
-        String userID = sharedPreferences.getString(Constants.USER_ID, "");
+        token = sharedPreferences.getString(Constants.TOKEN, "");
+        userId = sharedPreferences.getString(Constants.USER_ID, "");
 
         String randomInventoryId = UUID.randomUUID().toString();
-        String inventoryId = randomInventoryId.replace("-", "");
+        inventoryId = randomInventoryId.replace("-", "");
 
         AppUtils.showLog(TAG, "inventoryId: " + inventoryId);
         AppUtils.showLog(TAG, "skuId: " + selectedItemId);
@@ -278,7 +280,7 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
         InventoryProto.Inventory inventory = InventoryProto.Inventory.newBuilder()
                 .setInventoryId(inventoryId)
                 .setSkuId(selectedItemId)
-                .setUserId(userID)
+                .setUserId(userId)
                 .setUnitId(selectedItemUnitId)
                 .setStatus(InventoryProto.SKUStatus.AVAILABLE)
                 .setMarkedPrice(Double.valueOf(mMarkedPrice.getText().toString().trim()))
@@ -296,34 +298,39 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
             } else Toast.makeText(this, "Unable to get token", Toast.LENGTH_SHORT).show();
         } else {
             //network is not connected, so save to realm as unsynced
-            Inventory inventoryOffline = new Inventory();
-            inventoryOffline.setInventory_id(inventoryId);
-            inventoryOffline.setExpiryDate(String.valueOf(System.currentTimeMillis()));
-            inventoryOffline.setMarkedPrice(mMarkedPrice.getText().toString().trim());
-            inventoryOffline.setSalesPrice(mSellingPrice.getText().toString().trim());
-            inventoryOffline.setQuantity(mQuantity.getText().toString().trim());
-            inventoryOffline.setUser_id(userID);
-            inventoryOffline.setSkuId(selectedItemId);
-            inventoryOffline.setUnitId(selectedItemUnitId);
-            inventoryOffline.setSynced(false);
-
-            InventoryRepo.getInstance().saveInventory(inventoryOffline, new Repo.Callback() {
-                @Override
-                public void success(Object o) {
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putBoolean(Constants.DATA_REMAINING_TO_SYNC, true);
-                    editor.apply();
-                }
-
-                @Override
-                public void fail() {
-                    AppUtils.showLog(TAG, "failed to save inventory");
-                }
-            });
-
-
+            saveToRealm(false);
         }
 
+    }
+
+    private void saveToRealm(boolean syncValue) {
+        Inventory inventoryOffline = new Inventory();
+        inventoryOffline.setInventory_id(inventoryId);
+        inventoryOffline.setExpiryDate(String.valueOf(System.currentTimeMillis()));
+        inventoryOffline.setMarkedPrice(mMarkedPrice.getText().toString().trim());
+        inventoryOffline.setSalesPrice(mSellingPrice.getText().toString().trim());
+        inventoryOffline.setQuantity(mQuantity.getText().toString().trim());
+        inventoryOffline.setUser_id(userId);
+        inventoryOffline.setSkuId(selectedItemId);
+        inventoryOffline.setUnitId(selectedItemUnitId);
+        inventoryOffline.setSynced(syncValue);
+
+        InventoryRepo.getInstance().saveInventory(inventoryOffline, new Repo.Callback() {
+            @Override
+            public void success(Object o) {
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putBoolean(Constants.DATA_REMAINING_TO_SYNC, true);
+                editor.apply();
+
+                Toast.makeText(SearchStock.this, "Item added to inventory", Toast.LENGTH_SHORT).show();
+                finish();
+            }
+
+            @Override
+            public void fail() {
+                AppUtils.showLog(TAG, "failed to save inventory");
+            }
+        });
     }
 
     private void initialize() {
@@ -331,7 +338,6 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
         if (null != getSupportActionBar()) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setHomeButtonEnabled(true);
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
         mToolbarTitle.setText("Select Item");
@@ -350,9 +356,33 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
 
 
     @Override
+    public void getStockItemsSuccess(List<Inventory> inventoryList) {
+        AppUtils.showLog(TAG, "get stocks success");
+
+        InventoryRepo.getInstance().saveInventoryList(inventoryList, new Repo.Callback() {
+            @Override
+            public void success(Object o) {
+            }
+
+            @Override
+            public void fail() {
+                AppUtils.showLog(TAG, "failed to save inventory list");
+            }
+        });
+    }
+
+    @Override
+    public void getStockItemsFail(String msg) {
+        showMessage(msg);
+    }
+
+    @Override
     public void addStockSuccess() {
         AppUtils.showLog(TAG, "Stock add success");
         Toast.makeText(this, "Inventory added", Toast.LENGTH_SHORT).show();
+
+        presenter.getStockItems(token);
+
         finish();
     }
 

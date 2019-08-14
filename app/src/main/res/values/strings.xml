@@ -45,4 +45,6 @@
     <string name="expiry_date">Expiry Date</string>
     <string name="marked_price">Marked Price</string>
     <string name="selling_price">Selling price</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
 </resources>

@@ -1,6 +1,9 @@
 package com.treeleaf.suchi.activities.dashboard;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -11,15 +14,18 @@ import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.card.MaterialCardView;
+import com.google.android.material.navigation.NavigationView;
 import com.treeleaf.suchi.MainActivity;
 import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.activities.base.BaseActivity;
 import com.treeleaf.suchi.activities.credit.CreditActivity;
 import com.treeleaf.suchi.activities.inventory.InventoryActivity;
+import com.treeleaf.suchi.activities.profile.ProfileActivity;
 import com.treeleaf.suchi.api.Endpoints;
 import com.treeleaf.suchi.utils.AppUtils;
 import com.treeleaf.suchi.utils.Constants;
@@ -43,9 +49,17 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
     MaterialCardView mInventory;
     @BindView(R.id.btn_credit)
     MaterialCardView mCredit;
+    @BindView(R.id.drawer_layout)
+    DrawerLayout mDrawerLayout;
+    @BindView(R.id.nv)
+    NavigationView mNavigationView;
+    @BindView(R.id.iv_menu)
+    ImageView mMenu;
 
     private DashboardPresenter presenter;
     private SharedPreferences preferences;
+    private ActionBarDrawerToggle actionBarToggle;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,8 +75,30 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
 
         mInventory.setOnClickListener(this);
         mCredit.setOnClickListener(this);
+        mMenu.setOnClickListener(this);
+
+        mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int id = item.getItemId();
+                switch (id) {
+                    case R.id.profile:
+                        startActivity(new Intent(DashboardActivity.this, ProfileActivity.class));
+                        break;
+                    case R.id.logout:
+                        Toast.makeText(DashboardActivity.this, "Logout", Toast.LENGTH_SHORT).show();
+                        break;
+                    default:
+                        return true;
+                }
+
+                return true;
+
+            }
+        });
 
     }
+
 
     private void init() {
         setUpToolbar(mToolbar);
@@ -70,6 +106,11 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
             getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
         mToolbarTitle.setText("Dashboard");
+
+        actionBarToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.open, R.string.close);
+        mDrawerLayout.addDrawerListener(actionBarToggle);
+        actionBarToggle.syncState();
+
     }
 
     @Override
@@ -103,6 +144,9 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
+        if (actionBarToggle.onOptionsItemSelected(item))
+            return true;
+
         switch (item.getItemId()) {
             case R.id.action_logout:
                 showLogoutDialog();
@@ -127,7 +171,8 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
                         String token = preferences.getString(Constants.TOKEN, "");
                         showLoading();
                         if (token != null) presenter.logout(token);
-                        else Toast.makeText(DashboardActivity.this, "Unable to get token", Toast.LENGTH_SHORT).show();
+                        else
+                            Toast.makeText(DashboardActivity.this, "Unable to get token", Toast.LENGTH_SHORT).show();
 
                     }
                 });
@@ -166,7 +211,10 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
 
             case R.id.btn_credit:
                 startActivity(new Intent(DashboardActivity.this, CreditActivity.class));
+                break;
 
+            case R.id.iv_menu:
+                Toast.makeText(this, "Menu clicked", Toast.LENGTH_SHORT).show();
                 break;
         }
     }
