@@ -33,6 +33,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/et_store_name"
                         android:layout_width="match_parent"
+                        android:fontFamily="@font/proxima_regular"
                         android:layout_height="wrap_content" />
 
 
@@ -50,6 +51,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/et_address"
                         android:layout_width="match_parent"
+                        android:fontFamily="@font/proxima_regular"
                         android:layout_height="wrap_content" />
 
 
@@ -66,6 +68,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/et_phone"
                         android:layout_width="match_parent"
+                        android:fontFamily="@font/proxima_regular"
                         android:layout_height="wrap_content"
                         android:inputType="number"
                         android:maxLength="10" />
@@ -85,6 +88,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/et_owner_name"
                         android:layout_width="match_parent"
+                        android:fontFamily="@font/proxima_regular"
                         android:layout_height="wrap_content" />
 
 
@@ -101,6 +105,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/et_username"
                         android:layout_width="match_parent"
+                        android:fontFamily="@font/proxima_regular"
                         android:layout_height="wrap_content" />
 
 
@@ -118,6 +123,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/et_password"
                         android:layout_width="match_parent"
+                        android:fontFamily="@font/proxima_regular"
                         android:layout_height="wrap_content"
                         android:inputType="textPassword" />
 
@@ -141,6 +147,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_centerVertical="true"
+                        android:fontFamily="@font/proxima_regular"
                         android:layout_marginTop="10dp"
                         android:layout_toEndOf="@+id/cb_tnc"
                         android:text="@string/terms_and_conditions"
@@ -152,6 +159,8 @@
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_register"
                     android:layout_width="match_parent"
+                    android:fontFamily="@font/proxima_regular"
+                    android:textStyle="bold"
                     android:layout_height="60dp"
                     android:layout_marginTop="20dp"
                     android:text="@string/register"

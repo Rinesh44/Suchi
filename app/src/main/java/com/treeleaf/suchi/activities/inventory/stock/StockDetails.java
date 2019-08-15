@@ -69,9 +69,6 @@ public class StockDetails extends BaseActivity {
 
     private void displayDetails() {
         mSkuName.setText(inventory.getSku().getName());
-        mMarkedPrice.setText(inventory.getMarkedPrice());
-        mSellingPrice.setText(inventory.getSalesPrice());
-        mQuantity.setText(inventory.getQuantity());
         mUnit.setText(inventory.getSku().getUnits().getName());
         mUnitPrice.setText(inventory.getSku().getUnitPrice());
         mBrand.setText(inventory.getSku().getBrand().getName());

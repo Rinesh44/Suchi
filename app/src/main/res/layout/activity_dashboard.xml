@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <include layout="@layout/toolbar_dashboard" />
+        <include layout="@layout/toolbar" />
 
 
         <LinearLayout
@@ -58,6 +58,7 @@
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="10dp"
                         android:text="Inventory"
+                        android:fontFamily="@font/proxima_regular"
                         android:textAllCaps="true"
                         android:textColor="@color/colorPrimaryDark"
                         android:textStyle="bold" />
@@ -100,6 +101,7 @@
                         android:layout_below="@+id/iv_credit"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="10dp"
+                        android:fontFamily="@font/proxima_regular"
                         android:text="Credit"
                         android:textAllCaps="true"
                         android:textColor="@color/colorPrimaryDark"
@@ -123,7 +125,8 @@
         android:layout_gravity="start"
         android:background="@color/white"
         app:headerLayout="@layout/nav_header"
-        app:menu="@menu/menu_navigation">
+        app:menu="@menu/menu_navigation"
+        app:theme="@style/ThemeOverlay.AppCompat.navTheme">
 
     </com.google.android.material.navigation.NavigationView>
 

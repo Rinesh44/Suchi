@@ -4,6 +4,9 @@ package com.treeleaf.suchi.realm.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.List;
+
+import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
@@ -12,29 +15,23 @@ public class Inventory extends RealmObject implements Parcelable {
     @PrimaryKey
     private String inventory_id;
     private String expiryDate;
-    private String markedPrice;
-    private String salesPrice;
-    private String quantity;
-    private String user_id;
     private String skuId;
-    private String unitId;
+    private String user_id;
     private boolean synced;
     private StockKeepingUnit sku;
+    private RealmList<InventoryStocks> inventoryStocks;
 
     public Inventory() {
     }
 
-    public Inventory(String inventory_id, String expiryDate, String markedPrice, String salesPrice, String quantity, String user_id, String skuId, String unitId, boolean synced, StockKeepingUnit sku) {
+    public Inventory(String inventory_id, String expiryDate, String skuId, String user_id, boolean synced, StockKeepingUnit sku, RealmList<InventoryStocks> inventoryStocks) {
         this.inventory_id = inventory_id;
         this.expiryDate = expiryDate;
-        this.markedPrice = markedPrice;
-        this.salesPrice = salesPrice;
-        this.quantity = quantity;
-        this.user_id = user_id;
         this.skuId = skuId;
-        this.unitId = unitId;
+        this.user_id = user_id;
         this.synced = synced;
         this.sku = sku;
+        this.inventoryStocks = inventoryStocks;
     }
 
 
@@ -54,37 +51,6 @@ public class Inventory extends RealmObject implements Parcelable {
         this.expiryDate = expiryDate;
     }
 
-    public String getMarkedPrice() {
-        return markedPrice;
-    }
-
-    public void setMarkedPrice(String markedPrice) {
-        this.markedPrice = markedPrice;
-    }
-
-    public String getSalesPrice() {
-        return salesPrice;
-    }
-
-    public void setSalesPrice(String salesPrice) {
-        this.salesPrice = salesPrice;
-    }
-
-    public String getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(String quantity) {
-        this.quantity = quantity;
-    }
-
-    public String getUser_id() {
-        return user_id;
-    }
-
-    public void setUser_id(String user_id) {
-        this.user_id = user_id;
-    }
 
     public StockKeepingUnit getSku() {
         return sku;
@@ -110,25 +76,35 @@ public class Inventory extends RealmObject implements Parcelable {
         this.skuId = skuId;
     }
 
-    public String getUnitId() {
-        return unitId;
+    public String getUser_id() {
+        return user_id;
     }
 
-    public void setUnitId(String unitId) {
-        this.unitId = unitId;
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
+    }
+
+    public List<InventoryStocks> getInventoryStocks() {
+        return inventoryStocks;
+    }
+
+    public void setInventoryStocks(RealmList<InventoryStocks> inventoryStocks) {
+        this.inventoryStocks = inventoryStocks;
     }
 
     protected Inventory(Parcel in) {
         inventory_id = in.readString();
         expiryDate = in.readString();
-        markedPrice = in.readString();
-        salesPrice = in.readString();
-        quantity = in.readString();
-        user_id = in.readString();
         skuId = in.readString();
-        unitId = in.readString();
+        user_id = in.readString();
         synced = in.readByte() != 0x00;
         sku = (StockKeepingUnit) in.readValue(StockKeepingUnit.class.getClassLoader());
+        if (in.readByte() == 0x01) {
+            inventoryStocks = new RealmList<>();
+            in.readList(inventoryStocks, InventoryStocks.class.getClassLoader());
+        } else {
+            inventoryStocks = null;
+        }
     }
 
     @Override
@@ -140,14 +116,16 @@ public class Inventory extends RealmObject implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(inventory_id);
         dest.writeString(expiryDate);
-        dest.writeString(markedPrice);
-        dest.writeString(salesPrice);
-        dest.writeString(quantity);
-        dest.writeString(user_id);
         dest.writeString(skuId);
-        dest.writeString(unitId);
+        dest.writeString(user_id);
         dest.writeByte((byte) (synced ? 0x01 : 0x00));
         dest.writeValue(sku);
+        if (inventoryStocks == null) {
+            dest.writeByte((byte) (0x00));
+        } else {
+            dest.writeByte((byte) (0x01));
+            dest.writeList(inventoryStocks);
+        }
     }
 
     @SuppressWarnings("unused")

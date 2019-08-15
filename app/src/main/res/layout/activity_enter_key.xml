@@ -32,6 +32,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="40dp"
             android:layout_marginBottom="15dp"
+            android:fontFamily="@font/proxima_regular"
             android:text="Congratulations!"
             android:textAllCaps="true"
             android:textColor="@color/white"
@@ -59,6 +60,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/proxima_regular"
                     android:text="Enter the key provided to you"
                     android:textAllCaps="true" />
 
@@ -72,7 +74,8 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/et_key"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/proxima_regular" />
 
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -84,7 +87,9 @@
                     android:layout_height="60dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="20dp"
+                    android:fontFamily="@font/proxima_regular"
                     android:text="@string/start"
+                    android:textStyle="bold"
                     app:rippleColor="@color/colorPrimary" />
 
                 <View
@@ -97,6 +102,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
+                    android:fontFamily="@font/proxima_regular"
                     android:text="New user ?"
                     android:textAllCaps="true" />
 
@@ -104,8 +110,10 @@
                     android:id="@+id/btn_free_trial"
                     android:layout_width="150dp"
                     android:layout_height="60dp"
+                    android:fontFamily="@font/proxima_regular"
                     android:text="@string/free_trial"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 

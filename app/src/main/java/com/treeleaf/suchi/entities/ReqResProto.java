@@ -290,6 +290,29 @@ public final class ReqResProto {
      * <code>repeated .com.entities.pb.Inventory inventories = 19;</code>
      */
     int getInventoriesCount();
+
+    /**
+     * <code>optional .com.entities.pb.Sale sale = 20;</code>
+     */
+    boolean hasSale();
+    /**
+     * <code>optional .com.entities.pb.Sale sale = 20;</code>
+     */
+    InventoryProto.Sale getSale();
+
+    /**
+     * <code>repeated .com.entities.pb.Sale sales = 21;</code>
+     */
+    java.util.List<InventoryProto.Sale>
+        getSalesList();
+    /**
+     * <code>repeated .com.entities.pb.Sale sales = 21;</code>
+     */
+    InventoryProto.Sale getSales(int index);
+    /**
+     * <code>repeated .com.entities.pb.Sale sales = 21;</code>
+     */
+    int getSalesCount();
   }
   /**
    * Protobuf type {@code com.entities.pb.Request}
@@ -304,6 +327,7 @@ public final class ReqResProto {
       stringValue_ = "";
       stockKeepingUnits_ = emptyProtobufList();
       inventories_ = emptyProtobufList();
+      sales_ = emptyProtobufList();
     }
     private int bitField0_;
     public static final int REFID_FIELD_NUMBER = 1;
@@ -1302,6 +1326,178 @@ public final class ReqResProto {
       inventories_.remove(index);
     }
 
+    public static final int SALE_FIELD_NUMBER = 20;
+    private InventoryProto.Sale sale_;
+    /**
+     * <code>optional .com.entities.pb.Sale sale = 20;</code>
+     */
+    public boolean hasSale() {
+      return sale_ != null;
+    }
+    /**
+     * <code>optional .com.entities.pb.Sale sale = 20;</code>
+     */
+    public InventoryProto.Sale getSale() {
+      return sale_ == null ? InventoryProto.Sale.getDefaultInstance() : sale_;
+    }
+    /**
+     * <code>optional .com.entities.pb.Sale sale = 20;</code>
+     */
+    private void setSale(InventoryProto.Sale value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      sale_ = value;
+      
+      }
+    /**
+     * <code>optional .com.entities.pb.Sale sale = 20;</code>
+     */
+    private void setSale(
+        InventoryProto.Sale.Builder builderForValue) {
+      sale_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>optional .com.entities.pb.Sale sale = 20;</code>
+     */
+    private void mergeSale(InventoryProto.Sale value) {
+      if (sale_ != null &&
+          sale_ != InventoryProto.Sale.getDefaultInstance()) {
+        sale_ =
+          InventoryProto.Sale.newBuilder(sale_).mergeFrom(value).buildPartial();
+      } else {
+        sale_ = value;
+      }
+      
+    }
+    /**
+     * <code>optional .com.entities.pb.Sale sale = 20;</code>
+     */
+    private void clearSale() {  sale_ = null;
+      
+    }
+
+    public static final int SALES_FIELD_NUMBER = 21;
+    private com.google.protobuf.Internal.ProtobufList<InventoryProto.Sale> sales_;
+    /**
+     * <code>repeated .com.entities.pb.Sale sales = 21;</code>
+     */
+    public java.util.List<InventoryProto.Sale> getSalesList() {
+      return sales_;
+    }
+    /**
+     * <code>repeated .com.entities.pb.Sale sales = 21;</code>
+     */
+    public java.util.List<? extends InventoryProto.SaleOrBuilder>
+        getSalesOrBuilderList() {
+      return sales_;
+    }
+    /**
+     * <code>repeated .com.entities.pb.Sale sales = 21;</code>
+     */
+    public int getSalesCount() {
+      return sales_.size();
+    }
+    /**
+     * <code>repeated .com.entities.pb.Sale sales = 21;</code>
+     */
+    public InventoryProto.Sale getSales(int index) {
+      return sales_.get(index);
+    }
+    /**
+     * <code>repeated .com.entities.pb.Sale sales = 21;</code>
+     */
+    public InventoryProto.SaleOrBuilder getSalesOrBuilder(
+        int index) {
+      return sales_.get(index);
+    }
+    private void ensureSalesIsMutable() {
+      if (!sales_.isModifiable()) {
+        sales_ =
+            com.google.protobuf.GeneratedMessageLite.mutableCopy(sales_);
+       }
+    }
+
+    /**
+     * <code>repeated .com.entities.pb.Sale sales = 21;</code>
+     */
+    private void setSales(
+        int index, InventoryProto.Sale value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureSalesIsMutable();
+      sales_.set(index, value);
+    }
+    /**
+     * <code>repeated .com.entities.pb.Sale sales = 21;</code>
+     */
+    private void setSales(
+        int index, InventoryProto.Sale.Builder builderForValue) {
+      ensureSalesIsMutable();
+      sales_.set(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .com.entities.pb.Sale sales = 21;</code>
+     */
+    private void addSales(InventoryProto.Sale value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureSalesIsMutable();
+      sales_.add(value);
+    }
+    /**
+     * <code>repeated .com.entities.pb.Sale sales = 21;</code>
+     */
+    private void addSales(
+        int index, InventoryProto.Sale value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureSalesIsMutable();
+      sales_.add(index, value);
+    }
+    /**
+     * <code>repeated .com.entities.pb.Sale sales = 21;</code>
+     */
+    private void addSales(
+        InventoryProto.Sale.Builder builderForValue) {
+      ensureSalesIsMutable();
+      sales_.add(builderForValue.build());
+    }
+    /**
+     * <code>repeated .com.entities.pb.Sale sales = 21;</code>
+     */
+    private void addSales(
+        int index, InventoryProto.Sale.Builder builderForValue) {
+      ensureSalesIsMutable();
+      sales_.add(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .com.entities.pb.Sale sales = 21;</code>
+     */
+    private void addAllSales(
+        Iterable<? extends InventoryProto.Sale> values) {
+      ensureSalesIsMutable();
+      com.google.protobuf.AbstractMessageLite.addAll(
+          values, sales_);
+    }
+    /**
+     * <code>repeated .com.entities.pb.Sale sales = 21;</code>
+     */
+    private void clearSales() {
+      sales_ = emptyProtobufList();
+    }
+    /**
+     * <code>repeated .com.entities.pb.Sale sales = 21;</code>
+     */
+    private void removeSales(int index) {
+      ensureSalesIsMutable();
+      sales_.remove(index);
+    }
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!refId_.isEmpty()) {
@@ -1360,6 +1556,12 @@ public final class ReqResProto {
       }
       for (int i = 0; i < inventories_.size(); i++) {
         output.writeMessage(19, inventories_.get(i));
+      }
+      if (sale_ != null) {
+        output.writeMessage(20, getSale());
+      }
+      for (int i = 0; i < sales_.size(); i++) {
+        output.writeMessage(21, sales_.get(i));
       }
     }
 
@@ -1443,6 +1645,14 @@ public final class ReqResProto {
       for (int i = 0; i < inventories_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(19, inventories_.get(i));
+      }
+      if (sale_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(20, getSale());
+      }
+      for (int i = 0; i < sales_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(21, sales_.get(i));
       }
       memoizedSerializedSize = size;
       return size;
@@ -2391,6 +2601,148 @@ public final class ReqResProto {
         return this;
       }
 
+      /**
+       * <code>optional .com.entities.pb.Sale sale = 20;</code>
+       */
+      public boolean hasSale() {
+        return instance.hasSale();
+      }
+      /**
+       * <code>optional .com.entities.pb.Sale sale = 20;</code>
+       */
+      public InventoryProto.Sale getSale() {
+        return instance.getSale();
+      }
+      /**
+       * <code>optional .com.entities.pb.Sale sale = 20;</code>
+       */
+      public Builder setSale(InventoryProto.Sale value) {
+        copyOnWrite();
+        instance.setSale(value);
+        return this;
+        }
+      /**
+       * <code>optional .com.entities.pb.Sale sale = 20;</code>
+       */
+      public Builder setSale(
+          InventoryProto.Sale.Builder builderForValue) {
+        copyOnWrite();
+        instance.setSale(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .com.entities.pb.Sale sale = 20;</code>
+       */
+      public Builder mergeSale(InventoryProto.Sale value) {
+        copyOnWrite();
+        instance.mergeSale(value);
+        return this;
+      }
+      /**
+       * <code>optional .com.entities.pb.Sale sale = 20;</code>
+       */
+      public Builder clearSale() {  copyOnWrite();
+        instance.clearSale();
+        return this;
+      }
+
+      /**
+       * <code>repeated .com.entities.pb.Sale sales = 21;</code>
+       */
+      public java.util.List<InventoryProto.Sale> getSalesList() {
+        return java.util.Collections.unmodifiableList(
+            instance.getSalesList());
+      }
+      /**
+       * <code>repeated .com.entities.pb.Sale sales = 21;</code>
+       */
+      public int getSalesCount() {
+        return instance.getSalesCount();
+      }/**
+       * <code>repeated .com.entities.pb.Sale sales = 21;</code>
+       */
+      public InventoryProto.Sale getSales(int index) {
+        return instance.getSales(index);
+      }
+      /**
+       * <code>repeated .com.entities.pb.Sale sales = 21;</code>
+       */
+      public Builder setSales(
+          int index, InventoryProto.Sale value) {
+        copyOnWrite();
+        instance.setSales(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Sale sales = 21;</code>
+       */
+      public Builder setSales(
+          int index, InventoryProto.Sale.Builder builderForValue) {
+        copyOnWrite();
+        instance.setSales(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Sale sales = 21;</code>
+       */
+      public Builder addSales(InventoryProto.Sale value) {
+        copyOnWrite();
+        instance.addSales(value);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Sale sales = 21;</code>
+       */
+      public Builder addSales(
+          int index, InventoryProto.Sale value) {
+        copyOnWrite();
+        instance.addSales(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Sale sales = 21;</code>
+       */
+      public Builder addSales(
+          InventoryProto.Sale.Builder builderForValue) {
+        copyOnWrite();
+        instance.addSales(builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Sale sales = 21;</code>
+       */
+      public Builder addSales(
+          int index, InventoryProto.Sale.Builder builderForValue) {
+        copyOnWrite();
+        instance.addSales(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Sale sales = 21;</code>
+       */
+      public Builder addAllSales(
+          Iterable<? extends InventoryProto.Sale> values) {
+        copyOnWrite();
+        instance.addAllSales(values);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Sale sales = 21;</code>
+       */
+      public Builder clearSales() {
+        copyOnWrite();
+        instance.clearSales();
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Sale sales = 21;</code>
+       */
+      public Builder removeSales(int index) {
+        copyOnWrite();
+        instance.removeSales(index);
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:com.entities.pb.Request)
     }
     protected final Object dynamicMethod(
@@ -2406,6 +2758,7 @@ public final class ReqResProto {
         case MAKE_IMMUTABLE: {
           stockKeepingUnits_.makeImmutable();
           inventories_.makeImmutable();
+          sales_.makeImmutable();
           return null;
         }
         case NEW_BUILDER: {
@@ -2439,6 +2792,8 @@ public final class ReqResProto {
           creditor_ = visitor.visitMessage(creditor_, other.creditor_);
           inventory_ = visitor.visitMessage(inventory_, other.inventory_);
           inventories_= visitor.visitList(inventories_, other.inventories_);
+          sale_ = visitor.visitMessage(sale_, other.sale_);
+          sales_= visitor.visitList(sales_, other.sales_);
           if (visitor == MergeFromVisitor
               .INSTANCE) {
             bitField0_ |= other.bitField0_;
@@ -2655,6 +3010,28 @@ public final class ReqResProto {
                   }
                   inventories_.add(
                       input.readMessage(InventoryProto.Inventory.parser(), extensionRegistry));
+                  break;
+                }
+                case 162: {
+                  InventoryProto.Sale.Builder subBuilder = null;
+                  if (sale_ != null) {
+                    subBuilder = sale_.toBuilder();
+                  }
+                  sale_ = input.readMessage(InventoryProto.Sale.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(sale_);
+                    sale_ = subBuilder.buildPartial();
+                  }
+
+                  break;
+                }
+                case 170: {
+                  if (!sales_.isModifiable()) {
+                    sales_ =
+                        com.google.protobuf.GeneratedMessageLite.mutableCopy(sales_);
+                  }
+                  sales_.add(
+                      input.readMessage(InventoryProto.Sale.parser(), extensionRegistry));
                   break;
                 }
               }
@@ -3010,6 +3387,29 @@ public final class ReqResProto {
      * <code>repeated .com.entities.pb.CreditDetail creditDetails = 29;</code>
      */
     int getCreditDetailsCount();
+
+    /**
+     * <code>optional .com.entities.pb.Sale sale = 30;</code>
+     */
+    boolean hasSale();
+    /**
+     * <code>optional .com.entities.pb.Sale sale = 30;</code>
+     */
+    InventoryProto.Sale getSale();
+
+    /**
+     * <code>repeated .com.entities.pb.Sale sales = 31;</code>
+     */
+    java.util.List<InventoryProto.Sale>
+        getSalesList();
+    /**
+     * <code>repeated .com.entities.pb.Sale sales = 31;</code>
+     */
+    InventoryProto.Sale getSales(int index);
+    /**
+     * <code>repeated .com.entities.pb.Sale sales = 31;</code>
+     */
+    int getSalesCount();
   }
   /**
    * Protobuf type {@code com.entities.pb.Response}
@@ -3031,6 +3431,7 @@ public final class ReqResProto {
       categories_ = emptyProtobufList();
       creditors_ = emptyProtobufList();
       creditDetails_ = emptyProtobufList();
+      sales_ = emptyProtobufList();
     }
     private int bitField0_;
     public static final int ERROR_FIELD_NUMBER = 1;
@@ -5144,6 +5545,178 @@ public final class ReqResProto {
       creditDetails_.remove(index);
     }
 
+    public static final int SALE_FIELD_NUMBER = 30;
+    private InventoryProto.Sale sale_;
+    /**
+     * <code>optional .com.entities.pb.Sale sale = 30;</code>
+     */
+    public boolean hasSale() {
+      return sale_ != null;
+    }
+    /**
+     * <code>optional .com.entities.pb.Sale sale = 30;</code>
+     */
+    public InventoryProto.Sale getSale() {
+      return sale_ == null ? InventoryProto.Sale.getDefaultInstance() : sale_;
+    }
+    /**
+     * <code>optional .com.entities.pb.Sale sale = 30;</code>
+     */
+    private void setSale(InventoryProto.Sale value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      sale_ = value;
+      
+      }
+    /**
+     * <code>optional .com.entities.pb.Sale sale = 30;</code>
+     */
+    private void setSale(
+        InventoryProto.Sale.Builder builderForValue) {
+      sale_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>optional .com.entities.pb.Sale sale = 30;</code>
+     */
+    private void mergeSale(InventoryProto.Sale value) {
+      if (sale_ != null &&
+          sale_ != InventoryProto.Sale.getDefaultInstance()) {
+        sale_ =
+          InventoryProto.Sale.newBuilder(sale_).mergeFrom(value).buildPartial();
+      } else {
+        sale_ = value;
+      }
+      
+    }
+    /**
+     * <code>optional .com.entities.pb.Sale sale = 30;</code>
+     */
+    private void clearSale() {  sale_ = null;
+      
+    }
+
+    public static final int SALES_FIELD_NUMBER = 31;
+    private com.google.protobuf.Internal.ProtobufList<InventoryProto.Sale> sales_;
+    /**
+     * <code>repeated .com.entities.pb.Sale sales = 31;</code>
+     */
+    public java.util.List<InventoryProto.Sale> getSalesList() {
+      return sales_;
+    }
+    /**
+     * <code>repeated .com.entities.pb.Sale sales = 31;</code>
+     */
+    public java.util.List<? extends InventoryProto.SaleOrBuilder>
+        getSalesOrBuilderList() {
+      return sales_;
+    }
+    /**
+     * <code>repeated .com.entities.pb.Sale sales = 31;</code>
+     */
+    public int getSalesCount() {
+      return sales_.size();
+    }
+    /**
+     * <code>repeated .com.entities.pb.Sale sales = 31;</code>
+     */
+    public InventoryProto.Sale getSales(int index) {
+      return sales_.get(index);
+    }
+    /**
+     * <code>repeated .com.entities.pb.Sale sales = 31;</code>
+     */
+    public InventoryProto.SaleOrBuilder getSalesOrBuilder(
+        int index) {
+      return sales_.get(index);
+    }
+    private void ensureSalesIsMutable() {
+      if (!sales_.isModifiable()) {
+        sales_ =
+            com.google.protobuf.GeneratedMessageLite.mutableCopy(sales_);
+       }
+    }
+
+    /**
+     * <code>repeated .com.entities.pb.Sale sales = 31;</code>
+     */
+    private void setSales(
+        int index, InventoryProto.Sale value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureSalesIsMutable();
+      sales_.set(index, value);
+    }
+    /**
+     * <code>repeated .com.entities.pb.Sale sales = 31;</code>
+     */
+    private void setSales(
+        int index, InventoryProto.Sale.Builder builderForValue) {
+      ensureSalesIsMutable();
+      sales_.set(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .com.entities.pb.Sale sales = 31;</code>
+     */
+    private void addSales(InventoryProto.Sale value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureSalesIsMutable();
+      sales_.add(value);
+    }
+    /**
+     * <code>repeated .com.entities.pb.Sale sales = 31;</code>
+     */
+    private void addSales(
+        int index, InventoryProto.Sale value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureSalesIsMutable();
+      sales_.add(index, value);
+    }
+    /**
+     * <code>repeated .com.entities.pb.Sale sales = 31;</code>
+     */
+    private void addSales(
+        InventoryProto.Sale.Builder builderForValue) {
+      ensureSalesIsMutable();
+      sales_.add(builderForValue.build());
+    }
+    /**
+     * <code>repeated .com.entities.pb.Sale sales = 31;</code>
+     */
+    private void addSales(
+        int index, InventoryProto.Sale.Builder builderForValue) {
+      ensureSalesIsMutable();
+      sales_.add(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .com.entities.pb.Sale sales = 31;</code>
+     */
+    private void addAllSales(
+        Iterable<? extends InventoryProto.Sale> values) {
+      ensureSalesIsMutable();
+      com.google.protobuf.AbstractMessageLite.addAll(
+          values, sales_);
+    }
+    /**
+     * <code>repeated .com.entities.pb.Sale sales = 31;</code>
+     */
+    private void clearSales() {
+      sales_ = emptyProtobufList();
+    }
+    /**
+     * <code>repeated .com.entities.pb.Sale sales = 31;</code>
+     */
+    private void removeSales(int index) {
+      ensureSalesIsMutable();
+      sales_.remove(index);
+    }
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (error_ != false) {
@@ -5232,6 +5805,12 @@ public final class ReqResProto {
       }
       for (int i = 0; i < creditDetails_.size(); i++) {
         output.writeMessage(29, creditDetails_.get(i));
+      }
+      if (sale_ != null) {
+        output.writeMessage(30, getSale());
+      }
+      for (int i = 0; i < sales_.size(); i++) {
+        output.writeMessage(31, sales_.get(i));
       }
     }
 
@@ -5355,6 +5934,14 @@ public final class ReqResProto {
       for (int i = 0; i < creditDetails_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(29, creditDetails_.get(i));
+      }
+      if (sale_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(30, getSale());
+      }
+      for (int i = 0; i < sales_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(31, sales_.get(i));
       }
       memoizedSerializedSize = size;
       return size;
@@ -7210,6 +7797,148 @@ public final class ReqResProto {
         return this;
       }
 
+      /**
+       * <code>optional .com.entities.pb.Sale sale = 30;</code>
+       */
+      public boolean hasSale() {
+        return instance.hasSale();
+      }
+      /**
+       * <code>optional .com.entities.pb.Sale sale = 30;</code>
+       */
+      public InventoryProto.Sale getSale() {
+        return instance.getSale();
+      }
+      /**
+       * <code>optional .com.entities.pb.Sale sale = 30;</code>
+       */
+      public Builder setSale(InventoryProto.Sale value) {
+        copyOnWrite();
+        instance.setSale(value);
+        return this;
+        }
+      /**
+       * <code>optional .com.entities.pb.Sale sale = 30;</code>
+       */
+      public Builder setSale(
+          InventoryProto.Sale.Builder builderForValue) {
+        copyOnWrite();
+        instance.setSale(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .com.entities.pb.Sale sale = 30;</code>
+       */
+      public Builder mergeSale(InventoryProto.Sale value) {
+        copyOnWrite();
+        instance.mergeSale(value);
+        return this;
+      }
+      /**
+       * <code>optional .com.entities.pb.Sale sale = 30;</code>
+       */
+      public Builder clearSale() {  copyOnWrite();
+        instance.clearSale();
+        return this;
+      }
+
+      /**
+       * <code>repeated .com.entities.pb.Sale sales = 31;</code>
+       */
+      public java.util.List<InventoryProto.Sale> getSalesList() {
+        return java.util.Collections.unmodifiableList(
+            instance.getSalesList());
+      }
+      /**
+       * <code>repeated .com.entities.pb.Sale sales = 31;</code>
+       */
+      public int getSalesCount() {
+        return instance.getSalesCount();
+      }/**
+       * <code>repeated .com.entities.pb.Sale sales = 31;</code>
+       */
+      public InventoryProto.Sale getSales(int index) {
+        return instance.getSales(index);
+      }
+      /**
+       * <code>repeated .com.entities.pb.Sale sales = 31;</code>
+       */
+      public Builder setSales(
+          int index, InventoryProto.Sale value) {
+        copyOnWrite();
+        instance.setSales(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Sale sales = 31;</code>
+       */
+      public Builder setSales(
+          int index, InventoryProto.Sale.Builder builderForValue) {
+        copyOnWrite();
+        instance.setSales(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Sale sales = 31;</code>
+       */
+      public Builder addSales(InventoryProto.Sale value) {
+        copyOnWrite();
+        instance.addSales(value);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Sale sales = 31;</code>
+       */
+      public Builder addSales(
+          int index, InventoryProto.Sale value) {
+        copyOnWrite();
+        instance.addSales(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Sale sales = 31;</code>
+       */
+      public Builder addSales(
+          InventoryProto.Sale.Builder builderForValue) {
+        copyOnWrite();
+        instance.addSales(builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Sale sales = 31;</code>
+       */
+      public Builder addSales(
+          int index, InventoryProto.Sale.Builder builderForValue) {
+        copyOnWrite();
+        instance.addSales(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Sale sales = 31;</code>
+       */
+      public Builder addAllSales(
+          Iterable<? extends InventoryProto.Sale> values) {
+        copyOnWrite();
+        instance.addAllSales(values);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Sale sales = 31;</code>
+       */
+      public Builder clearSales() {
+        copyOnWrite();
+        instance.clearSales();
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Sale sales = 31;</code>
+       */
+      public Builder removeSales(int index) {
+        copyOnWrite();
+        instance.removeSales(index);
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:com.entities.pb.Response)
     }
     protected final Object dynamicMethod(
@@ -7233,6 +7962,7 @@ public final class ReqResProto {
           categories_.makeImmutable();
           creditors_.makeImmutable();
           creditDetails_.makeImmutable();
+          sales_.makeImmutable();
           return null;
         }
         case NEW_BUILDER: {
@@ -7273,6 +8003,8 @@ public final class ReqResProto {
           creditors_= visitor.visitList(creditors_, other.creditors_);
           creditDetail_ = visitor.visitMessage(creditDetail_, other.creditDetail_);
           creditDetails_= visitor.visitList(creditDetails_, other.creditDetails_);
+          sale_ = visitor.visitMessage(sale_, other.sale_);
+          sales_= visitor.visitList(sales_, other.sales_);
           if (visitor == MergeFromVisitor
               .INSTANCE) {
             bitField0_ |= other.bitField0_;
@@ -7603,6 +8335,28 @@ public final class ReqResProto {
                   }
                   creditDetails_.add(
                       input.readMessage(AccountProto.CreditDetail.parser(), extensionRegistry));
+                  break;
+                }
+                case 242: {
+                  InventoryProto.Sale.Builder subBuilder = null;
+                  if (sale_ != null) {
+                    subBuilder = sale_.toBuilder();
+                  }
+                  sale_ = input.readMessage(InventoryProto.Sale.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(sale_);
+                    sale_ = subBuilder.buildPartial();
+                  }
+
+                  break;
+                }
+                case 250: {
+                  if (!sales_.isModifiable()) {
+                    sales_ =
+                        com.google.protobuf.GeneratedMessageLite.mutableCopy(sales_);
+                  }
+                  sales_.add(
+                      input.readMessage(InventoryProto.Sale.parser(), extensionRegistry));
                   break;
                 }
               }

@@ -7,6 +7,7 @@ import com.treeleaf.suchi.entities.ReqResProto;
 import com.treeleaf.suchi.realm.models.Brands;
 import com.treeleaf.suchi.realm.models.Categories;
 import com.treeleaf.suchi.realm.models.Inventory;
+import com.treeleaf.suchi.realm.models.InventoryStocks;
 import com.treeleaf.suchi.realm.models.StockKeepingUnit;
 import com.treeleaf.suchi.realm.models.SubBrands;
 import com.treeleaf.suchi.realm.models.Units;
@@ -130,9 +131,6 @@ public class LoginPresenterImpl implements LoginPresenter {
             inventory.setInventory_id(inventoryPb.getInventoryId());
             inventory.setUser_id(inventoryPb.getUserId());
             inventory.setSynced(inventoryPb.getSync());
-            inventory.setQuantity(String.valueOf(inventoryPb.getQuantity()));
-            inventory.setMarkedPrice(String.valueOf(inventoryPb.getMarkedPrice()));
-            inventory.setSalesPrice(String.valueOf(inventoryPb.getSalesPrice()));
             inventory.setExpiryDate(String.valueOf(inventoryPb.getExpiryDate()));
 
             InventoryProto.StockKeepingUnit stockKeepingUnitPb = inventoryPb.getSku();
@@ -163,6 +161,18 @@ public class LoginPresenterImpl implements LoginPresenter {
             stockKeepingUnit.setCategories(categories);
 
             inventory.setSku(stockKeepingUnit);
+
+            List<InventoryProto.InventoryStock> inventoryStockPbList = inventoryPb.getInventoryStocksList();
+            RealmList<InventoryStocks> inventoryStocksRealmList = new RealmList<>();
+            for (InventoryProto.InventoryStock inventoryStockPb : inventoryStockPbList
+            ) {
+                InventoryStocks inventoryStocks = new InventoryStocks(String.valueOf(inventoryStockPb.getQuantity()),
+                        String.valueOf(inventoryStockPb.getMarkedPrice()), String.valueOf(inventoryStockPb.getSalesPrice()),
+                        String.valueOf(inventoryStockPb.getUnitId()), inventoryStockPb.getSync());
+
+                inventoryStocksRealmList.add(inventoryStocks);
+                inventory.setInventoryStocks(inventoryStocksRealmList);
+            }
 
             inventoryList.add(inventory);
 

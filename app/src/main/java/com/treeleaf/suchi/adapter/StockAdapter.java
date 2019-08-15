@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,20 +16,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.treeleaf.suchi.R;
+import com.treeleaf.suchi.realm.models.Categories;
 import com.treeleaf.suchi.realm.models.Inventory;
 import com.treeleaf.suchi.realm.models.StockKeepingUnit;
 import com.treeleaf.suchi.realm.models.Units;
+import com.treeleaf.suchi.realm.repo.CategoryRepo;
 import com.treeleaf.suchi.realm.repo.StockKeepingUnitRepo;
 import com.treeleaf.suchi.realm.repo.UnitRepo;
 import com.treeleaf.suchi.utils.AppUtils;
-import com.treeleaf.suchi.utils.RealmLiveData;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
-import io.realm.RealmList;
-import io.realm.RealmResults;
 
 
 public class StockAdapter extends ListAdapter<Inventory, StockAdapter.StockHolder> {
@@ -53,9 +50,6 @@ public class StockAdapter extends ListAdapter<Inventory, StockAdapter.StockHolde
         public boolean areContentsTheSame(@NonNull Inventory oldItem, @NonNull Inventory newItem) {
             return oldItem.isSynced() == newItem.isSynced()
                     && oldItem.getUser_id().equals(newItem.getUser_id())
-                    && oldItem.getQuantity().equals(newItem.getQuantity())
-                    && oldItem.getMarkedPrice().equals(newItem.getMarkedPrice())
-                    && oldItem.getSalesPrice().equals(newItem.getSalesPrice())
                     && oldItem.getExpiryDate().equals(newItem.getExpiryDate());
         }
     };
@@ -72,26 +66,27 @@ public class StockAdapter extends ListAdapter<Inventory, StockAdapter.StockHolde
     public void onBindViewHolder(@NonNull StockHolder holder, int position) {
         Inventory current = getItem(position);
         if (current.isSynced()) {
+            holder.unsynced.setVisibility(View.GONE);
             holder.sku.setText(current.getSku().getName());
-            holder.unit.setText(current.getSku().getUnits().getName());
+            holder.category.setText(current.getSku().getCategories().getName());
             holder.price.setText(current.getSku().getUnitPrice());
             holder.itemImage.setBorderColor(context.getResources().getColor(android.R.color.holo_green_light));
             imageUrl = current.getSku().getPhoto_url();
-            holder.itemView.setBackgroundColor(context.getResources().getColor(R.color.white));
+//            holder.itemView.setBackgroundColor(context.getResources().getColor(R.color.white));
         } else {
-            Units unit = UnitRepo.getInstance().getUnitById(current.getUnitId());
+
             StockKeepingUnit stockKeepingUnit = StockKeepingUnitRepo.getInstance().getSkuById(current.getSkuId());
 
+            holder.unsynced.setVisibility(View.VISIBLE);
             holder.sku.setText(stockKeepingUnit.getName());
-            holder.unit.setText(unit.getName());
-            holder.itemView.setBackgroundColor(context.getResources().getColor(R.color.disabled));
+            holder.category.setText(stockKeepingUnit.getCategories().getName());
+//            holder.itemView.setBackgroundColor(context.getResources().getColor(R.color.disabled));
             holder.price.setText(stockKeepingUnit.getUnitPrice());
             holder.itemImage.setBorderColor(context.getResources().getColor(android.R.color.transparent));
 
             imageUrl = stockKeepingUnit.getPhoto_url();
         }
 
-        holder.qty.setText(current.getQuantity());
 
         AppUtils.showLog(TAG, "ImageUrl: " + imageUrl);
         if (!imageUrl.isEmpty()) {
@@ -112,20 +107,22 @@ public class StockAdapter extends ListAdapter<Inventory, StockAdapter.StockHolde
     }
 
     class StockHolder extends RecyclerView.ViewHolder {
-        private TextView unit;
+        private TextView category;
         private TextView sku;
-        private TextView qty;
+        //        private TextView qty;
         private TextView price;
+        private ImageView unsynced;
         private CircleImageView itemImage;
 
 
         public StockHolder(@NonNull View itemView) {
             super(itemView);
 
-            unit = itemView.findViewById(R.id.tv_unit);
+            category = itemView.findViewById(R.id.tv_category);
             sku = itemView.findViewById(R.id.tv_sku);
-            qty = itemView.findViewById(R.id.tv_qty);
+//            qty = itemView.findViewById(R.id.tv_qty);
             price = itemView.findViewById(R.id.tv_price);
+            unsynced = itemView.findViewById(R.id.iv_unsynced);
             itemImage = itemView.findViewById(R.id.iv_item);
 
             itemView.setOnClickListener(new View.OnClickListener() {

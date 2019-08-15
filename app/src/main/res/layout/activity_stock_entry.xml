@@ -30,6 +30,7 @@
                     android:id="@+id/et_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/proxima_regular"
                     android:maxLength="10" />
 
 
@@ -41,6 +42,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="5dp"
+                android:fontFamily="@font/proxima_regular"
                 android:text="@string/brand"
                 android:textColor="@color/black" />
 
@@ -52,7 +54,8 @@
                 <com.toptoche.searchablespinnerlibrary.SearchableSpinner
                     android:id="@+id/sp_brand"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/proxima_regular" />
 
             </com.google.android.material.card.MaterialCardView>
 
@@ -62,6 +65,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="5dp"
+                android:fontFamily="@font/proxima_regular"
                 android:text="@string/sub_brand"
                 android:textColor="@color/black" />
 
@@ -74,7 +78,8 @@
                     android:id="@+id/sp_sub_brand"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center" />
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/proxima_regular" />
             </com.google.android.material.card.MaterialCardView>
 
             <TextView
@@ -83,6 +88,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="5dp"
+                android:fontFamily="@font/proxima_regular"
                 android:text="@string/category"
                 android:textColor="@color/black" />
 
@@ -94,7 +100,8 @@
                 <com.toptoche.searchablespinnerlibrary.SearchableSpinner
                     android:id="@+id/sp_category"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/proxima_regular" />
             </com.google.android.material.card.MaterialCardView>
 
 
@@ -104,6 +111,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="5dp"
+                android:fontFamily="@font/proxima_regular"
                 android:text="@string/unit"
                 android:textColor="@color/black" />
 
@@ -115,7 +123,8 @@
                 <com.toptoche.searchablespinnerlibrary.SearchableSpinner
                     android:id="@+id/sp_unit"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/proxima_regular" />
 
             </com.google.android.material.card.MaterialCardView>
 
@@ -134,6 +143,7 @@
                     android:id="@+id/et_unit_price"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/proxima_regular"
                     android:inputType="numberDecimal"
                     android:maxLength="10" />
 
@@ -154,7 +164,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_desc"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/proxima_regular" />
 
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -166,6 +177,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="5dp"
+                android:fontFamily="@font/proxima_regular"
                 android:text="SKU photo"
                 android:textColor="@color/black" />
 
@@ -181,6 +193,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:fontFamily="@font/proxima_regular"
                     android:padding="20dp"
                     android:text="Tap to select"
                     android:textSize="18sp" />
@@ -205,7 +218,9 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="5dp"
+                android:fontFamily="@font/proxima_regular"
                 android:text="Add"
+                android:textStyle="bold"
                 app:rippleColor="@color/colorPrimary" />
 
         </LinearLayout>

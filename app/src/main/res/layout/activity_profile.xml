@@ -1,46 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/gray">
 
 
-    <include layout="@layout/toolbar" />
-
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_below="@+id/toolbar"
-        android:layout_height="275dp">
+        android:layout_height="match_parent">
+
+        <include layout="@layout/toolbar" />
+
 
         <RelativeLayout
             android:id="@+id/rl_top_view"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_height="220dp"
             android:layout_below="@+id/toolbar"
-            android:background="@color/silver">
+            android:background="@drawable/profile_bg">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/iv_profile_image"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
                 android:layout_below="@+id/toolbar"
                 android:layout_centerInParent="true"
-                android:src="@drawable/ic_reort"
+                android:src="@drawable/ic_profile_big"
                 app:civ_border_color="@color/white"
-                app:civ_border_width="2dp" />
+                app:civ_border_width="4dp" />
 
         </RelativeLayout>
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
+        <TextView
+            android:id="@+id/owner_name_title"
             android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_below="@+id/rl_top_view"
-            android:layout_marginBottom="20dp"
-            android:src="@drawable/ic_camera"
-            app:fabSize="mini" />
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rl_top_view"
+            android:layout_marginLeft="40dp"
+            android:fontFamily="@font/proxima_regular"
+            android:layout_marginTop="40dp"
+            android:layout_marginRight="40dp"
+            android:text="Owner Name"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_owner_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/proxima_regular"
+            android:layout_below="@+id/owner_name_title"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:text="Tom hanks" />
+
+        <TextView
+            android:id="@+id/username_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_owner_name"
+            android:layout_marginLeft="40dp"
+            android:fontFamily="@font/proxima_regular"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="40dp"
+            android:text="Username/Email"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/username_title"
+            android:fontFamily="@font/proxima_regular"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:text="hanks@gmail.com" />
+
+        <TextView
+            android:id="@+id/storename_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_username"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/proxima_regular"
+            android:layout_marginRight="40dp"
+            android:text="Store name"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_store_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/storename_title"
+            android:layout_marginLeft="40dp"
+            android:fontFamily="@font/proxima_regular"
+            android:layout_marginRight="40dp"
+            android:text="Badri ko halwai" />
+
+        <TextView
+            android:id="@+id/address_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_store_name"
+            android:layout_marginLeft="40dp"
+            android:fontFamily="@font/proxima_regular"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="40dp"
+            android:text="Address"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/address_title"
+            android:layout_marginLeft="40dp"
+            android:fontFamily="@font/proxima_regular"
+            android:layout_marginRight="40dp"
+            android:text="Jawalakhel, Lalitpur" />
 
     </RelativeLayout>
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_change_pic"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_below="@+id/rl_top_view"
+        android:layout_margin="16dp"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/ic_camera"
+        app:fabSize="mini"
+        app:layout_anchor="@id/rl_top_view"
+        app:layout_anchorGravity="bottom|right" />
 
-</RelativeLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

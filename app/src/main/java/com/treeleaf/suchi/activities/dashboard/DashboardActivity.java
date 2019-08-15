@@ -1,6 +1,7 @@
 package com.treeleaf.suchi.activities.dashboard;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -9,6 +10,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.Menu;
@@ -53,8 +55,6 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
     DrawerLayout mDrawerLayout;
     @BindView(R.id.nv)
     NavigationView mNavigationView;
-    @BindView(R.id.iv_menu)
-    ImageView mMenu;
 
     private DashboardPresenter presenter;
     private SharedPreferences preferences;
@@ -75,23 +75,24 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
 
         mInventory.setOnClickListener(this);
         mCredit.setOnClickListener(this);
-        mMenu.setOnClickListener(this);
 
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
                 int id = item.getItemId();
                 switch (id) {
                     case R.id.profile:
                         startActivity(new Intent(DashboardActivity.this, ProfileActivity.class));
                         break;
                     case R.id.logout:
-                        Toast.makeText(DashboardActivity.this, "Logout", Toast.LENGTH_SHORT).show();
+                        showLogoutDialog();
                         break;
                     default:
                         return true;
                 }
 
+                mDrawerLayout.closeDrawers();
                 return true;
 
             }
@@ -104,14 +105,19 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
         setUpToolbar(mToolbar);
         if (null != getSupportActionBar()) {
             getSupportActionBar().setDisplayShowTitleEnabled(false);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setHomeButtonEnabled(true);
         }
         mToolbarTitle.setText("Dashboard");
 
-        actionBarToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.open, R.string.close);
+        actionBarToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar, R.string.open, R.string.close);
         mDrawerLayout.addDrawerListener(actionBarToggle);
         actionBarToggle.syncState();
 
+        mNavigationView.getMenu().getItem(0).setChecked(true);
+
     }
+
 
     @Override
     public void logoutSuccess() {
@@ -134,30 +140,6 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
         showMessage(msg);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_logout, menu);
-        return true;
-    }
-
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        if (actionBarToggle.onOptionsItemSelected(item))
-            return true;
-
-        switch (item.getItemId()) {
-            case R.id.action_logout:
-                showLogoutDialog();
-                return true;
-
-
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-
-    }
 
     private void showLogoutDialog() {
         AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
@@ -212,10 +194,27 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
             case R.id.btn_credit:
                 startActivity(new Intent(DashboardActivity.this, CreditActivity.class));
                 break;
-
-            case R.id.iv_menu:
-                Toast.makeText(this, "Menu clicked", Toast.LENGTH_SHORT).show();
-                break;
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (actionBarToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onConfigurationChanged(@NonNull Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        actionBarToggle.onConfigurationChanged(newConfig);
+    }
+
+    @Override
+    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        actionBarToggle.syncState();
     }
 }

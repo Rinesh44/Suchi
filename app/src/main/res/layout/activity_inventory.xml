@@ -25,7 +25,7 @@
             android:focusable="true"
             android:foreground="?attr/selectableItemBackground"
             android:orientation="vertical"
-            android:padding="10dp">
+            android:padding="15dp">
 
 
             <ImageView
@@ -42,6 +42,7 @@
                 android:layout_marginStart="15dp"
                 android:layout_toRightOf="@+id/iv_sales"
                 android:elevation="8dp"
+                android:fontFamily="@font/proxima_regular"
                 android:text="@string/sales"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="25sp"
@@ -53,6 +54,7 @@
                 android:layout_below="@+id/tv_sales"
                 android:layout_marginStart="15dp"
                 android:layout_toRightOf="@+id/iv_sales"
+                android:fontFamily="@font/proxima_regular"
                 android:text="@string/view_sales_details" />
 
         </RelativeLayout>
@@ -76,7 +78,7 @@
             android:focusable="true"
             android:foreground="?attr/selectableItemBackground"
             android:orientation="vertical"
-            android:padding="10dp">
+            android:padding="15dp">
 
             <ImageView
                 android:id="@+id/iv_stock"
@@ -92,6 +94,7 @@
                 android:layout_marginStart="15dp"
                 android:layout_toRightOf="@+id/iv_stock"
                 android:elevation="8dp"
+                android:fontFamily="@font/proxima_regular"
                 android:text="@string/stock"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="25sp"
@@ -103,6 +106,7 @@
                 android:layout_below="@+id/tv_stock"
                 android:layout_marginStart="15dp"
                 android:layout_toRightOf="@+id/iv_stock"
+                android:fontFamily="@font/proxima_regular"
                 android:text="@string/view_stock_details" />
 
         </RelativeLayout>
@@ -126,7 +130,7 @@
             android:focusable="true"
             android:foreground="?attr/selectableItemBackground"
             android:orientation="vertical"
-            android:padding="10dp">
+            android:padding="15dp">
 
             <ImageView
                 android:id="@+id/iv_report"
@@ -142,6 +146,7 @@
                 android:layout_marginStart="15dp"
                 android:layout_toRightOf="@+id/iv_report"
                 android:elevation="8dp"
+                android:fontFamily="@font/proxima_regular"
                 android:text="@string/reports"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="25sp"
@@ -153,6 +158,7 @@
                 android:layout_below="@+id/tv_report"
                 android:layout_marginStart="15dp"
                 android:layout_toRightOf="@id/iv_report"
+                android:fontFamily="@font/proxima_regular"
                 android:text="@string/view_report_details" />
 
         </RelativeLayout>

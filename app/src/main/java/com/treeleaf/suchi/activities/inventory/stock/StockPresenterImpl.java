@@ -6,6 +6,7 @@ import com.treeleaf.suchi.entities.ReqResProto;
 import com.treeleaf.suchi.realm.models.Brands;
 import com.treeleaf.suchi.realm.models.Categories;
 import com.treeleaf.suchi.realm.models.Inventory;
+import com.treeleaf.suchi.realm.models.InventoryStocks;
 import com.treeleaf.suchi.realm.models.StockKeepingUnit;
 import com.treeleaf.suchi.realm.models.SubBrands;
 import com.treeleaf.suchi.realm.models.Units;
@@ -15,6 +16,7 @@ import com.treeleaf.suchi.utils.CallbackWrapper;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.realm.RealmList;
 import retrofit2.Response;
 
 public class StockPresenterImpl implements StockPresenter {
@@ -74,9 +76,6 @@ public class StockPresenterImpl implements StockPresenter {
             inventory.setInventory_id(inventoryPb.getInventoryId());
             inventory.setUser_id(inventoryPb.getUserId());
             inventory.setSynced(inventoryPb.getSync());
-            inventory.setQuantity(String.valueOf(inventoryPb.getQuantity()));
-            inventory.setMarkedPrice(String.valueOf(inventoryPb.getMarkedPrice()));
-            inventory.setSalesPrice(String.valueOf(inventoryPb.getSalesPrice()));
             inventory.setExpiryDate(String.valueOf(inventoryPb.getExpiryDate()));
 
             InventoryProto.StockKeepingUnit stockKeepingUnitPb = inventoryPb.getSku();
@@ -108,6 +107,18 @@ public class StockPresenterImpl implements StockPresenter {
 
             inventory.setSku(stockKeepingUnit);
 
+            List<InventoryProto.InventoryStock> inventoryStockPbList = inventoryPb.getInventoryStocksList();
+            RealmList<InventoryStocks> inventoryStocksRealmList = new RealmList<>();
+            for (InventoryProto.InventoryStock inventoryStockPb : inventoryStockPbList
+            ) {
+                InventoryStocks inventoryStocks = new InventoryStocks(String.valueOf(inventoryStockPb.getQuantity()),
+                        String.valueOf(inventoryStockPb.getMarkedPrice()), String.valueOf(inventoryStockPb.getSalesPrice()),
+                        String.valueOf(inventoryStockPb.getUnitId()), inventoryStockPb.getSync());
+
+                inventoryStocksRealmList.add(inventoryStocks);
+                inventory.setInventoryStocks(inventoryStocksRealmList);
+            }
+
             inventoryList.add(inventory);
 
         }
@@ -119,15 +130,27 @@ public class StockPresenterImpl implements StockPresenter {
         List<InventoryProto.Inventory> inventoryListProto = new ArrayList<>();
         for (Inventory inventory : inventoryList
         ) {
+
+
+            List<InventoryProto.InventoryStock> inventoryStockPbList = new ArrayList<>();
+            for (InventoryStocks inventoryStocks : inventory.getInventoryStocks()
+            ) {
+                InventoryProto.InventoryStock inventoryStockPb = InventoryProto.InventoryStock.newBuilder()
+                        .setMarkedPrice(Double.valueOf(inventoryStocks.getMarkedPrice()))
+                        .setSalesPrice(Double.valueOf(inventoryStocks.getSalesPrice()))
+                        .setQuantity(Integer.valueOf(inventoryStocks.getQuantity()))
+                        .setUnitId(inventoryStocks.getUnitId())
+                        .build();
+
+                inventoryStockPbList.add(inventoryStockPb);
+            }
+
             InventoryProto.Inventory inventoryProto = InventoryProto.Inventory.newBuilder()
                     .setInventoryId(inventory.getInventory_id())
                     .setSkuId(inventory.getSkuId())
                     .setUserId(inventory.getUser_id())
-                    .setUnitId(inventory.getUnitId())
+                    .addAllInventoryStocks(inventoryStockPbList)
                     .setStatus(InventoryProto.SKUStatus.AVAILABLE)
-                    .setMarkedPrice(Double.valueOf(inventory.getMarkedPrice()))
-                    .setSalesPrice(Double.valueOf(inventory.getSalesPrice()))
-                    .setQuantity(Integer.valueOf(inventory.getQuantity()))
                     .setExpiryDate(Long.valueOf(inventory.getExpiryDate()))
                     .build();
 

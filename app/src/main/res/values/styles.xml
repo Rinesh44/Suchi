@@ -1,7 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="AppTheme.Quiqpay">
+    <style name="AppTheme" parent="AppTheme.Suchi">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -10,7 +10,7 @@
 
     </style>
 
-    <style name="AppTheme.Quiqpay" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="AppTheme.Suchi" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -20,7 +20,7 @@
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowAllowEnterTransitionOverlap">true</item>
         <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="drawerArrowStyle">@style/DrawerIcon</item>
+        <item name="drawerArrowStyle">@style/DrawerHamburgerStyle</item>
     </style>
 
     <style name="ToolbarTheme" parent="@style/ThemeOverlay.AppCompat.ActionBar">
@@ -43,7 +43,7 @@
         <item name="android:windowBackground">@drawable/splash_screen</item>
     </style>
 
-    <style name="Widget.Design.TextInputLayout." parent="AppTheme.Quiqpay">
+    <style name="Widget.Design.TextInputLayout." parent="AppTheme.Suchi">
         <item name="android:background">@color/colorPrimary</item>
     </style>
 
@@ -59,7 +59,7 @@
            <item name="android:background">@drawable/rounded_bottomsheet</item>
        </style>-->
 
-    <style name="AppTheme.Quiqpay.NoActionBar">
+    <style name="AppTheme.Suchi.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
@@ -68,5 +68,17 @@
 
     <style name="AppTheme.Quiqpay.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="DrawerHamburgerStyle" parent="@style/Widget.AppCompat.DrawerArrowToggle">
+        <item name="color">@color/colorPrimary</item>
+    </style>
+
+    <style name="ThemeOverlay.AppCompat.navTheme">
+
+        <!-- Color of text and icon when SELECTED -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+
+        <!-- Background color when SELECTED -->
+        <item name="colorControlHighlight">@color/lightPrimary</item>
+    </style>
 
 </resources>

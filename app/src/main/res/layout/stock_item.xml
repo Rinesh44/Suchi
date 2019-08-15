@@ -25,12 +25,21 @@
             android:src="@drawable/ic_reort"
             app:civ_border_width="1.5dp" />
 
+        <ImageView
+            android:id="@+id/iv_unsynced"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_unsynced"
+            android:visibility="gone" />
+
         <TextView
             android:id="@+id/tv_sku_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="20sp"
+            android:fontFamily="@font/proxima_regular"
             android:layout_toRightOf="@+id/iv_item"
+            android:drawablePadding="5dp"
             android:text="SKU" />
 
         <TextView
@@ -38,6 +47,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_sku_title"
+            android:fontFamily="@font/proxima_regular"
             android:layout_marginStart="20dp"
             android:layout_toRightOf="@+id/iv_item"
             android:text="Kolin"
@@ -47,6 +57,7 @@
             android:id="@+id/tv_price_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/proxima_regular"
             android:layout_below="@+id/tv_sku"
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
@@ -58,36 +69,39 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_price_title"
+            android:fontFamily="@font/proxima_regular"
             android:layout_marginStart="20dp"
             android:layout_toRightOf="@+id/iv_item"
             android:text="120"
             android:textColor="@color/black" />
 
         <TextView
-            android:id="@+id/tv_unit_title"
+            android:id="@+id/tv_category_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
+            android:fontFamily="@font/proxima_regular"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="20dp"
-            android:text="UNIT" />
+            android:text="CATEGORY" />
 
         <TextView
-            android:id="@+id/tv_unit"
+            android:id="@+id/tv_category"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_sku_title"
+            android:fontFamily="@font/proxima_regular"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="20dp"
-            android:text="Packet"
+            android:text="Category"
             android:textColor="@color/black" />
 
-        <TextView
+<!--        <TextView
             android:id="@+id/tv_qty_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_unit"
+            android:layout_below="@+id/tv_category"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp"
@@ -102,7 +116,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="20dp"
             android:text="22"
-            android:textColor="@color/black" />
+            android:textColor="@color/black" />-->
 
 
     </RelativeLayout>

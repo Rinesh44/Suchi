@@ -1,5 +1,6 @@
 package com.treeleaf.suchi.activities.inventory.stock;
 
+import androidx.appcompat.widget.AppCompatSpinner;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
@@ -33,10 +34,13 @@ import com.treeleaf.suchi.activities.base.BaseActivity;
 import com.treeleaf.suchi.api.Endpoints;
 import com.treeleaf.suchi.entities.InventoryProto;
 import com.treeleaf.suchi.realm.models.Inventory;
+import com.treeleaf.suchi.realm.models.InventoryStocks;
 import com.treeleaf.suchi.realm.models.StockKeepingUnit;
+import com.treeleaf.suchi.realm.models.Units;
 import com.treeleaf.suchi.realm.repo.InventoryRepo;
 import com.treeleaf.suchi.realm.repo.Repo;
 import com.treeleaf.suchi.realm.repo.StockKeepingUnitRepo;
+import com.treeleaf.suchi.realm.repo.UnitRepo;
 import com.treeleaf.suchi.utils.AppUtils;
 import com.treeleaf.suchi.utils.Constants;
 import com.treeleaf.suchi.utils.DatePicker;
@@ -50,6 +54,7 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.realm.RealmList;
 
 import static com.treeleaf.suchi.SuchiApp.getMyApplication;
 
@@ -107,6 +112,8 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
     RelativeLayout mAddInventoryHolder;
     @BindView(R.id.btn_add_to_inventory)
     MaterialButton mAddToInventory;
+    @BindView(R.id.sp_unit)
+    AppCompatSpinner mUnits;
 
 
     private DatePicker datePicker;
@@ -118,6 +125,9 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
 
     private SearchStockPresenter presenter;
     private List<StockKeepingUnit> mSkuItems = new ArrayList<>();
+    private List<String> skuList = new ArrayList<>();
+    private List<Units> unitList = new ArrayList<>();
+    private List<String> unitItems = new ArrayList<>();
     private String selectedItemId, selectedItemUnitId;
 
     private SharedPreferences sharedPreferences;
@@ -142,25 +152,27 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
         mExpiryDate.setOnClickListener(this);
         mAddToInventory.setOnClickListener(this);
 
+
+        setUpSearch();
+        setUpUnitSpinner();
+
         presenter = new SearchStockPresenterImpl(endpoints, this);
 
-        mSkuItems = StockKeepingUnitRepo.getInstance().getAllSkuList();
-        List<String> skuList = new ArrayList<>();
-        for (StockKeepingUnit item : mSkuItems
-        ) {
-            skuList.add(item.getName());
-        }
-
-        ArrayAdapter<String> skuListAdapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, skuList) {
+        mUnits.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public View getView(int position, View convertView, ViewGroup parent) {
-                View view = super.getView(position, convertView, parent);
-//                TextView name = (TextView) view.findViewById(android.R.id.text1);
-                return view;
-            }
-        };
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String item = (String) adapterView.getItemAtPosition(i);
+                int itemPosition = unitItems.indexOf(item);
 
-        mSearchSku.setAdapter(skuListAdapter);
+                Units units = unitList.get(itemPosition);
+                selectedItemUnitId = units.getId();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
         mSearchSku.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -181,8 +193,6 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
                 mUnitPrice.setText(selectedItem.getUnitPrice());
                 mCategory.setText(selectedItem.getCategories().getName());
                 mUnit.setText(selectedItem.getUnits().getName());
-
-                selectedItemUnitId = selectedItem.getUnits().getId();
 
 
                 StringBuilder quantityUnitBuilder = new StringBuilder();
@@ -211,6 +221,45 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
         });
 
         datePicker = new DatePicker(this, R.id.et_expiry_date);
+
+    }
+
+    private void setUpSearch() {
+        mSkuItems = StockKeepingUnitRepo.getInstance().getAllSkuList();
+        for (StockKeepingUnit item : mSkuItems
+        ) {
+            skuList.add(item.getName());
+        }
+
+        ArrayAdapter<String> skuListAdapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, skuList) {
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+                View view = super.getView(position, convertView, parent);
+//                TextView name = (TextView) view.findViewById(android.R.id.text1);
+                return view;
+            }
+        };
+
+        mSearchSku.setAdapter(skuListAdapter);
+    }
+
+    private void setUpUnitSpinner() {
+        unitList = UnitRepo.getInstance().getAllUnits();
+        for (Units unit : unitList
+        ) {
+            unitItems.add(unit.getName());
+        }
+
+        ArrayAdapter<String> unitItemsAdapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, unitItems) {
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+                View view = super.getView(position, convertView, parent);
+//                TextView name = (TextView) view.findViewById(android.R.id.text1);
+                return view;
+            }
+        };
+
+        mUnits.setAdapter(unitItemsAdapter);
 
     }
 
@@ -277,15 +326,19 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
         AppUtils.showLog(TAG, "inventoryId: " + inventoryId);
         AppUtils.showLog(TAG, "skuId: " + selectedItemId);
 
+        InventoryProto.InventoryStock inventoryStock = InventoryProto.InventoryStock.newBuilder()
+                .setMarkedPrice(Double.valueOf(mMarkedPrice.getText().toString().trim()))
+                .setSalesPrice(Double.valueOf(mSellingPrice.getText().toString().trim()))
+                .setQuantity(Integer.valueOf(mQuantity.getText().toString().trim()))
+                .setUnitId(selectedItemUnitId)
+                .build();
+
         InventoryProto.Inventory inventory = InventoryProto.Inventory.newBuilder()
                 .setInventoryId(inventoryId)
                 .setSkuId(selectedItemId)
                 .setUserId(userId)
-                .setUnitId(selectedItemUnitId)
+                .addInventoryStocks(inventoryStock)
                 .setStatus(InventoryProto.SKUStatus.AVAILABLE)
-                .setMarkedPrice(Double.valueOf(mMarkedPrice.getText().toString().trim()))
-                .setSalesPrice(Double.valueOf(mSellingPrice.getText().toString().trim()))
-                .setQuantity(Integer.valueOf(mQuantity.getText().toString().trim()))
                 .setExpiryDate(System.currentTimeMillis())
                 .build();
 
@@ -304,15 +357,19 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
     }
 
     private void saveToRealm(boolean syncValue) {
+        InventoryStocks inventoryStocks = new InventoryStocks(mQuantity.getText().toString().trim(),
+                mMarkedPrice.getText().toString().trim(), mSellingPrice.getText().toString().trim(),
+                selectedItemUnitId, false);
+
+        RealmList<InventoryStocks> inventoryStocksRealmList = new RealmList<>();
+        inventoryStocksRealmList.add(inventoryStocks);
+
         Inventory inventoryOffline = new Inventory();
         inventoryOffline.setInventory_id(inventoryId);
+        inventoryOffline.setInventoryStocks(inventoryStocksRealmList);
         inventoryOffline.setExpiryDate(String.valueOf(System.currentTimeMillis()));
-        inventoryOffline.setMarkedPrice(mMarkedPrice.getText().toString().trim());
-        inventoryOffline.setSalesPrice(mSellingPrice.getText().toString().trim());
-        inventoryOffline.setQuantity(mQuantity.getText().toString().trim());
-        inventoryOffline.setUser_id(userId);
         inventoryOffline.setSkuId(selectedItemId);
-        inventoryOffline.setUnitId(selectedItemUnitId);
+        inventoryOffline.setUser_id(userId);
         inventoryOffline.setSynced(syncValue);
 
         InventoryRepo.getInstance().saveInventory(inventoryOffline, new Repo.Callback() {
