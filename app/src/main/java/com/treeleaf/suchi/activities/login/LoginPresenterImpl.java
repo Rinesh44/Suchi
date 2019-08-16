@@ -166,7 +166,7 @@ public class LoginPresenterImpl implements LoginPresenter {
             RealmList<InventoryStocks> inventoryStocksRealmList = new RealmList<>();
             for (InventoryProto.InventoryStock inventoryStockPb : inventoryStockPbList
             ) {
-                InventoryStocks inventoryStocks = new InventoryStocks(String.valueOf(inventoryStockPb.getQuantity()),
+                InventoryStocks inventoryStocks = new InventoryStocks(inventoryStockPb.getInventoryStockId(), String.valueOf(inventoryStockPb.getQuantity()),
                         String.valueOf(inventoryStockPb.getMarkedPrice()), String.valueOf(inventoryStockPb.getSalesPrice()),
                         String.valueOf(inventoryStockPb.getUnitId()), inventoryStockPb.getSync());
 

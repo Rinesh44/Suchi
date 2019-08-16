@@ -131,7 +131,8 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
     private String selectedItemId, selectedItemUnitId;
 
     private SharedPreferences sharedPreferences;
-    private String userId, inventoryId;
+    private String userId, inventoryId, inventoryStockId;
+    private boolean update = false;
 
 
     @Override
@@ -164,8 +165,12 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
                 String item = (String) adapterView.getItemAtPosition(i);
                 int itemPosition = unitItems.indexOf(item);
 
+                AppUtils.showLog(TAG, "itemPosition: " + itemPosition);
+
                 Units units = unitList.get(itemPosition);
                 selectedItemUnitId = units.getId();
+                AppUtils.showLog(TAG, "selectedUnint: " + units.getName());
+                AppUtils.showLog(TAG, "selectedUnintId: " + units.getId());
             }
 
             @Override
@@ -320,13 +325,38 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
         token = sharedPreferences.getString(Constants.TOKEN, "");
         userId = sharedPreferences.getString(Constants.USER_ID, "");
 
-        String randomInventoryId = UUID.randomUUID().toString();
-        inventoryId = randomInventoryId.replace("-", "");
+
+        List<Inventory> syncedInventories = InventoryRepo.getInstance().getSyncedInventories();
+        if (syncedInventories == null || syncedInventories.isEmpty()) {
+            String randomInventoryId = UUID.randomUUID().toString();
+            inventoryId = randomInventoryId.replace("-", "");
+        } else {
+            for (Inventory inventory : syncedInventories
+            ) {
+                if (inventory.getSku().getId().equals(selectedItemId)) {
+                    inventoryId = inventory.getInventory_id();
+                    update = true;
+                } /*else {
+                    String randomInventoryId = UUID.randomUUID().toString();
+                    inventoryId = randomInventoryId.replace("-", "");
+                }*/
+            }
+        }
+
+
+        if (!update) {
+            String randomInventoryId = UUID.randomUUID().toString();
+            inventoryId = randomInventoryId.replace("-", "");
+        }
 
         AppUtils.showLog(TAG, "inventoryId: " + inventoryId);
         AppUtils.showLog(TAG, "skuId: " + selectedItemId);
 
+        String randomInventoryStockId = UUID.randomUUID().toString();
+        inventoryStockId = randomInventoryStockId.replace("-", "");
+
         InventoryProto.InventoryStock inventoryStock = InventoryProto.InventoryStock.newBuilder()
+                .setInventoryStockId(inventoryStockId)
                 .setMarkedPrice(Double.valueOf(mMarkedPrice.getText().toString().trim()))
                 .setSalesPrice(Double.valueOf(mSellingPrice.getText().toString().trim()))
                 .setQuantity(Integer.valueOf(mQuantity.getText().toString().trim()))
@@ -345,8 +375,8 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
         if (NetworkUtils.isNetworkConnected(this)) {
             showLoading();
             if (token != null) {
-
-                presenter.addStock(token, inventory);
+                if (!update) presenter.addStock(token, inventory);
+                else presenter.updateStock(token, inventory);
 
             } else Toast.makeText(this, "Unable to get token", Toast.LENGTH_SHORT).show();
         } else {
@@ -356,8 +386,10 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
 
     }
 
+
     private void saveToRealm(boolean syncValue) {
-        InventoryStocks inventoryStocks = new InventoryStocks(mQuantity.getText().toString().trim(),
+
+        InventoryStocks inventoryStocks = new InventoryStocks(inventoryStockId, mQuantity.getText().toString().trim(),
                 mMarkedPrice.getText().toString().trim(), mSellingPrice.getText().toString().trim(),
                 selectedItemUnitId, false);
 
@@ -445,6 +477,21 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
 
     @Override
     public void addStockFail(String msg) {
+        showMessage(msg);
+    }
+
+    @Override
+    public void updateStockSuccess() {
+        AppUtils.showLog(TAG, "update stock success");
+        Toast.makeText(this, "inventory updated", Toast.LENGTH_SHORT).show();
+
+        presenter.getStockItems(token);
+        finish();
+
+    }
+
+    @Override
+    public void updateStockFail(String msg) {
         showMessage(msg);
     }
 

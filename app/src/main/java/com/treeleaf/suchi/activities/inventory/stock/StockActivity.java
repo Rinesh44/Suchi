@@ -54,6 +54,8 @@ public class StockActivity extends BaseActivity implements StockView {
     TextView mToolbarTitle;
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
+    @BindView(R.id.tv_no_stocks)
+    TextView mNoStocks;
 
 
     private StockAdapter mStockAdapter;
@@ -84,6 +86,8 @@ public class StockActivity extends BaseActivity implements StockView {
             public void onChanged(RealmResults<Inventory> inventories) {
 //                Toast.makeText(StockActivity.this, "on changed", Toast.LENGTH_SHORT).show();
                 AppUtils.showLog(TAG, "inventory size: " + inventories.size());
+                if (inventories.size() == 0) mNoStocks.setVisibility(View.VISIBLE);
+                else mNoStocks.setVisibility(View.GONE);
                 mStockAdapter.submitList(inventories);
 
             }

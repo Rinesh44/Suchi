@@ -23,222 +23,213 @@
             android:padding="20dp">
 
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/iv_item"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_reort" />
-
-
-            <TextView
-                android:id="@+id/tv_sku_name_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/proxima_regular"
-                android:text="Sku Name"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-
             <TextView
                 android:id="@+id/tv_sku_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/proxima_regular"
-                android:text="name"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/tv_marked_price_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/proxima_regular"
-                android:text="Marked Price"
+                android:text="Kolin"
                 android:textColor="@color/black"
-                android:textSize="16sp" />
+                android:textSize="25sp"
+                android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/tv_marked_price"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/proxima_regular"
-                android:text="11111"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/tv_selling_price_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_item"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:fontFamily="@font/proxima_regular"
-                android:text="Selling Price"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
+                android:src="@drawable/ic_reort" />
 
-
-            <TextView
-                android:id="@+id/tv_selling_price"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:id="@+id/rl_item_info"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/proxima_regular"
-                android:text="11111"
-                android:textSize="16sp" />
+                android:layout_marginTop="20dp">
 
-            <TextView
-                android:id="@+id/tv_quantity_title"
-                android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/tv_item_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Item Info"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_toEndOf="@+id/tv_item_info"
+                    android:background="@color/colorAccent" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/proxima_regular"
-                android:text="Quantity"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
 
-            <TextView
-                android:id="@+id/tv_quantity"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/proxima_regular"
-                android:text="2"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/tv_unit_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/proxima_regular"
-                android:text="Unit"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
+                    <TextView
+                        android:id="@+id/tv_brand_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/proxima_regular"
+                        android:text="Brand"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
 
 
-            <TextView
-                android:id="@+id/tv_unit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/proxima_regular"
-                android:text="packet"
-                android:textSize="16sp" />
+                    <TextView
+                        android:id="@+id/tv_brand"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_brand_title"
+                        android:fontFamily="@font/proxima_regular"
+                        android:text="tosiba"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/tv_sub_brand_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/proxima_regular"
+                        android:text="Sub Brand"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
 
 
-            <TextView
-                android:id="@+id/tv_unit_price_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/proxima_regular"
-                android:text="Unit Price"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
+                    <TextView
+                        android:id="@+id/tv_sub_brand"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_sub_brand_title"
+                        android:layout_alignParentEnd="true"
+                        android:fontFamily="@font/proxima_regular"
+                        android:text="SOny"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/tv_category_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_brand"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/proxima_regular"
+                        android:text="Category"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
 
 
-            <TextView
-                android:id="@+id/tv_unit_price"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/proxima_regular"
-                android:text="150"
-                android:textSize="16sp" />
+                    <TextView
+                        android:id="@+id/tv_category"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_category_title"
+                        android:fontFamily="@font/proxima_regular"
+                        android:text="categirt"
+                        android:textSize="16sp" />
 
-            <TextView
-                android:id="@+id/tv_brand_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/proxima_regular"
-                android:text="Brand"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-
-
-            <TextView
-                android:id="@+id/tv_brand"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/proxima_regular"
-                android:text="tosiba"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/tv_sub_brand_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/proxima_regular"
-                android:text="Sub Brand"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
+                    <TextView
+                        android:id="@+id/tv_desc_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_category"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/proxima_regular"
+                        android:text="Description"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
 
 
-            <TextView
-                android:id="@+id/tv_sub_brand"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/proxima_regular"
-                android:text="SOny"
-                android:textSize="16sp" />
+                    <TextView
+                        android:id="@+id/tv_desc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_desc_title"
+                        android:fontFamily="@font/proxima_regular"
+                        android:text="desc"
+                        android:textSize="16sp" />
 
-            <TextView
-                android:id="@+id/tv_category_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/proxima_regular"
-                android:text="Category"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-
-
-            <TextView
-                android:id="@+id/tv_category"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/proxima_regular"
-                android:text="categirt"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/tv_desc_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/proxima_regular"
-                android:text="Description"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
+                    <TextView
+                        android:id="@+id/tv_expiry_date_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_sub_brand"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/proxima_regular"
+                        android:text="Expiry Date"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
 
 
-            <TextView
-                android:id="@+id/tv_desc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/proxima_regular"
-                android:text="desc"
-                android:textSize="16sp" />
+                    <TextView
+                        android:id="@+id/tv_expiry_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_expiry_date_title"
+                        android:layout_alignParentEnd="true"
+                        android:fontFamily="@font/proxima_regular"
+                        android:text="asdfg"
+                        android:textSize="16sp" />
 
-            <TextView
-                android:id="@+id/tv_expiry_date_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/proxima_regular"
-                android:text="Expiry Date"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rl_available_stocks"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:visibility="visible">
+
+                    <TextView
+                        android:id="@+id/tv_available_stocks"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Available Stocks"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_toEndOf="@+id/tv_available_stocks"
+                        android:background="@color/colorAccent" />
+
+                </RelativeLayout>
+
+                <HorizontalScrollView
+                    android:id="@+id/hsv_stocks"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:scrollbars="none">
 
 
-            <TextView
-                android:id="@+id/tv_expiry_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/proxima_regular"
-                android:text="asdfg"
-                android:textSize="16sp" />
+                    <LinearLayout
+                        android:id="@+id/ll_stock_holder"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" />
 
+
+                </HorizontalScrollView>
+            </LinearLayout>
 
         </LinearLayout>
 

@@ -106,9 +106,9 @@ public class SearchStockPresenterImpl implements SearchStockPresenter {
             RealmList<InventoryStocks> inventoryStocksRealmList = new RealmList<>();
             for (InventoryProto.InventoryStock inventoryStockPb : inventoryStockPbList
             ) {
-                InventoryStocks inventoryStocks = new InventoryStocks(String.valueOf(inventoryStockPb.getQuantity()),
+                InventoryStocks inventoryStocks = new InventoryStocks(inventoryStockPb.getInventoryStockId(), String.valueOf(inventoryStockPb.getQuantity()),
                         String.valueOf(inventoryStockPb.getMarkedPrice()), String.valueOf(inventoryStockPb.getSalesPrice()),
-                        String.valueOf(inventoryStockPb.getUnitId()), inventoryStockPb.getSync());
+                        String.valueOf(inventoryStockPb.getUnit().getUnitId()), inventoryStockPb.getSync());
 
                 inventoryStocksRealmList.add(inventoryStocks);
                 inventory.setInventoryStocks(inventoryStocksRealmList);
@@ -151,4 +151,37 @@ public class SearchStockPresenterImpl implements SearchStockPresenter {
             }
         }));
     }
+
+    @Override
+    public void updateStock(String token, InventoryProto.Inventory inventory) {
+        endpoints.updateInventory(token, inventory).enqueue(new CallbackWrapper<>(activity, new CallbackWrapper.Wrapper<ReqResProto.Response>() {
+            @Override
+            public void onSuccessResult(Response<ReqResProto.Response> response) {
+                activity.hideLoading();
+                ReqResProto.Response baseResponse = response.body();
+
+                if (baseResponse == null) {
+                    activity.updateStockFail("Update stock failed");
+                    return;
+                }
+
+                if (baseResponse.getError()) {
+                    activity.updateStockFail(baseResponse.getMsg());
+                    return;
+                }
+
+                AppUtils.showLog(TAG, "UpdateStockResponse: " + baseResponse);
+
+                activity.updateStockSuccess();
+            }
+
+            @Override
+            public void onFailureResult() {
+                activity.hideLoading();
+                activity.updateStockFail("Update stock failed");
+            }
+        }));
+    }
+
+
 }

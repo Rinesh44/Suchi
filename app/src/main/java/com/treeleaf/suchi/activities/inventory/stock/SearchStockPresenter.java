@@ -7,4 +7,6 @@ public interface SearchStockPresenter {
     void getStockItems(String token);
 
     void addStock(String token, InventoryProto.Inventory inventory);
+
+    void updateStock(String token, InventoryProto.Inventory inventory);
 }

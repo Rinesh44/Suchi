@@ -1,19 +1,31 @@
 package com.treeleaf.suchi.activities.inventory.stock;
 
 import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.HorizontalScrollView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.google.android.material.card.MaterialCardView;
 import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.activities.base.BaseActivity;
 import com.treeleaf.suchi.realm.models.Inventory;
+import com.treeleaf.suchi.realm.models.InventoryStocks;
+import com.treeleaf.suchi.realm.models.Units;
+import com.treeleaf.suchi.realm.repo.UnitRepo;
 import com.treeleaf.suchi.utils.AppUtils;
 
 
+import org.w3c.dom.Text;
+
+import java.util.List;
+
+import butterknife.BindDimen;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -27,16 +39,6 @@ public class StockDetails extends BaseActivity {
     TextView mToolbarTitle;
     @BindView(R.id.tv_sku_name)
     TextView mSkuName;
-    @BindView(R.id.tv_marked_price)
-    TextView mMarkedPrice;
-    @BindView(R.id.tv_selling_price)
-    TextView mSellingPrice;
-    @BindView(R.id.tv_quantity)
-    TextView mQuantity;
-    @BindView(R.id.tv_unit)
-    TextView mUnit;
-    @BindView(R.id.tv_unit_price)
-    TextView mUnitPrice;
     @BindView(R.id.tv_brand)
     TextView mBrand;
     @BindView(R.id.tv_sub_brand)
@@ -49,6 +51,10 @@ public class StockDetails extends BaseActivity {
     CircleImageView mItemImage;
     @BindView(R.id.tv_expiry_date)
     TextView mExpiryDate;
+    @BindView(R.id.hsv_stocks)
+    HorizontalScrollView mStocksHorizontalView;
+    @BindView(R.id.ll_stock_holder)
+    LinearLayout mStockHolder;
 
     private Inventory inventory;
 
@@ -68,9 +74,29 @@ public class StockDetails extends BaseActivity {
     }
 
     private void displayDetails() {
+
+        List<InventoryStocks> inventoryStocksList = inventory.getInventoryStocks();
+        for (InventoryStocks inventoryStock : inventoryStocksList
+        ) {
+            MaterialCardView cardView = (MaterialCardView) getLayoutInflater().inflate(R.layout.available_stock_item, null);
+            TextView markedPrice = cardView.findViewById(R.id.tv_marked_price);
+            TextView salesPrice = cardView.findViewById(R.id.tv_selling_price);
+            TextView quantity = cardView.findViewById(R.id.tv_quantity);
+            TextView unit = cardView.findViewById(R.id.tv_unit);
+
+            markedPrice.setText(inventoryStock.getMarkedPrice());
+            salesPrice.setText(inventoryStock.getSalesPrice());
+            quantity.setText(inventoryStock.getQuantity());
+
+            AppUtils.showLog(TAG, "unitId: " + inventoryStock.getUnitId());
+
+          /*  Units unitModel = UnitRepo.getInstance().getUnitById(inventoryStock.getUnitId());
+            unit.setText(unitModel.getName());*/
+
+            mStockHolder.addView(cardView);
+
+        }
         mSkuName.setText(inventory.getSku().getName());
-        mUnit.setText(inventory.getSku().getUnits().getName());
-        mUnitPrice.setText(inventory.getSku().getUnitPrice());
         mBrand.setText(inventory.getSku().getBrand().getName());
         mSubBrand.setText(inventory.getSku().getSubBrands().getName());
         mCategory.setText(inventory.getSku().getCategories().getName());

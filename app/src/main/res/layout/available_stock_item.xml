@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="230dp"
+    android:layout_height="200dp"
+    app:cardCornerRadius="6dp"
+    app:cardUseCompatPadding="true">
+
+
+    <LinearLayout
+        android:layout_width="230dp"
+        android:layout_height="200dp"
+        android:orientation="vertical"
+        android:weightSum="3">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:background="@color/colorAccent"
+            android:gravity="center_vertical"
+            android:padding="10dp">
+
+
+            <TextView
+                android:id="@+id/tv_selling_price_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/proxima_regular"
+                android:text="Selling Price (Rs.)"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/tv_selling_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_selling_price_title"
+                android:fontFamily="@font/proxima_regular"
+                android:text="2000"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/tv_marked_price_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_selling_price"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/proxima_regular"
+                android:text="Marked Price (Rs.)"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/tv_marked_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_marked_price_title"
+                android:fontFamily="@font/proxima_regular"
+                android:text="2000"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/tv_quantity"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/proxima_regular"
+                android:text="17"
+                android:textColor="@color/colorAccent"
+                android:textSize="35sp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/tv_unit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="5dp"
+                android:layout_toEndOf="@+id/tv_quantity"
+                android:fontFamily="@font/proxima_regular"
+                android:text="pcs"
+                android:textColor="@color/colorPrimary" />
+
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

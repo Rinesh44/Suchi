@@ -12,4 +12,8 @@ public interface SearchStockView {
     void addStockSuccess();
 
     void addStockFail(String msg);
+
+    void updateStockSuccess();
+
+    void updateStockFail(String msg);
 }

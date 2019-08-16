@@ -12,6 +12,7 @@ import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;
+import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 
 public interface Endpoints {
@@ -46,6 +47,10 @@ public interface Endpoints {
     @POST(API_BASE_URL + INVENTORY)
     Call<ReqResProto.Response> addInventory(@Header(AUTHORIZATION) String authorization,
                                             @Body InventoryProto.Inventory inventory);
+
+    @PATCH(API_BASE_URL + INVENTORY)
+    Call<ReqResProto.Response> updateInventory(@Header(AUTHORIZATION) String authorization,
+                                               @Body InventoryProto.Inventory inventory);
 
     @POST(API_BASE_URL + ADD_UNSYNCED_INVENTORIES)
     Call<ReqResProto.Response> addUnSyncedInventories(@Header(AUTHORIZATION) String auth,
