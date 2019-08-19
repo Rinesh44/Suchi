@@ -106,9 +106,10 @@ public class SearchStockPresenterImpl implements SearchStockPresenter {
             RealmList<InventoryStocks> inventoryStocksRealmList = new RealmList<>();
             for (InventoryProto.InventoryStock inventoryStockPb : inventoryStockPbList
             ) {
+                AppUtils.showLog(TAG, "unitId: " + inventoryStockPb.getUnit().getUnitId());
                 InventoryStocks inventoryStocks = new InventoryStocks(inventoryStockPb.getInventoryStockId(), String.valueOf(inventoryStockPb.getQuantity()),
                         String.valueOf(inventoryStockPb.getMarkedPrice()), String.valueOf(inventoryStockPb.getSalesPrice()),
-                        String.valueOf(inventoryStockPb.getUnit().getUnitId()), inventoryStockPb.getSync());
+                        inventoryStockPb.getUnit().getUnitId(), inventoryStockPb.getSync());
 
                 inventoryStocksRealmList.add(inventoryStocks);
                 inventory.setInventoryStocks(inventoryStocksRealmList);
@@ -171,7 +172,6 @@ public class SearchStockPresenterImpl implements SearchStockPresenter {
                 }
 
                 AppUtils.showLog(TAG, "UpdateStockResponse: " + baseResponse);
-
                 activity.updateStockSuccess();
             }
 

@@ -1,7 +1,6 @@
 package com.treeleaf.suchi.activities.inventory.stock;
 
 import androidx.appcompat.widget.Toolbar;
-import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,18 +13,17 @@ import com.bumptech.glide.request.RequestOptions;
 import com.google.android.material.card.MaterialCardView;
 import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.activities.base.BaseActivity;
+import com.treeleaf.suchi.dto.InventoryDto;
+import com.treeleaf.suchi.dto.InventoryStocksDto;
 import com.treeleaf.suchi.realm.models.Inventory;
 import com.treeleaf.suchi.realm.models.InventoryStocks;
 import com.treeleaf.suchi.realm.models.Units;
 import com.treeleaf.suchi.realm.repo.UnitRepo;
 import com.treeleaf.suchi.utils.AppUtils;
 
-
-import org.w3c.dom.Text;
-
 import java.util.List;
 
-import butterknife.BindDimen;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -56,7 +54,7 @@ public class StockDetails extends BaseActivity {
     @BindView(R.id.ll_stock_holder)
     LinearLayout mStockHolder;
 
-    private Inventory inventory;
+    private InventoryDto inventory;
 
 
     @Override
@@ -75,8 +73,8 @@ public class StockDetails extends BaseActivity {
 
     private void displayDetails() {
 
-        List<InventoryStocks> inventoryStocksList = inventory.getInventoryStocks();
-        for (InventoryStocks inventoryStock : inventoryStocksList
+        List<InventoryStocksDto> inventoryStocksList = inventory.getInventoryStocks();
+        for (InventoryStocksDto inventoryStock : inventoryStocksList
         ) {
             MaterialCardView cardView = (MaterialCardView) getLayoutInflater().inflate(R.layout.available_stock_item, null);
             TextView markedPrice = cardView.findViewById(R.id.tv_marked_price);
@@ -90,8 +88,8 @@ public class StockDetails extends BaseActivity {
 
             AppUtils.showLog(TAG, "unitId: " + inventoryStock.getUnitId());
 
-          /*  Units unitModel = UnitRepo.getInstance().getUnitById(inventoryStock.getUnitId());
-            unit.setText(unitModel.getName());*/
+            Units unitModel = UnitRepo.getInstance().getUnitById(inventoryStock.getUnitId());
+            unit.setText(unitModel.getName());
 
             mStockHolder.addView(cardView);
 

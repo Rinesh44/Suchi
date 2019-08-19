@@ -31,7 +31,9 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.activities.base.BaseActivity;
+import com.treeleaf.suchi.adapter.AutocompleteSearchAdapter;
 import com.treeleaf.suchi.api.Endpoints;
+import com.treeleaf.suchi.dto.StockKeepingUnitDto;
 import com.treeleaf.suchi.entities.InventoryProto;
 import com.treeleaf.suchi.realm.models.Inventory;
 import com.treeleaf.suchi.realm.models.InventoryStocks;
@@ -98,8 +100,6 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
     TextInputLayout mSellingPriceLayout;
     @BindView(R.id.et_selling_price)
     TextInputEditText mSellingPrice;
-    @BindView(R.id.tv_unit)
-    TextView mUnit;
     @BindView(R.id.tv_quantity_unit)
     TextView mQuantityUnit;
     @BindView(R.id.actv_sku)
@@ -183,12 +183,8 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 hideKeyboard();
-                String item = (String) adapterView.getItemAtPosition(i);
-
-                int itemPosition = skuList.indexOf(item);
-                AppUtils.showLog(TAG, "itemId: " + itemPosition);
-
-                StockKeepingUnit selectedItem = mSkuItems.get(itemPosition);
+                StockKeepingUnitDto selectedItem = (StockKeepingUnitDto) adapterView.getItemAtPosition(i);
+                mSearchSku.setText(selectedItem.getName());
 
                 selectedItemId = selectedItem.getId();
 
@@ -197,8 +193,6 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
                 mSubBrand.setText(selectedItem.getSubBrands().getName());
                 mUnitPrice.setText(selectedItem.getUnitPrice());
                 mCategory.setText(selectedItem.getCategories().getName());
-                mUnit.setText(selectedItem.getUnits().getName());
-
 
                 StringBuilder quantityUnitBuilder = new StringBuilder();
                 quantityUnitBuilder.append(" (");
@@ -231,21 +225,36 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
 
     private void setUpSearch() {
         mSkuItems = StockKeepingUnitRepo.getInstance().getAllSkuList();
-        for (StockKeepingUnit item : mSkuItems
-        ) {
-            skuList.add(item.getName());
-        }
+        List<StockKeepingUnitDto> stockKeepingUnitDtoList = new ArrayList<>();
+        stockKeepingUnitDtoList = mapSKUModelToDto(mSkuItems);
 
-        ArrayAdapter<String> skuListAdapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, skuList) {
-            @Override
-            public View getView(int position, View convertView, ViewGroup parent) {
-                View view = super.getView(position, convertView, parent);
-//                TextView name = (TextView) view.findViewById(android.R.id.text1);
-                return view;
-            }
-        };
+        AutocompleteSearchAdapter skuListAdapter = new AutocompleteSearchAdapter(this, R.layout.autocomplete_search_item, stockKeepingUnitDtoList);
 
         mSearchSku.setAdapter(skuListAdapter);
+    }
+
+    private List<StockKeepingUnitDto> mapSKUModelToDto(List<StockKeepingUnit> mSkuItems) {
+        List<StockKeepingUnitDto> SKUDtoList = new ArrayList<>();
+        for (StockKeepingUnit sku : mSkuItems
+        ) {
+            StockKeepingUnitDto skuDto = new StockKeepingUnitDto();
+            skuDto.setId(sku.getId());
+            skuDto.setName(sku.getName());
+            skuDto.setPhoto_url(sku.getPhoto_url());
+            skuDto.setCode(sku.getCode());
+            skuDto.setDesc(sku.getDesc());
+            skuDto.setUnitPrice(sku.getUnitPrice());
+            skuDto.setSynced(sku.isSynced());
+            skuDto.setBrand(sku.getBrand());
+            skuDto.setSubBrands(sku.getSubBrands());
+            skuDto.setUnits(sku.getUnits());
+            skuDto.setCategories(sku.getCategories());
+
+            SKUDtoList.add(skuDto);
+        }
+
+        return SKUDtoList;
+
     }
 
     private void setUpUnitSpinner() {
@@ -486,6 +495,7 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
         Toast.makeText(this, "inventory updated", Toast.LENGTH_SHORT).show();
 
         presenter.getStockItems(token);
+
         finish();
 
     }

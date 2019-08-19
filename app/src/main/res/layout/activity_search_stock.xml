@@ -166,7 +166,6 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/tv_unit"
                         android:layout_alignParentEnd="true"
-                        android:layout_marginTop="8dp"
                         android:layout_marginEnd="10dp"
                         android:fontFamily="@font/proxima_regular"
                         android:text="Unit Price (Rs.)"
@@ -205,28 +204,6 @@
                         android:fontFamily="@font/proxima_regular"
                         android:gravity="end"
                         android:text="Dummy"
-                        android:textColor="@color/black" />
-
-                    <TextView
-                        android:id="@+id/tv_unit_title"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginEnd="10dp"
-                        android:fontFamily="@font/proxima_regular"
-                        android:text="Unit"
-                        android:textSize="12sp" />
-
-
-                    <TextView
-                        android:id="@+id/tv_unit"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/tv_unit_title"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginEnd="10dp"
-                        android:fontFamily="@font/proxima_regular"
-                        android:text="Litre"
                         android:textColor="@color/black" />
 
 

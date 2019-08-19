@@ -4,11 +4,12 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,38 +17,41 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.treeleaf.suchi.R;
-import com.treeleaf.suchi.realm.models.Categories;
-import com.treeleaf.suchi.realm.models.Inventory;
+import com.treeleaf.suchi.dto.InventoryDto;
 import com.treeleaf.suchi.realm.models.StockKeepingUnit;
-import com.treeleaf.suchi.realm.models.Units;
-import com.treeleaf.suchi.realm.repo.CategoryRepo;
 import com.treeleaf.suchi.realm.repo.StockKeepingUnitRepo;
-import com.treeleaf.suchi.realm.repo.UnitRepo;
 import com.treeleaf.suchi.utils.AppUtils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 
-public class StockAdapter extends ListAdapter<Inventory, StockAdapter.StockHolder> {
+public class StockAdapter extends ListAdapter<InventoryDto, StockAdapter.StockHolder> implements Filterable {
     private static final String TAG = "StockAdapter";
     private OnItemClickListener listener;
     private Context context;
     private String imageUrl;
+    private List<InventoryDto> inventoryListFiltered = new ArrayList<>();
+    private List<InventoryDto> inventoryList;
 
-    public StockAdapter(Context context) {
+    public StockAdapter(Context context, List<InventoryDto> inventoryList) {
         super(DIFF_CALLBACK);
         this.context = context;
+        this.inventoryList = inventoryList;
+        this.inventoryListFiltered = inventoryList;
     }
 
 
-    private static final DiffUtil.ItemCallback<Inventory> DIFF_CALLBACK = new DiffUtil.ItemCallback<Inventory>() {
+    private static final DiffUtil.ItemCallback<InventoryDto> DIFF_CALLBACK = new DiffUtil.ItemCallback<InventoryDto>() {
         @Override
-        public boolean areItemsTheSame(@NonNull Inventory oldItem, @NonNull Inventory newItem) {
+        public boolean areItemsTheSame(@NonNull InventoryDto oldItem, @NonNull InventoryDto newItem) {
             return oldItem.getInventory_id().equals(newItem.getInventory_id());
         }
 
         @Override
-        public boolean areContentsTheSame(@NonNull Inventory oldItem, @NonNull Inventory newItem) {
+        public boolean areContentsTheSame(@NonNull InventoryDto oldItem, @NonNull InventoryDto newItem) {
             return oldItem.isSynced() == newItem.isSynced()
                     && oldItem.getUser_id().equals(newItem.getUser_id())
                     && oldItem.getExpiryDate().equals(newItem.getExpiryDate());
@@ -64,7 +68,7 @@ public class StockAdapter extends ListAdapter<Inventory, StockAdapter.StockHolde
 
     @Override
     public void onBindViewHolder(@NonNull StockHolder holder, int position) {
-        Inventory current = getItem(position);
+        InventoryDto current = inventoryListFiltered.get(position);
         if (current.isSynced()) {
             holder.unsynced.setVisibility(View.GONE);
             holder.sku.setText(current.getSku().getName());
@@ -98,18 +102,58 @@ public class StockAdapter extends ListAdapter<Inventory, StockAdapter.StockHolde
             Glide.with(context).load(imageUrl).apply(options).into(holder.itemImage);
         }
 
-
     }
 
+    @Override
+    public int getItemCount() {
+        return inventoryListFiltered.size();
+    }
 
-    public Inventory getStockAt(int position) {
+    public InventoryDto getStockAt(int position) {
         return getItem(position);
+    }
+
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+                String charString = charSequence.toString();
+                if (charString.isEmpty()) {
+                    AppUtils.showLog(TAG, "char empty");
+                    inventoryListFiltered = inventoryList;
+                } else {
+                    List<InventoryDto> filteredList = new ArrayList<>();
+                    for (InventoryDto row : inventoryList) {
+//                        AppUtils.showLog(TAG, "rows: " + row.getWalletAddress());
+                        if (row.getSku().getName().toLowerCase().contains(charString.toLowerCase())) {
+                            filteredList.add(row);
+                        }
+
+                    }
+
+                    inventoryListFiltered = filteredList;
+
+                }
+
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = inventoryListFiltered;
+                return filterResults;
+
+            }
+
+            @SuppressWarnings("unchecked")
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                inventoryListFiltered = (ArrayList<InventoryDto>) filterResults.values;
+                notifyDataSetChanged();
+            }
+        };
     }
 
     class StockHolder extends RecyclerView.ViewHolder {
         private TextView category;
         private TextView sku;
-        //        private TextView qty;
         private TextView price;
         private ImageView unsynced;
         private CircleImageView itemImage;
@@ -120,7 +164,6 @@ public class StockAdapter extends ListAdapter<Inventory, StockAdapter.StockHolde
 
             category = itemView.findViewById(R.id.tv_category);
             sku = itemView.findViewById(R.id.tv_sku);
-//            qty = itemView.findViewById(R.id.tv_qty);
             price = itemView.findViewById(R.id.tv_price);
             unsynced = itemView.findViewById(R.id.iv_unsynced);
             itemImage = itemView.findViewById(R.id.iv_item);
@@ -129,8 +172,11 @@ public class StockAdapter extends ListAdapter<Inventory, StockAdapter.StockHolde
                 @Override
                 public void onClick(View view) {
                     int position = getAdapterPosition();
+                    AppUtils.showLog(TAG, "onclickCalled");
+
                     if (listener != null && position != RecyclerView.NO_POSITION) {
-                        listener.onItemClick(getItem(position));
+                        AppUtils.showLog(TAG, "allvalid");
+                        listener.onItemClick(inventoryListFiltered.get(position));
                     }
                 }
             });
@@ -140,7 +186,7 @@ public class StockAdapter extends ListAdapter<Inventory, StockAdapter.StockHolde
     }
 
     public interface OnItemClickListener {
-        void onItemClick(Inventory stock);
+        void onItemClick(InventoryDto stock);
     }
 
     public void setOnItemClickListener(OnItemClickListener listener) {

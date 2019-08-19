@@ -39,6 +39,24 @@ public class StockKeepingUnit extends RealmObject implements Parcelable {
         this.categories = categories;
     }
 
+
+    @Override
+    public String toString() {
+        return "StockKeepingUnit{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", photo_url='" + photo_url + '\'' +
+                ", code='" + code + '\'' +
+                ", desc='" + desc + '\'' +
+                ", unitPrice='" + unitPrice + '\'' +
+                ", synced=" + synced +
+                ", brand=" + brand +
+                ", subBrands=" + subBrands +
+                ", units=" + units +
+                ", categories=" + categories +
+                '}';
+    }
+
     public String getId() {
         return id;
     }

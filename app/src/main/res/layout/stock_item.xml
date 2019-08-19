@@ -37,9 +37,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20sp"
-            android:fontFamily="@font/proxima_regular"
             android:layout_toRightOf="@+id/iv_item"
             android:drawablePadding="5dp"
+            android:fontFamily="@font/proxima_regular"
             android:text="SKU" />
 
         <TextView
@@ -47,9 +47,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_sku_title"
-            android:fontFamily="@font/proxima_regular"
             android:layout_marginStart="20dp"
             android:layout_toRightOf="@+id/iv_item"
+            android:fontFamily="@font/proxima_regular"
             android:text="Kolin"
             android:textColor="@color/black" />
 
@@ -57,11 +57,11 @@
             android:id="@+id/tv_price_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/proxima_regular"
             android:layout_below="@+id/tv_sku"
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
             android:layout_toRightOf="@+id/iv_item"
+            android:fontFamily="@font/proxima_regular"
             android:text="PRICE (Rs.)" />
 
         <TextView
@@ -69,9 +69,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_price_title"
-            android:fontFamily="@font/proxima_regular"
             android:layout_marginStart="20dp"
             android:layout_toRightOf="@+id/iv_item"
+            android:fontFamily="@font/proxima_regular"
             android:text="120"
             android:textColor="@color/black" />
 
@@ -80,9 +80,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:fontFamily="@font/proxima_regular"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="20dp"
+            android:fontFamily="@font/proxima_regular"
             android:text="CATEGORY" />
 
         <TextView
@@ -90,33 +90,35 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_sku_title"
-            android:fontFamily="@font/proxima_regular"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="20dp"
+            android:fontFamily="@font/proxima_regular"
             android:text="Category"
             android:textColor="@color/black" />
 
-<!--        <TextView
-            android:id="@+id/tv_qty_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_category"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="20dp"
-            android:text="QUANTITY" />
+        <!--   <TextView
+               android:id="@+id/tv_unit_title"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_below="@+id/tv_category"
+               android:layout_alignParentEnd="true"
+               android:layout_marginTop="10dp"
+               android:layout_marginEnd="20dp"
+               android:text="Unit"
+               android:visibility="gone" />
 
-        <TextView
-            android:id="@+id/tv_qty"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_qty_title"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="20dp"
-            android:text="22"
-            android:textColor="@color/black" />-->
+           <TextView
+               android:id="@+id/tv_unit"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_below="@+id/tv_unit_title"
+               android:layout_alignParentEnd="true"
+               android:layout_marginStart="10dp"
+               android:layout_marginEnd="20dp"
+               android:text="22"
+               android:textColor="@color/black"
+               android:visibility="gone" />-->
 
 
     </RelativeLayout>
