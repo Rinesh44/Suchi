@@ -14,7 +14,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.dto.StockKeepingUnitDto;
-import com.treeleaf.suchi.utils.AppUtils;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,10 +28,8 @@ public class AutocompleteSearchAdapter extends ArrayAdapter {
     private Context mContext;
     private int itemLayout;
 
-
     private ListFilter listFilter = new ListFilter();
     private List<StockKeepingUnitDto> dataListAllItems;
-
 
     public AutocompleteSearchAdapter(Context context, int resource, List<StockKeepingUnitDto> storeDataLst) {
         super(context, resource, storeDataLst);
@@ -47,7 +45,6 @@ public class AutocompleteSearchAdapter extends ArrayAdapter {
 
     @Override
     public StockKeepingUnitDto getItem(int position) {
-        AppUtils.showLog(TAG, "result:  " + dataList.get(position));
         return dataList.get(position);
     }
 

@@ -133,6 +133,7 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
     private SharedPreferences sharedPreferences;
     private String userId, inventoryId, inventoryStockId;
     private boolean update = false;
+    private ArrayAdapter<String> unitItemsAdapter;
 
 
     @Override
@@ -158,7 +159,6 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
         setUpUnitSpinner();
 
         presenter = new SearchStockPresenterImpl(endpoints, this);
-
         mUnits.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -185,6 +185,11 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
                 hideKeyboard();
                 StockKeepingUnitDto selectedItem = (StockKeepingUnitDto) adapterView.getItemAtPosition(i);
                 mSearchSku.setText(selectedItem.getName());
+
+                int defaultUnitPosition = unitItemsAdapter.getPosition(selectedItem.getDefaultUnit());
+                AppUtils.showLog(TAG, "defaultUnit: " + selectedItem.getDefaultUnit());
+                AppUtils.showLog(TAG, "defaultUnitPos: " + defaultUnitPosition);
+                mUnits.setSelection(defaultUnitPosition);
 
                 selectedItemId = selectedItem.getId();
 
@@ -249,6 +254,7 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
             skuDto.setSubBrands(sku.getSubBrands());
             skuDto.setUnits(sku.getUnits());
             skuDto.setCategories(sku.getCategories());
+            skuDto.setDefaultUnit(sku.getDefaultUnit());
 
             SKUDtoList.add(skuDto);
         }
@@ -264,7 +270,7 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
             unitItems.add(unit.getName());
         }
 
-        ArrayAdapter<String> unitItemsAdapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, unitItems) {
+        unitItemsAdapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, unitItems) {
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
                 View view = super.getView(position, convertView, parent);
@@ -274,6 +280,7 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
         };
 
         mUnits.setAdapter(unitItemsAdapter);
+
 
     }
 

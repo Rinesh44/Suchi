@@ -200,7 +200,9 @@ public class LoginPresenterImpl implements LoginPresenter {
             stockKeepingUnit.setPhoto_url(itemsPb.getPhoto());
             stockKeepingUnit.setCode(itemsPb.getCode());
             stockKeepingUnit.setDesc(itemsPb.getDescription());
+
             stockKeepingUnit.setUnitPrice(String.valueOf(itemsPb.getUnitPrice()));
+            stockKeepingUnit.setDefaultUnit(itemsPb.getDefaultUnit().getName());
 
             Brands brands = new Brands();
             brands.setId(itemsPb.getBrand().getBrandId());

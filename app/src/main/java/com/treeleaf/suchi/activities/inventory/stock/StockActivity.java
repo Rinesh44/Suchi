@@ -112,7 +112,7 @@ public class StockActivity extends BaseActivity implements StockView {
         inventoryListViewModel.getInventories().observe(this, new Observer<RealmResults<Inventory>>() {
             @Override
             public void onChanged(RealmResults<Inventory> inventories) {
-                Toast.makeText(StockActivity.this, "on changed", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(StockActivity.this, "on changed", Toast.LENGTH_SHORT).show();
                 AppUtils.showLog(TAG, "inventory size: " + inventories.size());
                 if (inventories.size() == 0) {
                     mNoStocks.setVisibility(View.VISIBLE);

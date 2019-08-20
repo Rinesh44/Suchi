@@ -16,6 +16,7 @@ public class StockKeepingUnitDto implements Parcelable {
     private String desc;
     private String unitPrice;
     private boolean synced;
+    private String defaultUnit;
     private Brands brand;
     private SubBrands subBrands;
     private Units units;
@@ -24,7 +25,7 @@ public class StockKeepingUnitDto implements Parcelable {
     public StockKeepingUnitDto() {
     }
 
-    public StockKeepingUnitDto(String id, String name, String photo_url, String code, String desc, String unitPrice, boolean synced, Brands brand, SubBrands subBrands, Units units, Categories categories) {
+    public StockKeepingUnitDto(String id, String name, String photo_url, String code, String desc, String unitPrice, boolean synced, String defaultUnit, Brands brand, SubBrands subBrands, Units units, Categories categories) {
         this.id = id;
         this.name = name;
         this.photo_url = photo_url;
@@ -32,6 +33,7 @@ public class StockKeepingUnitDto implements Parcelable {
         this.desc = desc;
         this.unitPrice = unitPrice;
         this.synced = synced;
+        this.defaultUnit = defaultUnit;
         this.brand = brand;
         this.subBrands = subBrands;
         this.units = units;
@@ -126,6 +128,14 @@ public class StockKeepingUnitDto implements Parcelable {
         this.categories = categories;
     }
 
+    public String getDefaultUnit() {
+        return defaultUnit;
+    }
+
+    public void setDefaultUnit(String defaultUnit) {
+        this.defaultUnit = defaultUnit;
+    }
+
     protected StockKeepingUnitDto(Parcel in) {
         id = in.readString();
         name = in.readString();
@@ -134,6 +144,7 @@ public class StockKeepingUnitDto implements Parcelable {
         desc = in.readString();
         unitPrice = in.readString();
         synced = in.readByte() != 0x00;
+        defaultUnit = in.readString();
         brand = (Brands) in.readValue(Brands.class.getClassLoader());
         subBrands = (SubBrands) in.readValue(SubBrands.class.getClassLoader());
         units = (Units) in.readValue(Units.class.getClassLoader());
@@ -154,6 +165,7 @@ public class StockKeepingUnitDto implements Parcelable {
         dest.writeString(desc);
         dest.writeString(unitPrice);
         dest.writeByte((byte) (synced ? 0x01 : 0x00));
+        dest.writeString(defaultUnit);
         dest.writeValue(brand);
         dest.writeValue(subBrands);
         dest.writeValue(units);

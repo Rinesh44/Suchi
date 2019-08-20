@@ -6,6 +6,8 @@ import com.treeleaf.suchi.activities.inventory.stock.StockActivity;
 import com.treeleaf.suchi.activities.inventory.stock.StockEntryActivity;
 import com.treeleaf.suchi.activities.login.LoginActivity;
 import com.treeleaf.suchi.activities.register.RegisterActivity;
+import com.treeleaf.suchi.activities.sales.AddSalesActivity;
+import com.treeleaf.suchi.activities.sales.SalesActivity;
 import com.treeleaf.suchi.dagger.component.module.NetModule;
 import com.treeleaf.suchi.dagger.component.modules.module.AppModule;
 
@@ -27,4 +29,8 @@ public interface AppComponent {
     void inject(StockEntryActivity stockEntryActivity);
 
     void inject(StockActivity stockActivity);
+
+    void inject(SalesActivity salesActivity);
+
+    void inject(AddSalesActivity addSalesActivity);
 }

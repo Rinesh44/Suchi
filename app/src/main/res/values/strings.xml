@@ -47,4 +47,7 @@
     <string name="selling_price">Selling price</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
+    <string name="no_sales_available">No Sales available</string>
+    <string name="total">Total</string>
+    <string name="search">Search</string>
 </resources>

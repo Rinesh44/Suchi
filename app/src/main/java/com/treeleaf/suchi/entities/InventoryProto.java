@@ -160,6 +160,73 @@ public final class InventoryProto {
     // @@protoc_insertion_point(enum_scope:com.entities.pb.FieldsStatus)
   }
 
+  /**
+   * Protobuf enum {@code com.entities.pb.Sort}
+   */
+  public enum Sort
+      implements com.google.protobuf.Internal.EnumLite {
+    /**
+     * <code>DESC = 0;</code>
+     */
+    DESC(0),
+    /**
+     * <code>ASC = 1;</code>
+     */
+    ASC(1),
+    UNRECOGNIZED(-1),
+    ;
+
+    /**
+     * <code>DESC = 0;</code>
+     */
+    public static final int DESC_VALUE = 0;
+    /**
+     * <code>ASC = 1;</code>
+     */
+    public static final int ASC_VALUE = 1;
+
+
+    public final int getNumber() {
+      return value;
+    }
+
+    /**
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @Deprecated
+    public static Sort valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static Sort forNumber(int value) {
+      switch (value) {
+        case 0: return DESC;
+        case 1: return ASC;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<Sort>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        Sort> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<Sort>() {
+            public Sort findValueByNumber(int number) {
+              return Sort.forNumber(number);
+            }
+          };
+
+    private final int value;
+
+    private Sort(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:com.entities.pb.Sort)
+  }
+
   public interface StockKeepingUnitOrBuilder extends
       // @@protoc_insertion_point(interface_extends:com.entities.pb.StockKeepingUnit)
       com.google.protobuf.MessageLiteOrBuilder {
@@ -264,11 +331,11 @@ public final class InventoryProto {
         getCategoryIdBytes();
 
     /**
-     * <code>optional string unit_id = 12;</code>
+     * <code>optional string unitId = 12;</code>
      */
     String getUnitId();
     /**
-     * <code>optional string unit_id = 12;</code>
+     * <code>optional string unitId = 12;</code>
      */
     com.google.protobuf.ByteString
         getUnitIdBytes();
@@ -323,6 +390,25 @@ public final class InventoryProto {
      * <code>optional .com.entities.pb.Category category = 19;</code>
      */
     Category getCategory();
+
+    /**
+     * <code>optional string defaultUnitId = 20;</code>
+     */
+    String getDefaultUnitId();
+    /**
+     * <code>optional string defaultUnitId = 20;</code>
+     */
+    com.google.protobuf.ByteString
+        getDefaultUnitIdBytes();
+
+    /**
+     * <code>optional .com.entities.pb.Unit defaultUnit = 21;</code>
+     */
+    boolean hasDefaultUnit();
+    /**
+     * <code>optional .com.entities.pb.Unit defaultUnit = 21;</code>
+     */
+    Unit getDefaultUnit();
   }
   /**
    * Protobuf type {@code com.entities.pb.StockKeepingUnit}
@@ -342,6 +428,7 @@ public final class InventoryProto {
       createdBy_ = "";
       categoryId_ = "";
       unitId_ = "";
+      defaultUnitId_ = "";
     }
     public static final int SKUID_FIELD_NUMBER = 1;
     private long skuId_;
@@ -796,23 +883,23 @@ public final class InventoryProto {
       categoryId_ = value.toStringUtf8();
     }
 
-    public static final int UNIT_ID_FIELD_NUMBER = 12;
+    public static final int UNITID_FIELD_NUMBER = 12;
     private String unitId_;
     /**
-     * <code>optional string unit_id = 12;</code>
+     * <code>optional string unitId = 12;</code>
      */
     public String getUnitId() {
       return unitId_;
     }
     /**
-     * <code>optional string unit_id = 12;</code>
+     * <code>optional string unitId = 12;</code>
      */
     public com.google.protobuf.ByteString
         getUnitIdBytes() {
       return com.google.protobuf.ByteString.copyFromUtf8(unitId_);
     }
     /**
-     * <code>optional string unit_id = 12;</code>
+     * <code>optional string unitId = 12;</code>
      */
     private void setUnitId(
         String value) {
@@ -823,14 +910,14 @@ public final class InventoryProto {
       unitId_ = value;
     }
     /**
-     * <code>optional string unit_id = 12;</code>
+     * <code>optional string unitId = 12;</code>
      */
     private void clearUnitId() {
       
       unitId_ = getDefaultInstance().getUnitId();
     }
     /**
-     * <code>optional string unit_id = 12;</code>
+     * <code>optional string unitId = 12;</code>
      */
     private void setUnitIdBytes(
         com.google.protobuf.ByteString value) {
@@ -1119,6 +1206,104 @@ public final class InventoryProto {
       
     }
 
+    public static final int DEFAULTUNITID_FIELD_NUMBER = 20;
+    private String defaultUnitId_;
+    /**
+     * <code>optional string defaultUnitId = 20;</code>
+     */
+    public String getDefaultUnitId() {
+      return defaultUnitId_;
+    }
+    /**
+     * <code>optional string defaultUnitId = 20;</code>
+     */
+    public com.google.protobuf.ByteString
+        getDefaultUnitIdBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(defaultUnitId_);
+    }
+    /**
+     * <code>optional string defaultUnitId = 20;</code>
+     */
+    private void setDefaultUnitId(
+        String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      defaultUnitId_ = value;
+    }
+    /**
+     * <code>optional string defaultUnitId = 20;</code>
+     */
+    private void clearDefaultUnitId() {
+      
+      defaultUnitId_ = getDefaultInstance().getDefaultUnitId();
+    }
+    /**
+     * <code>optional string defaultUnitId = 20;</code>
+     */
+    private void setDefaultUnitIdBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      defaultUnitId_ = value.toStringUtf8();
+    }
+
+    public static final int DEFAULTUNIT_FIELD_NUMBER = 21;
+    private Unit defaultUnit_;
+    /**
+     * <code>optional .com.entities.pb.Unit defaultUnit = 21;</code>
+     */
+    public boolean hasDefaultUnit() {
+      return defaultUnit_ != null;
+    }
+    /**
+     * <code>optional .com.entities.pb.Unit defaultUnit = 21;</code>
+     */
+    public Unit getDefaultUnit() {
+      return defaultUnit_ == null ? Unit.getDefaultInstance() : defaultUnit_;
+    }
+    /**
+     * <code>optional .com.entities.pb.Unit defaultUnit = 21;</code>
+     */
+    private void setDefaultUnit(Unit value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      defaultUnit_ = value;
+      
+      }
+    /**
+     * <code>optional .com.entities.pb.Unit defaultUnit = 21;</code>
+     */
+    private void setDefaultUnit(
+        Unit.Builder builderForValue) {
+      defaultUnit_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>optional .com.entities.pb.Unit defaultUnit = 21;</code>
+     */
+    private void mergeDefaultUnit(Unit value) {
+      if (defaultUnit_ != null &&
+          defaultUnit_ != Unit.getDefaultInstance()) {
+        defaultUnit_ =
+          Unit.newBuilder(defaultUnit_).mergeFrom(value).buildPartial();
+      } else {
+        defaultUnit_ = value;
+      }
+      
+    }
+    /**
+     * <code>optional .com.entities.pb.Unit defaultUnit = 21;</code>
+     */
+    private void clearDefaultUnit() {  defaultUnit_ = null;
+      
+    }
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (skuId_ != 0L) {
@@ -1177,6 +1362,12 @@ public final class InventoryProto {
       }
       if (category_ != null) {
         output.writeMessage(19, getCategory());
+      }
+      if (!defaultUnitId_.isEmpty()) {
+        output.writeString(20, getDefaultUnitId());
+      }
+      if (defaultUnit_ != null) {
+        output.writeMessage(21, getDefaultUnit());
       }
     }
 
@@ -1260,6 +1451,14 @@ public final class InventoryProto {
       if (category_ != null) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(19, getCategory());
+      }
+      if (!defaultUnitId_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeStringSize(20, getDefaultUnitId());
+      }
+      if (defaultUnit_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(21, getDefaultUnit());
       }
       memoizedSerializedSize = size;
       return size;
@@ -1751,20 +1950,20 @@ public final class InventoryProto {
       }
 
       /**
-       * <code>optional string unit_id = 12;</code>
+       * <code>optional string unitId = 12;</code>
        */
       public String getUnitId() {
         return instance.getUnitId();
       }
       /**
-       * <code>optional string unit_id = 12;</code>
+       * <code>optional string unitId = 12;</code>
        */
       public com.google.protobuf.ByteString
           getUnitIdBytes() {
         return instance.getUnitIdBytes();
       }
       /**
-       * <code>optional string unit_id = 12;</code>
+       * <code>optional string unitId = 12;</code>
        */
       public Builder setUnitId(
           String value) {
@@ -1773,7 +1972,7 @@ public final class InventoryProto {
         return this;
       }
       /**
-       * <code>optional string unit_id = 12;</code>
+       * <code>optional string unitId = 12;</code>
        */
       public Builder clearUnitId() {
         copyOnWrite();
@@ -1781,7 +1980,7 @@ public final class InventoryProto {
         return this;
       }
       /**
-       * <code>optional string unit_id = 12;</code>
+       * <code>optional string unitId = 12;</code>
        */
       public Builder setUnitIdBytes(
           com.google.protobuf.ByteString value) {
@@ -2039,6 +2238,91 @@ public final class InventoryProto {
         return this;
       }
 
+      /**
+       * <code>optional string defaultUnitId = 20;</code>
+       */
+      public String getDefaultUnitId() {
+        return instance.getDefaultUnitId();
+      }
+      /**
+       * <code>optional string defaultUnitId = 20;</code>
+       */
+      public com.google.protobuf.ByteString
+          getDefaultUnitIdBytes() {
+        return instance.getDefaultUnitIdBytes();
+      }
+      /**
+       * <code>optional string defaultUnitId = 20;</code>
+       */
+      public Builder setDefaultUnitId(
+          String value) {
+        copyOnWrite();
+        instance.setDefaultUnitId(value);
+        return this;
+      }
+      /**
+       * <code>optional string defaultUnitId = 20;</code>
+       */
+      public Builder clearDefaultUnitId() {
+        copyOnWrite();
+        instance.clearDefaultUnitId();
+        return this;
+      }
+      /**
+       * <code>optional string defaultUnitId = 20;</code>
+       */
+      public Builder setDefaultUnitIdBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setDefaultUnitIdBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>optional .com.entities.pb.Unit defaultUnit = 21;</code>
+       */
+      public boolean hasDefaultUnit() {
+        return instance.hasDefaultUnit();
+      }
+      /**
+       * <code>optional .com.entities.pb.Unit defaultUnit = 21;</code>
+       */
+      public Unit getDefaultUnit() {
+        return instance.getDefaultUnit();
+      }
+      /**
+       * <code>optional .com.entities.pb.Unit defaultUnit = 21;</code>
+       */
+      public Builder setDefaultUnit(Unit value) {
+        copyOnWrite();
+        instance.setDefaultUnit(value);
+        return this;
+        }
+      /**
+       * <code>optional .com.entities.pb.Unit defaultUnit = 21;</code>
+       */
+      public Builder setDefaultUnit(
+          Unit.Builder builderForValue) {
+        copyOnWrite();
+        instance.setDefaultUnit(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .com.entities.pb.Unit defaultUnit = 21;</code>
+       */
+      public Builder mergeDefaultUnit(Unit value) {
+        copyOnWrite();
+        instance.mergeDefaultUnit(value);
+        return this;
+      }
+      /**
+       * <code>optional .com.entities.pb.Unit defaultUnit = 21;</code>
+       */
+      public Builder clearDefaultUnit() {  copyOnWrite();
+        instance.clearDefaultUnit();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:com.entities.pb.StockKeepingUnit)
     }
     protected final Object dynamicMethod(
@@ -2093,6 +2377,9 @@ public final class InventoryProto {
           subBrand_ = visitor.visitMessage(subBrand_, other.subBrand_);
           unit_ = visitor.visitMessage(unit_, other.unit_);
           category_ = visitor.visitMessage(category_, other.category_);
+          defaultUnitId_ = visitor.visitString(!defaultUnitId_.isEmpty(), defaultUnitId_,
+              !other.defaultUnitId_.isEmpty(), other.defaultUnitId_);
+          defaultUnit_ = visitor.visitMessage(defaultUnit_, other.defaultUnit_);
           if (visitor == MergeFromVisitor
               .INSTANCE) {
           }
@@ -2254,6 +2541,25 @@ public final class InventoryProto {
 
                   break;
                 }
+                case 162: {
+                  String s = input.readStringRequireUtf8();
+
+                  defaultUnitId_ = s;
+                  break;
+                }
+                case 170: {
+                  Unit.Builder subBuilder = null;
+                  if (defaultUnit_ != null) {
+                    subBuilder = defaultUnit_.toBuilder();
+                  }
+                  defaultUnit_ = input.readMessage(Unit.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(defaultUnit_);
+                    defaultUnit_ = subBuilder.buildPartial();
+                  }
+
+                  break;
+                }
               }
             }
           } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -2385,6 +2691,15 @@ public final class InventoryProto {
      * <code>repeated .com.entities.pb.InventoryStock inventoryStocks = 10;</code>
      */
     int getInventoryStocksCount();
+
+    /**
+     * <code>optional .com.entities.pb.InventoryStock inventoryStock = 11;</code>
+     */
+    boolean hasInventoryStock();
+    /**
+     * <code>optional .com.entities.pb.InventoryStock inventoryStock = 11;</code>
+     */
+    InventoryStock getInventoryStock();
   }
   /**
    * Protobuf type {@code com.entities.pb.Inventory}
@@ -2842,6 +3157,58 @@ public final class InventoryProto {
       inventoryStocks_.remove(index);
     }
 
+    public static final int INVENTORYSTOCK_FIELD_NUMBER = 11;
+    private InventoryStock inventoryStock_;
+    /**
+     * <code>optional .com.entities.pb.InventoryStock inventoryStock = 11;</code>
+     */
+    public boolean hasInventoryStock() {
+      return inventoryStock_ != null;
+    }
+    /**
+     * <code>optional .com.entities.pb.InventoryStock inventoryStock = 11;</code>
+     */
+    public InventoryStock getInventoryStock() {
+      return inventoryStock_ == null ? InventoryStock.getDefaultInstance() : inventoryStock_;
+    }
+    /**
+     * <code>optional .com.entities.pb.InventoryStock inventoryStock = 11;</code>
+     */
+    private void setInventoryStock(InventoryStock value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      inventoryStock_ = value;
+      
+      }
+    /**
+     * <code>optional .com.entities.pb.InventoryStock inventoryStock = 11;</code>
+     */
+    private void setInventoryStock(
+        InventoryStock.Builder builderForValue) {
+      inventoryStock_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>optional .com.entities.pb.InventoryStock inventoryStock = 11;</code>
+     */
+    private void mergeInventoryStock(InventoryStock value) {
+      if (inventoryStock_ != null &&
+          inventoryStock_ != InventoryStock.getDefaultInstance()) {
+        inventoryStock_ =
+          InventoryStock.newBuilder(inventoryStock_).mergeFrom(value).buildPartial();
+      } else {
+        inventoryStock_ = value;
+      }
+      
+    }
+    /**
+     * <code>optional .com.entities.pb.InventoryStock inventoryStock = 11;</code>
+     */
+    private void clearInventoryStock() {  inventoryStock_ = null;
+      
+    }
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!inventoryId_.isEmpty()) {
@@ -2873,6 +3240,9 @@ public final class InventoryProto {
       }
       for (int i = 0; i < inventoryStocks_.size(); i++) {
         output.writeMessage(10, inventoryStocks_.get(i));
+      }
+      if (inventoryStock_ != null) {
+        output.writeMessage(11, getInventoryStock());
       }
     }
 
@@ -2920,6 +3290,10 @@ public final class InventoryProto {
       for (int i = 0; i < inventoryStocks_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(10, inventoryStocks_.get(i));
+      }
+      if (inventoryStock_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(11, getInventoryStock());
       }
       memoizedSerializedSize = size;
       return size;
@@ -3398,6 +3772,51 @@ public final class InventoryProto {
         return this;
       }
 
+      /**
+       * <code>optional .com.entities.pb.InventoryStock inventoryStock = 11;</code>
+       */
+      public boolean hasInventoryStock() {
+        return instance.hasInventoryStock();
+      }
+      /**
+       * <code>optional .com.entities.pb.InventoryStock inventoryStock = 11;</code>
+       */
+      public InventoryStock getInventoryStock() {
+        return instance.getInventoryStock();
+      }
+      /**
+       * <code>optional .com.entities.pb.InventoryStock inventoryStock = 11;</code>
+       */
+      public Builder setInventoryStock(InventoryStock value) {
+        copyOnWrite();
+        instance.setInventoryStock(value);
+        return this;
+        }
+      /**
+       * <code>optional .com.entities.pb.InventoryStock inventoryStock = 11;</code>
+       */
+      public Builder setInventoryStock(
+          InventoryStock.Builder builderForValue) {
+        copyOnWrite();
+        instance.setInventoryStock(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .com.entities.pb.InventoryStock inventoryStock = 11;</code>
+       */
+      public Builder mergeInventoryStock(InventoryStock value) {
+        copyOnWrite();
+        instance.mergeInventoryStock(value);
+        return this;
+      }
+      /**
+       * <code>optional .com.entities.pb.InventoryStock inventoryStock = 11;</code>
+       */
+      public Builder clearInventoryStock() {  copyOnWrite();
+        instance.clearInventoryStock();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:com.entities.pb.Inventory)
     }
     protected final Object dynamicMethod(
@@ -3437,6 +3856,7 @@ public final class InventoryProto {
           sync_ = visitor.visitBoolean(sync_ != false, sync_,
               other.sync_ != false, other.sync_);
           inventoryStocks_= visitor.visitList(inventoryStocks_, other.inventoryStocks_);
+          inventoryStock_ = visitor.visitMessage(inventoryStock_, other.inventoryStock_);
           if (visitor == MergeFromVisitor
               .INSTANCE) {
             bitField0_ |= other.bitField0_;
@@ -3526,6 +3946,19 @@ public final class InventoryProto {
                   }
                   inventoryStocks_.add(
                       input.readMessage(InventoryStock.parser(), extensionRegistry));
+                  break;
+                }
+                case 90: {
+                  InventoryStock.Builder subBuilder = null;
+                  if (inventoryStock_ != null) {
+                    subBuilder = inventoryStock_.toBuilder();
+                  }
+                  inventoryStock_ = input.readMessage(InventoryStock.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(inventoryStock_);
+                    inventoryStock_ = subBuilder.buildPartial();
+                  }
+
                   break;
                 }
               }
@@ -10454,6 +10887,16 @@ public final class InventoryProto {
      */
     com.google.protobuf.ByteString
         getSaleIdBytes();
+
+    /**
+     * <code>optional string inventoryStockId = 7;</code>
+     */
+    String getInventoryStockId();
+    /**
+     * <code>optional string inventoryStockId = 7;</code>
+     */
+    com.google.protobuf.ByteString
+        getInventoryStockIdBytes();
   }
   /**
    * Protobuf type {@code com.entities.pb.SaleInventory}
@@ -10467,6 +10910,7 @@ public final class InventoryProto {
       saleInventoryId_ = "";
       inventoryId_ = "";
       saleId_ = "";
+      inventoryStockId_ = "";
     }
     public static final int SALEINVENTORYID_FIELD_NUMBER = 1;
     private String saleInventoryId_;
@@ -10704,6 +11148,52 @@ public final class InventoryProto {
       saleId_ = value.toStringUtf8();
     }
 
+    public static final int INVENTORYSTOCKID_FIELD_NUMBER = 7;
+    private String inventoryStockId_;
+    /**
+     * <code>optional string inventoryStockId = 7;</code>
+     */
+    public String getInventoryStockId() {
+      return inventoryStockId_;
+    }
+    /**
+     * <code>optional string inventoryStockId = 7;</code>
+     */
+    public com.google.protobuf.ByteString
+        getInventoryStockIdBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(inventoryStockId_);
+    }
+    /**
+     * <code>optional string inventoryStockId = 7;</code>
+     */
+    private void setInventoryStockId(
+        String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      inventoryStockId_ = value;
+    }
+    /**
+     * <code>optional string inventoryStockId = 7;</code>
+     */
+    private void clearInventoryStockId() {
+      
+      inventoryStockId_ = getDefaultInstance().getInventoryStockId();
+    }
+    /**
+     * <code>optional string inventoryStockId = 7;</code>
+     */
+    private void setInventoryStockIdBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      inventoryStockId_ = value.toStringUtf8();
+    }
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!saleInventoryId_.isEmpty()) {
@@ -10723,6 +11213,9 @@ public final class InventoryProto {
       }
       if (!saleId_.isEmpty()) {
         output.writeString(6, getSaleId());
+      }
+      if (!inventoryStockId_.isEmpty()) {
+        output.writeString(7, getInventoryStockId());
       }
     }
 
@@ -10754,6 +11247,10 @@ public final class InventoryProto {
       if (!saleId_.isEmpty()) {
         size += com.google.protobuf.CodedOutputStream
           .computeStringSize(6, getSaleId());
+      }
+      if (!inventoryStockId_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeStringSize(7, getInventoryStockId());
       }
       memoizedSerializedSize = size;
       return size;
@@ -11052,6 +11549,46 @@ public final class InventoryProto {
         return this;
       }
 
+      /**
+       * <code>optional string inventoryStockId = 7;</code>
+       */
+      public String getInventoryStockId() {
+        return instance.getInventoryStockId();
+      }
+      /**
+       * <code>optional string inventoryStockId = 7;</code>
+       */
+      public com.google.protobuf.ByteString
+          getInventoryStockIdBytes() {
+        return instance.getInventoryStockIdBytes();
+      }
+      /**
+       * <code>optional string inventoryStockId = 7;</code>
+       */
+      public Builder setInventoryStockId(
+          String value) {
+        copyOnWrite();
+        instance.setInventoryStockId(value);
+        return this;
+      }
+      /**
+       * <code>optional string inventoryStockId = 7;</code>
+       */
+      public Builder clearInventoryStockId() {
+        copyOnWrite();
+        instance.clearInventoryStockId();
+        return this;
+      }
+      /**
+       * <code>optional string inventoryStockId = 7;</code>
+       */
+      public Builder setInventoryStockIdBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setInventoryStockIdBytes(value);
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:com.entities.pb.SaleInventory)
     }
     protected final Object dynamicMethod(
@@ -11084,6 +11621,8 @@ public final class InventoryProto {
           inventory_ = visitor.visitMessage(inventory_, other.inventory_);
           saleId_ = visitor.visitString(!saleId_.isEmpty(), saleId_,
               !other.saleId_.isEmpty(), other.saleId_);
+          inventoryStockId_ = visitor.visitString(!inventoryStockId_.isEmpty(), inventoryStockId_,
+              !other.inventoryStockId_.isEmpty(), other.inventoryStockId_);
           if (visitor == MergeFromVisitor
               .INSTANCE) {
           }
@@ -11149,6 +11688,12 @@ public final class InventoryProto {
                   saleId_ = s;
                   break;
                 }
+                case 58: {
+                  String s = input.readStringRequireUtf8();
+
+                  inventoryStockId_ = s;
+                  break;
+                }
               }
             }
           } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -11191,6 +11736,435 @@ public final class InventoryProto {
     private static volatile com.google.protobuf.Parser<SaleInventory> PARSER;
 
     public static com.google.protobuf.Parser<SaleInventory> parser() {
+      return DEFAULT_INSTANCE.getParserForType();
+    }
+  }
+
+  public interface DataQueryOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.entities.pb.DataQuery)
+      com.google.protobuf.MessageLiteOrBuilder {
+
+    /**
+     * <code>optional int32 page = 1;</code>
+     */
+    int getPage();
+
+    /**
+     * <code>optional int64 offset = 2;</code>
+     */
+    long getOffset();
+
+    /**
+     * <code>optional .com.entities.pb.Sort sort = 3;</code>
+     */
+    int getSortValue();
+    /**
+     * <code>optional .com.entities.pb.Sort sort = 3;</code>
+     */
+    Sort getSort();
+  }
+  /**
+   * Protobuf type {@code com.entities.pb.DataQuery}
+   */
+  public  static final class DataQuery extends
+      com.google.protobuf.GeneratedMessageLite<
+          DataQuery, DataQuery.Builder> implements
+      // @@protoc_insertion_point(message_implements:com.entities.pb.DataQuery)
+      DataQueryOrBuilder {
+    private DataQuery() {
+    }
+    public static final int PAGE_FIELD_NUMBER = 1;
+    private int page_;
+    /**
+     * <code>optional int32 page = 1;</code>
+     */
+    public int getPage() {
+      return page_;
+    }
+    /**
+     * <code>optional int32 page = 1;</code>
+     */
+    private void setPage(int value) {
+      
+      page_ = value;
+    }
+    /**
+     * <code>optional int32 page = 1;</code>
+     */
+    private void clearPage() {
+      
+      page_ = 0;
+    }
+
+    public static final int OFFSET_FIELD_NUMBER = 2;
+    private long offset_;
+    /**
+     * <code>optional int64 offset = 2;</code>
+     */
+    public long getOffset() {
+      return offset_;
+    }
+    /**
+     * <code>optional int64 offset = 2;</code>
+     */
+    private void setOffset(long value) {
+      
+      offset_ = value;
+    }
+    /**
+     * <code>optional int64 offset = 2;</code>
+     */
+    private void clearOffset() {
+      
+      offset_ = 0L;
+    }
+
+    public static final int SORT_FIELD_NUMBER = 3;
+    private int sort_;
+    /**
+     * <code>optional .com.entities.pb.Sort sort = 3;</code>
+     */
+    public int getSortValue() {
+      return sort_;
+    }
+    /**
+     * <code>optional .com.entities.pb.Sort sort = 3;</code>
+     */
+    public Sort getSort() {
+      Sort result = Sort.forNumber(sort_);
+      return result == null ? Sort.UNRECOGNIZED : result;
+    }
+    /**
+     * <code>optional .com.entities.pb.Sort sort = 3;</code>
+     */
+    private void setSortValue(int value) {
+        sort_ = value;
+    }
+    /**
+     * <code>optional .com.entities.pb.Sort sort = 3;</code>
+     */
+    private void setSort(Sort value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      
+      sort_ = value.getNumber();
+    }
+    /**
+     * <code>optional .com.entities.pb.Sort sort = 3;</code>
+     */
+    private void clearSort() {
+      
+      sort_ = 0;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (page_ != 0) {
+        output.writeInt32(1, page_);
+      }
+      if (offset_ != 0L) {
+        output.writeInt64(2, offset_);
+      }
+      if (sort_ != Sort.DESC.getNumber()) {
+        output.writeEnum(3, sort_);
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (page_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, page_);
+      }
+      if (offset_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(2, offset_);
+      }
+      if (sort_ != Sort.DESC.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(3, sort_);
+      }
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    public static DataQuery parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static DataQuery parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static DataQuery parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static DataQuery parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static DataQuery parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static DataQuery parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static DataQuery parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    }
+    public static DataQuery parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static DataQuery parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static DataQuery parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(DataQuery prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+
+    /**
+     * Protobuf type {@code com.entities.pb.DataQuery}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          DataQuery, Builder> implements
+        // @@protoc_insertion_point(builder_implements:com.entities.pb.DataQuery)
+        DataQueryOrBuilder {
+      // Construct using com.treeleaf.suchi.entities.InventoryProto.DataQuery.newBuilder()
+      private Builder() {
+        super(DEFAULT_INSTANCE);
+      }
+
+
+      /**
+       * <code>optional int32 page = 1;</code>
+       */
+      public int getPage() {
+        return instance.getPage();
+      }
+      /**
+       * <code>optional int32 page = 1;</code>
+       */
+      public Builder setPage(int value) {
+        copyOnWrite();
+        instance.setPage(value);
+        return this;
+      }
+      /**
+       * <code>optional int32 page = 1;</code>
+       */
+      public Builder clearPage() {
+        copyOnWrite();
+        instance.clearPage();
+        return this;
+      }
+
+      /**
+       * <code>optional int64 offset = 2;</code>
+       */
+      public long getOffset() {
+        return instance.getOffset();
+      }
+      /**
+       * <code>optional int64 offset = 2;</code>
+       */
+      public Builder setOffset(long value) {
+        copyOnWrite();
+        instance.setOffset(value);
+        return this;
+      }
+      /**
+       * <code>optional int64 offset = 2;</code>
+       */
+      public Builder clearOffset() {
+        copyOnWrite();
+        instance.clearOffset();
+        return this;
+      }
+
+      /**
+       * <code>optional .com.entities.pb.Sort sort = 3;</code>
+       */
+      public int getSortValue() {
+        return instance.getSortValue();
+      }
+      /**
+       * <code>optional .com.entities.pb.Sort sort = 3;</code>
+       */
+      public Builder setSortValue(int value) {
+        copyOnWrite();
+        instance.setSortValue(value);
+        return this;
+      }
+      /**
+       * <code>optional .com.entities.pb.Sort sort = 3;</code>
+       */
+      public Sort getSort() {
+        return instance.getSort();
+      }
+      /**
+       * <code>optional .com.entities.pb.Sort sort = 3;</code>
+       */
+      public Builder setSort(Sort value) {
+        copyOnWrite();
+        instance.setSort(value);
+        return this;
+      }
+      /**
+       * <code>optional .com.entities.pb.Sort sort = 3;</code>
+       */
+      public Builder clearSort() {
+        copyOnWrite();
+        instance.clearSort();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.entities.pb.DataQuery)
+    }
+    protected final Object dynamicMethod(
+        MethodToInvoke method,
+        Object arg0, Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new DataQuery();
+        }
+        case IS_INITIALIZED: {
+          return DEFAULT_INSTANCE;
+        }
+        case MAKE_IMMUTABLE: {
+          return null;
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case VISIT: {
+          Visitor visitor = (Visitor) arg0;
+          DataQuery other = (DataQuery) arg1;
+          page_ = visitor.visitInt(page_ != 0, page_,
+              other.page_ != 0, other.page_);
+          offset_ = visitor.visitLong(offset_ != 0L, offset_,
+              other.offset_ != 0L, other.offset_);
+          sort_ = visitor.visitInt(sort_ != 0, sort_,    other.sort_ != 0, other.sort_);
+          if (visitor == MergeFromVisitor
+              .INSTANCE) {
+          }
+          return this;
+        }
+        case MERGE_FROM_STREAM: {
+          com.google.protobuf.CodedInputStream input =
+              (com.google.protobuf.CodedInputStream) arg0;
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry =
+              (com.google.protobuf.ExtensionRegistryLite) arg1;
+          try {
+            boolean done = false;
+            while (!done) {
+              int tag = input.readTag();
+              switch (tag) {
+                case 0:
+                  done = true;
+                  break;
+                default: {
+                  if (!input.skipField(tag)) {
+                    done = true;
+                  }
+                  break;
+                }
+                case 8: {
+
+                  page_ = input.readInt32();
+                  break;
+                }
+                case 16: {
+
+                  offset_ = input.readInt64();
+                  break;
+                }
+                case 24: {
+                  int rawValue = input.readEnum();
+
+                  sort_ = rawValue;
+                  break;
+                }
+              }
+            }
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw new RuntimeException(e.setUnfinishedMessage(this));
+          } catch (java.io.IOException e) {
+            throw new RuntimeException(
+                new com.google.protobuf.InvalidProtocolBufferException(
+                    e.getMessage()).setUnfinishedMessage(this));
+          } finally {
+          }
+        }
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          if (PARSER == null) {    synchronized (DataQuery.class) {
+              if (PARSER == null) {
+                PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+              }
+            }
+          }
+          return PARSER;
+        }
+      }
+      throw new UnsupportedOperationException();
+    }
+
+
+    // @@protoc_insertion_point(class_scope:com.entities.pb.DataQuery)
+    private static final DataQuery DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new DataQuery();
+      DEFAULT_INSTANCE.makeImmutable();
+    }
+
+    public static DataQuery getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static volatile com.google.protobuf.Parser<DataQuery> PARSER;
+
+    public static com.google.protobuf.Parser<DataQuery> parser() {
       return DEFAULT_INSTANCE.getParserForType();
     }
   }
