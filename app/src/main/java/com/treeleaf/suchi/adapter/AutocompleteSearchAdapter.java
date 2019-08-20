@@ -75,6 +75,7 @@ public class AutocompleteSearchAdapter extends ArrayAdapter {
         return view;
     }
 
+
     @NonNull
     @Override
     public Filter getFilter() {
