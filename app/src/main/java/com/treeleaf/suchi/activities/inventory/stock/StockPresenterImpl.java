@@ -97,9 +97,9 @@ public class StockPresenterImpl implements StockPresenter {
                     subBrandPb.getName());
             stockKeepingUnit.setSubBrands(subBrands);
 
-            InventoryProto.Unit unitPb = inventoryPb.getSku().getUnit();
-            Units units = new Units(unitPb.getUnitId(), unitPb.getName());
-            stockKeepingUnit.setUnits(units);
+            List<InventoryProto.Unit> unitPb = inventoryPb.getSku().getUnitsList();
+            RealmList<Units> skuUnits = mapSKUUnits(unitPb);
+            stockKeepingUnit.setUnits(skuUnits);
 
             InventoryProto.Category categoryPb = inventoryPb.getSku().getCategory();
             Categories categories = new Categories(categoryPb.getCategoryId(), categoryPb.getName());
@@ -125,6 +125,22 @@ public class StockPresenterImpl implements StockPresenter {
 
         return inventoryList;
     }
+
+
+    private RealmList<Units> mapSKUUnits(List<InventoryProto.Unit> unitPb) {
+        RealmList<Units> skuUnits = new RealmList<>();
+        for (InventoryProto.Unit unit : unitPb
+        ) {
+            Units units = new Units();
+            units.setId(unit.getUnitId());
+            units.setName(unit.getName());
+
+            skuUnits.add(units);
+        }
+
+        return skuUnits;
+    }
+
 
     private List<InventoryProto.Inventory> mapInventoryModelToProto(List<Inventory> inventoryList) {
         List<InventoryProto.Inventory> inventoryListProto = new ArrayList<>();

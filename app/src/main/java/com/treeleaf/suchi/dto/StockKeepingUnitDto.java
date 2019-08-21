@@ -8,6 +8,12 @@ import com.treeleaf.suchi.realm.models.Categories;
 import com.treeleaf.suchi.realm.models.SubBrands;
 import com.treeleaf.suchi.realm.models.Units;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import io.realm.RealmList;
+
+
 public class StockKeepingUnitDto implements Parcelable {
     private String id;
     private String name;
@@ -19,13 +25,13 @@ public class StockKeepingUnitDto implements Parcelable {
     private String defaultUnit;
     private Brands brand;
     private SubBrands subBrands;
-    private Units units;
+    private List<Units> units;
     private Categories categories;
 
     public StockKeepingUnitDto() {
     }
 
-    public StockKeepingUnitDto(String id, String name, String photo_url, String code, String desc, String unitPrice, boolean synced, String defaultUnit, Brands brand, SubBrands subBrands, Units units, Categories categories) {
+    public StockKeepingUnitDto(String id, String name, String photo_url, String code, String desc, String unitPrice, boolean synced, String defaultUnit, Brands brand, SubBrands subBrands, List<Units> units, Categories categories) {
         this.id = id;
         this.name = name;
         this.photo_url = photo_url;
@@ -112,11 +118,11 @@ public class StockKeepingUnitDto implements Parcelable {
         this.subBrands = subBrands;
     }
 
-    public Units getUnits() {
+    public List<Units> getUnits() {
         return units;
     }
 
-    public void setUnits(Units units) {
+    public void setUnits(List<Units> units) {
         this.units = units;
     }
 
@@ -147,7 +153,12 @@ public class StockKeepingUnitDto implements Parcelable {
         defaultUnit = in.readString();
         brand = (Brands) in.readValue(Brands.class.getClassLoader());
         subBrands = (SubBrands) in.readValue(SubBrands.class.getClassLoader());
-        units = (Units) in.readValue(Units.class.getClassLoader());
+        if (in.readByte() == 0x01) {
+            units = new ArrayList<>();
+            in.readList(units, Units.class.getClassLoader());
+        } else {
+            units = null;
+        }
         categories = (Categories) in.readValue(Categories.class.getClassLoader());
     }
 
@@ -168,7 +179,12 @@ public class StockKeepingUnitDto implements Parcelable {
         dest.writeString(defaultUnit);
         dest.writeValue(brand);
         dest.writeValue(subBrands);
-        dest.writeValue(units);
+        if (units == null) {
+            dest.writeByte((byte) (0x00));
+        } else {
+            dest.writeByte((byte) (0x01));
+            dest.writeList(units);
+        }
         dest.writeValue(categories);
     }
 

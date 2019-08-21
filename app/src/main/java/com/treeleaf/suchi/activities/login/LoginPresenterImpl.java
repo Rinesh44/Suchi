@@ -152,9 +152,9 @@ public class LoginPresenterImpl implements LoginPresenter {
                     subBrandPb.getName());
             stockKeepingUnit.setSubBrands(subBrands);
 
-            InventoryProto.Unit unitPb = inventoryPb.getSku().getUnit();
-            Units units = new Units(unitPb.getUnitId(), unitPb.getName());
-            stockKeepingUnit.setUnits(units);
+            List<InventoryProto.Unit> unitPb = inventoryPb.getSku().getUnitsList();
+            RealmList<Units> skuUnits = mapSKUUnits(unitPb);
+            stockKeepingUnit.setUnits(skuUnits);
 
             InventoryProto.Category categoryPb = inventoryPb.getSku().getCategory();
             Categories categories = new Categories(categoryPb.getCategoryId(), categoryPb.getName());
@@ -191,6 +191,20 @@ public class LoginPresenterImpl implements LoginPresenter {
         }
     }
 
+    private RealmList<Units> mapSKUUnits(List<InventoryProto.Unit> unitPb) {
+        RealmList<Units> skuUnits = new RealmList<>();
+        for (InventoryProto.Unit unit : unitPb
+        ) {
+            Units units = new Units();
+            units.setId(unit.getUnitId());
+            units.setName(unit.getName());
+
+            skuUnits.add(units);
+        }
+
+        return skuUnits;
+    }
+
     private void mapStockKeepingUnits(List<InventoryProto.StockKeepingUnit> stockKeepingUnitsListPb) {
         for (InventoryProto.StockKeepingUnit itemsPb : stockKeepingUnitsListPb
         ) {
@@ -213,9 +227,11 @@ public class LoginPresenterImpl implements LoginPresenter {
             subBrands.setBrandId(itemsPb.getSubBrand().getBrandId());
             subBrands.setName(itemsPb.getSubBrand().getName());
 
-            Units units = new Units();
+           /* Units units = new Units();
             units.setId(itemsPb.getUnit().getUnitId());
-            units.setName(itemsPb.getUnit().getName());
+            units.setName(itemsPb.getUnit().getName());*/
+
+            AppUtils.showLog(TAG, "UnitList: " + itemsPb.getUnitsList());
 
             Categories categories = new Categories();
             categories.setId(itemsPb.getCategory().getCategoryId());
@@ -223,7 +239,11 @@ public class LoginPresenterImpl implements LoginPresenter {
 
             stockKeepingUnit.setBrand(brands);
             stockKeepingUnit.setSubBrands(subBrands);
-            stockKeepingUnit.setUnits(units);
+
+            List<InventoryProto.Unit> unitPb = itemsPb.getUnitsList();
+            RealmList<Units> skuUnits = mapSKUUnits(unitPb);
+            stockKeepingUnit.setUnits(skuUnits);
+
             stockKeepingUnit.setCategories(categories);
 
             stockKeepingUnitList.add(stockKeepingUnit);
@@ -260,6 +280,7 @@ public class LoginPresenterImpl implements LoginPresenter {
             });
         }
     }
+
 
     private void mapCategories(List<InventoryProto.Category> categoriesListPb) {
         for (InventoryProto.Category categoryPb : categoriesListPb

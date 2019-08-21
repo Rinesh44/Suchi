@@ -92,16 +92,12 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
     MaterialButton mAdd;
     @BindView(R.id.iv_sku)
     ImageView mSkuImage;
-    @BindView(R.id.il_marked_price)
-    TextInputLayout mMarkedPriceLayout;
-    @BindView(R.id.et_marked_price)
-    TextInputEditText mMarkedPrice;
-    @BindView(R.id.il_selling_price)
-    TextInputLayout mSellingPriceLayout;
+    @BindView(R.id.tv_sp_default_unit)
+    TextView mSellingPriceDefUnit;
     @BindView(R.id.et_selling_price)
-    TextInputEditText mSellingPrice;
-    @BindView(R.id.tv_quantity_unit)
-    TextView mQuantityUnit;
+    EditText mSellingPrice;
+    @BindView(R.id.tv_marked_price)
+    TextView mMarkedPrice;
     @BindView(R.id.actv_sku)
     AutoCompleteTextView mSearchSku;
     @BindView(R.id.iv_go)
@@ -114,10 +110,19 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
     MaterialButton mAddToInventory;
     @BindView(R.id.sp_unit)
     AppCompatSpinner mUnits;
+    @BindView(R.id.tv_default_unit)
+    TextView mDefaultUnit;
+    @BindView(R.id.btn_increment_sp)
+    ImageButton mSellingPriceIncrement;
+    @BindView(R.id.btn_decrement_sp)
+    ImageButton mSellingPriceDecrement;
+    @BindView(R.id.tv_qty_unit)
+    TextView mQtyUnit;
 
 
     private DatePicker datePicker;
     private String token;
+    private String unitPrice;
 
 
 /*    @BindView(R.id.tv_description)
@@ -153,38 +158,25 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
         mGo.setOnClickListener(this);
         mExpiryDate.setOnClickListener(this);
         mAddToInventory.setOnClickListener(this);
+        mSellingPriceDecrement.setOnClickListener(this);
+        mSellingPriceIncrement.setOnClickListener(this);
 
 
         setUpSearch();
-        setUpUnitSpinner();
 
         presenter = new SearchStockPresenterImpl(endpoints, this);
-        mUnits.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                String item = (String) adapterView.getItemAtPosition(i);
-                int itemPosition = unitItems.indexOf(item);
 
-                AppUtils.showLog(TAG, "itemPosition: " + itemPosition);
-
-                Units units = unitList.get(itemPosition);
-                selectedItemUnitId = units.getId();
-                AppUtils.showLog(TAG, "selectedUnint: " + units.getName());
-                AppUtils.showLog(TAG, "selectedUnintId: " + units.getId());
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
 
         mSearchSku.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 hideKeyboard();
+
                 StockKeepingUnitDto selectedItem = (StockKeepingUnitDto) adapterView.getItemAtPosition(i);
                 mSearchSku.setText(selectedItem.getName());
+
+                setUpUnitSpinner(selectedItem.getUnits());
+                setUpdefaultUnit(selectedItem.getDefaultUnit());
 
                 int defaultUnitPosition = unitItemsAdapter.getPosition(selectedItem.getDefaultUnit());
                 AppUtils.showLog(TAG, "defaultUnit: " + selectedItem.getDefaultUnit());
@@ -192,18 +184,18 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
                 mUnits.setSelection(defaultUnitPosition);
 
                 selectedItemId = selectedItem.getId();
-
+                unitPrice = selectedItem.getUnitPrice();
+                mQuantity.setText("1");
                 mSkuName.setText(selectedItem.getName());
                 mBrand.setText(selectedItem.getBrand().getName());
                 mSubBrand.setText(selectedItem.getSubBrands().getName());
-                mUnitPrice.setText(selectedItem.getUnitPrice());
+                mSellingPrice.setText(selectedItem.getUnitPrice());
+                setUpUnitPrice(selectedItem.getUnitPrice());
                 mCategory.setText(selectedItem.getCategories().getName());
+                setUpMarkedPrice(selectedItem.getUnitPrice(), selectedItem.getDefaultUnit());
+                setUpSellingPriceUnit(selectedItem.getDefaultUnit());
 
-                StringBuilder quantityUnitBuilder = new StringBuilder();
-                quantityUnitBuilder.append(" (");
-                quantityUnitBuilder.append(selectedItem.getUnits().getName());
-                quantityUnitBuilder.append(") ");
-                mQuantityUnit.setText(quantityUnitBuilder);
+
 //        mDescription.setText(selectedItem.getDesc());
 
                 String imageUrl = selectedItem.getPhoto_url();
@@ -226,6 +218,50 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
 
         datePicker = new DatePicker(this, R.id.et_expiry_date);
 
+    }
+
+    private void setUpQuantityUnit(String item) {
+        StringBuilder quantityUnitBuilder = new StringBuilder();
+        quantityUnitBuilder.append(" (");
+        quantityUnitBuilder.append(item);
+        quantityUnitBuilder.append(")");
+
+        mQtyUnit.setText(quantityUnitBuilder);
+    }
+
+    private void setUpSellingPriceUnit(String defUnit) {
+        StringBuilder sellingPriceUnitBuilder = new StringBuilder();
+        sellingPriceUnitBuilder.append("per ");
+        sellingPriceUnitBuilder.append(defUnit);
+
+        mSellingPriceDefUnit.setText(sellingPriceUnitBuilder);
+    }
+
+    private void setUpMarkedPrice(String unitPrice, String defUnit) {
+        StringBuilder markedPriceBuilder = new StringBuilder();
+        markedPriceBuilder.append("Rs. ");
+        markedPriceBuilder.append(unitPrice);
+        markedPriceBuilder.append(" per ");
+        markedPriceBuilder.append(defUnit);
+
+        mMarkedPrice.setText(markedPriceBuilder);
+    }
+
+    private void setUpUnitPrice(String unitPrice) {
+        StringBuilder unitPriceBuilder = new StringBuilder();
+        unitPriceBuilder.append("Rs. ");
+        unitPriceBuilder.append(unitPrice);
+
+        mUnitPrice.setText(unitPriceBuilder);
+    }
+
+    private void setUpdefaultUnit(String defaultUnit) {
+        StringBuilder defaultUnitBuilder = new StringBuilder();
+        defaultUnitBuilder.append(" (");
+        defaultUnitBuilder.append(defaultUnit);
+        defaultUnitBuilder.append(")");
+
+        mDefaultUnit.setText(defaultUnitBuilder);
     }
 
     private void setUpSearch() {
@@ -263,8 +299,7 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
 
     }
 
-    private void setUpUnitSpinner() {
-        unitList = UnitRepo.getInstance().getAllUnits();
+    private void setUpUnitSpinner(List<Units> unitList) {
         for (Units unit : unitList
         ) {
             unitItems.add(unit.getName());
@@ -280,6 +315,26 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
         };
 
         mUnits.setAdapter(unitItemsAdapter);
+
+        mUnits.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String item = (String) adapterView.getItemAtPosition(i);
+                int itemPosition = unitItems.indexOf(item);
+
+                AppUtils.showLog(TAG, "itemPosition: " + itemPosition);
+                setUpQuantityUnit(item);
+                Units units = unitList.get(itemPosition);
+                selectedItemUnitId = units.getId();
+                AppUtils.showLog(TAG, "selectedUnint: " + units.getName());
+                AppUtils.showLog(TAG, "selectedUnintId: " + units.getId());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
 
     }
@@ -311,22 +366,18 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
 
 
         if (mSellingPrice.getText().toString().isEmpty() || mSellingPrice.getText().toString().equals("0")) {
-            mSellingPriceLayout.setErrorEnabled(true);
-            mSellingPriceLayout.setError("This field is required");
-            mSellingPriceLayout.requestFocus();
+            showMessage("Selling price is required");
             return;
-        } else {
-            mSellingPriceLayout.setErrorEnabled(false);
         }
 
-        if (mMarkedPrice.getText().toString().isEmpty() || mMarkedPrice.getText().toString().equals("0")) {
+     /*   if (mMarkedPrice.getText().toString().isEmpty() || mMarkedPrice.getText().toString().equals("0")) {
             mMarkedPriceLayout.setErrorEnabled(true);
             mMarkedPriceLayout.setError("This field is required");
             mMarkedPriceLayout.requestFocus();
             return;
         } else {
             mMarkedPriceLayout.setErrorEnabled(false);
-        }
+        }*/
 
   /*      if (mExpiryDate.getText().toString().isEmpty()) {
             mExpiryDateLayout.setErrorEnabled(true);
@@ -373,7 +424,7 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
 
         InventoryProto.InventoryStock inventoryStock = InventoryProto.InventoryStock.newBuilder()
                 .setInventoryStockId(inventoryStockId)
-                .setMarkedPrice(Double.valueOf(mMarkedPrice.getText().toString().trim()))
+                .setMarkedPrice(Double.valueOf(unitPrice))
                 .setSalesPrice(Double.valueOf(mSellingPrice.getText().toString().trim()))
                 .setQuantity(Integer.valueOf(mQuantity.getText().toString().trim()))
                 .setUnitId(selectedItemUnitId)
@@ -536,6 +587,22 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
                 if (value1 != 1) {
                     value1--;
                     mQuantity.setText(String.valueOf(value1));
+                }
+                break;
+
+            case R.id.btn_increment_sp:
+                String trimmedSellingPrice = mSellingPrice.getText().toString().substring(0, mSellingPrice.getText().length() - 2);
+                double price = Integer.valueOf(trimmedSellingPrice);
+                price++;
+                mSellingPrice.setText(String.valueOf(price));
+                break;
+
+            case R.id.btn_decrement_sp:
+                String trimmedSellingPrice2 = mSellingPrice.getText().toString().substring(0, mSellingPrice.getText().length() - 2);
+                double price2 = Integer.valueOf(trimmedSellingPrice2);
+                if (price2 != 1) {
+                    price2--;
+                    mSellingPrice.setText(String.valueOf(price2));
                 }
                 break;
 

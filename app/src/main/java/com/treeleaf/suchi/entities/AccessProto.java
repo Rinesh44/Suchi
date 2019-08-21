@@ -4,744 +4,807 @@
 package com.treeleaf.suchi.entities;
 
 public final class AccessProto {
-  private AccessProto() {}
-  public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistryLite registry) {
-  }
-  public interface AccessTokenOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:com.entities.pb.AccessToken)
-      com.google.protobuf.MessageLiteOrBuilder {
+    private AccessProto() {
+    }
 
-    /**
-     * <code>optional string tokenId = 1;</code>
-     */
-    String getTokenId();
-    /**
-     * <code>optional string tokenId = 1;</code>
-     */
-    com.google.protobuf.ByteString
+    public static void registerAllExtensions(
+            com.google.protobuf.ExtensionRegistryLite registry) {
+    }
+
+    public interface AccessTokenOrBuilder extends
+            // @@protoc_insertion_point(interface_extends:com.entities.pb.AccessToken)
+            com.google.protobuf.MessageLiteOrBuilder {
+
+        /**
+         * <code>optional string tokenId = 1;</code>
+         */
+        String getTokenId();
+
+        /**
+         * <code>optional string tokenId = 1;</code>
+         */
+        com.google.protobuf.ByteString
         getTokenIdBytes();
 
-    /**
-     * <code>optional string title = 2;</code>
-     */
-    String getTitle();
-    /**
-     * <code>optional string title = 2;</code>
-     */
-    com.google.protobuf.ByteString
+        /**
+         * <code>optional string title = 2;</code>
+         */
+        String getTitle();
+
+        /**
+         * <code>optional string title = 2;</code>
+         */
+        com.google.protobuf.ByteString
         getTitleBytes();
 
-    /**
-     * <code>optional string token = 3;</code>
-     */
-    String getToken();
-    /**
-     * <code>optional string token = 3;</code>
-     */
-    com.google.protobuf.ByteString
+        /**
+         * <code>optional string token = 3;</code>
+         */
+        String getToken();
+
+        /**
+         * <code>optional string token = 3;</code>
+         */
+        com.google.protobuf.ByteString
         getTokenBytes();
 
-    /**
-     * <code>optional bool revoked = 4;</code>
-     */
-    boolean getRevoked();
+        /**
+         * <code>optional bool revoked = 4;</code>
+         */
+        boolean getRevoked();
 
-    /**
-     * <code>optional int64 createdAt = 5;</code>
-     */
-    long getCreatedAt();
+        /**
+         * <code>optional int64 createdAt = 5;</code>
+         */
+        long getCreatedAt();
 
-    /**
-     * <code>optional int64 updatedAt = 6;</code>
-     */
-    long getUpdatedAt();
-  }
-  /**
-   * Protobuf type {@code com.entities.pb.AccessToken}
-   */
-  public  static final class AccessToken extends
-      com.google.protobuf.GeneratedMessageLite<
-          AccessToken, AccessToken.Builder> implements
-      // @@protoc_insertion_point(message_implements:com.entities.pb.AccessToken)
-      AccessTokenOrBuilder {
-    private AccessToken() {
-      tokenId_ = "";
-      title_ = "";
-      token_ = "";
-    }
-    public static final int TOKENID_FIELD_NUMBER = 1;
-    private String tokenId_;
-    /**
-     * <code>optional string tokenId = 1;</code>
-     */
-    public String getTokenId() {
-      return tokenId_;
-    }
-    /**
-     * <code>optional string tokenId = 1;</code>
-     */
-    public com.google.protobuf.ByteString
-        getTokenIdBytes() {
-      return com.google.protobuf.ByteString.copyFromUtf8(tokenId_);
-    }
-    /**
-     * <code>optional string tokenId = 1;</code>
-     */
-    private void setTokenId(
-        String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      tokenId_ = value;
-    }
-    /**
-     * <code>optional string tokenId = 1;</code>
-     */
-    private void clearTokenId() {
-      
-      tokenId_ = getDefaultInstance().getTokenId();
-    }
-    /**
-     * <code>optional string tokenId = 1;</code>
-     */
-    private void setTokenIdBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      tokenId_ = value.toStringUtf8();
-    }
-
-    public static final int TITLE_FIELD_NUMBER = 2;
-    private String title_;
-    /**
-     * <code>optional string title = 2;</code>
-     */
-    public String getTitle() {
-      return title_;
-    }
-    /**
-     * <code>optional string title = 2;</code>
-     */
-    public com.google.protobuf.ByteString
-        getTitleBytes() {
-      return com.google.protobuf.ByteString.copyFromUtf8(title_);
-    }
-    /**
-     * <code>optional string title = 2;</code>
-     */
-    private void setTitle(
-        String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      title_ = value;
-    }
-    /**
-     * <code>optional string title = 2;</code>
-     */
-    private void clearTitle() {
-      
-      title_ = getDefaultInstance().getTitle();
-    }
-    /**
-     * <code>optional string title = 2;</code>
-     */
-    private void setTitleBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      title_ = value.toStringUtf8();
-    }
-
-    public static final int TOKEN_FIELD_NUMBER = 3;
-    private String token_;
-    /**
-     * <code>optional string token = 3;</code>
-     */
-    public String getToken() {
-      return token_;
-    }
-    /**
-     * <code>optional string token = 3;</code>
-     */
-    public com.google.protobuf.ByteString
-        getTokenBytes() {
-      return com.google.protobuf.ByteString.copyFromUtf8(token_);
-    }
-    /**
-     * <code>optional string token = 3;</code>
-     */
-    private void setToken(
-        String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      token_ = value;
-    }
-    /**
-     * <code>optional string token = 3;</code>
-     */
-    private void clearToken() {
-      
-      token_ = getDefaultInstance().getToken();
-    }
-    /**
-     * <code>optional string token = 3;</code>
-     */
-    private void setTokenBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      token_ = value.toStringUtf8();
-    }
-
-    public static final int REVOKED_FIELD_NUMBER = 4;
-    private boolean revoked_;
-    /**
-     * <code>optional bool revoked = 4;</code>
-     */
-    public boolean getRevoked() {
-      return revoked_;
-    }
-    /**
-     * <code>optional bool revoked = 4;</code>
-     */
-    private void setRevoked(boolean value) {
-      
-      revoked_ = value;
-    }
-    /**
-     * <code>optional bool revoked = 4;</code>
-     */
-    private void clearRevoked() {
-      
-      revoked_ = false;
-    }
-
-    public static final int CREATEDAT_FIELD_NUMBER = 5;
-    private long createdAt_;
-    /**
-     * <code>optional int64 createdAt = 5;</code>
-     */
-    public long getCreatedAt() {
-      return createdAt_;
-    }
-    /**
-     * <code>optional int64 createdAt = 5;</code>
-     */
-    private void setCreatedAt(long value) {
-      
-      createdAt_ = value;
-    }
-    /**
-     * <code>optional int64 createdAt = 5;</code>
-     */
-    private void clearCreatedAt() {
-      
-      createdAt_ = 0L;
-    }
-
-    public static final int UPDATEDAT_FIELD_NUMBER = 6;
-    private long updatedAt_;
-    /**
-     * <code>optional int64 updatedAt = 6;</code>
-     */
-    public long getUpdatedAt() {
-      return updatedAt_;
-    }
-    /**
-     * <code>optional int64 updatedAt = 6;</code>
-     */
-    private void setUpdatedAt(long value) {
-      
-      updatedAt_ = value;
-    }
-    /**
-     * <code>optional int64 updatedAt = 6;</code>
-     */
-    private void clearUpdatedAt() {
-      
-      updatedAt_ = 0L;
-    }
-
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (!tokenId_.isEmpty()) {
-        output.writeString(1, getTokenId());
-      }
-      if (!title_.isEmpty()) {
-        output.writeString(2, getTitle());
-      }
-      if (!token_.isEmpty()) {
-        output.writeString(3, getToken());
-      }
-      if (revoked_ != false) {
-        output.writeBool(4, revoked_);
-      }
-      if (createdAt_ != 0L) {
-        output.writeInt64(5, createdAt_);
-      }
-      if (updatedAt_ != 0L) {
-        output.writeInt64(6, updatedAt_);
-      }
-    }
-
-    public int getSerializedSize() {
-      int size = memoizedSerializedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (!tokenId_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeStringSize(1, getTokenId());
-      }
-      if (!title_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeStringSize(2, getTitle());
-      }
-      if (!token_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeStringSize(3, getToken());
-      }
-      if (revoked_ != false) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(4, revoked_);
-      }
-      if (createdAt_ != 0L) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(5, createdAt_);
-      }
-      if (updatedAt_ != 0L) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(6, updatedAt_);
-      }
-      memoizedSerializedSize = size;
-      return size;
-    }
-
-    public static AccessToken parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return com.google.protobuf.GeneratedMessageLite.parseFrom(
-          DEFAULT_INSTANCE, data);
-    }
-    public static AccessToken parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return com.google.protobuf.GeneratedMessageLite.parseFrom(
-          DEFAULT_INSTANCE, data, extensionRegistry);
-    }
-    public static AccessToken parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return com.google.protobuf.GeneratedMessageLite.parseFrom(
-          DEFAULT_INSTANCE, data);
-    }
-    public static AccessToken parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return com.google.protobuf.GeneratedMessageLite.parseFrom(
-          DEFAULT_INSTANCE, data, extensionRegistry);
-    }
-    public static AccessToken parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageLite.parseFrom(
-          DEFAULT_INSTANCE, input);
-    }
-    public static AccessToken parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageLite.parseFrom(
-          DEFAULT_INSTANCE, input, extensionRegistry);
-    }
-    public static AccessToken parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
-    }
-    public static AccessToken parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
-    }
-    public static AccessToken parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageLite.parseFrom(
-          DEFAULT_INSTANCE, input);
-    }
-    public static AccessToken parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageLite.parseFrom(
-          DEFAULT_INSTANCE, input, extensionRegistry);
-    }
-
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(AccessToken prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+        /**
+         * <code>optional int64 updatedAt = 6;</code>
+         */
+        long getUpdatedAt();
     }
 
     /**
      * Protobuf type {@code com.entities.pb.AccessToken}
      */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageLite.Builder<
-          AccessToken, Builder> implements
-        // @@protoc_insertion_point(builder_implements:com.entities.pb.AccessToken)
-        AccessTokenOrBuilder {
-      // Construct using com.treeleaf.suchi.entities.AccessProto.AccessToken.newBuilder()
-      private Builder() {
-        super(DEFAULT_INSTANCE);
-      }
-
-
-      /**
-       * <code>optional string tokenId = 1;</code>
-       */
-      public String getTokenId() {
-        return instance.getTokenId();
-      }
-      /**
-       * <code>optional string tokenId = 1;</code>
-       */
-      public com.google.protobuf.ByteString
-          getTokenIdBytes() {
-        return instance.getTokenIdBytes();
-      }
-      /**
-       * <code>optional string tokenId = 1;</code>
-       */
-      public Builder setTokenId(
-          String value) {
-        copyOnWrite();
-        instance.setTokenId(value);
-        return this;
-      }
-      /**
-       * <code>optional string tokenId = 1;</code>
-       */
-      public Builder clearTokenId() {
-        copyOnWrite();
-        instance.clearTokenId();
-        return this;
-      }
-      /**
-       * <code>optional string tokenId = 1;</code>
-       */
-      public Builder setTokenIdBytes(
-          com.google.protobuf.ByteString value) {
-        copyOnWrite();
-        instance.setTokenIdBytes(value);
-        return this;
-      }
-
-      /**
-       * <code>optional string title = 2;</code>
-       */
-      public String getTitle() {
-        return instance.getTitle();
-      }
-      /**
-       * <code>optional string title = 2;</code>
-       */
-      public com.google.protobuf.ByteString
-          getTitleBytes() {
-        return instance.getTitleBytes();
-      }
-      /**
-       * <code>optional string title = 2;</code>
-       */
-      public Builder setTitle(
-          String value) {
-        copyOnWrite();
-        instance.setTitle(value);
-        return this;
-      }
-      /**
-       * <code>optional string title = 2;</code>
-       */
-      public Builder clearTitle() {
-        copyOnWrite();
-        instance.clearTitle();
-        return this;
-      }
-      /**
-       * <code>optional string title = 2;</code>
-       */
-      public Builder setTitleBytes(
-          com.google.protobuf.ByteString value) {
-        copyOnWrite();
-        instance.setTitleBytes(value);
-        return this;
-      }
-
-      /**
-       * <code>optional string token = 3;</code>
-       */
-      public String getToken() {
-        return instance.getToken();
-      }
-      /**
-       * <code>optional string token = 3;</code>
-       */
-      public com.google.protobuf.ByteString
-          getTokenBytes() {
-        return instance.getTokenBytes();
-      }
-      /**
-       * <code>optional string token = 3;</code>
-       */
-      public Builder setToken(
-          String value) {
-        copyOnWrite();
-        instance.setToken(value);
-        return this;
-      }
-      /**
-       * <code>optional string token = 3;</code>
-       */
-      public Builder clearToken() {
-        copyOnWrite();
-        instance.clearToken();
-        return this;
-      }
-      /**
-       * <code>optional string token = 3;</code>
-       */
-      public Builder setTokenBytes(
-          com.google.protobuf.ByteString value) {
-        copyOnWrite();
-        instance.setTokenBytes(value);
-        return this;
-      }
-
-      /**
-       * <code>optional bool revoked = 4;</code>
-       */
-      public boolean getRevoked() {
-        return instance.getRevoked();
-      }
-      /**
-       * <code>optional bool revoked = 4;</code>
-       */
-      public Builder setRevoked(boolean value) {
-        copyOnWrite();
-        instance.setRevoked(value);
-        return this;
-      }
-      /**
-       * <code>optional bool revoked = 4;</code>
-       */
-      public Builder clearRevoked() {
-        copyOnWrite();
-        instance.clearRevoked();
-        return this;
-      }
-
-      /**
-       * <code>optional int64 createdAt = 5;</code>
-       */
-      public long getCreatedAt() {
-        return instance.getCreatedAt();
-      }
-      /**
-       * <code>optional int64 createdAt = 5;</code>
-       */
-      public Builder setCreatedAt(long value) {
-        copyOnWrite();
-        instance.setCreatedAt(value);
-        return this;
-      }
-      /**
-       * <code>optional int64 createdAt = 5;</code>
-       */
-      public Builder clearCreatedAt() {
-        copyOnWrite();
-        instance.clearCreatedAt();
-        return this;
-      }
-
-      /**
-       * <code>optional int64 updatedAt = 6;</code>
-       */
-      public long getUpdatedAt() {
-        return instance.getUpdatedAt();
-      }
-      /**
-       * <code>optional int64 updatedAt = 6;</code>
-       */
-      public Builder setUpdatedAt(long value) {
-        copyOnWrite();
-        instance.setUpdatedAt(value);
-        return this;
-      }
-      /**
-       * <code>optional int64 updatedAt = 6;</code>
-       */
-      public Builder clearUpdatedAt() {
-        copyOnWrite();
-        instance.clearUpdatedAt();
-        return this;
-      }
-
-      // @@protoc_insertion_point(builder_scope:com.entities.pb.AccessToken)
-    }
-    protected final Object dynamicMethod(
-        MethodToInvoke method,
-        Object arg0, Object arg1) {
-      switch (method) {
-        case NEW_MUTABLE_INSTANCE: {
-          return new AccessToken();
+    public static final class AccessToken extends
+            com.google.protobuf.GeneratedMessageLite<
+                    AccessToken, AccessToken.Builder> implements
+            // @@protoc_insertion_point(message_implements:com.entities.pb.AccessToken)
+            AccessTokenOrBuilder {
+        private AccessToken() {
+            tokenId_ = "";
+            title_ = "";
+            token_ = "";
         }
-        case IS_INITIALIZED: {
-          return DEFAULT_INSTANCE;
+
+        public static final int TOKENID_FIELD_NUMBER = 1;
+        private String tokenId_;
+
+        /**
+         * <code>optional string tokenId = 1;</code>
+         */
+        public String getTokenId() {
+            return tokenId_;
         }
-        case MAKE_IMMUTABLE: {
-          return null;
+
+        /**
+         * <code>optional string tokenId = 1;</code>
+         */
+        public com.google.protobuf.ByteString
+        getTokenIdBytes() {
+            return com.google.protobuf.ByteString.copyFromUtf8(tokenId_);
         }
-        case NEW_BUILDER: {
-          return new Builder();
-        }
-        case VISIT: {
-          Visitor visitor = (Visitor) arg0;
-          AccessToken other = (AccessToken) arg1;
-          tokenId_ = visitor.visitString(!tokenId_.isEmpty(), tokenId_,
-              !other.tokenId_.isEmpty(), other.tokenId_);
-          title_ = visitor.visitString(!title_.isEmpty(), title_,
-              !other.title_.isEmpty(), other.title_);
-          token_ = visitor.visitString(!token_.isEmpty(), token_,
-              !other.token_.isEmpty(), other.token_);
-          revoked_ = visitor.visitBoolean(revoked_ != false, revoked_,
-              other.revoked_ != false, other.revoked_);
-          createdAt_ = visitor.visitLong(createdAt_ != 0L, createdAt_,
-              other.createdAt_ != 0L, other.createdAt_);
-          updatedAt_ = visitor.visitLong(updatedAt_ != 0L, updatedAt_,
-              other.updatedAt_ != 0L, other.updatedAt_);
-          if (visitor == MergeFromVisitor
-              .INSTANCE) {
-          }
-          return this;
-        }
-        case MERGE_FROM_STREAM: {
-          com.google.protobuf.CodedInputStream input =
-              (com.google.protobuf.CodedInputStream) arg0;
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry =
-              (com.google.protobuf.ExtensionRegistryLite) arg1;
-          try {
-            boolean done = false;
-            while (!done) {
-              int tag = input.readTag();
-              switch (tag) {
-                case 0:
-                  done = true;
-                  break;
-                default: {
-                  if (!input.skipField(tag)) {
-                    done = true;
-                  }
-                  break;
-                }
-                case 10: {
-                  String s = input.readStringRequireUtf8();
 
-                  tokenId_ = s;
-                  break;
-                }
-                case 18: {
-                  String s = input.readStringRequireUtf8();
-
-                  title_ = s;
-                  break;
-                }
-                case 26: {
-                  String s = input.readStringRequireUtf8();
-
-                  token_ = s;
-                  break;
-                }
-                case 32: {
-
-                  revoked_ = input.readBool();
-                  break;
-                }
-                case 40: {
-
-                  createdAt_ = input.readInt64();
-                  break;
-                }
-                case 48: {
-
-                  updatedAt_ = input.readInt64();
-                  break;
-                }
-              }
+        /**
+         * <code>optional string tokenId = 1;</code>
+         */
+        private void setTokenId(
+                String value) {
+            if (value == null) {
+                throw new NullPointerException();
             }
-          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            throw new RuntimeException(e.setUnfinishedMessage(this));
-          } catch (java.io.IOException e) {
-            throw new RuntimeException(
-                new com.google.protobuf.InvalidProtocolBufferException(
-                    e.getMessage()).setUnfinishedMessage(this));
-          } finally {
-          }
+
+            tokenId_ = value;
         }
-        case GET_DEFAULT_INSTANCE: {
-          return DEFAULT_INSTANCE;
+
+        /**
+         * <code>optional string tokenId = 1;</code>
+         */
+        private void clearTokenId() {
+
+            tokenId_ = getDefaultInstance().getTokenId();
         }
-        case GET_PARSER: {
-          if (PARSER == null) {    synchronized (AccessToken.class) {
-              if (PARSER == null) {
-                PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
-              }
+
+        /**
+         * <code>optional string tokenId = 1;</code>
+         */
+        private void setTokenIdBytes(
+                com.google.protobuf.ByteString value) {
+            if (value == null) {
+                throw new NullPointerException();
             }
-          }
-          return PARSER;
+            checkByteStringIsUtf8(value);
+
+            tokenId_ = value.toStringUtf8();
         }
-      }
-      throw new UnsupportedOperationException();
+
+        public static final int TITLE_FIELD_NUMBER = 2;
+        private String title_;
+
+        /**
+         * <code>optional string title = 2;</code>
+         */
+        public String getTitle() {
+            return title_;
+        }
+
+        /**
+         * <code>optional string title = 2;</code>
+         */
+        public com.google.protobuf.ByteString
+        getTitleBytes() {
+            return com.google.protobuf.ByteString.copyFromUtf8(title_);
+        }
+
+        /**
+         * <code>optional string title = 2;</code>
+         */
+        private void setTitle(
+                String value) {
+            if (value == null) {
+                throw new NullPointerException();
+            }
+
+            title_ = value;
+        }
+
+        /**
+         * <code>optional string title = 2;</code>
+         */
+        private void clearTitle() {
+
+            title_ = getDefaultInstance().getTitle();
+        }
+
+        /**
+         * <code>optional string title = 2;</code>
+         */
+        private void setTitleBytes(
+                com.google.protobuf.ByteString value) {
+            if (value == null) {
+                throw new NullPointerException();
+            }
+            checkByteStringIsUtf8(value);
+
+            title_ = value.toStringUtf8();
+        }
+
+        public static final int TOKEN_FIELD_NUMBER = 3;
+        private String token_;
+
+        /**
+         * <code>optional string token = 3;</code>
+         */
+        public String getToken() {
+            return token_;
+        }
+
+        /**
+         * <code>optional string token = 3;</code>
+         */
+        public com.google.protobuf.ByteString
+        getTokenBytes() {
+            return com.google.protobuf.ByteString.copyFromUtf8(token_);
+        }
+
+        /**
+         * <code>optional string token = 3;</code>
+         */
+        private void setToken(
+                String value) {
+            if (value == null) {
+                throw new NullPointerException();
+            }
+
+            token_ = value;
+        }
+
+        /**
+         * <code>optional string token = 3;</code>
+         */
+        private void clearToken() {
+
+            token_ = getDefaultInstance().getToken();
+        }
+
+        /**
+         * <code>optional string token = 3;</code>
+         */
+        private void setTokenBytes(
+                com.google.protobuf.ByteString value) {
+            if (value == null) {
+                throw new NullPointerException();
+            }
+            checkByteStringIsUtf8(value);
+
+            token_ = value.toStringUtf8();
+        }
+
+        public static final int REVOKED_FIELD_NUMBER = 4;
+        private boolean revoked_;
+
+        /**
+         * <code>optional bool revoked = 4;</code>
+         */
+        public boolean getRevoked() {
+            return revoked_;
+        }
+
+        /**
+         * <code>optional bool revoked = 4;</code>
+         */
+        private void setRevoked(boolean value) {
+
+            revoked_ = value;
+        }
+
+        /**
+         * <code>optional bool revoked = 4;</code>
+         */
+        private void clearRevoked() {
+
+            revoked_ = false;
+        }
+
+        public static final int CREATEDAT_FIELD_NUMBER = 5;
+        private long createdAt_;
+
+        /**
+         * <code>optional int64 createdAt = 5;</code>
+         */
+        public long getCreatedAt() {
+            return createdAt_;
+        }
+
+        /**
+         * <code>optional int64 createdAt = 5;</code>
+         */
+        private void setCreatedAt(long value) {
+
+            createdAt_ = value;
+        }
+
+        /**
+         * <code>optional int64 createdAt = 5;</code>
+         */
+        private void clearCreatedAt() {
+
+            createdAt_ = 0L;
+        }
+
+        public static final int UPDATEDAT_FIELD_NUMBER = 6;
+        private long updatedAt_;
+
+        /**
+         * <code>optional int64 updatedAt = 6;</code>
+         */
+        public long getUpdatedAt() {
+            return updatedAt_;
+        }
+
+        /**
+         * <code>optional int64 updatedAt = 6;</code>
+         */
+        private void setUpdatedAt(long value) {
+
+            updatedAt_ = value;
+        }
+
+        /**
+         * <code>optional int64 updatedAt = 6;</code>
+         */
+        private void clearUpdatedAt() {
+
+            updatedAt_ = 0L;
+        }
+
+        public void writeTo(com.google.protobuf.CodedOutputStream output)
+                throws java.io.IOException {
+            if (!tokenId_.isEmpty()) {
+                output.writeString(1, getTokenId());
+            }
+            if (!title_.isEmpty()) {
+                output.writeString(2, getTitle());
+            }
+            if (!token_.isEmpty()) {
+                output.writeString(3, getToken());
+            }
+            if (revoked_ != false) {
+                output.writeBool(4, revoked_);
+            }
+            if (createdAt_ != 0L) {
+                output.writeInt64(5, createdAt_);
+            }
+            if (updatedAt_ != 0L) {
+                output.writeInt64(6, updatedAt_);
+            }
+        }
+
+        public int getSerializedSize() {
+            int size = memoizedSerializedSize;
+            if (size != -1) return size;
+
+            size = 0;
+            if (!tokenId_.isEmpty()) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeStringSize(1, getTokenId());
+            }
+            if (!title_.isEmpty()) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeStringSize(2, getTitle());
+            }
+            if (!token_.isEmpty()) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeStringSize(3, getToken());
+            }
+            if (revoked_ != false) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeBoolSize(4, revoked_);
+            }
+            if (createdAt_ != 0L) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeInt64Size(5, createdAt_);
+            }
+            if (updatedAt_ != 0L) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeInt64Size(6, updatedAt_);
+            }
+            memoizedSerializedSize = size;
+            return size;
+        }
+
+        public static AccessToken parseFrom(
+                com.google.protobuf.ByteString data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return com.google.protobuf.GeneratedMessageLite.parseFrom(
+                    DEFAULT_INSTANCE, data);
+        }
+
+        public static AccessToken parseFrom(
+                com.google.protobuf.ByteString data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return com.google.protobuf.GeneratedMessageLite.parseFrom(
+                    DEFAULT_INSTANCE, data, extensionRegistry);
+        }
+
+        public static AccessToken parseFrom(byte[] data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return com.google.protobuf.GeneratedMessageLite.parseFrom(
+                    DEFAULT_INSTANCE, data);
+        }
+
+        public static AccessToken parseFrom(
+                byte[] data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return com.google.protobuf.GeneratedMessageLite.parseFrom(
+                    DEFAULT_INSTANCE, data, extensionRegistry);
+        }
+
+        public static AccessToken parseFrom(java.io.InputStream input)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageLite.parseFrom(
+                    DEFAULT_INSTANCE, input);
+        }
+
+        public static AccessToken parseFrom(
+                java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageLite.parseFrom(
+                    DEFAULT_INSTANCE, input, extensionRegistry);
+        }
+
+        public static AccessToken parseDelimitedFrom(java.io.InputStream input)
+                throws java.io.IOException {
+            return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+        }
+
+        public static AccessToken parseDelimitedFrom(
+                java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+        }
+
+        public static AccessToken parseFrom(
+                com.google.protobuf.CodedInputStream input)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageLite.parseFrom(
+                    DEFAULT_INSTANCE, input);
+        }
+
+        public static AccessToken parseFrom(
+                com.google.protobuf.CodedInputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageLite.parseFrom(
+                    DEFAULT_INSTANCE, input, extensionRegistry);
+        }
+
+        public static Builder newBuilder() {
+            return DEFAULT_INSTANCE.toBuilder();
+        }
+
+        public static Builder newBuilder(AccessToken prototype) {
+            return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+        }
+
+        /**
+         * Protobuf type {@code com.entities.pb.AccessToken}
+         */
+        public static final class Builder extends
+                com.google.protobuf.GeneratedMessageLite.Builder<
+                        AccessToken, Builder> implements
+                // @@protoc_insertion_point(builder_implements:com.entities.pb.AccessToken)
+                AccessTokenOrBuilder {
+            // Construct using com.treeleaf.suchi.entities.AccessProto.AccessToken.newBuilder()
+            private Builder() {
+                super(DEFAULT_INSTANCE);
+            }
+
+
+            /**
+             * <code>optional string tokenId = 1;</code>
+             */
+            public String getTokenId() {
+                return instance.getTokenId();
+            }
+
+            /**
+             * <code>optional string tokenId = 1;</code>
+             */
+            public com.google.protobuf.ByteString
+            getTokenIdBytes() {
+                return instance.getTokenIdBytes();
+            }
+
+            /**
+             * <code>optional string tokenId = 1;</code>
+             */
+            public Builder setTokenId(
+                    String value) {
+                copyOnWrite();
+                instance.setTokenId(value);
+                return this;
+            }
+
+            /**
+             * <code>optional string tokenId = 1;</code>
+             */
+            public Builder clearTokenId() {
+                copyOnWrite();
+                instance.clearTokenId();
+                return this;
+            }
+
+            /**
+             * <code>optional string tokenId = 1;</code>
+             */
+            public Builder setTokenIdBytes(
+                    com.google.protobuf.ByteString value) {
+                copyOnWrite();
+                instance.setTokenIdBytes(value);
+                return this;
+            }
+
+            /**
+             * <code>optional string title = 2;</code>
+             */
+            public String getTitle() {
+                return instance.getTitle();
+            }
+
+            /**
+             * <code>optional string title = 2;</code>
+             */
+            public com.google.protobuf.ByteString
+            getTitleBytes() {
+                return instance.getTitleBytes();
+            }
+
+            /**
+             * <code>optional string title = 2;</code>
+             */
+            public Builder setTitle(
+                    String value) {
+                copyOnWrite();
+                instance.setTitle(value);
+                return this;
+            }
+
+            /**
+             * <code>optional string title = 2;</code>
+             */
+            public Builder clearTitle() {
+                copyOnWrite();
+                instance.clearTitle();
+                return this;
+            }
+
+            /**
+             * <code>optional string title = 2;</code>
+             */
+            public Builder setTitleBytes(
+                    com.google.protobuf.ByteString value) {
+                copyOnWrite();
+                instance.setTitleBytes(value);
+                return this;
+            }
+
+            /**
+             * <code>optional string token = 3;</code>
+             */
+            public String getToken() {
+                return instance.getToken();
+            }
+
+            /**
+             * <code>optional string token = 3;</code>
+             */
+            public com.google.protobuf.ByteString
+            getTokenBytes() {
+                return instance.getTokenBytes();
+            }
+
+            /**
+             * <code>optional string token = 3;</code>
+             */
+            public Builder setToken(
+                    String value) {
+                copyOnWrite();
+                instance.setToken(value);
+                return this;
+            }
+
+            /**
+             * <code>optional string token = 3;</code>
+             */
+            public Builder clearToken() {
+                copyOnWrite();
+                instance.clearToken();
+                return this;
+            }
+
+            /**
+             * <code>optional string token = 3;</code>
+             */
+            public Builder setTokenBytes(
+                    com.google.protobuf.ByteString value) {
+                copyOnWrite();
+                instance.setTokenBytes(value);
+                return this;
+            }
+
+            /**
+             * <code>optional bool revoked = 4;</code>
+             */
+            public boolean getRevoked() {
+                return instance.getRevoked();
+            }
+
+            /**
+             * <code>optional bool revoked = 4;</code>
+             */
+            public Builder setRevoked(boolean value) {
+                copyOnWrite();
+                instance.setRevoked(value);
+                return this;
+            }
+
+            /**
+             * <code>optional bool revoked = 4;</code>
+             */
+            public Builder clearRevoked() {
+                copyOnWrite();
+                instance.clearRevoked();
+                return this;
+            }
+
+            /**
+             * <code>optional int64 createdAt = 5;</code>
+             */
+            public long getCreatedAt() {
+                return instance.getCreatedAt();
+            }
+
+            /**
+             * <code>optional int64 createdAt = 5;</code>
+             */
+            public Builder setCreatedAt(long value) {
+                copyOnWrite();
+                instance.setCreatedAt(value);
+                return this;
+            }
+
+            /**
+             * <code>optional int64 createdAt = 5;</code>
+             */
+            public Builder clearCreatedAt() {
+                copyOnWrite();
+                instance.clearCreatedAt();
+                return this;
+            }
+
+            /**
+             * <code>optional int64 updatedAt = 6;</code>
+             */
+            public long getUpdatedAt() {
+                return instance.getUpdatedAt();
+            }
+
+            /**
+             * <code>optional int64 updatedAt = 6;</code>
+             */
+            public Builder setUpdatedAt(long value) {
+                copyOnWrite();
+                instance.setUpdatedAt(value);
+                return this;
+            }
+
+            /**
+             * <code>optional int64 updatedAt = 6;</code>
+             */
+            public Builder clearUpdatedAt() {
+                copyOnWrite();
+                instance.clearUpdatedAt();
+                return this;
+            }
+
+            // @@protoc_insertion_point(builder_scope:com.entities.pb.AccessToken)
+        }
+
+        protected final Object dynamicMethod(
+                MethodToInvoke method,
+                Object arg0, Object arg1) {
+            switch (method) {
+                case NEW_MUTABLE_INSTANCE: {
+                    return new AccessToken();
+                }
+                case IS_INITIALIZED: {
+                    return DEFAULT_INSTANCE;
+                }
+                case MAKE_IMMUTABLE: {
+                    return null;
+                }
+                case NEW_BUILDER: {
+                    return new Builder();
+                }
+                case VISIT: {
+                    Visitor visitor = (Visitor) arg0;
+                    AccessToken other = (AccessToken) arg1;
+                    tokenId_ = visitor.visitString(!tokenId_.isEmpty(), tokenId_,
+                            !other.tokenId_.isEmpty(), other.tokenId_);
+                    title_ = visitor.visitString(!title_.isEmpty(), title_,
+                            !other.title_.isEmpty(), other.title_);
+                    token_ = visitor.visitString(!token_.isEmpty(), token_,
+                            !other.token_.isEmpty(), other.token_);
+                    revoked_ = visitor.visitBoolean(revoked_ != false, revoked_,
+                            other.revoked_ != false, other.revoked_);
+                    createdAt_ = visitor.visitLong(createdAt_ != 0L, createdAt_,
+                            other.createdAt_ != 0L, other.createdAt_);
+                    updatedAt_ = visitor.visitLong(updatedAt_ != 0L, updatedAt_,
+                            other.updatedAt_ != 0L, other.updatedAt_);
+                    if (visitor == MergeFromVisitor
+                            .INSTANCE) {
+                    }
+                    return this;
+                }
+                case MERGE_FROM_STREAM: {
+                    com.google.protobuf.CodedInputStream input =
+                            (com.google.protobuf.CodedInputStream) arg0;
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry =
+                            (com.google.protobuf.ExtensionRegistryLite) arg1;
+                    try {
+                        boolean done = false;
+                        while (!done) {
+                            int tag = input.readTag();
+                            switch (tag) {
+                                case 0:
+                                    done = true;
+                                    break;
+                                default: {
+                                    if (!input.skipField(tag)) {
+                                        done = true;
+                                    }
+                                    break;
+                                }
+                                case 10: {
+                                    String s = input.readStringRequireUtf8();
+
+                                    tokenId_ = s;
+                                    break;
+                                }
+                                case 18: {
+                                    String s = input.readStringRequireUtf8();
+
+                                    title_ = s;
+                                    break;
+                                }
+                                case 26: {
+                                    String s = input.readStringRequireUtf8();
+
+                                    token_ = s;
+                                    break;
+                                }
+                                case 32: {
+
+                                    revoked_ = input.readBool();
+                                    break;
+                                }
+                                case 40: {
+
+                                    createdAt_ = input.readInt64();
+                                    break;
+                                }
+                                case 48: {
+
+                                    updatedAt_ = input.readInt64();
+                                    break;
+                                }
+                            }
+                        }
+                    } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                        throw new RuntimeException(e.setUnfinishedMessage(this));
+                    } catch (java.io.IOException e) {
+                        throw new RuntimeException(
+                                new com.google.protobuf.InvalidProtocolBufferException(
+                                        e.getMessage()).setUnfinishedMessage(this));
+                    } finally {
+                    }
+                }
+                case GET_DEFAULT_INSTANCE: {
+                    return DEFAULT_INSTANCE;
+                }
+                case GET_PARSER: {
+                    if (PARSER == null) {
+                        synchronized (AccessToken.class) {
+                            if (PARSER == null) {
+                                PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+                            }
+                        }
+                    }
+                    return PARSER;
+                }
+            }
+            throw new UnsupportedOperationException();
+        }
+
+
+        // @@protoc_insertion_point(class_scope:com.entities.pb.AccessToken)
+        private static final AccessToken DEFAULT_INSTANCE;
+
+        static {
+            DEFAULT_INSTANCE = new AccessToken();
+            DEFAULT_INSTANCE.makeImmutable();
+        }
+
+        public static AccessToken getDefaultInstance() {
+            return DEFAULT_INSTANCE;
+        }
+
+        private static volatile com.google.protobuf.Parser<AccessToken> PARSER;
+
+        public static com.google.protobuf.Parser<AccessToken> parser() {
+            return DEFAULT_INSTANCE.getParserForType();
+        }
     }
 
 
-    // @@protoc_insertion_point(class_scope:com.entities.pb.AccessToken)
-    private static final AccessToken DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new AccessToken();
-      DEFAULT_INSTANCE.makeImmutable();
     }
 
-    public static AccessToken getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static volatile com.google.protobuf.Parser<AccessToken> PARSER;
-
-    public static com.google.protobuf.Parser<AccessToken> parser() {
-      return DEFAULT_INSTANCE.getParserForType();
-    }
-  }
-
-
-  static {
-  }
-
-  // @@protoc_insertion_point(outer_class_scope)
+    // @@protoc_insertion_point(outer_class_scope)
 }

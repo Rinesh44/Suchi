@@ -82,6 +82,10 @@ public class SearchStockPresenterImpl implements SearchStockPresenter {
             stockKeepingUnit.setDesc(stockKeepingUnitPb.getDescription());
             stockKeepingUnit.setUnitPrice(String.valueOf(stockKeepingUnitPb.getUnitPrice()));
             stockKeepingUnit.setSynced(stockKeepingUnitPb.getSync());
+            stockKeepingUnit.setDefaultUnit(stockKeepingUnitPb.getDefaultUnit().getName());
+
+            AppUtils.showLog(TAG, "defaultUnit: " + stockKeepingUnitPb.getDefaultUnit().getName());
+            stockKeepingUnit.setDefaultUnit(stockKeepingUnitPb.getDefaultUnit().getName());
 
             InventoryProto.Brand brandPb = inventoryPb.getSku().getBrand();
             Brands brands = new Brands(brandPb.getBrandId(), brandPb.getName());
@@ -92,9 +96,9 @@ public class SearchStockPresenterImpl implements SearchStockPresenter {
                     subBrandPb.getName());
             stockKeepingUnit.setSubBrands(subBrands);
 
-            InventoryProto.Unit unitPb = inventoryPb.getSku().getUnit();
-            Units units = new Units(unitPb.getUnitId(), unitPb.getName());
-            stockKeepingUnit.setUnits(units);
+            List<InventoryProto.Unit> unitPb = inventoryPb.getSku().getUnitsList();
+            RealmList<Units> skuUnits = mapSKUUnits(unitPb);
+            stockKeepingUnit.setUnits(skuUnits);
 
             InventoryProto.Category categoryPb = inventoryPb.getSku().getCategory();
             Categories categories = new Categories(categoryPb.getCategoryId(), categoryPb.getName());
@@ -120,6 +124,20 @@ public class SearchStockPresenterImpl implements SearchStockPresenter {
         }
 
         return inventoryList;
+    }
+
+    private RealmList<Units> mapSKUUnits(List<InventoryProto.Unit> unitPb) {
+        RealmList<Units> skuUnits = new RealmList<>();
+        for (InventoryProto.Unit unit : unitPb
+        ) {
+            Units units = new Units();
+            units.setId(unit.getUnitId());
+            units.setName(unit.getName());
+
+            skuUnits.add(units);
+        }
+
+        return skuUnits;
     }
 
     @Override

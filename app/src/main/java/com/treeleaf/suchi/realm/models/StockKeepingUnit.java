@@ -3,6 +3,9 @@ package com.treeleaf.suchi.realm.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.List;
+
+import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
@@ -18,7 +21,7 @@ public class StockKeepingUnit extends RealmObject implements Parcelable {
     private String defaultUnit;
     private Brands brand;
     private SubBrands subBrands;
-    private Units units;
+    private RealmList<Units> units;
     private Categories categories;
 
 
@@ -26,7 +29,7 @@ public class StockKeepingUnit extends RealmObject implements Parcelable {
     }
 
 
-    public StockKeepingUnit(String id, String name, String photo_url, String code, String desc, String unitPrice, boolean synced, String defaultUnit, Brands brand, SubBrands subBrands, Units units, Categories categories) {
+    public StockKeepingUnit(String id, String name, String photo_url, String code, String desc, String unitPrice, boolean synced, String defaultUnit, Brands brand, SubBrands subBrands, RealmList<Units> units, Categories categories) {
         this.id = id;
         this.name = name;
         this.photo_url = photo_url;
@@ -106,11 +109,11 @@ public class StockKeepingUnit extends RealmObject implements Parcelable {
         this.subBrands = subBrands;
     }
 
-    public Units getUnits() {
+    public RealmList<Units> getUnits() {
         return units;
     }
 
-    public void setUnits(Units units) {
+    public void setUnits(RealmList<Units> units) {
         this.units = units;
     }
 
@@ -149,7 +152,12 @@ public class StockKeepingUnit extends RealmObject implements Parcelable {
         defaultUnit = in.readString();
         brand = (Brands) in.readValue(Brands.class.getClassLoader());
         subBrands = (SubBrands) in.readValue(SubBrands.class.getClassLoader());
-        units = (Units) in.readValue(Units.class.getClassLoader());
+        if (in.readByte() == 0x01) {
+            units = new RealmList<>();
+            in.readList(units, Units.class.getClassLoader());
+        } else {
+            units = null;
+        }
         categories = (Categories) in.readValue(Categories.class.getClassLoader());
     }
 
@@ -170,7 +178,12 @@ public class StockKeepingUnit extends RealmObject implements Parcelable {
         dest.writeString(defaultUnit);
         dest.writeValue(brand);
         dest.writeValue(subBrands);
-        dest.writeValue(units);
+        if (units == null) {
+            dest.writeByte((byte) (0x00));
+        } else {
+            dest.writeByte((byte) (0x01));
+            dest.writeList(units);
+        }
         dest.writeValue(categories);
     }
 

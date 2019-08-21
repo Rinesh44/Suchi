@@ -15,8 +15,6 @@ import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.activities.base.BaseActivity;
 import com.treeleaf.suchi.dto.InventoryDto;
 import com.treeleaf.suchi.dto.InventoryStocksDto;
-import com.treeleaf.suchi.realm.models.Inventory;
-import com.treeleaf.suchi.realm.models.InventoryStocks;
 import com.treeleaf.suchi.realm.models.Units;
 import com.treeleaf.suchi.realm.repo.UnitRepo;
 import com.treeleaf.suchi.utils.AppUtils;

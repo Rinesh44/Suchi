@@ -232,9 +232,14 @@ public final class InventoryProto {
       com.google.protobuf.MessageLiteOrBuilder {
 
     /**
-     * <code>optional int64 skuId = 1;</code>
+     * <code>optional string skuId = 1;</code>
      */
-    long getSkuId();
+    String getSkuId();
+    /**
+     * <code>optional string skuId = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getSkuIdBytes();
 
     /**
      * <code>optional string name = 2;</code>
@@ -409,6 +414,39 @@ public final class InventoryProto {
      * <code>optional .com.entities.pb.Unit defaultUnit = 21;</code>
      */
     Unit getDefaultUnit();
+
+    /**
+     * <code>repeated .com.entities.pb.SkuUnit skuUnits = 22;</code>
+     */
+    java.util.List<SkuUnit>
+        getSkuUnitsList();
+    /**
+     * <code>repeated .com.entities.pb.SkuUnit skuUnits = 22;</code>
+     */
+    SkuUnit getSkuUnits(int index);
+    /**
+     * <code>repeated .com.entities.pb.SkuUnit skuUnits = 22;</code>
+     */
+    int getSkuUnitsCount();
+
+    /**
+     * <code>repeated .com.entities.pb.Unit units = 23;</code>
+     */
+    java.util.List<Unit>
+        getUnitsList();
+    /**
+     * <code>repeated .com.entities.pb.Unit units = 23;</code>
+     */
+    Unit getUnits(int index);
+    /**
+     * <code>repeated .com.entities.pb.Unit units = 23;</code>
+     */
+    int getUnitsCount();
+
+    /**
+     * <code>optional int64 id = 24;</code>
+     */
+    long getId();
   }
   /**
    * Protobuf type {@code com.entities.pb.StockKeepingUnit}
@@ -419,6 +457,7 @@ public final class InventoryProto {
       // @@protoc_insertion_point(message_implements:com.entities.pb.StockKeepingUnit)
       StockKeepingUnitOrBuilder {
     private StockKeepingUnit() {
+      skuId_ = "";
       name_ = "";
       photo_ = "";
       brandId_ = "";
@@ -429,28 +468,54 @@ public final class InventoryProto {
       categoryId_ = "";
       unitId_ = "";
       defaultUnitId_ = "";
+      skuUnits_ = emptyProtobufList();
+      units_ = emptyProtobufList();
     }
+    private int bitField0_;
     public static final int SKUID_FIELD_NUMBER = 1;
-    private long skuId_;
+    private String skuId_;
     /**
-     * <code>optional int64 skuId = 1;</code>
+     * <code>optional string skuId = 1;</code>
      */
-    public long getSkuId() {
+    public String getSkuId() {
       return skuId_;
     }
     /**
-     * <code>optional int64 skuId = 1;</code>
+     * <code>optional string skuId = 1;</code>
      */
-    private void setSkuId(long value) {
-      
+    public com.google.protobuf.ByteString
+        getSkuIdBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(skuId_);
+    }
+    /**
+     * <code>optional string skuId = 1;</code>
+     */
+    private void setSkuId(
+        String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
       skuId_ = value;
     }
     /**
-     * <code>optional int64 skuId = 1;</code>
+     * <code>optional string skuId = 1;</code>
      */
     private void clearSkuId() {
       
-      skuId_ = 0L;
+      skuId_ = getDefaultInstance().getSkuId();
+    }
+    /**
+     * <code>optional string skuId = 1;</code>
+     */
+    private void setSkuIdBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      skuId_ = value.toStringUtf8();
     }
 
     public static final int NAME_FIELD_NUMBER = 2;
@@ -1304,10 +1369,273 @@ public final class InventoryProto {
       
     }
 
+    public static final int SKUUNITS_FIELD_NUMBER = 22;
+    private com.google.protobuf.Internal.ProtobufList<SkuUnit> skuUnits_;
+    /**
+     * <code>repeated .com.entities.pb.SkuUnit skuUnits = 22;</code>
+     */
+    public java.util.List<SkuUnit> getSkuUnitsList() {
+      return skuUnits_;
+    }
+    /**
+     * <code>repeated .com.entities.pb.SkuUnit skuUnits = 22;</code>
+     */
+    public java.util.List<? extends SkuUnitOrBuilder>
+        getSkuUnitsOrBuilderList() {
+      return skuUnits_;
+    }
+    /**
+     * <code>repeated .com.entities.pb.SkuUnit skuUnits = 22;</code>
+     */
+    public int getSkuUnitsCount() {
+      return skuUnits_.size();
+    }
+    /**
+     * <code>repeated .com.entities.pb.SkuUnit skuUnits = 22;</code>
+     */
+    public SkuUnit getSkuUnits(int index) {
+      return skuUnits_.get(index);
+    }
+    /**
+     * <code>repeated .com.entities.pb.SkuUnit skuUnits = 22;</code>
+     */
+    public SkuUnitOrBuilder getSkuUnitsOrBuilder(
+        int index) {
+      return skuUnits_.get(index);
+    }
+    private void ensureSkuUnitsIsMutable() {
+      if (!skuUnits_.isModifiable()) {
+        skuUnits_ =
+            com.google.protobuf.GeneratedMessageLite.mutableCopy(skuUnits_);
+       }
+    }
+
+    /**
+     * <code>repeated .com.entities.pb.SkuUnit skuUnits = 22;</code>
+     */
+    private void setSkuUnits(
+        int index, SkuUnit value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureSkuUnitsIsMutable();
+      skuUnits_.set(index, value);
+    }
+    /**
+     * <code>repeated .com.entities.pb.SkuUnit skuUnits = 22;</code>
+     */
+    private void setSkuUnits(
+        int index, SkuUnit.Builder builderForValue) {
+      ensureSkuUnitsIsMutable();
+      skuUnits_.set(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .com.entities.pb.SkuUnit skuUnits = 22;</code>
+     */
+    private void addSkuUnits(SkuUnit value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureSkuUnitsIsMutable();
+      skuUnits_.add(value);
+    }
+    /**
+     * <code>repeated .com.entities.pb.SkuUnit skuUnits = 22;</code>
+     */
+    private void addSkuUnits(
+        int index, SkuUnit value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureSkuUnitsIsMutable();
+      skuUnits_.add(index, value);
+    }
+    /**
+     * <code>repeated .com.entities.pb.SkuUnit skuUnits = 22;</code>
+     */
+    private void addSkuUnits(
+        SkuUnit.Builder builderForValue) {
+      ensureSkuUnitsIsMutable();
+      skuUnits_.add(builderForValue.build());
+    }
+    /**
+     * <code>repeated .com.entities.pb.SkuUnit skuUnits = 22;</code>
+     */
+    private void addSkuUnits(
+        int index, SkuUnit.Builder builderForValue) {
+      ensureSkuUnitsIsMutable();
+      skuUnits_.add(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .com.entities.pb.SkuUnit skuUnits = 22;</code>
+     */
+    private void addAllSkuUnits(
+        Iterable<? extends SkuUnit> values) {
+      ensureSkuUnitsIsMutable();
+      com.google.protobuf.AbstractMessageLite.addAll(
+          values, skuUnits_);
+    }
+    /**
+     * <code>repeated .com.entities.pb.SkuUnit skuUnits = 22;</code>
+     */
+    private void clearSkuUnits() {
+      skuUnits_ = emptyProtobufList();
+    }
+    /**
+     * <code>repeated .com.entities.pb.SkuUnit skuUnits = 22;</code>
+     */
+    private void removeSkuUnits(int index) {
+      ensureSkuUnitsIsMutable();
+      skuUnits_.remove(index);
+    }
+
+    public static final int UNITS_FIELD_NUMBER = 23;
+    private com.google.protobuf.Internal.ProtobufList<Unit> units_;
+    /**
+     * <code>repeated .com.entities.pb.Unit units = 23;</code>
+     */
+    public java.util.List<Unit> getUnitsList() {
+      return units_;
+    }
+    /**
+     * <code>repeated .com.entities.pb.Unit units = 23;</code>
+     */
+    public java.util.List<? extends UnitOrBuilder>
+        getUnitsOrBuilderList() {
+      return units_;
+    }
+    /**
+     * <code>repeated .com.entities.pb.Unit units = 23;</code>
+     */
+    public int getUnitsCount() {
+      return units_.size();
+    }
+    /**
+     * <code>repeated .com.entities.pb.Unit units = 23;</code>
+     */
+    public Unit getUnits(int index) {
+      return units_.get(index);
+    }
+    /**
+     * <code>repeated .com.entities.pb.Unit units = 23;</code>
+     */
+    public UnitOrBuilder getUnitsOrBuilder(
+        int index) {
+      return units_.get(index);
+    }
+    private void ensureUnitsIsMutable() {
+      if (!units_.isModifiable()) {
+        units_ =
+            com.google.protobuf.GeneratedMessageLite.mutableCopy(units_);
+       }
+    }
+
+    /**
+     * <code>repeated .com.entities.pb.Unit units = 23;</code>
+     */
+    private void setUnits(
+        int index, Unit value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureUnitsIsMutable();
+      units_.set(index, value);
+    }
+    /**
+     * <code>repeated .com.entities.pb.Unit units = 23;</code>
+     */
+    private void setUnits(
+        int index, Unit.Builder builderForValue) {
+      ensureUnitsIsMutable();
+      units_.set(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .com.entities.pb.Unit units = 23;</code>
+     */
+    private void addUnits(Unit value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureUnitsIsMutable();
+      units_.add(value);
+    }
+    /**
+     * <code>repeated .com.entities.pb.Unit units = 23;</code>
+     */
+    private void addUnits(
+        int index, Unit value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureUnitsIsMutable();
+      units_.add(index, value);
+    }
+    /**
+     * <code>repeated .com.entities.pb.Unit units = 23;</code>
+     */
+    private void addUnits(
+        Unit.Builder builderForValue) {
+      ensureUnitsIsMutable();
+      units_.add(builderForValue.build());
+    }
+    /**
+     * <code>repeated .com.entities.pb.Unit units = 23;</code>
+     */
+    private void addUnits(
+        int index, Unit.Builder builderForValue) {
+      ensureUnitsIsMutable();
+      units_.add(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .com.entities.pb.Unit units = 23;</code>
+     */
+    private void addAllUnits(
+        Iterable<? extends Unit> values) {
+      ensureUnitsIsMutable();
+      com.google.protobuf.AbstractMessageLite.addAll(
+          values, units_);
+    }
+    /**
+     * <code>repeated .com.entities.pb.Unit units = 23;</code>
+     */
+    private void clearUnits() {
+      units_ = emptyProtobufList();
+    }
+    /**
+     * <code>repeated .com.entities.pb.Unit units = 23;</code>
+     */
+    private void removeUnits(int index) {
+      ensureUnitsIsMutable();
+      units_.remove(index);
+    }
+
+    public static final int ID_FIELD_NUMBER = 24;
+    private long id_;
+    /**
+     * <code>optional int64 id = 24;</code>
+     */
+    public long getId() {
+      return id_;
+    }
+    /**
+     * <code>optional int64 id = 24;</code>
+     */
+    private void setId(long value) {
+      
+      id_ = value;
+    }
+    /**
+     * <code>optional int64 id = 24;</code>
+     */
+    private void clearId() {
+      
+      id_ = 0L;
+    }
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (skuId_ != 0L) {
-        output.writeInt64(1, skuId_);
+      if (!skuId_.isEmpty()) {
+        output.writeString(1, getSkuId());
       }
       if (!name_.isEmpty()) {
         output.writeString(2, getName());
@@ -1369,6 +1697,15 @@ public final class InventoryProto {
       if (defaultUnit_ != null) {
         output.writeMessage(21, getDefaultUnit());
       }
+      for (int i = 0; i < skuUnits_.size(); i++) {
+        output.writeMessage(22, skuUnits_.get(i));
+      }
+      for (int i = 0; i < units_.size(); i++) {
+        output.writeMessage(23, units_.get(i));
+      }
+      if (id_ != 0L) {
+        output.writeInt64(24, id_);
+      }
     }
 
     public int getSerializedSize() {
@@ -1376,9 +1713,9 @@ public final class InventoryProto {
       if (size != -1) return size;
 
       size = 0;
-      if (skuId_ != 0L) {
+      if (!skuId_.isEmpty()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(1, skuId_);
+          .computeStringSize(1, getSkuId());
       }
       if (!name_.isEmpty()) {
         size += com.google.protobuf.CodedOutputStream
@@ -1459,6 +1796,18 @@ public final class InventoryProto {
       if (defaultUnit_ != null) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(21, getDefaultUnit());
+      }
+      for (int i = 0; i < skuUnits_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(22, skuUnits_.get(i));
+      }
+      for (int i = 0; i < units_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(23, units_.get(i));
+      }
+      if (id_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(24, id_);
       }
       memoizedSerializedSize = size;
       return size;
@@ -1547,25 +1896,42 @@ public final class InventoryProto {
 
 
       /**
-       * <code>optional int64 skuId = 1;</code>
+       * <code>optional string skuId = 1;</code>
        */
-      public long getSkuId() {
+      public String getSkuId() {
         return instance.getSkuId();
       }
       /**
-       * <code>optional int64 skuId = 1;</code>
+       * <code>optional string skuId = 1;</code>
        */
-      public Builder setSkuId(long value) {
+      public com.google.protobuf.ByteString
+          getSkuIdBytes() {
+        return instance.getSkuIdBytes();
+      }
+      /**
+       * <code>optional string skuId = 1;</code>
+       */
+      public Builder setSkuId(
+          String value) {
         copyOnWrite();
         instance.setSkuId(value);
         return this;
       }
       /**
-       * <code>optional int64 skuId = 1;</code>
+       * <code>optional string skuId = 1;</code>
        */
       public Builder clearSkuId() {
         copyOnWrite();
         instance.clearSkuId();
+        return this;
+      }
+      /**
+       * <code>optional string skuId = 1;</code>
+       */
+      public Builder setSkuIdBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setSkuIdBytes(value);
         return this;
       }
 
@@ -2323,6 +2689,223 @@ public final class InventoryProto {
         return this;
       }
 
+      /**
+       * <code>repeated .com.entities.pb.SkuUnit skuUnits = 22;</code>
+       */
+      public java.util.List<SkuUnit> getSkuUnitsList() {
+        return java.util.Collections.unmodifiableList(
+            instance.getSkuUnitsList());
+      }
+      /**
+       * <code>repeated .com.entities.pb.SkuUnit skuUnits = 22;</code>
+       */
+      public int getSkuUnitsCount() {
+        return instance.getSkuUnitsCount();
+      }/**
+       * <code>repeated .com.entities.pb.SkuUnit skuUnits = 22;</code>
+       */
+      public SkuUnit getSkuUnits(int index) {
+        return instance.getSkuUnits(index);
+      }
+      /**
+       * <code>repeated .com.entities.pb.SkuUnit skuUnits = 22;</code>
+       */
+      public Builder setSkuUnits(
+          int index, SkuUnit value) {
+        copyOnWrite();
+        instance.setSkuUnits(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.SkuUnit skuUnits = 22;</code>
+       */
+      public Builder setSkuUnits(
+          int index, SkuUnit.Builder builderForValue) {
+        copyOnWrite();
+        instance.setSkuUnits(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.SkuUnit skuUnits = 22;</code>
+       */
+      public Builder addSkuUnits(SkuUnit value) {
+        copyOnWrite();
+        instance.addSkuUnits(value);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.SkuUnit skuUnits = 22;</code>
+       */
+      public Builder addSkuUnits(
+          int index, SkuUnit value) {
+        copyOnWrite();
+        instance.addSkuUnits(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.SkuUnit skuUnits = 22;</code>
+       */
+      public Builder addSkuUnits(
+          SkuUnit.Builder builderForValue) {
+        copyOnWrite();
+        instance.addSkuUnits(builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.SkuUnit skuUnits = 22;</code>
+       */
+      public Builder addSkuUnits(
+          int index, SkuUnit.Builder builderForValue) {
+        copyOnWrite();
+        instance.addSkuUnits(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.SkuUnit skuUnits = 22;</code>
+       */
+      public Builder addAllSkuUnits(
+          Iterable<? extends SkuUnit> values) {
+        copyOnWrite();
+        instance.addAllSkuUnits(values);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.SkuUnit skuUnits = 22;</code>
+       */
+      public Builder clearSkuUnits() {
+        copyOnWrite();
+        instance.clearSkuUnits();
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.SkuUnit skuUnits = 22;</code>
+       */
+      public Builder removeSkuUnits(int index) {
+        copyOnWrite();
+        instance.removeSkuUnits(index);
+        return this;
+      }
+
+      /**
+       * <code>repeated .com.entities.pb.Unit units = 23;</code>
+       */
+      public java.util.List<Unit> getUnitsList() {
+        return java.util.Collections.unmodifiableList(
+            instance.getUnitsList());
+      }
+      /**
+       * <code>repeated .com.entities.pb.Unit units = 23;</code>
+       */
+      public int getUnitsCount() {
+        return instance.getUnitsCount();
+      }/**
+       * <code>repeated .com.entities.pb.Unit units = 23;</code>
+       */
+      public Unit getUnits(int index) {
+        return instance.getUnits(index);
+      }
+      /**
+       * <code>repeated .com.entities.pb.Unit units = 23;</code>
+       */
+      public Builder setUnits(
+          int index, Unit value) {
+        copyOnWrite();
+        instance.setUnits(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Unit units = 23;</code>
+       */
+      public Builder setUnits(
+          int index, Unit.Builder builderForValue) {
+        copyOnWrite();
+        instance.setUnits(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Unit units = 23;</code>
+       */
+      public Builder addUnits(Unit value) {
+        copyOnWrite();
+        instance.addUnits(value);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Unit units = 23;</code>
+       */
+      public Builder addUnits(
+          int index, Unit value) {
+        copyOnWrite();
+        instance.addUnits(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Unit units = 23;</code>
+       */
+      public Builder addUnits(
+          Unit.Builder builderForValue) {
+        copyOnWrite();
+        instance.addUnits(builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Unit units = 23;</code>
+       */
+      public Builder addUnits(
+          int index, Unit.Builder builderForValue) {
+        copyOnWrite();
+        instance.addUnits(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Unit units = 23;</code>
+       */
+      public Builder addAllUnits(
+          Iterable<? extends Unit> values) {
+        copyOnWrite();
+        instance.addAllUnits(values);
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Unit units = 23;</code>
+       */
+      public Builder clearUnits() {
+        copyOnWrite();
+        instance.clearUnits();
+        return this;
+      }
+      /**
+       * <code>repeated .com.entities.pb.Unit units = 23;</code>
+       */
+      public Builder removeUnits(int index) {
+        copyOnWrite();
+        instance.removeUnits(index);
+        return this;
+      }
+
+      /**
+       * <code>optional int64 id = 24;</code>
+       */
+      public long getId() {
+        return instance.getId();
+      }
+      /**
+       * <code>optional int64 id = 24;</code>
+       */
+      public Builder setId(long value) {
+        copyOnWrite();
+        instance.setId(value);
+        return this;
+      }
+      /**
+       * <code>optional int64 id = 24;</code>
+       */
+      public Builder clearId() {
+        copyOnWrite();
+        instance.clearId();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:com.entities.pb.StockKeepingUnit)
     }
     protected final Object dynamicMethod(
@@ -2336,6 +2919,8 @@ public final class InventoryProto {
           return DEFAULT_INSTANCE;
         }
         case MAKE_IMMUTABLE: {
+          skuUnits_.makeImmutable();
+          units_.makeImmutable();
           return null;
         }
         case NEW_BUILDER: {
@@ -2344,8 +2929,8 @@ public final class InventoryProto {
         case VISIT: {
           Visitor visitor = (Visitor) arg0;
           StockKeepingUnit other = (StockKeepingUnit) arg1;
-          skuId_ = visitor.visitLong(skuId_ != 0L, skuId_,
-              other.skuId_ != 0L, other.skuId_);
+          skuId_ = visitor.visitString(!skuId_.isEmpty(), skuId_,
+              !other.skuId_.isEmpty(), other.skuId_);
           name_ = visitor.visitString(!name_.isEmpty(), name_,
               !other.name_.isEmpty(), other.name_);
           photo_ = visitor.visitString(!photo_.isEmpty(), photo_,
@@ -2380,8 +2965,13 @@ public final class InventoryProto {
           defaultUnitId_ = visitor.visitString(!defaultUnitId_.isEmpty(), defaultUnitId_,
               !other.defaultUnitId_.isEmpty(), other.defaultUnitId_);
           defaultUnit_ = visitor.visitMessage(defaultUnit_, other.defaultUnit_);
+          skuUnits_= visitor.visitList(skuUnits_, other.skuUnits_);
+          units_= visitor.visitList(units_, other.units_);
+          id_ = visitor.visitLong(id_ != 0L, id_,
+              other.id_ != 0L, other.id_);
           if (visitor == MergeFromVisitor
               .INSTANCE) {
+            bitField0_ |= other.bitField0_;
           }
           return this;
         }
@@ -2404,9 +2994,10 @@ public final class InventoryProto {
                   }
                   break;
                 }
-                case 8: {
+                case 10: {
+                  String s = input.readStringRequireUtf8();
 
-                  skuId_ = input.readInt64();
+                  skuId_ = s;
                   break;
                 }
                 case 18: {
@@ -2558,6 +3149,29 @@ public final class InventoryProto {
                     defaultUnit_ = subBuilder.buildPartial();
                   }
 
+                  break;
+                }
+                case 178: {
+                  if (!skuUnits_.isModifiable()) {
+                    skuUnits_ =
+                        com.google.protobuf.GeneratedMessageLite.mutableCopy(skuUnits_);
+                  }
+                  skuUnits_.add(
+                      input.readMessage(SkuUnit.parser(), extensionRegistry));
+                  break;
+                }
+                case 186: {
+                  if (!units_.isModifiable()) {
+                    units_ =
+                        com.google.protobuf.GeneratedMessageLite.mutableCopy(units_);
+                  }
+                  units_.add(
+                      input.readMessage(Unit.parser(), extensionRegistry));
+                  break;
+                }
+                case 192: {
+
+                  id_ = input.readInt64();
                   break;
                 }
               }
@@ -10897,6 +11511,25 @@ public final class InventoryProto {
      */
     com.google.protobuf.ByteString
         getInventoryStockIdBytes();
+
+    /**
+     * <code>optional string unitId = 8;</code>
+     */
+    String getUnitId();
+    /**
+     * <code>optional string unitId = 8;</code>
+     */
+    com.google.protobuf.ByteString
+        getUnitIdBytes();
+
+    /**
+     * <code>optional .com.entities.pb.Unit unit = 9;</code>
+     */
+    boolean hasUnit();
+    /**
+     * <code>optional .com.entities.pb.Unit unit = 9;</code>
+     */
+    Unit getUnit();
   }
   /**
    * Protobuf type {@code com.entities.pb.SaleInventory}
@@ -10911,6 +11544,7 @@ public final class InventoryProto {
       inventoryId_ = "";
       saleId_ = "";
       inventoryStockId_ = "";
+      unitId_ = "";
     }
     public static final int SALEINVENTORYID_FIELD_NUMBER = 1;
     private String saleInventoryId_;
@@ -11194,6 +11828,104 @@ public final class InventoryProto {
       inventoryStockId_ = value.toStringUtf8();
     }
 
+    public static final int UNITID_FIELD_NUMBER = 8;
+    private String unitId_;
+    /**
+     * <code>optional string unitId = 8;</code>
+     */
+    public String getUnitId() {
+      return unitId_;
+    }
+    /**
+     * <code>optional string unitId = 8;</code>
+     */
+    public com.google.protobuf.ByteString
+        getUnitIdBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(unitId_);
+    }
+    /**
+     * <code>optional string unitId = 8;</code>
+     */
+    private void setUnitId(
+        String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      unitId_ = value;
+    }
+    /**
+     * <code>optional string unitId = 8;</code>
+     */
+    private void clearUnitId() {
+      
+      unitId_ = getDefaultInstance().getUnitId();
+    }
+    /**
+     * <code>optional string unitId = 8;</code>
+     */
+    private void setUnitIdBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      unitId_ = value.toStringUtf8();
+    }
+
+    public static final int UNIT_FIELD_NUMBER = 9;
+    private Unit unit_;
+    /**
+     * <code>optional .com.entities.pb.Unit unit = 9;</code>
+     */
+    public boolean hasUnit() {
+      return unit_ != null;
+    }
+    /**
+     * <code>optional .com.entities.pb.Unit unit = 9;</code>
+     */
+    public Unit getUnit() {
+      return unit_ == null ? Unit.getDefaultInstance() : unit_;
+    }
+    /**
+     * <code>optional .com.entities.pb.Unit unit = 9;</code>
+     */
+    private void setUnit(Unit value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      unit_ = value;
+      
+      }
+    /**
+     * <code>optional .com.entities.pb.Unit unit = 9;</code>
+     */
+    private void setUnit(
+        Unit.Builder builderForValue) {
+      unit_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>optional .com.entities.pb.Unit unit = 9;</code>
+     */
+    private void mergeUnit(Unit value) {
+      if (unit_ != null &&
+          unit_ != Unit.getDefaultInstance()) {
+        unit_ =
+          Unit.newBuilder(unit_).mergeFrom(value).buildPartial();
+      } else {
+        unit_ = value;
+      }
+      
+    }
+    /**
+     * <code>optional .com.entities.pb.Unit unit = 9;</code>
+     */
+    private void clearUnit() {  unit_ = null;
+      
+    }
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!saleInventoryId_.isEmpty()) {
@@ -11216,6 +11948,12 @@ public final class InventoryProto {
       }
       if (!inventoryStockId_.isEmpty()) {
         output.writeString(7, getInventoryStockId());
+      }
+      if (!unitId_.isEmpty()) {
+        output.writeString(8, getUnitId());
+      }
+      if (unit_ != null) {
+        output.writeMessage(9, getUnit());
       }
     }
 
@@ -11251,6 +11989,14 @@ public final class InventoryProto {
       if (!inventoryStockId_.isEmpty()) {
         size += com.google.protobuf.CodedOutputStream
           .computeStringSize(7, getInventoryStockId());
+      }
+      if (!unitId_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeStringSize(8, getUnitId());
+      }
+      if (unit_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(9, getUnit());
       }
       memoizedSerializedSize = size;
       return size;
@@ -11589,6 +12335,91 @@ public final class InventoryProto {
         return this;
       }
 
+      /**
+       * <code>optional string unitId = 8;</code>
+       */
+      public String getUnitId() {
+        return instance.getUnitId();
+      }
+      /**
+       * <code>optional string unitId = 8;</code>
+       */
+      public com.google.protobuf.ByteString
+          getUnitIdBytes() {
+        return instance.getUnitIdBytes();
+      }
+      /**
+       * <code>optional string unitId = 8;</code>
+       */
+      public Builder setUnitId(
+          String value) {
+        copyOnWrite();
+        instance.setUnitId(value);
+        return this;
+      }
+      /**
+       * <code>optional string unitId = 8;</code>
+       */
+      public Builder clearUnitId() {
+        copyOnWrite();
+        instance.clearUnitId();
+        return this;
+      }
+      /**
+       * <code>optional string unitId = 8;</code>
+       */
+      public Builder setUnitIdBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setUnitIdBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>optional .com.entities.pb.Unit unit = 9;</code>
+       */
+      public boolean hasUnit() {
+        return instance.hasUnit();
+      }
+      /**
+       * <code>optional .com.entities.pb.Unit unit = 9;</code>
+       */
+      public Unit getUnit() {
+        return instance.getUnit();
+      }
+      /**
+       * <code>optional .com.entities.pb.Unit unit = 9;</code>
+       */
+      public Builder setUnit(Unit value) {
+        copyOnWrite();
+        instance.setUnit(value);
+        return this;
+        }
+      /**
+       * <code>optional .com.entities.pb.Unit unit = 9;</code>
+       */
+      public Builder setUnit(
+          Unit.Builder builderForValue) {
+        copyOnWrite();
+        instance.setUnit(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .com.entities.pb.Unit unit = 9;</code>
+       */
+      public Builder mergeUnit(Unit value) {
+        copyOnWrite();
+        instance.mergeUnit(value);
+        return this;
+      }
+      /**
+       * <code>optional .com.entities.pb.Unit unit = 9;</code>
+       */
+      public Builder clearUnit() {  copyOnWrite();
+        instance.clearUnit();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:com.entities.pb.SaleInventory)
     }
     protected final Object dynamicMethod(
@@ -11623,6 +12454,9 @@ public final class InventoryProto {
               !other.saleId_.isEmpty(), other.saleId_);
           inventoryStockId_ = visitor.visitString(!inventoryStockId_.isEmpty(), inventoryStockId_,
               !other.inventoryStockId_.isEmpty(), other.inventoryStockId_);
+          unitId_ = visitor.visitString(!unitId_.isEmpty(), unitId_,
+              !other.unitId_.isEmpty(), other.unitId_);
+          unit_ = visitor.visitMessage(unit_, other.unit_);
           if (visitor == MergeFromVisitor
               .INSTANCE) {
           }
@@ -11692,6 +12526,25 @@ public final class InventoryProto {
                   String s = input.readStringRequireUtf8();
 
                   inventoryStockId_ = s;
+                  break;
+                }
+                case 66: {
+                  String s = input.readStringRequireUtf8();
+
+                  unitId_ = s;
+                  break;
+                }
+                case 74: {
+                  Unit.Builder subBuilder = null;
+                  if (unit_ != null) {
+                    subBuilder = unit_.toBuilder();
+                  }
+                  unit_ = input.readMessage(Unit.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(unit_);
+                    unit_ = subBuilder.buildPartial();
+                  }
+
                   break;
                 }
               }
@@ -12165,6 +13018,542 @@ public final class InventoryProto {
     private static volatile com.google.protobuf.Parser<DataQuery> PARSER;
 
     public static com.google.protobuf.Parser<DataQuery> parser() {
+      return DEFAULT_INSTANCE.getParserForType();
+    }
+  }
+
+  public interface SkuUnitOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.entities.pb.SkuUnit)
+      com.google.protobuf.MessageLiteOrBuilder {
+
+    /**
+     * <code>optional string skuUnitId = 1;</code>
+     */
+    String getSkuUnitId();
+    /**
+     * <code>optional string skuUnitId = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getSkuUnitIdBytes();
+
+    /**
+     * <code>optional string skuId = 2;</code>
+     */
+    String getSkuId();
+    /**
+     * <code>optional string skuId = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getSkuIdBytes();
+
+    /**
+     * <code>optional string unitId = 3;</code>
+     */
+    String getUnitId();
+    /**
+     * <code>optional string unitId = 3;</code>
+     */
+    com.google.protobuf.ByteString
+        getUnitIdBytes();
+  }
+  /**
+   * Protobuf type {@code com.entities.pb.SkuUnit}
+   */
+  public  static final class SkuUnit extends
+      com.google.protobuf.GeneratedMessageLite<
+          SkuUnit, SkuUnit.Builder> implements
+      // @@protoc_insertion_point(message_implements:com.entities.pb.SkuUnit)
+      SkuUnitOrBuilder {
+    private SkuUnit() {
+      skuUnitId_ = "";
+      skuId_ = "";
+      unitId_ = "";
+    }
+    public static final int SKUUNITID_FIELD_NUMBER = 1;
+    private String skuUnitId_;
+    /**
+     * <code>optional string skuUnitId = 1;</code>
+     */
+    public String getSkuUnitId() {
+      return skuUnitId_;
+    }
+    /**
+     * <code>optional string skuUnitId = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getSkuUnitIdBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(skuUnitId_);
+    }
+    /**
+     * <code>optional string skuUnitId = 1;</code>
+     */
+    private void setSkuUnitId(
+        String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      skuUnitId_ = value;
+    }
+    /**
+     * <code>optional string skuUnitId = 1;</code>
+     */
+    private void clearSkuUnitId() {
+      
+      skuUnitId_ = getDefaultInstance().getSkuUnitId();
+    }
+    /**
+     * <code>optional string skuUnitId = 1;</code>
+     */
+    private void setSkuUnitIdBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      skuUnitId_ = value.toStringUtf8();
+    }
+
+    public static final int SKUID_FIELD_NUMBER = 2;
+    private String skuId_;
+    /**
+     * <code>optional string skuId = 2;</code>
+     */
+    public String getSkuId() {
+      return skuId_;
+    }
+    /**
+     * <code>optional string skuId = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getSkuIdBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(skuId_);
+    }
+    /**
+     * <code>optional string skuId = 2;</code>
+     */
+    private void setSkuId(
+        String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      skuId_ = value;
+    }
+    /**
+     * <code>optional string skuId = 2;</code>
+     */
+    private void clearSkuId() {
+      
+      skuId_ = getDefaultInstance().getSkuId();
+    }
+    /**
+     * <code>optional string skuId = 2;</code>
+     */
+    private void setSkuIdBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      skuId_ = value.toStringUtf8();
+    }
+
+    public static final int UNITID_FIELD_NUMBER = 3;
+    private String unitId_;
+    /**
+     * <code>optional string unitId = 3;</code>
+     */
+    public String getUnitId() {
+      return unitId_;
+    }
+    /**
+     * <code>optional string unitId = 3;</code>
+     */
+    public com.google.protobuf.ByteString
+        getUnitIdBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(unitId_);
+    }
+    /**
+     * <code>optional string unitId = 3;</code>
+     */
+    private void setUnitId(
+        String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      unitId_ = value;
+    }
+    /**
+     * <code>optional string unitId = 3;</code>
+     */
+    private void clearUnitId() {
+      
+      unitId_ = getDefaultInstance().getUnitId();
+    }
+    /**
+     * <code>optional string unitId = 3;</code>
+     */
+    private void setUnitIdBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      unitId_ = value.toStringUtf8();
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!skuUnitId_.isEmpty()) {
+        output.writeString(1, getSkuUnitId());
+      }
+      if (!skuId_.isEmpty()) {
+        output.writeString(2, getSkuId());
+      }
+      if (!unitId_.isEmpty()) {
+        output.writeString(3, getUnitId());
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!skuUnitId_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeStringSize(1, getSkuUnitId());
+      }
+      if (!skuId_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeStringSize(2, getSkuId());
+      }
+      if (!unitId_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeStringSize(3, getUnitId());
+      }
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    public static SkuUnit parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static SkuUnit parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static SkuUnit parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static SkuUnit parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static SkuUnit parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static SkuUnit parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static SkuUnit parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    }
+    public static SkuUnit parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static SkuUnit parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static SkuUnit parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(SkuUnit prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+
+    /**
+     * Protobuf type {@code com.entities.pb.SkuUnit}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          SkuUnit, Builder> implements
+        // @@protoc_insertion_point(builder_implements:com.entities.pb.SkuUnit)
+        SkuUnitOrBuilder {
+      // Construct using com.treeleaf.suchi.entities.InventoryProto.SkuUnit.newBuilder()
+      private Builder() {
+        super(DEFAULT_INSTANCE);
+      }
+
+
+      /**
+       * <code>optional string skuUnitId = 1;</code>
+       */
+      public String getSkuUnitId() {
+        return instance.getSkuUnitId();
+      }
+      /**
+       * <code>optional string skuUnitId = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getSkuUnitIdBytes() {
+        return instance.getSkuUnitIdBytes();
+      }
+      /**
+       * <code>optional string skuUnitId = 1;</code>
+       */
+      public Builder setSkuUnitId(
+          String value) {
+        copyOnWrite();
+        instance.setSkuUnitId(value);
+        return this;
+      }
+      /**
+       * <code>optional string skuUnitId = 1;</code>
+       */
+      public Builder clearSkuUnitId() {
+        copyOnWrite();
+        instance.clearSkuUnitId();
+        return this;
+      }
+      /**
+       * <code>optional string skuUnitId = 1;</code>
+       */
+      public Builder setSkuUnitIdBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setSkuUnitIdBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>optional string skuId = 2;</code>
+       */
+      public String getSkuId() {
+        return instance.getSkuId();
+      }
+      /**
+       * <code>optional string skuId = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getSkuIdBytes() {
+        return instance.getSkuIdBytes();
+      }
+      /**
+       * <code>optional string skuId = 2;</code>
+       */
+      public Builder setSkuId(
+          String value) {
+        copyOnWrite();
+        instance.setSkuId(value);
+        return this;
+      }
+      /**
+       * <code>optional string skuId = 2;</code>
+       */
+      public Builder clearSkuId() {
+        copyOnWrite();
+        instance.clearSkuId();
+        return this;
+      }
+      /**
+       * <code>optional string skuId = 2;</code>
+       */
+      public Builder setSkuIdBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setSkuIdBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>optional string unitId = 3;</code>
+       */
+      public String getUnitId() {
+        return instance.getUnitId();
+      }
+      /**
+       * <code>optional string unitId = 3;</code>
+       */
+      public com.google.protobuf.ByteString
+          getUnitIdBytes() {
+        return instance.getUnitIdBytes();
+      }
+      /**
+       * <code>optional string unitId = 3;</code>
+       */
+      public Builder setUnitId(
+          String value) {
+        copyOnWrite();
+        instance.setUnitId(value);
+        return this;
+      }
+      /**
+       * <code>optional string unitId = 3;</code>
+       */
+      public Builder clearUnitId() {
+        copyOnWrite();
+        instance.clearUnitId();
+        return this;
+      }
+      /**
+       * <code>optional string unitId = 3;</code>
+       */
+      public Builder setUnitIdBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setUnitIdBytes(value);
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.entities.pb.SkuUnit)
+    }
+    protected final Object dynamicMethod(
+        MethodToInvoke method,
+        Object arg0, Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new SkuUnit();
+        }
+        case IS_INITIALIZED: {
+          return DEFAULT_INSTANCE;
+        }
+        case MAKE_IMMUTABLE: {
+          return null;
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case VISIT: {
+          Visitor visitor = (Visitor) arg0;
+          SkuUnit other = (SkuUnit) arg1;
+          skuUnitId_ = visitor.visitString(!skuUnitId_.isEmpty(), skuUnitId_,
+              !other.skuUnitId_.isEmpty(), other.skuUnitId_);
+          skuId_ = visitor.visitString(!skuId_.isEmpty(), skuId_,
+              !other.skuId_.isEmpty(), other.skuId_);
+          unitId_ = visitor.visitString(!unitId_.isEmpty(), unitId_,
+              !other.unitId_.isEmpty(), other.unitId_);
+          if (visitor == MergeFromVisitor
+              .INSTANCE) {
+          }
+          return this;
+        }
+        case MERGE_FROM_STREAM: {
+          com.google.protobuf.CodedInputStream input =
+              (com.google.protobuf.CodedInputStream) arg0;
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry =
+              (com.google.protobuf.ExtensionRegistryLite) arg1;
+          try {
+            boolean done = false;
+            while (!done) {
+              int tag = input.readTag();
+              switch (tag) {
+                case 0:
+                  done = true;
+                  break;
+                default: {
+                  if (!input.skipField(tag)) {
+                    done = true;
+                  }
+                  break;
+                }
+                case 10: {
+                  String s = input.readStringRequireUtf8();
+
+                  skuUnitId_ = s;
+                  break;
+                }
+                case 18: {
+                  String s = input.readStringRequireUtf8();
+
+                  skuId_ = s;
+                  break;
+                }
+                case 26: {
+                  String s = input.readStringRequireUtf8();
+
+                  unitId_ = s;
+                  break;
+                }
+              }
+            }
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw new RuntimeException(e.setUnfinishedMessage(this));
+          } catch (java.io.IOException e) {
+            throw new RuntimeException(
+                new com.google.protobuf.InvalidProtocolBufferException(
+                    e.getMessage()).setUnfinishedMessage(this));
+          } finally {
+          }
+        }
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          if (PARSER == null) {    synchronized (SkuUnit.class) {
+              if (PARSER == null) {
+                PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+              }
+            }
+          }
+          return PARSER;
+        }
+      }
+      throw new UnsupportedOperationException();
+    }
+
+
+    // @@protoc_insertion_point(class_scope:com.entities.pb.SkuUnit)
+    private static final SkuUnit DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new SkuUnit();
+      DEFAULT_INSTANCE.makeImmutable();
+    }
+
+    public static SkuUnit getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static volatile com.google.protobuf.Parser<SkuUnit> PARSER;
+
+    public static com.google.protobuf.Parser<SkuUnit> parser() {
       return DEFAULT_INSTANCE.getParserForType();
     }
   }
