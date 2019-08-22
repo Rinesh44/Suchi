@@ -2,22 +2,20 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="230dp"
-    android:layout_height="200dp"
+    android:layout_height="wrap_content"
     app:cardCornerRadius="6dp"
     app:cardUseCompatPadding="true">
 
 
     <LinearLayout
-        android:layout_width="230dp"
-        android:layout_height="200dp"
-        android:orientation="vertical"
-        android:weightSum="3">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
 
         <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:background="@color/lightPrimary"
             android:gravity="center_vertical"
             android:padding="10dp">
@@ -25,14 +23,14 @@
 
             <TextView
                 android:id="@+id/tv_selling_price_title"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/proxima_regular"
                 android:text="Selling Price (Rs.)" />
 
             <TextView
                 android:id="@+id/tv_selling_price"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_selling_price_title"
                 android:fontFamily="@font/proxima_regular"
@@ -43,7 +41,7 @@
 
             <TextView
                 android:id="@+id/tv_marked_price_title"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_selling_price"
                 android:layout_marginTop="10dp"
@@ -52,7 +50,7 @@
 
             <TextView
                 android:id="@+id/tv_marked_price"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_marked_price_title"
                 android:fontFamily="@font/proxima_regular"
@@ -63,21 +61,21 @@
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
                 android:layout_marginEnd="10dp"
-                android:gravity="center_vertical"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/tv_quantity"
                     android:layout_width="wrap_content"
-                    android:layout_height="40dp"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:fontFamily="@font/proxima_regular"
                     android:text="17"
                     android:textColor="@color/colorAccent"
-                    android:textSize="35sp"
+                    android:textSize="28sp"
                     android:textStyle="bold" />
 
 
@@ -99,27 +97,160 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:gravity="center">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
-            <androidx.appcompat.widget.AppCompatCheckBox
-                android:id="@+id/cb_select"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_centerVertical="true" />
+            <RelativeLayout
+                android:id="@+id/rl_top"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:gravity="center">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_toEndOf="@+id/cb_select"
-                android:fontFamily="@font/proxima_regular"
-                android:gravity="center_vertical"
-                android:text="Select"
-                android:textColor="@color/black"
-                android:textSize="18sp" />
+                <androidx.appcompat.widget.AppCompatCheckBox
+                    android:id="@+id/cb_select"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true" />
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@+id/cb_select"
+                    android:fontFamily="@font/proxima_regular"
+                    android:text="Select"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_price_holder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rl_top"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:visibility="gone">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tv_unit_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:fontFamily="@font/proxima_regular"
+                        android:text="Unit" />
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_toEndOf="@id/tv_unit_title"
+                        app:cardCornerRadius="6dp"
+                        app:cardUseCompatPadding="true">
+
+
+                        <androidx.appcompat.widget.AppCompatSpinner
+                            android:id="@+id/sp_unit"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@id/tv_quantity_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/proxima_regular"
+                        android:text="Quantity" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/tv_quantity_title">
+
+                        <androidx.appcompat.widget.AppCompatImageButton
+                            android:id="@+id/btn_decrement"
+                            android:layout_width="20dp"
+                            android:layout_height="40dp"
+                            android:layout_toStartOf="@id/et_quantity"
+                            android:background="@color/transparent"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:foreground="?attr/selectableItemBackground"
+                            android:src="@drawable/ic_left"
+                            android:text="-" />
+
+                        <EditText
+                            android:id="@+id/et_quantity"
+                            android:layout_width="70dp"
+                            android:layout_height="40dp"
+                            android:layout_toStartOf="@+id/btn_increment"
+                            android:fontFamily="@font/proxima_regular"
+                            android:gravity="center"
+                            android:inputType="number"
+                            android:text="1"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <androidx.appcompat.widget.AppCompatImageButton
+                            android:id="@+id/btn_increment"
+                            android:layout_width="20dp"
+                            android:layout_height="40dp"
+                            android:layout_alignParentEnd="true"
+                            android:background="@color/transparent"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:foreground="?attr/selectableItemBackground"
+                            android:src="@drawable/ic_right"
+                            android:text="+" />
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/proxima_regular"
+                        android:text="Amount" />
+
+                    <TextView
+                        android:id="@+id/tv_amount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="5dp"
+                        android:fontFamily="@font/proxima_regular"
+                        android:inputType="textNoSuggestions"
+                        android:text="Rs. 100"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
 
         </RelativeLayout>
 

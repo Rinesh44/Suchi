@@ -33,4 +33,5 @@ public interface AppComponent {
     void inject(SalesActivity salesActivity);
 
     void inject(AddSalesActivity addSalesActivity);
+
 }

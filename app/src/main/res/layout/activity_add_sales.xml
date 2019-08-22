@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/gray"
@@ -85,27 +86,33 @@
                     android:textColor="@color/black"
                     android:textSize="18sp" />
 
-                <HorizontalScrollView
-                    android:id="@+id/hsv_stocks"
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_sale_stocks"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginEnd="10dp"
-                    android:scrollbars="none">
+                    android:padding="10dp" />
+
+                <!--       <HorizontalScrollView
+                           android:id="@+id/hsv_stocks"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:layout_marginTop="5dp"
+                           android:scrollbars="none">
 
 
-                    <LinearLayout
-                        android:id="@+id/ll_stock_holder"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginEnd="10dp"
-                        android:orientation="horizontal">
+                           <LinearLayout
+                               android:id="@+id/ll_stock_holder"
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:layout_marginStart="10dp"
+                               android:layout_marginEnd="10dp"
+                               android:orientation="horizontal">
 
-                    </LinearLayout>
+                           </LinearLayout>
 
 
-                </HorizontalScrollView>
+                       </HorizontalScrollView>-->
 
 
                 <RelativeLayout
