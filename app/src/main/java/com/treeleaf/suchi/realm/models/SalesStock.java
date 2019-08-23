@@ -9,12 +9,14 @@ import io.realm.annotations.PrimaryKey;
 public class SalesStock extends RealmObject implements Parcelable {
     @PrimaryKey
     private String id;
+    private String inventory_id;
     private String amount;
     private String quantity;
     private String unit;
 
-    public SalesStock(String id, String amount, String quantity, String unit) {
+    public SalesStock(String id, String inventory_id, String amount, String quantity, String unit) {
         this.id = id;
+        this.inventory_id = inventory_id;
         this.amount = amount;
         this.quantity = quantity;
         this.unit = unit;
@@ -56,8 +58,17 @@ public class SalesStock extends RealmObject implements Parcelable {
         this.unit = unit;
     }
 
+    public String getInventory_id() {
+        return inventory_id;
+    }
+
+    public void setInventory_id(String inventory_id) {
+        this.inventory_id = inventory_id;
+    }
+
     protected SalesStock(Parcel in) {
         id = in.readString();
+        inventory_id = in.readString();
         amount = in.readString();
         quantity = in.readString();
         unit = in.readString();
@@ -71,6 +82,7 @@ public class SalesStock extends RealmObject implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(id);
+        dest.writeString(inventory_id);
         dest.writeString(amount);
         dest.writeString(quantity);
         dest.writeString(unit);

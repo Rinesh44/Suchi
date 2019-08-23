@@ -1,6 +1,6 @@
 package com.treeleaf.suchi.realm.repo;
 
-import com.treeleaf.suchi.entities.AccountProto;
+import com.treeleaf.suchi.entities.TreeleafProto;
 import com.treeleaf.suchi.realm.RealmDatabase;
 import com.treeleaf.suchi.realm.models.Token;
 import com.treeleaf.suchi.realm.models.User;
@@ -18,7 +18,7 @@ public class UserRepo extends Repo {
         return userRepo;
     }
 
-    public void saveUser(final AccountProto.LoginResponse loginResponse, final Callback callback) {
+    public void saveUser(final TreeleafProto.LoginResponse loginResponse, final Callback callback) {
         final Realm realm = RealmDatabase.getInstance().getRealm();
 
         try {
@@ -40,7 +40,7 @@ public class UserRepo extends Repo {
         }
     }
 
-    private User setUser(AccountProto.User userPb, Realm realm) {
+    private User setUser(TreeleafProto.UserAccount userPb, Realm realm) {
         User user = realm.where(User.class)
                 .equalTo(User.USER_ID, userPb.getUserId())
                 .findFirst();
@@ -49,7 +49,7 @@ public class UserRepo extends Repo {
     }
 
 
-    private User setUserField(User user, AccountProto.User userPb) {
+    private User setUserField(User user, TreeleafProto.UserAccount userPb) {
         user.setStoreName(userPb.getStoreName());
         user.setAddress(userPb.getAddress());
         user.setPhone(userPb.getPhone());
@@ -86,7 +86,7 @@ public class UserRepo extends Repo {
                 public void execute(Realm realm) {
                     User user = realm.where(User.class).findFirst();
                     if (user != null)
-                        user.setUserStatus(AccountProto.UserStatus.VERIFIED.toString());
+                        user.setUserStatus(TreeleafProto.UserStatus.VERIFIED.toString());
                 }
             });
         } finally {

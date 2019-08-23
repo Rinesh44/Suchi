@@ -1,9 +1,8 @@
 package com.treeleaf.suchi.activities.login;
 
 import com.treeleaf.suchi.api.Endpoints;
-import com.treeleaf.suchi.entities.AccountProto;
-import com.treeleaf.suchi.entities.InventoryProto;
-import com.treeleaf.suchi.entities.ReqResProto;
+import com.treeleaf.suchi.entities.SuchiProto;
+import com.treeleaf.suchi.entities.TreeleafProto;
 import com.treeleaf.suchi.realm.models.Brands;
 import com.treeleaf.suchi.realm.models.Categories;
 import com.treeleaf.suchi.realm.models.Inventory;
@@ -18,6 +17,7 @@ import com.treeleaf.suchi.realm.repo.StockKeepingUnitRepo;
 import com.treeleaf.suchi.realm.repo.Repo;
 import com.treeleaf.suchi.realm.repo.SubBrandRepo;
 import com.treeleaf.suchi.realm.repo.UnitRepo;
+import com.treeleaf.suchi.rpc.SuchiRpcProto;
 import com.treeleaf.suchi.utils.AppUtils;
 import com.treeleaf.suchi.utils.CallbackWrapper;
 
@@ -45,16 +45,16 @@ public class LoginPresenterImpl implements LoginPresenter {
 
     @Override
     public void login(String username, String password) {
-        AccountProto.LoginRequest loginRequest = AccountProto.LoginRequest.newBuilder()
+        TreeleafProto.LoginRequest loginRequest = TreeleafProto.LoginRequest.newBuilder()
                 .setUsername(username)
                 .setPassword(password)
                 .build();
 
-        endpoints.login(loginRequest).enqueue(new CallbackWrapper<>(activity, new CallbackWrapper.Wrapper<ReqResProto.Response>() {
+        endpoints.login(loginRequest).enqueue(new CallbackWrapper<>(activity, new CallbackWrapper.Wrapper<SuchiRpcProto.SuchiBaseResponse>() {
             @Override
-            public void onSuccessResult(Response<ReqResProto.Response> response) {
+            public void onSuccessResult(Response<SuchiRpcProto.SuchiBaseResponse> response) {
                 activity.hideLoading();
-                ReqResProto.Response baseResponse = response.body();
+                SuchiRpcProto.SuchiBaseResponse baseResponse = response.body();
 
                 AppUtils.showLog(TAG, "loginResponse: " + baseResponse);
 
@@ -81,12 +81,12 @@ public class LoginPresenterImpl implements LoginPresenter {
 
     @Override
     public void getAllData(String token) {
-        endpoints.getAllData(token).enqueue(new CallbackWrapper<>(activity, new CallbackWrapper.Wrapper<ReqResProto.Response>() {
+        endpoints.getAllData(token).enqueue(new CallbackWrapper<>(activity, new CallbackWrapper.Wrapper<SuchiRpcProto.SuchiBaseResponse>() {
             @Override
-            public void onSuccessResult(Response<ReqResProto.Response> response) {
+            public void onSuccessResult(Response<SuchiRpcProto.SuchiBaseResponse> response) {
                 activity.hideLoading();
 
-                ReqResProto.Response baseResponse = response.body();
+                SuchiRpcProto.SuchiBaseResponse baseResponse = response.body();
 
                 if (baseResponse == null) {
                     activity.getAllDataFail("get all data failed");
@@ -123,9 +123,9 @@ public class LoginPresenterImpl implements LoginPresenter {
         }));
     }
 
-    private void mapInventories(List<InventoryProto.Inventory> inventoriesListPb) {
+    private void mapInventories(List<SuchiProto.Inventory> inventoriesListPb) {
         List<Inventory> inventoryList = new ArrayList<>();
-        for (InventoryProto.Inventory inventoryPb : inventoriesListPb
+        for (SuchiProto.Inventory inventoryPb : inventoriesListPb
         ) {
             Inventory inventory = new Inventory();
             inventory.setInventory_id(inventoryPb.getInventoryId());
@@ -133,7 +133,7 @@ public class LoginPresenterImpl implements LoginPresenter {
             inventory.setSynced(inventoryPb.getSync());
             inventory.setExpiryDate(String.valueOf(inventoryPb.getExpiryDate()));
 
-            InventoryProto.StockKeepingUnit stockKeepingUnitPb = inventoryPb.getSku();
+            SuchiProto.StockKeepingUnit stockKeepingUnitPb = inventoryPb.getSku();
             StockKeepingUnit stockKeepingUnit = new StockKeepingUnit();
             stockKeepingUnit.setId(String.valueOf(stockKeepingUnitPb.getSkuId()));
             stockKeepingUnit.setName(stockKeepingUnitPb.getName());
@@ -143,30 +143,30 @@ public class LoginPresenterImpl implements LoginPresenter {
             stockKeepingUnit.setUnitPrice(String.valueOf(stockKeepingUnitPb.getUnitPrice()));
             stockKeepingUnit.setSynced(stockKeepingUnitPb.getSync());
 
-            InventoryProto.Brand brandPb = inventoryPb.getSku().getBrand();
+            SuchiProto.Brand brandPb = inventoryPb.getSku().getBrand();
             Brands brands = new Brands(brandPb.getBrandId(), brandPb.getName());
             stockKeepingUnit.setBrand(brands);
 
-            InventoryProto.SubBrand subBrandPb = inventoryPb.getSku().getSubBrand();
+            SuchiProto.SubBrand subBrandPb = inventoryPb.getSku().getSubBrand();
             SubBrands subBrands = new SubBrands(subBrandPb.getSubBrandId(), subBrandPb.getBrandId(),
                     subBrandPb.getName());
             stockKeepingUnit.setSubBrands(subBrands);
 
-            List<InventoryProto.Unit> unitPb = inventoryPb.getSku().getUnitsList();
+            List<SuchiProto.Unit> unitPb = inventoryPb.getSku().getUnitsList();
             RealmList<Units> skuUnits = mapSKUUnits(unitPb);
             stockKeepingUnit.setUnits(skuUnits);
 
-            InventoryProto.Category categoryPb = inventoryPb.getSku().getCategory();
+            SuchiProto.Category categoryPb = inventoryPb.getSku().getCategory();
             Categories categories = new Categories(categoryPb.getCategoryId(), categoryPb.getName());
             stockKeepingUnit.setCategories(categories);
 
             inventory.setSku(stockKeepingUnit);
 
-            List<InventoryProto.InventoryStock> inventoryStockPbList = inventoryPb.getInventoryStocksList();
+            List<SuchiProto.InventoryStock> inventoryStockPbList = inventoryPb.getInventoryStocksList();
             RealmList<InventoryStocks> inventoryStocksRealmList = new RealmList<>();
-            for (InventoryProto.InventoryStock inventoryStockPb : inventoryStockPbList
+            for (SuchiProto.InventoryStock inventoryStockPb : inventoryStockPbList
             ) {
-                InventoryStocks inventoryStocks = new InventoryStocks(inventoryStockPb.getInventoryStockId(), String.valueOf(inventoryStockPb.getQuantity()),
+                InventoryStocks inventoryStocks = new InventoryStocks(inventoryStockPb.getInventoryStockId(), inventoryStockPb.getInventoryId(), String.valueOf(inventoryStockPb.getQuantity()),
                         String.valueOf(inventoryStockPb.getMarkedPrice()), String.valueOf(inventoryStockPb.getSalesPrice()),
                         String.valueOf(inventoryStockPb.getUnit().getUnitId()), inventoryStockPb.getSync());
 
@@ -191,9 +191,9 @@ public class LoginPresenterImpl implements LoginPresenter {
         }
     }
 
-    private RealmList<Units> mapSKUUnits(List<InventoryProto.Unit> unitPb) {
+    private RealmList<Units> mapSKUUnits(List<SuchiProto.Unit> unitPb) {
         RealmList<Units> skuUnits = new RealmList<>();
-        for (InventoryProto.Unit unit : unitPb
+        for (SuchiProto.Unit unit : unitPb
         ) {
             Units units = new Units();
             units.setId(unit.getUnitId());
@@ -205,8 +205,8 @@ public class LoginPresenterImpl implements LoginPresenter {
         return skuUnits;
     }
 
-    private void mapStockKeepingUnits(List<InventoryProto.StockKeepingUnit> stockKeepingUnitsListPb) {
-        for (InventoryProto.StockKeepingUnit itemsPb : stockKeepingUnitsListPb
+    private void mapStockKeepingUnits(List<SuchiProto.StockKeepingUnit> stockKeepingUnitsListPb) {
+        for (SuchiProto.StockKeepingUnit itemsPb : stockKeepingUnitsListPb
         ) {
             StockKeepingUnit stockKeepingUnit = new StockKeepingUnit();
             stockKeepingUnit.setId(String.valueOf(itemsPb.getSkuId()));
@@ -240,7 +240,7 @@ public class LoginPresenterImpl implements LoginPresenter {
             stockKeepingUnit.setBrand(brands);
             stockKeepingUnit.setSubBrands(subBrands);
 
-            List<InventoryProto.Unit> unitPb = itemsPb.getUnitsList();
+            List<SuchiProto.Unit> unitPb = itemsPb.getUnitsList();
             RealmList<Units> skuUnits = mapSKUUnits(unitPb);
             stockKeepingUnit.setUnits(skuUnits);
 
@@ -262,8 +262,8 @@ public class LoginPresenterImpl implements LoginPresenter {
         }
     }
 
-    private void mapUnits(List<InventoryProto.Unit> unitsListPb) {
-        for (InventoryProto.Unit unitPb : unitsListPb
+    private void mapUnits(List<SuchiProto.Unit> unitsListPb) {
+        for (SuchiProto.Unit unitPb : unitsListPb
         ) {
             Units units = new Units(unitPb.getUnitId(), unitPb.getName());
             unitsList.add(units);
@@ -282,8 +282,8 @@ public class LoginPresenterImpl implements LoginPresenter {
     }
 
 
-    private void mapCategories(List<InventoryProto.Category> categoriesListPb) {
-        for (InventoryProto.Category categoryPb : categoriesListPb
+    private void mapCategories(List<SuchiProto.Category> categoriesListPb) {
+        for (SuchiProto.Category categoryPb : categoriesListPb
         ) {
             Categories categories = new Categories(categoryPb.getCategoryId(), categoryPb.getName());
             categoriesList.add(categories);
@@ -301,8 +301,8 @@ public class LoginPresenterImpl implements LoginPresenter {
         }
     }
 
-    private void mapBrands(List<InventoryProto.Brand> brandsListPb) {
-        for (InventoryProto.Brand brandPb : brandsListPb
+    private void mapBrands(List<SuchiProto.Brand> brandsListPb) {
+        for (SuchiProto.Brand brandPb : brandsListPb
         ) {
             Brands brands = new Brands(brandPb.getBrandId(), brandPb.getName());
             brandsList.add(brands);
@@ -320,8 +320,8 @@ public class LoginPresenterImpl implements LoginPresenter {
         }
     }
 
-    private void mapSubBrands(List<InventoryProto.SubBrand> subBrandsListPb) {
-        for (InventoryProto.SubBrand subBrandsPb : subBrandsListPb
+    private void mapSubBrands(List<SuchiProto.SubBrand> subBrandsListPb) {
+        for (SuchiProto.SubBrand subBrandsPb : subBrandsListPb
         ) {
             SubBrands subBrands = new SubBrands(subBrandsPb.getSubBrandId(), subBrandsPb.getBrandId(),
                     subBrandsPb.getName());

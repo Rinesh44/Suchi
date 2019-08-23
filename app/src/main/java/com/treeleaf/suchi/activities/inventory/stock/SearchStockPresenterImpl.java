@@ -1,8 +1,7 @@
 package com.treeleaf.suchi.activities.inventory.stock;
 
 import com.treeleaf.suchi.api.Endpoints;
-import com.treeleaf.suchi.entities.InventoryProto;
-import com.treeleaf.suchi.entities.ReqResProto;
+import com.treeleaf.suchi.entities.SuchiProto;
 import com.treeleaf.suchi.realm.models.Brands;
 import com.treeleaf.suchi.realm.models.Categories;
 import com.treeleaf.suchi.realm.models.Inventory;
@@ -10,6 +9,7 @@ import com.treeleaf.suchi.realm.models.InventoryStocks;
 import com.treeleaf.suchi.realm.models.StockKeepingUnit;
 import com.treeleaf.suchi.realm.models.SubBrands;
 import com.treeleaf.suchi.realm.models.Units;
+import com.treeleaf.suchi.rpc.SuchiRpcProto;
 import com.treeleaf.suchi.utils.AppUtils;
 import com.treeleaf.suchi.utils.CallbackWrapper;
 
@@ -32,11 +32,11 @@ public class SearchStockPresenterImpl implements SearchStockPresenter {
 
     @Override
     public void getStockItems(String token) {
-        endpoints.getInventory(token).enqueue(new CallbackWrapper<>(activity, new CallbackWrapper.Wrapper<ReqResProto.Response>() {
+        endpoints.getInventory(token).enqueue(new CallbackWrapper<>(activity, new CallbackWrapper.Wrapper<SuchiRpcProto.SuchiBaseResponse>() {
             @Override
-            public void onSuccessResult(Response<ReqResProto.Response> response) {
+            public void onSuccessResult(Response<SuchiRpcProto.SuchiBaseResponse> response) {
                 activity.hideLoading();
-                ReqResProto.Response baseResponse = response.body();
+                SuchiRpcProto.SuchiBaseResponse baseResponse = response.body();
 
                 if (baseResponse == null) {
                     activity.getStockItemsFail("get inventory failed");
@@ -63,9 +63,9 @@ public class SearchStockPresenterImpl implements SearchStockPresenter {
         }));
     }
 
-    private List<Inventory> mapInventoryPbToModel(List<InventoryProto.Inventory> inventoriesListPb) {
+    private List<Inventory> mapInventoryPbToModel(List<SuchiProto.Inventory> inventoriesListPb) {
         List<Inventory> inventoryList = new ArrayList<>();
-        for (InventoryProto.Inventory inventoryPb : inventoriesListPb
+        for (SuchiProto.Inventory inventoryPb : inventoriesListPb
         ) {
             Inventory inventory = new Inventory();
             inventory.setInventory_id(inventoryPb.getInventoryId());
@@ -73,7 +73,7 @@ public class SearchStockPresenterImpl implements SearchStockPresenter {
             inventory.setSynced(inventoryPb.getSync());
             inventory.setExpiryDate(String.valueOf(inventoryPb.getExpiryDate()));
 
-            InventoryProto.StockKeepingUnit stockKeepingUnitPb = inventoryPb.getSku();
+            SuchiProto.StockKeepingUnit stockKeepingUnitPb = inventoryPb.getSku();
             StockKeepingUnit stockKeepingUnit = new StockKeepingUnit();
             stockKeepingUnit.setId(String.valueOf(stockKeepingUnitPb.getSkuId()));
             stockKeepingUnit.setName(stockKeepingUnitPb.getName());
@@ -87,31 +87,31 @@ public class SearchStockPresenterImpl implements SearchStockPresenter {
             AppUtils.showLog(TAG, "defaultUnit: " + stockKeepingUnitPb.getDefaultUnit().getName());
             stockKeepingUnit.setDefaultUnit(stockKeepingUnitPb.getDefaultUnit().getName());
 
-            InventoryProto.Brand brandPb = inventoryPb.getSku().getBrand();
+            SuchiProto.Brand brandPb = inventoryPb.getSku().getBrand();
             Brands brands = new Brands(brandPb.getBrandId(), brandPb.getName());
             stockKeepingUnit.setBrand(brands);
 
-            InventoryProto.SubBrand subBrandPb = inventoryPb.getSku().getSubBrand();
+            SuchiProto.SubBrand subBrandPb = inventoryPb.getSku().getSubBrand();
             SubBrands subBrands = new SubBrands(subBrandPb.getSubBrandId(), subBrandPb.getBrandId(),
                     subBrandPb.getName());
             stockKeepingUnit.setSubBrands(subBrands);
 
-            List<InventoryProto.Unit> unitPb = inventoryPb.getSku().getUnitsList();
+            List<SuchiProto.Unit> unitPb = inventoryPb.getSku().getUnitsList();
             RealmList<Units> skuUnits = mapSKUUnits(unitPb);
             stockKeepingUnit.setUnits(skuUnits);
 
-            InventoryProto.Category categoryPb = inventoryPb.getSku().getCategory();
+            SuchiProto.Category categoryPb = inventoryPb.getSku().getCategory();
             Categories categories = new Categories(categoryPb.getCategoryId(), categoryPb.getName());
             stockKeepingUnit.setCategories(categories);
 
             inventory.setSku(stockKeepingUnit);
 
-            List<InventoryProto.InventoryStock> inventoryStockPbList = inventoryPb.getInventoryStocksList();
+            List<SuchiProto.InventoryStock> inventoryStockPbList = inventoryPb.getInventoryStocksList();
             RealmList<InventoryStocks> inventoryStocksRealmList = new RealmList<>();
-            for (InventoryProto.InventoryStock inventoryStockPb : inventoryStockPbList
+            for (SuchiProto.InventoryStock inventoryStockPb : inventoryStockPbList
             ) {
                 AppUtils.showLog(TAG, "unitId: " + inventoryStockPb.getUnit().getUnitId());
-                InventoryStocks inventoryStocks = new InventoryStocks(inventoryStockPb.getInventoryStockId(), String.valueOf(inventoryStockPb.getQuantity()),
+                InventoryStocks inventoryStocks = new InventoryStocks(inventoryStockPb.getInventoryStockId(), inventoryStockPb.getInventoryId(), String.valueOf(inventoryStockPb.getQuantity()),
                         String.valueOf(inventoryStockPb.getMarkedPrice()), String.valueOf(inventoryStockPb.getSalesPrice()),
                         inventoryStockPb.getUnit().getUnitId(), inventoryStockPb.getSync());
 
@@ -126,9 +126,9 @@ public class SearchStockPresenterImpl implements SearchStockPresenter {
         return inventoryList;
     }
 
-    private RealmList<Units> mapSKUUnits(List<InventoryProto.Unit> unitPb) {
+    private RealmList<Units> mapSKUUnits(List<SuchiProto.Unit> unitPb) {
         RealmList<Units> skuUnits = new RealmList<>();
-        for (InventoryProto.Unit unit : unitPb
+        for (SuchiProto.Unit unit : unitPb
         ) {
             Units units = new Units();
             units.setId(unit.getUnitId());
@@ -141,12 +141,12 @@ public class SearchStockPresenterImpl implements SearchStockPresenter {
     }
 
     @Override
-    public void addStock(String token, InventoryProto.Inventory inventory) {
-        endpoints.addInventory(token, inventory).enqueue(new CallbackWrapper<>(activity, new CallbackWrapper.Wrapper<ReqResProto.Response>() {
+    public void addStock(String token, SuchiProto.Inventory inventory) {
+        endpoints.addInventory(token, inventory).enqueue(new CallbackWrapper<>(activity, new CallbackWrapper.Wrapper<SuchiRpcProto.SuchiBaseResponse>() {
             @Override
-            public void onSuccessResult(Response<ReqResProto.Response> response) {
+            public void onSuccessResult(Response<SuchiRpcProto.SuchiBaseResponse> response) {
                 activity.hideLoading();
-                ReqResProto.Response baseResponse = response.body();
+                SuchiRpcProto.SuchiBaseResponse baseResponse = response.body();
 
                 if (baseResponse == null) {
                     activity.addStockFail("Add stock failed");
@@ -172,12 +172,12 @@ public class SearchStockPresenterImpl implements SearchStockPresenter {
     }
 
     @Override
-    public void updateStock(String token, InventoryProto.Inventory inventory) {
-        endpoints.updateInventory(token, inventory).enqueue(new CallbackWrapper<>(activity, new CallbackWrapper.Wrapper<ReqResProto.Response>() {
+    public void updateStock(String token, SuchiProto.Inventory inventory) {
+        endpoints.updateInventory(token, inventory).enqueue(new CallbackWrapper<>(activity, new CallbackWrapper.Wrapper<SuchiRpcProto.SuchiBaseResponse>() {
             @Override
-            public void onSuccessResult(Response<ReqResProto.Response> response) {
+            public void onSuccessResult(Response<SuchiRpcProto.SuchiBaseResponse> response) {
                 activity.hideLoading();
-                ReqResProto.Response baseResponse = response.body();
+                SuchiRpcProto.SuchiBaseResponse baseResponse = response.body();
 
                 if (baseResponse == null) {
                     activity.updateStockFail("Update stock failed");

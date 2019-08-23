@@ -27,7 +27,7 @@ import com.toptoche.searchablespinnerlibrary.SearchableSpinner;
 import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.activities.base.BaseActivity;
 import com.treeleaf.suchi.api.Endpoints;
-import com.treeleaf.suchi.entities.InventoryProto;
+import com.treeleaf.suchi.entities.SuchiProto;
 import com.treeleaf.suchi.realm.models.Brands;
 import com.treeleaf.suchi.realm.models.Categories;
 import com.treeleaf.suchi.realm.models.SubBrands;
@@ -202,7 +202,7 @@ public class StockEntryActivity extends BaseActivity implements StockEntryView {
                 String randomId = UUID.randomUUID().toString();
                 String skuId = randomId.replace("-", "");
 
-                InventoryProto.StockKeepingUnit stockKeepingUnit = InventoryProto.StockKeepingUnit.newBuilder()
+                SuchiProto.StockKeepingUnit stockKeepingUnit = SuchiProto.StockKeepingUnit.newBuilder()
                         .setName(name)
 //                        .setSkuId(Long.valueOf(skuId))
                         .setDescription(description)

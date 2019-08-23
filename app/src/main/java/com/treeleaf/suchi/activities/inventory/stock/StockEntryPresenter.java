@@ -1,8 +1,8 @@
 package com.treeleaf.suchi.activities.inventory.stock;
 
-import com.treeleaf.suchi.entities.InventoryProto;
+import com.treeleaf.suchi.entities.SuchiProto;
 
 public interface StockEntryPresenter {
 
-    void makeStockEntry(String token, InventoryProto.StockKeepingUnit stockKeepingUnit);
+    void makeStockEntry(String token, SuchiProto.StockKeepingUnit stockKeepingUnit);
 }

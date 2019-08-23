@@ -1,12 +1,11 @@
 package com.treeleaf.suchi.activities.inventory.stock;
 
-import com.treeleaf.suchi.entities.InventoryProto;
-import com.treeleaf.suchi.entities.ReqResProto;
+import com.treeleaf.suchi.entities.SuchiProto;
 
 public interface SearchStockPresenter {
     void getStockItems(String token);
 
-    void addStock(String token, InventoryProto.Inventory inventory);
+    void addStock(String token, SuchiProto.Inventory inventory);
 
-    void updateStock(String token, InventoryProto.Inventory inventory);
+    void updateStock(String token, SuchiProto.Inventory inventory);
 }

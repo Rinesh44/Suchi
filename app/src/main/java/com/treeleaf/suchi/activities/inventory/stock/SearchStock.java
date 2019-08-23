@@ -34,7 +34,7 @@ import com.treeleaf.suchi.activities.base.BaseActivity;
 import com.treeleaf.suchi.adapter.AutocompleteSearchAdapter;
 import com.treeleaf.suchi.api.Endpoints;
 import com.treeleaf.suchi.dto.StockKeepingUnitDto;
-import com.treeleaf.suchi.entities.InventoryProto;
+import com.treeleaf.suchi.entities.SuchiProto;
 import com.treeleaf.suchi.realm.models.Inventory;
 import com.treeleaf.suchi.realm.models.InventoryStocks;
 import com.treeleaf.suchi.realm.models.StockKeepingUnit;
@@ -42,7 +42,6 @@ import com.treeleaf.suchi.realm.models.Units;
 import com.treeleaf.suchi.realm.repo.InventoryRepo;
 import com.treeleaf.suchi.realm.repo.Repo;
 import com.treeleaf.suchi.realm.repo.StockKeepingUnitRepo;
-import com.treeleaf.suchi.realm.repo.UnitRepo;
 import com.treeleaf.suchi.utils.AppUtils;
 import com.treeleaf.suchi.utils.Constants;
 import com.treeleaf.suchi.utils.DatePicker;
@@ -422,7 +421,7 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
         String randomInventoryStockId = UUID.randomUUID().toString();
         inventoryStockId = randomInventoryStockId.replace("-", "");
 
-        InventoryProto.InventoryStock inventoryStock = InventoryProto.InventoryStock.newBuilder()
+        SuchiProto.InventoryStock inventoryStock = SuchiProto.InventoryStock.newBuilder()
                 .setInventoryStockId(inventoryStockId)
                 .setMarkedPrice(Double.valueOf(unitPrice))
                 .setSalesPrice(Double.valueOf(mSellingPrice.getText().toString().trim()))
@@ -430,12 +429,12 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
                 .setUnitId(selectedItemUnitId)
                 .build();
 
-        InventoryProto.Inventory inventory = InventoryProto.Inventory.newBuilder()
+        SuchiProto.Inventory inventory = SuchiProto.Inventory.newBuilder()
                 .setInventoryId(inventoryId)
                 .setSkuId(selectedItemId)
                 .setUserId(userId)
                 .addInventoryStocks(inventoryStock)
-                .setStatus(InventoryProto.SKUStatus.AVAILABLE)
+                .setStatus(SuchiProto.SKUStatus.AVAILABLE)
                 .setExpiryDate(System.currentTimeMillis())
                 .build();
 
@@ -456,7 +455,7 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
 
     private void saveToRealm(boolean syncValue) {
 
-        InventoryStocks inventoryStocks = new InventoryStocks(inventoryStockId, mQuantity.getText().toString().trim(),
+        InventoryStocks inventoryStocks = new InventoryStocks(inventoryStockId, inventoryId, mQuantity.getText().toString().trim(),
                 mMarkedPrice.getText().toString().trim(), mSellingPrice.getText().toString().trim(),
                 selectedItemUnitId, false);
 
@@ -526,6 +525,7 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
             }
         });
     }
+
 
     @Override
     public void getStockItemsFail(String msg) {

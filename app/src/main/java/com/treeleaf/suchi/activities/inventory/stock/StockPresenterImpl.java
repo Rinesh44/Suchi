@@ -1,8 +1,7 @@
 package com.treeleaf.suchi.activities.inventory.stock;
 
 import com.treeleaf.suchi.api.Endpoints;
-import com.treeleaf.suchi.entities.InventoryProto;
-import com.treeleaf.suchi.entities.ReqResProto;
+import com.treeleaf.suchi.entities.SuchiProto;
 import com.treeleaf.suchi.realm.models.Brands;
 import com.treeleaf.suchi.realm.models.Categories;
 import com.treeleaf.suchi.realm.models.Inventory;
@@ -10,6 +9,7 @@ import com.treeleaf.suchi.realm.models.InventoryStocks;
 import com.treeleaf.suchi.realm.models.StockKeepingUnit;
 import com.treeleaf.suchi.realm.models.SubBrands;
 import com.treeleaf.suchi.realm.models.Units;
+import com.treeleaf.suchi.rpc.SuchiRpcProto;
 import com.treeleaf.suchi.utils.AppUtils;
 import com.treeleaf.suchi.utils.CallbackWrapper;
 
@@ -32,17 +32,17 @@ public class StockPresenterImpl implements StockPresenter {
 
     @Override
     public void addUnsyncedInventories(String token, List<Inventory> inventoryList) {
-        List<InventoryProto.Inventory> inventoryListProto = mapInventoryModelToProto(inventoryList);
+        List<SuchiProto.Inventory> inventoryListProto = mapInventoryModelToProto(inventoryList);
 
-        InventoryProto.SyncRequest syncRequest = InventoryProto.SyncRequest.newBuilder()
+        SuchiProto.SyncRequest syncRequest = SuchiProto.SyncRequest.newBuilder()
                 .addAllInventories(inventoryListProto)
                 .build();
 
-        endpoints.addUnSyncedInventories(token, syncRequest).enqueue(new CallbackWrapper<>(activity, new CallbackWrapper.Wrapper<ReqResProto.Response>() {
+        endpoints.addUnSyncedInventories(token, syncRequest).enqueue(new CallbackWrapper<>(activity, new CallbackWrapper.Wrapper<SuchiRpcProto.SuchiBaseResponse>() {
             @Override
-            public void onSuccessResult(Response<ReqResProto.Response> response) {
+            public void onSuccessResult(Response<SuchiRpcProto.SuchiBaseResponse> response) {
                 activity.hideLoading();
-                ReqResProto.Response baseResponse = response.body();
+                SuchiRpcProto.SuchiBaseResponse baseResponse = response.body();
 
                 if (baseResponse == null) {
                     activity.addUnsyncedInventoriesFail("sync inventory failed");
@@ -68,9 +68,9 @@ public class StockPresenterImpl implements StockPresenter {
         }));
     }
 
-    private List<Inventory> mapInventoryPbToModel(List<InventoryProto.Inventory> inventoriesListPb) {
+    private List<Inventory> mapInventoryPbToModel(List<SuchiProto.Inventory> inventoriesListPb) {
         List<Inventory> inventoryList = new ArrayList<>();
-        for (InventoryProto.Inventory inventoryPb : inventoriesListPb
+        for (SuchiProto.Inventory inventoryPb : inventoriesListPb
         ) {
             Inventory inventory = new Inventory();
             inventory.setInventory_id(inventoryPb.getInventoryId());
@@ -78,7 +78,7 @@ public class StockPresenterImpl implements StockPresenter {
             inventory.setSynced(inventoryPb.getSync());
             inventory.setExpiryDate(String.valueOf(inventoryPb.getExpiryDate()));
 
-            InventoryProto.StockKeepingUnit stockKeepingUnitPb = inventoryPb.getSku();
+            SuchiProto.StockKeepingUnit stockKeepingUnitPb = inventoryPb.getSku();
             StockKeepingUnit stockKeepingUnit = new StockKeepingUnit();
             stockKeepingUnit.setId(String.valueOf(stockKeepingUnitPb.getSkuId()));
             stockKeepingUnit.setName(stockKeepingUnitPb.getName());
@@ -88,30 +88,30 @@ public class StockPresenterImpl implements StockPresenter {
             stockKeepingUnit.setUnitPrice(String.valueOf(stockKeepingUnitPb.getUnitPrice()));
             stockKeepingUnit.setSynced(stockKeepingUnitPb.getSync());
 
-            InventoryProto.Brand brandPb = inventoryPb.getSku().getBrand();
+            SuchiProto.Brand brandPb = inventoryPb.getSku().getBrand();
             Brands brands = new Brands(brandPb.getBrandId(), brandPb.getName());
             stockKeepingUnit.setBrand(brands);
 
-            InventoryProto.SubBrand subBrandPb = inventoryPb.getSku().getSubBrand();
+            SuchiProto.SubBrand subBrandPb = inventoryPb.getSku().getSubBrand();
             SubBrands subBrands = new SubBrands(subBrandPb.getSubBrandId(), subBrandPb.getBrandId(),
                     subBrandPb.getName());
             stockKeepingUnit.setSubBrands(subBrands);
 
-            List<InventoryProto.Unit> unitPb = inventoryPb.getSku().getUnitsList();
+            List<SuchiProto.Unit> unitPb = inventoryPb.getSku().getUnitsList();
             RealmList<Units> skuUnits = mapSKUUnits(unitPb);
             stockKeepingUnit.setUnits(skuUnits);
 
-            InventoryProto.Category categoryPb = inventoryPb.getSku().getCategory();
+            SuchiProto.Category categoryPb = inventoryPb.getSku().getCategory();
             Categories categories = new Categories(categoryPb.getCategoryId(), categoryPb.getName());
             stockKeepingUnit.setCategories(categories);
 
             inventory.setSku(stockKeepingUnit);
 
-            List<InventoryProto.InventoryStock> inventoryStockPbList = inventoryPb.getInventoryStocksList();
+            List<SuchiProto.InventoryStock> inventoryStockPbList = inventoryPb.getInventoryStocksList();
             RealmList<InventoryStocks> inventoryStocksRealmList = new RealmList<>();
-            for (InventoryProto.InventoryStock inventoryStockPb : inventoryStockPbList
+            for (SuchiProto.InventoryStock inventoryStockPb : inventoryStockPbList
             ) {
-                InventoryStocks inventoryStocks = new InventoryStocks(inventoryStockPb.getInventoryStockId(), String.valueOf(inventoryStockPb.getQuantity()),
+                InventoryStocks inventoryStocks = new InventoryStocks(inventoryStockPb.getInventoryStockId(), inventoryStockPb.getInventoryId(), String.valueOf(inventoryStockPb.getQuantity()),
                         String.valueOf(inventoryStockPb.getMarkedPrice()), String.valueOf(inventoryStockPb.getSalesPrice()),
                         String.valueOf(inventoryStockPb.getUnit().getUnitId()), inventoryStockPb.getSync());
 
@@ -127,9 +127,9 @@ public class StockPresenterImpl implements StockPresenter {
     }
 
 
-    private RealmList<Units> mapSKUUnits(List<InventoryProto.Unit> unitPb) {
+    private RealmList<Units> mapSKUUnits(List<SuchiProto.Unit> unitPb) {
         RealmList<Units> skuUnits = new RealmList<>();
-        for (InventoryProto.Unit unit : unitPb
+        for (SuchiProto.Unit unit : unitPb
         ) {
             Units units = new Units();
             units.setId(unit.getUnitId());
@@ -142,16 +142,16 @@ public class StockPresenterImpl implements StockPresenter {
     }
 
 
-    private List<InventoryProto.Inventory> mapInventoryModelToProto(List<Inventory> inventoryList) {
-        List<InventoryProto.Inventory> inventoryListProto = new ArrayList<>();
+    private List<SuchiProto.Inventory> mapInventoryModelToProto(List<Inventory> inventoryList) {
+        List<SuchiProto.Inventory> inventoryListProto = new ArrayList<>();
         for (Inventory inventory : inventoryList
         ) {
 
 
-            List<InventoryProto.InventoryStock> inventoryStockPbList = new ArrayList<>();
+            List<SuchiProto.InventoryStock> inventoryStockPbList = new ArrayList<>();
             for (InventoryStocks inventoryStocks : inventory.getInventoryStocks()
             ) {
-                InventoryProto.InventoryStock inventoryStockPb = InventoryProto.InventoryStock.newBuilder()
+                SuchiProto.InventoryStock inventoryStockPb = SuchiProto.InventoryStock.newBuilder()
                         .setMarkedPrice(Double.valueOf(inventoryStocks.getMarkedPrice()))
                         .setSalesPrice(Double.valueOf(inventoryStocks.getSalesPrice()))
                         .setQuantity(Integer.valueOf(inventoryStocks.getQuantity()))
@@ -161,12 +161,12 @@ public class StockPresenterImpl implements StockPresenter {
                 inventoryStockPbList.add(inventoryStockPb);
             }
 
-            InventoryProto.Inventory inventoryProto = InventoryProto.Inventory.newBuilder()
+            SuchiProto.Inventory inventoryProto = SuchiProto.Inventory.newBuilder()
                     .setInventoryId(inventory.getInventory_id())
                     .setSkuId(inventory.getSkuId())
                     .setUserId(inventory.getUser_id())
                     .addAllInventoryStocks(inventoryStockPbList)
-                    .setStatus(InventoryProto.SKUStatus.AVAILABLE)
+                    .setStatus(SuchiProto.SKUStatus.AVAILABLE)
                     .setExpiryDate(Long.valueOf(inventory.getExpiryDate()))
                     .build();
 

@@ -10,8 +10,10 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -19,6 +21,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -32,6 +35,7 @@ import com.treeleaf.suchi.api.Endpoints;
 import com.treeleaf.suchi.dto.InventoryDto;
 import com.treeleaf.suchi.dto.InventoryStocksDto;
 import com.treeleaf.suchi.dto.StockKeepingUnitDto;
+import com.treeleaf.suchi.entities.SuchiProto;
 import com.treeleaf.suchi.realm.models.Inventory;
 import com.treeleaf.suchi.realm.models.InventoryStocks;
 import com.treeleaf.suchi.realm.models.SalesStock;
@@ -39,10 +43,10 @@ import com.treeleaf.suchi.realm.models.StockKeepingUnit;
 import com.treeleaf.suchi.realm.models.Units;
 import com.treeleaf.suchi.realm.repo.InventoryRepo;
 import com.treeleaf.suchi.utils.AppUtils;
+import com.treeleaf.suchi.utils.Constants;
 
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 
@@ -87,6 +91,8 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
     private ArrayAdapter<String> unitItemsAdapter;
     private AddSalesPresenter presenter;
     List<SalesStock> salesStockList = new ArrayList<>();
+    private String token, userId;
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,6 +104,9 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
 
         initialize();
         setUpSearch();
+
+        token = sharedPreferences.getString(Constants.TOKEN, "");
+        userId = sharedPreferences.getString(Constants.USER_ID, "");
 //        setUpUnitSpinner();
 //        updateTotalAmount();
 
@@ -155,10 +164,12 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
         }
         mToolbarTitle.setText("Item Sales");
 
+
         getMyApplication(this).getAppComponent().inject(this);
 
         presenter = new AddSalesPresenterImpl(endpoints, this);
 
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
     }
 
     public BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
@@ -168,26 +179,49 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
             String qty = intent.getStringExtra("quantity");
             String unit = intent.getStringExtra("unit");
             String id = intent.getStringExtra("inventory_stock_id");
+            String inventoryId = intent.getStringExtra("inventory_id");
             AppUtils.showLog(TAG, "data: " + amount + qty + unit + id);
 
             if (salesStockList.isEmpty()) {
-                SalesStock salesStock = new SalesStock(id, amount, qty, unit);
+                SalesStock salesStock = new SalesStock(id, inventoryId, amount, qty, unit);
                 salesStockList.add(salesStock);
             } else {
-                Iterator<SalesStock> iterator = salesStockList.iterator();
-                while (iterator.hasNext()) {
-                    if (iterator.next().getId().equals(id)) {
-                        iterator.next().setAmount(amount);
-                        iterator.next().setUnit(unit);
-                        iterator.next().setQuantity(qty);
+                // to prevent concurrent modification exception
+                List<SalesStock> newSalesStock = new ArrayList<SalesStock>();
+                for (int i = 0; i < salesStockList.size(); i++) {
+                    if (salesStockList.get(i).getId().equals(id)) {
+                        AppUtils.showLog(TAG, "if");
+                        salesStockList.remove(salesStockList.get(i));
+                        newSalesStock.add(new SalesStock(id, inventoryId, amount, qty, unit));
+//                        newSalesStockList.add(new SalesStock(id, amount, qty, unit));
+//                        salesStockList.set(salesStockList.indexOf(salesStock), new SalesStock(id, amount, qty, unit));
+                    } else {
+                        AppUtils.showLog(TAG, "else");
+                        SalesStock salesStockModel = new SalesStock(id, inventoryId, amount, qty, unit);
+                        newSalesStock.add(salesStockModel);
+                    }
+                }
+
+                salesStockList.addAll(newSalesStock);
+
+//                salesStockList.addAll(newSalesStockList);
+
+              /*  mElements.addAll(thingsToBeAdd);
+
+
+                for (SalesStock salesStock : salesStockList
+                ) {
+                    if (salesStock.getId().equals(id)) {
+                        salesStockList.set(salesStockList.indexOf(salesStock), new SalesStock(id, amount, qty, unit));
                     } else {
                         SalesStock salesStockModel = new SalesStock(id, amount, qty, unit);
                         salesStockList.add(salesStockModel);
                     }
-                }
+                }*/
             }
 
             double sum = 0;
+            AppUtils.showLog(TAG, "listSize: " + salesStockList.size());
             for (SalesStock salesStock : salesStockList
             ) {
                 sum = sum + Double.valueOf(salesStock.getAmount());
@@ -206,6 +240,27 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
 
             case R.id.btn_sell:
 
+                List<SuchiProto.SaleInventory> saleInventoryList = new ArrayList<>();
+                for (SalesStock salesStock : salesStockList
+                ) {
+                    SuchiProto.SaleInventory saleInventory = SuchiProto.SaleInventory.newBuilder()
+                            .setInventoryId(salesStock.getInventory_id())
+                            .setInventoryStockId(salesStock.getId())
+                            .setQuantity(Integer.valueOf(salesStock.getQuantity()))
+                            .setAmount(Double.valueOf(salesStock.getAmount()))
+                            .setUnitId(salesStock.getUnit())
+                            .build();
+
+                    saleInventoryList.add(saleInventory);
+                }
+
+                SuchiProto.Sale sale = SuchiProto.Sale.newBuilder()
+                        .addAllSaleInventories(saleInventoryList)
+                        .setAmount(Double.valueOf(mTotalAmount.getText().toString().trim()))
+                        .build();
+
+                showLoading();
+                presenter.addSales(token, sale);
                 break;
 
         }
@@ -220,7 +275,14 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        unregisterReceiver(mMessageReceiver);
+        try {
+
+            unregisterReceiver(mMessageReceiver);
+        } catch (IllegalArgumentException e) {
+
+            e.printStackTrace();
+        }
+
     }
 
     private void setUpSearch() {
@@ -292,10 +354,25 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
     @Override
     public void addSalesSuccess() {
         AppUtils.showLog(TAG, "sales add success");
+        Toast.makeText(this, "Sales added", Toast.LENGTH_SHORT).show();
+
+        presenter.getSales(token);
+
+        finish();
     }
 
     @Override
-    public void addSalesFail() {
-        AppUtils.showLog(TAG, "add sales fail");
+    public void addSalesFail(String msg) {
+        showMessage(msg);
+    }
+
+    @Override
+    public void getSalesFail(String msg) {
+        showMessage(msg);
+    }
+
+    @Override
+    public void getSalesSuccess() {
+        AppUtils.showLog(TAG, "get sales success");
     }
 }

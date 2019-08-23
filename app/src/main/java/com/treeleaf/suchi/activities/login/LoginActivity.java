@@ -15,7 +15,7 @@ import com.treeleaf.suchi.activities.base.BaseActivity;
 import com.treeleaf.suchi.activities.dashboard.DashboardActivity;
 import com.treeleaf.suchi.activities.enterkey.EnterKeyActivity;
 import com.treeleaf.suchi.api.Endpoints;
-import com.treeleaf.suchi.entities.AccountProto;
+import com.treeleaf.suchi.entities.TreeleafProto;
 import com.treeleaf.suchi.realm.repo.Repo;
 import com.treeleaf.suchi.realm.repo.UserRepo;
 
@@ -95,17 +95,17 @@ public class LoginActivity extends BaseActivity implements LoginView {
     }
 
     @Override
-    public void loginSuccess(AccountProto.LoginResponse loginResponse) {
+    public void loginSuccess(TreeleafProto.LoginResponse loginResponse) {
         AppUtils.showLog(TAG, "login success");
 
         int loginStatus = loginResponse.getUser().getStatus().getNumber();
 
         switch (loginStatus) {
-            case 1:
+            case 2:
                 gotoActivity(loginResponse, loginStatus);
                 break;
 
-            case 2:
+            case 4:
                 showMessage("Sorry, your account has been suspended");
                 break;
 
@@ -113,7 +113,7 @@ public class LoginActivity extends BaseActivity implements LoginView {
                 showMessage("Sorry, your account has been deleted");
                 break;
 
-            case 4:
+            case 1:
                 gotoActivity(loginResponse, loginStatus);
                 break;
 
@@ -122,7 +122,7 @@ public class LoginActivity extends BaseActivity implements LoginView {
 
     }
 
-    private void gotoActivity(AccountProto.LoginResponse loginResponse, int status) {
+    private void gotoActivity(TreeleafProto.LoginResponse loginResponse, int status) {
 
         if (status == 1) {
 

@@ -1,8 +1,8 @@
 package com.treeleaf.suchi.activities.inventory.stock;
 
 import com.treeleaf.suchi.api.Endpoints;
-import com.treeleaf.suchi.entities.InventoryProto;
-import com.treeleaf.suchi.entities.ReqResProto;
+import com.treeleaf.suchi.entities.SuchiProto;
+import com.treeleaf.suchi.rpc.SuchiRpcProto;
 import com.treeleaf.suchi.utils.AppUtils;
 import com.treeleaf.suchi.utils.CallbackWrapper;
 
@@ -19,12 +19,12 @@ public class StockEntryPresenterImpl implements StockEntryPresenter {
     }
 
     @Override
-    public void makeStockEntry(String token, InventoryProto.StockKeepingUnit stockKeepingUnit) {
-        endpoints.addSku(token, stockKeepingUnit).enqueue(new CallbackWrapper<>(activity, new CallbackWrapper.Wrapper<ReqResProto.Response>() {
+    public void makeStockEntry(String token, SuchiProto.StockKeepingUnit stockKeepingUnit) {
+        endpoints.addSku(token, stockKeepingUnit).enqueue(new CallbackWrapper<>(activity, new CallbackWrapper.Wrapper<SuchiRpcProto.SuchiBaseResponse>() {
             @Override
-            public void onSuccessResult(Response<ReqResProto.Response> response) {
+            public void onSuccessResult(Response<SuchiRpcProto.SuchiBaseResponse> response) {
                 activity.hideLoading();
-                ReqResProto.Response baseResponse = response.body();
+                SuchiRpcProto.SuchiBaseResponse baseResponse = response.body();
 
                 if (baseResponse == null) {
                     activity.stockEntryFail("stock entry failed");

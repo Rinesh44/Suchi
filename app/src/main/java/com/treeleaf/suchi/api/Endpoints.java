@@ -1,10 +1,8 @@
 package com.treeleaf.suchi.api;
 
-import com.treeleaf.suchi.entities.AccountProto;
-import com.treeleaf.suchi.entities.InventoryProto;
-import com.treeleaf.suchi.entities.ReqResProto;
-
-import java.util.List;
+import com.treeleaf.suchi.entities.SuchiProto;
+import com.treeleaf.suchi.entities.TreeleafProto;
+import com.treeleaf.suchi.rpc.SuchiRpcProto;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -16,7 +14,7 @@ import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 
 public interface Endpoints {
-    String API_BASE_URL = "http://192.168.0.60:9000/";
+    String API_BASE_URL = "http://192.168.0.173:9020/";
 
     String CONTENT_TYPE = "Content-Type: application/protobuf";
     String AUTHORIZATION = "authorization";
@@ -27,39 +25,48 @@ public interface Endpoints {
     String GET_ALL_DATA = "inventory/data/all";
     String INVENTORY = "inventory";
     String ADD_SKU = "sku";
+    String SALES = "sale";
 
     String ADD_UNSYNCED_INVENTORIES = "inventory/sync";
 
 
     @Headers({CONTENT_TYPE})
     @POST(API_BASE_URL + LOGIN)
-    Call<ReqResProto.Response> login(@Body AccountProto.LoginRequest loginRequest);
+    Call<SuchiRpcProto.SuchiBaseResponse> login(@Body TreeleafProto.LoginRequest loginRequest);
 
     @POST(API_BASE_URL + REGISTER)
-    Call<ReqResProto.Response> register(@Body AccountProto.User user);
+    Call<SuchiRpcProto.SuchiBaseResponse> register(@Body TreeleafProto.UserAccount user);
 
     @DELETE(API_BASE_URL + LOGOUT)
-    Call<ReqResProto.Response> logout(@Header(AUTHORIZATION) String authorization);
+    Call<SuchiRpcProto.SuchiBaseResponse> logout(@Header(AUTHORIZATION) String authorization);
 
     @GET(API_BASE_URL + GET_ALL_DATA)
-    Call<ReqResProto.Response> getAllData(@Header(AUTHORIZATION) String authorization);
+    Call<SuchiRpcProto.SuchiBaseResponse> getAllData(@Header(AUTHORIZATION) String authorization);
 
     @POST(API_BASE_URL + INVENTORY)
-    Call<ReqResProto.Response> addInventory(@Header(AUTHORIZATION) String authorization,
-                                            @Body InventoryProto.Inventory inventory);
+    Call<SuchiRpcProto.SuchiBaseResponse> addInventory(@Header(AUTHORIZATION) String authorization,
+                                                       @Body SuchiProto.Inventory inventory);
 
     @PATCH(API_BASE_URL + INVENTORY)
-    Call<ReqResProto.Response> updateInventory(@Header(AUTHORIZATION) String authorization,
-                                               @Body InventoryProto.Inventory inventory);
+    Call<SuchiRpcProto.SuchiBaseResponse> updateInventory(@Header(AUTHORIZATION) String authorization,
+                                                          @Body SuchiProto.Inventory inventory);
 
     @POST(API_BASE_URL + ADD_UNSYNCED_INVENTORIES)
-    Call<ReqResProto.Response> addUnSyncedInventories(@Header(AUTHORIZATION) String auth,
-                                                      @Body InventoryProto.SyncRequest syncRequest);
+    Call<SuchiRpcProto.SuchiBaseResponse> addUnSyncedInventories(@Header(AUTHORIZATION) String auth,
+                                                                 @Body SuchiProto.SyncRequest syncRequest);
 
     @GET(API_BASE_URL + INVENTORY)
-    Call<ReqResProto.Response> getInventory(@Header(AUTHORIZATION) String authorization);
+    Call<SuchiRpcProto.SuchiBaseResponse> getInventory(@Header(AUTHORIZATION) String authorization);
 
     @POST(API_BASE_URL + ADD_SKU)
-    Call<ReqResProto.Response> addSku(@Header(AUTHORIZATION) String auth,
-                                      @Body InventoryProto.StockKeepingUnit stockKeepingUnit);
+    Call<SuchiRpcProto.SuchiBaseResponse> addSku(@Header(AUTHORIZATION) String auth,
+                                                 @Body SuchiProto.StockKeepingUnit stockKeepingUnit);
+
+    @POST(API_BASE_URL + SALES)
+    Call<SuchiRpcProto.SuchiBaseResponse> addSales(@Header(AUTHORIZATION) String auth,
+                                                   @Body SuchiProto.Sale sale);
+
+    @GET(API_BASE_URL + SALES)
+    Call<SuchiRpcProto.SuchiBaseResponse> getSales(@Header(AUTHORIZATION) String auth);
+
 }

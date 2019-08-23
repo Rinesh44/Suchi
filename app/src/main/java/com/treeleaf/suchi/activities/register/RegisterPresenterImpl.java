@@ -1,8 +1,8 @@
 package com.treeleaf.suchi.activities.register;
 
 import com.treeleaf.suchi.api.Endpoints;
-import com.treeleaf.suchi.entities.AccountProto;
-import com.treeleaf.suchi.entities.ReqResProto;
+import com.treeleaf.suchi.entities.TreeleafProto;
+import com.treeleaf.suchi.rpc.SuchiRpcProto;
 import com.treeleaf.suchi.utils.AppUtils;
 import com.treeleaf.suchi.utils.CallbackWrapper;
 
@@ -20,7 +20,7 @@ public class RegisterPresenterImpl implements RegisterPresenter {
 
     @Override
     public void register(String storeName, String address, String phone, String ownerName, String username, String password) {
-        AccountProto.User user = AccountProto.User.newBuilder()
+        TreeleafProto.UserAccount user = TreeleafProto.UserAccount.newBuilder()
                 .setAddress(address)
                 .setStoreName(storeName)
                 .setPhone(phone)
@@ -29,11 +29,11 @@ public class RegisterPresenterImpl implements RegisterPresenter {
                 .setPassword(password)
                 .build();
 
-        endpoints.register(user).enqueue(new CallbackWrapper<>(activity, new CallbackWrapper.Wrapper<ReqResProto.Response>() {
+        endpoints.register(user).enqueue(new CallbackWrapper<>(activity, new CallbackWrapper.Wrapper<SuchiRpcProto.SuchiBaseResponse>() {
             @Override
-            public void onSuccessResult(Response<ReqResProto.Response> response) {
+            public void onSuccessResult(Response<SuchiRpcProto.SuchiBaseResponse> response) {
                 activity.hideLoading();
-                ReqResProto.Response baseResponse = response.body();
+                SuchiRpcProto.SuchiBaseResponse baseResponse = response.body();
                 AppUtils.showLog(TAG, "registerResponse: " + baseResponse);
 
                 if (baseResponse == null) {

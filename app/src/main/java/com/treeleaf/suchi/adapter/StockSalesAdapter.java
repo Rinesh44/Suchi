@@ -60,6 +60,7 @@ public class StockSalesAdapter extends RecyclerView.Adapter<StockSalesAdapter.St
     public void onBindViewHolder(@NonNull StockSalesHolder holder, int position) {
         InventoryStocksDto salesStock = salesStockList.get(position);
 
+
         holder.mMarkedPrice.setText(salesStock.getMarkedPrice());
         holder.mSellingPrice.setText(salesStock.getSalesPrice());
         holder.mQuantity.setText(salesStock.getQuantity());
@@ -115,7 +116,8 @@ public class StockSalesAdapter extends RecyclerView.Adapter<StockSalesAdapter.St
                 intent.putExtra("amount", holder.mAmount.getText().toString().trim());
                 intent.putExtra("quantity", holder.mSelectQuantity.getText().toString().trim());
                 intent.putExtra("inventory_stock_id", salesStock.getId());
-                intent.putExtra("unit", selectedUnit);
+                intent.putExtra("unit", salesStock.getUnitId());
+                intent.putExtra("inventory_id", inventoryDto.getInventory_id());
 
                 LocalBroadcastManager.getInstance(mContext).sendBroadcast(intent);
             }
