@@ -1,5 +1,9 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 apply plugin: 'realm-android'
+
 
 android {
     compileSdkVersion 28
@@ -22,6 +26,15 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+}
+
+configurations {
+    cleanedAnnotations
+    compile.exclude group: 'org.jetbrains', module: 'annotations'
+}
+
+kapt {
+    generateStubs = true
 }
 
 dependencies {
@@ -50,6 +63,8 @@ dependencies {
     //dagger
     implementation 'com.google.dagger:dagger:2.23'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.23'
+    kapt "com.google.dagger:dagger-android-processor:2.23"
+    kapt "com.google.dagger:dagger-compiler:2.23"
 
     //protobuf
     implementation 'com.google.protobuf:protobuf-lite:3.0.1'
@@ -57,12 +72,15 @@ dependencies {
     //butter knife
     implementation "com.jakewharton:butterknife:10.0.0"
     annotationProcessor "com.jakewharton:butterknife-compiler:10.0.0"
+    kapt "com.jakewharton:butterknife-compiler:10.0.0"
+
 
     //Recycler View
     implementation 'androidx.recyclerview:recyclerview:1.1.0-beta01'
 
     //CardView
     implementation 'androidx.cardview:cardview:1.0.0'
+
 
     //retrofit
     implementation "com.squareup.retrofit2:retrofit:2.6.1"
@@ -95,5 +113,10 @@ dependencies {
     //circular imageview
     implementation 'de.hdodenhof:circleimageview:3.0.0'
 
+    //fotoapparat
+    implementation 'io.fotoapparat:fotoapparat:2.7.0'
+
+    //kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
 }

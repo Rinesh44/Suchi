@@ -1,31 +1,37 @@
 package com.treeleaf.suchi.activities.sales;
 
-import androidx.appcompat.widget.AppCompatAutoCompleteTextView;
+import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.appcompat.widget.Toolbar;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import android.preference.PreferenceManager;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
-import android.widget.ImageView;
+import android.widget.AutoCompleteTextView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.card.MaterialCardView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.activities.base.BaseActivity;
 
@@ -35,7 +41,6 @@ import com.treeleaf.suchi.api.Endpoints;
 import com.treeleaf.suchi.dto.InventoryDto;
 import com.treeleaf.suchi.dto.InventoryStocksDto;
 import com.treeleaf.suchi.dto.StockKeepingUnitDto;
-import com.treeleaf.suchi.entities.SuchiProto;
 import com.treeleaf.suchi.realm.models.Inventory;
 import com.treeleaf.suchi.realm.models.InventoryStocks;
 import com.treeleaf.suchi.realm.models.SalesStock;
@@ -48,13 +53,22 @@ import com.treeleaf.suchi.utils.Constants;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
 import de.hdodenhof.circleimageview.CircleImageView;
+import io.fotoapparat.Fotoapparat;
+import io.fotoapparat.log.LoggersKt;
+import io.fotoapparat.parameter.ScaleType;
+import io.fotoapparat.selector.FocusModeSelectorsKt;
+import io.fotoapparat.selector.LensPositionSelectorsKt;
+import io.fotoapparat.selector.SelectorsKt;
+import io.fotoapparat.view.CameraView;
 import io.realm.RealmList;
 
 import static com.treeleaf.suchi.SuchiApp.getMyApplication;
@@ -65,24 +79,33 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
     Endpoints endpoints;
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
-    @BindView(R.id.toolbar_title)
-    TextView mToolbarTitle;
     @BindView(R.id.et_search)
-    AppCompatAutoCompleteTextView mSearch;
-    @BindView(R.id.iv_barcode)
-    ImageView mBarcode;
-    @BindView(R.id.tv_total_amount)
-    TextView mTotalAmount;
+    AutoCompleteTextView mSearch;
+    @BindView(R.id.camera_view)
+    CameraView cameraView;
+    @BindView(R.id.tv_sku_name)
+    TextView mSelectedSKUName;
+    @BindView(R.id.iv_sku_image)
+    CircleImageView mSkuImage;
+    @BindView(R.id.tv_unit_price)
+    TextView mUnitPrice;
+    @BindView(R.id.ll_camera_holder)
+    LinearLayout mCameraHolder;
     @BindView(R.id.btn_sell)
     MaterialButton mSell;
-    @BindView(R.id.ll_sale_detail_holder)
-    LinearLayout mSaleDetails;
-    @BindView(R.id.iv_item)
-    CircleImageView mItemImage;
-    @BindView(R.id.tv_sku_name)
-    TextView mSkuName;
+    @BindView(R.id.rl_sku_details)
+    RelativeLayout mSkuDetails;
     @BindView(R.id.rv_sale_stocks)
     RecyclerView mSaleStocksRecycler;
+    @BindView(R.id.scroll_view)
+    ScrollView mScroll;
+    @BindView(R.id.fab_confirm)
+    FloatingActionButton mConfirm;
+    @BindView(R.id.rl_recycler_holder)
+    RelativeLayout mRecyclerHolder;
+
+    private Fotoapparat fotoapparat;
+    private InventoryDto selectedItem;
 
     private List<Inventory> inventoryList = new ArrayList<>();
     private List<Units> unitList = new ArrayList<>();
@@ -93,12 +116,13 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
     List<SalesStock> salesStockList = new ArrayList<>();
     private String token, userId;
     private SharedPreferences sharedPreferences;
+    private boolean toggleCamera = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         setContentView(R.layout.activity_add_sales);
-
 
         ButterKnife.bind(this);
 
@@ -107,31 +131,41 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
 
         token = sharedPreferences.getString(Constants.TOKEN, "");
         userId = sharedPreferences.getString(Constants.USER_ID, "");
+
+        mSell.setOnClickListener(this);
+        mConfirm.setOnClickListener(this);
+
 //        setUpUnitSpinner();
 //        updateTotalAmount();
 
-        mBarcode.setOnClickListener(this);
-        mSell.setOnClickListener(this);
+        mSearch.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
 
-        LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver,
-                new IntentFilter("item_details"));
+                mSearch.setFocusableInTouchMode(true);
+
+                return false;
+            }
+        });
 
         mSearch.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 hideKeyboard();
-                InventoryDto selectedItem = (InventoryDto) adapterView.getItemAtPosition(i);
+                mSell.setVisibility(View.VISIBLE);
+                mRecyclerHolder.setVisibility(View.GONE);
+                selectedItem = (InventoryDto) adapterView.getItemAtPosition(i);
                 mSearch.setText(selectedItem.getSku().getName());
 
 //                int defaultUnitPosition = unitItemsAdapter.getPosition(selectedItem.getSku().getDefaultUnit());
 //                mUnit.setSelection(defaultUnitPosition);
 
 
-                mSkuName.setText(selectedItem.getSku().getName());
+                mSelectedSKUName.setText(selectedItem.getSku().getName());
                 StringBuilder itemCostBuilder = new StringBuilder();
                 itemCostBuilder.append("Rs. ");
                 itemCostBuilder.append(selectedItem.getSku().getUnitPrice());
-
+                mUnitPrice.setText(itemCostBuilder);
 
                 String imageUrl = selectedItem.getSku().getPhoto_url();
                 AppUtils.showLog(TAG, "ImageUrl: " + imageUrl);
@@ -141,28 +175,67 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
                             .placeholder(R.drawable.ic_stock)
                             .error(R.drawable.ic_stock);
 
-                    Glide.with(AddSalesActivity.this).load(imageUrl).apply(options).into(mItemImage);
+                    Glide.with(AddSalesActivity.this).load(imageUrl).apply(options).into(mSkuImage);
                 }
 
-                mSaleStocksRecycler.setLayoutManager(new LinearLayoutManager(AddSalesActivity.this, RecyclerView.HORIZONTAL, false));
+            /*    mSaleStocksRecycler.setLayoutManager(new LinearLayoutManager(AddSalesActivity.this, RecyclerView.HORIZONTAL, false));
                 StockSalesAdapter stockSalesAdapter = new StockSalesAdapter(AddSalesActivity.this, selectedItem);
-                mSaleStocksRecycler.setAdapter(stockSalesAdapter);
+                mSaleStocksRecycler.setAdapter(stockSalesAdapter);*/
 
-                mSaleDetails.setVisibility(View.VISIBLE);
+                mSkuDetails.setVisibility(View.VISIBLE);
             }
         });
+
 
     }
 
 
+    private Fotoapparat createFotoapparat() {
+        return Fotoapparat
+                .with(this)
+                .into(cameraView)
+//                .focusView(focusView)
+                .previewScaleType(ScaleType.CenterCrop)
+                .focusMode(SelectorsKt.firstAvailable(  // (optional) use the first focus mode which is supported by device
+                        FocusModeSelectorsKt.continuousFocusPicture(),
+                        FocusModeSelectorsKt.autoFocus(),        // in case if continuous focus is not available on device, auto focus will be used
+                        FocusModeSelectorsKt.fixed()             // if even auto focus is not available - fixed focus mode will be used
+                ))
+//                .photoResolution(ResolutionSelectorsKt.lowestResolution())
+                .lensPosition(LensPositionSelectorsKt.back())
+                .logger(LoggersKt.loggers(            // (optional) we want to log camera events in two places at once
+                        LoggersKt.logcat(),           // ... in logcat
+                        LoggersKt.fileLogger(this)
+                ))
+                .build();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (!Objects.equals(fotoapparat, null)) {
+            fotoapparat.start();
+        }
+
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (!Objects.equals(fotoapparat, null)) {
+            fotoapparat.stop();
+        }
+
+    }
+
     private void initialize() {
+        fotoapparat = createFotoapparat();
         setUpToolbar(mToolbar);
         if (null != getSupportActionBar()) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setHomeButtonEnabled(true);
             getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
-        mToolbarTitle.setText("Item Sales");
 
 
         getMyApplication(this).getAppComponent().inject(this);
@@ -227,14 +300,28 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
                 sum = sum + Double.valueOf(salesStock.getAmount());
             }
 
-            mTotalAmount.setText(String.valueOf(sum));
+//            mTotalAmount.setText(String.valueOf(sum));
         }
     };
+
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.iv_barcode:
+            case R.id.btn_sell:
+                setUpRecyclerView();
+                scrollToBottom();
+                mSell.setVisibility(View.GONE);
+                mRecyclerHolder.setVisibility(View.VISIBLE);
+                break;
+
+
+            case R.id.fab_confirm:
+                Toast.makeText(this, "confirm clicked", Toast.LENGTH_SHORT).show();
+                break;
+
+
+        /*    case R.id.iv_barcode:
                 break;
 
 
@@ -261,9 +348,24 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
 
                 showLoading();
                 presenter.addSales(token, sale);
-                break;
+                break;*/
 
         }
+    }
+
+    private void scrollToBottom() {
+        mScroll.post(new Runnable() {
+            @Override
+            public void run() {
+                mScroll.fullScroll(View.FOCUS_DOWN);
+            }
+        });
+    }
+
+    private void setUpRecyclerView() {
+        mSaleStocksRecycler.setLayoutManager(new LinearLayoutManager(AddSalesActivity.this, RecyclerView.HORIZONTAL, false));
+        StockSalesAdapter stockSalesAdapter = new StockSalesAdapter(AddSalesActivity.this, selectedItem);
+        mSaleStocksRecycler.setAdapter(stockSalesAdapter);
     }
 
     @Override
@@ -285,8 +387,36 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_toggle_camera, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_toggle_camera:
+                if (toggleCamera) {
+                    mCameraHolder.setVisibility(View.GONE);
+                    toggleCamera = false;
+                } else {
+                    mCameraHolder.setVisibility(View.VISIBLE);
+                    toggleCamera = true;
+                }
+
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+
+        }
+    }
+
     private void setUpSearch() {
         inventoryList = InventoryRepo.getInstance().getSyncedInventories();
+        AppUtils.showLog(TAG, "inventoryDtoListSize: " + inventoryList.size());
+
         List<InventoryDto> inventoryDtoList = new ArrayList<>();
         inventoryDtoList = mapInventoriesToInventoryDto(inventoryList);
 

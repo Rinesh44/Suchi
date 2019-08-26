@@ -5,14 +5,24 @@ import io.realm.annotations.PrimaryKey;
 
 public class SalesInventoryStock extends RealmObject {
     @PrimaryKey
-    String inventoryStockId;
-    String quantity;
-    String salesPrice;
+    private String inventoryStockId;
+    private String inventoryId;
+    private String quantity;
+    private String salesPrice;
 
-    public SalesInventoryStock(String inventoryStockId, String quantity, String salesPrice) {
+    public SalesInventoryStock(String inventoryStockId, String inventoryId, String quantity, String salesPrice) {
         this.inventoryStockId = inventoryStockId;
+        this.inventoryId = inventoryId;
         this.quantity = quantity;
         this.salesPrice = salesPrice;
+    }
+
+    public String getInventoryId() {
+        return inventoryId;
+    }
+
+    public void setInventoryId(String inventoryId) {
+        this.inventoryId = inventoryId;
     }
 
     public SalesInventoryStock() {

@@ -37,7 +37,6 @@
     <string name="brand">Brand</string>
     <string name="description">Description</string>
     <string name="unit">Unit</string>
-    <string name="unit_price">Unit Price</string>
     <string name="view_report_details">View Report details</string>
     <string name="view_stock_details">View stock details</string>
     <string name="view_sales_details">View sale details</string>
@@ -50,4 +49,8 @@
     <string name="no_sales_available">No Sales available</string>
     <string name="total">Total</string>
     <string name="search">Search</string>
+    <string name="unit_price">Unit Price: </string>
+    <string name="sell">Sell</string>
+    <string name="sell_item">Sell item</string>
+    <string name="confirm">Confirm</string>
 </resources>

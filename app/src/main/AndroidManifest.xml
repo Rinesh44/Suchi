@@ -16,7 +16,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.sales.AddSalesActivity"></activity>
+
+        <activity android:name=".activities.sales.AddSalesActivity" />
         <activity android:name=".activities.sales.SalesActivity" />
         <activity android:name=".activities.inventory.stock.StockDetails" />
         <activity android:name=".activities.inventory.stock.StockEntryActivity" />

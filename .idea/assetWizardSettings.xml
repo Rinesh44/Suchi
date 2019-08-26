@@ -158,7 +158,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/Applications/Android%20Studio%202.app/Contents/plugins/android/lib/android.jar!/images/material_design_icons/notification/ic_sync_disabled_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/Applications/Android%20Studio%202.app/Contents/plugins/android/lib/android.jar!/images/material_design_icons/action/ic_done_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -168,12 +168,10 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="color" value="96a1b4" />
-                            <entry key="height" value="20" />
-                            <entry key="outputName" value="ic_unsynced" />
+                            <entry key="color" value="fafafa" />
+                            <entry key="outputName" value="ic_done_white" />
                             <entry key="overrideSize" value="true" />
                             <entry key="sourceFile" value="$USER_HOME$" />
-                            <entry key="width" value="20" />
                           </map>
                         </option>
                       </PersistentState>

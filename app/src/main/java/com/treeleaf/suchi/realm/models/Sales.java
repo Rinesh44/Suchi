@@ -8,12 +8,12 @@ import io.realm.annotations.PrimaryKey;
 
 public class Sales extends RealmObject {
     @PrimaryKey
-    String saleId;
-    String amount;
-    String createdAt;
-    RealmList<SalesInventoryMain> salesInventoryMain;
-    boolean sync;
-    String userId;
+    private String saleId;
+    private String amount;
+    private String createdAt;
+    private RealmList<SalesInventoryMain> salesInventoryMain;
+    private boolean sync;
+    private String userId;
 
     public Sales(String saleId, String amount, String createdAt, RealmList<SalesInventoryMain> salesInventoryMain, boolean sync, String userId) {
         this.saleId = saleId;

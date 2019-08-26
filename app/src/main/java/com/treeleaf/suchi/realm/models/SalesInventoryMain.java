@@ -1,8 +1,9 @@
 package com.treeleaf.suchi.realm.models;
 
+import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
-public class SalesInventoryMain {
+public class SalesInventoryMain extends RealmObject {
 
     @PrimaryKey
     String saleInventoryId;

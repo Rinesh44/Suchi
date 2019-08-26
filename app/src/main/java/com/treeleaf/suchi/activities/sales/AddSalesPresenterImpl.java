@@ -2,18 +2,10 @@ package com.treeleaf.suchi.activities.sales;
 
 import com.treeleaf.suchi.api.Endpoints;
 import com.treeleaf.suchi.entities.SuchiProto;
-import com.treeleaf.suchi.realm.models.Inventory;
-import com.treeleaf.suchi.realm.models.Sales;
-import com.treeleaf.suchi.realm.models.SalesInventory;
-import com.treeleaf.suchi.realm.models.SalesInventoryMain;
 import com.treeleaf.suchi.rpc.SuchiRpcProto;
 import com.treeleaf.suchi.utils.AppUtils;
 import com.treeleaf.suchi.utils.CallbackWrapper;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import io.realm.RealmList;
 import retrofit2.Response;
 
 public class AddSalesPresenterImpl implements AddSalesPresenter {
@@ -114,8 +106,12 @@ public class AddSalesPresenterImpl implements AddSalesPresenter {
                 SalesInventory inventory = new SalesInventory();
                 inventory.setExpiryDate(String.valueOf(salesInventory.getExpiryDate()));
                 inventory.setInventoryId(salesInventory.getInventoryId());
-               *//* inventory.setSalesSku(salesInventory.getSku());
-                salesInventoryMain.setSalesInventory(saleInventoryPb.getInventory());*//*
+
+                saleInventoryPb.getInventory().get
+                SalesSku salesSku = new SalesSku();
+                salesSku.setId();
+                inventory.setSalesSku(salesInventory.getSku());
+                salesInventoryMain.setSalesInventory(saleInventoryPb.getInventory());
             }
 
         }

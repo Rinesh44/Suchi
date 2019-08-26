@@ -58,4 +58,6 @@ public class SalesInventory extends RealmObject {
     public void setSalesInventoryStockList(RealmList<SalesInventoryStock> salesInventoryStockList) {
         this.salesInventoryStockList = salesInventoryStockList;
     }
+
+
 }
