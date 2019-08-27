@@ -2,10 +2,19 @@ package com.treeleaf.suchi.activities.sales;
 
 import com.treeleaf.suchi.api.Endpoints;
 import com.treeleaf.suchi.entities.SuchiProto;
+import com.treeleaf.suchi.realm.models.Sales;
+import com.treeleaf.suchi.realm.models.SalesInventory;
+import com.treeleaf.suchi.realm.models.SalesInventoryMain;
+import com.treeleaf.suchi.realm.models.SalesInventoryStock;
+import com.treeleaf.suchi.realm.models.SalesSku;
 import com.treeleaf.suchi.rpc.SuchiRpcProto;
 import com.treeleaf.suchi.utils.AppUtils;
 import com.treeleaf.suchi.utils.CallbackWrapper;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import io.realm.RealmList;
 import retrofit2.Response;
 
 public class AddSalesPresenterImpl implements AddSalesPresenter {
@@ -69,9 +78,9 @@ public class AddSalesPresenterImpl implements AddSalesPresenter {
                 }
 
                 AppUtils.showLog(TAG, "GetSalesResponse: " + baseResponse);
-//                List<Sales> salesList = mapSalesPbToModel(baseResponse.getSalesList());
+                List<Sales> salesList = mapSalesPbToModel(baseResponse.getSalesList());
 
-                activity.getSalesSuccess();
+                activity.getSalesSuccess(salesList);
             }
 
             @Override
@@ -82,7 +91,7 @@ public class AddSalesPresenterImpl implements AddSalesPresenter {
         }));
     }
 
-/*    private List<Sales> mapSalesPbToModel(List<SuchiProto.Sale> salesListPb) {
+    private List<Sales> mapSalesPbToModel(List<SuchiProto.Sale> salesListPb) {
         List<Sales> salesList = new ArrayList<>();
         for (SuchiProto.Sale salePb : salesListPb
         ) {
@@ -102,20 +111,44 @@ public class AddSalesPresenterImpl implements AddSalesPresenter {
                 salesInventoryMain.setQuantity(String.valueOf(saleInventoryPb.getQuantity()));
                 salesInventoryMain.setSaleInventoryId(saleInventoryPb.getSaleInventoryId());
 
-                SuchiProto.Inventory salesInventory = saleInventoryPb.getInventory();
+                SuchiProto.Inventory inventoryPb = saleInventoryPb.getInventory();
                 SalesInventory inventory = new SalesInventory();
-                inventory.setExpiryDate(String.valueOf(salesInventory.getExpiryDate()));
-                inventory.setInventoryId(salesInventory.getInventoryId());
+                inventory.setExpiryDate(String.valueOf(inventoryPb.getExpiryDate()));
+                inventory.setInventoryId(inventoryPb.getInventoryId());
 
-                saleInventoryPb.getInventory().get
+                SuchiProto.StockKeepingUnit skuPb = inventoryPb.getSku();
                 SalesSku salesSku = new SalesSku();
-                salesSku.setId();
-                inventory.setSalesSku(salesInventory.getSku());
-                salesInventoryMain.setSalesInventory(saleInventoryPb.getInventory());
+                salesSku.setId(String.valueOf(skuPb.getId()));
+                salesSku.setSku_id(skuPb.getSkuId());
+                salesSku.setName(skuPb.getName());
+                salesSku.setPhoto_url(skuPb.getPhoto());
+
+                inventory.setSalesSku(salesSku);
+
+                List<SuchiProto.InventoryStock> salesInventoryStockPb = inventoryPb.getInventoryStocksList();
+                RealmList<SalesInventoryStock> salesInventoryStock = new RealmList<>();
+                for (SuchiProto.InventoryStock inventoryStockPb : salesInventoryStockPb
+                ) {
+                    SalesInventoryStock salesInventoryStockModel = new SalesInventoryStock();
+                    salesInventoryStockModel.setInventoryId(inventoryStockPb.getInventoryId());
+                    salesInventoryStockModel.setInventoryStockId(inventoryStockPb.getInventoryStockId());
+                    salesInventoryStockModel.setQuantity(String.valueOf(inventoryStockPb.getQuantity()));
+                    salesInventoryStockModel.setSalesPrice(String.valueOf(inventoryStockPb.getSalesPrice()));
+
+                    salesInventoryStock.add(salesInventoryStockModel);
+                }
+
+                inventory.setSalesInventoryStockList(salesInventoryStock);
+                salesInventoryMain.setSalesInventory(inventory);
+                saleInventoryMainList.add(salesInventoryMain);
             }
 
+            sales.setSalesInventoryMain(saleInventoryMainList);
+            salesList.add(sales);
         }
-    }*/
+
+        return salesList;
+    }
 
 
 }

@@ -35,6 +35,7 @@
             android:background="@drawable/search_bg"
             android:drawableEnd="@drawable/ic_search"
             android:elevation="2dp"
+            android:focusable="false"
             android:fontFamily="@font/proxima_regular"
             android:hint="Search stocks"
             android:paddingStart="15dp"

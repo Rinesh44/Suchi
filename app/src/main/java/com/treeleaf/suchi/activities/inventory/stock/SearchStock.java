@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 
 import android.widget.ArrayAdapter;
@@ -122,7 +123,7 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
     private DatePicker datePicker;
     private String token;
     private String unitPrice;
-
+    private StockKeepingUnitDto selectedItem;
 
 /*    @BindView(R.id.tv_description)
     TextView mDescription;*/
@@ -171,7 +172,7 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 hideKeyboard();
 
-                StockKeepingUnitDto selectedItem = (StockKeepingUnitDto) adapterView.getItemAtPosition(i);
+                selectedItem = (StockKeepingUnitDto) adapterView.getItemAtPosition(i);
                 mSearchSku.setText(selectedItem.getName());
 
                 setUpUnitSpinner(selectedItem.getUnits());
@@ -553,7 +554,6 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
         Toast.makeText(this, "inventory updated", Toast.LENGTH_SHORT).show();
 
         presenter.getStockItems(token);
-
         finish();
 
     }
@@ -577,32 +577,55 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
                 break;
 
             case R.id.btn_increment:
-                int value = Integer.valueOf(mQuantity.getText().toString());
-                value++;
-                mQuantity.setText(String.valueOf(value));
+                if (!mQuantity.getText().toString().isEmpty()) {
+                    int value = Integer.valueOf(mQuantity.getText().toString());
+                    value++;
+                    mQuantity.setText(String.valueOf(value));
+                }
                 break;
 
             case R.id.btn_decrement:
-                int value1 = Integer.valueOf(mQuantity.getText().toString());
-                if (value1 != 1) {
-                    value1--;
-                    mQuantity.setText(String.valueOf(value1));
+                if (!mQuantity.getText().toString().isEmpty()) {
+                    int value1 = Integer.valueOf(mQuantity.getText().toString());
+                    if (value1 > 1) {
+                        value1--;
+                        mQuantity.setText(String.valueOf(value1));
+                    }
                 }
                 break;
 
             case R.id.btn_increment_sp:
-                String trimmedSellingPrice = mSellingPrice.getText().toString().substring(0, mSellingPrice.getText().length() - 2);
-                double price = Integer.valueOf(trimmedSellingPrice);
-                price++;
-                mSellingPrice.setText(String.valueOf(price));
+                if (!mSellingPrice.getText().toString().isEmpty()) {
+                    if (mSellingPrice.getText().toString().contains(".")) {
+                        String trimmedSellingPrice = mSellingPrice.getText().toString().substring(0, mSellingPrice.getText().length() - 2);
+                        double price = Integer.valueOf(trimmedSellingPrice);
+                        price++;
+                        mSellingPrice.setText(String.valueOf(price));
+                    } else {
+                        double price = Double.valueOf(mSellingPrice.getText().toString());
+                        price++;
+                        mSellingPrice.setText(String.valueOf(price));
+                    }
+
+                }
                 break;
 
             case R.id.btn_decrement_sp:
-                String trimmedSellingPrice2 = mSellingPrice.getText().toString().substring(0, mSellingPrice.getText().length() - 2);
-                double price2 = Integer.valueOf(trimmedSellingPrice2);
-                if (price2 != 1) {
-                    price2--;
-                    mSellingPrice.setText(String.valueOf(price2));
+                if (!mSellingPrice.getText().toString().isEmpty()) {
+                    if (mSellingPrice.getText().toString().contains(".")) {
+                        String trimmedSellingPrice2 = mSellingPrice.getText().toString().substring(0, mSellingPrice.getText().length() - 2);
+                        double price2 = Integer.valueOf(trimmedSellingPrice2);
+                        if (price2 > 1) {
+                            price2--;
+                            mSellingPrice.setText(String.valueOf(price2));
+                        }
+                    } else {
+                        double price2 = Double.valueOf(mSellingPrice.getText().toString());
+                        if (price2 > 1) {
+                            price2--;
+                            mSellingPrice.setText(String.valueOf(price2));
+                        }
+                    }
                 }
                 break;
 

@@ -14,7 +14,9 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -80,6 +82,8 @@ public class StockActivity extends BaseActivity implements StockView {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+
         setContentView(R.layout.activity_stock);
 
         ButterKnife.bind(this);
@@ -91,6 +95,16 @@ public class StockActivity extends BaseActivity implements StockView {
         mStockAdapter = new StockAdapter(StockActivity.this, inventoryDtoList);
 
         inventoryListViewModel = ViewModelProviders.of(this).get(InventoryListViewModel.class);
+
+        mSearch.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+
+                mSearch.setFocusableInTouchMode(true);
+
+                return false;
+            }
+        });
 
         mSearch.addTextChangedListener(new TextWatcher() {
             @Override

@@ -1,5 +1,6 @@
 package com.treeleaf.suchi.activities.sales;
 
+import androidx.appcompat.widget.AppCompatSpinner;
 import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -12,15 +13,21 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import android.preference.PreferenceManager;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
 import android.widget.AutoCompleteTextView;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
@@ -30,7 +37,6 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.android.material.button.MaterialButton;
-import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.activities.base.BaseActivity;
@@ -43,10 +49,13 @@ import com.treeleaf.suchi.dto.InventoryStocksDto;
 import com.treeleaf.suchi.dto.StockKeepingUnitDto;
 import com.treeleaf.suchi.realm.models.Inventory;
 import com.treeleaf.suchi.realm.models.InventoryStocks;
+import com.treeleaf.suchi.realm.models.Sales;
 import com.treeleaf.suchi.realm.models.SalesStock;
 import com.treeleaf.suchi.realm.models.StockKeepingUnit;
 import com.treeleaf.suchi.realm.models.Units;
 import com.treeleaf.suchi.realm.repo.InventoryRepo;
+import com.treeleaf.suchi.realm.repo.Repo;
+import com.treeleaf.suchi.realm.repo.SalesRepo;
 import com.treeleaf.suchi.utils.AppUtils;
 import com.treeleaf.suchi.utils.Constants;
 
@@ -63,6 +72,7 @@ import butterknife.ButterKnife;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import io.fotoapparat.Fotoapparat;
+import io.fotoapparat.configuration.CameraConfiguration;
 import io.fotoapparat.log.LoggersKt;
 import io.fotoapparat.parameter.ScaleType;
 import io.fotoapparat.selector.FocusModeSelectorsKt;
@@ -87,22 +97,35 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
     TextView mSelectedSKUName;
     @BindView(R.id.iv_sku_image)
     CircleImageView mSkuImage;
-    @BindView(R.id.tv_unit_price)
-    TextView mUnitPrice;
-    @BindView(R.id.ll_camera_holder)
-    LinearLayout mCameraHolder;
-    @BindView(R.id.btn_sell)
-    MaterialButton mSell;
+    @BindView(R.id.rl_camera_holder)
+    RelativeLayout mCameraHolder;
+    @BindView(R.id.fab_sell)
+    FloatingActionButton mSell;
     @BindView(R.id.rl_sku_details)
     RelativeLayout mSkuDetails;
-    @BindView(R.id.rv_sale_stocks)
-    RecyclerView mSaleStocksRecycler;
+    /*    @BindView(R.id.rv_sale_stocks)
+        RecyclerView mSaleStocksRecycler;*/
     @BindView(R.id.scroll_view)
     ScrollView mScroll;
-    @BindView(R.id.fab_confirm)
-    FloatingActionButton mConfirm;
-    @BindView(R.id.rl_recycler_holder)
-    RelativeLayout mRecyclerHolder;
+    /*    @BindView(R.id.fab_confirm)
+        FloatingActionButton mConfirm;*/
+  /*  @BindView(R.id.rl_recycler_holder)
+    RelativeLayout mRecyclerHolder;*/
+    @BindView(R.id.sp_units)
+    AppCompatSpinner mUnitSpinner;
+    @BindView(R.id.ib_increase)
+    ImageButton mIncrease;
+    @BindView(R.id.ib_decrease)
+    ImageButton mDecrease;
+    @BindView(R.id.et_quantity)
+    EditText mQuantity;
+    @BindView(R.id.tv_total_amount)
+    TextView mTotalAmount;
+    @BindView(R.id.iv_back)
+    ImageView mBack;
+    @BindView(R.id.fab_camera_switch)
+    FloatingActionButton mCameraSwitch;
+
 
     private Fotoapparat fotoapparat;
     private InventoryDto selectedItem;
@@ -117,6 +140,7 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
     private String token, userId;
     private SharedPreferences sharedPreferences;
     private boolean toggleCamera = true;
+    private boolean isFront = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -133,7 +157,10 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
         userId = sharedPreferences.getString(Constants.USER_ID, "");
 
         mSell.setOnClickListener(this);
-        mConfirm.setOnClickListener(this);
+        mIncrease.setOnClickListener(this);
+        mDecrease.setOnClickListener(this);
+        mBack.setOnClickListener(this);
+        mCameraSwitch.setOnClickListener(this);
 
 //        setUpUnitSpinner();
 //        updateTotalAmount();
@@ -144,28 +171,62 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
 
                 mSearch.setFocusableInTouchMode(true);
 
+                final int DRAWABLE_LEFT = 0;
+                final int DRAWABLE_TOP = 1;
+                final int DRAWABLE_RIGHT = 2;
+                final int DRAWABLE_BOTTOM = 3;
+
+                if (mSearch.getCompoundDrawables()[DRAWABLE_RIGHT] != null)
+                    if (event.getAction() == MotionEvent.ACTION_UP) {
+                        if (event.getRawX() >= (mSearch.getRight() - mSearch.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
+
+                            mSearch.getText().clear();
+                            return true;
+                        }
+                    }
+
                 return false;
             }
         });
+
+
+        mSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (charSequence.length() > 1) {
+                    mSearch.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_clear, 0);
+                } else {
+                    mSearch.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
 
         mSearch.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 hideKeyboard();
-                mSell.setVisibility(View.VISIBLE);
-                mRecyclerHolder.setVisibility(View.GONE);
+          /*      mSell.setVisibility(View.VISIBLE);
+                mRecyclerHolder.setVisibility(View.GONE);*/
                 selectedItem = (InventoryDto) adapterView.getItemAtPosition(i);
                 mSearch.setText(selectedItem.getSku().getName());
-
-//                int defaultUnitPosition = unitItemsAdapter.getPosition(selectedItem.getSku().getDefaultUnit());
-//                mUnit.setSelection(defaultUnitPosition);
+                mQuantity.setText("1");
 
 
                 mSelectedSKUName.setText(selectedItem.getSku().getName());
                 StringBuilder itemCostBuilder = new StringBuilder();
                 itemCostBuilder.append("Rs. ");
                 itemCostBuilder.append(selectedItem.getSku().getUnitPrice());
-                mUnitPrice.setText(itemCostBuilder);
 
                 String imageUrl = selectedItem.getSku().getPhoto_url();
                 AppUtils.showLog(TAG, "ImageUrl: " + imageUrl);
@@ -178,15 +239,65 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
                     Glide.with(AddSalesActivity.this).load(imageUrl).apply(options).into(mSkuImage);
                 }
 
-            /*    mSaleStocksRecycler.setLayoutManager(new LinearLayoutManager(AddSalesActivity.this, RecyclerView.HORIZONTAL, false));
-                StockSalesAdapter stockSalesAdapter = new StockSalesAdapter(AddSalesActivity.this, selectedItem);
-                mSaleStocksRecycler.setAdapter(stockSalesAdapter);*/
+
+                unitItems.clear();
+                setUpUnitSpinner(selectedItem.getSku().getUnits());
+
+                //set default unit as default selection
+                int defaultUnitPosition = unitItemsAdapter.getPosition(selectedItem.getSku().getDefaultUnit());
+                mUnitSpinner.setSelection(defaultUnitPosition);
 
                 mSkuDetails.setVisibility(View.VISIBLE);
+
+                mTotalAmount.setText(itemCostBuilder);
+
+                mQuantity.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                        if (charSequence.length() > 0) {
+                            double totalAmount = Double.valueOf(selectedItem.getSku().getUnitPrice()) *
+                                    Double.valueOf(charSequence.toString());
+
+                            StringBuilder mTotalAmountBuilder = new StringBuilder();
+                            mTotalAmountBuilder.append("Rs. ");
+                            mTotalAmountBuilder.append(totalAmount);
+
+                            mTotalAmount.setText(mTotalAmountBuilder);
+                        }
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable editable) {
+
+                    }
+                });
             }
         });
 
 
+    }
+
+    private void setUpUnitSpinner(List<Units> units) {
+        for (Units unit : units
+        ) {
+            unitItems.add(unit.getName());
+        }
+
+        unitItemsAdapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, unitItems) {
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+                View view = super.getView(position, convertView, parent);
+//                TextView name = (TextView) view.findViewById(android.R.id.text1);
+                return view;
+            }
+        };
+
+        mUnitSpinner.setAdapter(unitItemsAdapter);
     }
 
 
@@ -202,7 +313,7 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
                         FocusModeSelectorsKt.fixed()             // if even auto focus is not available - fixed focus mode will be used
                 ))
 //                .photoResolution(ResolutionSelectorsKt.lowestResolution())
-                .lensPosition(LensPositionSelectorsKt.back())
+                .lensPosition(LensPositionSelectorsKt.front())
                 .logger(LoggersKt.loggers(            // (optional) we want to log camera events in two places at once
                         LoggersKt.logcat(),           // ... in logcat
                         LoggersKt.fileLogger(this)
@@ -232,11 +343,10 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
         fotoapparat = createFotoapparat();
         setUpToolbar(mToolbar);
         if (null != getSupportActionBar()) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setHomeButtonEnabled(true);
+           /* getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setHomeButtonEnabled(true);*/
             getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
-
 
         getMyApplication(this).getAppComponent().inject(this);
 
@@ -308,16 +418,38 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.btn_sell:
-                setUpRecyclerView();
-                scrollToBottom();
-                mSell.setVisibility(View.GONE);
-                mRecyclerHolder.setVisibility(View.VISIBLE);
+            case R.id.fab_sell:
+//                setUpRecyclerView();
+//                scrollToBottom();
+//                mSell.setVisibility(View.GONE);
                 break;
 
 
-            case R.id.fab_confirm:
-                Toast.makeText(this, "confirm clicked", Toast.LENGTH_SHORT).show();
+            case R.id.ib_increase:
+                if (!mQuantity.getText().toString().isEmpty()) {
+                    int value = Integer.valueOf(mQuantity.getText().toString());
+                    value++;
+                    mQuantity.setText(String.valueOf(value));
+                }
+                break;
+
+            case R.id.ib_decrease:
+                if (!mQuantity.getText().toString().isEmpty()) {
+                    int value1 = Integer.valueOf(mQuantity.getText().toString());
+                    if (value1 > 1) {
+                        value1--;
+                        mQuantity.setText(String.valueOf(value1));
+                    }
+                }
+                break;
+
+
+            case R.id.iv_back:
+                onBackPressed();
+                break;
+
+            case R.id.fab_camera_switch:
+                switchCamera();
                 break;
 
 
@@ -362,11 +494,21 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
         });
     }
 
-    private void setUpRecyclerView() {
+
+    private void switchCamera() {
+        isFront = !isFront;
+        if (isFront) {
+            fotoapparat.switchTo(LensPositionSelectorsKt.front(), new CameraConfiguration());
+        } else {
+            fotoapparat.switchTo(LensPositionSelectorsKt.back(), new CameraConfiguration());
+        }
+    }
+
+/*    private void setUpRecyclerView() {
         mSaleStocksRecycler.setLayoutManager(new LinearLayoutManager(AddSalesActivity.this, RecyclerView.HORIZONTAL, false));
         StockSalesAdapter stockSalesAdapter = new StockSalesAdapter(AddSalesActivity.this, selectedItem);
         mSaleStocksRecycler.setAdapter(stockSalesAdapter);
-    }
+    }*/
 
     @Override
     public boolean onSupportNavigateUp() {
@@ -378,7 +520,6 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
     protected void onDestroy() {
         super.onDestroy();
         try {
-
             unregisterReceiver(mMessageReceiver);
         } catch (IllegalArgumentException e) {
 
@@ -400,10 +541,14 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
                 if (toggleCamera) {
                     mCameraHolder.setVisibility(View.GONE);
                     toggleCamera = false;
+
+                    item.setIcon(R.drawable.ic_camera_disabled);
                 } else {
                     mCameraHolder.setVisibility(View.VISIBLE);
                     toggleCamera = true;
+                    item.setIcon(R.drawable.ic_camera_green);
                 }
+
 
                 return true;
 
@@ -502,7 +647,19 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
     }
 
     @Override
-    public void getSalesSuccess() {
+    public void getSalesSuccess(List<Sales> salesList) {
         AppUtils.showLog(TAG, "get sales success");
+
+        SalesRepo.getInstance().saveSalesList(salesList, new Repo.Callback() {
+            @Override
+            public void success(Object o) {
+
+            }
+
+            @Override
+            public void fail() {
+                AppUtils.showLog(TAG, "failed to save sales to db");
+            }
+        });
     }
 }
