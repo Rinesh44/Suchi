@@ -84,6 +84,7 @@ public class InventoryStocksDto implements Parcelable {
         this.synced = synced;
     }
 
+
     protected InventoryStocksDto(Parcel in) {
         id = in.readString();
         inventory_id = in.readString();
@@ -92,7 +93,6 @@ public class InventoryStocksDto implements Parcelable {
         salesPrice = in.readString();
         unitId = in.readString();
         synced = in.readByte() != 0x00;
-
     }
 
     @Override

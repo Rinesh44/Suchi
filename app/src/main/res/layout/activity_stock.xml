@@ -41,7 +41,6 @@
             android:paddingStart="15dp"
             android:paddingEnd="10dp" />
 
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_stock"
             android:layout_width="match_parent"

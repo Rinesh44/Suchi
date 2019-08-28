@@ -108,21 +108,16 @@
                 android:layout_margin="5dp"
                 android:gravity="center">
 
-                <androidx.appcompat.widget.AppCompatCheckBox
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/cb_select"
-                    android:layout_width="wrap_content"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
-                    android:layout_toEndOf="@+id/cb_select"
                     android:fontFamily="@font/proxima_regular"
                     android:text="Select"
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
+                    android:textStyle="bold" />
+
 
             </RelativeLayout>
 

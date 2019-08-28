@@ -13,17 +13,47 @@ public class SalesStock extends RealmObject implements Parcelable {
     private String amount;
     private String quantity;
     private String unit;
+    private String name;
+    private String photoUrl;
+    private String unitPrice;
 
-    public SalesStock(String id, String inventory_id, String amount, String quantity, String unit) {
+    public SalesStock(String id, String inventory_id, String amount, String quantity, String unit, String name, String photoUrl, String unitPrice) {
         this.id = id;
         this.inventory_id = inventory_id;
         this.amount = amount;
         this.quantity = quantity;
         this.unit = unit;
+        this.name = name;
+        this.photoUrl = photoUrl;
+        this.unitPrice = unitPrice;
     }
 
 
     public SalesStock() {
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPhotoUrl() {
+        return photoUrl;
+    }
+
+    public void setPhotoUrl(String photoUrl) {
+        this.photoUrl = photoUrl;
+    }
+
+    public String getUnitPrice() {
+        return unitPrice;
+    }
+
+    public void setUnitPrice(String unitPrice) {
+        this.unitPrice = unitPrice;
     }
 
     public String getId() {
@@ -72,6 +102,9 @@ public class SalesStock extends RealmObject implements Parcelable {
         amount = in.readString();
         quantity = in.readString();
         unit = in.readString();
+        name = in.readString();
+        photoUrl = in.readString();
+        unitPrice = in.readString();
     }
 
     @Override
@@ -86,6 +119,9 @@ public class SalesStock extends RealmObject implements Parcelable {
         dest.writeString(amount);
         dest.writeString(quantity);
         dest.writeString(unit);
+        dest.writeString(name);
+        dest.writeString(photoUrl);
+        dest.writeString(unitPrice);
     }
 
     @SuppressWarnings("unused")

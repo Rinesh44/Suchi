@@ -30,8 +30,8 @@
 
             <ImageView
                 android:id="@+id/iv_sales"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="38dp"
+                android:layout_height="37dp"
                 android:layout_centerVertical="true"
                 android:src="@drawable/ic_sales" />
 

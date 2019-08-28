@@ -153,6 +153,7 @@ public class LoginPresenterImpl implements LoginPresenter {
             stockKeepingUnit.setSubBrands(subBrands);
 
             List<SuchiProto.Unit> unitPb = inventoryPb.getSku().getUnitsList();
+
             RealmList<Units> skuUnits = mapSKUUnits(unitPb);
             stockKeepingUnit.setUnits(skuUnits);
 

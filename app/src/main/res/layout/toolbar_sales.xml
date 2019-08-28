@@ -27,14 +27,22 @@
         android:id="@+id/iv_back"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginEnd="5dp"
         android:src="@drawable/ic_back" />
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="5dp"
+        android:background="@color/disabled" />
 
     <AutoCompleteTextView
         android:id="@+id/et_search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
         android:drawableStart="@drawable/ic_search"
+        android:drawableEnd="@drawable/ic_camera_green"
         android:drawablePadding="10dp"
         android:focusable="false"
         android:fontFamily="@font/proxima_regular"

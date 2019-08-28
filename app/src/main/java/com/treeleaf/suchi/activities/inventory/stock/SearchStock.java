@@ -161,7 +161,6 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
         mSellingPriceDecrement.setOnClickListener(this);
         mSellingPriceIncrement.setOnClickListener(this);
 
-
         setUpSearch();
 
         presenter = new SearchStockPresenterImpl(endpoints, this);
