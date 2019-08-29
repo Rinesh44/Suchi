@@ -5,11 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -22,7 +18,7 @@ import com.treeleaf.suchi.dto.InventoryDto;
 import com.treeleaf.suchi.dto.InventoryStocksDto;
 import com.treeleaf.suchi.realm.models.Units;
 import com.treeleaf.suchi.realm.repo.UnitRepo;
-import com.treeleaf.suchi.utils.AppUtils;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +29,6 @@ public class StockSalesAdapter extends RecyclerView.Adapter<StockSalesAdapter.St
     private InventoryDto inventoryDto;
     private Context mContext;
     //var to get current adapter position
-    private int selectedPosition = -1;
     private RecyclerView mRecyclerView;
 
     public StockSalesAdapter(Context mContext, InventoryDto inventoryDto, RecyclerView mRecyclerView) {
@@ -73,18 +68,9 @@ public class StockSalesAdapter extends RecyclerView.Adapter<StockSalesAdapter.St
         holder.mTotalPrice.setText(totalAmountBuilder);
 
 
-      /*  //to make only one checkbox selectable
-        if (selectedPosition == position) {
-            holder.mSelect.setChecked(true);
-        } else {
-            holder.mSelect.setChecked(false);
-        }*/
-
-
         holder.mSelect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                selectedPosition = holder.getAdapterPosition();
 
                 mRecyclerView.post(new Runnable() {
                     @Override
@@ -107,34 +93,6 @@ public class StockSalesAdapter extends RecyclerView.Adapter<StockSalesAdapter.St
             }
         });
 
-  /*      holder.mSelect.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
-                selectedPosition = holder.getAdapterPosition();
-
-                //refresh recyclerview after view is laid upon
-                mRecyclerView.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        notifyDataSetChanged();
-                    }
-                });
-
-                if (checked) {
-                    Intent intent = new Intent("selected_stock_qty");
-                    intent.putExtra("quantity", holder.mQuantity.getText().toString().trim());
-                    intent.putExtra("selling_price", holder.mSellingPrice.getText().toString().trim());
-                    intent.putExtra("inventory_id", inventoryDto.getInventory_id());
-                    intent.putExtra("inventory_stock_id", salesStock.getId());
-                    intent.putExtra("unit", holder.mUnit.getText().toString());
-                    intent.putExtra("photo_url", inventoryDto.getSku().getPhoto_url());
-                    intent.putExtra("name", inventoryDto.getSku().getName());
-                    intent.putExtra("checked", true);
-
-                    LocalBroadcastManager.getInstance(mContext).sendBroadcast(intent);
-                }
-            }
-        });*/
 
     }
 

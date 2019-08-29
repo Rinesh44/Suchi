@@ -281,27 +281,44 @@
 
             </RelativeLayout>
 
-            <TextView
-                android:id="@+id/tv_cart_items_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/proxima_regular"
-                android:text="Items in cart"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:visibility="gone" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_cart_items"
+            <RelativeLayout
+                android:id="@+id/rv_cart_holder"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/rv_sale_stocks"
-                android:paddingStart="10dp"
-                android:paddingEnd="10dp"
-                android:visibility="gone" />
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/tv_cart_items_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/proxima_regular"
+                    android:text="Items in cart"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/fab_confirm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:src="@drawable/ic_confirm"
+                    app:useCompatPadding="true" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_cart_items"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_cart_items_text"
+                    android:layout_marginStart="10dp"
+                    android:clipToPadding="false"
+                    android:paddingEnd="10dp" />
+
+            </RelativeLayout>
 
         </LinearLayout>
 

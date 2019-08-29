@@ -1,9 +1,9 @@
 package com.treeleaf.suchi.activities.sales;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.widget.AppCompatCheckBox;
+
 import androidx.appcompat.widget.AppCompatSpinner;
-import androidx.appcompat.widget.LinearLayoutCompat;
+
 import androidx.appcompat.widget.Toolbar;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -21,12 +21,10 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
+
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -35,7 +33,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
+
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -43,7 +41,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-import com.google.android.material.button.MaterialButton;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.activities.base.BaseActivity;
@@ -55,6 +53,7 @@ import com.treeleaf.suchi.api.Endpoints;
 import com.treeleaf.suchi.dto.InventoryDto;
 import com.treeleaf.suchi.dto.InventoryStocksDto;
 import com.treeleaf.suchi.dto.StockKeepingUnitDto;
+import com.treeleaf.suchi.entities.SuchiProto;
 import com.treeleaf.suchi.realm.models.Inventory;
 import com.treeleaf.suchi.realm.models.InventoryStocks;
 import com.treeleaf.suchi.realm.models.Sales;
@@ -73,7 +72,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-
 import javax.inject.Inject;
 
 import butterknife.BindView;
@@ -88,6 +86,7 @@ import io.fotoapparat.selector.FocusModeSelectorsKt;
 import io.fotoapparat.selector.LensPositionSelectorsKt;
 import io.fotoapparat.selector.SelectorsKt;
 import io.fotoapparat.view.CameraView;
+import io.realm.Realm;
 import io.realm.RealmList;
 
 import static com.treeleaf.suchi.SuchiApp.getMyApplication;
@@ -116,8 +115,8 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
     RecyclerView mSaleStocksRecycler;
     @BindView(R.id.scroll_view)
     ScrollView mScroll;
-    /*    @BindView(R.id.fab_confirm)
-        FloatingActionButton mConfirm;*/
+    @BindView(R.id.fab_confirm)
+    FloatingActionButton mConfirm;
     @BindView(R.id.rl_recycler_holder)
     RelativeLayout mRecyclerHolder;
     @BindView(R.id.sp_units)
@@ -138,18 +137,17 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
     RecyclerView mCartItems;
     @BindView(R.id.tv_cart_items_text)
     TextView mItemsInCart;
+    @BindView(R.id.rv_cart_holder)
+    RelativeLayout mCartHolder;
 
 
     private Fotoapparat fotoapparat;
     private InventoryDto selectedItem;
 
     private List<Inventory> inventoryList = new ArrayList<>();
-    private List<Units> unitList = new ArrayList<>();
-    private String selectedItemId, selectedItemUnitId;
     private List<String> unitItems = new ArrayList<>();
     private ArrayAdapter<String> unitItemsAdapter;
     private AddSalesPresenter presenter;
-    List<SalesStock> salesStockList = new ArrayList<>();
     private String token, userId;
     private SharedPreferences sharedPreferences;
     private boolean toggleCamera = true;
@@ -182,6 +180,7 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
         mBack.setOnClickListener(this);
         mCameraSwitch.setOnClickListener(this);
         mTotalAmount.setOnClickListener(this);
+        mConfirm.setOnClickListener(this);
 
         LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver,
                 new IntentFilter("selected_stock_qty"));
@@ -196,13 +195,11 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                 int position = viewHolder.getAdapterPosition();
                 cartAdapter.deleteItem(position);
-                if (cartAdapter.getItemCount() == 0) mItemsInCart.setVisibility(View.GONE);
+                if (cartAdapter.getItemCount() == 0) mCartHolder.setVisibility(View.GONE);
+                AppUtils.showLog(TAG, "cartlistsize: " + cartItemList.size());
 
             }
         }).attachToRecyclerView(mCartItems);
-
-//        setUpUnitSpinner();
-//        updateTotalAmount();
 
         mSearch.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -239,28 +236,6 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
         });
 
 
-     /*   mSearch.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (charSequence.length() > 1) {
-                    mSearch.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_clear, 0);
-                } else {
-                    mSearch.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });*/
-
-
         mSearch.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -276,7 +251,8 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
 
                 StringBuilder amountBuilder = new StringBuilder();
                 amountBuilder.append("Rs. ");
-                defaultInventoryStock = selectedItem.getInventoryStocks().get(0);
+                defaultInventoryStock = getHighestQuantityInventoryStock(selectedItem.getInventoryStocks());
+//                defaultInventoryStock = selectedItem.getInventoryStocks().get(0);
                 amountBuilder.append(defaultInventoryStock.getSalesPrice());
                 quantityLimit = Integer.valueOf(defaultInventoryStock.getQuantity());
 
@@ -352,6 +328,21 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
 
     }
 
+
+    private InventoryStocksDto getHighestQuantityInventoryStock(List<InventoryStocksDto> inventoryStocks) {
+        int maxValue = 0;
+        InventoryStocksDto highestQuantityStock = new InventoryStocksDto();
+        for (InventoryStocksDto inventoryStockDto : inventoryStocks
+        ) {
+            if (Integer.valueOf(inventoryStockDto.getQuantity()) > maxValue) {
+                maxValue = Integer.valueOf(inventoryStockDto.getQuantity());
+                highestQuantityStock = inventoryStockDto;
+            }
+        }
+
+        return highestQuantityStock;
+    }
+
     private void setUpUnitSpinner(List<Units> units) {
         AppUtils.showLog(TAG, "setupunitSpinner()");
         for (Units unit : units
@@ -415,8 +406,6 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
         fotoapparat = createFotoapparat();
         setUpToolbar(mToolbar);
         if (null != getSupportActionBar()) {
-           /* getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setHomeButtonEnabled(true);*/
             getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
 
@@ -451,39 +440,6 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
             if (checked) mRecyclerHolder.setVisibility(View.GONE);
             else mRecyclerHolder.setVisibility(View.VISIBLE);
 
-
-   /*         if (salesStockList.isEmpty()) {
-                SalesStock salesStock = new SalesStock(id, inventoryId, amount, qty, unit);
-                salesStockList.add(salesStock);
-            } else {
-                // to prevent concurrent modification exception
-                List<SalesStock> newSalesStock = new ArrayList<SalesStock>();
-                for (int i = 0; i < salesStockList.size(); i++) {
-                    if (salesStockList.get(i).getId().equals(id)) {
-                        AppUtils.showLog(TAG, "if");
-                        salesStockList.remove(salesStockList.get(i));
-                        newSalesStock.add(new SalesStock(id, inventoryId, amount, qty, unit));
-//                        newSalesStockList.add(new SalesStock(id, amount, qty, unit));
-//                        salesStockList.set(salesStockList.indexOf(salesStock), new SalesStock(id, amount, qty, unit));
-                    } else {
-                        AppUtils.showLog(TAG, "else");
-                        SalesStock salesStockModel = new SalesStock(id, inventoryId, amount, qty, unit);
-                        newSalesStock.add(salesStockModel);
-                    }
-                }
-
-                salesStockList.addAll(newSalesStock);
-
-            }
-
-            double sum = 0;
-            AppUtils.showLog(TAG, "listSize: " + salesStockList.size());
-            for (SalesStock salesStock : salesStockList
-            ) {
-                sum = sum + Double.valueOf(salesStock.getAmount());
-            }
-
-//            mTotalAmount.setText(String.valueOf(sum));*/
         }
     };
 
@@ -531,45 +487,68 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
                 scrollToBottom();
                 break;
 
-
-        /*    case R.id.iv_barcode:
+            case R.id.fab_confirm:
+                postSalesData();
                 break;
 
+        }
+    }
 
-            case R.id.btn_sell:
+    private void saveSalesData() {
+        showLoading();
 
-                List<SuchiProto.SaleInventory> saleInventoryList = new ArrayList<>();
-                for (SalesStock salesStock : salesStockList
-                ) {
-                    SuchiProto.SaleInventory saleInventory = SuchiProto.SaleInventory.newBuilder()
-                            .setInventoryId(salesStock.getInventory_id())
-                            .setInventoryStockId(salesStock.getId())
-                            .setQuantity(Integer.valueOf(salesStock.getQuantity()))
-                            .setAmount(Double.valueOf(salesStock.getAmount()))
-                            .setUnitId(salesStock.getUnit())
-                            .build();
+//        List<Sales> unSyncedSalesList = mapCartItemDataToSalesModel();
 
-                    saleInventoryList.add(saleInventory);
-                }
 
-                SuchiProto.Sale sale = SuchiProto.Sale.newBuilder()
-                        .addAllSaleInventories(saleInventoryList)
-                        .setAmount(Double.valueOf(mTotalAmount.getText().toString().trim()))
-                        .build();
+    }
 
-                showLoading();
-                presenter.addSales(token, sale);
-                break;*/
+  /*  private List<Sales> mapCartItemDataToSalesModel() {
+        RealmList<Sales> salesList = new RealmList<>();
+
+        for (SalesStock salesStock : cartItemList
+        ) {
+            Sales sales = new Sales();
 
         }
+    }*/
+
+    private void postSalesData() {
+
+        List<SuchiProto.SaleInventory> saleInventoryList = new ArrayList<>();
+        for (SalesStock salesStock : cartItemList
+        ) {
+            SuchiProto.SaleInventory saleInventory = SuchiProto.SaleInventory.newBuilder()
+                    .setInventoryId(salesStock.getInventory_id())
+                    .setInventoryStockId(salesStock.getId())
+                    .setQuantity(Integer.valueOf(salesStock.getQuantity()))
+                    .setAmount(Double.valueOf(salesStock.getAmount()))
+                    .setUnitId(salesStock.getUnit())
+                    .build();
+
+            saleInventoryList.add(saleInventory);
+        }
+
+        double totalAmount = 0;
+        for (SalesStock salesStock : cartItemList
+        ) {
+            totalAmount += Double.valueOf(salesStock.getAmount());
+        }
+
+        SuchiProto.Sale sale = SuchiProto.Sale.newBuilder()
+                .addAllSaleInventories(saleInventoryList)
+                .setAmount(totalAmount)
+                .build();
+
+        showLoading();
+        presenter.addSales(token, sale);
+
     }
 
     private void inflateCart() {
         mRecyclerHolder.setVisibility(View.GONE);
         mSkuDetails.setVisibility(View.GONE);
         mSearch.getText().clear();
-        mItemsInCart.setVisibility(View.VISIBLE);
-        mCartItems.setVisibility(View.VISIBLE);
+        mCartHolder.setVisibility(View.VISIBLE);
 
         cartAdapter = new CartAdapter(this, cartItemList);
         mCartItems.setLayoutManager(new LinearLayoutManager(this));
@@ -584,18 +563,111 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
             String formatedAmount = mTotalAmount.getText().toString().replace("Rs. ", "");
 
             if (checked) {
-                SalesStock salesStock = new SalesStock(id, inventoryId, formatedAmount, mQuantity.getText().toString(), unit, name, photoUrl, sellingPrice);
-                cartItemList.add(salesStock);
+                boolean isInArray = false;
+                //temporary lists to prevent concurrent modification
+                List<SalesStock> tempListRemove = new ArrayList<>();
+                List<SalesStock> tempListAdd = new ArrayList<>();
 
-                cartAdapter.notifyDataSetChanged();
+                //check if arraylist is empty before checking common id
+                if (cartItemList.size() != 0) {
+
+                    //check if item is already in arraylist
+                    for (SalesStock salesStock : cartItemList
+                    ) {
+                        if (salesStock.getId().equalsIgnoreCase(id)) {
+                            isInArray = true;
+                        }
+                    }
+
+                    if (!isInArray) {
+                        SalesStock salesStockNew = new SalesStock(id, inventoryId, formatedAmount, mQuantity.getText().toString(), unit, name, photoUrl, sellingPrice);
+                        cartItemList.add(salesStockNew);
+
+                        cartAdapter.notifyDataSetChanged();
+                    } else {
+                        for (SalesStock salesStock : cartItemList
+                        ) {
+                            if (salesStock.getId().equalsIgnoreCase(id)) {
+                                tempListRemove.add(salesStock);
+
+                                int updatedQuantity = Integer.valueOf(salesStock.getQuantity()) + Integer.valueOf(mQuantity.getText().toString().trim());
+                                double updatedAmount = Double.valueOf(salesStock.getAmount()) + Double.valueOf(formatedAmount);
+
+                                SalesStock replaceSalesStock = new SalesStock(id, inventoryId, String.valueOf(updatedAmount), String.valueOf(updatedQuantity), unit, name, photoUrl, sellingPrice);
+
+                                tempListAdd.add(replaceSalesStock);
+                            }
+                        }
+                    }
+
+                    cartItemList.removeAll(tempListRemove);
+                    cartItemList.addAll(tempListAdd);
+                    cartAdapter.notifyDataSetChanged();
+
+                } else {
+
+                    SalesStock salesStockNew = new SalesStock(id, inventoryId, formatedAmount, mQuantity.getText().toString(), unit, name, photoUrl, sellingPrice);
+                    cartItemList.add(salesStockNew);
+
+                    cartAdapter.notifyDataSetChanged();
+                }
             } else {
+                boolean isInArray = false;
                 Units units = UnitRepo.getInstance().getUnitById(defaultInventoryStock.getUnitId());
-                SalesStock salesStock = new SalesStock(defaultInventoryStock.getId(), defaultInventoryStock.getInventory_id()
-                        , formatedAmount, mQuantity.getText().toString(), units.getName(), selectedItem.getSku().getName(), selectedItem.getSku().getPhoto_url(),
-                        defaultInventoryStock.getSalesPrice());
-                cartItemList.add(salesStock);
 
-                cartAdapter.notifyDataSetChanged();
+                //temporary lists to prevent concurrent modification
+                List<SalesStock> tempListRemove = new ArrayList<>();
+                List<SalesStock> tempListAdd = new ArrayList<>();
+                if (cartItemList.size() != 0) {
+                    //check for same id
+                    for (SalesStock salesStock : cartItemList) {
+                        if (salesStock.getId().equalsIgnoreCase(defaultInventoryStock.getId())) {
+                            isInArray = true;
+                        }
+                    }
+
+                    if (!isInArray) {
+                        // add new item if id not same
+                        AppUtils.showLog(TAG, "under else");
+
+                        SalesStock salesStockNew = new SalesStock(defaultInventoryStock.getId(), defaultInventoryStock.getInventory_id()
+                                , formatedAmount, mQuantity.getText().toString(), units.getName(), selectedItem.getSku().getName(), selectedItem.getSku().getPhoto_url(),
+                                defaultInventoryStock.getSalesPrice());
+
+                        tempListAdd.add(salesStockNew);
+                    } else {
+                        for (SalesStock salesStock : cartItemList
+                        ) {
+                            if (salesStock.getId().equalsIgnoreCase(defaultInventoryStock.getId())) {
+                                tempListRemove.add(salesStock);
+                                int updatedQuantity = Integer.valueOf(salesStock.getQuantity()) + Integer.valueOf(mQuantity.getText().toString().trim());
+                                double updatedAmount = Double.valueOf(salesStock.getAmount()) + Double.valueOf(formatedAmount);
+
+                                SalesStock replaceSalesStock = new SalesStock(defaultInventoryStock.getId(), defaultInventoryStock.getInventory_id()
+                                        , String.valueOf(updatedAmount), String.valueOf(updatedQuantity), units.getName(), selectedItem.getSku().getName(), selectedItem.getSku().getPhoto_url(),
+                                        defaultInventoryStock.getSalesPrice());
+
+                                tempListAdd.add(replaceSalesStock);
+
+                            }
+                        }
+                    }
+
+                    cartItemList.removeAll(tempListRemove);
+                    cartItemList.addAll(tempListAdd);
+                    cartAdapter.notifyDataSetChanged();
+
+                } else {
+                    // add for first item in arraylist
+                    SalesStock salesStockNew = new SalesStock(defaultInventoryStock.getId(), defaultInventoryStock.getInventory_id()
+                            , formatedAmount, mQuantity.getText().toString(), units.getName(), selectedItem.getSku().getName(), selectedItem.getSku().getPhoto_url(),
+                            defaultInventoryStock.getSalesPrice());
+                    cartItemList.add(salesStockNew);
+
+                    cartAdapter.notifyDataSetChanged();
+                }
+
+
             }
 
             checked = false;
@@ -629,20 +701,6 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
         StockSalesAdapter stockSalesAdapter = new StockSalesAdapter(AddSalesActivity.this, selectedItem, mSaleStocksRecycler);
         mSaleStocksRecycler.setAdapter(stockSalesAdapter);
 
- /*       mSaleStocksRecycler.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-            @Override
-            public void onGlobalLayout() {
-                int firstVisibleItemPosition = mSaleStocksRecycler.findViewHolderForAdapterPosition(0).getAdapterPosition();
-                AppUtils.showLog(TAG, "firstItemposition: " + firstVisibleItemPosition);
-                View view = mSaleStocksRecycler.getLayoutManager().findViewByPosition(firstVisibleItemPosition);
-                AppCompatCheckBox checkBox = view.findViewById(R.id.cb_select);
-                checkBox.setChecked(true);
-
-                mSaleStocksRecycler.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-
-            }
-        });*/
-
 
     }
 
@@ -663,36 +721,6 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
         }
 
     }
-
-/*    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_toggle_camera, menu);
-        return true;
-    }*/
-
-/*    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_toggle_camera:
-                if (toggleCamera) {
-                    mCameraHolder.setVisibility(View.GONE);
-                    toggleCamera = false;
-
-                    item.setIcon(R.drawable.ic_camera_disabled);
-                } else {
-                    mCameraHolder.setVisibility(View.VISIBLE);
-                    toggleCamera = true;
-                    item.setIcon(R.drawable.ic_camera_green);
-                }
-
-
-                return true;
-
-            default:
-                return super.onOptionsItemSelected(item);
-
-        }
-    }*/
 
     private void setUpSearch() {
         inventoryList = InventoryRepo.getInstance().getSyncedInventories();
@@ -718,7 +746,7 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
             inventoryDto.setSynced(inventory.isSynced());
             StockKeepingUnitDto skuDto = mapSkuToDto(inventory.getSku());
             inventoryDto.setSku(skuDto);
-            RealmList<InventoryStocksDto> inventoryStocksDtoList = mapInventoryStocksToDto(inventory.getInventoryStocks());
+            RealmList<InventoryStocksDto> inventoryStocksDtoList = mapInventoryStocksToDto(inventory.getInventoryStocks(), inventory.getInventory_id());
             inventoryDto.setInventoryStocks(inventoryStocksDtoList);
 
             inventoryDtoList.add(inventoryDto);
@@ -727,12 +755,13 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
     }
 
 
-    private RealmList<InventoryStocksDto> mapInventoryStocksToDto(List<InventoryStocks> inventoryStocks) {
+    private RealmList<InventoryStocksDto> mapInventoryStocksToDto(List<InventoryStocks> inventoryStocks, String inventoryId) {
         RealmList<InventoryStocksDto> inventoryStockDtoList = new RealmList<>();
         for (InventoryStocks inventoryStock : inventoryStocks
         ) {
             InventoryStocksDto inventoryStocksDto = new InventoryStocksDto();
             inventoryStocksDto.setId(inventoryStock.getId());
+            inventoryStocksDto.setInventory_id(inventoryId);
             inventoryStocksDto.setMarkedPrice(inventoryStock.getMarkedPrice());
             inventoryStocksDto.setSalesPrice(inventoryStock.getSalesPrice());
             inventoryStocksDto.setQuantity(inventoryStock.getQuantity());
@@ -766,7 +795,7 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
     @Override
     public void addSalesSuccess() {
         AppUtils.showLog(TAG, "sales add success");
-        Toast.makeText(this, "Sales added", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Sale items added", Toast.LENGTH_SHORT).show();
 
         presenter.getSales(token);
 

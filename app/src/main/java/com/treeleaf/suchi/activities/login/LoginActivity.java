@@ -101,7 +101,7 @@ public class LoginActivity extends BaseActivity implements LoginView {
         int loginStatus = loginResponse.getUser().getStatus().getNumber();
 
         switch (loginStatus) {
-            case 2:
+            case 1:
                 gotoActivity(loginResponse, loginStatus);
                 break;
 
@@ -113,7 +113,7 @@ public class LoginActivity extends BaseActivity implements LoginView {
                 showMessage("Sorry, your account has been deleted");
                 break;
 
-            case 1:
+            case 2:
                 gotoActivity(loginResponse, loginStatus);
                 break;
 
