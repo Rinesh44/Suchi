@@ -55,6 +55,8 @@ public class SalesRepo extends Repo {
     }
 
 
+
+
     public void deleteAllSales(final Callback callback) {
         final Realm realm = RealmDatabase.getInstance().getRealm();
 

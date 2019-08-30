@@ -137,6 +137,11 @@ public class LoginActivity extends BaseActivity implements LoginView {
                     SharedPreferences.Editor editor = preferences.edit();
                     editor.putString(Constants.TOKEN, loginResponse.getToken());
                     editor.putString(Constants.USER_ID, loginResponse.getUser().getUserId());
+
+                    editor.putString(Constants.USERNAME, loginResponse.getUser().getUsername());
+                    editor.putString(Constants.STORENAME, loginResponse.getUser().getStoreName());
+                    editor.putString(Constants.ADDRESS, loginResponse.getUser().getAddress());
+                    editor.putString(Constants.OWNERNAME, loginResponse.getUser().getOwnerName());
                     editor.apply();
 
 

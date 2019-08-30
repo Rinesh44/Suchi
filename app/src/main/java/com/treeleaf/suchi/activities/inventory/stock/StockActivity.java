@@ -130,7 +130,9 @@ public class StockActivity extends BaseActivity implements StockView {
                 AppUtils.showLog(TAG, "inventory size: " + inventories.size());
                 if (inventories.size() == 0) {
                     mNoStocks.setVisibility(View.VISIBLE);
+                    mSearch.setVisibility(View.GONE);
                 } else {
+                    mSearch.setVisibility(View.VISIBLE);
                     mNoStocks.setVisibility(View.GONE);
                     inventoryDtoList = mapInventoriesToInventoryDp(inventories);
                     mStockAdapter = new StockAdapter(StockActivity.this, inventoryDtoList);

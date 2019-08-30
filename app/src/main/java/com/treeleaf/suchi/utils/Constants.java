@@ -7,4 +7,8 @@ public class Constants {
 
     public static final String DATA_REMAINING_TO_SYNC = "data_remaining_to_sync";
     public static final String PROFILE_IMAGE = "profile_image";
+    public static final String USERNAME = "user_name";
+    public static final String STORENAME = "store_name";
+    public static final String ADDRESS = "address";
+    public static final String OWNERNAME = "owner_name";
 }

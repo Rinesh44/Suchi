@@ -19,8 +19,6 @@ import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.activities.base.BaseActivity;
-import com.treeleaf.suchi.realm.models.User;
-import com.treeleaf.suchi.realm.repo.UserRepo;
 import com.treeleaf.suchi.utils.AppUtils;
 import com.treeleaf.suchi.utils.Constants;
 
@@ -100,12 +98,13 @@ public class ProfileActivity extends BaseActivity {
     }
 
     private void setProfileCredentials() {
-        User user = UserRepo.getInstance().getToken().getUser();
+//        User user = UserRepo.getInstance().getToken().getUser();
 
-        mUsername.setText(user.getUserName());
-        mStorename.setText(user.getStoreName());
-        mAddress.setText(user.getAddress());
-        mOwnerName.setText(user.getOwnerName());
+
+        mUsername.setText(preferences.getString(Constants.USERNAME, ""));
+        mStorename.setText(preferences.getString(Constants.STORENAME, ""));
+        mAddress.setText(preferences.getString(Constants.ADDRESS, ""));
+        mOwnerName.setText(preferences.getString(Constants.OWNERNAME, ""));
     }
 
     @Override

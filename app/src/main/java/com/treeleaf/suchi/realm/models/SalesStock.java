@@ -16,8 +16,9 @@ public class SalesStock extends RealmObject implements Parcelable {
     private String name;
     private String photoUrl;
     private String unitPrice;
+    private boolean synced;
 
-    public SalesStock(String id, String inventory_id, String amount, String quantity, String unit, String name, String photoUrl, String unitPrice) {
+    public SalesStock(String id, String inventory_id, String amount, String quantity, String unit, String name, String photoUrl, String unitPrice, boolean synced) {
         this.id = id;
         this.inventory_id = inventory_id;
         this.amount = amount;
@@ -26,10 +27,19 @@ public class SalesStock extends RealmObject implements Parcelable {
         this.name = name;
         this.photoUrl = photoUrl;
         this.unitPrice = unitPrice;
+        this.synced = synced;
     }
 
 
     public SalesStock() {
+    }
+
+    public boolean isSynced() {
+        return synced;
+    }
+
+    public void setSynced(boolean synced) {
+        this.synced = synced;
     }
 
     public String getName() {
@@ -105,6 +115,7 @@ public class SalesStock extends RealmObject implements Parcelable {
         name = in.readString();
         photoUrl = in.readString();
         unitPrice = in.readString();
+        synced = in.readByte() != 0x00;
     }
 
     @Override
@@ -122,6 +133,8 @@ public class SalesStock extends RealmObject implements Parcelable {
         dest.writeString(name);
         dest.writeString(photoUrl);
         dest.writeString(unitPrice);
+        dest.writeByte((byte) (synced ? 0x01 : 0x00));
+
     }
 
     @SuppressWarnings("unused")

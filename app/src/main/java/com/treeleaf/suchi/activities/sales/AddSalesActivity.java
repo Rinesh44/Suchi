@@ -63,6 +63,7 @@ import com.treeleaf.suchi.realm.models.Units;
 import com.treeleaf.suchi.realm.repo.InventoryRepo;
 import com.treeleaf.suchi.realm.repo.Repo;
 import com.treeleaf.suchi.realm.repo.SalesRepo;
+import com.treeleaf.suchi.realm.repo.SalesStockRepo;
 import com.treeleaf.suchi.realm.repo.UnitRepo;
 import com.treeleaf.suchi.utils.AppUtils;
 import com.treeleaf.suchi.utils.Constants;
@@ -86,7 +87,6 @@ import io.fotoapparat.selector.FocusModeSelectorsKt;
 import io.fotoapparat.selector.LensPositionSelectorsKt;
 import io.fotoapparat.selector.SelectorsKt;
 import io.fotoapparat.view.CameraView;
-import io.realm.Realm;
 import io.realm.RealmList;
 
 import static com.treeleaf.suchi.SuchiApp.getMyApplication;
@@ -488,7 +488,7 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
                 break;
 
             case R.id.fab_confirm:
-                postSalesData();
+                saveSalesData();
                 break;
 
         }
@@ -496,6 +496,21 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
 
     private void saveSalesData() {
         showLoading();
+        SalesStockRepo.getInstance().saveSalesStockList(cartItemList, new Repo.Callback() {
+            @Override
+            public void success(Object o) {
+                hideLoading();
+                Toast.makeText(AddSalesActivity.this, "Sale items added", Toast.LENGTH_SHORT).show();
+                finish();
+            }
+
+            @Override
+            public void fail() {
+                hideLoading();
+                AppUtils.showLog(TAG, "saved sales stock to db");
+            }
+        });
+
 
 //        List<Sales> unSyncedSalesList = mapCartItemDataToSalesModel();
 
@@ -580,7 +595,7 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
                     }
 
                     if (!isInArray) {
-                        SalesStock salesStockNew = new SalesStock(id, inventoryId, formatedAmount, mQuantity.getText().toString(), unit, name, photoUrl, sellingPrice);
+                        SalesStock salesStockNew = new SalesStock(id, inventoryId, formatedAmount, mQuantity.getText().toString(), unit, name, photoUrl, sellingPrice, false);
                         cartItemList.add(salesStockNew);
 
                         cartAdapter.notifyDataSetChanged();
@@ -593,7 +608,7 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
                                 int updatedQuantity = Integer.valueOf(salesStock.getQuantity()) + Integer.valueOf(mQuantity.getText().toString().trim());
                                 double updatedAmount = Double.valueOf(salesStock.getAmount()) + Double.valueOf(formatedAmount);
 
-                                SalesStock replaceSalesStock = new SalesStock(id, inventoryId, String.valueOf(updatedAmount), String.valueOf(updatedQuantity), unit, name, photoUrl, sellingPrice);
+                                SalesStock replaceSalesStock = new SalesStock(id, inventoryId, String.valueOf(updatedAmount), String.valueOf(updatedQuantity), unit, name, photoUrl, sellingPrice, false);
 
                                 tempListAdd.add(replaceSalesStock);
                             }
@@ -606,7 +621,7 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
 
                 } else {
 
-                    SalesStock salesStockNew = new SalesStock(id, inventoryId, formatedAmount, mQuantity.getText().toString(), unit, name, photoUrl, sellingPrice);
+                    SalesStock salesStockNew = new SalesStock(id, inventoryId, formatedAmount, mQuantity.getText().toString(), unit, name, photoUrl, sellingPrice, false);
                     cartItemList.add(salesStockNew);
 
                     cartAdapter.notifyDataSetChanged();
@@ -632,7 +647,7 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
 
                         SalesStock salesStockNew = new SalesStock(defaultInventoryStock.getId(), defaultInventoryStock.getInventory_id()
                                 , formatedAmount, mQuantity.getText().toString(), units.getName(), selectedItem.getSku().getName(), selectedItem.getSku().getPhoto_url(),
-                                defaultInventoryStock.getSalesPrice());
+                                defaultInventoryStock.getSalesPrice(), false);
 
                         tempListAdd.add(salesStockNew);
                     } else {
@@ -644,8 +659,9 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
                                 double updatedAmount = Double.valueOf(salesStock.getAmount()) + Double.valueOf(formatedAmount);
 
                                 SalesStock replaceSalesStock = new SalesStock(defaultInventoryStock.getId(), defaultInventoryStock.getInventory_id()
-                                        , String.valueOf(updatedAmount), String.valueOf(updatedQuantity), units.getName(), selectedItem.getSku().getName(), selectedItem.getSku().getPhoto_url(),
-                                        defaultInventoryStock.getSalesPrice());
+                                        , String.valueOf(updatedAmount), String.valueOf(updatedQuantity), units.getName(),
+                                        selectedItem.getSku().getName(), selectedItem.getSku().getPhoto_url(),
+                                        defaultInventoryStock.getSalesPrice(), false);
 
                                 tempListAdd.add(replaceSalesStock);
 
@@ -661,7 +677,7 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
                     // add for first item in arraylist
                     SalesStock salesStockNew = new SalesStock(defaultInventoryStock.getId(), defaultInventoryStock.getInventory_id()
                             , formatedAmount, mQuantity.getText().toString(), units.getName(), selectedItem.getSku().getName(), selectedItem.getSku().getPhoto_url(),
-                            defaultInventoryStock.getSalesPrice());
+                            defaultInventoryStock.getSalesPrice(), false);
                     cartItemList.add(salesStockNew);
 
                     cartAdapter.notifyDataSetChanged();
