@@ -119,4 +119,8 @@ dependencies {
     //kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
+    //barcode scanner
+    implementation 'com.journeyapps:zxing-android-embedded:3.6.0'
+
+
 }

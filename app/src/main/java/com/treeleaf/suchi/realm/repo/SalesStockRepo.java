@@ -1,6 +1,7 @@
 package com.treeleaf.suchi.realm.repo;
 
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import com.treeleaf.suchi.realm.RealmDatabase;
 import com.treeleaf.suchi.realm.models.SalesStock;
@@ -52,8 +53,6 @@ public class SalesStockRepo extends Repo {
         } catch (Throwable throwable) {
             throwable.printStackTrace();
             return null;
-        } finally {
-            close(realm);
         }
     }
 

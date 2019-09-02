@@ -1,5 +1,6 @@
 package com.treeleaf.suchi.activities.sales;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
@@ -23,7 +24,10 @@ import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.activities.base.BaseActivity;
 import com.treeleaf.suchi.adapter.SalesAdapter;
 import com.treeleaf.suchi.dto.SalesStockDto;
+import com.treeleaf.suchi.realm.models.Sales;
 import com.treeleaf.suchi.realm.models.SalesStock;
+import com.treeleaf.suchi.realm.repo.Repo;
+import com.treeleaf.suchi.realm.repo.SalesStockRepo;
 import com.treeleaf.suchi.utils.AppUtils;
 import com.treeleaf.suchi.utils.Constants;
 import com.treeleaf.suchi.viewmodel.SalesListViewModel;
@@ -38,6 +42,9 @@ import io.realm.RealmResults;
 import static com.treeleaf.suchi.SuchiApp.getMyApplication;
 
 public class SalesActivity extends BaseActivity {
+    public static final int ADD_SALE_REQUEST = 1;
+    public static final String EXTRA_TITLE = "updated_sale_object";
+
     private static final String TAG = "SalesActivity";
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
@@ -135,7 +142,9 @@ public class SalesActivity extends BaseActivity {
         mAddSales.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(SalesActivity.this, AddSalesActivity.class));
+                Intent intent = new Intent(SalesActivity.this, AddSalesActivity.class);
+                startActivityForResult(intent, ADD_SALE_REQUEST);
+
             }
         });
     }
@@ -176,6 +185,13 @@ public class SalesActivity extends BaseActivity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        AppUtils.showLog(TAG, "onResumeCalled()");
+
+    }
+
+    @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
@@ -198,5 +214,31 @@ public class SalesActivity extends BaseActivity {
                 super.onScrollStateChanged(recyclerView, newState);
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        AppUtils.showLog(TAG, "onActivityResult()");
+
+        if (requestCode == ADD_SALE_REQUEST && resultCode == RESULT_OK) {
+            if (data != null) {
+                List<SalesStock> updatedSalesStockList = data.getParcelableArrayListExtra(EXTRA_TITLE);
+
+                SalesStockRepo.getInstance().saveSalesStockList(updatedSalesStockList, new Repo.Callback() {
+                    @Override
+                    public void success(Object o) {
+                        Toast.makeText(SalesActivity.this, "Sale item added", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void fail() {
+                        AppUtils.showLog(TAG, "failed to save sale item");
+                    }
+                });
+            }
+        } else {
+            Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show();
+        }
     }
 }

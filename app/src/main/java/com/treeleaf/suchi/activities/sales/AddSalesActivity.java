@@ -5,22 +5,31 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatSpinner;
 
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.Manifest;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Bundle;
 
+import android.os.Parcelable;
 import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,6 +52,12 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.zxing.ResultPoint;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.journeyapps.barcodescanner.BarcodeCallback;
+import com.journeyapps.barcodescanner.BarcodeResult;
+import com.journeyapps.barcodescanner.BarcodeView;
+import com.journeyapps.barcodescanner.DecoratedBarcodeView;
 import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.activities.base.BaseActivity;
 
@@ -63,7 +78,6 @@ import com.treeleaf.suchi.realm.models.Units;
 import com.treeleaf.suchi.realm.repo.InventoryRepo;
 import com.treeleaf.suchi.realm.repo.Repo;
 import com.treeleaf.suchi.realm.repo.SalesRepo;
-import com.treeleaf.suchi.realm.repo.SalesStockRepo;
 import com.treeleaf.suchi.realm.repo.UnitRepo;
 import com.treeleaf.suchi.utils.AppUtils;
 import com.treeleaf.suchi.utils.Constants;
@@ -81,6 +95,7 @@ import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 import io.fotoapparat.Fotoapparat;
 import io.fotoapparat.configuration.CameraConfiguration;
+
 import io.fotoapparat.log.LoggersKt;
 import io.fotoapparat.parameter.ScaleType;
 import io.fotoapparat.selector.FocusModeSelectorsKt;
@@ -92,6 +107,7 @@ import io.realm.RealmList;
 import static com.treeleaf.suchi.SuchiApp.getMyApplication;
 
 public class AddSalesActivity extends BaseActivity implements View.OnClickListener, AddSalesView {
+    public static final String EXTRA_TITLE = "updated_sale_object";
     private static final String TAG = "AddSalesActivity";
     @Inject
     Endpoints endpoints;
@@ -99,8 +115,8 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
     Toolbar mToolbar;
     @BindView(R.id.et_search)
     AutoCompleteTextView mSearch;
-    @BindView(R.id.camera_view)
-    CameraView cameraView;
+    /*    @BindView(R.id.camera_view)
+        CameraView cameraView;*/
     @BindView(R.id.tv_sku_name)
     TextView mSelectedSKUName;
     @BindView(R.id.iv_sku_image)
@@ -139,6 +155,8 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
     TextView mItemsInCart;
     @BindView(R.id.rv_cart_holder)
     RelativeLayout mCartHolder;
+    @BindView(R.id.barcode_view)
+    DecoratedBarcodeView mBarcodeView;
 
 
     private Fotoapparat fotoapparat;
@@ -158,6 +176,7 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
     private List<SalesStock> cartItemList = new ArrayList<>();
     private CartAdapter cartAdapter;
     private InventoryStocksDto defaultInventoryStock;
+    private boolean isScanDone;
 
 
     @Override
@@ -169,7 +188,9 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
         ButterKnife.bind(this);
 
         initialize();
+        requestPermission();
         setUpSearch();
+        setUpBarcodeScanner();
 
         token = sharedPreferences.getString(Constants.TOKEN, "");
         userId = sharedPreferences.getString(Constants.USER_ID, "");
@@ -181,6 +202,7 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
         mCameraSwitch.setOnClickListener(this);
         mTotalAmount.setOnClickListener(this);
         mConfirm.setOnClickListener(this);
+
 
         LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver,
                 new IntentFilter("selected_stock_qty"));
@@ -201,6 +223,7 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
             }
         }).attachToRecyclerView(mCartItems);
 
+
         mSearch.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -218,7 +241,6 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
                             if (toggleCamera) {
                                 mCameraHolder.setVisibility(View.GONE);
                                 toggleCamera = false;
-
                                 mSearch.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_camera_disabled, 0);
                             } else {
                                 mCameraHolder.setVisibility(View.VISIBLE);
@@ -328,6 +350,22 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
 
     }
 
+    private void setUpBarcodeScanner() {
+        mBarcodeView.setStatusText("");
+        mBarcodeView.decodeContinuous(new BarcodeCallback() {
+            @Override
+            public void barcodeResult(BarcodeResult result) {
+                beepSound();
+                Toast.makeText(AddSalesActivity.this, result.getText(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void possibleResultPoints(List<ResultPoint> resultPoints) {
+
+            }
+        });
+    }
+
 
     private InventoryStocksDto getHighestQuantityInventoryStock(List<InventoryStocksDto> inventoryStocks) {
         int maxValue = 0;
@@ -364,7 +402,7 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
     }
 
 
-    private Fotoapparat createFotoapparat() {
+/*    private Fotoapparat createFotoapparat() {
         return Fotoapparat
                 .with(this)
                 .into(cameraView)
@@ -382,28 +420,28 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
                         LoggersKt.fileLogger(this)
                 ))
                 .build();
-    }
+    }*/
 
     @Override
     protected void onStart() {
         super.onStart();
-        if (!Objects.equals(fotoapparat, null)) {
+ /*       if (!Objects.equals(fotoapparat, null)) {
             fotoapparat.start();
-        }
+        }*/
 
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        if (!Objects.equals(fotoapparat, null)) {
+ /*       if (!Objects.equals(fotoapparat, null)) {
             fotoapparat.stop();
-        }
+        }*/
 
     }
 
     private void initialize() {
-        fotoapparat = createFotoapparat();
+//        fotoapparat = createFotoapparat();
         setUpToolbar(mToolbar);
         if (null != getSupportActionBar()) {
             getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -495,21 +533,11 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
     }
 
     private void saveSalesData() {
-        showLoading();
-        SalesStockRepo.getInstance().saveSalesStockList(cartItemList, new Repo.Callback() {
-            @Override
-            public void success(Object o) {
-                hideLoading();
-                Toast.makeText(AddSalesActivity.this, "Sale items added", Toast.LENGTH_SHORT).show();
-                finish();
-            }
 
-            @Override
-            public void fail() {
-                hideLoading();
-                AppUtils.showLog(TAG, "saved sales stock to db");
-            }
-        });
+        Intent data = new Intent();
+        data.putParcelableArrayListExtra(EXTRA_TITLE, (ArrayList<? extends Parcelable>) cartItemList);
+        setResult(RESULT_OK, data);
+        finish();
 
 
 //        List<Sales> unSyncedSalesList = mapCartItemDataToSalesModel();
@@ -843,5 +871,56 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
                 AppUtils.showLog(TAG, "failed to save sales to db");
             }
         });
+    }
+
+    void requestPermission() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 0);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == 0 && grantResults.length < 1) {
+            requestPermission();
+        } else {
+            mBarcodeView.resume();
+        }
+    }
+
+    protected void beepSound() {
+        try {
+            Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+            Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
+            r.play();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        resumeScanner();
+    }
+
+    protected void resumeScanner() {
+        isScanDone = false;
+        if (!mBarcodeView.isActivated())
+            mBarcodeView.resume();
+        Log.d("peeyush-pause", "paused: false");
+    }
+
+
+    protected void pauseScanner() {
+        mBarcodeView.pause();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        pauseScanner();
     }
 }

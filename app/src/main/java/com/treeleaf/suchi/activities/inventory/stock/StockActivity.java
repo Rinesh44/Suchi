@@ -71,7 +71,6 @@ public class StockActivity extends BaseActivity implements StockView {
     @BindView(R.id.et_search)
     EditText mSearch;
 
-
     private StockAdapter mStockAdapter;
     private StockPresenter presenter;
     private String token;

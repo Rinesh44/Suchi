@@ -1,6 +1,7 @@
 package com.treeleaf.suchi.utils;
 
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import io.realm.RealmChangeListener;
 import io.realm.RealmModel;
@@ -13,7 +14,9 @@ public class RealmLiveData<T extends RealmModel> extends LiveData<RealmResults<T
             new RealmChangeListener<RealmResults<T>>() {
                 @Override
                 public void onChange(RealmResults<T> results) {
+                    AppUtils.showLog(TAG, "onCHanged");
                     setValue(results);
+
                 }
             };
 

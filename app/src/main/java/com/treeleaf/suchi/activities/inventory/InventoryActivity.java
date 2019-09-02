@@ -11,6 +11,7 @@ import com.google.android.material.card.MaterialCardView;
 import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.activities.base.BaseActivity;
 import com.treeleaf.suchi.activities.inventory.stock.StockActivity;
+import com.treeleaf.suchi.activities.sales.AddSalesActivity;
 import com.treeleaf.suchi.activities.sales.SalesActivity;
 
 import butterknife.BindView;
@@ -62,7 +63,7 @@ public class InventoryActivity extends BaseActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_sales:
-                startActivity(new Intent(InventoryActivity.this, SalesActivity.class));
+                startActivity(new Intent(InventoryActivity.this, AddSalesActivity.class));
                 break;
             case R.id.btn_stocks:
                 startActivity(new Intent(InventoryActivity.this, StockActivity.class));

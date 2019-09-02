@@ -1,6 +1,5 @@
 package com.treeleaf.suchi.activities.sales;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
@@ -11,11 +10,8 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.activities.base.BaseActivity;
-import com.treeleaf.suchi.activities.inventory.stock.StockDetails;
 import com.treeleaf.suchi.dto.SalesStockDto;
 import com.treeleaf.suchi.utils.AppUtils;
-
-import org.w3c.dom.Text;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
