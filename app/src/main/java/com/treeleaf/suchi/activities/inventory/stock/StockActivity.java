@@ -141,13 +141,13 @@ public class StockActivity extends BaseActivity implements StockView {
                     mStockAdapter.setOnItemClickListener(new StockAdapter.OnItemClickListener() {
                         @Override
                         public void onItemClick(InventoryDto inventory) {
-                            if (!inventory.isSynced()) {
+                          /*  if (!inventory.isSynced()) {
                                 Toast.makeText(StockActivity.this, "Please sync item to view details", Toast.LENGTH_SHORT).show();
-                            } else {
-                                Intent i = new Intent(StockActivity.this, StockDetails.class);
-                                i.putExtra("inventory_object", inventory);
-                                startActivity(i);
-                            }
+                            } else {*/
+                            Intent i = new Intent(StockActivity.this, StockDetails.class);
+                            i.putExtra("inventory_object", inventory);
+                            startActivity(i);
+//                            }
                         }
                     });
 

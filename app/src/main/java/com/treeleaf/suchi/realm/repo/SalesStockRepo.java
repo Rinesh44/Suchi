@@ -1,7 +1,6 @@
 package com.treeleaf.suchi.realm.repo;
 
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 
 import com.treeleaf.suchi.realm.RealmDatabase;
 import com.treeleaf.suchi.realm.models.SalesStock;
@@ -59,7 +58,6 @@ public class SalesStockRepo extends Repo {
     public List<SalesStock> getUnsyncedSalesStockList() {
         Realm realm = RealmDatabase.getInstance().getRealm();
         try {
-
             return new ArrayList<>(realm.where(SalesStock.class).equalTo("synced", false).findAll());
         } catch (Throwable throwable) {
             throwable.printStackTrace();

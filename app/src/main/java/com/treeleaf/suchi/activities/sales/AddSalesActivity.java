@@ -53,10 +53,8 @@ import com.bumptech.glide.request.RequestOptions;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.zxing.ResultPoint;
-import com.google.zxing.integration.android.IntentIntegrator;
 import com.journeyapps.barcodescanner.BarcodeCallback;
 import com.journeyapps.barcodescanner.BarcodeResult;
-import com.journeyapps.barcodescanner.BarcodeView;
 import com.journeyapps.barcodescanner.DecoratedBarcodeView;
 import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.activities.base.BaseActivity;
@@ -246,7 +244,6 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
                                 mCameraHolder.setVisibility(View.VISIBLE);
                                 toggleCamera = true;
                                 mSearch.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_camera_green, 0);
-
                             }
 
                             return true;
@@ -291,9 +288,7 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
                     Glide.with(AddSalesActivity.this).load(imageUrl).apply(options).into(mSkuImage);
                 }
 
-
                 unitItems.clear();
-                AppUtils.showLog(TAG, "asdf: " + selectedItem.getSku().getUnits());
                 setUpUnitSpinner(selectedItem.getSku().getUnits());
 
                 AppUtils.showLog(TAG, "defaultUnit: " + selectedItem.getSku().getDefaultUnit());
@@ -467,7 +462,6 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
             name = intent.getStringExtra("name");
             photoUrl = intent.getStringExtra("photo_url");
             checked = intent.getBooleanExtra("checked", false);
-
 
             quantityLimit = Integer.valueOf(qty);
 

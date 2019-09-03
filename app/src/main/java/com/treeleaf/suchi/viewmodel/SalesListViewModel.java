@@ -9,7 +9,6 @@ import androidx.lifecycle.LiveData;
 import com.treeleaf.suchi.realm.models.SalesStock;
 import com.treeleaf.suchi.realm.repo.SalesStockRepo;
 
-
 import io.realm.RealmResults;
 
 public class SalesListViewModel extends AndroidViewModel {

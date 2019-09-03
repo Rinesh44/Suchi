@@ -12,7 +12,6 @@ import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.activities.base.BaseActivity;
 import com.treeleaf.suchi.activities.inventory.stock.StockActivity;
 import com.treeleaf.suchi.activities.sales.AddSalesActivity;
-import com.treeleaf.suchi.activities.sales.SalesActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

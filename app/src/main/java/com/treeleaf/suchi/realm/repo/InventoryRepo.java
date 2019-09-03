@@ -76,6 +76,18 @@ public class InventoryRepo extends Repo {
         }
     }
 
+    public List<Inventory> getAllInventoryList() {
+        Realm realm = RealmDatabase.getInstance().getRealm();
+        try {
+            return new ArrayList<>(realm.where(Inventory.class).findAll());
+
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+            return null;
+        }
+    }
+
+
     public List<Inventory> getUnsyncedInventories() {
         Realm realm = RealmDatabase.getInstance().getRealm();
         try {

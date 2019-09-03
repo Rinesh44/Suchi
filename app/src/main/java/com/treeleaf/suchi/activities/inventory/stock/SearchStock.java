@@ -2,6 +2,7 @@ package com.treeleaf.suchi.activities.inventory.stock;
 
 import androidx.appcompat.widget.AppCompatSpinner;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.LiveData;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -57,6 +58,7 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.realm.RealmList;
+import io.realm.RealmResults;
 
 import static com.treeleaf.suchi.SuchiApp.getMyApplication;
 
@@ -298,6 +300,24 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
 
     }
 
+    private StockKeepingUnit mapSKUDTOToModel(StockKeepingUnitDto skuDto) {
+        StockKeepingUnit sku = new StockKeepingUnit();
+        sku.setDefaultUnit(skuDto.getDefaultUnit());
+        sku.setSynced(skuDto.isSynced());
+        sku.setDesc(skuDto.getDesc());
+        sku.setUnitPrice(skuDto.getUnitPrice());
+        sku.setCode(skuDto.getCode());
+        sku.setPhoto_url(skuDto.getPhoto_url());
+        sku.setName(skuDto.getName());
+        sku.setId(skuDto.getId());
+        sku.setBrand(skuDto.getBrand());
+        sku.setCategories(skuDto.getCategories());
+        sku.setSubBrands(skuDto.getSubBrands());
+        sku.setUnits((RealmList<Units>) skuDto.getUnits());
+
+        return sku;
+    }
+
     private void setUpUnitSpinner(List<Units> unitList) {
         for (Units unit : unitList
         ) {
@@ -391,15 +411,20 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
         token = sharedPreferences.getString(Constants.TOKEN, "");
         userId = sharedPreferences.getString(Constants.USER_ID, "");
 
+        Inventory currentInventory = new Inventory();
 
-        List<Inventory> syncedInventories = InventoryRepo.getInstance().getSyncedInventories();
-        if (syncedInventories == null || syncedInventories.isEmpty()) {
+        List<Inventory> allInventories = InventoryRepo.getInstance().getAllInventoryList();
+        if (allInventories == null || allInventories.isEmpty()) {
+            AppUtils.showLog(TAG, "all inventories null");
             String randomInventoryId = UUID.randomUUID().toString();
             inventoryId = randomInventoryId.replace("-", "");
         } else {
-            for (Inventory inventory : syncedInventories
+
+            for (Inventory inventory : allInventories
             ) {
                 if (inventory.getSku().getId().equals(selectedItemId)) {
+                    AppUtils.showLog(TAG, "id match");
+                    currentInventory = inventory;
                     inventoryId = inventory.getInventory_id();
                     update = true;
                 } /*else {
@@ -418,10 +443,7 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
         AppUtils.showLog(TAG, "inventoryId: " + inventoryId);
         AppUtils.showLog(TAG, "skuId: " + selectedItemId);
 
-        String randomInventoryStockId = UUID.randomUUID().toString();
-        inventoryStockId = randomInventoryStockId.replace("-", "");
-
-        SuchiProto.InventoryStock inventoryStock = SuchiProto.InventoryStock.newBuilder()
+ /*       SuchiProto.InventoryStock inventoryStock = SuchiProto.InventoryStock.newBuilder()
                 .setInventoryStockId(inventoryStockId)
                 .setMarkedPrice(Double.valueOf(unitPrice))
                 .setSalesPrice(Double.valueOf(mSellingPrice.getText().toString().trim()))
@@ -436,36 +458,59 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
                 .addInventoryStocks(inventoryStock)
                 .setStatus(SuchiProto.SKUStatus.AVAILABLE)
                 .setExpiryDate(System.currentTimeMillis())
-                .build();
+                .build();*/
 
-        if (NetworkUtils.isNetworkConnected(this)) {
-            showLoading();
-            if (token != null) {
-                if (!update) presenter.addStock(token, inventory);
-                else presenter.updateStock(token, inventory);
+        showLoading();
+/*        if (token != null) {
+            if (!update) presenter.addStock(token, inventory);
+            else presenter.updateStock(token, inventory);
 
-            } else Toast.makeText(this, "Unable to get token", Toast.LENGTH_SHORT).show();
-        } else {
-            //network is not connected, so save to realm as unsynced
-            saveToRealm(false);
-        }
+        } else Toast.makeText(this, "Unable to get token", Toast.LENGTH_SHORT).show();*/
+
+        //network is not connected, so save to realm as unsynced
+        saveToRealm(false, currentInventory);
+
 
     }
 
 
-    private void saveToRealm(boolean syncValue) {
-
-        InventoryStocks inventoryStocks = new InventoryStocks(inventoryStockId, inventoryId, mQuantity.getText().toString().trim(),
-                mMarkedPrice.getText().toString().trim(), mSellingPrice.getText().toString().trim(),
-                selectedItemUnitId, false);
-
+    private void saveToRealm(boolean syncValue, Inventory currentInventory) {
         RealmList<InventoryStocks> inventoryStocksRealmList = new RealmList<>();
+        String quantity = "";
+        AppUtils.showLog(TAG, "current inventory stock size: " + currentInventory.getInventoryStocks().size());
+        for (InventoryStocks stocks : currentInventory.getInventoryStocks()
+        ) {
+
+            if (mSellingPrice.getText().toString().trim().equals(stocks.getSalesPrice())) {
+                AppUtils.showLog(TAG, "selling price matched");
+                AppUtils.showLog(TAG, "a: " + mQuantity.getText().toString().trim());
+                AppUtils.showLog(TAG, "b: " + stocks.getQuantity());
+                quantity = String.valueOf(Integer.valueOf(stocks.getQuantity()) + Integer.valueOf(mQuantity.getText().toString().trim()));
+                inventoryStockId = stocks.getId();
+            } else {
+                inventoryStocksRealmList.add(stocks);
+                AppUtils.showLog(TAG, "selling price not matched");
+                AppUtils.showLog(TAG, "current price: " + mSellingPrice.getText().toString());
+                AppUtils.showLog(TAG, "old price: " + stocks.getSalesPrice());
+                quantity = mQuantity.getText().toString().trim();
+                String randomInventoryStockId = UUID.randomUUID().toString();
+                inventoryStockId = randomInventoryStockId.replace("-", "");
+            }
+        }
+
+
+        InventoryStocks inventoryStocks = new InventoryStocks(inventoryStockId, inventoryId, quantity,
+                selectedItem.getUnitPrice(), mSellingPrice.getText().toString().trim(),
+                selectedItemUnitId, syncValue);
+
         inventoryStocksRealmList.add(inventoryStocks);
+
 
         Inventory inventoryOffline = new Inventory();
         inventoryOffline.setInventory_id(inventoryId);
         inventoryOffline.setInventoryStocks(inventoryStocksRealmList);
         inventoryOffline.setExpiryDate(String.valueOf(System.currentTimeMillis()));
+        inventoryOffline.setSku(mapSKUDTOToModel(selectedItem));
         inventoryOffline.setSkuId(selectedItemId);
         inventoryOffline.setUser_id(userId);
         inventoryOffline.setSynced(syncValue);
@@ -473,6 +518,7 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
         InventoryRepo.getInstance().saveInventory(inventoryOffline, new Repo.Callback() {
             @Override
             public void success(Object o) {
+                hideLoading();
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putBoolean(Constants.DATA_REMAINING_TO_SYNC, true);
                 editor.apply();
@@ -483,10 +529,14 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
 
             @Override
             public void fail() {
+                hideLoading();
                 AppUtils.showLog(TAG, "failed to save inventory");
             }
         });
+
+
     }
+
 
     private void initialize() {
         setUpToolbar(mToolbar);
