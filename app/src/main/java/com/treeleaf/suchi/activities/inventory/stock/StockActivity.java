@@ -292,7 +292,7 @@ public class StockActivity extends BaseActivity implements StockView {
         Toast.makeText(this, "Items synced", Toast.LENGTH_SHORT).show();
 
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putBoolean(Constants.DATA_REMAINING_TO_SYNC, false);
+        editor.putBoolean(Constants.STOCK_DATA_REMAINING_TO_SYNC, false);
         editor.apply();
 
         invalidateOptionsMenu();
@@ -321,7 +321,7 @@ public class StockActivity extends BaseActivity implements StockView {
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        if (preferences.getBoolean(Constants.DATA_REMAINING_TO_SYNC, false))
+        if (preferences.getBoolean(Constants.STOCK_DATA_REMAINING_TO_SYNC, false))
             getMenuInflater().inflate(R.menu.menu_sync, menu);
         return true;
     }
@@ -332,11 +332,11 @@ public class StockActivity extends BaseActivity implements StockView {
         switch (item.getItemId()) {
             case R.id.action_sync:
                 if (NetworkUtils.isNetworkConnected(this)) {
-                    List<Inventory> unsyncedInventories = InventoryRepo.getInstance().getUnsyncedInventories();
+                    List<Inventory> allInventories = InventoryRepo.getInstance().getAllInventoryList();
                     if (token != null) {
-                        if (!unsyncedInventories.isEmpty()) {
+                        if (!allInventories.isEmpty()) {
                             showLoading();
-                            presenter.addUnsyncedInventories(token, unsyncedInventories);
+                            presenter.addUnsyncedInventories(token, allInventories);
                         } else
                             Toast.makeText(this, "No data found to sync", Toast.LENGTH_SHORT).show();
                     } else Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show();

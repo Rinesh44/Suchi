@@ -76,6 +76,7 @@ public class StockPresenterImpl implements StockPresenter {
             inventory.setInventory_id(inventoryPb.getInventoryId());
             inventory.setUser_id(inventoryPb.getUserId());
             inventory.setSynced(inventoryPb.getSync());
+            inventory.setSkuId(inventoryPb.getSku().getSkuId());
             inventory.setExpiryDate(String.valueOf(inventoryPb.getExpiryDate()));
 
             SuchiProto.StockKeepingUnit stockKeepingUnitPb = inventoryPb.getSku();
@@ -87,6 +88,8 @@ public class StockPresenterImpl implements StockPresenter {
             stockKeepingUnit.setDesc(stockKeepingUnitPb.getDescription());
             stockKeepingUnit.setUnitPrice(String.valueOf(stockKeepingUnitPb.getUnitPrice()));
             stockKeepingUnit.setSynced(stockKeepingUnitPb.getSync());
+            stockKeepingUnit.setDefaultUnit(stockKeepingUnitPb.getDefaultUnit().getName());
+
 
             SuchiProto.Brand brandPb = inventoryPb.getSku().getBrand();
             Brands brands = new Brands(brandPb.getBrandId(), brandPb.getName());
@@ -109,8 +112,12 @@ public class StockPresenterImpl implements StockPresenter {
 
             List<SuchiProto.InventoryStock> inventoryStockPbList = inventoryPb.getInventoryStocksList();
             RealmList<InventoryStocks> inventoryStocksRealmList = new RealmList<>();
+
+
             for (SuchiProto.InventoryStock inventoryStockPb : inventoryStockPbList
             ) {
+                AppUtils.showLog(TAG, "unitIdResponse: " + inventoryStockPb.getUnit().getUnitId());
+                AppUtils.showLog(TAG, "quantityResponse: " + inventoryStockPb.getQuantity());
                 InventoryStocks inventoryStocks = new InventoryStocks(inventoryStockPb.getInventoryStockId(), inventoryStockPb.getInventoryId(), String.valueOf(inventoryStockPb.getQuantity()),
                         String.valueOf(inventoryStockPb.getMarkedPrice()), String.valueOf(inventoryStockPb.getSalesPrice()),
                         String.valueOf(inventoryStockPb.getUnit().getUnitId()), inventoryStockPb.getSync());
@@ -146,11 +153,11 @@ public class StockPresenterImpl implements StockPresenter {
         List<SuchiProto.Inventory> inventoryListProto = new ArrayList<>();
         for (Inventory inventory : inventoryList
         ) {
-
-
             List<SuchiProto.InventoryStock> inventoryStockPbList = new ArrayList<>();
             for (InventoryStocks inventoryStocks : inventory.getInventoryStocks()
             ) {
+                AppUtils.showLog(TAG, "unitId: " + inventoryStocks.getUnitId());
+                AppUtils.showLog(TAG, "quantity: " + inventoryStocks.getQuantity());
                 SuchiProto.InventoryStock inventoryStockPb = SuchiProto.InventoryStock.newBuilder()
                         .setMarkedPrice(Double.valueOf(inventoryStocks.getMarkedPrice()))
                         .setSalesPrice(Double.valueOf(inventoryStocks.getSalesPrice()))

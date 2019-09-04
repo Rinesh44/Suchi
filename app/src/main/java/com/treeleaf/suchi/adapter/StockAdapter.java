@@ -54,6 +54,7 @@ public class StockAdapter extends ListAdapter<InventoryDto, StockAdapter.StockHo
         public boolean areContentsTheSame(@NonNull InventoryDto oldItem, @NonNull InventoryDto newItem) {
             return oldItem.isSynced() == newItem.isSynced()
                     && oldItem.getUser_id().equals(newItem.getUser_id())
+                    && oldItem.getInventoryStocks().equals(newItem.getInventory_id())
                     && oldItem.getExpiryDate().equals(newItem.getExpiryDate());
         }
     };

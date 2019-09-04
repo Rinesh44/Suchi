@@ -138,7 +138,7 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
     private String selectedItemId, selectedItemUnitId;
 
     private SharedPreferences sharedPreferences;
-    private String userId, inventoryId, inventoryStockId;
+    private String userId, inventoryId, inventoryStockIdReplaced, inventoryStockId;
     private boolean update = false;
     private ArrayAdapter<String> unitItemsAdapter;
 
@@ -476,34 +476,55 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
 
     private void saveToRealm(boolean syncValue, Inventory currentInventory) {
         RealmList<InventoryStocks> inventoryStocksRealmList = new RealmList<>();
-        String quantity = "";
-        AppUtils.showLog(TAG, "current inventory stock size: " + currentInventory.getInventoryStocks().size());
-        for (InventoryStocks stocks : currentInventory.getInventoryStocks()
-        ) {
 
-            if (mSellingPrice.getText().toString().trim().equals(stocks.getSalesPrice())) {
-                AppUtils.showLog(TAG, "selling price matched");
-                AppUtils.showLog(TAG, "a: " + mQuantity.getText().toString().trim());
-                AppUtils.showLog(TAG, "b: " + stocks.getQuantity());
-                quantity = String.valueOf(Integer.valueOf(stocks.getQuantity()) + Integer.valueOf(mQuantity.getText().toString().trim()));
-                inventoryStockId = stocks.getId();
-            } else {
-                inventoryStocksRealmList.add(stocks);
-                AppUtils.showLog(TAG, "selling price not matched");
-                AppUtils.showLog(TAG, "current price: " + mSellingPrice.getText().toString());
-                AppUtils.showLog(TAG, "old price: " + stocks.getSalesPrice());
-                quantity = mQuantity.getText().toString().trim();
-                String randomInventoryStockId = UUID.randomUUID().toString();
-                inventoryStockId = randomInventoryStockId.replace("-", "");
+        //variables depending upon same sales price
+        String addedQuantity = "";
+        String quantity = "";
+
+        //boolean to check if sales price is same
+        //add quantity if same sales price, keep as it is if not
+        boolean addQuantity = false;
+//        AppUtils.showLog(TAG, "current inventory stock size: " + currentInventory.getInventoryStocks().size());
+        if (currentInventory.getInventory_id() != null) {
+            if (!currentInventory.getInventoryStocks().isEmpty()) {
+                for (InventoryStocks stocks : currentInventory.getInventoryStocks()
+                ) {
+                    if (mSellingPrice.getText().toString().trim().equals(stocks.getSalesPrice())) {
+                        AppUtils.showLog(TAG, "selling price matched");
+                        AppUtils.showLog(TAG, "a: " + mQuantity.getText().toString().trim());
+                        AppUtils.showLog(TAG, "b: " + stocks.getQuantity());
+                        addQuantity = true;
+                        addedQuantity = String.valueOf(Integer.valueOf(stocks.getQuantity()) + Integer.valueOf(mQuantity.getText().toString().trim()));
+                        inventoryStockIdReplaced = stocks.getId();
+
+                    } else {
+                        inventoryStocksRealmList.add(stocks);
+                        AppUtils.showLog(TAG, "selling price not matched");
+                        AppUtils.showLog(TAG, "current price: " + mSellingPrice.getText().toString());
+                        AppUtils.showLog(TAG, "old price: " + stocks.getSalesPrice());
+
+                    }
+                }
             }
         }
+        //use same inventorystockId and add quantity if same sales price
+        if (addQuantity) {
+            InventoryStocks inventoryStocks = new InventoryStocks(inventoryStockIdReplaced, inventoryId, addedQuantity,
+                    selectedItem.getUnitPrice(), mSellingPrice.getText().toString().trim(),
+                    selectedItemUnitId, syncValue);
+            inventoryStocksRealmList.add(inventoryStocks);
 
+        } else {
+            //create new inventory stock if sales price not matched with new stock id
+            String randomInventoryStockId = UUID.randomUUID().toString();
+            inventoryStockId = randomInventoryStockId.replace("-", "");
 
-        InventoryStocks inventoryStocks = new InventoryStocks(inventoryStockId, inventoryId, quantity,
-                selectedItem.getUnitPrice(), mSellingPrice.getText().toString().trim(),
-                selectedItemUnitId, syncValue);
-
-        inventoryStocksRealmList.add(inventoryStocks);
+            quantity = mQuantity.getText().toString().trim();
+            InventoryStocks inventoryStocks = new InventoryStocks(inventoryStockId, inventoryId, quantity,
+                    selectedItem.getUnitPrice(), mSellingPrice.getText().toString().trim(),
+                    selectedItemUnitId, syncValue);
+            inventoryStocksRealmList.add(inventoryStocks);
+        }
 
 
         Inventory inventoryOffline = new Inventory();
@@ -520,7 +541,7 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
             public void success(Object o) {
                 hideLoading();
                 SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putBoolean(Constants.DATA_REMAINING_TO_SYNC, true);
+                editor.putBoolean(Constants.STOCK_DATA_REMAINING_TO_SYNC, true);
                 editor.apply();
 
                 Toast.makeText(SearchStock.this, "Item added to inventory", Toast.LENGTH_SHORT).show();

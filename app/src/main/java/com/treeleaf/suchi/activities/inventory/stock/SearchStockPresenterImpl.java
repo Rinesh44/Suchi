@@ -71,6 +71,7 @@ public class SearchStockPresenterImpl implements SearchStockPresenter {
             inventory.setInventory_id(inventoryPb.getInventoryId());
             inventory.setUser_id(inventoryPb.getUserId());
             inventory.setSynced(inventoryPb.getSync());
+            inventory.setSkuId(inventoryPb.getSku().getSkuId());
             inventory.setExpiryDate(String.valueOf(inventoryPb.getExpiryDate()));
 
             SuchiProto.StockKeepingUnit stockKeepingUnitPb = inventoryPb.getSku();

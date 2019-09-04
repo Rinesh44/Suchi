@@ -21,7 +21,6 @@ import com.treeleaf.suchi.utils.AppUtils;
 
 import java.util.List;
 
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -51,6 +50,8 @@ public class StockDetails extends BaseActivity {
     HorizontalScrollView mStocksHorizontalView;
     @BindView(R.id.ll_stock_holder)
     LinearLayout mStockHolder;
+    @BindView(R.id.sku_id)
+    TextView mSkuId;
 
     private InventoryDto inventory;
 
@@ -92,11 +93,13 @@ public class StockDetails extends BaseActivity {
             mStockHolder.addView(cardView);
 
         }
+
         mSkuName.setText(inventory.getSku().getName());
         mBrand.setText(inventory.getSku().getBrand().getName());
         mSubBrand.setText(inventory.getSku().getSubBrands().getName());
         mCategory.setText(inventory.getSku().getCategories().getName());
         mDescription.setText(inventory.getSku().getDesc());
+        mSkuId.setText(inventory.getSkuId());
 
         String expiryDate = getDateSimple(Long.valueOf(inventory.getExpiryDate()));
         mExpiryDate.setText(expiryDate);

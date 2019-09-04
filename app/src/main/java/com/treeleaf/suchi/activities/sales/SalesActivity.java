@@ -216,7 +216,7 @@ public class SalesActivity extends BaseActivity {
         });
     }
 
-    @Override
+/*    @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         AppUtils.showLog(TAG, "onActivityResult()");
@@ -240,5 +240,5 @@ public class SalesActivity extends BaseActivity {
         } else {
             Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show();
         }
-    }
+    }*/
 }

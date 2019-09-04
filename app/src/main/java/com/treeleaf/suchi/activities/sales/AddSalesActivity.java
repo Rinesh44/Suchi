@@ -180,6 +180,7 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setBackgroundDrawable(getResources().getDrawable(R.drawable.bg_for_keyboard_glitch));
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         setContentView(R.layout.activity_add_sales);
 
@@ -528,11 +529,13 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
 
     private void saveSalesData() {
 
-        Intent data = new Intent();
+     /*   Intent data = new Intent();
         data.putParcelableArrayListExtra(EXTRA_TITLE, (ArrayList<? extends Parcelable>) cartItemList);
-        setResult(RESULT_OK, data);
-        finish();
+        setResult(RESULT_OK, data);*/
 
+        Intent sendData = new Intent(AddSalesActivity.this, SalesBill.class);
+        sendData.putParcelableArrayListExtra(EXTRA_TITLE, (ArrayList<? extends Parcelable>) cartItemList);
+        startActivity(sendData);
 
 //        List<Sales> unSyncedSalesList = mapCartItemDataToSalesModel();
 
@@ -761,7 +764,7 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
     }
 
     private void setUpSearch() {
-        inventoryList = InventoryRepo.getInstance().getSyncedInventories();
+        inventoryList = InventoryRepo.getInstance().getAllInventoryList();
         AppUtils.showLog(TAG, "inventoryDtoListSize: " + inventoryList.size());
 
         List<InventoryDto> inventoryDtoList = new ArrayList<>();

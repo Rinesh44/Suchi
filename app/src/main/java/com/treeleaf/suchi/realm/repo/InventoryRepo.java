@@ -68,7 +68,7 @@ public class InventoryRepo extends Repo {
     public LiveData<RealmResults<Inventory>> getAllInventories() {
         Realm realm = RealmDatabase.getInstance().getRealm();
         try {
-            return new RealmLiveData<>(realm.where(Inventory.class).findAllAsync());
+            return new RealmLiveData<>(realm.where(Inventory.class).findAll());
 
         } catch (Throwable throwable) {
             throwable.printStackTrace();
