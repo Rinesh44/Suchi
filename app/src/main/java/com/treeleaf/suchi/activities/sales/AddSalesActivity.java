@@ -261,89 +261,93 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 hideKeyboard();
 //                mSell.setVisibility(View.VISIBLE);
-                mRecyclerHolder.setVisibility(View.GONE);
                 selectedItem = (InventoryDto) adapterView.getItemAtPosition(i);
-                mSearch.setText(selectedItem.getSku().getName());
-                mQuantity.setText("1");
+                setUpViewForSkuDetails(selectedItem);
 
-
-                mSelectedSKUName.setText(selectedItem.getSku().getName());
-
-                StringBuilder amountBuilder = new StringBuilder();
-                amountBuilder.append("Rs. ");
-                defaultInventoryStock = getHighestQuantityInventoryStock(selectedItem.getInventoryStocks());
-//                defaultInventoryStock = selectedItem.getInventoryStocks().get(0);
-                amountBuilder.append(defaultInventoryStock.getSalesPrice());
-                quantityLimit = Integer.valueOf(defaultInventoryStock.getQuantity());
-
-                mTotalAmount.setText(amountBuilder);
-
-                String imageUrl = selectedItem.getSku().getPhoto_url();
-                AppUtils.showLog(TAG, "ImageUrl: " + imageUrl);
-                if (!imageUrl.isEmpty()) {
-                    RequestOptions options = new RequestOptions()
-                            .fitCenter()
-                            .placeholder(R.drawable.ic_stock)
-                            .error(R.drawable.ic_stock);
-
-                    Glide.with(AddSalesActivity.this).load(imageUrl).apply(options).into(mSkuImage);
-                }
-
-                unitItems.clear();
-                setUpUnitSpinner(selectedItem.getSku().getUnits());
-
-                AppUtils.showLog(TAG, "defaultUnit: " + selectedItem.getSku().getDefaultUnit());
-
-                //set default unit as default selection
-                int defaultUnitPosition = unitItemsAdapter.getPosition(selectedItem.getSku().getDefaultUnit());
-                mUnitSpinner.setSelection(defaultUnitPosition);
-
-                mSkuDetails.setVisibility(View.VISIBLE);
-
-                mQuantity.addTextChangedListener(new TextWatcher() {
-                    @Override
-                    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-                    }
-
-                    @Override
-                    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                        if (charSequence.length() > 0) {
-
-                            if (sellingPrice != null) {
-                                String formatedSellingPrice = sellingPrice.replace("Rs. ", "");
-                                double totalAmount = Double.valueOf(formatedSellingPrice) *
-                                        Double.valueOf(charSequence.toString());
-
-                                StringBuilder mTotalAmountBuilder = new StringBuilder();
-                                mTotalAmountBuilder.append("Rs. ");
-                                mTotalAmountBuilder.append(totalAmount);
-
-                                mTotalAmount.setText(mTotalAmountBuilder);
-                            } else {
-
-                                double totalAmount = Double.valueOf(defaultInventoryStock.getSalesPrice()) *
-                                        Double.valueOf(charSequence.toString());
-
-                                StringBuilder mTotalAmountBuilder = new StringBuilder();
-                                mTotalAmountBuilder.append("Rs. ");
-                                mTotalAmountBuilder.append(totalAmount);
-
-                                mTotalAmount.setText(mTotalAmountBuilder);
-                            }
-
-                        }
-                    }
-
-                    @Override
-                    public void afterTextChanged(Editable editable) {
-
-                    }
-                });
             }
         });
 
+    }
 
+    public void setUpViewForSkuDetails(InventoryDto selectedItem) {
+        mRecyclerHolder.setVisibility(View.GONE);
+
+        mSearch.setText(selectedItem.getSku().getName());
+        mQuantity.setText("1");
+
+        mSelectedSKUName.setText(selectedItem.getSku().getName());
+
+        StringBuilder amountBuilder = new StringBuilder();
+        amountBuilder.append("Rs. ");
+        defaultInventoryStock = getHighestQuantityInventoryStock(selectedItem.getInventoryStocks());
+//                defaultInventoryStock = selectedItem.getInventoryStocks().get(0);
+        amountBuilder.append(defaultInventoryStock.getSalesPrice());
+        quantityLimit = Integer.valueOf(defaultInventoryStock.getQuantity());
+
+        mTotalAmount.setText(amountBuilder);
+
+        String imageUrl = selectedItem.getSku().getPhoto_url();
+        AppUtils.showLog(TAG, "ImageUrl: " + imageUrl);
+        if (!imageUrl.isEmpty()) {
+            RequestOptions options = new RequestOptions()
+                    .fitCenter()
+                    .placeholder(R.drawable.ic_stock)
+                    .error(R.drawable.ic_stock);
+
+            Glide.with(AddSalesActivity.this).load(imageUrl).apply(options).into(mSkuImage);
+        }
+
+        unitItems.clear();
+        setUpUnitSpinner(selectedItem.getSku().getUnits());
+
+        AppUtils.showLog(TAG, "defaultUnit: " + selectedItem.getSku().getDefaultUnit());
+
+        //set default unit as default selection
+        int defaultUnitPosition = unitItemsAdapter.getPosition(selectedItem.getSku().getDefaultUnit());
+        mUnitSpinner.setSelection(defaultUnitPosition);
+
+        mSkuDetails.setVisibility(View.VISIBLE);
+
+        mQuantity.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (charSequence.length() > 0) {
+
+                    if (sellingPrice != null) {
+                        String formatedSellingPrice = sellingPrice.replace("Rs. ", "");
+                        double totalAmount = Double.valueOf(formatedSellingPrice) *
+                                Double.valueOf(charSequence.toString());
+
+                        StringBuilder mTotalAmountBuilder = new StringBuilder();
+                        mTotalAmountBuilder.append("Rs. ");
+                        mTotalAmountBuilder.append(totalAmount);
+
+                        mTotalAmount.setText(mTotalAmountBuilder);
+                    } else {
+
+                        double totalAmount = Double.valueOf(defaultInventoryStock.getSalesPrice()) *
+                                Double.valueOf(charSequence.toString());
+
+                        StringBuilder mTotalAmountBuilder = new StringBuilder();
+                        mTotalAmountBuilder.append("Rs. ");
+                        mTotalAmountBuilder.append(totalAmount);
+
+                        mTotalAmount.setText(mTotalAmountBuilder);
+                    }
+
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
     }
 
     private void setUpBarcodeScanner() {
@@ -352,7 +356,7 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
             @Override
             public void barcodeResult(BarcodeResult result) {
                 beepSound();
-                Toast.makeText(AddSalesActivity.this, result.getText(), Toast.LENGTH_SHORT).show();
+                checkMatchingSkuForResult(result.getText());
             }
 
             @Override
@@ -360,6 +364,18 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
 
             }
         });
+    }
+
+    private void checkMatchingSkuForResult(String text) {
+        List<Inventory> inventoryModelList = InventoryRepo.getInstance().getAllInventoryList();
+        List<InventoryDto> inventoryDtoList = mapInventoriesToInventoryDto(inventoryModelList);
+
+        for (InventoryDto inventoryDto : inventoryDtoList
+        ) {
+            if (inventoryDto.getSku().getCode().equalsIgnoreCase(text)) {
+                setUpViewForSkuDetails(inventoryDto);
+            }
+        }
     }
 
 

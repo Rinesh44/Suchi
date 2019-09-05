@@ -45,12 +45,13 @@
                         android:layout_marginStart="10dp"
                         android:layout_weight="6"
                         android:completionThreshold="1"
+                        android:drawableStart="@drawable/ic_search"
                         android:drawablePadding="10dp"
                         android:fontFamily="@font/proxima_regular"
                         android:hint="Search SKU" />
 
                     <ImageView
-                        android:id="@+id/iv_go"
+                        android:id="@+id/iv_camera"
                         android:layout_width="0dp"
                         android:layout_height="25dp"
                         android:layout_gravity="center"
@@ -58,18 +59,37 @@
                         android:clickable="true"
                         android:focusable="true"
                         android:foreground="?attr/selectableItemBackground"
-                        android:src="@drawable/ic_search" />
+                        android:src="@drawable/ic_camera_green" />
 
                 </LinearLayout>
 
             </com.google.android.material.card.MaterialCardView>
+
+            <LinearLayout
+                android:id="@+id/ll_camera_holder"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_below="@id/mcv_search_holder"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:orientation="vertical">
+
+                <com.journeyapps.barcodescanner.DecoratedBarcodeView
+                    android:id="@+id/barcode_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:zxing_preview_scaling_strategy="centerCrop"
+                    app:zxing_use_texture_view="false" />
+
+
+            </LinearLayout>
 
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/mcv_sku_details"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/mcv_search_holder"
+                android:layout_below="@id/ll_camera_holder"
                 android:layout_marginTop="10dp"
                 android:visibility="gone"
                 app:cardCornerRadius="6dp"

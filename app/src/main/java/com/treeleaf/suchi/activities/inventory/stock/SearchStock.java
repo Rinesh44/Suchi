@@ -6,8 +6,12 @@ import androidx.lifecycle.LiveData;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,6 +24,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,12 +36,16 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.zxing.ResultPoint;
+import com.journeyapps.barcodescanner.BarcodeCallback;
+import com.journeyapps.barcodescanner.BarcodeResult;
+import com.journeyapps.barcodescanner.DecoratedBarcodeView;
 import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.activities.base.BaseActivity;
+import com.treeleaf.suchi.activities.sales.AddSalesActivity;
 import com.treeleaf.suchi.adapter.AutocompleteSearchAdapter;
 import com.treeleaf.suchi.api.Endpoints;
 import com.treeleaf.suchi.dto.StockKeepingUnitDto;
-import com.treeleaf.suchi.entities.SuchiProto;
 import com.treeleaf.suchi.realm.models.Inventory;
 import com.treeleaf.suchi.realm.models.InventoryStocks;
 import com.treeleaf.suchi.realm.models.StockKeepingUnit;
@@ -47,7 +56,6 @@ import com.treeleaf.suchi.realm.repo.StockKeepingUnitRepo;
 import com.treeleaf.suchi.utils.AppUtils;
 import com.treeleaf.suchi.utils.Constants;
 import com.treeleaf.suchi.utils.DatePicker;
-import com.treeleaf.suchi.utils.NetworkUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,7 +66,6 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.realm.RealmList;
-import io.realm.RealmResults;
 
 import static com.treeleaf.suchi.SuchiApp.getMyApplication;
 
@@ -102,8 +109,8 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
     TextView mMarkedPrice;
     @BindView(R.id.actv_sku)
     AutoCompleteTextView mSearchSku;
-    @BindView(R.id.iv_go)
-    public ImageView mGo;
+    @BindView(R.id.iv_camera)
+    public ImageView mToggleCamera;
     @BindView(R.id.mcv_sku_details)
     MaterialCardView mSkuDetails;
     @BindView(R.id.add_inventory_holder)
@@ -120,6 +127,13 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
     ImageButton mSellingPriceDecrement;
     @BindView(R.id.tv_qty_unit)
     TextView mQtyUnit;
+    @BindView(R.id.ll_camera_holder)
+    LinearLayout mCameraHolder;
+    @BindView(R.id.barcode_view)
+    DecoratedBarcodeView mBarcodeView;
+
+    private boolean toggleCamera = false;
+    private boolean isScanDone;
 
 
     private DatePicker datePicker;
@@ -146,8 +160,8 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         getWindow().setBackgroundDrawable(getResources().getDrawable(R.drawable.bg_for_keyboard_glitch));
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         setContentView(R.layout.activity_search_stock);
 
         ButterKnife.bind(this);
@@ -157,13 +171,14 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
         mAdd.setOnClickListener(this);
         mIncrement.setOnClickListener(this);
         mDecrement.setOnClickListener(this);
-        mGo.setOnClickListener(this);
+        mToggleCamera.setOnClickListener(this);
         mExpiryDate.setOnClickListener(this);
         mAddToInventory.setOnClickListener(this);
         mSellingPriceDecrement.setOnClickListener(this);
         mSellingPriceIncrement.setOnClickListener(this);
 
         setUpSearch();
+        setUpBarcodeScanner();
 
         presenter = new SearchStockPresenterImpl(endpoints, this);
 
@@ -174,51 +189,106 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
                 hideKeyboard();
 
                 selectedItem = (StockKeepingUnitDto) adapterView.getItemAtPosition(i);
-                mSearchSku.setText(selectedItem.getName());
 
-                setUpUnitSpinner(selectedItem.getUnits());
-                setUpdefaultUnit(selectedItem.getDefaultUnit());
-
-                int defaultUnitPosition = unitItemsAdapter.getPosition(selectedItem.getDefaultUnit());
-                AppUtils.showLog(TAG, "defaultUnit: " + selectedItem.getDefaultUnit());
-                AppUtils.showLog(TAG, "defaultUnitPos: " + defaultUnitPosition);
-                mUnits.setSelection(defaultUnitPosition);
-
-                selectedItemId = selectedItem.getId();
-                unitPrice = selectedItem.getUnitPrice();
-                mQuantity.setText("1");
-                mSkuName.setText(selectedItem.getName());
-                mBrand.setText(selectedItem.getBrand().getName());
-                mSubBrand.setText(selectedItem.getSubBrands().getName());
-                mSellingPrice.setText(selectedItem.getUnitPrice());
-                setUpUnitPrice(selectedItem.getUnitPrice());
-                mCategory.setText(selectedItem.getCategories().getName());
-                setUpMarkedPrice(selectedItem.getUnitPrice(), selectedItem.getDefaultUnit());
-                setUpSellingPriceUnit(selectedItem.getDefaultUnit());
-
-
-//        mDescription.setText(selectedItem.getDesc());
-
-                String imageUrl = selectedItem.getPhoto_url();
-                AppUtils.showLog(TAG, "ImageUrl: " + imageUrl);
-                if (!imageUrl.isEmpty()) {
-                    RequestOptions options = new RequestOptions()
-                            .fitCenter()
-                            .placeholder(R.drawable.ic_stock)
-                            .error(R.drawable.ic_stock);
-
-                    Glide.with(SearchStock.this).load(imageUrl).apply(options).into(mSkuImage);
-                }
-
-                mSkuDetails.setVisibility(View.VISIBLE);
-                mAddToInventory.setVisibility(View.VISIBLE);
-                mAddInventoryHolder.setVisibility(View.GONE);
+                setUpViewForSkuDetails(selectedItem);
 
             }
         });
 
         datePicker = new DatePicker(this, R.id.et_expiry_date);
 
+    }
+
+    private void setUpViewForSkuDetails(StockKeepingUnitDto selectedItem) {
+
+        mSearchSku.setText(selectedItem.getName());
+
+        setUpUnitSpinner(selectedItem.getUnits());
+        setUpdefaultUnit(selectedItem.getDefaultUnit());
+
+        int defaultUnitPosition = unitItemsAdapter.getPosition(selectedItem.getDefaultUnit());
+        AppUtils.showLog(TAG, "defaultUnit: " + selectedItem.getDefaultUnit());
+        AppUtils.showLog(TAG, "defaultUnitPos: " + defaultUnitPosition);
+        mUnits.setSelection(defaultUnitPosition);
+
+        selectedItemId = selectedItem.getId();
+        unitPrice = selectedItem.getUnitPrice();
+        mQuantity.setText("1");
+        mSkuName.setText(selectedItem.getName());
+        mBrand.setText(selectedItem.getBrand().getName());
+        mSubBrand.setText(selectedItem.getSubBrands().getName());
+        mSellingPrice.setText(selectedItem.getUnitPrice());
+        setUpUnitPrice(selectedItem.getUnitPrice());
+        mCategory.setText(selectedItem.getCategories().getName());
+        setUpMarkedPrice(selectedItem.getUnitPrice(), selectedItem.getDefaultUnit());
+        setUpSellingPriceUnit(selectedItem.getDefaultUnit());
+
+
+//        mDescription.setText(selectedItem.getDesc());
+
+        String imageUrl = selectedItem.getPhoto_url();
+        AppUtils.showLog(TAG, "ImageUrl: " + imageUrl);
+        if (!imageUrl.isEmpty()) {
+            RequestOptions options = new RequestOptions()
+                    .fitCenter()
+                    .placeholder(R.drawable.ic_stock)
+                    .error(R.drawable.ic_stock);
+
+            Glide.with(SearchStock.this).load(imageUrl).apply(options).into(mSkuImage);
+        }
+
+        mSkuDetails.setVisibility(View.VISIBLE);
+        mAddToInventory.setVisibility(View.VISIBLE);
+        mAddInventoryHolder.setVisibility(View.GONE);
+    }
+
+    private void setUpBarcodeScanner() {
+        mBarcodeView.setStatusText("");
+        mBarcodeView.decodeContinuous(new BarcodeCallback() {
+            @Override
+            public void barcodeResult(BarcodeResult result) {
+                beepSound();
+                getSkuMatchingResult(result.getText());
+            }
+
+            @Override
+            public void possibleResultPoints(List<ResultPoint> resultPoints) {
+
+            }
+        });
+    }
+
+
+    //get stockKeeping unit from database where scanned barcode matches db data
+    private void getSkuMatchingResult(String text) {
+        List<StockKeepingUnit> skuModelList = StockKeepingUnitRepo.getInstance().getAllSkuList();
+        List<StockKeepingUnitDto> skuDtoList = mapSKUModelToDto(skuModelList);
+
+        for (StockKeepingUnitDto skuDto : skuDtoList
+        ) {
+            if (skuDto.getCode().equalsIgnoreCase(text)) {
+                setUpViewForSkuDetails(skuDto);
+            }
+        }
+
+    }
+
+    protected void resumeScanner() {
+        isScanDone = false;
+        if (!mBarcodeView.isActivated())
+            mBarcodeView.resume();
+        Log.d("peeyush-pause", "paused: false");
+    }
+
+
+    protected void beepSound() {
+        try {
+            Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+            Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
+            r.play();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void setUpQuantityUnit(String item) {
@@ -580,6 +650,22 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
         return true;
     }
 
+    protected void pauseScanner() {
+        mBarcodeView.pause();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        pauseScanner();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        resumeScanner();
+    }
+
 
     @Override
     public void getStockItemsSuccess(List<Inventory> inventoryList) {
@@ -636,10 +722,21 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.iv_go:
-                if (!mSearchSku.isPopupShowing()) {
+            case R.id.iv_camera:
+                /*if (!mSearchSku.isPopupShowing()) {
                     Toast.makeText(SearchStock.this, "Item not found", Toast.LENGTH_SHORT).show();
+                }*/
+                if (toggleCamera) {
+                    mToggleCamera.setImageDrawable(getResources().getDrawable(R.drawable.ic_camera_green));
+                    mCameraHolder.setVisibility(View.VISIBLE);
+                    toggleCamera = false;
+                } else {
+                    mToggleCamera.setImageDrawable(getResources().getDrawable(R.drawable.ic_camera_disabled));
+                    mCameraHolder.setVisibility(View.GONE);
+                    toggleCamera = true;
+
                 }
+
                 break;
 
             case R.id.btn_add:

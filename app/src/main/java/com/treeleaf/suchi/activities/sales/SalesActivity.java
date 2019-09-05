@@ -84,7 +84,7 @@ public class SalesActivity extends BaseActivity {
         salesListViewModel.getSaleItems().observe(this, new Observer<RealmResults<SalesStock>>() {
             @Override
             public void onChanged(RealmResults<SalesStock> salesStocks) {
-                Toast.makeText(SalesActivity.this, "on changed", Toast.LENGTH_SHORT).show();
+
                 AppUtils.showLog(TAG, "sales list size: " + salesStocks.size());
                 if (salesStocks.size() == 0) {
                     mNoSales.setVisibility(View.VISIBLE);

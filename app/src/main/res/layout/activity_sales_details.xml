@@ -54,7 +54,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tv_item_name"
-                    android:text="ID: "
+                    android:fontFamily="@font/proxima_regular"
+                    android:text="Id: "
+                    android:textAllCaps="true"
                     android:textColor="@color/black" />
 
                 <TextView
@@ -64,9 +66,8 @@
                     android:layout_below="@+id/tv_item_name"
                     android:layout_toEndOf="@id/tv_item_id_title"
                     android:fontFamily="@font/proxima_regular"
-                    android:gravity="center_vertical"
                     android:maxLength="5"
-                    android:text="sdf3298sdg"
+                    android:text="sdf329"
                     android:textAllCaps="true"
                     android:textColor="@color/black" />
 
