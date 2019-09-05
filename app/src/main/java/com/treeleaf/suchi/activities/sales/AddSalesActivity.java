@@ -20,6 +20,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.Rect;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
@@ -43,6 +44,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -51,6 +53,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.zxing.ResultPoint;
 import com.journeyapps.barcodescanner.BarcodeCallback;
@@ -90,6 +93,7 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
 import io.fotoapparat.Fotoapparat;
 import io.fotoapparat.configuration.CameraConfiguration;
@@ -155,6 +159,8 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
     RelativeLayout mCartHolder;
     @BindView(R.id.barcode_view)
     DecoratedBarcodeView mBarcodeView;
+    @BindView(R.id.bottom_sheet)
+    LinearLayout mBottomSheet;
 
 
     private Fotoapparat fotoapparat;
@@ -175,6 +181,7 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
     private CartAdapter cartAdapter;
     private InventoryStocksDto defaultInventoryStock;
     private boolean isScanDone;
+    private BottomSheetBehavior sheetBehavior;
 
 
     @Override
@@ -206,7 +213,7 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
         LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver,
                 new IntentFilter("selected_stock_qty"));
 
-        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+ /*       new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
             @Override
             public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
                 return false;
@@ -220,7 +227,7 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
                 AppUtils.showLog(TAG, "cartlistsize: " + cartItemList.size());
 
             }
-        }).attachToRecyclerView(mCartItems);
+        }).attachToRecyclerView(mCartItems);*/
 
 
         mSearch.setOnTouchListener(new View.OnTouchListener() {
@@ -378,6 +385,21 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
         }
     }
 
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        if (cartAdapter != null) {
+            cartAdapter.saveStates(outState);
+        }
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        if (cartAdapter != null) {
+            cartAdapter.restoreStates(savedInstanceState);
+        }
+    }
 
     private InventoryStocksDto getHighestQuantityInventoryStock(List<InventoryStocksDto> inventoryStocks) {
         int maxValue = 0;
@@ -464,7 +486,22 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
         presenter = new AddSalesPresenterImpl(endpoints, this);
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+
+        sheetBehavior = BottomSheetBehavior.from(mBottomSheet);
     }
+
+
+    /**
+     * manually opening / closing bottom sheet on button click
+     */
+    public void toggleBottomSheet() {
+        if (sheetBehavior.getState() != BottomSheetBehavior.STATE_EXPANDED) {
+            sheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+        } else {
+            sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+        }
+    }
+
 
     public BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
         @Override
@@ -611,8 +648,111 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
         mCartItems.setItemAnimator(new DefaultItemAnimator());
         mCartItems.setAdapter(cartAdapter);
 
+        cartAdapter.setOnEditClickListener(new CartAdapter.onEditClickListener() {
+            @Override
+            public void onEditClicked(int position) {
+                toggleBottomSheet();
+
+                SalesStock salesStock = cartItemList.get(position);
+                fillBottomSheetFields(salesStock);
+            }
+        });
+
+        cartAdapter.setOnDeleteClickListener(new CartAdapter.onDeleteClickListener() {
+            @Override
+            public void onDeleteClicked(int position) {
+                cartAdapter.deleteItem(position);
+                if (cartAdapter.getItemCount() == 0) mCartHolder.setVisibility(View.GONE);
+                AppUtils.showLog(TAG, "cartlistsize: " + cartItemList.size());
+            }
+        });
+
         prepareCartItems();
     }
+
+    private void fillBottomSheetFields(SalesStock salesStock) {
+        EditText mQty = mBottomSheet.findViewById(R.id.et_qty);
+        TextView mAmount = mBottomSheet.findViewById(R.id.tv_amount);
+        ImageButton mLeft = mBottomSheet.findViewById(R.id.ib_left);
+        ImageButton mRight = mBottomSheet.findViewById(R.id.ib_right);
+
+        mQty.setText(salesStock.getQuantity());
+        setUpAmount(mAmount, Double.valueOf(salesStock.getAmount()));
+
+        mQty.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                setUpAmount(mAmount, Double.valueOf(mQty.getText().toString()));
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+        mLeft.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!mQty.getText().toString().isEmpty()) {
+                    int value1 = Integer.valueOf(mQty.getText().toString());
+                    if (value1 > 1) {
+                        value1--;
+                        mQty.setText(String.valueOf(value1));
+                        double amount = value1 * Double.valueOf(salesStock.getUnitPrice());
+                        setUpAmount(mAmount, amount);
+                    }
+                }
+            }
+
+
+        });
+
+        mRight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!mQty.getText().toString().isEmpty()) {
+                    int value = Integer.valueOf(mQty.getText().toString());
+                    value++;
+                    mQty.setText(String.valueOf(value));
+                    double amount = value * Double.valueOf(salesStock.getUnitPrice());
+                    setUpAmount(mAmount, amount);
+                }
+            }
+        });
+
+
+    }
+
+    private void setUpAmount(TextView mAmount, double amount) {
+        mAmount = mBottomSheet.findViewById(R.id.tv_amount);
+        StringBuilder amountBuilder = new StringBuilder();
+        amountBuilder.append("Rs. ");
+        amountBuilder.append(amount);
+        mAmount.setText(amountBuilder);
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent event) {
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            if (sheetBehavior.getState() == BottomSheetBehavior.STATE_EXPANDED) {
+
+                Rect outRect = new Rect();
+                mBottomSheet.getGlobalVisibleRect(outRect);
+
+                if (!outRect.contains((int) event.getRawX(), (int) event.getRawY()))
+                    sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+            }
+        }
+
+        return super.dispatchTouchEvent(event);
+    }
+
 
     private void prepareCartItems() {
         if (mTotalAmount.getText().toString().contains("Rs. ")) {

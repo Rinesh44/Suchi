@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bottom_sheet"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/top_round_corners_light_green"
+    android:orientation="vertical"
+    android:padding="15dp"
+    app:behavior_hideable="true"
+    app:behavior_peekHeight="0dp"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_qty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/ib_right"
+            android:layout_marginStart="20dp"
+            android:layout_alignParentStart="true"
+            android:fontFamily="@font/proxima_regular"
+            android:text="Qty"
+            android:textColor="@color/black" />
+
+
+        <ImageButton
+            android:id="@+id/ib_left"
+            android:layout_width="50dp"
+            android:layout_below="@+id/tv_qty"
+            android:layout_height="50dp"
+            android:background="@color/transparent"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            android:src="@drawable/ic_left" />
+
+        <EditText
+            android:id="@+id/et_qty"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_toEndOf="@+id/ib_left"
+            android:layout_below="@+id/tv_qty"
+            android:fontFamily="@font/proxima_regular"
+            android:gravity="center"
+            android:inputType="number"
+            android:textSize="18sp" />
+
+        <ImageButton
+            android:id="@+id/ib_right"
+            android:layout_width="55dp"
+            android:layout_height="57dp"
+            android:layout_below="@+id/tv_qty"
+            android:layout_marginTop="-7dp"
+            android:layout_toEndOf="@id/et_qty"
+            android:background="@color/transparent"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            android:src="@drawable/ic_right" />
+
+
+        <TextView
+            android:id="@+id/tv_amt_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_toEndOf="@+id/ib_right"
+            android:fontFamily="@font/proxima_regular"
+            android:gravity="center"
+            android:text="Amount"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/tv_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_below="@+id/tv_amt_title"
+            android:layout_alignParentEnd="true"
+            android:layout_toEndOf="@id/ib_right"
+            android:fontFamily="@font/proxima_regular"
+            android:gravity="center"
+            android:text="Rs.160"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btn_done"
+            android:layout_width="250dp"
+            android:layout_height="60dp"
+            android:layout_below="@+id/et_qty"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="10dp"
+            android:background="#000"
+            android:fontFamily="@font/proxima_regular"
+            android:foreground="?attr/selectableItemBackground"
+            android:text="DONE"
+            android:textColor="#fff"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+</LinearLayout>

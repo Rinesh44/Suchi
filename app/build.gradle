@@ -122,5 +122,8 @@ dependencies {
     //barcode scanner
     implementation 'com.journeyapps:zxing-android-embedded:3.6.0'
 
+    //swipe reveal layout for reclerview
+    implementation 'com.chauthai.swipereveallayout:swipe-reveal-layout:1.4.1'
+
 
 }

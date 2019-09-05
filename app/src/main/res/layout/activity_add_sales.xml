@@ -1,337 +1,345 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/gray"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <include layout="@layout/toolbar_sales" />
-
-    <ScrollView
-        android:id="@+id/scroll_view"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clipToPadding="false"
-        android:fillViewport="true">
+        android:background="@color/gray"
+        android:orientation="vertical">
 
+        <include layout="@layout/toolbar_sales" />
 
-        <LinearLayout
+        <ScrollView
+            android:id="@+id/scroll_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:fillViewport="true">
 
-            <RelativeLayout
-                android:id="@+id/rl_camera_holder"
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <!--<io.fotoapparat.view.CameraView
-                    android:id="@+id/camera_view"
+                <RelativeLayout
+                    android:id="@+id/rl_camera_holder"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />-->
+                    android:layout_height="250dp"
+                    android:orientation="vertical">
 
-                <com.journeyapps.barcodescanner.DecoratedBarcodeView
-                    android:id="@+id/barcode_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    app:zxing_preview_scaling_strategy="centerCrop"
-                    app:zxing_use_texture_view="false" />
+                    <!--<io.fotoapparat.view.CameraView
+                        android:id="@+id/camera_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />-->
 
-                <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/fab_camera_switch"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_margin="10dp"
-                    android:src="@drawable/ic_camera_switch"
-                    android:visibility="gone"
-                    app:fabSize="mini" />
-
-
-            </RelativeLayout>
-
-
-            <RelativeLayout
-                android:id="@+id/rl_sku_details"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone">
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="175dp"
-                    android:orientation="horizontal"
-                    android:weightSum="3">
-
-
-                    <RelativeLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center_vertical">
-
-                        <TextView
-                            android:id="@+id/tv_sku_name"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/iv_sku_image"
-                            android:layout_centerHorizontal="true"
-                            android:layout_marginStart="15dp"
-                            android:layout_marginTop="5dp"
-                            android:fontFamily="@font/proxima_regular"
-                            android:text="Canned beer"
-                            android:textAllCaps="true"
-                            android:textColor="@color/black"
-                            android:textSize="14sp"
-                            android:textStyle="bold" />
-
-
-                        <de.hdodenhof.circleimageview.CircleImageView
-                            android:id="@+id/iv_sku_image"
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
-                            android:layout_centerHorizontal="true"
-                            android:layout_marginStart="15dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginBottom="10dp"
-                            android:src="@drawable/ic_stock" />
-
-                        <View
-                            android:layout_width="1dp"
-                            android:layout_height="match_parent"
-                            android:layout_alignParentEnd="true"
-                            android:background="@color/disabled" />
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:layout_alignParentBottom="true"
-                            android:background="@color/disabled" />
-
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:layout_width="0dp"
+                    <com.journeyapps.barcodescanner.DecoratedBarcodeView
+                        android:id="@+id/barcode_view"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:clipToPadding="false">
+                        android:layout_centerInParent="true"
+                        app:zxing_preview_scaling_strategy="centerCrop"
+                        app:zxing_use_texture_view="false" />
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/fab_camera_switch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_margin="10dp"
+                        android:src="@drawable/ic_camera_switch"
+                        android:visibility="gone"
+                        app:fabSize="mini" />
 
 
-                        <View
-                            android:id="@+id/view_separator"
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:layout_centerVertical="true"
-                            android:background="@color/disabled" />
+                </RelativeLayout>
 
-
-                        <TextView
-                            android:id="@+id/tv_quantity_title"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginTop="10dp"
-                            android:fontFamily="@font/proxima_regular"
-                            android:text="@string/quantity"
-                            android:textColor="@color/black" />
-
-                        <ImageButton
-                            android:id="@+id/ib_decrease"
-                            android:layout_width="wrap_content"
-                            android:layout_height="50dp"
-                            android:layout_below="@+id/tv_quantity_title"
-                            android:layout_alignParentStart="true"
-                            android:layout_marginStart="0dp"
-                            android:background="@color/transparent"
-                            android:focusable="true"
-                            android:foreground="?attr/selectableItemBackground"
-                            android:src="@drawable/ic_left" />
-
-                        <EditText
-                            android:id="@+id/et_quantity"
-                            android:layout_width="70dp"
-                            android:layout_height="50dp"
-                            android:layout_below="@+id/tv_quantity_title"
-                            android:layout_toEndOf="@id/ib_decrease"
-                            android:fontFamily="@font/proxima_regular"
-                            android:gravity="center"
-                            android:text="1" />
-
-                        <ImageButton
-                            android:id="@+id/ib_increase"
-                            android:layout_width="wrap_content"
-                            android:layout_height="50dp"
-                            android:layout_below="@+id/tv_quantity_title"
-                            android:layout_toEndOf="@+id/et_quantity"
-                            android:background="@color/transparent"
-                            android:focusable="true"
-                            android:foreground="?attr/selectableItemBackground"
-                            android:src="@drawable/ic_right" />
-
-                        <TextView
-                            android:id="@+id/tv_unit_title"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentEnd="true"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginEnd="40dp"
-                            android:fontFamily="@font/proxima_regular"
-                            android:text="@string/unit"
-                            android:textColor="@color/black" />
-
-
-                        <androidx.appcompat.widget.AppCompatSpinner
-                            android:id="@+id/sp_units"
-                            android:layout_width="wrap_content"
-                            android:layout_height="50dp"
-                            android:layout_below="@+id/tv_unit_title"
-                            android:layout_alignParentEnd="true" />
-
-
-                        <TextView
-                            android:id="@+id/tv_total_amount"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/et_quantity"
-                            android:layout_marginStart="10dp"
-                            android:layout_marginTop="43dp"
-                            android:fontFamily="@font/proxima_regular"
-                            android:textColor="@color/black"
-                            android:textSize="20sp"
-                            android:textStyle="bold" />
-
-                        <com.google.android.material.floatingactionbutton.FloatingActionButton
-                            android:id="@+id/fab_sell"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/et_quantity"
-                            android:layout_alignParentEnd="true"
-                            android:layout_marginTop="48dp"
-                            android:layout_marginEnd="10dp"
-                            android:src="@drawable/ic_done_white"
-                            app:fabSize="mini" />
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:layout_alignParentBottom="true"
-                            android:background="@color/disabled" />
-
-
-                    </RelativeLayout>
-
-                </LinearLayout>
-
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/rl_recycler_holder"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:clipToPadding="false"
-                android:paddingBottom="10dp"
-                android:visibility="gone">
 
                 <RelativeLayout
-                    android:id="@+id/rl_stocks_to_sell_text_holder"
+                    android:id="@+id/rl_sku_details"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:visibility="gone">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="175dp"
+                        android:orientation="horizontal"
+                        android:weightSum="3">
+
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                android:id="@+id/tv_sku_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/iv_sku_image"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginStart="15dp"
+                                android:layout_marginTop="5dp"
+                                android:fontFamily="@font/proxima_regular"
+                                android:text="Canned beer"
+                                android:textAllCaps="true"
+                                android:textColor="@color/black"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/iv_sku_image"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginStart="15dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:src="@drawable/ic_stock" />
+
+                            <View
+                                android:layout_width="1dp"
+                                android:layout_height="match_parent"
+                                android:layout_alignParentEnd="true"
+                                android:background="@color/disabled" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_alignParentBottom="true"
+                                android:background="@color/disabled" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:clipToPadding="false">
+
+
+                            <View
+                                android:id="@+id/view_separator"
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_centerVertical="true"
+                                android:background="@color/disabled" />
+
+
+                            <TextView
+                                android:id="@+id/tv_quantity_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginTop="10dp"
+                                android:fontFamily="@font/proxima_regular"
+                                android:text="@string/quantity"
+                                android:textColor="@color/black" />
+
+                            <ImageButton
+                                android:id="@+id/ib_decrease"
+                                android:layout_width="wrap_content"
+                                android:layout_height="50dp"
+                                android:layout_below="@+id/tv_quantity_title"
+                                android:layout_alignParentStart="true"
+                                android:layout_marginStart="0dp"
+                                android:background="@color/transparent"
+                                android:focusable="true"
+                                android:foreground="?attr/selectableItemBackground"
+                                android:src="@drawable/ic_left" />
+
+                            <EditText
+                                android:id="@+id/et_quantity"
+                                android:layout_width="70dp"
+                                android:layout_height="50dp"
+                                android:layout_below="@+id/tv_quantity_title"
+                                android:layout_toEndOf="@id/ib_decrease"
+                                android:fontFamily="@font/proxima_regular"
+                                android:gravity="center"
+                                android:text="1" />
+
+                            <ImageButton
+                                android:id="@+id/ib_increase"
+                                android:layout_width="wrap_content"
+                                android:layout_height="50dp"
+                                android:layout_below="@+id/tv_quantity_title"
+                                android:layout_toEndOf="@+id/et_quantity"
+                                android:background="@color/transparent"
+                                android:focusable="true"
+                                android:foreground="?attr/selectableItemBackground"
+                                android:src="@drawable/ic_right" />
+
+                            <TextView
+                                android:id="@+id/tv_unit_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginEnd="40dp"
+                                android:fontFamily="@font/proxima_regular"
+                                android:text="@string/unit"
+                                android:textColor="@color/black" />
+
+
+                            <androidx.appcompat.widget.AppCompatSpinner
+                                android:id="@+id/sp_units"
+                                android:layout_width="wrap_content"
+                                android:layout_height="50dp"
+                                android:layout_below="@+id/tv_unit_title"
+                                android:layout_alignParentEnd="true" />
+
+
+                            <TextView
+                                android:id="@+id/tv_total_amount"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/et_quantity"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginTop="43dp"
+                                android:fontFamily="@font/proxima_regular"
+                                android:textColor="@color/black"
+                                android:textSize="20sp"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                                android:id="@+id/fab_sell"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/et_quantity"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginTop="48dp"
+                                android:layout_marginEnd="10dp"
+                                android:src="@drawable/ic_done_white"
+                                app:fabSize="mini" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_alignParentBottom="true"
+                                android:background="@color/disabled" />
+
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rl_recycler_holder"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:clipToPadding="false"
+                    android:paddingBottom="10dp"
+                    android:visibility="gone">
+
+                    <RelativeLayout
+                        android:id="@+id/rl_stocks_to_sell_text_holder"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/tv_available_stocks_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="15dp"
+                            android:fontFamily="@font/proxima_regular"
+                            android:text="Select stock to sell"
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <!--  <View
+                              android:layout_width="match_parent"
+                              android:layout_height="1dp"
+                              android:layout_centerVertical="true"
+                              android:layout_marginStart="8dp"
+                              android:layout_marginTop="4dp"
+                              android:layout_marginEnd="15dp"
+                              android:layout_toEndOf="@+id/tv_available_stocks_title"
+                              android:background="@color/colorAccent" />-->
+
+                    </RelativeLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_sale_stocks"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/rl_stocks_to_sell_text_holder"
+                        android:paddingStart="15dp"
+                        android:paddingTop="5dp"
+                        android:paddingRight="15dp"
+                        android:paddingBottom="20dp" />
+
+
+                    <!--   <com.google.android.material.floatingactionbutton.FloatingActionButton
+                           android:id="@+id/fab_confirm"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:layout_alignParentEnd="true"
+                           android:layout_alignParentBottom="true"
+                           android:layout_margin="10dp"
+                           android:elevation="4dp"
+                           android:src="@drawable/ic_done_white" />-->
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rv_cart_holder"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clipToPadding="false"
+                    android:visibility="gone">
 
                     <TextView
-                        android:id="@+id/tv_available_stocks_title"
+                        android:id="@+id/tv_cart_items_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
+                        android:layout_marginTop="10dp"
                         android:fontFamily="@font/proxima_regular"
-                        android:text="Select stock to sell"
+                        android:text="Items in cart"
                         android:textColor="@color/black"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
-                    <!--  <View
-                          android:layout_width="match_parent"
-                          android:layout_height="1dp"
-                          android:layout_centerVertical="true"
-                          android:layout_marginStart="8dp"
-                          android:layout_marginTop="4dp"
-                          android:layout_marginEnd="15dp"
-                          android:layout_toEndOf="@+id/tv_available_stocks_title"
-                          android:background="@color/colorAccent" />-->
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/fab_confirm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:src="@drawable/ic_confirm"
+                        app:useCompatPadding="true" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_cart_items"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_cart_items_text"
+                        android:layout_marginStart="10dp"
+                        android:clipToPadding="false"
+                        android:paddingEnd="10dp" />
 
                 </RelativeLayout>
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_sale_stocks"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/rl_stocks_to_sell_text_holder"
-                    android:paddingStart="15dp"
-                    android:paddingTop="5dp"
-                    android:paddingRight="15dp"
-                    android:paddingBottom="20dp" />
+            </LinearLayout>
+
+        </ScrollView>
 
 
-                <!--   <com.google.android.material.floatingactionbutton.FloatingActionButton
-                       android:id="@+id/fab_confirm"
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       android:layout_alignParentEnd="true"
-                       android:layout_alignParentBottom="true"
-                       android:layout_margin="10dp"
-                       android:elevation="4dp"
-                       android:src="@drawable/ic_done_white" />-->
+    </LinearLayout>
 
-            </RelativeLayout>
+    <include layout="@layout/edit_qty_bottomsheet"/>
 
-            <RelativeLayout
-                android:id="@+id/rv_cart_holder"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:clipToPadding="false"
-                android:visibility="gone">
-
-                <TextView
-                    android:id="@+id/tv_cart_items_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/proxima_regular"
-                    android:text="Items in cart"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/fab_confirm"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentBottom="true"
-                    android:src="@drawable/ic_confirm"
-                    app:useCompatPadding="true" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_cart_items"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/tv_cart_items_text"
-                    android:layout_marginStart="10dp"
-                    android:clipToPadding="false"
-                    android:paddingEnd="10dp" />
-
-            </RelativeLayout>
-
-        </LinearLayout>
-
-    </ScrollView>
-
-
-</LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
