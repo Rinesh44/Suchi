@@ -13,6 +13,8 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
@@ -23,17 +25,27 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.activities.base.BaseActivity;
 import com.treeleaf.suchi.adapter.SalesAdapter;
+import com.treeleaf.suchi.api.Endpoints;
 import com.treeleaf.suchi.dto.SalesStockDto;
+import com.treeleaf.suchi.entities.SuchiProto;
+import com.treeleaf.suchi.realm.models.Inventory;
 import com.treeleaf.suchi.realm.models.Sales;
 import com.treeleaf.suchi.realm.models.SalesStock;
+import com.treeleaf.suchi.realm.repo.InventoryRepo;
 import com.treeleaf.suchi.realm.repo.Repo;
 import com.treeleaf.suchi.realm.repo.SalesStockRepo;
+import com.treeleaf.suchi.realm.repo.UnitRepo;
 import com.treeleaf.suchi.utils.AppUtils;
 import com.treeleaf.suchi.utils.Constants;
+import com.treeleaf.suchi.utils.NetworkUtils;
 import com.treeleaf.suchi.viewmodel.SalesListViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+import java.util.UUID;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -41,11 +53,13 @@ import io.realm.RealmResults;
 
 import static com.treeleaf.suchi.SuchiApp.getMyApplication;
 
-public class SalesActivity extends BaseActivity {
+public class SalesActivity extends BaseActivity implements SalesView {
     public static final int ADD_SALE_REQUEST = 1;
     public static final String EXTRA_TITLE = "updated_sale_object";
 
     private static final String TAG = "SalesActivity";
+    @Inject
+    Endpoints endpoints;
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
     @BindView(R.id.toolbar_title)
@@ -61,9 +75,10 @@ public class SalesActivity extends BaseActivity {
 
     private SharedPreferences sharedPreferences;
     private SalesAdapter mSalesAdapter;
-    private String token;
+    private String token, userId;
     private List<SalesStockDto> salesStockDtoList;
     private SalesListViewModel salesListViewModel;
+    private SalesPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +90,7 @@ public class SalesActivity extends BaseActivity {
         initialize();
 
         token = sharedPreferences.getString(Constants.TOKEN, "");
+        userId = sharedPreferences.getString(Constants.USER_ID, "");
         mSalesRecycler.setLayoutManager(new LinearLayoutManager(this));
         mSalesAdapter = new SalesAdapter(SalesActivity.this, salesStockDtoList);
 
@@ -181,7 +197,7 @@ public class SalesActivity extends BaseActivity {
         getMyApplication(this).getAppComponent().inject(this);
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-
+        presenter = new SalesPresenterImpl(endpoints, this);
     }
 
     @Override
@@ -196,6 +212,85 @@ public class SalesActivity extends BaseActivity {
         onBackPressed();
         return true;
     }
+
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        if (sharedPreferences.getBoolean(Constants.SALES_DATA_REMAINING_TO_SYNC, false))
+            getMenuInflater().inflate(R.menu.menu_sync, menu);
+        return true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_sync:
+                if (NetworkUtils.isNetworkConnected(this)) {
+                    List<SalesStock> allSalesStock = SalesStockRepo.getInstance().getAllSalesStockList();
+                    if (token != null) {
+                        if (!allSalesStock.isEmpty()) {
+                            showLoading();
+                            postSalesDataToServer(allSalesStock);
+                        } else
+                            Toast.makeText(this, "No data found to sync", Toast.LENGTH_SHORT).show();
+                    } else Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show();
+
+                } else {
+                    Toast.makeText(this, "Please connect to internet.", Toast.LENGTH_SHORT).show();
+                }
+                return true;
+
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void postSalesDataToServer(List<SalesStock> allSalesStock) {
+        List<SuchiProto.Sale> saleListProto = mapSalesStockToProto(allSalesStock);
+        SuchiProto.SyncRequest syncRequest = SuchiProto.SyncRequest.newBuilder()
+                .addAllSales(saleListProto)
+                .build();
+
+        presenter.syncSalesData(token, syncRequest);
+
+    }
+
+    private List<SuchiProto.Sale> mapSalesStockToProto(List<SalesStock> allSalesStock) {
+        List<SuchiProto.Sale> saleListProto = new ArrayList<>();
+        for (SalesStock saleStock : allSalesStock
+        ) {
+
+            String unitId = UnitRepo.getInstance().getUnitIdByUnitName(saleStock.getUnit());
+
+            SuchiProto.SaleInventory saleInventoryProto = SuchiProto.SaleInventory.newBuilder()
+                    .setUnitId(unitId)
+                    .setAmount(Double.valueOf(saleStock.getUnitPrice()))
+                    .setQuantity(Integer.valueOf(saleStock.getQuantity()))
+                    .setInventoryStockId(saleStock.getId())
+                    .setInventoryId(saleStock.getInventory_id())
+                    .build();
+
+
+            String saleId = UUID.randomUUID().toString();
+            String formattedSaleId = saleId.replace("-", "");
+
+            SuchiProto.Sale saleProto = SuchiProto.Sale.newBuilder()
+                    .setAmount(Double.valueOf(saleStock.getAmount()))
+                    .setCreatedAt(System.currentTimeMillis())
+                    .setSaleId(formattedSaleId)
+                    .setUserId(userId)
+                    .addSaleInventories(saleInventoryProto)
+                    .build();
+
+            saleListProto.add(saleProto);
+
+        }
+
+        return saleListProto;
+    }
+
 
     private void hideFabWhenScrolled() {
 
@@ -214,6 +309,16 @@ public class SalesActivity extends BaseActivity {
                 super.onScrollStateChanged(recyclerView, newState);
             }
         });
+    }
+
+    @Override
+    public void syncSalesDataSuccess() {
+        AppUtils.showLog(TAG, "sync sales data success");
+    }
+
+    @Override
+    public void sycnSalesDataFail(String msg) {
+        showMessage(msg);
     }
 
 /*    @Override

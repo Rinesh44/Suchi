@@ -29,7 +29,7 @@ public class AddSalesPresenterImpl implements AddSalesPresenter {
 
     @Override
     public void addSales(String token, SuchiProto.Sale sale) {
-        endpoints.addSales(token, sale).enqueue(new CallbackWrapper<>(activity, new CallbackWrapper.Wrapper<SuchiRpcProto.SuchiBaseResponse>() {
+     /*   endpoints.addSales(token, sale).enqueue(new CallbackWrapper<>(activity, new CallbackWrapper.Wrapper<SuchiRpcProto.SuchiBaseResponse>() {
             @Override
             public void onSuccessResult(Response<SuchiRpcProto.SuchiBaseResponse> response) {
                 SuchiRpcProto.SuchiBaseResponse baseResponse = response.body();
@@ -54,7 +54,7 @@ public class AddSalesPresenterImpl implements AddSalesPresenter {
                 activity.addSalesFail("failed");
 
             }
-        }));
+        }));*/
     }
 
 

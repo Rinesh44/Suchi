@@ -5,6 +5,7 @@ import com.treeleaf.suchi.realm.models.Units;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import io.realm.Realm;
 import io.realm.RealmResults;
@@ -66,6 +67,18 @@ public class UnitRepo extends Repo {
         }
     }
 
+    public String getUnitIdByUnitName(String unitName) {
+        Realm realm = RealmDatabase.getInstance().getRealm();
+        try {
+            return Objects.requireNonNull(realm.where(Units.class).equalTo("name", unitName).findFirst()).getId();
+
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+            return null;
+        } finally {
+            close(realm);
+        }
+    }
 
     public void deleteAllUnits(final Callback callback) {
         final Realm realm = RealmDatabase.getInstance().getRealm();

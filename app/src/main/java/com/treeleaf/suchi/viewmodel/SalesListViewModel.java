@@ -18,7 +18,7 @@ public class SalesListViewModel extends AndroidViewModel {
 
     public SalesListViewModel(@NonNull Application application) {
         super(application);
-        saleItems = SalesStockRepo.getInstance().getAllSalesStockList();
+        saleItems = SalesStockRepo.getInstance().getAllSalesStock();
     }
 
     public LiveData<RealmResults<SalesStock>> getSaleItems() {

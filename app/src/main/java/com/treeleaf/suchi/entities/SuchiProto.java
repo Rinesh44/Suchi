@@ -9301,6 +9301,20 @@ public final class SuchiProto {
      * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 2;</code>
      */
     int getStockKeepingUnitsCount();
+
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Sale sales = 3;</code>
+     */
+    java.util.List<Sale>
+        getSalesList();
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Sale sales = 3;</code>
+     */
+    Sale getSales(int index);
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Sale sales = 3;</code>
+     */
+    int getSalesCount();
   }
   /**
    * Protobuf type {@code treeleaf.suchi.entities.SyncRequest}
@@ -9313,6 +9327,7 @@ public final class SuchiProto {
     private SyncRequest() {
       inventories_ = emptyProtobufList();
       stockKeepingUnits_ = emptyProtobufList();
+      sales_ = emptyProtobufList();
     }
     public static final int INVENTORIES_FIELD_NUMBER = 1;
     private com.google.protobuf.Internal.ProtobufList<Inventory> inventories_;
@@ -9554,6 +9569,126 @@ public final class SuchiProto {
       stockKeepingUnits_.remove(index);
     }
 
+    public static final int SALES_FIELD_NUMBER = 3;
+    private com.google.protobuf.Internal.ProtobufList<Sale> sales_;
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Sale sales = 3;</code>
+     */
+    public java.util.List<Sale> getSalesList() {
+      return sales_;
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Sale sales = 3;</code>
+     */
+    public java.util.List<? extends SaleOrBuilder>
+        getSalesOrBuilderList() {
+      return sales_;
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Sale sales = 3;</code>
+     */
+    public int getSalesCount() {
+      return sales_.size();
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Sale sales = 3;</code>
+     */
+    public Sale getSales(int index) {
+      return sales_.get(index);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Sale sales = 3;</code>
+     */
+    public SaleOrBuilder getSalesOrBuilder(
+        int index) {
+      return sales_.get(index);
+    }
+    private void ensureSalesIsMutable() {
+      if (!sales_.isModifiable()) {
+        sales_ =
+            com.google.protobuf.GeneratedMessageLite.mutableCopy(sales_);
+       }
+    }
+
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Sale sales = 3;</code>
+     */
+    private void setSales(
+        int index, Sale value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureSalesIsMutable();
+      sales_.set(index, value);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Sale sales = 3;</code>
+     */
+    private void setSales(
+        int index, Sale.Builder builderForValue) {
+      ensureSalesIsMutable();
+      sales_.set(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Sale sales = 3;</code>
+     */
+    private void addSales(Sale value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureSalesIsMutable();
+      sales_.add(value);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Sale sales = 3;</code>
+     */
+    private void addSales(
+        int index, Sale value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureSalesIsMutable();
+      sales_.add(index, value);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Sale sales = 3;</code>
+     */
+    private void addSales(
+        Sale.Builder builderForValue) {
+      ensureSalesIsMutable();
+      sales_.add(builderForValue.build());
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Sale sales = 3;</code>
+     */
+    private void addSales(
+        int index, Sale.Builder builderForValue) {
+      ensureSalesIsMutable();
+      sales_.add(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Sale sales = 3;</code>
+     */
+    private void addAllSales(
+        Iterable<? extends Sale> values) {
+      ensureSalesIsMutable();
+      com.google.protobuf.AbstractMessageLite.addAll(
+          values, sales_);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Sale sales = 3;</code>
+     */
+    private void clearSales() {
+      sales_ = emptyProtobufList();
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Sale sales = 3;</code>
+     */
+    private void removeSales(int index) {
+      ensureSalesIsMutable();
+      sales_.remove(index);
+    }
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       for (int i = 0; i < inventories_.size(); i++) {
@@ -9561,6 +9696,9 @@ public final class SuchiProto {
       }
       for (int i = 0; i < stockKeepingUnits_.size(); i++) {
         output.writeMessage(2, stockKeepingUnits_.get(i));
+      }
+      for (int i = 0; i < sales_.size(); i++) {
+        output.writeMessage(3, sales_.get(i));
       }
     }
 
@@ -9576,6 +9714,10 @@ public final class SuchiProto {
       for (int i = 0; i < stockKeepingUnits_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(2, stockKeepingUnits_.get(i));
+      }
+      for (int i = 0; i < sales_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, sales_.get(i));
       }
       memoizedSerializedSize = size;
       return size;
@@ -9857,6 +9999,103 @@ public final class SuchiProto {
         return this;
       }
 
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Sale sales = 3;</code>
+       */
+      public java.util.List<Sale> getSalesList() {
+        return java.util.Collections.unmodifiableList(
+            instance.getSalesList());
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Sale sales = 3;</code>
+       */
+      public int getSalesCount() {
+        return instance.getSalesCount();
+      }/**
+       * <code>repeated .treeleaf.suchi.entities.Sale sales = 3;</code>
+       */
+      public Sale getSales(int index) {
+        return instance.getSales(index);
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Sale sales = 3;</code>
+       */
+      public Builder setSales(
+          int index, Sale value) {
+        copyOnWrite();
+        instance.setSales(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Sale sales = 3;</code>
+       */
+      public Builder setSales(
+          int index, Sale.Builder builderForValue) {
+        copyOnWrite();
+        instance.setSales(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Sale sales = 3;</code>
+       */
+      public Builder addSales(Sale value) {
+        copyOnWrite();
+        instance.addSales(value);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Sale sales = 3;</code>
+       */
+      public Builder addSales(
+          int index, Sale value) {
+        copyOnWrite();
+        instance.addSales(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Sale sales = 3;</code>
+       */
+      public Builder addSales(
+          Sale.Builder builderForValue) {
+        copyOnWrite();
+        instance.addSales(builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Sale sales = 3;</code>
+       */
+      public Builder addSales(
+          int index, Sale.Builder builderForValue) {
+        copyOnWrite();
+        instance.addSales(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Sale sales = 3;</code>
+       */
+      public Builder addAllSales(
+          Iterable<? extends Sale> values) {
+        copyOnWrite();
+        instance.addAllSales(values);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Sale sales = 3;</code>
+       */
+      public Builder clearSales() {
+        copyOnWrite();
+        instance.clearSales();
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Sale sales = 3;</code>
+       */
+      public Builder removeSales(int index) {
+        copyOnWrite();
+        instance.removeSales(index);
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:treeleaf.suchi.entities.SyncRequest)
     }
     protected final Object dynamicMethod(
@@ -9872,6 +10111,7 @@ public final class SuchiProto {
         case MAKE_IMMUTABLE: {
           inventories_.makeImmutable();
           stockKeepingUnits_.makeImmutable();
+          sales_.makeImmutable();
           return null;
         }
         case NEW_BUILDER: {
@@ -9882,6 +10122,7 @@ public final class SuchiProto {
           SyncRequest other = (SyncRequest) arg1;
           inventories_= visitor.visitList(inventories_, other.inventories_);
           stockKeepingUnits_= visitor.visitList(stockKeepingUnits_, other.stockKeepingUnits_);
+          sales_= visitor.visitList(sales_, other.sales_);
           if (visitor == MergeFromVisitor
               .INSTANCE) {
           }
@@ -9922,6 +10163,15 @@ public final class SuchiProto {
                   }
                   stockKeepingUnits_.add(
                       input.readMessage(StockKeepingUnit.parser(), extensionRegistry));
+                  break;
+                }
+                case 26: {
+                  if (!sales_.isModifiable()) {
+                    sales_ =
+                        com.google.protobuf.GeneratedMessageLite.mutableCopy(sales_);
+                  }
+                  sales_.add(
+                      input.readMessage(Sale.parser(), extensionRegistry));
                   break;
                 }
               }
@@ -11530,6 +11780,11 @@ public final class SuchiProto {
      * <code>optional .treeleaf.suchi.entities.Unit unit = 9;</code>
      */
     Unit getUnit();
+
+    /**
+     * <code>optional bool sync = 10;</code>
+     */
+    boolean getSync();
   }
   /**
    * Protobuf type {@code treeleaf.suchi.entities.SaleInventory}
@@ -11926,6 +12181,29 @@ public final class SuchiProto {
       
     }
 
+    public static final int SYNC_FIELD_NUMBER = 10;
+    private boolean sync_;
+    /**
+     * <code>optional bool sync = 10;</code>
+     */
+    public boolean getSync() {
+      return sync_;
+    }
+    /**
+     * <code>optional bool sync = 10;</code>
+     */
+    private void setSync(boolean value) {
+      
+      sync_ = value;
+    }
+    /**
+     * <code>optional bool sync = 10;</code>
+     */
+    private void clearSync() {
+      
+      sync_ = false;
+    }
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!saleInventoryId_.isEmpty()) {
@@ -11954,6 +12232,9 @@ public final class SuchiProto {
       }
       if (unit_ != null) {
         output.writeMessage(9, getUnit());
+      }
+      if (sync_ != false) {
+        output.writeBool(10, sync_);
       }
     }
 
@@ -11997,6 +12278,10 @@ public final class SuchiProto {
       if (unit_ != null) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(9, getUnit());
+      }
+      if (sync_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(10, sync_);
       }
       memoizedSerializedSize = size;
       return size;
@@ -12420,6 +12705,29 @@ public final class SuchiProto {
         return this;
       }
 
+      /**
+       * <code>optional bool sync = 10;</code>
+       */
+      public boolean getSync() {
+        return instance.getSync();
+      }
+      /**
+       * <code>optional bool sync = 10;</code>
+       */
+      public Builder setSync(boolean value) {
+        copyOnWrite();
+        instance.setSync(value);
+        return this;
+      }
+      /**
+       * <code>optional bool sync = 10;</code>
+       */
+      public Builder clearSync() {
+        copyOnWrite();
+        instance.clearSync();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:treeleaf.suchi.entities.SaleInventory)
     }
     protected final Object dynamicMethod(
@@ -12457,6 +12765,8 @@ public final class SuchiProto {
           unitId_ = visitor.visitString(!unitId_.isEmpty(), unitId_,
               !other.unitId_.isEmpty(), other.unitId_);
           unit_ = visitor.visitMessage(unit_, other.unit_);
+          sync_ = visitor.visitBoolean(sync_ != false, sync_,
+              other.sync_ != false, other.sync_);
           if (visitor == MergeFromVisitor
               .INSTANCE) {
           }
@@ -12545,6 +12855,11 @@ public final class SuchiProto {
                     unit_ = subBuilder.buildPartial();
                   }
 
+                  break;
+                }
+                case 80: {
+
+                  sync_ = input.readBool();
                   break;
                 }
               }

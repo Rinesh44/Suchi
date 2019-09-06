@@ -44,10 +44,21 @@ public class SalesStockRepo extends Repo {
         }
     }
 
-    public LiveData<RealmResults<SalesStock>> getAllSalesStockList() {
+    public LiveData<RealmResults<SalesStock>> getAllSalesStock() {
         Realm realm = RealmDatabase.getInstance().getRealm();
         try {
             return new RealmLiveData<>(realm.where(SalesStock.class).findAllAsync());
+
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+            return null;
+        }
+    }
+
+    public List<SalesStock> getAllSalesStockList() {
+        Realm realm = RealmDatabase.getInstance().getRealm();
+        try {
+            return new ArrayList<>(realm.where(SalesStock.class).findAll());
 
         } catch (Throwable throwable) {
             throwable.printStackTrace();

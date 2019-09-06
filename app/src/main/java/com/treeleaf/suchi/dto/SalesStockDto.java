@@ -4,6 +4,8 @@ package com.treeleaf.suchi.dto;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.treeleaf.suchi.realm.models.SalesStock;
+
 import io.realm.annotations.PrimaryKey;
 
 public class SalesStockDto implements Parcelable {
@@ -105,6 +107,7 @@ public class SalesStockDto implements Parcelable {
     public void setInventory_id(String inventory_id) {
         this.inventory_id = inventory_id;
     }
+
 
     protected SalesStockDto(Parcel in) {
         id = in.readString();

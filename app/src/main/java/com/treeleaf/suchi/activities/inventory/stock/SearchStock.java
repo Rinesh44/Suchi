@@ -596,10 +596,17 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
             inventoryStockId = randomInventoryStockId.replace("-", "");
 
             quantity = mQuantity.getText().toString().trim();
-            InventoryStocks inventoryStocks = new InventoryStocks(inventoryStockId, inventoryId, quantity,
-                    selectedItem.getUnitPrice(), mSellingPrice.getText().toString().trim(),
-                    selectedItemUnitId, syncValue);
-            inventoryStocksRealmList.add(inventoryStocks);
+            if (selectedItem != null) {
+                InventoryStocks inventoryStocks = new InventoryStocks(inventoryStockId, inventoryId, quantity,
+                        selectedItem.getUnitPrice(), mSellingPrice.getText().toString().trim(),
+                        selectedItemUnitId, syncValue);
+                inventoryStocksRealmList.add(inventoryStocks);
+            } else {
+                InventoryStocks inventoryStocks = new InventoryStocks(inventoryStockId, inventoryId, quantity,
+                        "100", mSellingPrice.getText().toString().trim(),
+                        selectedItemUnitId, syncValue);
+                inventoryStocksRealmList.add(inventoryStocks);
+            }
         }
 
 
