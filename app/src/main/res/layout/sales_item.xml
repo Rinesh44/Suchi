@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    app:cardCornerRadius="6dp"
+    app:cardUseCompatPadding="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
+        android:gravity="center"
+        android:padding="5dp">
+
+        <ImageView
+            android:id="@+id/iv_unsynced"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_unsynced"
+            android:visibility="gone" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_item_image"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/iv_unsynced"
+            android:padding="2dp"
+            android:src="@drawable/ic_stock" />
+
+        <RelativeLayout
+            android:id="@+id/rl_name"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:layout_toEndOf="@id/iv_item_image"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tv_name_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="@font/proxima_regular"
+                android:text="Name"
+                android:textColor="@color/black"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_name_title"
+                android:layout_centerHorizontal="true"
+                android:ellipsize="end"
+                android:fontFamily="@font/proxima_regular"
+                android:maxLength="6"
+                android:text="Wai Wai"
+                android:textColor="@color/black"
+                android:textSize="13sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_qty"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:layout_toEndOf="@id/rl_name"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tv_qty_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="@font/proxima_regular"
+                android:text="Qty"
+                android:textColor="@color/black"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_qty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_qty_title"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/proxima_regular"
+                android:text="2"
+                android:textColor="@color/black"
+                android:textSize="13sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_unit"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:layout_toEndOf="@id/rl_qty"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tv_unit_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="@font/proxima_regular"
+                android:text="Unit"
+                android:textColor="@color/black"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_unit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_unit_title"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/proxima_regular"
+                android:text="Packet"
+                android:textColor="@color/black"
+                android:textSize="13sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_unit_price"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:layout_toEndOf="@id/rl_unit"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tv_unit_price_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="@font/proxima_regular"
+                android:text="Price(Rs.)"
+                android:textColor="@color/black"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_unit_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_unit_price_title"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/proxima_regular"
+                android:text="20"
+                android:textColor="@color/black"
+                android:textSize="13sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:layout_toEndOf="@id/rl_unit_price"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tv_amount_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="@font/proxima_regular"
+                android:text="Amount"
+                android:textColor="@color/black"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_amount_title"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/proxima_regular"
+                android:text="2"
+                android:textColor="@color/black"
+                android:textSize="13sp" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+</com.google.android.material.card.MaterialCardView>
+

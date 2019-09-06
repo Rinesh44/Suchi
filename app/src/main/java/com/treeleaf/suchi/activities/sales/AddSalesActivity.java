@@ -21,6 +21,7 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Rect;
+import android.hardware.Camera;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
@@ -54,11 +55,14 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.zxing.ResultPoint;
 import com.journeyapps.barcodescanner.BarcodeCallback;
 import com.journeyapps.barcodescanner.BarcodeResult;
 import com.journeyapps.barcodescanner.DecoratedBarcodeView;
+import com.journeyapps.barcodescanner.camera.CameraParametersCallback;
+import com.journeyapps.barcodescanner.camera.CameraSettings;
 import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.activities.base.BaseActivity;
 
@@ -173,7 +177,7 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
     private String token, userId;
     private SharedPreferences sharedPreferences;
     private boolean toggleCamera = true;
-    private boolean isFront = true;
+    private boolean isFront = false;
     private int quantityLimit;
     private String sellingPrice, id, inventoryId, qty, unit, photoUrl, name;
     private boolean checked = false;
@@ -654,7 +658,7 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
                 toggleBottomSheet();
 
                 SalesStock salesStock = cartItemList.get(position);
-                fillBottomSheetFields(salesStock);
+                fillBottomSheetFields(salesStock, position);
             }
         });
 
@@ -670,11 +674,12 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
         prepareCartItems();
     }
 
-    private void fillBottomSheetFields(SalesStock salesStock) {
+    private void fillBottomSheetFields(SalesStock salesStock, int position) {
         EditText mQty = mBottomSheet.findViewById(R.id.et_qty);
         TextView mAmount = mBottomSheet.findViewById(R.id.tv_amount);
         ImageButton mLeft = mBottomSheet.findViewById(R.id.ib_left);
         ImageButton mRight = mBottomSheet.findViewById(R.id.ib_right);
+        MaterialButton mDone = mBottomSheet.findViewById(R.id.btn_done);
 
         mQty.setText(salesStock.getQuantity());
         setUpAmount(mAmount, Double.valueOf(salesStock.getAmount()));
@@ -687,7 +692,14 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                setUpAmount(mAmount, Double.valueOf(mQty.getText().toString()));
+                double itemUnitPrice = 0;
+                if (salesStock.getUnitPrice().contains("Rs. ")) {
+                    itemUnitPrice = Double.valueOf(salesStock.getUnitPrice().replace("Rs. ", ""));
+                } else {
+                    itemUnitPrice = Double.valueOf(salesStock.getUnitPrice());
+                }
+                double amount = Integer.valueOf(mQty.getText().toString()) * itemUnitPrice;
+                setUpAmount(mAmount, amount);
             }
 
             @Override
@@ -723,6 +735,24 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
                     double amount = value * Double.valueOf(salesStock.getUnitPrice());
                     setUpAmount(mAmount, amount);
                 }
+            }
+        });
+
+        mDone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String formattedAmount = mAmount.getText().toString().replace("Rs. ", "");
+
+                SalesStock updatedSalesStock = new SalesStock(salesStock.getId(), salesStock.getInventory_id(),
+                        formattedAmount, mQty.getText().toString(), salesStock.getUnit(),
+                        salesStock.getName(), salesStock.getPhotoUrl(), salesStock.getUnitPrice(),
+                        salesStock.isSynced());
+
+                cartItemList.set(position, updatedSalesStock);
+                cartAdapter.notifyItemChanged(position);
+                cartAdapter.closeSwipeLayout(updatedSalesStock.getId());
+                toggleBottomSheet();
+
             }
         });
 
@@ -884,12 +914,24 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
 
 
     private void switchCamera() {
-        isFront = !isFront;
-        if (isFront) {
-            fotoapparat.switchTo(LensPositionSelectorsKt.front(), new CameraConfiguration());
-        } else {
-            fotoapparat.switchTo(LensPositionSelectorsKt.back(), new CameraConfiguration());
+        CameraSettings cameraSettings = mBarcodeView.getBarcodeView().getCameraSettings();
+
+        if (mBarcodeView.getBarcodeView().isPreviewActive()) {
+            mBarcodeView.pause();
         }
+
+
+        if (cameraSettings.getRequestedCameraId() == Camera.CameraInfo.CAMERA_FACING_BACK) {
+            cameraSettings.setRequestedCameraId(Camera.CameraInfo.CAMERA_FACING_FRONT);
+            cameraSettings.setAutoFocusEnabled(true);
+        } else {
+            cameraSettings.setRequestedCameraId(Camera.CameraInfo.CAMERA_FACING_BACK);
+        }
+
+        mBarcodeView.getBarcodeView().setCameraSettings(cameraSettings);
+
+        mBarcodeView.resume();
+
     }
 
     private void setUpRecyclerView() {

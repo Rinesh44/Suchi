@@ -52,7 +52,7 @@
                         android:layout_alignParentBottom="true"
                         android:layout_margin="10dp"
                         android:src="@drawable/ic_camera_switch"
-                        android:visibility="gone"
+                        android:visibility="visible"
                         app:fabSize="mini" />
 
 

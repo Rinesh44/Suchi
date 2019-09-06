@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.hardware.Camera;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
@@ -34,12 +35,14 @@ import com.bumptech.glide.request.RequestOptions;
 import com.google.android.material.button.MaterialButton;
 
 import com.google.android.material.card.MaterialCardView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.zxing.ResultPoint;
 import com.journeyapps.barcodescanner.BarcodeCallback;
 import com.journeyapps.barcodescanner.BarcodeResult;
 import com.journeyapps.barcodescanner.DecoratedBarcodeView;
+import com.journeyapps.barcodescanner.camera.CameraSettings;
 import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.activities.base.BaseActivity;
 import com.treeleaf.suchi.activities.sales.AddSalesActivity;
@@ -128,9 +131,11 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
     @BindView(R.id.tv_qty_unit)
     TextView mQtyUnit;
     @BindView(R.id.ll_camera_holder)
-    LinearLayout mCameraHolder;
+    RelativeLayout mCameraHolder;
     @BindView(R.id.barcode_view)
     DecoratedBarcodeView mBarcodeView;
+    @BindView(R.id.fab_camera_switch)
+    FloatingActionButton mCameraSwitch;
 
     private boolean toggleCamera = false;
     private boolean isScanDone;
@@ -175,6 +180,7 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
         mExpiryDate.setOnClickListener(this);
         mAddToInventory.setOnClickListener(this);
         mSellingPriceDecrement.setOnClickListener(this);
+        mCameraSwitch.setOnClickListener(this);
         mSellingPriceIncrement.setOnClickListener(this);
 
         setUpSearch();
@@ -805,6 +811,31 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
                 mAddInventoryHolder.setVisibility(View.VISIBLE);
                 break;
 
+            case R.id.fab_camera_switch:
+                switchCamera();
+                break;
+
         }
+    }
+
+    private void switchCamera() {
+        CameraSettings cameraSettings = mBarcodeView.getBarcodeView().getCameraSettings();
+
+        if (mBarcodeView.getBarcodeView().isPreviewActive()) {
+            mBarcodeView.pause();
+        }
+
+
+        if (cameraSettings.getRequestedCameraId() == Camera.CameraInfo.CAMERA_FACING_BACK) {
+            cameraSettings.setRequestedCameraId(Camera.CameraInfo.CAMERA_FACING_FRONT);
+            cameraSettings.setAutoFocusEnabled(true);
+        } else {
+            cameraSettings.setRequestedCameraId(Camera.CameraInfo.CAMERA_FACING_BACK);
+        }
+
+        mBarcodeView.getBarcodeView().setCameraSettings(cameraSettings);
+
+        mBarcodeView.resume();
+
     }
 }

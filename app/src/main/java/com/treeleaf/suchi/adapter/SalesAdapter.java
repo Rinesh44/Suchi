@@ -100,7 +100,7 @@ public class SalesAdapter extends ListAdapter<SalesStockDto, SalesAdapter.SalesH
     @NonNull
     @Override
     public SalesHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.cart_item, parent, false);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.sales_item, parent, false);
         return new SalesHolder(itemView);
     }
 

@@ -65,7 +65,7 @@
 
             </com.google.android.material.card.MaterialCardView>
 
-            <LinearLayout
+            <RelativeLayout
                 android:id="@+id/ll_camera_holder"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
@@ -81,8 +81,19 @@
                     app:zxing_preview_scaling_strategy="centerCrop"
                     app:zxing_use_texture_view="false" />
 
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/fab_camera_switch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_margin="10dp"
+                    android:src="@drawable/ic_camera_switch"
+                    android:visibility="visible"
+                    app:fabSize="mini" />
 
-            </LinearLayout>
+
+            </RelativeLayout>
 
 
             <com.google.android.material.card.MaterialCardView

@@ -77,6 +77,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
         holder.unitPrice.setText(stock.getUnitPrice());
         holder.amount.setText(stock.getAmount());
 
+
         String imageUrl = stock.getPhotoUrl();
         if (!imageUrl.isEmpty()) {
             RequestOptions options = new RequestOptions()
@@ -114,6 +115,10 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
     public void deleteItem(int pos) {
         cartItemList.remove(pos);
         notifyDataSetChanged();
+    }
+
+    public void closeSwipeLayout(String layoutId) {
+        viewBinderHelper.closeLayout(layoutId);
     }
 
     public void saveStates(Bundle outState) {
