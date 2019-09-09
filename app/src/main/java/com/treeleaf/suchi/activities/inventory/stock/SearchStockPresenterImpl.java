@@ -159,7 +159,7 @@ public class SearchStockPresenterImpl implements SearchStockPresenter {
                     return;
                 }
 
-                AppUtils.showLog(TAG, "addStockResponse: " + baseResponse);
+//                AppUtils.showLog(TAG, "addStockResponse: " + baseResponse);
 
                 activity.addStockSuccess();
             }

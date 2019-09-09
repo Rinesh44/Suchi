@@ -287,21 +287,34 @@ public class StockActivity extends BaseActivity implements StockView {
 
 
     @Override
-    public void addUnsyncedInventoriesSuccess(List<Inventory> inventoryList) {
+    public void addUnsyncedInventoriesSuccess() {
         AppUtils.showLog(TAG, "add unsynced inventories success");
         Toast.makeText(this, "Items synced", Toast.LENGTH_SHORT).show();
 
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putBoolean(Constants.STOCK_DATA_REMAINING_TO_SYNC, false);
-        editor.apply();
+        presenter.getStockItems(token);
 
-        invalidateOptionsMenu();
-        mStockAdapter.notifyDataSetChanged();
 
+    }
+
+
+    @Override
+    public void addUnsyncedInventoriesFail(String msg) {
+        showMessage(msg);
+    }
+
+    @Override
+    public void getStockItemsSuccess(List<Inventory> inventoryList) {
+        AppUtils.showLog(TAG, "get stock item success");
+        hideLoading();
         InventoryRepo.getInstance().saveInventoryList(inventoryList, new Repo.Callback() {
             @Override
             public void success(Object o) {
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putBoolean(Constants.STOCK_DATA_REMAINING_TO_SYNC, false);
+                editor.apply();
 
+                invalidateOptionsMenu();
+                mStockAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -310,11 +323,11 @@ public class StockActivity extends BaseActivity implements StockView {
             }
         });
 
+
     }
 
-
     @Override
-    public void addUnsyncedInventoriesFail(String msg) {
+    public void getStockItemsFail(String msg) {
         showMessage(msg);
     }
 

@@ -6,7 +6,11 @@ import java.util.List;
 
 public interface StockView {
 
-    void addUnsyncedInventoriesSuccess(List<Inventory> inventoryList);
+    void addUnsyncedInventoriesSuccess();
 
     void addUnsyncedInventoriesFail(String msg);
+
+    void getStockItemsSuccess(List<Inventory> inventoryList);
+
+    void getStockItemsFail(String msg);
 }

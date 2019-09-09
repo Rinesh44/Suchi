@@ -1,12 +1,5 @@
 package com.treeleaf.suchi.activities.sales;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.widget.Toolbar;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -21,6 +14,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.activities.base.BaseActivity;
@@ -28,11 +27,7 @@ import com.treeleaf.suchi.adapter.SalesAdapter;
 import com.treeleaf.suchi.api.Endpoints;
 import com.treeleaf.suchi.dto.SalesStockDto;
 import com.treeleaf.suchi.entities.SuchiProto;
-import com.treeleaf.suchi.realm.models.Inventory;
-import com.treeleaf.suchi.realm.models.Sales;
 import com.treeleaf.suchi.realm.models.SalesStock;
-import com.treeleaf.suchi.realm.repo.InventoryRepo;
-import com.treeleaf.suchi.realm.repo.Repo;
 import com.treeleaf.suchi.realm.repo.SalesStockRepo;
 import com.treeleaf.suchi.realm.repo.UnitRepo;
 import com.treeleaf.suchi.utils.AppUtils;
@@ -42,7 +37,6 @@ import com.treeleaf.suchi.viewmodel.SalesListViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.UUID;
 
 import javax.inject.Inject;

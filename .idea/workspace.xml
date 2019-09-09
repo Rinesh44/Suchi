@@ -6,6 +6,7 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="APP_FL" />
     <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
@@ -182,6 +183,9 @@
     </library-updates>
     <last-search-timestamp>1566801915900</last-search-timestamp>
   </component>
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/sales/AddSalesActivity.java" line="726" mnemonic="1" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="19a30d57-b76a-4da2-b01d-fe468b96bd51" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/executionHistory/executionHistory.bin" afterDir="false" />
@@ -191,18 +195,17 @@
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/classAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/SearchStock.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/SearchStock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/sales/AddSalesPresenterImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/sales/AddSalesPresenterImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/SearchStockPresenterImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/SearchStockPresenterImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/StockActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/StockActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/StockPresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/StockPresenter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/StockPresenterImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/StockPresenterImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/StockView.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/StockView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/sales/AddSalesActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/sales/AddSalesActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/sales/SalesActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/sales/SalesActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/api/Endpoints.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/api/Endpoints.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/dto/SalesStockDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/dto/SalesStockDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/entities/SuchiProto.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/entities/SuchiProto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/realm/models/SalesStock.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/realm/models/SalesStock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/realm/repo/SalesStockRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/realm/repo/SalesStockRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/realm/repo/UnitRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/realm/repo/UnitRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/utils/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/utils/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/viewmodel/SalesListViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/viewmodel/SalesListViewModel.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -223,140 +226,79 @@
     </system>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/sales/SalesActivity.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="122">
-                  <caret line="255" column="52" selection-start-line="255" selection-start-column="52" selection-end-line="255" selection-end-column="52" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                    <element signature="e#9224#9225#0" expanded="true" />
-                    <element signature="e#9258#9259#0" expanded="true" />
-                    <element signature="e#9351#9352#0" expanded="true" />
-                    <element signature="e#9370#9371#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/sales/AddSalesPresenterImpl.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="215">
-                  <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/api/Endpoints.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="270">
-                  <caret line="26" column="37" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/SearchStock.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="166">
-                  <caret line="191" column="19" selection-start-line="191" selection-start-column="8" selection-end-line="191" selection-end-column="19" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/StockDetails.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="182">
-                  <caret line="81" column="64" selection-start-line="81" selection-start-column="64" selection-end-line="81" selection-end-column="64" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/StockActivity.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="96">
-                  <caret line="337" column="42" selection-start-line="337" selection-start-column="42" selection-end-line="337" selection-end-column="42" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/realm/models/Inventory.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="360">
-                  <caret line="20" column="33" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/sales/SalesPresenterImpl.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="572">
-                  <caret line="32" selection-start-line="32" selection-end-line="32" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/realm/repo/SalesStockRepo.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="148">
-                  <caret line="43" column="9" selection-start-line="43" selection-start-column="9" selection-end-line="43" selection-end-column="9" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/StockPresenterImpl.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="306">
-                  <caret line="34" column="50" selection-start-line="34" selection-start-column="50" selection-end-line="34" selection-end-column="50" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/StockPresenterImpl.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="178">
-                  <caret line="154" column="11" selection-start-line="154" selection-start-column="11" selection-end-line="154" selection-end-column="11" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/SearchStock.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1966">
+              <caret line="174" column="45" selection-start-line="174" selection-start-column="45" selection-end-line="174" selection-end-column="45" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/sales/AddSalesActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="477">
+              <caret line="632" column="67" lean-forward="true" selection-start-line="632" selection-start-column="67" selection-end-line="632" selection-end-column="67" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#41044#41045#0" expanded="true" />
+                <element signature="e#41134#41135#0" expanded="true" />
+                <element signature="e#42953#42954#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/api/Endpoints.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="162">
+              <caret line="9" column="26" lean-forward="true" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/SearchStockPresenterImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="475">
+              <caret line="142" selection-start-line="142" selection-end-line="142" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/StockPresenterImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="96" column="80" selection-start-line="96" selection-start-column="80" selection-end-line="96" selection-end-column="80" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/StockActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="18">
+              <caret line="69" column="23" selection-start-line="69" selection-start-column="23" selection-end-line="69" selection-end-column="23" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#11535#11536#0" expanded="true" />
+                <element signature="e#11570#11571#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -371,18 +313,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>barcode</find>
-      <find>isFront</find>
-      <find>camerasettin</find>
-      <find>mCameraSwitch</find>
-      <find>onClick</find>
-      <find>resume</find>
-      <find>ll_camera</find>
-      <find>fab_came</find>
-      <find>clicked</find>
-      <find>cameraswi</find>
-      <find>fab_camera_switch</find>
-      <find>onBind</find>
       <find>onclick</find>
       <find>oncreateOptions</find>
       <find>sharedPreferences</find>
@@ -394,13 +324,25 @@
       <find>adapter</find>
       <find>selected_stock_qty</find>
       <find>inventoryId</find>
-      <find>presenter</find>
       <find>sales</find>
       <find>token</find>
       <find>onprepare</find>
       <find>unitId</find>
-      <find>selectedItem</find>
       <find>mSearchsku.</find>
+      <find>barcode</find>
+      <find>beepS</find>
+      <find>msearch.set</find>
+      <find>mSearch</find>
+      <find>selectedItem</find>
+      <find>matching</find>
+      <find>getstockItemsms</find>
+      <find>get</find>
+      <find>presenter</find>
+      <find>getStockItemsS</find>
+      <find>beepSoun</find>
+      <find>ib_increase</find>
+      <find>mDone</find>
+      <find>beepsoun</find>
     </findStrings>
     <replaceStrings>
       <replace>User</replace>
@@ -417,8 +359,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/stock_item.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/login/LoginActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/profile/ProfileActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_sales.xml" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
@@ -430,9 +370,7 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/entities/AccessProto.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/rpc/SuchiRpcProto.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_stock_details.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/SearchStockPresenterImpl.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/login/LoginPresenterImpl.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/StockPresenterImpl.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/bill_row.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/menu/menu_done.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_sales_details.xml" />
@@ -456,18 +394,22 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/sales/SalesView.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/sales/SalesPresenter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/entities/SuchiProto.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/sales/AddSalesActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/adapter/StockSalesAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/realm/models/SalesStock.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/dto/SalesStockDto.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/realm/repo/UnitRepo.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/sales/SalesActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/sales/SalesPresenterImpl.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/sales/AddSalesPresenterImpl.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/sales/SalesActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/StockDetails.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/SearchStockPresenterImpl.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/StockPresenter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/StockPresenterImpl.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/StockView.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/StockActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/api/Endpoints.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/SearchStock.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/sales/AddSalesActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/api/Endpoints.java" />
       </list>
     </option>
   </component>
@@ -484,17 +426,45 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane" />
-      <pane id="AndroidView" />
       <pane id="PackagesPane" />
+      <pane id="ProjectPane" />
+      <pane id="AndroidView">
+        <subPane>
+          <expand>
+            <path>
+              <item name="suchi_android_app" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+            </path>
+            <path>
+              <item name="suchi_android_app" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+            </path>
+            <path>
+              <item name="suchi_android_app" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="suchi" type="cbb59c9e:AndroidPsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="suchi_android_app" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="suchi" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="activities" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="android.project.structure.last.selected" value="SDK Location" />
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
-    <property name="device.picker.selection" value="520351c9f00ca3eb" />
+    <property name="device.picker.selection" value="8dd46adc" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="not.eligible.for.single.variant.sync" value="true" />
@@ -668,6 +638,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="2048" height="1072" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" sideWeight="0.50096714" side_tool="true" weight="0.17885771" />
       <window_info id="Structure" order="1" sideWeight="0.50214595" side_tool="true" weight="0.1998998" />
@@ -675,15 +646,15 @@
       <window_info id="Build Variants" order="3" side_tool="true" />
       <window_info id="Image Layers" order="4" />
       <window_info id="Designer" order="5" />
-      <window_info content_ui="combo" id="Project" order="6" sideWeight="0.49785408" weight="0.1998998" />
+      <window_info content_ui="combo" id="Project" order="6" sideWeight="0.49785408" visible="true" weight="0.1998998" />
       <window_info id="Capture Tool" order="7" />
       <window_info id="Resources Explorer" order="8" weight="0.3296593" />
       <window_info anchor="bottom" id="Run" order="0" weight="0.32978722" />
-      <window_info anchor="bottom" id="Logcat" order="1" weight="0.5858369" />
+      <window_info anchor="bottom" id="Logcat" order="1" weight="0.5311159" />
       <window_info anchor="bottom" id="TODO" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" />
       <window_info anchor="bottom" id="Event Log" order="4" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="5" visible="true" weight="0.472103" />
+      <window_info anchor="bottom" id="Terminal" order="5" weight="0.472103" />
       <window_info anchor="bottom" id="Version Control" order="6" />
       <window_info anchor="bottom" id="Build" order="7" weight="0.35729614" />
       <window_info anchor="bottom" id="Find" order="8" weight="0.32978722" />
@@ -724,40 +695,6 @@
     </layout-to-restore>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_stock_details.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="31">
-          <caret line="175" lean-forward="true" selection-start-line="175" selection-end-line="175" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/login/LoginPresenterImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="805">
-          <caret line="172" column="108" selection-start-line="172" selection-start-column="108" selection-end-line="172" selection-end-column="108" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/adapter/StockAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="790">
-          <caret line="165" column="63" selection-start-line="165" selection-start-column="63" selection-end-line="165" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/bill_row.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="45" column="33" lean-forward="true" selection-start-line="45" selection-start-column="33" selection-end-line="45" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu_create_new_sku.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu_add.xml">
       <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
@@ -1018,63 +955,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/sales/AddSalesActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1352">
-          <caret line="217" column="52" selection-start-line="217" selection-start-column="34" selection-end-line="217" selection-end-column="52" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#18909#19897#0" expanded="true" />
-            <element signature="e#19896#19897#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/realm/repo/SalesStockRepo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="43" column="9" selection-start-line="43" selection-start-column="9" selection-end-line="43" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/sales/SalesPresenter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/sales/SalesPresenterImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
-          <caret line="32" selection-start-line="32" selection-end-line="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/sales/SalesActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="255" column="52" selection-start-line="255" selection-start-column="52" selection-end-line="255" selection-end-column="52" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#9224#9225#0" expanded="true" />
-            <element signature="e#9258#9259#0" expanded="true" />
-            <element signature="e#9351#9352#0" expanded="true" />
-            <element signature="e#9370#9371#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/sales/AddSalesPresenterImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -1087,7 +971,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/realm/models/Inventory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
+        <state relative-caret-position="234">
           <caret line="20" column="33" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1095,27 +979,108 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/StockPresenterImpl.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/sales/SalesPresenterImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="34" column="50" selection-start-line="34" selection-start-column="50" selection-end-line="34" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/StockActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="337" column="42" selection-start-line="337" selection-start-column="42" selection-end-line="337" selection-end-column="42" />
+        <state relative-caret-position="468">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/sales/AddSalesPresenterImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" column="41" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/realm/repo/SalesStockRepo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6">
+          <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife-annotations/10.0.0/1f954d94992415702294f1e987f6b57f91ea3f0b/butterknife-annotations-10.0.0-sources.jar!/butterknife/BindView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="21" selection-end-line="21" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/StockDetails.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="81" column="64" selection-start-line="81" selection-start-column="64" selection-end-line="81" selection-end-column="64" />
+        <state relative-caret-position="806">
+          <caret line="69" lean-forward="true" selection-start-line="69" selection-end-line="69" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/sales/SalesActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="17" column="35" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/SearchStockPresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/SearchStockPresenterImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="142" selection-start-line="142" selection-end-line="142" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/StockView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/StockPresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="9" column="9" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/StockPresenterImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="96" column="80" selection-start-line="96" selection-start-column="80" selection-end-line="96" selection-end-column="80" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/StockActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="69" column="23" selection-start-line="69" selection-start-column="23" selection-end-line="69" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#11535#11536#0" expanded="true" />
+            <element signature="e#11570#11571#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/SearchStock.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1966">
+          <caret line="174" column="45" selection-start-line="174" selection-start-column="45" selection-end-line="174" selection-end-column="45" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1124,17 +1089,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/api/Endpoints.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="26" column="37" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
+        <state relative-caret-position="162">
+          <caret line="9" column="26" lean-forward="true" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/SearchStock.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/sales/AddSalesActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="191" column="19" selection-start-line="191" selection-start-column="8" selection-end-line="191" selection-end-column="19" />
+        <state relative-caret-position="477">
+          <caret line="632" column="67" lean-forward="true" selection-start-line="632" selection-start-column="67" selection-end-line="632" selection-end-column="67" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#41044#41045#0" expanded="true" />
+            <element signature="e#41134#41135#0" expanded="true" />
+            <element signature="e#42953#42954#0" expanded="true" />
           </folding>
         </state>
       </provider>

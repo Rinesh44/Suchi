@@ -1,9 +1,5 @@
 package com.treeleaf.suchi.activities.inventory.stock;
 
-import androidx.appcompat.widget.AppCompatSpinner;
-import androidx.appcompat.widget.Toolbar;
-import androidx.lifecycle.LiveData;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.hardware.Camera;
@@ -19,21 +15,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.AdapterView;
-
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.widget.AppCompatSpinner;
+import androidx.appcompat.widget.Toolbar;
+
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.android.material.button.MaterialButton;
-
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
@@ -45,7 +41,6 @@ import com.journeyapps.barcodescanner.DecoratedBarcodeView;
 import com.journeyapps.barcodescanner.camera.CameraSettings;
 import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.activities.base.BaseActivity;
-import com.treeleaf.suchi.activities.sales.AddSalesActivity;
 import com.treeleaf.suchi.adapter.AutocompleteSearchAdapter;
 import com.treeleaf.suchi.api.Endpoints;
 import com.treeleaf.suchi.dto.StockKeepingUnitDto;
@@ -208,6 +203,7 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
     private void setUpViewForSkuDetails(StockKeepingUnitDto selectedItem) {
 
         mSearchSku.setText(selectedItem.getName());
+        mSearchSku.dismissDropDown();
 
         setUpUnitSpinner(selectedItem.getUnits());
         setUpdefaultUnit(selectedItem.getDefaultUnit());
@@ -253,7 +249,8 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
         mBarcodeView.decodeContinuous(new BarcodeCallback() {
             @Override
             public void barcodeResult(BarcodeResult result) {
-                beepSound();
+//                beepSound();
+//                Toast.makeText(SearchStock.this, "scan succeess", Toast.LENGTH_SHORT).show();
                 getSkuMatchingResult(result.getText());
             }
 
@@ -273,7 +270,8 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
         for (StockKeepingUnitDto skuDto : skuDtoList
         ) {
             if (skuDto.getCode().equalsIgnoreCase(text)) {
-                setUpViewForSkuDetails(skuDto);
+                selectedItem = skuDto;
+                setUpViewForSkuDetails(selectedItem);
             }
         }
 

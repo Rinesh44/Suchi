@@ -54,10 +54,9 @@ public class StockPresenterImpl implements StockPresenter {
                     return;
                 }
 
-                AppUtils.showLog(TAG, "syncInventoryResponse: " + baseResponse.toString());
-
-                List<Inventory> inventoryList = mapInventoryPbToModel(baseResponse.getInventoriesList());
-                activity.addUnsyncedInventoriesSuccess(inventoryList);
+//                AppUtils.showLog(TAG, "syncInventoryResponse: " + baseResponse.toString());
+//                List<Inventory> inventoryList = mapInventoryPbToModel(baseResponse.getInventoriesList());
+                activity.addUnsyncedInventoriesSuccess();
             }
 
             @Override
@@ -181,5 +180,39 @@ public class StockPresenterImpl implements StockPresenter {
         }
 
         return inventoryListProto;
+    }
+
+
+    @Override
+    public void getStockItems(String token) {
+        endpoints.getInventory(token).enqueue(new CallbackWrapper<>(activity, new CallbackWrapper.Wrapper<SuchiRpcProto.SuchiBaseResponse>() {
+            @Override
+            public void onSuccessResult(Response<SuchiRpcProto.SuchiBaseResponse> response) {
+                activity.hideLoading();
+                SuchiRpcProto.SuchiBaseResponse baseResponse = response.body();
+
+                if (baseResponse == null) {
+                    activity.getStockItemsFail("get inventory failed");
+                    return;
+                }
+
+                if (baseResponse.getError()) {
+                    activity.getStockItemsFail(baseResponse.getMsg());
+                    return;
+                }
+
+                AppUtils.showLog(TAG, "getInventoryResponse: " + baseResponse);
+
+                List<Inventory> inventoryList = mapInventoryPbToModel(baseResponse.getInventoriesList());
+                activity.getStockItemsSuccess(inventoryList);
+            }
+
+            @Override
+            public void onFailureResult() {
+                activity.hideLoading();
+                activity.getStockItemsFail("failed");
+
+            }
+        }));
     }
 }

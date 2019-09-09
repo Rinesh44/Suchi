@@ -1,18 +1,5 @@
 package com.treeleaf.suchi.activities.sales;
 
-import androidx.annotation.NonNull;
-
-import androidx.appcompat.widget.AppCompatSpinner;
-
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.ItemTouchHelper;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.Manifest;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -26,7 +13,6 @@ import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
-
 import android.os.Parcelable;
 import android.preference.PreferenceManager;
 import android.text.Editable;
@@ -35,25 +21,31 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatSpinner;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -61,11 +53,9 @@ import com.google.zxing.ResultPoint;
 import com.journeyapps.barcodescanner.BarcodeCallback;
 import com.journeyapps.barcodescanner.BarcodeResult;
 import com.journeyapps.barcodescanner.DecoratedBarcodeView;
-import com.journeyapps.barcodescanner.camera.CameraParametersCallback;
 import com.journeyapps.barcodescanner.camera.CameraSettings;
 import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.activities.base.BaseActivity;
-
 import com.treeleaf.suchi.adapter.CartAdapter;
 import com.treeleaf.suchi.adapter.InventorySalesAdapter;
 import com.treeleaf.suchi.adapter.StockSalesAdapter;
@@ -87,27 +77,15 @@ import com.treeleaf.suchi.realm.repo.UnitRepo;
 import com.treeleaf.suchi.utils.AppUtils;
 import com.treeleaf.suchi.utils.Constants;
 
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
-import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
 import io.fotoapparat.Fotoapparat;
-import io.fotoapparat.configuration.CameraConfiguration;
-
-import io.fotoapparat.log.LoggersKt;
-import io.fotoapparat.parameter.ScaleType;
-import io.fotoapparat.selector.FocusModeSelectorsKt;
-import io.fotoapparat.selector.LensPositionSelectorsKt;
-import io.fotoapparat.selector.SelectorsKt;
-import io.fotoapparat.view.CameraView;
 import io.realm.RealmList;
 
 import static com.treeleaf.suchi.SuchiApp.getMyApplication;
@@ -284,9 +262,11 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
         mRecyclerHolder.setVisibility(View.GONE);
 
         mSearch.setText(selectedItem.getSku().getName());
+        mSearch.dismissDropDown();
         mQuantity.setText("1");
 
         mSelectedSKUName.setText(selectedItem.getSku().getName());
+
 
         StringBuilder amountBuilder = new StringBuilder();
         amountBuilder.append("Rs. ");
@@ -366,7 +346,8 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
         mBarcodeView.decodeContinuous(new BarcodeCallback() {
             @Override
             public void barcodeResult(BarcodeResult result) {
-                beepSound();
+//                beepSound();
+//                Toast.makeText(AddSalesActivity.this, result.getText(), Toast.LENGTH_SHORT).show();
                 checkMatchingSkuForResult(result.getText());
             }
 
@@ -384,7 +365,8 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
         for (InventoryDto inventoryDto : inventoryDtoList
         ) {
             if (inventoryDto.getSku().getCode().equalsIgnoreCase(text)) {
-                setUpViewForSkuDetails(inventoryDto);
+                selectedItem = inventoryDto;
+                setUpViewForSkuDetails(selectedItem);
             }
         }
     }
@@ -692,14 +674,22 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                double itemUnitPrice = 0;
-                if (salesStock.getUnitPrice().contains("Rs. ")) {
-                    itemUnitPrice = Double.valueOf(salesStock.getUnitPrice().replace("Rs. ", ""));
-                } else {
-                    itemUnitPrice = Double.valueOf(salesStock.getUnitPrice());
-                }
-                double amount = Integer.valueOf(mQty.getText().toString()) * itemUnitPrice;
-                setUpAmount(mAmount, amount);
+                if (!charSequence.toString().isEmpty())
+                    if (Double.valueOf(charSequence.toString()) <= quantityLimit) {
+                        AppUtils.showLog(TAG, "unitPrice: " + salesStock.getUnitPrice());
+                        double itemUnitPrice = 0;
+                        if (salesStock.getUnitPrice().contains("Rs. ")) {
+                            AppUtils.showLog(TAG, "ContainS");
+                            itemUnitPrice = Double.valueOf(salesStock.getUnitPrice().replace("Rs. ", ""));
+                        } else {
+                            AppUtils.showLog(TAG, "not contains");
+                            itemUnitPrice = Double.valueOf(salesStock.getUnitPrice());
+                        }
+                        AppUtils.showLog(TAG, "ItemUnitPrice: " + itemUnitPrice);
+                        double amount = Integer.valueOf(mQty.getText().toString()) * itemUnitPrice;
+                        AppUtils.showLog(TAG, "Amount: " + amount);
+                        setUpAmount(mAmount, amount);
+                    }
             }
 
             @Override
@@ -716,8 +706,11 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
                     if (value1 > 1) {
                         value1--;
                         mQty.setText(String.valueOf(value1));
-                        double amount = value1 * Double.valueOf(salesStock.getUnitPrice());
-                        setUpAmount(mAmount, amount);
+                     /*   double unitPrice = 0;
+                        if (salesStock.getUnitPrice().contains("Rs. "))
+                            unitPrice = Double.valueOf(salesStock.getUnitPrice().replace("Rs. ", ""));
+                        double amount = value1 * unitPrice;
+                        setUpAmount(mAmount, amount);*/
                     }
                 }
             }
@@ -730,10 +723,15 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
             public void onClick(View view) {
                 if (!mQty.getText().toString().isEmpty()) {
                     int value = Integer.valueOf(mQty.getText().toString());
-                    value++;
-                    mQty.setText(String.valueOf(value));
-                    double amount = value * Double.valueOf(salesStock.getUnitPrice());
-                    setUpAmount(mAmount, amount);
+                    if (value < quantityLimit) {
+                        value++;
+                        mQty.setText(String.valueOf(value));
+                     /*   double unitPrice = 0;
+                        if (salesStock.getUnitPrice().contains("Rs. "))
+                            unitPrice = Double.valueOf(salesStock.getUnitPrice().replace("Rs. ", ""));
+                        double amount = value * unitPrice;
+                        setUpAmount(mAmount, amount);*/
+                    }
                 }
             }
         });
@@ -742,16 +740,20 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
             @Override
             public void onClick(View view) {
                 String formattedAmount = mAmount.getText().toString().replace("Rs. ", "");
+                if (!mQty.getText().toString().isEmpty() && !mQty.getText().toString().equalsIgnoreCase("0")) {
 
-                SalesStock updatedSalesStock = new SalesStock(salesStock.getId(), salesStock.getInventory_id(),
-                        formattedAmount, mQty.getText().toString(), salesStock.getUnit(),
-                        salesStock.getName(), salesStock.getPhotoUrl(), salesStock.getUnitPrice(),
-                        salesStock.isSynced());
+                    SalesStock updatedSalesStock = new SalesStock(salesStock.getId(), salesStock.getInventory_id(),
+                            formattedAmount, mQty.getText().toString(), salesStock.getUnit(),
+                            salesStock.getName(), salesStock.getPhotoUrl(), salesStock.getUnitPrice(),
+                            salesStock.isSynced());
 
-                cartItemList.set(position, updatedSalesStock);
-                cartAdapter.notifyItemChanged(position);
-                cartAdapter.closeSwipeLayout(updatedSalesStock.getId());
-                toggleBottomSheet();
+                    cartItemList.set(position, updatedSalesStock);
+                    cartAdapter.notifyItemChanged(position);
+                    cartAdapter.closeSwipeLayout(updatedSalesStock.getId());
+                    toggleBottomSheet();
+                } else {
+                    Toast.makeText(AddSalesActivity.this, "Quantity cannot be null or empty", Toast.LENGTH_SHORT).show();
+                }
 
             }
         });
@@ -760,6 +762,7 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
     }
 
     private void setUpAmount(TextView mAmount, double amount) {
+        AppUtils.showLog(TAG, "setUpAmount()");
         mAmount = mBottomSheet.findViewById(R.id.tv_amount);
         StringBuilder amountBuilder = new StringBuilder();
         amountBuilder.append("Rs. ");
