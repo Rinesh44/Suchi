@@ -149,14 +149,46 @@
 
         </com.google.android.material.card.MaterialCardView>
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="20dp"
+            android:weightSum="2">
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_pay"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/proxima_regular"
+                android:text="Pay"
+                android:textStyle="bold" />
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_add_to_credit"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/proxima_regular"
+                android:text="Add to credit"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+        <!--<com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_done"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:layout_margin="16dp"
-            android:src="@drawable/ic_done_white" />
+            android:src="@drawable/ic_done_white" />-->
 
     </RelativeLayout>
 

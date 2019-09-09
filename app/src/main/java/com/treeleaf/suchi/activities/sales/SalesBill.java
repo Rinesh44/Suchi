@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.activities.base.BaseActivity;
@@ -36,8 +37,12 @@ public class SalesBill extends BaseActivity {
     LinearLayout mBillHolder;
     @BindView(R.id.tv_total_amount)
     TextView mTotalAmount;
-    @BindView(R.id.fab_done)
-    FloatingActionButton mDone;
+    @BindView(R.id.btn_pay)
+    MaterialButton mPay;
+    @BindView(R.id.btn_add_to_credit)
+    MaterialButton mAddToCredit;
+/*    @BindView(R.id.fab_done)
+    FloatingActionButton mDone;*/
 
     double totalAmount = 0;
 
@@ -57,10 +62,17 @@ public class SalesBill extends BaseActivity {
 
         inflateListInBillHolder();
 
-        mDone.setOnClickListener(new View.OnClickListener() {
+        mPay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 saveSalesData();
+            }
+        });
+
+        mAddToCredit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
             }
         });
 
@@ -109,6 +121,7 @@ public class SalesBill extends BaseActivity {
 
     }
 
+/*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_done, menu);
@@ -126,6 +139,7 @@ public class SalesBill extends BaseActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+*/
 
     @Override
     public boolean onSupportNavigateUp() {

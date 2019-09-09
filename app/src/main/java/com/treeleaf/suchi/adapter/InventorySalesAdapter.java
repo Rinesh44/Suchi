@@ -104,7 +104,7 @@ public class InventorySalesAdapter extends ArrayAdapter {
                 ArrayList<InventoryDto> matchValues = new ArrayList<InventoryDto>();
 
                 for (InventoryDto dataItem : dataListAllItems) {
-                    if (dataItem.getSku().getName().toLowerCase().startsWith(searchStrLowerCase)) {
+                    if (dataItem.getSku().getName().toLowerCase().contains(searchStrLowerCase)) {
                         matchValues.add(dataItem);
                     }
                 }
