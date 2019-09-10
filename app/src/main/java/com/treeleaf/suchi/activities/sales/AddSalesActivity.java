@@ -679,10 +679,8 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
                         AppUtils.showLog(TAG, "unitPrice: " + salesStock.getUnitPrice());
                         double itemUnitPrice = 0;
                         if (salesStock.getUnitPrice().contains("Rs. ")) {
-                            AppUtils.showLog(TAG, "ContainS");
                             itemUnitPrice = Double.valueOf(salesStock.getUnitPrice().replace("Rs. ", ""));
                         } else {
-                            AppUtils.showLog(TAG, "not contains");
                             itemUnitPrice = Double.valueOf(salesStock.getUnitPrice());
                         }
                         AppUtils.showLog(TAG, "ItemUnitPrice: " + itemUnitPrice);
@@ -745,7 +743,7 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
                     SalesStock updatedSalesStock = new SalesStock(salesStock.getId(), salesStock.getInventory_id(),
                             formattedAmount, mQty.getText().toString(), salesStock.getUnit(),
                             salesStock.getName(), salesStock.getPhotoUrl(), salesStock.getUnitPrice(),
-                            salesStock.isSynced());
+                            salesStock.isSynced(), System.currentTimeMillis());
 
                     cartItemList.set(position, updatedSalesStock);
                     cartAdapter.notifyItemChanged(position);
@@ -809,7 +807,7 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
                     }
 
                     if (!isInArray) {
-                        SalesStock salesStockNew = new SalesStock(id, inventoryId, formatedAmount, mQuantity.getText().toString(), unit, name, photoUrl, sellingPrice, false);
+                        SalesStock salesStockNew = new SalesStock(id, inventoryId, formatedAmount, mQuantity.getText().toString(), unit, name, photoUrl, sellingPrice, false, System.currentTimeMillis());
                         cartItemList.add(salesStockNew);
 
                         cartAdapter.notifyDataSetChanged();
@@ -822,7 +820,7 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
                                 int updatedQuantity = Integer.valueOf(salesStock.getQuantity()) + Integer.valueOf(mQuantity.getText().toString().trim());
                                 double updatedAmount = Double.valueOf(salesStock.getAmount()) + Double.valueOf(formatedAmount);
 
-                                SalesStock replaceSalesStock = new SalesStock(id, inventoryId, String.valueOf(updatedAmount), String.valueOf(updatedQuantity), unit, name, photoUrl, sellingPrice, false);
+                                SalesStock replaceSalesStock = new SalesStock(id, inventoryId, String.valueOf(updatedAmount), String.valueOf(updatedQuantity), unit, name, photoUrl, sellingPrice, false, System.currentTimeMillis());
 
                                 tempListAdd.add(replaceSalesStock);
                             }
@@ -835,7 +833,7 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
 
                 } else {
 
-                    SalesStock salesStockNew = new SalesStock(id, inventoryId, formatedAmount, mQuantity.getText().toString(), unit, name, photoUrl, sellingPrice, false);
+                    SalesStock salesStockNew = new SalesStock(id, inventoryId, formatedAmount, mQuantity.getText().toString(), unit, name, photoUrl, sellingPrice, false, System.currentTimeMillis());
                     cartItemList.add(salesStockNew);
 
                     cartAdapter.notifyDataSetChanged();
@@ -861,7 +859,7 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
 
                         SalesStock salesStockNew = new SalesStock(defaultInventoryStock.getId(), defaultInventoryStock.getInventory_id()
                                 , formatedAmount, mQuantity.getText().toString(), units.getName(), selectedItem.getSku().getName(), selectedItem.getSku().getPhoto_url(),
-                                defaultInventoryStock.getSalesPrice(), false);
+                                defaultInventoryStock.getSalesPrice(), false, System.currentTimeMillis());
 
                         tempListAdd.add(salesStockNew);
                     } else {
@@ -875,7 +873,7 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
                                 SalesStock replaceSalesStock = new SalesStock(defaultInventoryStock.getId(), defaultInventoryStock.getInventory_id()
                                         , String.valueOf(updatedAmount), String.valueOf(updatedQuantity), units.getName(),
                                         selectedItem.getSku().getName(), selectedItem.getSku().getPhoto_url(),
-                                        defaultInventoryStock.getSalesPrice(), false);
+                                        defaultInventoryStock.getSalesPrice(), false, System.currentTimeMillis());
 
                                 tempListAdd.add(replaceSalesStock);
 
@@ -891,7 +889,7 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
                     // add for first item in arraylist
                     SalesStock salesStockNew = new SalesStock(defaultInventoryStock.getId(), defaultInventoryStock.getInventory_id()
                             , formatedAmount, mQuantity.getText().toString(), units.getName(), selectedItem.getSku().getName(), selectedItem.getSku().getPhoto_url(),
-                            defaultInventoryStock.getSalesPrice(), false);
+                            defaultInventoryStock.getSalesPrice(), false, System.currentTimeMillis());
                     cartItemList.add(salesStockNew);
 
                     cartAdapter.notifyDataSetChanged();

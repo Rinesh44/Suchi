@@ -105,7 +105,7 @@ public class AutocompleteSearchAdapter extends ArrayAdapter {
                 ArrayList<StockKeepingUnitDto> matchValues = new ArrayList<StockKeepingUnitDto>();
 
                 for (StockKeepingUnitDto dataItem : dataListAllItems) {
-                    if (dataItem.getName().toLowerCase().startsWith(searchStrLowerCase)) {
+                    if (dataItem.getName().toLowerCase().contains(searchStrLowerCase)) {
                         matchValues.add(dataItem);
                     }
                 }

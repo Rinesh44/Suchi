@@ -164,7 +164,7 @@
                 android:layout_height="60dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/proxima_regular"
-                android:text="Pay"
+                android:text="Sell"
                 android:textStyle="bold" />
 
 

@@ -1,5 +1,6 @@
 package com.treeleaf.suchi.activities.sales;
 
+import android.app.Notification;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -15,6 +16,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -23,11 +26,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.activities.base.BaseActivity;
+import com.treeleaf.suchi.activities.inventory.InventoryActivity;
 import com.treeleaf.suchi.adapter.SalesAdapter;
 import com.treeleaf.suchi.api.Endpoints;
 import com.treeleaf.suchi.dto.SalesStockDto;
 import com.treeleaf.suchi.entities.SuchiProto;
+import com.treeleaf.suchi.realm.models.Inventory;
+import com.treeleaf.suchi.realm.models.InventoryStocks;
 import com.treeleaf.suchi.realm.models.SalesStock;
+import com.treeleaf.suchi.realm.models.StockKeepingUnit;
+import com.treeleaf.suchi.realm.repo.InventoryRepo;
 import com.treeleaf.suchi.realm.repo.SalesStockRepo;
 import com.treeleaf.suchi.realm.repo.UnitRepo;
 import com.treeleaf.suchi.utils.AppUtils;
@@ -45,6 +53,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.realm.RealmResults;
 
+import static com.treeleaf.suchi.SuchiApp.CHANNEL_ID;
 import static com.treeleaf.suchi.SuchiApp.getMyApplication;
 
 public class SalesActivity extends BaseActivity implements SalesView {
@@ -73,6 +82,8 @@ public class SalesActivity extends BaseActivity implements SalesView {
     private List<SalesStockDto> salesStockDtoList;
     private SalesListViewModel salesListViewModel;
     private SalesPresenter presenter;
+    private NotificationManagerCompat notificationManagerCompat;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,7 +98,6 @@ public class SalesActivity extends BaseActivity implements SalesView {
         userId = sharedPreferences.getString(Constants.USER_ID, "");
         mSalesRecycler.setLayoutManager(new LinearLayoutManager(this));
         mSalesAdapter = new SalesAdapter(SalesActivity.this, salesStockDtoList);
-
 
         salesListViewModel = ViewModelProviders.of(this).get(SalesListViewModel.class);
 
@@ -258,11 +268,19 @@ public class SalesActivity extends BaseActivity implements SalesView {
         ) {
 
             String unitId = UnitRepo.getInstance().getUnitIdByUnitName(saleStock.getUnit());
+            AppUtils.showLog(TAG, "quantity: " + saleStock.getQuantity());
+            String formattedQuantity = "";
+            if (saleStock.getQuantity().contains(".")) {
+                formattedQuantity = saleStock.getQuantity().substring
+                        (0, saleStock.getQuantity().length() - 2);
+            } else formattedQuantity = saleStock.getQuantity();
+
+            AppUtils.showLog(TAG, "formatedQwuantitY; " + formattedQuantity);
 
             SuchiProto.SaleInventory saleInventoryProto = SuchiProto.SaleInventory.newBuilder()
                     .setUnitId(unitId)
                     .setAmount(Double.valueOf(saleStock.getUnitPrice()))
-                    .setQuantity(Integer.valueOf(saleStock.getQuantity()))
+                    .setQuantity(Integer.valueOf(formattedQuantity))
                     .setInventoryStockId(saleStock.getId())
                     .setInventoryId(saleStock.getInventory_id())
                     .build();
@@ -318,6 +336,30 @@ public class SalesActivity extends BaseActivity implements SalesView {
 
         invalidateOptionsMenu();
         mSalesAdapter.notifyDataSetChanged();
+
+        List<Inventory> allInventoryList = InventoryRepo.getInstance().getAllInventoryList();
+        for (Inventory inventory : allInventoryList
+        ) {
+            for (InventoryStocks inventoryStocks : inventory.getInventoryStocks()
+            ) {
+                if (Double.valueOf(inventoryStocks.getQuantity()) < 5) {
+                    pushNotification(inventory.getSku());
+                }
+
+            }
+        }
+    }
+
+    private void pushNotification(StockKeepingUnit sku) {
+        notificationManagerCompat = NotificationManagerCompat.from(this);
+        Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
+                .setContentTitle("Insufficient Stocks")
+                .setContentText(sku.getName() + " is running low on quantity")
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                .build();
+
+        notificationManagerCompat.notify(1, notification);
     }
 
     @Override
@@ -325,7 +367,12 @@ public class SalesActivity extends BaseActivity implements SalesView {
         showMessage(msg);
     }
 
-/*    @Override
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(SalesActivity.this, InventoryActivity.class));
+    }
+
+    /*    @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         AppUtils.showLog(TAG, "onActivityResult()");

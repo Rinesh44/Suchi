@@ -20,6 +20,7 @@ import com.treeleaf.suchi.realm.repo.SalesStockRepo;
 import com.treeleaf.suchi.utils.AppUtils;
 import com.treeleaf.suchi.utils.Constants;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -68,6 +69,7 @@ public class SalesBill extends BaseActivity {
             public void onClick(View view) {
                 saveSalesData();
             }
+
         });
 
         mAddToCredit.setOnClickListener(new View.OnClickListener() {
@@ -80,6 +82,10 @@ public class SalesBill extends BaseActivity {
             }
         });
 
+
+    }
+
+    private void updateExistingSales() {
 
     }
 
@@ -154,6 +160,35 @@ public class SalesBill extends BaseActivity {
 
 
     public void saveSalesData() {
+        List<SalesStock> allSalesStock = SalesStockRepo.getInstance().getAllSalesStockList();
+        //lists to prevent concurrent modification exception
+        List<SalesStock> stocksToRemove = new ArrayList<>();
+        List<SalesStock> stocksToAdd = new ArrayList<>();
+        for (SalesStock salesStockCurrent : updatedSalesStockList
+        ) {
+            for (SalesStock salesStockDb : allSalesStock
+            ) {
+                if (salesStockDb.getId().equalsIgnoreCase(salesStockCurrent.getId())) {
+                    stocksToRemove.add(salesStockCurrent);
+
+                    String quantity = String.valueOf(Double.valueOf(salesStockDb.getQuantity()) +
+                            Double.valueOf(salesStockCurrent.getQuantity()));
+
+                    String amount = String.valueOf(Double.valueOf(quantity) *
+                            Double.valueOf(salesStockCurrent.getUnitPrice()));
+
+                    SalesStock salesStock = new SalesStock(salesStockCurrent.getId(), salesStockCurrent.getInventory_id(),
+                            amount, quantity, salesStockCurrent.getUnit(), salesStockCurrent.getName(),
+                            salesStockCurrent.getPhotoUrl(), salesStockCurrent.getUnitPrice(), false, System.currentTimeMillis());
+
+                    stocksToAdd.add(salesStock);
+                }
+            }
+        }
+
+        updatedSalesStockList.removeAll(stocksToRemove);
+        updatedSalesStockList.addAll(stocksToAdd);
+
         SalesStockRepo.getInstance().saveSalesStockList(updatedSalesStockList, new Repo.Callback() {
             @Override
             public void success(Object o) {
@@ -175,6 +210,7 @@ public class SalesBill extends BaseActivity {
 
     public void gotoSalesActivity() {
         Intent intent = new Intent(SalesBill.this, SalesActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
 }

@@ -12,11 +12,17 @@ import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.activities.base.BaseActivity;
 import com.treeleaf.suchi.activities.inventory.stock.StockActivity;
 import com.treeleaf.suchi.activities.sales.AddSalesActivity;
+import com.treeleaf.suchi.realm.models.SalesStock;
+import com.treeleaf.suchi.realm.repo.SalesStockRepo;
+import com.treeleaf.suchi.utils.AppUtils;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class InventoryActivity extends BaseActivity implements View.OnClickListener {
+    private static final String TAG = "InventoryActivity";
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
     @BindView(R.id.toolbar_title)
@@ -40,6 +46,12 @@ public class InventoryActivity extends BaseActivity implements View.OnClickListe
         mSales.setOnClickListener(this);
         mStock.setOnClickListener(this);
         mReports.setOnClickListener(this);
+
+        List<SalesStock> salesStockList = SalesStockRepo.getInstance().getAllSalesStockList();
+        for (SalesStock salesStock : salesStockList
+        ) {
+            AppUtils.showLog(TAG, "salesStockId: " + salesStock.getId());
+        }
     }
 
     private void init() {

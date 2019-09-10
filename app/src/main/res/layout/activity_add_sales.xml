@@ -164,6 +164,7 @@
                                 android:layout_toEndOf="@id/ib_decrease"
                                 android:fontFamily="@font/proxima_regular"
                                 android:gravity="center"
+                                android:inputType="number"
                                 android:text="1" />
 
                             <ImageButton
@@ -340,6 +341,6 @@
 
     </LinearLayout>
 
-    <include layout="@layout/edit_qty_bottomsheet"/>
+    <include layout="@layout/edit_qty_bottomsheet" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
