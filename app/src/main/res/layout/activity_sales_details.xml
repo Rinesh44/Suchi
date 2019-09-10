@@ -136,7 +136,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/proxima_regular"
-            android:text="Quantity to sell"
+            android:text="Sold quantity"
             android:textColor="@color/black"
             android:textSize="18sp" />
 

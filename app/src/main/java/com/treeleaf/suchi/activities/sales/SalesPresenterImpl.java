@@ -26,17 +26,18 @@ public class SalesPresenterImpl implements SalesPresenter {
                 activity.hideLoading();
                 SuchiRpcProto.SuchiBaseResponse baseResponse = response.body();
 
-                if(baseResponse == null){
+                if (baseResponse == null) {
                     activity.sycnSalesDataFail("sales sync response null");
                     return;
                 }
 
-                if(baseResponse.getError()){
+                if (baseResponse.getError()) {
                     activity.sycnSalesDataFail(baseResponse.getMsg());
                     return;
                 }
 
-                AppUtils.showLog(TAG, "SyncSalesPresponse: " + baseResponse.toString());
+                AppUtils.showLog(TAG, "SyncSalesResponse: " + baseResponse.toString());
+                activity.syncSalesDataSuccess();
 
             }
 

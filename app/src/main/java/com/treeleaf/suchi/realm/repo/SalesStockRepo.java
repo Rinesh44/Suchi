@@ -74,8 +74,6 @@ public class SalesStockRepo extends Repo {
             throwable.printStackTrace();
             return null;
 
-        } finally {
-            close(realm);
         }
     }
 

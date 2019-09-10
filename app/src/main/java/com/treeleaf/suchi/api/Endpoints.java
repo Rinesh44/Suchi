@@ -28,7 +28,7 @@ public interface Endpoints {
     String GET_ALL_DATA = "inventory/data/all";
     String INVENTORY = "inventory";
     String ADD_SKU = "sku";
-    String SALES = "sale";
+    String SALES = "sale/sync";
 
     String ADD_UNSYNCED_INVENTORIES = "inventory/sync";
 

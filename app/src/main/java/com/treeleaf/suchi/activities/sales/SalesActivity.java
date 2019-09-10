@@ -198,6 +198,7 @@ public class SalesActivity extends BaseActivity implements SalesView {
     protected void onResume() {
         super.onResume();
         AppUtils.showLog(TAG, "onResumeCalled()");
+        invalidateOptionsMenu();
 
     }
 
@@ -221,11 +222,11 @@ public class SalesActivity extends BaseActivity implements SalesView {
         switch (item.getItemId()) {
             case R.id.action_sync:
                 if (NetworkUtils.isNetworkConnected(this)) {
-                    List<SalesStock> allSalesStock = SalesStockRepo.getInstance().getAllSalesStockList();
+                    List<SalesStock> unSyncedSalesStockList = SalesStockRepo.getInstance().getUnsyncedSalesStockList();
                     if (token != null) {
-                        if (!allSalesStock.isEmpty()) {
+                        if (!unSyncedSalesStockList.isEmpty()) {
                             showLoading();
-                            postSalesDataToServer(allSalesStock);
+                            postSalesDataToServer(unSyncedSalesStockList);
                         } else
                             Toast.makeText(this, "No data found to sync", Toast.LENGTH_SHORT).show();
                     } else Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show();
@@ -241,8 +242,8 @@ public class SalesActivity extends BaseActivity implements SalesView {
         }
     }
 
-    private void postSalesDataToServer(List<SalesStock> allSalesStock) {
-        List<SuchiProto.Sale> saleListProto = mapSalesStockToProto(allSalesStock);
+    private void postSalesDataToServer(List<SalesStock> unsyncedSalesList) {
+        List<SuchiProto.Sale> saleListProto = mapSalesStockToProto(unsyncedSalesList);
         SuchiProto.SyncRequest syncRequest = SuchiProto.SyncRequest.newBuilder()
                 .addAllSales(saleListProto)
                 .build();
@@ -308,6 +309,15 @@ public class SalesActivity extends BaseActivity implements SalesView {
     @Override
     public void syncSalesDataSuccess() {
         AppUtils.showLog(TAG, "sync sales data success");
+
+        Toast.makeText(this, "Sale items synced", Toast.LENGTH_SHORT).show();
+
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean(Constants.SALES_DATA_REMAINING_TO_SYNC, false);
+        editor.apply();
+
+        invalidateOptionsMenu();
+        mSalesAdapter.notifyDataSetChanged();
     }
 
     @Override

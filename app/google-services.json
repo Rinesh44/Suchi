@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "113931898475",
+    "firebase_url": "https://suchiandroidapp.firebaseio.com",
+    "project_id": "suchiandroidapp",
+    "storage_bucket": "suchiandroidapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:113931898475:android:b536962b9111542cbeeb2e",
+        "android_client_info": {
+          "package_name": "com.treeleaf.suchi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "113931898475-4am9cf8nba985ca7e5l383ngejfmbt7u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.treeleaf.suchi",
+            "certificate_hash": "bab1f7198228b2bb44d7d4516c3536592d6514d4"
+          }
+        },
+        {
+          "client_id": "113931898475-j5r7b92340rmr6jn60ped1t0ek0ncbem.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqqhTB4kqwvbdpfYYz2tKWnwk2sLjqkgc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "113931898475-j5r7b92340rmr6jn60ped1t0ek0ncbem.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

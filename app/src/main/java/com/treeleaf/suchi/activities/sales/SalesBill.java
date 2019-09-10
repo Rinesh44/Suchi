@@ -1,7 +1,9 @@
 package com.treeleaf.suchi.activities.sales;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -16,6 +18,7 @@ import com.treeleaf.suchi.realm.models.SalesStock;
 import com.treeleaf.suchi.realm.repo.Repo;
 import com.treeleaf.suchi.realm.repo.SalesStockRepo;
 import com.treeleaf.suchi.utils.AppUtils;
+import com.treeleaf.suchi.utils.Constants;
 
 import java.util.List;
 
@@ -44,6 +47,7 @@ public class SalesBill extends BaseActivity {
     double totalAmount = 0;
 
     List<SalesStock> updatedSalesStockList;
+    private SharedPreferences preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,6 +122,7 @@ public class SalesBill extends BaseActivity {
             getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
         mToolbarTitle.setText("Billing Statement");
+        preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
     }
 
@@ -153,6 +158,11 @@ public class SalesBill extends BaseActivity {
             @Override
             public void success(Object o) {
                 Toast.makeText(SalesBill.this, "Sale item added", Toast.LENGTH_SHORT).show();
+
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putBoolean(Constants.SALES_DATA_REMAINING_TO_SYNC, true);
+                editor.apply();
+
                 gotoSalesActivity();
             }
 
