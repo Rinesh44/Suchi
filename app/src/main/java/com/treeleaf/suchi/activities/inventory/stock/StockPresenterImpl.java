@@ -161,7 +161,10 @@ public class StockPresenterImpl implements StockPresenter {
                         .setMarkedPrice(Double.valueOf(inventoryStocks.getMarkedPrice()))
                         .setSalesPrice(Double.valueOf(inventoryStocks.getSalesPrice()))
                         .setQuantity(Integer.valueOf(inventoryStocks.getQuantity()))
+                        .setSync(inventoryStocks.isSynced())
                         .setUnitId(inventoryStocks.getUnitId())
+                        .setInventoryStockId(inventoryStocks.getId())
+                        .setInventoryId(inventoryStocks.getInventory_id())
                         .build();
 
                 inventoryStockPbList.add(inventoryStockPb);
@@ -171,6 +174,7 @@ public class StockPresenterImpl implements StockPresenter {
                     .setInventoryId(inventory.getInventory_id())
                     .setSkuId(inventory.getSkuId())
                     .setUserId(inventory.getUser_id())
+                    .setSync(inventory.isSynced())
                     .addAllInventoryStocks(inventoryStockPbList)
                     .setStatus(SuchiProto.SKUStatus.AVAILABLE)
                     .setExpiryDate(Long.valueOf(inventory.getExpiryDate()))

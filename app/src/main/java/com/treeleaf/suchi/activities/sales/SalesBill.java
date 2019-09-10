@@ -1,18 +1,15 @@
 package com.treeleaf.suchi.activities.sales;
 
-import androidx.appcompat.widget.Toolbar;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.widget.Toolbar;
+
 import com.google.android.material.button.MaterialButton;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.activities.base.BaseActivity;
 import com.treeleaf.suchi.realm.models.SalesStock;
@@ -72,7 +69,10 @@ public class SalesBill extends BaseActivity {
         mAddToCredit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent i = new Intent(SalesBill.this, SalesAddCredit.class);
+                AppUtils.showLog(TAG, "amount: " + totalAmount);
+                i.putExtra("amount", String.valueOf(totalAmount));
+                startActivity(i);
             }
         });
 

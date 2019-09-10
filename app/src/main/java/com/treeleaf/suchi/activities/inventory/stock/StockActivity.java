@@ -345,11 +345,11 @@ public class StockActivity extends BaseActivity implements StockView {
         switch (item.getItemId()) {
             case R.id.action_sync:
                 if (NetworkUtils.isNetworkConnected(this)) {
-                    List<Inventory> allInventories = InventoryRepo.getInstance().getAllInventoryList();
+                    List<Inventory> unsyncedInventories = InventoryRepo.getInstance().getUnsyncedInventories();
                     if (token != null) {
-                        if (!allInventories.isEmpty()) {
+                        if (!unsyncedInventories.isEmpty()) {
                             showLoading();
-                            presenter.addUnsyncedInventories(token, allInventories);
+                            presenter.addUnsyncedInventories(token, unsyncedInventories);
                         } else
                             Toast.makeText(this, "No data found to sync", Toast.LENGTH_SHORT).show();
                     } else Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show();

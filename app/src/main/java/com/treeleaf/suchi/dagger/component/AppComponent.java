@@ -8,6 +8,7 @@ import com.treeleaf.suchi.activities.login.LoginActivity;
 import com.treeleaf.suchi.activities.register.RegisterActivity;
 import com.treeleaf.suchi.activities.sales.AddSalesActivity;
 import com.treeleaf.suchi.activities.sales.SalesActivity;
+import com.treeleaf.suchi.activities.sales.SalesAddCredit;
 import com.treeleaf.suchi.dagger.component.module.NetModule;
 import com.treeleaf.suchi.dagger.component.modules.module.AppModule;
 
@@ -33,5 +34,7 @@ public interface AppComponent {
     void inject(SalesActivity salesActivity);
 
     void inject(AddSalesActivity addSalesActivity);
+
+    void inject(SalesAddCredit salesAddCredit);
 
 }

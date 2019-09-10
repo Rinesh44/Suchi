@@ -7,24 +7,71 @@
 
     <include layout="@layout/toolbar" />
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/toolbar"
-        android:layout_margin="15dp">
+        android:layout_margin="15dp"
+        android:orientation="vertical">
 
-        <com.google.android.material.textfield.TextInputLayout
+        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+            android:id="@+id/actv_creditor"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="60dp"
+            android:completionThreshold="1"
+            android:drawableStart="@drawable/ic_search"
+            android:drawablePadding="10dp"
+            android:fontFamily="@font/proxima_regular"
+            android:hint="Search Creditor" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
 
-        </com.google.android.material.textfield.TextInputLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
 
 
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/tv_amount_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/proxima_regular"
+                android:text="Amount: "
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tv_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/proxima_regular"
+                android:text="Rs. 1000"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_create_new_creditor"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/proxima_regular"
+            android:text="Create new Creditor"
+            android:textStyle="bold" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_add_to_credit"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:fontFamily="@font/proxima_regular"
+            android:text="Add to credit"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
 
 
 </RelativeLayout>

@@ -97,8 +97,6 @@ public class InventoryRepo extends Repo {
         } catch (Throwable throwable) {
             throwable.printStackTrace();
             return null;
-        } finally {
-            close(realm);
         }
     }
 
