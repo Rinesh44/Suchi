@@ -18,7 +18,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activities.sales.SalesAddCredit"></activity>
+        <activity android:name=".activities.report.ReportActivity"></activity>
+        <activity android:name=".activities.sales.SalesAddCredit" />
         <activity android:name=".activities.sales.SalesBill" />
         <activity android:name=".activities.sales.SalesDetailsActivity" />
         <activity

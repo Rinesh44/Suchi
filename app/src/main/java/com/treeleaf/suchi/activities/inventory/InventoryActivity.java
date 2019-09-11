@@ -11,6 +11,7 @@ import com.google.android.material.card.MaterialCardView;
 import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.activities.base.BaseActivity;
 import com.treeleaf.suchi.activities.inventory.stock.StockActivity;
+import com.treeleaf.suchi.activities.report.ReportActivity;
 import com.treeleaf.suchi.activities.sales.AddSalesActivity;
 import com.treeleaf.suchi.realm.models.SalesStock;
 import com.treeleaf.suchi.realm.repo.SalesStockRepo;
@@ -81,6 +82,7 @@ public class InventoryActivity extends BaseActivity implements View.OnClickListe
                 break;
 
             case R.id.btn_reports:
+                startActivity(new Intent(InventoryActivity.this, ReportActivity.class));
                 break;
         }
     }
