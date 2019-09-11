@@ -183,7 +183,6 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
 
         presenter = new SearchStockPresenterImpl(endpoints, this);
 
-
         mSearchSku.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -250,7 +249,7 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
             @Override
             public void barcodeResult(BarcodeResult result) {
 //                beepSound();
-//                Toast.makeText(SearchStock.this, "scan succeess", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SearchStock.this, result.getText(), Toast.LENGTH_SHORT).show();
                 getSkuMatchingResult(result.getText());
             }
 
@@ -641,6 +640,7 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
 
 
     private void initialize() {
+        setUpToolbar(mToolbar);
         setUpToolbar(mToolbar);
         if (null != getSupportActionBar()) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);

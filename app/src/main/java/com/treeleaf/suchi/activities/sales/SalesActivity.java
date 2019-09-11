@@ -36,7 +36,6 @@ import com.treeleaf.suchi.entities.SuchiProto;
 import com.treeleaf.suchi.realm.models.Inventory;
 import com.treeleaf.suchi.realm.models.InventoryStocks;
 import com.treeleaf.suchi.realm.models.SalesStock;
-import com.treeleaf.suchi.realm.models.StockKeepingUnit;
 import com.treeleaf.suchi.realm.repo.InventoryRepo;
 import com.treeleaf.suchi.realm.repo.SalesStockRepo;
 import com.treeleaf.suchi.realm.repo.UnitRepo;

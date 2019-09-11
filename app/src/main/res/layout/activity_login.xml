@@ -33,7 +33,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/iv_title"
-                android:hint="@string/email_phone">
+                android:hint="@string/username">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_username"

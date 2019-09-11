@@ -1,16 +1,35 @@
 package com.treeleaf.suchi.activities.report.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.treeleaf.suchi.R;
+import com.treeleaf.suchi.activities.sales.SalesActivity;
+import com.treeleaf.suchi.activities.sales.SalesDetailsActivity;
+import com.treeleaf.suchi.adapter.SalesAdapter;
+import com.treeleaf.suchi.dto.SalesStockDto;
+import com.treeleaf.suchi.realm.models.SalesStock;
+import com.treeleaf.suchi.realm.repo.SalesStockRepo;
+import com.treeleaf.suchi.viewmodel.SalesListViewModel;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -21,6 +40,16 @@ import com.treeleaf.suchi.R;
  * create an instance of this fragment.
  */
 public class Table extends Fragment {
+    @BindView(R.id.rv_table_report)
+    RecyclerView mTableReport;
+    @BindView(R.id.tv_no_reports)
+    TextView mNoReports;
+
+
+    private Unbinder unbinder;
+    private SalesAdapter mSalesAdapter;
+    private SalesListViewModel salesListViewModel;
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -67,8 +96,67 @@ public class Table extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_table, container, false);
+        View view = inflater.inflate(R.layout.fragment_table, container, false);
+        unbinder = ButterKnife.bind(this, view);
+        return view;
     }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        mTableReport.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        manageReportRecyclerView();
+
+    }
+
+    private void manageReportRecyclerView() {
+        List<SalesStock> salesStockList = SalesStockRepo.getInstance().getAllSalesStockList();
+        if (salesStockList.size() == 0) {
+            mNoReports.setVisibility(View.VISIBLE);
+            //todo add seach and set visibility to gone
+        } else {
+            //todo add seach and set visibility to visible
+            mNoReports.setVisibility(View.GONE);
+            List<SalesStockDto> salesStockDtoList = mapSaleStocksToSalesStockDto(salesStockList);
+            mSalesAdapter = new SalesAdapter(getActivity(), salesStockDtoList);
+            mTableReport.setAdapter(mSalesAdapter);
+            mSalesAdapter.notifyDataSetChanged();
+
+            mSalesAdapter.setOnItemClickListener(new SalesAdapter.OnItemClickListener() {
+                @Override
+                public void onItemClick(SalesStockDto sales) {
+                    Intent i = new Intent(getActivity(), SalesDetailsActivity.class);
+                    i.putExtra("sales_object", sales);
+                    startActivity(i);
+                }
+            });
+
+
+        }
+    }
+
+    private List<SalesStockDto> mapSaleStocksToSalesStockDto(List<SalesStock> salesStockList) {
+        List<SalesStockDto> salesStockDtoList = new ArrayList<>();
+        for (SalesStock salesStock : salesStockList) {
+            SalesStockDto salesStockDto = new SalesStockDto();
+            salesStockDto.setName(salesStock.getName());
+            salesStockDto.setAmount(salesStock.getAmount());
+            salesStockDto.setId(salesStock.getId());
+            salesStockDto.setInventory_id(salesStock.getInventory_id());
+            salesStockDto.setPhotoUrl(salesStock.getPhotoUrl());
+            salesStockDto.setQuantity(salesStock.getQuantity());
+            salesStockDto.setSynced(salesStock.isSynced());
+            salesStockDto.setUnit(salesStock.getUnit());
+            salesStockDto.setUnitPrice(salesStock.getUnitPrice());
+
+            salesStockDtoList.add(salesStockDto);
+        }
+
+        return salesStockDtoList;
+    }
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
@@ -92,6 +180,12 @@ public class Table extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
     }
 
     /**

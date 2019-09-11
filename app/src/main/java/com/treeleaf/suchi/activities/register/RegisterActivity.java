@@ -79,6 +79,7 @@ public class RegisterActivity extends BaseActivity implements RegisterView {
         mRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                hideKeyboard();
                 validateFieldsAndRegister();
             }
         });

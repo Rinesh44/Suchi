@@ -14,6 +14,7 @@ import androidx.appcompat.widget.Toolbar;
 import com.google.android.material.button.MaterialButton;
 import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.activities.base.BaseActivity;
+import com.treeleaf.suchi.activities.inventory.InventoryActivity;
 import com.treeleaf.suchi.realm.models.SalesStock;
 import com.treeleaf.suchi.realm.repo.Repo;
 import com.treeleaf.suchi.realm.repo.SalesStockRepo;
@@ -179,7 +180,14 @@ public class SalesBill extends BaseActivity {
 
                     SalesStock salesStock = new SalesStock(salesStockCurrent.getId(), salesStockCurrent.getInventory_id(),
                             amount, quantity, salesStockCurrent.getUnit(), salesStockCurrent.getName(),
-                            salesStockCurrent.getPhotoUrl(), salesStockCurrent.getUnitPrice(), false, System.currentTimeMillis());
+                            salesStockCurrent.getPhotoUrl(), salesStockCurrent.getUnitPrice(), false, salesStockCurrent.getCreatedAt(), System.currentTimeMillis());
+
+                    stocksToAdd.add(salesStock);
+                } else {
+
+                    SalesStock salesStock = new SalesStock(salesStockCurrent.getId(), salesStockCurrent.getInventory_id(),
+                            salesStockCurrent.getAmount(), salesStockCurrent.getQuantity(), salesStockCurrent.getUnit(), salesStockCurrent.getName(),
+                            salesStockCurrent.getPhotoUrl(), salesStockCurrent.getUnitPrice(), false, System.currentTimeMillis(), 0);
 
                     stocksToAdd.add(salesStock);
                 }
@@ -198,7 +206,7 @@ public class SalesBill extends BaseActivity {
                 editor.putBoolean(Constants.SALES_DATA_REMAINING_TO_SYNC, true);
                 editor.apply();
 
-                gotoSalesActivity();
+                gotoInventoryActivity();
             }
 
             @Override
@@ -208,8 +216,8 @@ public class SalesBill extends BaseActivity {
         });
     }
 
-    public void gotoSalesActivity() {
-        Intent intent = new Intent(SalesBill.this, SalesActivity.class);
+    public void gotoInventoryActivity() {
+        Intent intent = new Intent(SalesBill.this, InventoryActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
