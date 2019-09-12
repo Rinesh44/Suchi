@@ -1,5 +1,6 @@
 package com.treeleaf.suchi.activities.inventory.stock;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.hardware.Camera;
@@ -8,9 +9,11 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.speech.RecognizerIntent;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -24,6 +27,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatSpinner;
 import androidx.appcompat.widget.Toolbar;
 
@@ -57,6 +61,7 @@ import com.treeleaf.suchi.utils.DatePicker;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.UUID;
 
 import javax.inject.Inject;
@@ -140,6 +145,7 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
     private String token;
     private String unitPrice;
     private StockKeepingUnitDto selectedItem;
+    private final int REQ_CODE_SPEECH_INPUT = 100;
 
 /*    @BindView(R.id.tv_description)
     TextView mDescription;*/
@@ -197,6 +203,63 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
 
         datePicker = new DatePicker(this, R.id.et_expiry_date);
 
+        mSearchSku.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+
+                mSearchSku.setFocusableInTouchMode(true);
+
+                final int DRAWABLE_LEFT = 0;
+                final int DRAWABLE_TOP = 1;
+                final int DRAWABLE_RIGHT = 2;
+                final int DRAWABLE_BOTTOM = 3;
+
+                if (mSearchSku.getCompoundDrawables()[DRAWABLE_RIGHT] != null)
+                    if (event.getAction() == MotionEvent.ACTION_UP) {
+                        if (event.getRawX() >= (mSearchSku.getRight() - mSearchSku.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
+                            promptSpeechInput();
+                            return true;
+                        }
+                    }
+
+                return false;
+            }
+        });
+
+    }
+
+    /**
+     * Showing google speech input dialog
+     */
+    private void promptSpeechInput() {
+        Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
+        try {
+            startActivityForResult(intent, REQ_CODE_SPEECH_INPUT);
+        } catch (ActivityNotFoundException a) {
+            Toast.makeText(getApplicationContext(),
+                    getString(R.string.speech_not_supported),
+                    Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case REQ_CODE_SPEECH_INPUT: {
+                if (resultCode == RESULT_OK && null != data) {
+                    ArrayList<String> result = data
+                            .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+                    mSearchSku.setText(result.get(0));
+                }
+                break;
+            }
+
+        }
     }
 
     private void setUpViewForSkuDetails(StockKeepingUnitDto selectedItem) {

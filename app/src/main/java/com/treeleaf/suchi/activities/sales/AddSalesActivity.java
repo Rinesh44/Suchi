@@ -1,6 +1,7 @@
 package com.treeleaf.suchi.activities.sales;
 
 import android.Manifest;
+import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -15,6 +16,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.preference.PreferenceManager;
+import android.speech.RecognizerIntent;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -79,6 +81,7 @@ import com.treeleaf.suchi.utils.Constants;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import javax.inject.Inject;
 
@@ -165,6 +168,7 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
     private InventoryStocksDto defaultInventoryStock;
     private boolean isScanDone;
     private BottomSheetBehavior sheetBehavior;
+    private final int REQ_CODE_SPEECH_INPUT = 101;
 
 
     @Override
@@ -225,18 +229,23 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
                 final int DRAWABLE_BOTTOM = 3;
 
                 if (mSearch.getCompoundDrawables()[DRAWABLE_RIGHT] != null)
-                    if (event.getAction() == MotionEvent.ACTION_UP) {
+                    if (event.getAction() == MotionEvent.ACTION_DOWN) {
                         if (event.getRawX() >= (mSearch.getRight() - mSearch.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
                             if (toggleCamera) {
                                 mCameraHolder.setVisibility(View.GONE);
                                 toggleCamera = false;
-                                mSearch.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_camera_disabled, 0);
+                                mSearch.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_speech, 0, R.drawable.ic_camera_disabled, 0);
                             } else {
                                 mCameraHolder.setVisibility(View.VISIBLE);
                                 toggleCamera = true;
-                                mSearch.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_camera_green, 0);
+                                mSearch.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_speech, 0, R.drawable.ic_camera_green, 0);
                             }
 
+                            return true;
+                        }
+
+                        if (event.getX() <= (mSearch.getCompoundDrawables()[DRAWABLE_LEFT].getBounds().width())) {
+                            promptSpeechInput();
                             return true;
                         }
                     }
@@ -244,7 +253,6 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
                 return false;
             }
         });
-
 
         mSearch.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -257,6 +265,24 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
             }
         });
 
+    }
+
+
+    /**
+     * Showing google speech input dialog
+     */
+    private void promptSpeechInput() {
+        Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
+        try {
+            startActivityForResult(intent, REQ_CODE_SPEECH_INPUT);
+        } catch (ActivityNotFoundException a) {
+            Toast.makeText(getApplicationContext(),
+                    getString(R.string.speech_not_supported),
+                    Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void setUpViewForSkuDetails(InventoryDto selectedItem) {
@@ -459,6 +485,28 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
             fotoapparat.stop();
         }*/
 
+    }
+
+
+    /**
+     * Receiving speech input
+     */
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        switch (requestCode) {
+            case REQ_CODE_SPEECH_INPUT: {
+                if (resultCode == RESULT_OK && null != data) {
+
+                    ArrayList<String> result = data
+                            .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+                    mSearch.setText(result.get(0));
+                }
+                break;
+            }
+
+        }
     }
 
     private void initialize() {
