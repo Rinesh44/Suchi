@@ -23,8 +23,6 @@ import com.treeleaf.suchi.utils.AppUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.hdodenhof.circleimageview.CircleImageView;
-
 public class SalesAdapter extends ListAdapter<SalesStockDto, SalesAdapter.SalesHolder> implements Filterable {
     private static final String TAG = "SalesAdapter";
     private OnItemClickListener listener;
@@ -113,15 +111,15 @@ public class SalesAdapter extends ListAdapter<SalesStockDto, SalesAdapter.SalesH
         holder.unitPrice.setText(current.getUnitPrice());
         holder.unit.setText(current.getUnit());
         holder.qty.setText(current.getQuantity());
-        holder.itemImage.setBorderColor(context.getResources().getColor(android.R.color.holo_green_light));
+//        holder.itemImage.setBorderColor(context.getResources().getColor(android.R.color.holo_green_light));
         imageUrl = current.getPhotoUrl();
 
-        if (current.isSynced()) {
+  /*      if (current.isSynced()) {
             holder.unsynced.setVisibility(View.GONE);
         } else {
             holder.unsynced.setVisibility(View.VISIBLE);
-        }
-
+        }*/
+/*
         AppUtils.showLog(TAG, "ImageUrl: " + imageUrl);
         if (!imageUrl.isEmpty()) {
             RequestOptions options = new RequestOptions()
@@ -130,7 +128,7 @@ public class SalesAdapter extends ListAdapter<SalesStockDto, SalesAdapter.SalesH
                     .error(R.drawable.ic_stock);
 
             Glide.with(context).load(imageUrl).apply(options).into(holder.itemImage);
-        }
+        }*/
     }
 
     @Override
@@ -144,8 +142,8 @@ public class SalesAdapter extends ListAdapter<SalesStockDto, SalesAdapter.SalesH
         private TextView unit;
         private TextView unitPrice;
         private TextView amount;
-        private CircleImageView itemImage;
-        private ImageView unsynced;
+        //        private CircleImageView itemImage;
+//        private ImageView unsynced;
 
         public SalesHolder(@NonNull View itemView) {
             super(itemView);
@@ -155,8 +153,8 @@ public class SalesAdapter extends ListAdapter<SalesStockDto, SalesAdapter.SalesH
             unit = itemView.findViewById(R.id.tv_unit);
             unitPrice = itemView.findViewById(R.id.tv_unit_price);
             amount = itemView.findViewById(R.id.tv_amount);
-            unsynced = itemView.findViewById(R.id.iv_unsynced);
-            itemImage = itemView.findViewById(R.id.iv_item_image);
+//            unsynced = itemView.findViewById(R.id.iv_unsynced);
+//            itemImage = itemView.findViewById(R.id.iv_item_image);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

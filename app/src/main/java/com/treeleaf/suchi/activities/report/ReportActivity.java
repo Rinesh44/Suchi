@@ -1,11 +1,16 @@
 package com.treeleaf.suchi.activities.report;
 
 import android.content.SharedPreferences;
+import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,6 +20,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.tabs.TabLayout;
 import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.activities.base.BaseActivity;
@@ -22,11 +29,10 @@ import com.treeleaf.suchi.activities.report.fragments.Chart;
 import com.treeleaf.suchi.activities.report.fragments.Table;
 import com.treeleaf.suchi.entities.SuchiProto;
 import com.treeleaf.suchi.realm.models.SalesStock;
-import com.treeleaf.suchi.realm.repo.SalesStockRepo;
 import com.treeleaf.suchi.realm.repo.UnitRepo;
 import com.treeleaf.suchi.utils.AppUtils;
 import com.treeleaf.suchi.utils.Constants;
-import com.treeleaf.suchi.utils.NetworkUtils;
+import com.treeleaf.suchi.utils.DatePicker;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,9 +51,13 @@ public class ReportActivity extends BaseActivity implements Chart.OnFragmentInte
     ViewPager mViewpager;
     @BindView(R.id.toolbar_title)
     TextView mToolbarTitle;
+    @BindView(R.id.bottom_sheet)
+    LinearLayout mBottomSheet;
 
     private SharedPreferences sharedPreferences;
     private String token, userId;
+    private BottomSheetBehavior sheetBehavior;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +69,41 @@ public class ReportActivity extends BaseActivity implements Chart.OnFragmentInte
 
         setupViewPager(mViewpager);
         mTabs.setupWithViewPager(mViewpager);
+
+        EditText mFromDate = mBottomSheet.findViewById(R.id.et_from_date);
+        EditText mToDate = mBottomSheet.findViewById(R.id.et_to_date);
+        MaterialButton mDone = mBottomSheet.findViewById(R.id.btn_done);
+
+        mFromDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatePicker datePicker = new DatePicker(ReportActivity.this, mFromDate.getId());
+                datePicker.onClick(view);
+            }
+        });
+
+
+        mToDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatePicker datePicker = new DatePicker(ReportActivity.this, mToDate.getId());
+                datePicker.onClick(view);
+            }
+        });
+
+        mDone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mFromDate.getText().toString().isEmpty() ||
+                        mToDate.getText().toString().isEmpty()) {
+                    Toast.makeText(ReportActivity.this, "Please enter the dates", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                Toast.makeText(ReportActivity.this, "done clicked", Toast.LENGTH_SHORT).show();
+
+            }
+        });
 
     }
 
@@ -72,6 +117,8 @@ public class ReportActivity extends BaseActivity implements Chart.OnFragmentInte
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         token = sharedPreferences.getString(Constants.TOKEN, "");
         userId = sharedPreferences.getString(Constants.USER_ID, "");
+
+        sheetBehavior = BottomSheetBehavior.from(mBottomSheet);
     }
 
     @Override
@@ -94,8 +141,8 @@ public class ReportActivity extends BaseActivity implements Chart.OnFragmentInte
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        if (sharedPreferences.getBoolean(Constants.SALES_DATA_REMAINING_TO_SYNC, false))
-            getMenuInflater().inflate(R.menu.menu_sync, menu);
+//        if (sharedPreferences.getBoolean(Constants.SALES_DATA_REMAINING_TO_SYNC, false))
+        getMenuInflater().inflate(R.menu.menu_filter, menu);
         return true;
     }
 
@@ -103,26 +150,42 @@ public class ReportActivity extends BaseActivity implements Chart.OnFragmentInte
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_sync:
-                if (NetworkUtils.isNetworkConnected(this)) {
-                    List<SalesStock> unSyncedSalesStockList = SalesStockRepo.getInstance().getUnsyncedSalesStockList();
-                    if (token != null) {
-                        if (!unSyncedSalesStockList.isEmpty()) {
-                       /*     showLoading();
-                            postSalesDataToServer(unSyncedSalesStockList);*/
-                        } else
-                            Toast.makeText(this, "No data found to sync", Toast.LENGTH_SHORT).show();
-                    } else Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show();
-
-                } else {
-                    Toast.makeText(this, "Please connect to internet.", Toast.LENGTH_SHORT).show();
-                }
+            case R.id.action_filter:
+                toggleBottomSheet();
                 return true;
 
 
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    /**
+     * manually opening / closing bottom sheet on button click
+     */
+    public void toggleBottomSheet() {
+        if (sheetBehavior.getState() != BottomSheetBehavior.STATE_EXPANDED) {
+            sheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+        } else {
+            sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+        }
+    }
+
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent event) {
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            if (sheetBehavior.getState() == BottomSheetBehavior.STATE_EXPANDED) {
+
+                Rect outRect = new Rect();
+                mBottomSheet.getGlobalVisibleRect(outRect);
+
+                if (!outRect.contains((int) event.getRawX(), (int) event.getRawY()))
+                    sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+            }
+        }
+
+        return super.dispatchTouchEvent(event);
     }
 
     class ViewPagerAdapter extends FragmentPagerAdapter {

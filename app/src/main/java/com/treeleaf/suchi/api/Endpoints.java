@@ -17,6 +17,7 @@ public interface Endpoints {
     //    String API_BASE_URL = "http://192.168.0.173:9020/";
 //    String API_BASE_URL = "http://192.168.0.191:9020/";
 //    String API_BASE_URL = "http://192.168.0.60:9000/";
+//    String API_BASE_URL = "http://192.168.0.52:9000/";
     String API_BASE_URL = "https://suchi-api.treeleaf.ai/";
 
     String CONTENT_TYPE = "Content-Type: application/protobuf";

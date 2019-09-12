@@ -4,19 +4,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-
 import com.treeleaf.suchi.R;
-import com.treeleaf.suchi.activities.sales.SalesActivity;
 import com.treeleaf.suchi.activities.sales.SalesDetailsActivity;
 import com.treeleaf.suchi.adapter.SalesAdapter;
 import com.treeleaf.suchi.dto.SalesStockDto;
@@ -44,11 +42,19 @@ public class Table extends Fragment {
     RecyclerView mTableReport;
     @BindView(R.id.tv_no_reports)
     TextView mNoReports;
+    @BindView(R.id.tv_total_amount)
+    TextView mTotalAmount;
+    @BindView(R.id.tv_items_sold)
+    TextView mItemsSold;
+    @BindView(R.id.tv_total_amt_top)
+    TextView mTotalAmountTop;
 
 
     private Unbinder unbinder;
     private SalesAdapter mSalesAdapter;
     private SalesListViewModel salesListViewModel;
+    private StringBuilder totalAmountBuilder;
+    private int totalItemCount = 0;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -113,16 +119,18 @@ public class Table extends Fragment {
 
     private void manageReportRecyclerView() {
         List<SalesStock> salesStockList = SalesStockRepo.getInstance().getAllSalesStockList();
+        totalItemCount = salesStockList.size();
         if (salesStockList.size() == 0) {
             mNoReports.setVisibility(View.VISIBLE);
-            //todo add seach and set visibility to gone
         } else {
-            //todo add seach and set visibility to visible
             mNoReports.setVisibility(View.GONE);
             List<SalesStockDto> salesStockDtoList = mapSaleStocksToSalesStockDto(salesStockList);
             mSalesAdapter = new SalesAdapter(getActivity(), salesStockDtoList);
             mTableReport.setAdapter(mSalesAdapter);
             mSalesAdapter.notifyDataSetChanged();
+
+            setTotalAmount(salesStockDtoList);
+
 
             mSalesAdapter.setOnItemClickListener(new SalesAdapter.OnItemClickListener() {
                 @Override
@@ -135,6 +143,26 @@ public class Table extends Fragment {
 
 
         }
+    }
+
+    private void setTotalAmount(List<SalesStockDto> salesStockDtoList) {
+        double totalAmount = 0;
+        for (SalesStockDto salesstockDto : salesStockDtoList
+        ) {
+            totalAmount += Double.valueOf(salesstockDto.getAmount());
+        }
+
+        totalAmountBuilder = new StringBuilder();
+        totalAmountBuilder.append("Rs. ");
+        totalAmountBuilder.append(totalAmount);
+        mTotalAmount.setText(totalAmountBuilder);
+
+        mTotalAmountTop.setText(totalAmountBuilder);
+
+        StringBuilder soldItemsBuilder = new StringBuilder();
+        soldItemsBuilder.append(totalItemCount);
+        soldItemsBuilder.append(" items sold");
+        mItemsSold.setText(soldItemsBuilder);
     }
 
     private List<SalesStockDto> mapSaleStocksToSalesStockDto(List<SalesStock> salesStockList) {

@@ -10,50 +10,227 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/tv_filter_by"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="5dp"
-            android:fontFamily="@font/proxima_regular"
-            android:text="Filter By: "
-            android:textColor="@color/black"
-            android:textSize="16sp" />
 
-        <LinearLayout
-            android:id="@+id/ll_filter"
+        <HorizontalScrollView
+            android:id="@+id/hsv_filter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_filter_by"
+            android:layout_margin="10dp"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/round_bg"
+                    android:text="today" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/round_bg"
+                    android:text="week" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/round_bg"
+                    android:text="month" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/round_bg"
+                    android:text="p. 3 months" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/round_bg"
+                    android:text="p. 6 months" />
+
+            </LinearLayout>
+
+
+        </HorizontalScrollView>
+
+        <TextView
+            android:id="@+id/tv_items_sold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/hsv_filter"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
-            android:orientation="horizontal">
+            android:fontFamily="@font/proxima_regular"
+            android:text="4 items sold"
+            android:textColor="@color/black"
+            android:textSize="17sp" />
 
-            <com.google.android.material.button.MaterialButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="5dp"
-                android:background="@drawable/round_bg"
-                android:text="week" />
+        <TextView
+            android:id="@+id/tv_total_amt_top_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/hsv_filter"
+            android:layout_toStartOf="@+id/tv_total_amt_top"
+            android:fontFamily="@font/proxima_regular"
+            android:text="Total Amount: "
+            android:textColor="@color/black"
+            android:textSize="17sp" />
 
-            <com.google.android.material.button.MaterialButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="5dp"
-                android:background="@drawable/round_bg"
-                android:text="Month" />
+        <TextView
+            android:id="@+id/tv_total_amt_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/hsv_filter"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="10dp"
+            android:fontFamily="@font/proxima_regular"
+            android:text="Rs. 4520"
+            android:textColor="@color/black"
+            android:textSize="17sp" />
+
+
+        <LinearLayout
+            android:id="@+id/ll_table_titles"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@id/tv_items_sold"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@color/colorPrimary"
+            android:orientation="horizontal"
+            android:weightSum="17">
+
+            <TextView
+                android:id="@+id/tv_name_title"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="4"
+                android:fontFamily="@font/proxima_regular"
+                android:gravity="center"
+                android:text="Name"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_qty_title"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:fontFamily="@font/proxima_regular"
+                android:gravity="center"
+                android:text="Qty"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/tv_unit_title"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="4"
+                android:fontFamily="@font/proxima_regular"
+                android:gravity="center"
+                android:text="Unit"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_unit_price_title"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:fontFamily="@font/proxima_regular"
+                android:gravity="center"
+                android:text="Unit Price"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_amount_title"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="4"
+                android:fontFamily="@font/proxima_regular"
+                android:gravity="center"
+                android:text="Amount"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
 
 
         </LinearLayout>
 
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_table_report"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/ll_filter"
-            android:clipToPadding="false"
-            android:padding="10dp" />
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ll_table_titles"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:clipToPadding="false" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@+id/rv_table_report"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/table_row_bg"
+            android:orientation="horizontal"
+            android:weightSum="17">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10">
+
+                <TextView
+                    android:id="@+id/tv_total_amount_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/proxima_regular"
+                    android:gravity="end"
+                    android:text="Total Amount: "
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="7">
+
+                <TextView
+                    android:id="@+id/tv_total_amount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_weight="7"
+                    android:fontFamily="@font/proxima_regular"
+                    android:gravity="end"
+                    android:text="asdfaga"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/tv_no_reports"

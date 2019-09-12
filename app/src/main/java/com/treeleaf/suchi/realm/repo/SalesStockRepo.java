@@ -44,6 +44,7 @@ public class SalesStockRepo extends Repo {
         }
     }
 
+
     public LiveData<RealmResults<SalesStock>> getAllSalesStock() {
         Realm realm = RealmDatabase.getInstance().getRealm();
         try {
@@ -59,6 +60,31 @@ public class SalesStockRepo extends Repo {
         Realm realm = RealmDatabase.getInstance().getRealm();
         try {
             return new ArrayList<>(realm.where(SalesStock.class).findAll());
+
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+            return null;
+        }
+    }
+
+
+    public List<SalesStock> getSalesStockOfToday(long timestamp) {
+        Realm realm = RealmDatabase.getInstance().getRealm();
+        try {
+            return new ArrayList<>(realm.where(SalesStock.class)
+                    .equalTo("created_at", timestamp).findAll());
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+            return null;
+        }
+    }
+
+    public List<SalesStock> getSalesStockByDate(long fromDate, long tillDate) {
+        Realm realm = RealmDatabase.getInstance().getRealm();
+        try {
+            return new ArrayList<>(realm.where(SalesStock.class)
+                    .greaterThanOrEqualTo("created_at", fromDate)
+                    .lessThanOrEqualTo("created_at", tillDate).findAll());
 
         } catch (Throwable throwable) {
             throwable.printStackTrace();

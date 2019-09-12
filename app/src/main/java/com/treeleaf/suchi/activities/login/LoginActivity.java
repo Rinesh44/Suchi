@@ -124,7 +124,7 @@ public class LoginActivity extends BaseActivity implements LoginView {
 
     private void gotoActivity(TreeleafProto.LoginResponse loginResponse, int status) {
 
-        if (status == 2) {
+        if (status == 1) {
 
             UserRepo.getInstance().saveUser(loginResponse, new Repo.Callback() {
                 @Override
