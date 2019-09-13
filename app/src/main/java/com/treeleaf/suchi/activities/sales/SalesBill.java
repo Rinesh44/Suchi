@@ -180,14 +180,18 @@ public class SalesBill extends BaseActivity {
 
                     SalesStock salesStock = new SalesStock(salesStockCurrent.getId(), salesStockCurrent.getInventory_id(),
                             amount, quantity, salesStockCurrent.getUnit(), salesStockCurrent.getName(),
-                            salesStockCurrent.getPhotoUrl(), salesStockCurrent.getUnitPrice(), false, salesStockCurrent.getCreatedAt(), System.currentTimeMillis());
+                            salesStockCurrent.getPhotoUrl(), salesStockCurrent.getUnitPrice(),
+                            salesStockCurrent.getBrand(), salesStockCurrent.getSubBrand(), salesStockCurrent.getCategories(),
+                            false, salesStockCurrent.getCreatedAt(), System.currentTimeMillis());
 
                     stocksToAdd.add(salesStock);
                 } else {
 
                     SalesStock salesStock = new SalesStock(salesStockCurrent.getId(), salesStockCurrent.getInventory_id(),
                             salesStockCurrent.getAmount(), salesStockCurrent.getQuantity(), salesStockCurrent.getUnit(), salesStockCurrent.getName(),
-                            salesStockCurrent.getPhotoUrl(), salesStockCurrent.getUnitPrice(), false, System.currentTimeMillis(), 0);
+                            salesStockCurrent.getPhotoUrl(), salesStockCurrent.getUnitPrice(),
+                            salesStockCurrent.getBrand(), salesStockCurrent.getSubBrand(), salesStockCurrent.getCategories(),
+                            false, System.currentTimeMillis(), 0);
 
                     stocksToAdd.add(salesStock);
                 }

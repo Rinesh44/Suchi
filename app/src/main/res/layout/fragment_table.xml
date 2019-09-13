@@ -71,7 +71,6 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:fontFamily="@font/proxima_regular"
-            android:text="4 items sold"
             android:textColor="@color/black"
             android:textSize="17sp" />
 
@@ -94,9 +93,9 @@
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="10dp"
             android:fontFamily="@font/proxima_regular"
-            android:text="Rs. 4520"
             android:textColor="@color/black"
-            android:textSize="17sp" />
+            android:textSize="17sp"
+            android:textStyle="bold" />
 
 
         <LinearLayout
@@ -135,32 +134,22 @@
 
 
             <TextView
-                android:id="@+id/tv_unit_title"
+                android:id="@+id/tv_date_title"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="4"
+                android:layout_weight="8"
                 android:fontFamily="@font/proxima_regular"
                 android:gravity="center"
-                android:text="Unit"
+                android:text="Date"
                 android:textColor="@color/white"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/tv_unit_price_title"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="3"
-                android:fontFamily="@font/proxima_regular"
-                android:gravity="center"
-                android:text="Unit Price"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tv_amount_title"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="4"
+                android:layout_weight="3"
                 android:fontFamily="@font/proxima_regular"
                 android:gravity="center"
                 android:text="Amount"
@@ -181,6 +170,7 @@
             android:clipToPadding="false" />
 
         <LinearLayout
+            android:id="@+id/ll_total_amount_holder"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_below="@+id/rv_table_report"
@@ -216,14 +206,12 @@
                 <TextView
                     android:id="@+id/tv_total_amount"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginTop="6dp"
-                    android:layout_marginEnd="5dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="10dp"
                     android:layout_weight="7"
                     android:fontFamily="@font/proxima_regular"
-                    android:gravity="end"
-                    android:text="asdfaga"
+                    android:gravity="center_vertical|end"
+                    android:text="23536"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -238,6 +226,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:fontFamily="@font/proxima_regular"
+            android:paddingBottom="80dp"
             android:text="No reports available"
             android:textSize="20sp" />
 

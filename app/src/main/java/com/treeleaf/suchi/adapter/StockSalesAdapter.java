@@ -86,6 +86,9 @@ public class StockSalesAdapter extends RecyclerView.Adapter<StockSalesAdapter.St
                 intent.putExtra("inventory_stock_id", salesStock.getId());
                 intent.putExtra("unit", holder.mUnit.getText().toString());
                 intent.putExtra("photo_url", inventoryDto.getSku().getPhoto_url());
+                intent.putExtra("brand", inventoryDto.getSku().getBrand().getName());
+                intent.putExtra("sub_brand", inventoryDto.getSku().getSubBrands().getName());
+                intent.putExtra("categories", inventoryDto.getSku().getCategories().getName());
                 intent.putExtra("name", inventoryDto.getSku().getName());
                 intent.putExtra("checked", true);
 

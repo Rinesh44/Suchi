@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,8 +13,6 @@ import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.dto.SalesStockDto;
 import com.treeleaf.suchi.utils.AppUtils;
@@ -106,10 +103,12 @@ public class SalesAdapter extends ListAdapter<SalesStockDto, SalesAdapter.SalesH
     public void onBindViewHolder(@NonNull SalesHolder holder, int position) {
         SalesStockDto current = salesStockListFiltered.get(position);
 
+        AppUtils.showLog(TAG, "timestamps: " + current.getCreatedAt());
+        String createdDate = AppUtils.getDate(current.getCreatedAt());
+
         holder.name.setText(current.getName());
         holder.amount.setText(current.getAmount());
-        holder.unitPrice.setText(current.getUnitPrice());
-        holder.unit.setText(current.getUnit());
+        holder.date.setText(createdDate);
         holder.qty.setText(current.getQuantity());
 //        holder.itemImage.setBorderColor(context.getResources().getColor(android.R.color.holo_green_light));
         imageUrl = current.getPhotoUrl();
@@ -139,8 +138,7 @@ public class SalesAdapter extends ListAdapter<SalesStockDto, SalesAdapter.SalesH
     class SalesHolder extends RecyclerView.ViewHolder {
         private TextView name;
         private TextView qty;
-        private TextView unit;
-        private TextView unitPrice;
+        private TextView date;
         private TextView amount;
         //        private CircleImageView itemImage;
 //        private ImageView unsynced;
@@ -150,8 +148,7 @@ public class SalesAdapter extends ListAdapter<SalesStockDto, SalesAdapter.SalesH
 
             name = itemView.findViewById(R.id.tv_name);
             qty = itemView.findViewById(R.id.tv_qty);
-            unit = itemView.findViewById(R.id.tv_unit);
-            unitPrice = itemView.findViewById(R.id.tv_unit_price);
+            date = itemView.findViewById(R.id.tv_date);
             amount = itemView.findViewById(R.id.tv_amount);
 //            unsynced = itemView.findViewById(R.id.iv_unsynced);
 //            itemImage = itemView.findViewById(R.id.iv_item_image);

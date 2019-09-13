@@ -4,10 +4,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.HorizontalScrollView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -20,6 +24,7 @@ import com.treeleaf.suchi.adapter.SalesAdapter;
 import com.treeleaf.suchi.dto.SalesStockDto;
 import com.treeleaf.suchi.realm.models.SalesStock;
 import com.treeleaf.suchi.realm.repo.SalesStockRepo;
+import com.treeleaf.suchi.utils.AppUtils;
 import com.treeleaf.suchi.viewmodel.SalesListViewModel;
 
 import java.util.ArrayList;
@@ -38,6 +43,7 @@ import butterknife.Unbinder;
  * create an instance of this fragment.
  */
 public class Table extends Fragment {
+    private static final String TAG = "Table";
     @BindView(R.id.rv_table_report)
     RecyclerView mTableReport;
     @BindView(R.id.tv_no_reports)
@@ -48,6 +54,14 @@ public class Table extends Fragment {
     TextView mItemsSold;
     @BindView(R.id.tv_total_amt_top)
     TextView mTotalAmountTop;
+    @BindView(R.id.hsv_filter)
+    HorizontalScrollView mFilter;
+    @BindView(R.id.tv_total_amt_top_title)
+    TextView mTotalAmountTopTitle;
+    @BindView(R.id.ll_table_titles)
+    LinearLayout mTableTitles;
+    @BindView(R.id.ll_total_amount_holder)
+    LinearLayout mTotalAmountHolder;
 
 
     private Unbinder unbinder;
@@ -56,14 +70,7 @@ public class Table extends Fragment {
     private StringBuilder totalAmountBuilder;
     private int totalItemCount = 0;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private List<SalesStock> salesStockList;
 
     private OnFragmentInteractionListener mListener;
 
@@ -75,16 +82,12 @@ public class Table extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
      * @return A new instance of fragment Table.
      */
-    // TODO: Rename and change types and number of parameters
-    public static Table newInstance(String param1, String param2) {
+    public static Table newInstance(List<SalesStock> salesStockList) {
         Table fragment = new Table();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putParcelableArrayList("salesStockList", (ArrayList<? extends Parcelable>) salesStockList);
         fragment.setArguments(args);
         return fragment;
     }
@@ -92,10 +95,7 @@ public class Table extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
     }
 
     @Override
@@ -104,6 +104,16 @@ public class Table extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_table, container, false);
         unbinder = ButterKnife.bind(this, view);
+
+        if (getArguments() != null) {
+            salesStockList = getArguments().getParcelableArrayList("salesStockList");
+            if (salesStockList != null)
+                AppUtils.showLog(TAG, "salesStockListSize: " + salesStockList.size());
+
+            manageReportRecyclerView(salesStockList);
+        }
+
+
         return view;
     }
 
@@ -112,14 +122,14 @@ public class Table extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         mTableReport.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-        manageReportRecyclerView();
+        List<SalesStock> salesStockList = SalesStockRepo.getInstance().getAllSalesStockList();
+        manageReportRecyclerView(salesStockList);
 
     }
 
-    private void manageReportRecyclerView() {
-        List<SalesStock> salesStockList = SalesStockRepo.getInstance().getAllSalesStockList();
+    private void manageReportRecyclerView(List<SalesStock> salesStockList) {
         totalItemCount = salesStockList.size();
+        setVisibilityToViews();
         if (salesStockList.size() == 0) {
             mNoReports.setVisibility(View.VISIBLE);
         } else {
@@ -143,6 +153,25 @@ public class Table extends Fragment {
 
 
         }
+    }
+
+    private void setVisibilityToViews() {
+        if (totalItemCount <= 0) {
+            mFilter.setVisibility(View.GONE);
+            mItemsSold.setVisibility(View.GONE);
+            mTotalAmountTop.setVisibility(View.GONE);
+            mTotalAmountTopTitle.setVisibility(View.GONE);
+            mTableTitles.setVisibility(View.GONE);
+            mTotalAmountHolder.setVisibility(View.GONE);
+        } else {
+            mFilter.setVisibility(View.VISIBLE);
+            mItemsSold.setVisibility(View.VISIBLE);
+            mTotalAmountTop.setVisibility(View.VISIBLE);
+            mTotalAmountTopTitle.setVisibility(View.VISIBLE);
+            mTableTitles.setVisibility(View.VISIBLE);
+            mTotalAmountHolder.setVisibility(View.VISIBLE);
+        }
+
     }
 
     private void setTotalAmount(List<SalesStockDto> salesStockDtoList) {
@@ -175,9 +204,14 @@ public class Table extends Fragment {
             salesStockDto.setInventory_id(salesStock.getInventory_id());
             salesStockDto.setPhotoUrl(salesStock.getPhotoUrl());
             salesStockDto.setQuantity(salesStock.getQuantity());
+            salesStockDto.setBrand(salesStock.getBrand());
+            salesStockDto.setSubBrand(salesStock.getSubBrand());
+            salesStockDto.setCategories(salesStock.getCategories());
             salesStockDto.setSynced(salesStock.isSynced());
             salesStockDto.setUnit(salesStock.getUnit());
             salesStockDto.setUnitPrice(salesStock.getUnitPrice());
+            salesStockDto.setCreatedAt(salesStock.getCreatedAt());
+            salesStockDto.setUpdatedAt(salesStock.getUpdatedAt());
 
             salesStockDtoList.add(salesStockDto);
         }

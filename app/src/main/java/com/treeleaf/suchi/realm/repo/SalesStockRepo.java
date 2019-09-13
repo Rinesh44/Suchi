@@ -83,8 +83,8 @@ public class SalesStockRepo extends Repo {
         Realm realm = RealmDatabase.getInstance().getRealm();
         try {
             return new ArrayList<>(realm.where(SalesStock.class)
-                    .greaterThanOrEqualTo("created_at", fromDate)
-                    .lessThanOrEqualTo("created_at", tillDate).findAll());
+                    .between("createdAt", fromDate, tillDate)
+                    .findAll());
 
         } catch (Throwable throwable) {
             throwable.printStackTrace();

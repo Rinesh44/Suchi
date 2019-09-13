@@ -39,6 +39,12 @@ public class SalesDetailsActivity extends BaseActivity {
     TextView mUnit;
     @BindView(R.id.tv_amount)
     TextView mAmount;
+    @BindView(R.id.tv_brand)
+    TextView mBrand;
+    @BindView(R.id.tv_sub_brand)
+    TextView mSubBrand;
+    @BindView(R.id.tv_category)
+    TextView mCategory;
 
     private SalesStockDto saleItems;
 
@@ -85,6 +91,10 @@ public class SalesDetailsActivity extends BaseActivity {
         amountBuilder.append("Rs. ");
         amountBuilder.append(saleItems.getAmount());
         mAmount.setText(amountBuilder);
+
+        mBrand.setText(saleItems.getBrand());
+        mSubBrand.setText(saleItems.getSubBrand());
+        mCategory.setText(saleItems.getCategories());
 
     }
 

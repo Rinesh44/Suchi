@@ -4,11 +4,13 @@ import android.content.SharedPreferences;
 import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -18,6 +20,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
@@ -29,12 +32,17 @@ import com.treeleaf.suchi.activities.report.fragments.Chart;
 import com.treeleaf.suchi.activities.report.fragments.Table;
 import com.treeleaf.suchi.entities.SuchiProto;
 import com.treeleaf.suchi.realm.models.SalesStock;
+import com.treeleaf.suchi.realm.repo.SalesStockRepo;
 import com.treeleaf.suchi.realm.repo.UnitRepo;
 import com.treeleaf.suchi.utils.AppUtils;
 import com.treeleaf.suchi.utils.Constants;
 import com.treeleaf.suchi.utils.DatePicker;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -57,6 +65,7 @@ public class ReportActivity extends BaseActivity implements Chart.OnFragmentInte
     private SharedPreferences sharedPreferences;
     private String token, userId;
     private BottomSheetBehavior sheetBehavior;
+    private ViewPagerAdapter viewPagerAdapter;
 
 
     @Override
@@ -100,11 +109,50 @@ public class ReportActivity extends BaseActivity implements Chart.OnFragmentInte
                     return;
                 }
 
-                Toast.makeText(ReportActivity.this, "done clicked", Toast.LENGTH_SHORT).show();
+                String fromDate = mFromDate.getText().toString().trim();
+                String tillDate = mToDate.getText().toString().trim();
+
+                Date startDate = getTimeStampFromDate(fromDate);
+                Date endDate = getTimeStampFromDate(tillDate);
+
+                long startDateTimeStamp = startDate.getTime();
+                long endDateTimeStamp = endDate.getTime();
+
+                AppUtils.showLog(TAG, "startDate: " + startDateTimeStamp);
+                AppUtils.showLog(TAG, "endDate: " + endDateTimeStamp);
+
+                AppUtils.showLog(TAG, "postStartDate: " + AppUtils.getDate(startDateTimeStamp));
+                AppUtils.showLog(TAG, "postEndDate: " + AppUtils.getDate(endDateTimeStamp));
+
+                List<SalesStock> salesStockListByDate = SalesStockRepo.getInstance().
+                        getSalesStockByDate(startDateTimeStamp, endDateTimeStamp);
+
+                AppUtils.showLog(TAG, "salesStockByDate: " + salesStockListByDate.size());
+
+                sendListToFragment(salesStockListByDate);
+                toggleBottomSheet();
+
 
             }
         });
 
+    }
+
+    private void sendListToFragment(List<SalesStock> salesStockListByDate) {
+        Bundle args = new Bundle();
+        args.putParcelableArrayList("salesStockList", (ArrayList<? extends Parcelable>) salesStockListByDate);
+        Table tableFragment = Table.newInstance(salesStockListByDate);
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, tableFragment).commit();
+    }
+
+    private Date getTimeStampFromDate(String stringDate) {
+        DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            return (Date) formatter.parse(stringDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 
@@ -128,10 +176,10 @@ public class ReportActivity extends BaseActivity implements Chart.OnFragmentInte
     }
 
     private void setupViewPager(ViewPager viewPager) {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new Table(), "TABLE");
-        adapter.addFragment(new Chart(), "CHART");
-        viewPager.setAdapter(adapter);
+        viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+        viewPagerAdapter.addFragment(new Table(), "TABLE");
+        viewPagerAdapter.addFragment(new Chart(), "CHART");
+        viewPager.setAdapter(viewPagerAdapter);
     }
 
     @Override
