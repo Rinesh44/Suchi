@@ -42,6 +42,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -49,7 +50,7 @@ import java.util.UUID;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class ReportActivity extends BaseActivity implements Chart.OnFragmentInteractionListener, Table.OnFragmentInteractionListener {
+public class ReportActivity extends BaseActivity {
     private static final String TAG = "ReportActivity";
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
@@ -66,6 +67,7 @@ public class ReportActivity extends BaseActivity implements Chart.OnFragmentInte
     private String token, userId;
     private BottomSheetBehavior sheetBehavior;
     private ViewPagerAdapter viewPagerAdapter;
+    private OnListReceiveListener onListReceiveListener;
 
 
     @Override
@@ -113,7 +115,12 @@ public class ReportActivity extends BaseActivity implements Chart.OnFragmentInte
                 String tillDate = mToDate.getText().toString().trim();
 
                 Date startDate = getTimeStampFromDate(fromDate);
+                startDate.setHours(6);
+                startDate.setMinutes(0);
+
                 Date endDate = getTimeStampFromDate(tillDate);
+                endDate.setHours(23);
+                endDate.setMinutes(59);
 
                 long startDateTimeStamp = startDate.getTime();
                 long endDateTimeStamp = endDate.getTime();
@@ -127,22 +134,26 @@ public class ReportActivity extends BaseActivity implements Chart.OnFragmentInte
                 List<SalesStock> salesStockListByDate = SalesStockRepo.getInstance().
                         getSalesStockByDate(startDateTimeStamp, endDateTimeStamp);
 
-                AppUtils.showLog(TAG, "salesStockByDate: " + salesStockListByDate.size());
+                if (salesStockListByDate != null && !salesStockListByDate.isEmpty()) {
+                    AppUtils.showLog(TAG, "salesStockByDate: " + salesStockListByDate.size());
 
-                sendListToFragment(salesStockListByDate);
-                toggleBottomSheet();
-
-
+                    toggleBottomSheet();
+                    onListReceiveListener.onListReceive(salesStockListByDate);
+                } else {
+                    toggleBottomSheet();
+                    Toast.makeText(ReportActivity.this, "Data not available", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
     }
 
-    private void sendListToFragment(List<SalesStock> salesStockListByDate) {
-        Bundle args = new Bundle();
-        args.putParcelableArrayList("salesStockList", (ArrayList<? extends Parcelable>) salesStockListByDate);
-        Table tableFragment = Table.newInstance(salesStockListByDate);
-        getSupportFragmentManager().beginTransaction().replace(R.id.container, tableFragment).commit();
+    public interface OnListReceiveListener {
+        void onListReceive(List<SalesStock> salesStockListByDate);
+    }
+
+    public void setListReceiveListener(OnListReceiveListener listener) {
+        this.onListReceiveListener = listener;
     }
 
     private Date getTimeStampFromDate(String stringDate) {
@@ -182,10 +193,6 @@ public class ReportActivity extends BaseActivity implements Chart.OnFragmentInte
         viewPager.setAdapter(viewPagerAdapter);
     }
 
-    @Override
-    public void onFragmentInteraction(Uri uri) {
-
-    }
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {

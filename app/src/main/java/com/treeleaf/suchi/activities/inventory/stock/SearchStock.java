@@ -139,8 +139,6 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
 
     private boolean toggleCamera = false;
     private boolean isScanDone;
-
-
     private DatePicker datePicker;
     private String token;
     private String unitPrice;

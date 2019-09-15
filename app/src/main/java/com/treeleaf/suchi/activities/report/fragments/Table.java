@@ -2,14 +2,19 @@ package com.treeleaf.suchi.activities.report.fragments;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,7 +23,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.button.MaterialButton;
 import com.treeleaf.suchi.R;
+import com.treeleaf.suchi.activities.report.ReportActivity;
 import com.treeleaf.suchi.activities.sales.SalesDetailsActivity;
 import com.treeleaf.suchi.adapter.SalesAdapter;
 import com.treeleaf.suchi.dto.SalesStockDto;
@@ -28,21 +35,16 @@ import com.treeleaf.suchi.utils.AppUtils;
 import com.treeleaf.suchi.viewmodel.SalesListViewModel;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link Table.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link Table#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class Table extends Fragment {
+
+public class Table extends Fragment implements ReportActivity.OnListReceiveListener {
     private static final String TAG = "Table";
     @BindView(R.id.rv_table_report)
     RecyclerView mTableReport;
@@ -62,17 +64,17 @@ public class Table extends Fragment {
     LinearLayout mTableTitles;
     @BindView(R.id.ll_total_amount_holder)
     LinearLayout mTotalAmountHolder;
-
+    @BindView(R.id.rg_filter)
+    RadioGroup mFilterByTime;
 
     private Unbinder unbinder;
     private SalesAdapter mSalesAdapter;
     private SalesListViewModel salesListViewModel;
     private StringBuilder totalAmountBuilder;
     private int totalItemCount = 0;
+    List<SalesStock> todaysSalesStocks;
 
     private List<SalesStock> salesStockList;
-
-    private OnFragmentInteractionListener mListener;
 
     public Table() {
         // Required empty public constructor
@@ -96,6 +98,10 @@ public class Table extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        ReportActivity mActivity = (ReportActivity) getActivity();
+        assert mActivity != null;
+        mActivity.setListReceiveListener(this);
+
     }
 
     @Override
@@ -105,13 +111,10 @@ public class Table extends Fragment {
         View view = inflater.inflate(R.layout.fragment_table, container, false);
         unbinder = ButterKnife.bind(this, view);
 
-        if (getArguments() != null) {
-            salesStockList = getArguments().getParcelableArrayList("salesStockList");
-            if (salesStockList != null)
-                AppUtils.showLog(TAG, "salesStockListSize: " + salesStockList.size());
 
-            manageReportRecyclerView(salesStockList);
-        }
+      /*  if (getArguments() != null) {
+
+        }*/
 
 
         return view;
@@ -120,12 +123,151 @@ public class Table extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
         mTableReport.setLayoutManager(new LinearLayoutManager(getActivity()));
-        List<SalesStock> salesStockList = SalesStockRepo.getInstance().getAllSalesStockList();
-        manageReportRecyclerView(salesStockList);
+
+        mFilterByTime.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                RadioButton selectedRadioButton = group.findViewById(checkedId);
+
+                int count = group.getChildCount();
+                for (int i = 0; i < count; i++) {
+                    RadioButton rb = (RadioButton) group.getChildAt(i);
+                    rb.setBackground(getResources().getDrawable(R.drawable.round_bg_disabled));
+                }
+                selectedRadioButton.setBackground(getResources().getDrawable(R.drawable.round_bg));
+
+                switch (checkedId) {
+                    case R.id.btn_today:
+                        manageReportRecyclerView(todaysSalesStocks);
+                        break;
+
+                    case R.id.btn_week:
+                        long timeStampsWeek[] = getWeeksStartAndEnd();
+                        List<SalesStock> weeksSalesStock = SalesStockRepo.getInstance().
+                                getSalesStockByDate(timeStampsWeek[0], timeStampsWeek[1]);
+
+                        if (weeksSalesStock != null && !weeksSalesStock.isEmpty())
+                            manageReportRecyclerView(weeksSalesStock);
+
+                        break;
+
+                    case R.id.btn_month:
+                        long timeStampsMonth[] = getMonthsStartAndEnd();
+                        List<SalesStock> monthSalesStock = SalesStockRepo.getInstance()
+                                .getSalesStockByDate(timeStampsMonth[0], timeStampsMonth[1]);
+
+                        if (monthSalesStock != null && !monthSalesStock.isEmpty())
+                            manageReportRecyclerView(monthSalesStock);
+                        break;
+
+                    case R.id.btn_3months:
+                        long timeStamps3Months[] = getP3MonthsStartAndEnd();
+                        List<SalesStock> p3monthSalesStock = SalesStockRepo.getInstance()
+                                .getSalesStockByDate(timeStamps3Months[0], timeStamps3Months[1]);
+
+                        if (p3monthSalesStock != null && !p3monthSalesStock.isEmpty())
+                            manageReportRecyclerView(p3monthSalesStock);
+                        break;
+
+                    case R.id.btn_6months:
+                        long timeStamps6Month[] = getP6MonthsStartAndEnd();
+                        List<SalesStock> p6monthSalesStock = SalesStockRepo.getInstance()
+                                .getSalesStockByDate(timeStamps6Month[0], timeStamps6Month[1]);
+
+                        if (p6monthSalesStock != null && !p6monthSalesStock.isEmpty())
+                            manageReportRecyclerView(p6monthSalesStock);
+                        break;
+                }
+
+            }
+        });
+
+        todaysSalesStocks = SalesStockRepo.getInstance().getSalesStockOfToday();
+        manageReportRecyclerView(todaysSalesStocks);
 
     }
+
+    private long[] getWeeksStartAndEnd() {
+        Date date = new Date();
+        Calendar c = Calendar.getInstance();
+        c.setTime(date);
+        int i = c.get(Calendar.DAY_OF_WEEK) - c.getFirstDayOfWeek();
+        AppUtils.showLog(TAG, "dayofWeek: " + c.get(Calendar.DAY_OF_WEEK));
+
+        AppUtils.showLog(TAG, "firstDay: " + c.getFirstDayOfWeek());
+
+        Date end = c.getTime();
+        c.add(Calendar.DATE, -i);
+        c.set(Calendar.HOUR_OF_DAY, 6);
+        c.set(Calendar.MINUTE, 0);
+        c.set(Calendar.SECOND, 0);
+        Date start = c.getTime();
+
+        AppUtils.showLog(TAG, "start: " + start);
+        AppUtils.showLog(TAG, "end: " + end);
+        return new long[]{start.getTime(), end.getTime()};
+    }
+
+    private long[] getMonthsStartAndEnd() {
+        Date date = new Date();
+        Calendar c = Calendar.getInstance();
+        c.setTime(date);
+        int i = c.get(Calendar.DAY_OF_MONTH) - 1;
+        AppUtils.showLog(TAG, "dayOfMonth: " + c.get(Calendar.DAY_OF_MONTH));
+
+        Date end = c.getTime();
+        c.add(Calendar.DATE, -i);
+        c.set(Calendar.HOUR_OF_DAY, 6);
+        c.set(Calendar.MINUTE, 0);
+        c.set(Calendar.SECOND, 0);
+        Date start = c.getTime();
+
+        AppUtils.showLog(TAG, "start: " + start);
+        AppUtils.showLog(TAG, "end: " + end);
+        return new long[]{start.getTime(), end.getTime()};
+    }
+
+
+    private long[] getP3MonthsStartAndEnd() {
+        Date date = new Date();
+        Calendar c = Calendar.getInstance();
+        c.setTime(date);
+//        int i = c.get(Calendar.DAY_OF_MONTH) - 1;
+//        AppUtils.showLog(TAG, "dayOfMonth: " + c.get(Calendar.DAY_OF_MONTH));
+
+        Date end = c.getTime();
+        c.add(Calendar.DATE, -90);
+        c.set(Calendar.HOUR_OF_DAY, 6);
+        c.set(Calendar.MINUTE, 0);
+        c.set(Calendar.SECOND, 0);
+        Date start = c.getTime();
+
+        AppUtils.showLog(TAG, "start: " + start);
+        AppUtils.showLog(TAG, "end: " + end);
+        return new long[]{start.getTime(), end.getTime()};
+    }
+
+
+    private long[] getP6MonthsStartAndEnd() {
+        Date date = new Date();
+        Calendar c = Calendar.getInstance();
+        c.setTime(date);
+//        int i = c.get(Calendar.DAY_OF_MONTH) - 1;
+//        AppUtils.showLog(TAG, "dayOfMonth: " + c.get(Calendar.DAY_OF_MONTH));
+
+        Date end = c.getTime();
+        c.add(Calendar.DATE, -180);
+        c.set(Calendar.HOUR_OF_DAY, 6);
+        c.set(Calendar.MINUTE, 0);
+        c.set(Calendar.SECOND, 0);
+        Date start = c.getTime();
+
+        AppUtils.showLog(TAG, "start: " + start);
+        AppUtils.showLog(TAG, "end: " + end);
+        return new long[]{start.getTime(), end.getTime()};
+    }
+
 
     private void manageReportRecyclerView(List<SalesStock> salesStockList) {
         totalItemCount = salesStockList.size();
@@ -163,6 +305,7 @@ public class Table extends Fragment {
             mTotalAmountTopTitle.setVisibility(View.GONE);
             mTableTitles.setVisibility(View.GONE);
             mTotalAmountHolder.setVisibility(View.GONE);
+            mTableReport.setVisibility(View.GONE);
         } else {
             mFilter.setVisibility(View.VISIBLE);
             mItemsSold.setVisibility(View.VISIBLE);
@@ -170,6 +313,7 @@ public class Table extends Fragment {
             mTotalAmountTopTitle.setVisibility(View.VISIBLE);
             mTableTitles.setVisibility(View.VISIBLE);
             mTotalAmountHolder.setVisibility(View.VISIBLE);
+            mTableReport.setVisibility(View.VISIBLE);
         }
 
     }
@@ -189,8 +333,8 @@ public class Table extends Fragment {
         mTotalAmountTop.setText(totalAmountBuilder);
 
         StringBuilder soldItemsBuilder = new StringBuilder();
+        soldItemsBuilder.append("Items sold: ");
         soldItemsBuilder.append(totalItemCount);
-        soldItemsBuilder.append(" items sold");
         mItemsSold.setText(soldItemsBuilder);
     }
 
@@ -220,28 +364,14 @@ public class Table extends Fragment {
     }
 
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
-
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
     }
 
     @Override
@@ -250,18 +380,14 @@ public class Table extends Fragment {
         unbinder.unbind();
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+    @Override
+    public void onListReceive(List<SalesStock> salesStockListByDate) {
+        if (salesStockListByDate != null && !salesStockListByDate.isEmpty()) {
+            AppUtils.showLog(TAG, "salesStockListSize: " + salesStockListByDate.size());
+
+            manageReportRecyclerView(salesStockListByDate);
+        } else {
+            AppUtils.showLog(TAG, "sales list is empty");
+        }
     }
 }

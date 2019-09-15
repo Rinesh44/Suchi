@@ -15,51 +15,97 @@
             android:id="@+id/hsv_filter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="20dp"
             android:scrollbars="none">
 
-            <LinearLayout
+
+            <RadioGroup
+                android:id="@+id/rg_filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <com.google.android.material.button.MaterialButton
-                    android:layout_width="wrap_content"
+                <RadioButton
+                    android:id="@+id/btn_today"
+                    android:layout_width="75dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="5dp"
+                    android:layout_marginEnd="10dp"
                     android:background="@drawable/round_bg"
-                    android:text="today" />
+                    android:button="@null"
+                    android:checked="true"
+                    android:fontFamily="@font/proxima_regular"
+                    android:padding="10dp"
+                    android:text="today"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:layout_width="wrap_content"
+                <RadioButton
+                    android:id="@+id/btn_week"
+                    android:layout_width="75dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="5dp"
-                    android:background="@drawable/round_bg"
-                    android:text="week" />
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/round_bg_disabled"
+                    android:button="@null"
+                    android:fontFamily="@font/proxima_regular"
+                    android:padding="10dp"
+                    android:text="Week"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:layout_width="wrap_content"
+
+                <RadioButton
+                    android:id="@+id/btn_month"
+                    android:layout_width="75dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="5dp"
-                    android:background="@drawable/round_bg"
-                    android:text="month" />
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/round_bg_disabled"
+                    android:button="@null"
+                    android:fontFamily="@font/proxima_regular"
+                    android:padding="10dp"
+                    android:text="Month"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:layout_width="wrap_content"
+                <RadioButton
+                    android:id="@+id/btn_3months"
+                    android:layout_width="75dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="5dp"
-                    android:background="@drawable/round_bg"
-                    android:text="p. 3 months" />
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/round_bg_disabled"
+                    android:button="@null"
+                    android:fontFamily="@font/proxima_regular"
+                    android:padding="10dp"
+                    android:text="p - 3m"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:layout_width="wrap_content"
+                <RadioButton
+                    android:id="@+id/btn_6months"
+                    android:layout_width="75dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="5dp"
-                    android:background="@drawable/round_bg"
-                    android:text="p. 6 months" />
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/round_bg_disabled"
+                    android:button="@null"
+                    android:fontFamily="@font/proxima_regular"
+                    android:padding="10dp"
+                    android:text="p - 6m"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
 
-            </LinearLayout>
-
+            </RadioGroup>
 
         </HorizontalScrollView>
 
@@ -183,7 +229,7 @@
             <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="10">
+                android:layout_weight="11">
 
                 <TextView
                     android:id="@+id/tv_total_amount_title"
@@ -194,21 +240,20 @@
                     android:gravity="end"
                     android:text="Total Amount: "
                     android:textColor="@color/black"
-                    android:textSize="15sp" />
+                    android:textSize="17sp" />
 
             </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="7">
+                android:layout_weight="6">
 
                 <TextView
                     android:id="@+id/tv_total_amount"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginEnd="10dp"
-                    android:layout_weight="7"
                     android:fontFamily="@font/proxima_regular"
                     android:gravity="center_vertical|end"
                     android:text="23536"

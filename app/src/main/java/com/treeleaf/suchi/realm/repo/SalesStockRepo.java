@@ -1,5 +1,7 @@
 package com.treeleaf.suchi.realm.repo;
 
+import android.text.format.DateUtils;
+
 import androidx.lifecycle.LiveData;
 
 import com.treeleaf.suchi.realm.RealmDatabase;
@@ -7,6 +9,7 @@ import com.treeleaf.suchi.realm.models.SalesStock;
 import com.treeleaf.suchi.utils.RealmLiveData;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import io.realm.Realm;
@@ -68,11 +71,20 @@ public class SalesStockRepo extends Repo {
     }
 
 
-    public List<SalesStock> getSalesStockOfToday(long timestamp) {
+    public List<SalesStock> getSalesStockOfToday() {
         Realm realm = RealmDatabase.getInstance().getRealm();
         try {
-            return new ArrayList<>(realm.where(SalesStock.class)
-                    .equalTo("created_at", timestamp).findAll());
+            List<SalesStock> allStocks = getAllSalesStockList();
+            List<SalesStock> todaysStock = new ArrayList<>();
+            for (SalesStock salesStock : allStocks
+            ) {
+                if (DateUtils.isToday(salesStock.getCreatedAt())) {
+                    todaysStock.add(salesStock);
+                }
+            }
+
+            return todaysStock;
+
         } catch (Throwable throwable) {
             throwable.printStackTrace();
             return null;
