@@ -6,10 +6,11 @@ import androidx.lifecycle.LiveData;
 
 import com.treeleaf.suchi.realm.RealmDatabase;
 import com.treeleaf.suchi.realm.models.SalesStock;
+import com.treeleaf.suchi.utils.AppUtils;
 import com.treeleaf.suchi.utils.RealmLiveData;
 
 import java.util.ArrayList;
-import java.util.Date;
+
 import java.util.List;
 
 import io.realm.Realm;
@@ -59,6 +60,46 @@ public class SalesStockRepo extends Repo {
         }
     }
 
+    public List<SalesStock> getSalesStockByBrand(String brand) {
+        Realm realm = RealmDatabase.getInstance().getRealm();
+        try {
+            return new ArrayList<>(realm.where(SalesStock.class).equalTo("brand", brand).findAll());
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+            return null;
+        }
+    }
+
+    public List<SalesStock> getSalesStockBySubBrand(String subBrand) {
+        Realm realm = RealmDatabase.getInstance().getRealm();
+        try {
+            return new ArrayList<>(realm.where(SalesStock.class).equalTo("subBrand", subBrand).findAll());
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+            return null;
+        }
+    }
+
+    public List<SalesStock> getSalesStockByCategory(String category) {
+        Realm realm = RealmDatabase.getInstance().getRealm();
+        try {
+            return new ArrayList<>(realm.where(SalesStock.class).equalTo("categories", category).findAll());
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+            return null;
+        }
+    }
+
+    public List<SalesStock> getSalesStockByItem(String item) {
+        Realm realm = RealmDatabase.getInstance().getRealm();
+        try {
+            return new ArrayList<>(realm.where(SalesStock.class).equalTo("name", item).findAll());
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+            return null;
+        }
+    }
+
     public List<SalesStock> getAllSalesStockList() {
         Realm realm = RealmDatabase.getInstance().getRealm();
         try {
@@ -72,12 +113,12 @@ public class SalesStockRepo extends Repo {
 
 
     public List<SalesStock> getSalesStockOfToday() {
-        Realm realm = RealmDatabase.getInstance().getRealm();
         try {
             List<SalesStock> allStocks = getAllSalesStockList();
             List<SalesStock> todaysStock = new ArrayList<>();
             for (SalesStock salesStock : allStocks
             ) {
+                AppUtils.showLog(TAG, "todayTimeStamp:" + salesStock.getCreatedAt());
                 if (DateUtils.isToday(salesStock.getCreatedAt())) {
                     todaysStock.add(salesStock);
                 }

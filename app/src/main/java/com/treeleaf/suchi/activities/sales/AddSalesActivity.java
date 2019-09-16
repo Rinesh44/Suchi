@@ -971,6 +971,7 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
 
     }
 
+
     private void scrollToBottom() {
         mScroll.post(new Runnable() {
             @Override

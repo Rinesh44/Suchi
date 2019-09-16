@@ -55,6 +55,16 @@ public class CategoryRepo extends Repo {
         }
     }
 
+    public List<String> getAllCategoryNames() {
+        List<Categories> allCategories = getAllCategories();
+        List<String> categoryNames = new ArrayList<>();
+        for (Categories category : allCategories
+        ) {
+            categoryNames.add(category.getName());
+        }
+        return categoryNames;
+    }
+
     public Categories getCategoryById(String categoryId) {
         Realm realm = RealmDatabase.getInstance().getRealm();
         try {

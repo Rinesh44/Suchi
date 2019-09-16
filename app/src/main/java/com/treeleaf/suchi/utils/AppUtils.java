@@ -13,7 +13,7 @@ public class AppUtils {
 
     public static String getDate(long time) {
         try {
-            SimpleDateFormat sdf = new SimpleDateFormat("E, d MMM yyyy, h:mm a");
+            SimpleDateFormat sdf = new SimpleDateFormat("E, d MMM yyyy");
             return sdf.format(new Date(time));
         } catch (Exception e) {
             e.printStackTrace();

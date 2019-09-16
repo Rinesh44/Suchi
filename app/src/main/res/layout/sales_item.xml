@@ -21,8 +21,10 @@
             android:layout_marginBottom="1dp"
             android:layout_weight="4"
             android:background="@color/white"
+            android:ellipsize="end"
             android:fontFamily="@font/proxima_regular"
             android:gravity="center"
+            android:singleLine="true"
             android:text="Name" />
 
 
@@ -35,8 +37,10 @@
             android:layout_marginBottom="1dp"
             android:layout_weight="2"
             android:background="@color/white"
+            android:ellipsize="end"
             android:fontFamily="@font/proxima_regular"
             android:gravity="center"
+            android:singleLine="true"
             android:text="Qty" />
 
         <TextView
@@ -48,8 +52,10 @@
             android:layout_marginBottom="1dp"
             android:layout_weight="8"
             android:background="@color/white"
+            android:ellipsize="end"
             android:fontFamily="@font/proxima_regular"
             android:gravity="center"
+            android:singleLine="true"
             android:text="Date" />
 
 

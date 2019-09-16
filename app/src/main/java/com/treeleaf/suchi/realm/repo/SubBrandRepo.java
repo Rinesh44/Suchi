@@ -55,6 +55,17 @@ public class SubBrandRepo extends Repo {
         }
     }
 
+    public List<String> getAllSubBrandNames() {
+        List<SubBrands> subBrandsList = getAllSubBrands();
+        List<String> subBrandNames = new ArrayList<>();
+        for (SubBrands subBrands : subBrandsList
+        ) {
+            subBrandNames.add(subBrands.getName());
+        }
+
+        return subBrandNames;
+    }
+
     public List<SubBrands> getSubBrandsWithRespectToBrandId(String brandId) {
         Realm realm = RealmDatabase.getInstance().getRealm();
         try {

@@ -2,28 +2,22 @@ package com.treeleaf.suchi.activities.report.fragments;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.ColorStateList;
-import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.button.MaterialButton;
 import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.activities.report.ReportActivity;
 import com.treeleaf.suchi.activities.sales.SalesDetailsActivity;
@@ -34,6 +28,7 @@ import com.treeleaf.suchi.realm.repo.SalesStockRepo;
 import com.treeleaf.suchi.utils.AppUtils;
 import com.treeleaf.suchi.viewmodel.SalesListViewModel;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -69,30 +64,14 @@ public class Table extends Fragment implements ReportActivity.OnListReceiveListe
 
     private Unbinder unbinder;
     private SalesAdapter mSalesAdapter;
-    private SalesListViewModel salesListViewModel;
     private StringBuilder totalAmountBuilder;
     private int totalItemCount = 0;
     List<SalesStock> todaysSalesStocks;
-
-    private List<SalesStock> salesStockList;
 
     public Table() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @return A new instance of fragment Table.
-     */
-    public static Table newInstance(List<SalesStock> salesStockList) {
-        Table fragment = new Table();
-        Bundle args = new Bundle();
-        args.putParcelableArrayList("salesStockList", (ArrayList<? extends Parcelable>) salesStockList);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -111,12 +90,9 @@ public class Table extends Fragment implements ReportActivity.OnListReceiveListe
         View view = inflater.inflate(R.layout.fragment_table, container, false);
         unbinder = ButterKnife.bind(this, view);
 
-
       /*  if (getArguments() != null) {
 
         }*/
-
-
         return view;
     }
 
@@ -204,8 +180,8 @@ public class Table extends Fragment implements ReportActivity.OnListReceiveListe
         c.set(Calendar.SECOND, 0);
         Date start = c.getTime();
 
-        AppUtils.showLog(TAG, "start: " + start);
-        AppUtils.showLog(TAG, "end: " + end);
+        AppUtils.showLog(TAG, "startW: " + start);
+        AppUtils.showLog(TAG, "endW: " + end);
         return new long[]{start.getTime(), end.getTime()};
     }
 
@@ -223,8 +199,8 @@ public class Table extends Fragment implements ReportActivity.OnListReceiveListe
         c.set(Calendar.SECOND, 0);
         Date start = c.getTime();
 
-        AppUtils.showLog(TAG, "start: " + start);
-        AppUtils.showLog(TAG, "end: " + end);
+        AppUtils.showLog(TAG, "startM: " + start);
+        AppUtils.showLog(TAG, "endM: " + end);
         return new long[]{start.getTime(), end.getTime()};
     }
 
@@ -243,8 +219,8 @@ public class Table extends Fragment implements ReportActivity.OnListReceiveListe
         c.set(Calendar.SECOND, 0);
         Date start = c.getTime();
 
-        AppUtils.showLog(TAG, "start: " + start);
-        AppUtils.showLog(TAG, "end: " + end);
+        AppUtils.showLog(TAG, "start3: " + start);
+        AppUtils.showLog(TAG, "end3: " + end);
         return new long[]{start.getTime(), end.getTime()};
     }
 
@@ -263,8 +239,8 @@ public class Table extends Fragment implements ReportActivity.OnListReceiveListe
         c.set(Calendar.SECOND, 0);
         Date start = c.getTime();
 
-        AppUtils.showLog(TAG, "start: " + start);
-        AppUtils.showLog(TAG, "end: " + end);
+        AppUtils.showLog(TAG, "start6: " + start);
+        AppUtils.showLog(TAG, "end6: " + end);
         return new long[]{start.getTime(), end.getTime()};
     }
 
@@ -327,7 +303,7 @@ public class Table extends Fragment implements ReportActivity.OnListReceiveListe
 
         totalAmountBuilder = new StringBuilder();
         totalAmountBuilder.append("Rs. ");
-        totalAmountBuilder.append(totalAmount);
+        totalAmountBuilder.append(new DecimalFormat("##.##").format(totalAmount));
         mTotalAmount.setText(totalAmountBuilder);
 
         mTotalAmountTop.setText(totalAmountBuilder);

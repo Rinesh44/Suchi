@@ -87,7 +87,7 @@ public abstract class BaseActivity extends AppCompatActivity implements com.tree
 
     public String getDate(long time) {
         try {
-            SimpleDateFormat sdf = new SimpleDateFormat("E, d MMM yyyy, h:mm a");
+            SimpleDateFormat sdf = new SimpleDateFormat("E, d MMM yyyy");
             return sdf.format(new Date(time));
         } catch (Exception e) {
             e.printStackTrace();

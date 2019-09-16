@@ -17,6 +17,7 @@ import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.dto.SalesStockDto;
 import com.treeleaf.suchi.utils.AppUtils;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -107,7 +108,7 @@ public class SalesAdapter extends ListAdapter<SalesStockDto, SalesAdapter.SalesH
         String createdDate = AppUtils.getDate(current.getCreatedAt());
 
         holder.name.setText(current.getName());
-        holder.amount.setText(current.getAmount());
+        holder.amount.setText(String.valueOf(new DecimalFormat("##.##").format(Double.valueOf(current.getAmount()))));
         holder.date.setText(createdDate);
         holder.qty.setText(current.getQuantity());
 //        holder.itemImage.setBorderColor(context.getResources().getColor(android.R.color.holo_green_light));

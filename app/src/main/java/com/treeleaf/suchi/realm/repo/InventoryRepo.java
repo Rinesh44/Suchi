@@ -87,6 +87,16 @@ public class InventoryRepo extends Repo {
         }
     }
 
+    public List<String> getAllStockNames() {
+        List<Inventory> allInventory = getAllInventoryList();
+        List<String> allStockNames = new ArrayList<>();
+        for (Inventory inventory : allInventory
+        ) {
+            allStockNames.add(inventory.getSku().getName());
+        }
+        return allStockNames;
+    }
+
 
     public List<Inventory> getUnsyncedInventories() {
         Realm realm = RealmDatabase.getInstance().getRealm();
