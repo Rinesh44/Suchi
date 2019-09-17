@@ -46,7 +46,7 @@ public class CreditActivity extends BaseActivity implements View.OnClickListener
             getSupportActionBar().setHomeButtonEnabled(true);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
-        mToolbarTitle.setText("Inventory");
+        mToolbarTitle.setText("Credit");
     }
 
     @Override

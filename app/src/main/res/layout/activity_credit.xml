@@ -5,7 +5,6 @@
     android:background="@color/gray"
     android:orientation="vertical">
 
-
     <include layout="@layout/toolbar" />
 
     <LinearLayout
@@ -20,8 +19,8 @@
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:backgroundTint="@color/white"
-            android:fontFamily="@font/proxima_regular"
             android:elevation="8dp"
+            android:fontFamily="@font/proxima_regular"
             android:text="@string/credit_entry"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="@color/colorPrimary" />
@@ -30,9 +29,9 @@
             android:id="@+id/btn_history"
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:fontFamily="@font/proxima_regular"
             android:backgroundTint="@color/white"
             android:elevation="8dp"
+            android:fontFamily="@font/proxima_regular"
             android:text="@string/credit_history"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="@color/colorPrimary" />
@@ -41,9 +40,9 @@
             android:id="@+id/btn_profile"
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:fontFamily="@font/proxima_regular"
             android:backgroundTint="@color/white"
             android:elevation="8dp"
+            android:fontFamily="@font/proxima_regular"
             android:text="@string/profile"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="@color/colorPrimary" />
