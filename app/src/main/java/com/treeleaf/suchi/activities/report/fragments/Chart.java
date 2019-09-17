@@ -18,6 +18,9 @@ import com.treeleaf.suchi.realm.models.SalesStock;
 import com.treeleaf.suchi.realm.repo.SalesStockRepo;
 import com.treeleaf.suchi.utils.AppUtils;
 
+import org.w3c.dom.Text;
+
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -35,6 +38,14 @@ public class Chart extends Fragment {
     HorizontalScrollView mFilter;
     @BindView(R.id.rg_filter)
     RadioGroup mFilterByTime;
+    @BindView(R.id.tv_highest_sold)
+    TextView mHighestSoldItem;
+    @BindView(R.id.tv_lowest_sold)
+    TextView mLowestSold;
+    @BindView(R.id.tv_total_amount)
+    TextView mTotalAmount;
+    @BindView(R.id.tv_sold_items)
+    TextView mSoldItemsCount;
 
     private Unbinder unbinder;
 
@@ -71,7 +82,7 @@ public class Chart extends Fragment {
                 RadioButton selectedRadioButton = group.findViewById(checkedId);
 
                 int count = group.getChildCount();
-                for (int i = 0; i < count; i++) {
+                for (int i = 0; i < count; i++) {git
                     RadioButton rb = (RadioButton) group.getChildAt(i);
                     rb.setBackground(getResources().getDrawable(R.drawable.round_bg_disabled));
                 }
@@ -81,7 +92,8 @@ public class Chart extends Fragment {
                 switch (checkedId) {
                     case R.id.btn_today:
                         List<SalesStock> todaysSalesStocks = SalesStockRepo.getInstance().getSalesStockOfToday();
-
+                        mSoldItemsCount.setText(String.valueOf(todaysSalesStocks.size()));
+                        getStatsFromList(todaysSalesStocks);
                         break;
 
                     case R.id.btn_week:
@@ -112,6 +124,58 @@ public class Chart extends Fragment {
             }
         });
     }
+
+    private void getStatsFromList(List<SalesStock> todaysSalesStocks) {
+        double total = 0;
+        int sum = 0, sum2 = 0;
+        List<SalesStock> highestSoldItems = new ArrayList<>();
+        List<SalesStock> lowestSoldItems = new ArrayList<>();
+        for (SalesStock salesStock : todaysSalesStocks
+        ) {
+            total += Double.valueOf(salesStock.getAmount());
+            if (Integer.valueOf(salesStock.getQuantity()) > sum) {
+                sum = Integer.valueOf(salesStock.getQuantity());
+            }
+
+        }
+
+        sum2 = sum;
+        for (SalesStock salesStock : todaysSalesStocks
+        ) {
+
+            if (Integer.valueOf(salesStock.getQuantity()) < sum2) {
+                sum2 = Integer.valueOf(salesStock.getQuantity());
+
+            }
+            if (Integer.valueOf(salesStock.getQuantity()) == sum) {
+                highestSoldItems.add(salesStock);
+            }
+        }
+
+        for (SalesStock salesStock : todaysSalesStocks
+        ) {
+            if (Integer.valueOf(salesStock.getQuantity()) == sum2) {
+                lowestSoldItems.add(salesStock);
+            }
+        }
+
+        setStatValues(total, lowestSoldItems, highestSoldItems);
+
+    }
+
+    private void setStatValues(double total, List<SalesStock> lowestSoldItems, List<SalesStock> highestSoldItems) {
+        StringBuilder totalAmountBuilder = new StringBuilder();
+        totalAmountBuilder.append("Rs. ");
+        totalAmountBuilder.append(total);
+        mTotalAmount.setText(totalAmountBuilder);
+
+        for (SalesStock salesStock : lowestSoldItems
+        ) {
+            StringBuilder lowestSoldItemsGroup = new StringBuilder();
+//            lowestSoldItemsGroup.append()
+        }
+    }
+
 
     @Override
     public void onDestroyView() {
