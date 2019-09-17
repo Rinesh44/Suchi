@@ -1,6 +1,5 @@
 package com.treeleaf.suchi.realm.repo;
 
-import com.treeleaf.suchi.entities.SuchiProto;
 import com.treeleaf.suchi.realm.RealmDatabase;
 import com.treeleaf.suchi.realm.models.Brands;
 

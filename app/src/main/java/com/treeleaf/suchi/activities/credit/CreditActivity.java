@@ -2,6 +2,7 @@ package com.treeleaf.suchi.activities.credit;
 
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -18,12 +19,12 @@ public class CreditActivity extends BaseActivity implements View.OnClickListener
     Toolbar mToolbar;
     @BindView(R.id.toolbar_title)
     TextView mToolbarTitle;
-    @BindView(R.id.btn_entry)
+    @BindView(R.id.btn_credit_entry)
     MaterialButton mEntry;
-    @BindView(R.id.btn_history)
+    @BindView(R.id.btn_credit_history)
     MaterialButton mHistory;
-    @BindView(R.id.btn_profile)
-    MaterialButton mProfile;
+    @BindView(R.id.btn_creditors)
+    MaterialButton mAddCreditors;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +37,7 @@ public class CreditActivity extends BaseActivity implements View.OnClickListener
 
         mEntry.setOnClickListener(this);
         mHistory.setOnClickListener(this);
-        mProfile.setOnClickListener(this);
+        mAddCreditors.setOnClickListener(this);
     }
 
     private void init() {
@@ -58,13 +59,14 @@ public class CreditActivity extends BaseActivity implements View.OnClickListener
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.btn_sales:
+            case R.id.btn_credit_entry:
                 break;
 
-            case R.id.btn_stocks:
+            case R.id.btn_credit_history:
                 break;
 
-            case R.id.btn_reports:
+            case R.id.btn_creditors:
+                startActivity(new Intent(CreditActivity.this, AddCreditor.class));
                 break;
         }
     }

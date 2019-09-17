@@ -53,9 +53,11 @@
     <string name="sell">Sell</string>
     <string name="sell_item">Sell item</string>
     <string name="confirm">Confirm</string>
+    <string name="full_name">Full Name</string>
     <string name="speech_not_supported">Speech not supported</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="username">Username</string>
+    <string name="done">Done</string>
 </resources>

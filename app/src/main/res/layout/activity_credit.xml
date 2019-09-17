@@ -15,7 +15,7 @@
         android:padding="20dp">
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_entry"
+            android:id="@+id/btn_credit_entry"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:backgroundTint="@color/white"
@@ -26,7 +26,7 @@
             android:textColor="@color/colorPrimary" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_history"
+            android:id="@+id/btn_credit_history"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:backgroundTint="@color/white"
@@ -37,13 +37,13 @@
             android:textColor="@color/colorPrimary" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_profile"
+            android:id="@+id/btn_creditors"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:backgroundTint="@color/white"
             android:elevation="8dp"
             android:fontFamily="@font/proxima_regular"
-            android:text="@string/profile"
+            android:text="Add Creditors"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="@color/colorPrimary" />
 

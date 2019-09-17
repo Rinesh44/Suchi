@@ -702,7 +702,6 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
 
     private void initialize() {
         setUpToolbar(mToolbar);
-        setUpToolbar(mToolbar);
         if (null != getSupportActionBar()) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setHomeButtonEnabled(true);
