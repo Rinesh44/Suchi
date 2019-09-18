@@ -8,74 +8,91 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
         android:padding="10dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/iv_creditor"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:src="@drawable/ic_user_proto" />
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_user_proto"
+            app:civ_border_color="@color/colorAccent"
+            app:civ_border_width="1dp" />
 
-        <TextView
-            android:id="@+id/tv_name"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_centerVertical="true"
             android:layout_toEndOf="@+id/iv_creditor"
-            android:fontFamily="@font/proxima_regular"
-            android:text="Anil maharjan"
-            android:textColor="@color/black" />
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tv_address"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_name"
-            android:layout_marginStart="10dp"
-            android:layout_toEndOf="@+id/iv_creditor"
-            android:fontFamily="@font/proxima_regular"
-            android:text="Thamel"
-            android:textColor="@color/black" />
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:fontFamily="@font/proxima_regular"
+                android:text="Anil maharjan"
+                android:textAllCaps="true"
+                android:textColor="@color/black" />
 
-
-        <TextView
-            android:id="@+id/tv_phone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_address"
-            android:layout_marginStart="10dp"
-            android:layout_toEndOf="@+id/iv_creditor"
-            android:fontFamily="@font/proxima_regular"
-            android:text="9823757205"
-            android:textColor="@color/black" />
+            <TextView
+                android:id="@+id/tv_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:fontFamily="@font/proxima_regular"
+                android:text="Thamel"
+                android:textSize="12sp" />
 
 
-        <TextView
-            android:id="@+id/tv_due_amount_title"
+            <TextView
+                android:id="@+id/tv_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:fontFamily="@font/proxima_regular"
+                android:text="9823757205"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="10dp"
-            android:fontFamily="@font/proxima_regular"
-            android:text="Due Amount"
-            android:textColor="@color/black"
-            android:textStyle="bold" />
+            android:layout_centerVertical="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_due_amount_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="5dp"
+                android:fontFamily="@font/proxima_regular"
+                android:text="Due Amount"
+                android:textColor="@color/black" />
 
 
-        <TextView
-            android:id="@+id/tv_due_amount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_due_amount_title"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="10dp"
-            android:fontFamily="@font/proxima_regular"
-            android:text="Rs. 1000"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
+            <TextView
+                android:id="@+id/tv_due_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:background="@drawable/round_bg"
+                android:fontFamily="@font/proxima_regular"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp"
+                android:text="Rs. 1000"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
 
     </RelativeLayout>
 

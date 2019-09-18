@@ -57,6 +57,7 @@ public class CreditActivity extends BaseActivity implements View.OnClickListener
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_credit_history:
+                startActivity(new Intent(CreditActivity.this, CreditHistory.class));
                 break;
 
             case R.id.btn_creditors:

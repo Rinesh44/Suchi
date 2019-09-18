@@ -2,6 +2,7 @@ package com.treeleaf.suchi.realm.repo;
 
 import com.treeleaf.suchi.realm.RealmDatabase;
 import com.treeleaf.suchi.realm.models.Creditors;
+import com.treeleaf.suchi.realm.models.Units;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +46,20 @@ public class CreditorRepo extends Repo {
         Realm realm = RealmDatabase.getInstance().getRealm();
         try {
             return new ArrayList<>(realm.where(Creditors.class).findAll());
+
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+            return null;
+        } finally {
+            close(realm);
+        }
+    }
+
+    public Creditors getCreditorById(String id) {
+        final Realm realm = RealmDatabase.getInstance().getRealm();
+
+        try {
+            return realm.where(Creditors.class).equalTo("id", id).findFirst();
 
         } catch (Throwable throwable) {
             throwable.printStackTrace();

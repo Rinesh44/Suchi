@@ -56,6 +56,20 @@ public class CreditRepo extends Repo {
     }
 
 
+    public List<Credit> getCreditsWithDues() {
+        Realm realm = RealmDatabase.getInstance().getRealm();
+        try {
+            return new ArrayList<>(realm.where(Credit.class).notEqualTo("dueAmount", "0").findAll());
+
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+            return null;
+        } finally {
+            close(realm);
+        }
+    }
+
+
     public void deleteAllCredit(final Callback callback) {
         final Realm realm = RealmDatabase.getInstance().getRealm();
 

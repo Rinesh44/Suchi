@@ -92,4 +92,12 @@ public class Credit extends RealmObject {
     public void setSync(boolean sync) {
         this.sync = sync;
     }
+
+    public long getCreatedAt() {
+        return createdAt;
+    }
+
+    public long getUpdatedAt() {
+        return updatedAt;
+    }
 }
