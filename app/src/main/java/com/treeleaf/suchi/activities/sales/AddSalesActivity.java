@@ -795,7 +795,7 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
                             formattedAmount, mQty.getText().toString(), salesStock.getUnit(),
                             salesStock.getName(), salesStock.getPhotoUrl(), salesStock.getUnitPrice(), salesStock.getBrand(), salesStock.getSubBrand(),
                             salesStock.getCategories(),
-                            salesStock.isSynced(), salesStock.getCreatedAt(), salesStock.getUpdatedAt());
+                            salesStock.isSynced(), salesStock.getCreatedAt(), salesStock.getUpdatedAt(), false, "");
 
                     cartItemList.set(position, updatedSalesStock);
                     cartAdapter.notifyItemChanged(position);
@@ -861,7 +861,7 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
                     if (!isInArray) {
                         SalesStock salesStockNew = new SalesStock(id, inventoryId, formatedAmount,
                                 mQuantity.getText().toString(), unit, name, photoUrl,
-                                sellingPrice, brand, subBrand, categories, false, System.currentTimeMillis(), 0);
+                                sellingPrice, brand, subBrand, categories, false, System.currentTimeMillis(), 0, false, "");
 
                         cartItemList.add(salesStockNew);
 
@@ -881,7 +881,7 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
                                         String.valueOf(updatedAmount), String.valueOf(updatedQuantity),
                                         unit, name, photoUrl, sellingPrice, brand, subBrand, categories,
                                         false, salesStock.getCreatedAt(),
-                                        System.currentTimeMillis());
+                                        System.currentTimeMillis(), false, "");
 
                                 tempListAdd.add(replaceSalesStock);
                             }
@@ -897,7 +897,7 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
                     SalesStock salesStockNew = new SalesStock(id, inventoryId, formatedAmount,
                             mQuantity.getText().toString(), unit, name, photoUrl, sellingPrice,
                             brand, subBrand, categories,
-                            false, System.currentTimeMillis(), 0);
+                            false, System.currentTimeMillis(), 0, false, "");
                     cartItemList.add(salesStockNew);
 
                     cartAdapter.notifyDataSetChanged();
@@ -924,7 +924,7 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
                         SalesStock salesStockNew = new SalesStock(defaultInventoryStock.getId(), defaultInventoryStock.getInventory_id()
                                 , formatedAmount, mQuantity.getText().toString(), units.getName(), selectedItem.getSku().getName(), selectedItem.getSku().getPhoto_url(),
                                 defaultInventoryStock.getSalesPrice(), selectedItem.getSku().getBrand().getName(), selectedItem.getSku().getSubBrands().getName(),
-                                selectedItem.getSku().getCategories().getName(), false, System.currentTimeMillis(), 0);
+                                selectedItem.getSku().getCategories().getName(), false, System.currentTimeMillis(), 0, false, "");
 
                         tempListAdd.add(salesStockNew);
                     } else {
@@ -939,7 +939,7 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
                                         , String.valueOf(updatedAmount), String.valueOf(updatedQuantity), units.getName(),
                                         selectedItem.getSku().getName(), selectedItem.getSku().getPhoto_url(),
                                         defaultInventoryStock.getSalesPrice(), selectedItem.getSku().getBrand().getName(), selectedItem.getSku().getSubBrands().getName(),
-                                        selectedItem.getSku().getCategories().getName(), false, salesStock.getCreatedAt(), System.currentTimeMillis());
+                                        selectedItem.getSku().getCategories().getName(), false, salesStock.getCreatedAt(), System.currentTimeMillis(), false, "");
 
                                 tempListAdd.add(replaceSalesStock);
 
@@ -956,7 +956,7 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
                     SalesStock salesStockNew = new SalesStock(defaultInventoryStock.getId(), defaultInventoryStock.getInventory_id()
                             , formatedAmount, mQuantity.getText().toString(), units.getName(), selectedItem.getSku().getName(), selectedItem.getSku().getPhoto_url(),
                             defaultInventoryStock.getSalesPrice(), selectedItem.getSku().getBrand().getName(), selectedItem.getSku().getSubBrands().getName(),
-                            selectedItem.getSku().getCategories().getName(), false, System.currentTimeMillis(), 0);
+                            selectedItem.getSku().getCategories().getName(), false, System.currentTimeMillis(), 0, false, "");
                     cartItemList.add(salesStockNew);
 
                     cartAdapter.notifyDataSetChanged();

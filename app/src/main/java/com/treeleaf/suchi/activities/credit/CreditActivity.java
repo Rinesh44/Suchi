@@ -19,8 +19,6 @@ public class CreditActivity extends BaseActivity implements View.OnClickListener
     Toolbar mToolbar;
     @BindView(R.id.toolbar_title)
     TextView mToolbarTitle;
-    @BindView(R.id.btn_credit_entry)
-    MaterialButton mEntry;
     @BindView(R.id.btn_credit_history)
     MaterialButton mHistory;
     @BindView(R.id.btn_creditors)
@@ -35,7 +33,6 @@ public class CreditActivity extends BaseActivity implements View.OnClickListener
 
         init();
 
-        mEntry.setOnClickListener(this);
         mHistory.setOnClickListener(this);
         mAddCreditors.setOnClickListener(this);
     }
@@ -59,9 +56,6 @@ public class CreditActivity extends BaseActivity implements View.OnClickListener
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.btn_credit_entry:
-                break;
-
             case R.id.btn_credit_history:
                 break;
 

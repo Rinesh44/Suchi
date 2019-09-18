@@ -1,13 +1,16 @@
 package com.treeleaf.suchi.activities.credit;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.util.Base64;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 
@@ -20,11 +23,15 @@ import com.theartofdev.edmodo.cropper.CropImageView;
 import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.activities.base.BaseActivity;
 import com.treeleaf.suchi.realm.models.Creditors;
+import com.treeleaf.suchi.realm.repo.CreditorRepo;
+import com.treeleaf.suchi.realm.repo.Repo;
 import com.treeleaf.suchi.utils.AppUtils;
+import com.treeleaf.suchi.utils.Constants;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Objects;
+import java.util.UUID;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -59,7 +66,8 @@ public class AddCreditor extends BaseActivity implements View.OnClickListener {
     @BindView(R.id.iv_creditor_image)
     CircleImageView mCreditorImage;
 
-    String encodedImage;
+    private String encodedImage;
+    private SharedPreferences preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,7 +89,9 @@ public class AddCreditor extends BaseActivity implements View.OnClickListener {
             getSupportActionBar().setHomeButtonEnabled(true);
             getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
-        mToolbarTitle.setText("Add Creditors");
+        mToolbarTitle.setText("Add Creditor");
+
+        preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
 //        getMyApplication(this).getAppComponent().inject(this);
 
@@ -136,20 +146,12 @@ public class AddCreditor extends BaseActivity implements View.OnClickListener {
         }
 
 
-        if (phone.isEmpty() || phone.length() < 10) {
+        if (phone.isEmpty()) {
             mPhoneLayout.setErrorEnabled(true);
             mPhoneLayout.setError("This field is required");
             mPhone.requestFocus();
         } else {
             mPhoneLayout.setErrorEnabled(false);
-        }
-
-        if (desc.isEmpty()) {
-            mDescLayout.setErrorEnabled(true);
-            mDescLayout.setError("This field is required");
-            mDescription.requestFocus();
-        } else {
-            mDescLayout.setErrorEnabled(false);
         }
 
         saveToDB(fullname, address, phone, desc);
@@ -158,7 +160,32 @@ public class AddCreditor extends BaseActivity implements View.OnClickListener {
 
 
     public void saveToDB(String name, String address, String phone, String desc) {
+        String id = UUID.randomUUID().toString().replace("-", "");
         Creditors creditors = new Creditors();
+        creditors.setId(id);
+        creditors.setName(name);
+        creditors.setAddress(address);
+        creditors.setPhone(phone);
+        creditors.setDescription(desc);
+        if (encodedImage != null) creditors.setPic(encodedImage);
+        creditors.setUserId(preferences.getString(Constants.USER_ID, ""));
+        creditors.setCreatedAt(System.currentTimeMillis());
+        creditors.setUpdatedAt(0);
+        creditors.setSync(false);
+
+        CreditorRepo.getInstance().saveCreditor(creditors, new Repo.Callback() {
+            @Override
+            public void success(Object o) {
+                Toast.makeText(AddCreditor.this, "Creditor added", Toast.LENGTH_SHORT).show();
+                AppUtils.showLog(TAG, "creditor saved to db");
+                finish();
+            }
+
+            @Override
+            public void fail() {
+                AppUtils.showLog(TAG, "failed to save creditor to db");
+            }
+        });
 
     }
 

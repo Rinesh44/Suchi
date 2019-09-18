@@ -3,6 +3,7 @@ package com.treeleaf.suchi.activities.sales;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -14,6 +15,7 @@ import androidx.appcompat.widget.Toolbar;
 import com.google.android.material.button.MaterialButton;
 import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.activities.base.BaseActivity;
+import com.treeleaf.suchi.activities.credit.CreditEntry;
 import com.treeleaf.suchi.activities.inventory.InventoryActivity;
 import com.treeleaf.suchi.realm.models.SalesStock;
 import com.treeleaf.suchi.realm.repo.Repo;
@@ -46,7 +48,7 @@ public class SalesBill extends BaseActivity {
 /*    @BindView(R.id.fab_done)
     FloatingActionButton mDone;*/
 
-    double totalAmount = 0;
+    private double totalAmount = 0;
 
     List<SalesStock> updatedSalesStockList;
     private SharedPreferences preferences;
@@ -76,9 +78,8 @@ public class SalesBill extends BaseActivity {
         mAddToCredit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(SalesBill.this, SalesAddCredit.class);
-                AppUtils.showLog(TAG, "amount: " + totalAmount);
-                i.putExtra("amount", String.valueOf(totalAmount));
+                Intent i = new Intent(SalesBill.this, CreditEntry.class);
+                i.putParcelableArrayListExtra("sales_stock_list", (ArrayList<? extends Parcelable>) updatedSalesStockList);
                 startActivity(i);
             }
         });
@@ -182,7 +183,7 @@ public class SalesBill extends BaseActivity {
                             amount, quantity, salesStockCurrent.getUnit(), salesStockCurrent.getName(),
                             salesStockCurrent.getPhotoUrl(), salesStockCurrent.getUnitPrice(),
                             salesStockCurrent.getBrand(), salesStockCurrent.getSubBrand(), salesStockCurrent.getCategories(),
-                            false, salesStockCurrent.getCreatedAt(), System.currentTimeMillis());
+                            false, salesStockCurrent.getCreatedAt(), System.currentTimeMillis(), false, "");
 
                     stocksToAdd.add(salesStock);
                 } else {
@@ -191,7 +192,7 @@ public class SalesBill extends BaseActivity {
                             salesStockCurrent.getAmount(), salesStockCurrent.getQuantity(), salesStockCurrent.getUnit(), salesStockCurrent.getName(),
                             salesStockCurrent.getPhotoUrl(), salesStockCurrent.getUnitPrice(),
                             salesStockCurrent.getBrand(), salesStockCurrent.getSubBrand(), salesStockCurrent.getCategories(),
-                            false, System.currentTimeMillis(), 0);
+                            false, System.currentTimeMillis(), 0, false, "");
 
                     stocksToAdd.add(salesStock);
                 }

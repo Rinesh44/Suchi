@@ -22,8 +22,12 @@ public class SalesStock extends RealmObject implements Parcelable {
     private boolean synced;
     private long createdAt;
     private long updatedAt;
+    private boolean isCredit;
+    private String creditId;
 
-    public SalesStock(String id, String inventory_id, String amount, String quantity, String unit, String name, String photoUrl, String unitPrice, String brand, String subBrand, String categories, boolean synced, long createdAt, long updatedAt) {
+
+    public SalesStock(String id, String inventory_id, String amount, String quantity, String unit, String name, String photoUrl, String unitPrice, String brand, String subBrand, String categories, boolean synced, long createdAt, long updatedAt,
+                      boolean isCredit, String creditId) {
         this.id = id;
         this.inventory_id = inventory_id;
         this.amount = amount;
@@ -38,6 +42,8 @@ public class SalesStock extends RealmObject implements Parcelable {
         this.synced = synced;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
+        this.isCredit = isCredit;
+        this.creditId = creditId;
     }
 
 
@@ -156,6 +162,22 @@ public class SalesStock extends RealmObject implements Parcelable {
         this.categories = categories;
     }
 
+    public boolean isCredit() {
+        return isCredit;
+    }
+
+    public void setCredit(boolean credit) {
+        isCredit = credit;
+    }
+
+    public String getCreditId() {
+        return creditId;
+    }
+
+    public void setCreditId(String creditId) {
+        this.creditId = creditId;
+    }
+
     protected SalesStock(Parcel in) {
         id = in.readString();
         inventory_id = in.readString();
@@ -171,6 +193,8 @@ public class SalesStock extends RealmObject implements Parcelable {
         synced = in.readByte() != 0x00;
         createdAt = in.readLong();
         updatedAt = in.readLong();
+        isCredit = in.readByte() != 0x00;
+        creditId = in.readString();
     }
 
     @Override
@@ -194,7 +218,8 @@ public class SalesStock extends RealmObject implements Parcelable {
         dest.writeByte((byte) (synced ? 0x01 : 0x00));
         dest.writeLong(createdAt);
         dest.writeLong(updatedAt);
-
+        dest.writeByte((byte) (synced ? 0x01 : 0x00));
+        dest.writeString(creditId);
     }
 
     @SuppressWarnings("unused")

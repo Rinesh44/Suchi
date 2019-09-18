@@ -384,8 +384,8 @@ public class ReportActivity extends BaseActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
-        viewPagerAdapter.addFragment(new Table(), "TABLE");
         viewPagerAdapter.addFragment(new Chart(), "CHART");
+        viewPagerAdapter.addFragment(new Table(), "TABLE");
         viewPager.setAdapter(viewPagerAdapter);
     }
 

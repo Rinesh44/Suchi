@@ -146,7 +146,8 @@ public class Chart extends Fragment {
 
         todaysSalesStocks = SalesStockRepo.getInstance().getSalesStockOfToday();
         mSoldItemsCount.setText(String.valueOf(todaysSalesStocks.size()));
-        if (todaysSalesStocks != null && !todaysSalesStocks.isEmpty()) {
+        if (todaysSalesStocks != null) {
+            AppUtils.showLog(TAG, "list is null or empty");
             setVisibilityToViews(todaysSalesStocks);
         }
 

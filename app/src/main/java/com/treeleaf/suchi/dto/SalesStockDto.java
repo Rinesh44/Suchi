@@ -24,9 +24,12 @@ public class SalesStockDto implements Parcelable {
     private boolean synced;
     private long createdAt;
     private long updatedAt;
+    private boolean isCredit;
+    private String creditId;
 
     public SalesStockDto(String id, String inventory_id, String amount, String quantity, String unit, String name, String photoUrl, String unitPrice, String brand,
-                         String subBrand, String categories, boolean synced, long createdAt, long updatedAt) {
+                         String subBrand, String categories, boolean synced, long createdAt, long updatedAt,
+                         boolean isCredit, String creditId) {
         this.id = id;
         this.inventory_id = inventory_id;
         this.amount = amount;
@@ -41,6 +44,8 @@ public class SalesStockDto implements Parcelable {
         this.synced = synced;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
+        this.isCredit = isCredit;
+        this.creditId = creditId;
     }
 
 
@@ -159,6 +164,22 @@ public class SalesStockDto implements Parcelable {
         this.categories = categories;
     }
 
+    public boolean isCredit() {
+        return isCredit;
+    }
+
+    public void setCredit(boolean credit) {
+        isCredit = credit;
+    }
+
+    public String getCreditId() {
+        return creditId;
+    }
+
+    public void setCreditId(String creditId) {
+        this.creditId = creditId;
+    }
+
     protected SalesStockDto(Parcel in) {
         id = in.readString();
         inventory_id = in.readString();
@@ -174,6 +195,8 @@ public class SalesStockDto implements Parcelable {
         synced = in.readByte() != 0x00;
         createdAt = in.readLong();
         updatedAt = in.readLong();
+        isCredit = in.readByte() != 0x00;
+        creditId = in.readString();
     }
 
     @Override
@@ -197,6 +220,8 @@ public class SalesStockDto implements Parcelable {
         dest.writeByte((byte) (synced ? 0x01 : 0x00));
         dest.writeLong(createdAt);
         dest.writeLong(updatedAt);
+        dest.writeByte((byte) (synced ? 0x01 : 0x00));
+        dest.writeString(creditId);
 
     }
 
