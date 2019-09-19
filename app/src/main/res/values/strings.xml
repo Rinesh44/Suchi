@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Suchi</string>
+    <string name="app_name" translatable="false">Suchi</string>
     <string name="title_activity_login">Sign in</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
@@ -7,10 +7,10 @@
     <string name="action_sign_in_short">Sign in</string>
     <string name="welcome">"Welcome !"</string>
     <string name="invalid_username">Not a valid username</string>
-    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="invalid_password" translatable="false">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="sales">Sales</string>
-    <string name="stock">Stock</string>
+    <string name="stock">Stock</string>∂
     <string name="reports">Reports</string>
     <string name="credit_entry">Credit Entry</string>
     <string name="credit_history">Credit History</string>
@@ -18,10 +18,7 @@
     <string name="email_phone">Email/Phone</string>
     <string name="forgot_password">Forgot Password</string>
     <string name="login">Login</string>
-    <string name="store_name">Store name</string>
-    <string name="address">Address</string>
     <string name="phone">Phone</string>
-    <string name="owner_name">Owner Name</string>
     <string name="password">Password</string>
     <string name="terms_and_conditions">Terms and Conditions</string>
     <string name="register">Register</string>
@@ -31,10 +28,8 @@
     <string name="start">start</string>
     <string name="or">OR</string>
     <string name="free_trial">Free Trial</string>
-    <string name="name">Name</string>
     <string name="category">Category</string>
     <string name="sub_brand">Sub Brand</string>
-    <string name="brand">Brand</string>
     <string name="description">Description</string>
     <string name="unit">Unit</string>
     <string name="view_report_details">View Report details</string>
@@ -49,15 +44,81 @@
     <string name="no_sales_available">No Sales available</string>
     <string name="total">Total</string>
     <string name="search">Search</string>
-    <string name="unit_price">Unit Price: </string>
-    <string name="sell">Sell</string>
+    <string name="unit_price">Unit Price</string>
     <string name="sell_item">Sell item</string>
     <string name="confirm">Confirm</string>
     <string name="full_name">Full Name</string>
     <string name="speech_not_supported">Speech not supported</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="username">Username</string>
     <string name="done">Done</string>
+    <string name="translate_this_to_nepali">Translate this to nepali</string>
+    <string name="items_to_sell">Items to sell</string>
+    <string name="credit_info">Credit Info</string>
+    <string name="search_creditor">Search Creditor</string>
+    <string name="create_new">Create new</string>
+    <string name="paid_amount">Paid amount</string>
+    <string name="due_amount">Due amount</string>
+    <string name="add_to_credit">Add to credit</string>
+    <string name="select_stock_to_sell">Select stock to sell</string>
+    <string name="items_in_cart">Items in cart</string>
+    <string name="add_creditors">Add Creditors</string>
+    <string name="sold_items">Sold items</string>
+    <string name="amount_rs">AMOUNT (Rs.)</string>
+    <string name="total_amount">Total Amount:</string>
+    <string name="creditor_info">Creditor info</string>
+    <string name="clear_dues">Clear dues</string>
+    <string name="no_data_available">No Data Available</string>
+    <string name="congratulations">Congratulations!</string>
+    <string name="new_user">New user ?</string>
+    <string name="enter_the_key_provided_to_you">Enter the key provided to you</string>
+    <string name="welcome_users">Welcome Users !</string>
+    <string name="sign_up">Sign up</string>
+    <string name="owner_name">Owner Name</string>
+    <string name="username_email">Username/Email</string>
+    <string name="store_name">Store name</string>
+    <string name="address">Address</string>
+    <string name="search_stocks">Search stocks</string>
+    <string name="items">Items</string>
+    <string name="qty">Qty</string>
+    <string name="price_rs">PRICE (Rs.)</string>
+    <string name="sell">Sell</string>
+    <string name="id" translatable="false">Id:</string>
+    <string name="details">Details</string>
+    <string name="sold_quantity">Sold quantity</string>
+    <string name="search_sku">Search SKU</string>
+    <string name="brand">Brand</string>
+    <string name="add_to_inventory">Add to inventory</string>
+    <string name="add">Add</string>
+    <string name="english">English</string>
+    <string name="nepali">Nepali</string>
+    <string name="language_settings">Language settings</string>
+    <string name="no_stocks_available">No stocks available</string>
+    <string name="no_stockkeepingunit_found">No stockKeepingUnit found</string>
+    <string name="item_info">Item Info</string>
+    <string name="available_stocks">Available Stocks</string>
+    <string name="selling_price_rs">Selling Price (Rs.)</string>
+    <string name="marked_price_rs">Marked Price (Rs.)</string>
+    <string name="filter_by">Filter By:</string>
+    <string name="select_brand">Select Brand:</string>
+    <string name="select_sub_brand">Select Sub Brand:</string>
+    <string name="select_category">Select Category:</string>
+    <string name="select_item">Select Item:</string>
+    <string name="from_date">From date:</string>
+    <string name="till_date">Till date:</string>
+    <string name="price">Price</string>
+    <string name="highest_sold_item">Highest sold item</string>
+    <string name="lowest_sold_item">Lowest sold item</string>
+    <string name="today">today</string>
+    <string name="week">Week</string>
+    <string name="month">Month</string>
+    <string name="name">Name</string>
+    <string name="no_reports_available">No reports available</string>
+    <string name="date">Date</string>
+    <string name="amount">Amount</string>
+    <string name="total_price">Total Price</string>
+    <string name="select">Select</string>
+    <string name="selling_price_per_item">Selling Price (per item)</string>
+    <string name="quantity_sold">Quantity sold:</string>
 </resources>

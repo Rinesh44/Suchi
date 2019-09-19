@@ -33,7 +33,7 @@
                     android:id="@+id/tv_item_info"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Items to sell"
+                    android:text="@string/items_to_sell"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -77,7 +77,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="4"
                             android:fontFamily="@font/proxima_regular"
-                            android:text="Items"
+                            android:text="@string/items"
                             android:textAllCaps="true"
                             android:textColor="@color/black"
                             android:textSize="12sp"
@@ -89,7 +89,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="3"
                             android:fontFamily="@font/proxima_regular"
-                            android:text="Qty"
+                            android:text="@string/qty"
                             android:textAllCaps="true"
                             android:textColor="@color/black"
                             android:textSize="12sp"
@@ -101,7 +101,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="3"
                             android:fontFamily="@font/proxima_regular"
-                            android:text="PRICE (Rs.)"
+                            android:text="@string/price_rs"
                             android:textColor="@color/black"
                             android:textSize="12sp"
                             android:textStyle="bold" />
@@ -114,7 +114,7 @@
                             android:layout_weight="4"
                             android:fontFamily="@font/proxima_regular"
                             android:gravity="end"
-                            android:text="AMOUNT (Rs.)"
+                            android:text="@string/amount_rs"
                             android:textColor="@color/black"
                             android:textSize="12sp"
                             android:textStyle="bold" />
@@ -164,7 +164,7 @@
                             android:layout_weight="10"
                             android:fontFamily="@font/proxima_regular"
                             android:gravity="end"
-                            android:text="Total Amount: "
+                            android:text="@string/total_amount"
                             android:textColor="@color/black"
                             android:textSize="15sp" />
 
@@ -200,7 +200,7 @@
                     android:id="@+id/tv_credit_info"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Credit Info"
+                    android:text="@string/credit_info"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -234,7 +234,7 @@
                     android:drawableStart="@drawable/ic_search"
                     android:drawablePadding="10dp"
                     android:fontFamily="@font/proxima_regular"
-                    android:hint="Search Creditor"
+                    android:hint="@string/search_creditor"
                     android:textSize="14sp" />
 
 
@@ -244,7 +244,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="Or"
+                    android:text="@string/or"
                     android:textAllCaps="true" />
 
                 <com.google.android.material.button.MaterialButton
@@ -254,7 +254,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_weight="3"
                     android:fontFamily="@font/proxima_regular"
-                    android:text="Create new"
+                    android:text="@string/create_new"
                     android:textSize="14sp"
                     android:textStyle="bold" />
 
@@ -268,7 +268,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:hint="Paid amount">
+                android:hint="@string/paid_amount">
 
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -289,7 +289,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:hint="Due amount">
+                android:hint="@string/due_amount">
 
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -310,7 +310,7 @@
                 android:layout_height="60dp"
                 android:layout_margin="10dp"
                 android:fontFamily="@font/proxima_regular"
-                android:text="Add to credit"
+                android:text="@string/add_to_credit"
                 android:textSize="14sp"
                 android:textStyle="bold" />
         </LinearLayout>

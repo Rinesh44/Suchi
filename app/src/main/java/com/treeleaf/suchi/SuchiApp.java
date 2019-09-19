@@ -11,12 +11,18 @@ import com.treeleaf.suchi.dagger.component.DaggerAppComponent;
 import com.treeleaf.suchi.dagger.component.module.NetModule;
 import com.treeleaf.suchi.dagger.component.modules.module.AppModule;
 import com.treeleaf.suchi.realm.RealmDatabase;
+import com.treeleaf.suchi.utils.LocaleHelper;
 
 public class SuchiApp extends Application {
     private static final String TAG = "SuchiApp";
     public static final String CHANNEL_ID = "channel1";
     private static Context context;
     private AppComponent appComponent;
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(LocaleHelper.onAttach(base, "en"));
+    }
 
     @Override
     public void onCreate() {

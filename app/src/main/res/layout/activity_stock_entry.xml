@@ -219,7 +219,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="5dp"
                 android:fontFamily="@font/proxima_regular"
-                android:text="Add"
+                android:text="@string/add"
                 android:textStyle="bold"
                 app:rippleColor="@color/colorPrimary" />
 

@@ -38,10 +38,10 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/rl_top_view"
             android:layout_marginLeft="40dp"
-            android:fontFamily="@font/proxima_regular"
             android:layout_marginTop="40dp"
             android:layout_marginRight="40dp"
-            android:text="Owner Name"
+            android:fontFamily="@font/proxima_regular"
+            android:text="@string/owner_name"
             android:textColor="@color/colorPrimary"
             android:textSize="16sp" />
 
@@ -49,10 +49,10 @@
             android:id="@+id/tv_owner_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/proxima_regular"
             android:layout_below="@+id/owner_name_title"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
+            android:fontFamily="@font/proxima_regular"
             android:text="Tom hanks" />
 
         <TextView
@@ -61,10 +61,10 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_owner_name"
             android:layout_marginLeft="40dp"
-            android:fontFamily="@font/proxima_regular"
             android:layout_marginTop="20dp"
             android:layout_marginRight="40dp"
-            android:text="Username/Email"
+            android:fontFamily="@font/proxima_regular"
+            android:text="@string/username_email"
             android:textColor="@color/colorPrimary"
             android:textSize="16sp" />
 
@@ -73,9 +73,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/username_title"
-            android:fontFamily="@font/proxima_regular"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
+            android:fontFamily="@font/proxima_regular"
             android:text="hanks@gmail.com" />
 
         <TextView
@@ -85,9 +85,9 @@
             android:layout_below="@id/tv_username"
             android:layout_marginLeft="40dp"
             android:layout_marginTop="20dp"
-            android:fontFamily="@font/proxima_regular"
             android:layout_marginRight="40dp"
-            android:text="Store name"
+            android:fontFamily="@font/proxima_regular"
+            android:text="@string/store_name"
             android:textColor="@color/colorPrimary"
             android:textSize="16sp" />
 
@@ -97,8 +97,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/storename_title"
             android:layout_marginLeft="40dp"
-            android:fontFamily="@font/proxima_regular"
             android:layout_marginRight="40dp"
+            android:fontFamily="@font/proxima_regular"
             android:text="Badri ko halwai" />
 
         <TextView
@@ -107,10 +107,10 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_store_name"
             android:layout_marginLeft="40dp"
-            android:fontFamily="@font/proxima_regular"
             android:layout_marginTop="20dp"
             android:layout_marginRight="40dp"
-            android:text="Address"
+            android:fontFamily="@font/proxima_regular"
+            android:text="@string/address"
             android:textColor="@color/colorPrimary"
             android:textSize="16sp" />
 
@@ -120,8 +120,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/address_title"
             android:layout_marginLeft="40dp"
-            android:fontFamily="@font/proxima_regular"
             android:layout_marginRight="40dp"
+            android:fontFamily="@font/proxima_regular"
             android:text="Jawalakhel, Lalitpur" />
 
     </RelativeLayout>

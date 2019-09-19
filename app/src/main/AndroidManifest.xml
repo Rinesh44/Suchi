@@ -18,7 +18,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activities.credit.CreditDetails"></activity>
+        <activity android:name=".activities.Settings.Settings"></activity>
+        <activity android:name=".activities.credit.CreditDetails" />
         <activity android:name=".activities.credit.CreditHistory" />
         <activity android:name=".activities.credit.CreditEntry" />
         <activity android:name=".activities.credit.AddCreditor" />

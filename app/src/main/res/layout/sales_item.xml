@@ -25,7 +25,7 @@
             android:fontFamily="@font/proxima_regular"
             android:gravity="center"
             android:singleLine="true"
-            android:text="Name" />
+            android:text="@string/name" />
 
 
         <TextView
@@ -41,7 +41,7 @@
             android:fontFamily="@font/proxima_regular"
             android:gravity="center"
             android:singleLine="true"
-            android:text="Qty" />
+            android:text="@string/qty" />
 
         <TextView
             android:id="@+id/tv_date"
@@ -56,7 +56,7 @@
             android:fontFamily="@font/proxima_regular"
             android:gravity="center"
             android:singleLine="true"
-            android:text="Date" />
+            android:text="@string/date" />
 
 
         <TextView
@@ -70,7 +70,7 @@
             android:background="@color/white"
             android:fontFamily="@font/proxima_regular"
             android:gravity="center"
-            android:text="Amount" />
+            android:text="@string/amount" />
 
 
     </TableRow>

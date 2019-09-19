@@ -28,7 +28,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/proxima_regular"
-                android:text="Selling Price (Rs.)"
+                android:text="@string/selling_price_rs"
                 android:textColor="@color/white" />
 
             <TextView
@@ -50,7 +50,7 @@
                 android:layout_below="@+id/tv_selling_price"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/proxima_regular"
-                android:text="Marked Price (Rs.)"
+                android:text="@string/marked_price_rs"
                 android:textColor="@color/white" />
 
             <TextView

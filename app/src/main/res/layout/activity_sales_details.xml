@@ -56,7 +56,7 @@
                     android:layout_below="@+id/tv_item_name"
                     android:layout_marginTop="5dp"
                     android:fontFamily="@font/proxima_regular"
-                    android:text="Id: "
+                    android:text="ID:"
                     android:textAllCaps="true"
                     android:textColor="@color/black" />
 
@@ -169,7 +169,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:fontFamily="@font/proxima_regular"
-            android:text="Details"
+            android:text="@string/details"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -198,7 +198,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/proxima_regular"
-            android:text="Sold quantity"
+            android:text="@string/sold_quantity"
             android:textColor="@color/black"
             android:textSize="18sp" />
 
@@ -220,7 +220,6 @@
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="0dp"
             android:fontFamily="@font/proxima_regular"
-            android:text="Packet"
             android:textColor="@color/black"
             android:textSize="18sp" />
 
@@ -231,7 +230,7 @@
             android:layout_below="@+id/tv_unit"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/proxima_regular"
-            android:text="Unit Price"
+            android:text="@string/unit_price"
             android:textColor="@color/black"
             android:textSize="18sp" />
 
@@ -254,7 +253,7 @@
             android:layout_below="@+id/tv_selling_price_title"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/proxima_regular"
-            android:text="Amount"
+            android:text="@string/amount"
             android:textColor="@color/black"
             android:textSize="18sp" />
 

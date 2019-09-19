@@ -14,9 +14,9 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="5dp"
         android:fontFamily="@font/proxima_regular"
-        android:text="Filter By: "
+        android:text="@string/filter_by"
         android:textColor="@color/black"
         android:textSize="16sp" />
 
@@ -46,8 +46,9 @@
             android:id="@+id/tv_brand_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
             android:fontFamily="@font/proxima_regular"
-            android:text="Select Brand:"
+            android:text="@string/select_brand"
             android:textColor="@color/black"
             android:textSize="16sp" />
 
@@ -81,8 +82,9 @@
             android:id="@+id/tv_sub_brand_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
             android:fontFamily="@font/proxima_regular"
-            android:text="Select Sub Brand:"
+            android:text="@string/select_sub_brand"
             android:textColor="@color/black"
             android:textSize="16sp" />
 
@@ -116,8 +118,9 @@
             android:id="@+id/tv_category_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
             android:fontFamily="@font/proxima_regular"
-            android:text="Select Category:"
+            android:text="@string/select_category"
             android:textColor="@color/black"
             android:textSize="16sp" />
 
@@ -146,14 +149,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:visibility="visible">
+        android:visibility="gone">
 
         <TextView
             android:id="@+id/tv_item_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:fontFamily="@font/proxima_regular"
-            android:text="Select Item:"
+            android:text="@string/select_item"
             android:textColor="@color/black"
             android:textSize="16sp" />
 
@@ -194,7 +198,7 @@
             android:layout_marginStart="20dp"
             android:layout_toEndOf="@+id/ib_right"
             android:fontFamily="@font/proxima_regular"
-            android:text="From date:"
+            android:text="@string/from_date"
             android:textColor="@color/black" />
 
         <EditText
@@ -218,7 +222,7 @@
             android:layout_toEndOf="@+id/ib_right"
             android:fontFamily="@font/proxima_regular"
             android:gravity="center"
-            android:text="Till date:"
+            android:text="@string/till_date"
             android:textColor="@color/black" />
 
         <EditText
@@ -250,7 +254,7 @@
         android:fontFamily="@font/proxima_regular"
         android:foreground="?attr/selectableItemBackground"
         android:gravity="center"
-        android:text="DONE"
+        android:text="@string/done"
         android:textColor="#fff"
         android:textStyle="bold" />
 

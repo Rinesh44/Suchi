@@ -57,8 +57,8 @@
                         android:layout_below="@+id/iv_inventory"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="10dp"
-                        android:text="Inventory"
                         android:fontFamily="@font/proxima_regular"
+                        android:text="@string/inventory"
                         android:textAllCaps="true"
                         android:textColor="@color/colorPrimaryDark"
                         android:textStyle="bold" />
@@ -102,7 +102,7 @@
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/proxima_regular"
-                        android:text="Credit"
+                        android:text="@string/credit"
                         android:textAllCaps="true"
                         android:textColor="@color/colorPrimaryDark"
                         android:textStyle="bold" />

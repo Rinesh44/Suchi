@@ -59,7 +59,7 @@
         android:layout_marginTop="10dp"
         android:fontFamily="@font/proxima_regular"
         android:gravity="center"
-        android:text="Quantity sold:"
+        android:text="@string/quantity_sold"
         android:textSize="15sp" />
 
 </RelativeLayout>

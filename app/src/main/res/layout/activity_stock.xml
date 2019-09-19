@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:fontFamily="@font/proxima_regular"
-            android:text="No stocks available"
+            android:text="@string/no_stocks_available"
             android:textSize="20sp"
             android:visibility="gone" />
 
@@ -37,7 +37,7 @@
             android:elevation="2dp"
             android:focusable="false"
             android:fontFamily="@font/proxima_regular"
-            android:hint="Search stocks"
+            android:hint="@string/search_stocks"
             android:paddingStart="15dp"
             android:paddingEnd="10dp" />
 
@@ -57,7 +57,7 @@
             android:layout_marginBottom="60dp"
             android:fontFamily="@font/proxima_regular"
             android:gravity="center"
-            android:text="No stockKeepingUnit found"
+            android:text="@string/no_stockkeepingunit_found"
             android:textSize="20sp"
             android:visibility="gone" />
 

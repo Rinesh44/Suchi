@@ -33,7 +33,7 @@
             android:layout_marginTop="40dp"
             android:layout_marginBottom="15dp"
             android:fontFamily="@font/proxima_regular"
-            android:text="Congratulations!"
+            android:text="@string/congratulations"
             android:textAllCaps="true"
             android:textColor="@color/white"
             android:textSize="25sp" />
@@ -61,7 +61,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/proxima_regular"
-                    android:text="Enter the key provided to you"
+                    android:text="@string/enter_the_key_provided_to_you"
                     android:textAllCaps="true" />
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -103,7 +103,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:fontFamily="@font/proxima_regular"
-                    android:text="New user ?"
+                    android:text="@string/new_user"
                     android:textAllCaps="true" />
 
                 <com.google.android.material.button.MaterialButton

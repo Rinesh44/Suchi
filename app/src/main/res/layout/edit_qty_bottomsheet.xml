@@ -23,7 +23,7 @@
             android:layout_marginStart="20dp"
             android:layout_toEndOf="@+id/ib_right"
             android:fontFamily="@font/proxima_regular"
-            android:text="Qty"
+            android:text="@string/qty"
             android:textColor="@color/black" />
 
 
@@ -71,7 +71,7 @@
             android:layout_toEndOf="@+id/ib_right"
             android:fontFamily="@font/proxima_regular"
             android:gravity="center"
-            android:text="Amount"
+            android:text="@string/amount"
             android:textColor="@color/black" />
 
         <TextView
@@ -98,7 +98,7 @@
             android:background="#000"
             android:fontFamily="@font/proxima_regular"
             android:foreground="?attr/selectableItemBackground"
-            android:text="DONE"
+            android:text="@string/done"
             android:textColor="#fff"
             android:textStyle="bold" />
 

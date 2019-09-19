@@ -33,7 +33,7 @@
             android:backgroundTint="@color/white"
             android:elevation="8dp"
             android:fontFamily="@font/proxima_regular"
-            android:text="Add Creditors"
+            android:text="@string/add_creditors"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="@color/colorPrimary" />
 

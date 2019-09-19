@@ -255,7 +255,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="15dp"
                             android:fontFamily="@font/proxima_regular"
-                            android:text="Select stock to sell"
+                            android:text="@string/select_stock_to_sell"
                             android:textColor="@color/black"
                             android:textSize="18sp"
                             android:textStyle="bold" />
@@ -309,7 +309,7 @@
                         android:layout_marginStart="15dp"
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/proxima_regular"
-                        android:text="Items in cart"
+                        android:text="@string/items_in_cart"
                         android:textColor="@color/black"
                         android:textSize="18sp"
                         android:textStyle="bold" />

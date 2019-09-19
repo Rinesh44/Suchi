@@ -40,7 +40,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="4"
                         android:fontFamily="@font/proxima_regular"
-                        android:text="Items"
+                        android:text="@string/items"
                         android:textAllCaps="true"
                         android:textColor="@color/black"
                         android:textSize="13sp"
@@ -52,7 +52,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="3"
                         android:fontFamily="@font/proxima_regular"
-                        android:text="Qty"
+                        android:text="@string/qty"
                         android:textAllCaps="true"
                         android:textColor="@color/black"
                         android:textSize="13sp"
@@ -64,7 +64,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="3"
                         android:fontFamily="@font/proxima_regular"
-                        android:text="PRICE (Rs.)"
+                        android:text="@string/price_rs"
                         android:textColor="@color/black"
                         android:textSize="13sp"
                         android:textStyle="bold" />
@@ -76,7 +76,7 @@
                         android:layout_weight="4"
                         android:fontFamily="@font/proxima_regular"
                         android:gravity="end"
-                        android:text="AMOUNT (Rs.)"
+                        android:text="@string/amount_rs"
                         android:textColor="@color/black"
                         android:textSize="13sp"
                         android:textStyle="bold" />
@@ -126,7 +126,7 @@
                         android:layout_weight="10"
                         android:fontFamily="@font/proxima_regular"
                         android:gravity="end"
-                        android:text="Total Amount: "
+                        android:text="@string/total_amount"
                         android:textColor="@color/black"
                         android:textSize="15sp" />
 
@@ -164,7 +164,7 @@
                 android:layout_height="60dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/proxima_regular"
-                android:text="Sell"
+                android:text="@string/sell"
                 android:textStyle="bold" />
 
 
@@ -175,7 +175,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/proxima_regular"
-                android:text="Add to credit"
+                android:text="@string/add_to_credit"
                 android:textStyle="bold" />
 
 

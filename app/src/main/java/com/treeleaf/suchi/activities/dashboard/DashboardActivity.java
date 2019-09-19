@@ -7,6 +7,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -24,6 +25,7 @@ import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.navigation.NavigationView;
 import com.treeleaf.suchi.MainActivity;
 import com.treeleaf.suchi.R;
+import com.treeleaf.suchi.activities.Settings.Settings;
 import com.treeleaf.suchi.activities.base.BaseActivity;
 import com.treeleaf.suchi.activities.credit.CreditActivity;
 import com.treeleaf.suchi.activities.inventory.InventoryActivity;
@@ -31,6 +33,7 @@ import com.treeleaf.suchi.activities.profile.ProfileActivity;
 import com.treeleaf.suchi.api.Endpoints;
 import com.treeleaf.suchi.utils.AppUtils;
 import com.treeleaf.suchi.utils.Constants;
+import com.treeleaf.suchi.utils.LocaleHelper;
 
 import javax.inject.Inject;
 
@@ -84,6 +87,10 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
                 switch (id) {
                     case R.id.profile:
                         startActivity(new Intent(DashboardActivity.this, ProfileActivity.class));
+                        break;
+
+                    case R.id.settings:
+                        startActivity(new Intent(DashboardActivity.this, Settings.class));
                         break;
                     case R.id.logout:
                         showLogoutDialog();

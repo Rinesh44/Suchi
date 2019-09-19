@@ -34,7 +34,7 @@
                     android:id="@+id/tv_item_info"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Sold items"
+                    android:text="@string/sold_items"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -78,7 +78,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="4"
                             android:fontFamily="@font/proxima_regular"
-                            android:text="Items"
+                            android:text="@string/items"
                             android:textAllCaps="true"
                             android:textColor="@color/black"
                             android:textSize="12sp"
@@ -90,7 +90,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="3"
                             android:fontFamily="@font/proxima_regular"
-                            android:text="Qty"
+                            android:text="@string/quantity"
                             android:textAllCaps="true"
                             android:textColor="@color/black"
                             android:textSize="12sp"
@@ -102,7 +102,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="3"
                             android:fontFamily="@font/proxima_regular"
-                            android:text="PRICE (Rs.)"
+                            android:text="@string/price_rs"
                             android:textColor="@color/black"
                             android:textSize="12sp"
                             android:textStyle="bold" />
@@ -115,7 +115,7 @@
                             android:layout_weight="4"
                             android:fontFamily="@font/proxima_regular"
                             android:gravity="end"
-                            android:text="AMOUNT (Rs.)"
+                            android:text="@string/amount_rs"
                             android:textColor="@color/black"
                             android:textSize="12sp"
                             android:textStyle="bold" />
@@ -165,7 +165,7 @@
                             android:layout_weight="10"
                             android:fontFamily="@font/proxima_regular"
                             android:gravity="end"
-                            android:text="Total Amount: "
+                            android:text="@string/total_amount"
                             android:textColor="@color/black"
                             android:textSize="15sp" />
 
@@ -200,7 +200,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/proxima_regular"
-                    android:text="Paid Amount: "
+                    android:text="@string/paid_amount"
                     android:textColor="@color/black"
                     android:textSize="15sp" />
 
@@ -208,6 +208,7 @@
                     android:id="@+id/tv_paid_amount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
                     android:fontFamily="@font/proxima_regular"
                     android:text="Rs. 400"
                     android:textColor="@color/black"
@@ -228,7 +229,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/proxima_regular"
-                    android:text="Due Amount: "
+                    android:text="@string/due_amount"
                     android:textColor="@color/black"
                     android:textSize="15sp" />
 
@@ -236,6 +237,7 @@
                     android:id="@+id/tv_due_amount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
                     android:fontFamily="@font/proxima_regular"
                     android:text="Rs. 400"
                     android:textColor="@color/black"
@@ -257,7 +259,7 @@
                     android:id="@+id/tv_creditor_info"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Creditor info"
+                    android:text="@string/creditor_info"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -323,7 +325,7 @@
                 android:layout_height="60dp"
                 android:layout_margin="10dp"
                 android:fontFamily="@font/proxima_regular"
-                android:text="Clear dues"
+                android:text="@string/clear_dues"
                 android:textStyle="bold" />
 
         </LinearLayout>

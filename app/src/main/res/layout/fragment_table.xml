@@ -38,7 +38,7 @@
                     android:checked="true"
                     android:fontFamily="@font/proxima_regular"
                     android:padding="10dp"
-                    android:text="today"
+                    android:text="@string/today"
                     android:textAlignment="center"
                     android:textAllCaps="true"
                     android:textColor="@color/white"
@@ -53,7 +53,7 @@
                     android:button="@null"
                     android:fontFamily="@font/proxima_regular"
                     android:padding="10dp"
-                    android:text="Week"
+                    android:text="@string/week"
                     android:textAlignment="center"
                     android:textAllCaps="true"
                     android:textColor="@color/white"
@@ -69,7 +69,7 @@
                     android:button="@null"
                     android:fontFamily="@font/proxima_regular"
                     android:padding="10dp"
-                    android:text="Month"
+                    android:text="@string/month"
                     android:textAlignment="center"
                     android:textAllCaps="true"
                     android:textColor="@color/white"
@@ -127,7 +127,7 @@
             android:layout_below="@+id/hsv_filter"
             android:layout_toStartOf="@+id/tv_total_amt_top"
             android:fontFamily="@font/proxima_regular"
-            android:text="Total Amount: "
+            android:text="@string/total_amount"
             android:textColor="@color/black"
             android:textSize="17sp" />
 
@@ -163,7 +163,7 @@
                 android:layout_weight="4"
                 android:fontFamily="@font/proxima_regular"
                 android:gravity="center"
-                android:text="Name"
+                android:text="@string/name"
                 android:textColor="@color/white"
                 android:textStyle="bold" />
 
@@ -174,7 +174,7 @@
                 android:layout_weight="2"
                 android:fontFamily="@font/proxima_regular"
                 android:gravity="center"
-                android:text="Qty"
+                android:text="@string/qty"
                 android:textColor="@color/white"
                 android:textStyle="bold" />
 
@@ -186,7 +186,7 @@
                 android:layout_weight="8"
                 android:fontFamily="@font/proxima_regular"
                 android:gravity="center"
-                android:text="Date"
+                android:text="@string/date"
                 android:textColor="@color/white"
                 android:textStyle="bold" />
 
@@ -198,7 +198,7 @@
                 android:layout_weight="3"
                 android:fontFamily="@font/proxima_regular"
                 android:gravity="center"
-                android:text="Amount"
+                android:text="@string/amount"
                 android:textColor="@color/white"
                 android:textStyle="bold" />
 
@@ -238,7 +238,7 @@
                     android:layout_centerVertical="true"
                     android:fontFamily="@font/proxima_regular"
                     android:gravity="end"
-                    android:text="Total Amount: "
+                    android:text="@string/total_amount"
                     android:textColor="@color/black"
                     android:textSize="17sp" />
 
@@ -272,7 +272,7 @@
             android:layout_centerInParent="true"
             android:fontFamily="@font/proxima_regular"
             android:paddingBottom="80dp"
-            android:text="No reports available"
+            android:text="@string/no_reports_available"
             android:textSize="20sp" />
 
     </RelativeLayout>
