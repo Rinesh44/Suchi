@@ -21,6 +21,7 @@ import com.treeleaf.suchi.realm.repo.UserRepo;
 
 import com.treeleaf.suchi.utils.AppUtils;
 import com.treeleaf.suchi.utils.Constants;
+import com.treeleaf.suchi.utils.CustomProgress;
 
 import java.util.Objects;
 
@@ -48,6 +49,7 @@ public class LoginActivity extends BaseActivity implements LoginView {
 
     private LoginPresenter presenter;
     private SharedPreferences preferences;
+    private CustomProgress customProgress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,12 +93,16 @@ public class LoginActivity extends BaseActivity implements LoginView {
         }
 
         showLoading();
+
         presenter.login(mUsername.getText().toString().trim(), mPassword.getText().toString().trim());
     }
 
     @Override
     public void loginSuccess(TreeleafProto.LoginResponse loginResponse) {
         AppUtils.showLog(TAG, "login success");
+        //show another progress dialog for fetching data
+        customProgress = CustomProgress.getInstance();
+        customProgress.showProgress(this, "Fetching data, please wait...", false);
 
         int loginStatus = loginResponse.getUser().getStatus().getNumber();
 
@@ -131,7 +137,6 @@ public class LoginActivity extends BaseActivity implements LoginView {
                 public void success(Object o) {
                     AppUtils.showLog(TAG, "successfully saved user");
 
-                    showLoading();
                     //save to shared prefs
 
                     SharedPreferences.Editor editor = preferences.edit();
@@ -147,17 +152,22 @@ public class LoginActivity extends BaseActivity implements LoginView {
 
                     String token = preferences.getString(Constants.TOKEN, "");
                     if (token != null) presenter.getAllData(token);
-                    else
+                    else {
+                        customProgress.hideProgress();
                         Toast.makeText(LoginActivity.this, "Unable to get token", Toast.LENGTH_SHORT).show();
+                    }
 
                 }
 
                 @Override
                 public void fail() {
                     AppUtils.showLog(TAG, "User save failed");
+                    customProgress.hideProgress();
+                    hideLoading();
                 }
             });
         } else {
+            customProgress.hideProgress();
             Intent i = new Intent(LoginActivity.this, EnterKeyActivity.class);
             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(i);
@@ -167,11 +177,14 @@ public class LoginActivity extends BaseActivity implements LoginView {
     @Override
     public void loginFail(String msg) {
         showMessage(msg);
+//        customProgress.hideProgress();
+        hideLoading();
     }
 
     @Override
     public void getAllDataSuccess() {
         AppUtils.showLog(TAG, "get all data succeeded");
+        customProgress.hideProgress();
 
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean(Constants.LOGGED_IN, true);
@@ -184,6 +197,7 @@ public class LoginActivity extends BaseActivity implements LoginView {
 
     @Override
     public void getAllDataFail(String msg) {
+        customProgress.hideProgress();
         showMessage(msg);
     }
 }

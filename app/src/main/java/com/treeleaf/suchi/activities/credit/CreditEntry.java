@@ -21,7 +21,6 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.activities.base.BaseActivity;
 import com.treeleaf.suchi.activities.dashboard.DashboardActivity;
-import com.treeleaf.suchi.activities.sales.SalesBill;
 import com.treeleaf.suchi.adapter.AutocompleteCreditorAdapter;
 import com.treeleaf.suchi.dto.CreditorsDto;
 import com.treeleaf.suchi.realm.models.Credit;

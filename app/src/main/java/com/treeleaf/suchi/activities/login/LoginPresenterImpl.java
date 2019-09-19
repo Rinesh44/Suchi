@@ -53,17 +53,19 @@ public class LoginPresenterImpl implements LoginPresenter {
         endpoints.login(loginRequest).enqueue(new CallbackWrapper<>(activity, new CallbackWrapper.Wrapper<SuchiRpcProto.SuchiBaseResponse>() {
             @Override
             public void onSuccessResult(Response<SuchiRpcProto.SuchiBaseResponse> response) {
-                activity.hideLoading();
                 SuchiRpcProto.SuchiBaseResponse baseResponse = response.body();
 
                 AppUtils.showLog(TAG, "loginResponse: " + baseResponse);
+                activity.hideLoading();
 
                 if (baseResponse == null) {
+                    activity.hideLoading();
                     activity.loginFail("Login failed");
                     return;
                 }
 
                 if (baseResponse.getError()) {
+                    activity.hideLoading();
                     activity.loginFail(baseResponse.getMsg());
                     return;
                 }
@@ -84,7 +86,6 @@ public class LoginPresenterImpl implements LoginPresenter {
         endpoints.getAllData(token).enqueue(new CallbackWrapper<>(activity, new CallbackWrapper.Wrapper<SuchiRpcProto.SuchiBaseResponse>() {
             @Override
             public void onSuccessResult(Response<SuchiRpcProto.SuchiBaseResponse> response) {
-                activity.hideLoading();
 
                 SuchiRpcProto.SuchiBaseResponse baseResponse = response.body();
 
@@ -116,7 +117,6 @@ public class LoginPresenterImpl implements LoginPresenter {
 
             @Override
             public void onFailureResult() {
-                activity.hideLoading();
                 activity.getAllDataFail("failed");
 
             }
