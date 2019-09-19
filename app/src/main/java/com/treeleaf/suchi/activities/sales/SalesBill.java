@@ -129,7 +129,7 @@ public class SalesBill extends BaseActivity {
             getSupportActionBar().setHomeButtonEnabled(true);
             getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
-        mToolbarTitle.setText("Billing Statement");
+        mToolbarTitle.setText(getResources().getString(R.string.billing_statement));
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
     }

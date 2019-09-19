@@ -93,7 +93,7 @@ public class ProfileActivity extends BaseActivity {
             getSupportActionBar().setHomeButtonEnabled(true);
         }
 
-        mToolbarTitle.setText("Profile");
+        mToolbarTitle.setText(getResources().getString(R.string.profile));
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
     }
 

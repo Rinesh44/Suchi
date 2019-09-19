@@ -26,6 +26,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/tv_language_setting_title"
                     android:layout_width="wrap_content"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -36,12 +37,12 @@
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
+
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="4dp"
+                    android:layout_height="2dp"
                     android:background="@color/greyish"
-                    android:elevation="0.5dp" />
-
+                    android:elevation="0.7dp" />
 
                 <RadioGroup
                     android:id="@+id/rg_language"
@@ -73,13 +74,6 @@
 
         </com.google.android.material.card.MaterialCardView>
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="@string/translate_this_to_nepali"
-            android:textSize="25sp" />
 
     </LinearLayout>
 

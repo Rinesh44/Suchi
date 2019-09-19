@@ -367,7 +367,7 @@ public class ReportActivity extends BaseActivity {
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("");
-        mToolbarTitle.setText("Report");
+        mToolbarTitle.setText(getResources().getString(R.string.report));
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         token = sharedPreferences.getString(Constants.TOKEN, "");
@@ -384,8 +384,8 @@ public class ReportActivity extends BaseActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
-        viewPagerAdapter.addFragment(new Chart(), "CHART");
-        viewPagerAdapter.addFragment(new Table(), "TABLE");
+        viewPagerAdapter.addFragment(new Chart(), getResources().getString(R.string.chart));
+        viewPagerAdapter.addFragment(new Table(), getResources().getString(R.string.table));
         viewPager.setAdapter(viewPagerAdapter);
     }
 

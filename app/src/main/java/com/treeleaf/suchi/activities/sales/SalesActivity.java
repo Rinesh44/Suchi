@@ -197,7 +197,7 @@ public class SalesActivity extends BaseActivity implements SalesView {
             getSupportActionBar().setHomeButtonEnabled(true);
             getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
-        mToolbarTitle.setText("Sales");
+        mToolbarTitle.setText(getResources().getString(R.string.sales));
 
         getMyApplication(this).getAppComponent().inject(this);
 

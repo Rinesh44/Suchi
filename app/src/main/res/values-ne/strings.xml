@@ -47,7 +47,7 @@
     <string name="email_phone">"ईमेल / फोन "</string>
     <string name="done">भयो</string>
     <string name="description">वर्णन</string>
-    <string name="credit_history">"क्रेडिट इतिहास "</string>
+    <string name="credit_history">"क्रेडिट सूची "</string>
     <string name="credit_entry">" क्रेडिट एन्ट्री"</string>
     <string name="credit">क्रेडिट</string>
     <string name="confirm">"पुष्टि गर्नुहोस् "</string>
@@ -118,4 +118,18 @@
     <string name="week">"हप्ता "</string>
     <string name="welcome_users">"स्वागतम प्रयोगकर्ताहरू! "</string>
     <string name="no_stockkeepingunit_found">" कुनै सामान उपलब्ध छैन"</string>
+    <string name="logout">लग आउट</string>
+    <string name="settings">सेटिंग्स</string>
+    <string name="dashboard">ड्यासबोर्ड</string>
+    <string name="add_creditor">लेनदेनकर्ता थप्नुहोस्</string>
+    <string name="stock_details">स्टक विवरण</string>
+    <string name="stocks">स्टक</string>
+    <string name="credit_details">क्रेडिट विवरण</string>
+    <string name="add_stocks">स्टक थप्नुहोस्</string>
+    <string name="billing_statement">बिल विवरण</string>
+    <string name="chart">चार्ट</string>
+    <string name="registration">पञ्जीकरण</string>
+    <string name="report">रिपोर्ट</string>
+    <string name="sales_details">बिक्री विवरण</string>
+    <string name="table">तालिका</string>
 </resources>

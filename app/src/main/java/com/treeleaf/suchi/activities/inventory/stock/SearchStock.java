@@ -707,7 +707,7 @@ public class SearchStock extends BaseActivity implements SearchStockView, View.O
             getSupportActionBar().setHomeButtonEnabled(true);
             getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
-        mToolbarTitle.setText("Add stocks");
+        mToolbarTitle.setText(getResources().getString(R.string.add_stocks));
 
         getMyApplication(this).getAppComponent().inject(this);
 

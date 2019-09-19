@@ -110,7 +110,7 @@ public class SalesDetailsActivity extends BaseActivity {
             getSupportActionBar().setHomeButtonEnabled(true);
             getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
-        mToolbarTitle.setText("Sales Details");
+        mToolbarTitle.setText(getResources().getString(R.string.sales_details));
     }
 
     @Override

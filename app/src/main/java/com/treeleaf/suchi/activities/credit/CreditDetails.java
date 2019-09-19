@@ -159,7 +159,7 @@ public class CreditDetails extends BaseActivity {
             getSupportActionBar().setHomeButtonEnabled(true);
             getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
-        mToolbarTitle.setText("Credit Details");
+        mToolbarTitle.setText(getResources().getString(R.string.credit_details));
     }
 
     @Override

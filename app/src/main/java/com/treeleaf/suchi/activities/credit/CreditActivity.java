@@ -44,7 +44,7 @@ public class CreditActivity extends BaseActivity implements View.OnClickListener
             getSupportActionBar().setHomeButtonEnabled(true);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
-        mToolbarTitle.setText("Credit");
+        mToolbarTitle.setText(getResources().getString(R.string.credit));
     }
 
     @Override

@@ -52,6 +52,7 @@
                         android:tint="@color/colorPrimaryDark" />
 
                     <TextView
+                        android:id="@+id/tv_inventory_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/iv_inventory"
@@ -96,6 +97,7 @@
                         android:tint="@color/colorPrimaryDark" />
 
                     <TextView
+                        android:id="@+id/tv_credit_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/iv_credit"

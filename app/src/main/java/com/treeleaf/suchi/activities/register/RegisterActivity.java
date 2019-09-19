@@ -155,7 +155,7 @@ public class RegisterActivity extends BaseActivity implements RegisterView {
             getSupportActionBar().setHomeButtonEnabled(true);
         }
 
-        mToolbarTitle.setText("Registration");
+        mToolbarTitle.setText(getResources().getString(R.string.registration));
     }
 
     @Override

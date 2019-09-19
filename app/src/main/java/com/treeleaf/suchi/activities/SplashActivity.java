@@ -1,5 +1,6 @@
 package com.treeleaf.suchi.activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import androidx.annotation.Nullable;
 
 import com.treeleaf.suchi.MainActivity;
 import com.treeleaf.suchi.activities.base.BaseActivity;
+import com.treeleaf.suchi.utils.LocaleHelper;
 
 
 public class SplashActivity extends BaseActivity {
@@ -21,7 +23,6 @@ public class SplashActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -30,4 +31,5 @@ public class SplashActivity extends BaseActivity {
             }
         }, 1000);
     }
+
 }

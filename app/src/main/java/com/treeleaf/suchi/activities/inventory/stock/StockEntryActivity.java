@@ -336,7 +336,7 @@ public class StockEntryActivity extends BaseActivity implements StockEntryView {
             getSupportActionBar().setHomeButtonEnabled(true);
         }
 
-        mToolbarTitle.setText("SKU Entry Form");
+        mToolbarTitle.setText(getResources().getString(R.string.sku_entry_form));
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
     }
 

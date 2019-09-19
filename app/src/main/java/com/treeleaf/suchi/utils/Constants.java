@@ -12,4 +12,6 @@ public class Constants {
     public static final String STORENAME = "store_name";
     public static final String ADDRESS = "address";
     public static final String OWNERNAME = "owner_name";
+    public static final String SELECTED_LANGUAGE = "Locale.Helper.Selected.Language";
+
 }

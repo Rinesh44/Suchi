@@ -3,6 +3,7 @@ package com.treeleaf.suchi.activities.base;
 import android.annotation.TargetApi;
 import android.app.ProgressDialog;
 
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -22,6 +23,7 @@ import androidx.core.content.ContextCompat;
 import com.google.android.material.snackbar.Snackbar;
 import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.utils.KeyboardUtils;
+import com.treeleaf.suchi.utils.LocaleHelper;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -35,6 +37,11 @@ public abstract class BaseActivity extends AppCompatActivity implements com.tree
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(LocaleHelper.onAttach(newBase));
     }
 
 

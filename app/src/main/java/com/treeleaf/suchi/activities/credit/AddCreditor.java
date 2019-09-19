@@ -89,7 +89,7 @@ public class AddCreditor extends BaseActivity implements View.OnClickListener {
             getSupportActionBar().setHomeButtonEnabled(true);
             getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
-        mToolbarTitle.setText("Add Creditor");
+        mToolbarTitle.setText(getResources().getString(R.string.add_creditor));
 
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
 

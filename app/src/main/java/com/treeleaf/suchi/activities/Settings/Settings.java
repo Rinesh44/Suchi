@@ -29,8 +29,8 @@ public class Settings extends BaseActivity {
     RadioButton mEnglish;
     @BindView(R.id.rb_nepali)
     RadioButton mNepali;
-    @BindView(R.id.textView)
-    TextView mConversionText;
+    @BindView(R.id.tv_language_setting_title)
+    TextView mLanguageSettingTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,16 +58,25 @@ public class Settings extends BaseActivity {
 
                 if (i == englishLangId) {
                     Toast.makeText(Settings.this, "english", Toast.LENGTH_SHORT).show();
-                    context = LocaleHelper.setLocale(getApplicationContext(), "en");
+                    context = LocaleHelper.setLocale(Settings.this, "en");
                     resources = context.getResources();
-                    mConversionText.setText(resources.getString(R.string.translate_this_to_nepali));
+                    mEnglish.setText(resources.getString(R.string.english));
+                    mNepali.setText(resources.getString(R.string.nepali));
+                    mLanguageSettingTitle.setText(resources.getString(R.string.language_settings));
+                    mToolbarTitle.setText(resources.getString(R.string.settings));
+
                 } else if (i == nepaliLangId) {
 
                     Toast.makeText(Settings.this, "nepali", Toast.LENGTH_SHORT).show();
 
-                    context = LocaleHelper.setLocale(getApplicationContext(), "ne");
+                    context = LocaleHelper.setLocale(Settings.this, "ne");
                     resources = context.getResources();
-                    mConversionText.setText(resources.getString(R.string.translate_this_to_nepali));
+                    mEnglish.setText(resources.getString(R.string.english));
+                    mNepali.setText(resources.getString(R.string.nepali));
+                    mLanguageSettingTitle.setText(resources.getString(R.string.language_settings));
+                    mToolbarTitle.setText(resources.getString(R.string.settings));
+
+
                 }
 
             }
@@ -75,6 +84,7 @@ public class Settings extends BaseActivity {
 
 
     }
+
 
     @Override
     protected void attachBaseContext(Context newBase) {
@@ -94,6 +104,6 @@ public class Settings extends BaseActivity {
             getSupportActionBar().setHomeButtonEnabled(true);
             getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
-        mToolbarTitle.setText("Settings");
+        mToolbarTitle.setText(getResources().getString(R.string.settings));
     }
 }

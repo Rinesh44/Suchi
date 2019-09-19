@@ -62,7 +62,7 @@ public class InventoryActivity extends BaseActivity implements View.OnClickListe
             getSupportActionBar().setHomeButtonEnabled(true);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
-        mToolbarTitle.setText("Inventory");
+        mToolbarTitle.setText(getResources().getString(R.string.inventory));
     }
 
     @Override

@@ -12,6 +12,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.Menu;
@@ -34,6 +35,8 @@ import com.treeleaf.suchi.api.Endpoints;
 import com.treeleaf.suchi.utils.AppUtils;
 import com.treeleaf.suchi.utils.Constants;
 import com.treeleaf.suchi.utils.LocaleHelper;
+
+import java.util.Locale;
 
 import javax.inject.Inject;
 
@@ -58,11 +61,35 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
     DrawerLayout mDrawerLayout;
     @BindView(R.id.nv)
     NavigationView mNavigationView;
+    @BindView(R.id.tv_inventory_title)
+    TextView mInventoryTitle;
+    @BindView(R.id.tv_credit_title)
+    TextView mCreditTitle;
 
     private DashboardPresenter presenter;
     private SharedPreferences preferences;
     private ActionBarDrawerToggle actionBarToggle;
 
+    @Override
+    protected void onResume() {
+        AppUtils.showLog(TAG, "onResume()");
+        super.onResume();
+        Menu menu = mNavigationView.getMenu();
+        MenuItem nav_profile = menu.findItem(R.id.profile);
+        MenuItem nav_settings = menu.findItem(R.id.settings);
+        MenuItem nav_logout = menu.findItem(R.id.logout);
+
+
+        String selectedLanguage = preferences.getString(Constants.SELECTED_LANGUAGE, "");
+        Context context = LocaleHelper.setLocale(this, selectedLanguage);
+        Resources resources = context.getResources();
+        mInventoryTitle.setText(resources.getString(R.string.inventory));
+        mCreditTitle.setText(resources.getString(R.string.credit));
+        nav_profile.setTitle(resources.getString(R.string.profile));
+        nav_settings.setTitle(resources.getString(R.string.settings));
+        nav_logout.setTitle(resources.getString(R.string.logout));
+        mToolbarTitle.setText(resources.getString(R.string.dashboard));
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,7 +142,7 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setHomeButtonEnabled(true);
         }
-        mToolbarTitle.setText("Dashboard");
+        mToolbarTitle.setText(getResources().getString(R.string.dashboard));
 
         actionBarToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar, R.string.open, R.string.close);
         mDrawerLayout.addDrawerListener(actionBarToggle);

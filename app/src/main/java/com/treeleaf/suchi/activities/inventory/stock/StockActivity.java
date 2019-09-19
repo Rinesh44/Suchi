@@ -262,7 +262,7 @@ public class StockActivity extends BaseActivity implements StockView {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
-        mToolbarTitle.setText("Stocks");
+        mToolbarTitle.setText(getResources().getString(R.string.stocks));
 
         getMyApplication(this).getAppComponent().inject(this);
         preferences = PreferenceManager.getDefaultSharedPreferences(this);

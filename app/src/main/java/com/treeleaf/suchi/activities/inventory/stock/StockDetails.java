@@ -129,7 +129,7 @@ public class StockDetails extends BaseActivity {
             getSupportActionBar().setHomeButtonEnabled(true);
             getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
-        mToolbarTitle.setText("Stock Details");
+        mToolbarTitle.setText(getResources().getString(R.string.stock_details));
     }
 
 

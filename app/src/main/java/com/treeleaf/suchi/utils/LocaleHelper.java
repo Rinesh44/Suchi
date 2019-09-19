@@ -12,8 +12,6 @@ import java.util.Locale;
 
 public class LocaleHelper {
 
-    private static final String SELECTED_LANGUAGE = "Locale.Helper.Selected.Language";
-
     public static Context onAttach(Context context) {
         String lang = getPersistedData(context, Locale.getDefault().getLanguage());
         return setLocale(context, lang);
@@ -40,14 +38,14 @@ public class LocaleHelper {
 
     private static String getPersistedData(Context context, String defaultLanguage) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
-        return preferences.getString(SELECTED_LANGUAGE, defaultLanguage);
+        return preferences.getString(Constants.SELECTED_LANGUAGE, defaultLanguage);
     }
 
     private static void persist(Context context, String language) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = preferences.edit();
 
-        editor.putString(SELECTED_LANGUAGE, language);
+        editor.putString(Constants.SELECTED_LANGUAGE, language);
         editor.apply();
     }
 

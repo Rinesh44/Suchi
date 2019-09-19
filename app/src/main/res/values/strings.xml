@@ -10,11 +10,9 @@
     <string name="invalid_password" translatable="false">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="sales">Sales</string>
-    <string name="stock">Stock</string>∂
+    <string name="stock">Stock</string>
     <string name="reports">Reports</string>
     <string name="credit_entry">Credit Entry</string>
-    <string name="credit_history">Credit History</string>
-    <string name="profile">Profile</string>
     <string name="email_phone">Email/Phone</string>
     <string name="forgot_password">Forgot Password</string>
     <string name="login">Login</string>
@@ -49,6 +47,7 @@
     <string name="confirm">Confirm</string>
     <string name="full_name">Full Name</string>
     <string name="speech_not_supported">Speech not supported</string>
+    <string name="sales_details">Sales Details</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="username">Username</string>
@@ -121,4 +120,20 @@
     <string name="select">Select</string>
     <string name="selling_price_per_item">Selling Price (per item)</string>
     <string name="quantity_sold">Quantity sold:</string>
+    <string name="profile">Profile</string>
+    <string name="settings">Settings</string>
+    <string name="logout">Logout</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="stocks">Stocks</string>
+    <string name="stock_details">Stock Details</string>
+    <string name="add_creditor">Add Creditor</string>
+    <string name="credit_details">Credit Details</string>
+    <string name="credit_history">Credit History</string>
+    <string name="add_stocks">Add stocks</string>
+    <string name="sku_entry_form" translatable="false">SKU Entry Form</string>
+    <string name="registration">Registration</string>
+    <string name="report">Report</string>
+    <string name="chart">CHART</string>
+    <string name="table">TABLE</string>
+    <string name="billing_statement">Billing Statement</string>
 </resources>

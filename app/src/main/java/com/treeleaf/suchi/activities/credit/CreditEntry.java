@@ -146,7 +146,7 @@ public class CreditEntry extends BaseActivity implements View.OnClickListener {
             getSupportActionBar().setHomeButtonEnabled(true);
             getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
-        mToolbarTitle.setText("Credit entry");
+        mToolbarTitle.setText(getResources().getString(R.string.credit_entry));
 
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
 

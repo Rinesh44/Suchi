@@ -101,7 +101,7 @@ public class CreditHistory extends BaseActivity {
             getSupportActionBar().setHomeButtonEnabled(true);
             getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
-        mToolbarTitle.setText("Credit History");
+        mToolbarTitle.setText(getResources().getString(R.string.credit_history));
 
     }
 
