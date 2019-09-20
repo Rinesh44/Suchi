@@ -10289,6 +10289,38 @@ public final class SuchiProto {
          * <code>repeated .treeleaf.suchi.entities.Sale sales = 3;</code>
          */
         int getSalesCount();
+
+        /**
+         * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 4;</code>
+         */
+        java.util.List<Creditor>
+        getCreditorsList();
+
+        /**
+         * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 4;</code>
+         */
+        Creditor getCreditors(int index);
+
+        /**
+         * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 4;</code>
+         */
+        int getCreditorsCount();
+
+        /**
+         * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 5;</code>
+         */
+        java.util.List<CreditDetail>
+        getCreditDetailsList();
+
+        /**
+         * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 5;</code>
+         */
+        CreditDetail getCreditDetails(int index);
+
+        /**
+         * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 5;</code>
+         */
+        int getCreditDetailsCount();
     }
 
     /**
@@ -10303,6 +10335,8 @@ public final class SuchiProto {
             inventories_ = emptyProtobufList();
             stockKeepingUnits_ = emptyProtobufList();
             sales_ = emptyProtobufList();
+            creditors_ = emptyProtobufList();
+            creditDetails_ = emptyProtobufList();
         }
 
         public static final int INVENTORIES_FIELD_NUMBER = 1;
@@ -10707,6 +10741,274 @@ public final class SuchiProto {
             sales_.remove(index);
         }
 
+        public static final int CREDITORS_FIELD_NUMBER = 4;
+        private com.google.protobuf.Internal.ProtobufList<Creditor> creditors_;
+
+        /**
+         * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 4;</code>
+         */
+        public java.util.List<Creditor> getCreditorsList() {
+            return creditors_;
+        }
+
+        /**
+         * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 4;</code>
+         */
+        public java.util.List<? extends CreditorOrBuilder>
+        getCreditorsOrBuilderList() {
+            return creditors_;
+        }
+
+        /**
+         * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 4;</code>
+         */
+        public int getCreditorsCount() {
+            return creditors_.size();
+        }
+
+        /**
+         * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 4;</code>
+         */
+        public Creditor getCreditors(int index) {
+            return creditors_.get(index);
+        }
+
+        /**
+         * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 4;</code>
+         */
+        public CreditorOrBuilder getCreditorsOrBuilder(
+                int index) {
+            return creditors_.get(index);
+        }
+
+        private void ensureCreditorsIsMutable() {
+            if (!creditors_.isModifiable()) {
+                creditors_ =
+                        com.google.protobuf.GeneratedMessageLite.mutableCopy(creditors_);
+            }
+        }
+
+        /**
+         * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 4;</code>
+         */
+        private void setCreditors(
+                int index, Creditor value) {
+            if (value == null) {
+                throw new NullPointerException();
+            }
+            ensureCreditorsIsMutable();
+            creditors_.set(index, value);
+        }
+
+        /**
+         * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 4;</code>
+         */
+        private void setCreditors(
+                int index, Creditor.Builder builderForValue) {
+            ensureCreditorsIsMutable();
+            creditors_.set(index, builderForValue.build());
+        }
+
+        /**
+         * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 4;</code>
+         */
+        private void addCreditors(Creditor value) {
+            if (value == null) {
+                throw new NullPointerException();
+            }
+            ensureCreditorsIsMutable();
+            creditors_.add(value);
+        }
+
+        /**
+         * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 4;</code>
+         */
+        private void addCreditors(
+                int index, Creditor value) {
+            if (value == null) {
+                throw new NullPointerException();
+            }
+            ensureCreditorsIsMutable();
+            creditors_.add(index, value);
+        }
+
+        /**
+         * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 4;</code>
+         */
+        private void addCreditors(
+                Creditor.Builder builderForValue) {
+            ensureCreditorsIsMutable();
+            creditors_.add(builderForValue.build());
+        }
+
+        /**
+         * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 4;</code>
+         */
+        private void addCreditors(
+                int index, Creditor.Builder builderForValue) {
+            ensureCreditorsIsMutable();
+            creditors_.add(index, builderForValue.build());
+        }
+
+        /**
+         * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 4;</code>
+         */
+        private void addAllCreditors(
+                Iterable<? extends Creditor> values) {
+            ensureCreditorsIsMutable();
+            com.google.protobuf.AbstractMessageLite.addAll(
+                    values, creditors_);
+        }
+
+        /**
+         * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 4;</code>
+         */
+        private void clearCreditors() {
+            creditors_ = emptyProtobufList();
+        }
+
+        /**
+         * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 4;</code>
+         */
+        private void removeCreditors(int index) {
+            ensureCreditorsIsMutable();
+            creditors_.remove(index);
+        }
+
+        public static final int CREDITDETAILS_FIELD_NUMBER = 5;
+        private com.google.protobuf.Internal.ProtobufList<CreditDetail> creditDetails_;
+
+        /**
+         * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 5;</code>
+         */
+        public java.util.List<CreditDetail> getCreditDetailsList() {
+            return creditDetails_;
+        }
+
+        /**
+         * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 5;</code>
+         */
+        public java.util.List<? extends CreditDetailOrBuilder>
+        getCreditDetailsOrBuilderList() {
+            return creditDetails_;
+        }
+
+        /**
+         * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 5;</code>
+         */
+        public int getCreditDetailsCount() {
+            return creditDetails_.size();
+        }
+
+        /**
+         * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 5;</code>
+         */
+        public CreditDetail getCreditDetails(int index) {
+            return creditDetails_.get(index);
+        }
+
+        /**
+         * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 5;</code>
+         */
+        public CreditDetailOrBuilder getCreditDetailsOrBuilder(
+                int index) {
+            return creditDetails_.get(index);
+        }
+
+        private void ensureCreditDetailsIsMutable() {
+            if (!creditDetails_.isModifiable()) {
+                creditDetails_ =
+                        com.google.protobuf.GeneratedMessageLite.mutableCopy(creditDetails_);
+            }
+        }
+
+        /**
+         * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 5;</code>
+         */
+        private void setCreditDetails(
+                int index, CreditDetail value) {
+            if (value == null) {
+                throw new NullPointerException();
+            }
+            ensureCreditDetailsIsMutable();
+            creditDetails_.set(index, value);
+        }
+
+        /**
+         * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 5;</code>
+         */
+        private void setCreditDetails(
+                int index, CreditDetail.Builder builderForValue) {
+            ensureCreditDetailsIsMutable();
+            creditDetails_.set(index, builderForValue.build());
+        }
+
+        /**
+         * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 5;</code>
+         */
+        private void addCreditDetails(CreditDetail value) {
+            if (value == null) {
+                throw new NullPointerException();
+            }
+            ensureCreditDetailsIsMutable();
+            creditDetails_.add(value);
+        }
+
+        /**
+         * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 5;</code>
+         */
+        private void addCreditDetails(
+                int index, CreditDetail value) {
+            if (value == null) {
+                throw new NullPointerException();
+            }
+            ensureCreditDetailsIsMutable();
+            creditDetails_.add(index, value);
+        }
+
+        /**
+         * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 5;</code>
+         */
+        private void addCreditDetails(
+                CreditDetail.Builder builderForValue) {
+            ensureCreditDetailsIsMutable();
+            creditDetails_.add(builderForValue.build());
+        }
+
+        /**
+         * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 5;</code>
+         */
+        private void addCreditDetails(
+                int index, CreditDetail.Builder builderForValue) {
+            ensureCreditDetailsIsMutable();
+            creditDetails_.add(index, builderForValue.build());
+        }
+
+        /**
+         * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 5;</code>
+         */
+        private void addAllCreditDetails(
+                Iterable<? extends CreditDetail> values) {
+            ensureCreditDetailsIsMutable();
+            com.google.protobuf.AbstractMessageLite.addAll(
+                    values, creditDetails_);
+        }
+
+        /**
+         * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 5;</code>
+         */
+        private void clearCreditDetails() {
+            creditDetails_ = emptyProtobufList();
+        }
+
+        /**
+         * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 5;</code>
+         */
+        private void removeCreditDetails(int index) {
+            ensureCreditDetailsIsMutable();
+            creditDetails_.remove(index);
+        }
+
         public void writeTo(com.google.protobuf.CodedOutputStream output)
                 throws java.io.IOException {
             for (int i = 0; i < inventories_.size(); i++) {
@@ -10717,6 +11019,12 @@ public final class SuchiProto {
             }
             for (int i = 0; i < sales_.size(); i++) {
                 output.writeMessage(3, sales_.get(i));
+            }
+            for (int i = 0; i < creditors_.size(); i++) {
+                output.writeMessage(4, creditors_.get(i));
+            }
+            for (int i = 0; i < creditDetails_.size(); i++) {
+                output.writeMessage(5, creditDetails_.get(i));
             }
         }
 
@@ -10736,6 +11044,14 @@ public final class SuchiProto {
             for (int i = 0; i < sales_.size(); i++) {
                 size += com.google.protobuf.CodedOutputStream
                         .computeMessageSize(3, sales_.get(i));
+            }
+            for (int i = 0; i < creditors_.size(); i++) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeMessageSize(4, creditors_.get(i));
+            }
+            for (int i = 0; i < creditDetails_.size(); i++) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeMessageSize(5, creditDetails_.get(i));
             }
             memoizedSerializedSize = size;
             return size;
@@ -11160,6 +11476,224 @@ public final class SuchiProto {
                 return this;
             }
 
+            /**
+             * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 4;</code>
+             */
+            public java.util.List<Creditor> getCreditorsList() {
+                return java.util.Collections.unmodifiableList(
+                        instance.getCreditorsList());
+            }
+
+            /**
+             * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 4;</code>
+             */
+            public int getCreditorsCount() {
+                return instance.getCreditorsCount();
+            }
+
+            /**
+             * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 4;</code>
+             */
+            public Creditor getCreditors(int index) {
+                return instance.getCreditors(index);
+            }
+
+            /**
+             * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 4;</code>
+             */
+            public Builder setCreditors(
+                    int index, Creditor value) {
+                copyOnWrite();
+                instance.setCreditors(index, value);
+                return this;
+            }
+
+            /**
+             * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 4;</code>
+             */
+            public Builder setCreditors(
+                    int index, Creditor.Builder builderForValue) {
+                copyOnWrite();
+                instance.setCreditors(index, builderForValue);
+                return this;
+            }
+
+            /**
+             * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 4;</code>
+             */
+            public Builder addCreditors(Creditor value) {
+                copyOnWrite();
+                instance.addCreditors(value);
+                return this;
+            }
+
+            /**
+             * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 4;</code>
+             */
+            public Builder addCreditors(
+                    int index, Creditor value) {
+                copyOnWrite();
+                instance.addCreditors(index, value);
+                return this;
+            }
+
+            /**
+             * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 4;</code>
+             */
+            public Builder addCreditors(
+                    Creditor.Builder builderForValue) {
+                copyOnWrite();
+                instance.addCreditors(builderForValue);
+                return this;
+            }
+
+            /**
+             * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 4;</code>
+             */
+            public Builder addCreditors(
+                    int index, Creditor.Builder builderForValue) {
+                copyOnWrite();
+                instance.addCreditors(index, builderForValue);
+                return this;
+            }
+
+            /**
+             * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 4;</code>
+             */
+            public Builder addAllCreditors(
+                    Iterable<? extends Creditor> values) {
+                copyOnWrite();
+                instance.addAllCreditors(values);
+                return this;
+            }
+
+            /**
+             * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 4;</code>
+             */
+            public Builder clearCreditors() {
+                copyOnWrite();
+                instance.clearCreditors();
+                return this;
+            }
+
+            /**
+             * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 4;</code>
+             */
+            public Builder removeCreditors(int index) {
+                copyOnWrite();
+                instance.removeCreditors(index);
+                return this;
+            }
+
+            /**
+             * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 5;</code>
+             */
+            public java.util.List<CreditDetail> getCreditDetailsList() {
+                return java.util.Collections.unmodifiableList(
+                        instance.getCreditDetailsList());
+            }
+
+            /**
+             * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 5;</code>
+             */
+            public int getCreditDetailsCount() {
+                return instance.getCreditDetailsCount();
+            }
+
+            /**
+             * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 5;</code>
+             */
+            public CreditDetail getCreditDetails(int index) {
+                return instance.getCreditDetails(index);
+            }
+
+            /**
+             * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 5;</code>
+             */
+            public Builder setCreditDetails(
+                    int index, CreditDetail value) {
+                copyOnWrite();
+                instance.setCreditDetails(index, value);
+                return this;
+            }
+
+            /**
+             * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 5;</code>
+             */
+            public Builder setCreditDetails(
+                    int index, CreditDetail.Builder builderForValue) {
+                copyOnWrite();
+                instance.setCreditDetails(index, builderForValue);
+                return this;
+            }
+
+            /**
+             * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 5;</code>
+             */
+            public Builder addCreditDetails(CreditDetail value) {
+                copyOnWrite();
+                instance.addCreditDetails(value);
+                return this;
+            }
+
+            /**
+             * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 5;</code>
+             */
+            public Builder addCreditDetails(
+                    int index, CreditDetail value) {
+                copyOnWrite();
+                instance.addCreditDetails(index, value);
+                return this;
+            }
+
+            /**
+             * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 5;</code>
+             */
+            public Builder addCreditDetails(
+                    CreditDetail.Builder builderForValue) {
+                copyOnWrite();
+                instance.addCreditDetails(builderForValue);
+                return this;
+            }
+
+            /**
+             * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 5;</code>
+             */
+            public Builder addCreditDetails(
+                    int index, CreditDetail.Builder builderForValue) {
+                copyOnWrite();
+                instance.addCreditDetails(index, builderForValue);
+                return this;
+            }
+
+            /**
+             * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 5;</code>
+             */
+            public Builder addAllCreditDetails(
+                    Iterable<? extends CreditDetail> values) {
+                copyOnWrite();
+                instance.addAllCreditDetails(values);
+                return this;
+            }
+
+            /**
+             * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 5;</code>
+             */
+            public Builder clearCreditDetails() {
+                copyOnWrite();
+                instance.clearCreditDetails();
+                return this;
+            }
+
+            /**
+             * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 5;</code>
+             */
+            public Builder removeCreditDetails(int index) {
+                copyOnWrite();
+                instance.removeCreditDetails(index);
+                return this;
+            }
+
             // @@protoc_insertion_point(builder_scope:treeleaf.suchi.entities.SyncRequest)
         }
 
@@ -11177,6 +11711,8 @@ public final class SuchiProto {
                     inventories_.makeImmutable();
                     stockKeepingUnits_.makeImmutable();
                     sales_.makeImmutable();
+                    creditors_.makeImmutable();
+                    creditDetails_.makeImmutable();
                     return null;
                 }
                 case NEW_BUILDER: {
@@ -11188,6 +11724,8 @@ public final class SuchiProto {
                     inventories_ = visitor.visitList(inventories_, other.inventories_);
                     stockKeepingUnits_ = visitor.visitList(stockKeepingUnits_, other.stockKeepingUnits_);
                     sales_ = visitor.visitList(sales_, other.sales_);
+                    creditors_ = visitor.visitList(creditors_, other.creditors_);
+                    creditDetails_ = visitor.visitList(creditDetails_, other.creditDetails_);
                     if (visitor == MergeFromVisitor
                             .INSTANCE) {
                     }
@@ -11237,6 +11775,24 @@ public final class SuchiProto {
                                     }
                                     sales_.add(
                                             input.readMessage(Sale.parser(), extensionRegistry));
+                                    break;
+                                }
+                                case 34: {
+                                    if (!creditors_.isModifiable()) {
+                                        creditors_ =
+                                                com.google.protobuf.GeneratedMessageLite.mutableCopy(creditors_);
+                                    }
+                                    creditors_.add(
+                                            input.readMessage(Creditor.parser(), extensionRegistry));
+                                    break;
+                                }
+                                case 42: {
+                                    if (!creditDetails_.isModifiable()) {
+                                        creditDetails_ =
+                                                com.google.protobuf.GeneratedMessageLite.mutableCopy(creditDetails_);
+                                    }
+                                    creditDetails_.add(
+                                            input.readMessage(CreditDetail.parser(), extensionRegistry));
                                     break;
                                 }
                             }
@@ -17946,38 +18502,43 @@ public final class SuchiProto {
         long getCreatedDate();
 
         /**
-         * <code>optional double amount = 4;</code>
+         * <code>optional double dueAmount = 4;</code>
          */
-        double getAmount();
+        double getDueAmount();
 
         /**
-         * <code>optional string description = 5;</code>
+         * <code>optional double paidAmount = 5;</code>
+         */
+        double getPaidAmount();
+
+        /**
+         * <code>optional string description = 6;</code>
          */
         String getDescription();
 
         /**
-         * <code>optional string description = 5;</code>
+         * <code>optional string description = 6;</code>
          */
         com.google.protobuf.ByteString
         getDescriptionBytes();
 
         /**
-         * <code>optional int64 updatedAt = 6;</code>
+         * <code>optional int64 updatedAt = 7;</code>
          */
         long getUpdatedAt();
 
         /**
-         * <code>optional bool sync = 7;</code>
+         * <code>optional bool sync = 8;</code>
          */
         boolean getSync();
 
         /**
-         * <code>optional string sale_id = 8;</code>
+         * <code>optional string sale_id = 9;</code>
          */
         String getSaleId();
 
         /**
-         * <code>optional string sale_id = 8;</code>
+         * <code>optional string sale_id = 9;</code>
          */
         com.google.protobuf.ByteString
         getSaleIdBytes();
@@ -18126,44 +18687,70 @@ public final class SuchiProto {
             createdDate_ = 0L;
         }
 
-        public static final int AMOUNT_FIELD_NUMBER = 4;
-        private double amount_;
+        public static final int DUEAMOUNT_FIELD_NUMBER = 4;
+        private double dueAmount_;
 
         /**
-         * <code>optional double amount = 4;</code>
+         * <code>optional double dueAmount = 4;</code>
          */
-        public double getAmount() {
-            return amount_;
+        public double getDueAmount() {
+            return dueAmount_;
         }
 
         /**
-         * <code>optional double amount = 4;</code>
+         * <code>optional double dueAmount = 4;</code>
          */
-        private void setAmount(double value) {
+        private void setDueAmount(double value) {
 
-            amount_ = value;
+            dueAmount_ = value;
         }
 
         /**
-         * <code>optional double amount = 4;</code>
+         * <code>optional double dueAmount = 4;</code>
          */
-        private void clearAmount() {
+        private void clearDueAmount() {
 
-            amount_ = 0D;
+            dueAmount_ = 0D;
         }
 
-        public static final int DESCRIPTION_FIELD_NUMBER = 5;
+        public static final int PAIDAMOUNT_FIELD_NUMBER = 5;
+        private double paidAmount_;
+
+        /**
+         * <code>optional double paidAmount = 5;</code>
+         */
+        public double getPaidAmount() {
+            return paidAmount_;
+        }
+
+        /**
+         * <code>optional double paidAmount = 5;</code>
+         */
+        private void setPaidAmount(double value) {
+
+            paidAmount_ = value;
+        }
+
+        /**
+         * <code>optional double paidAmount = 5;</code>
+         */
+        private void clearPaidAmount() {
+
+            paidAmount_ = 0D;
+        }
+
+        public static final int DESCRIPTION_FIELD_NUMBER = 6;
         private String description_;
 
         /**
-         * <code>optional string description = 5;</code>
+         * <code>optional string description = 6;</code>
          */
         public String getDescription() {
             return description_;
         }
 
         /**
-         * <code>optional string description = 5;</code>
+         * <code>optional string description = 6;</code>
          */
         public com.google.protobuf.ByteString
         getDescriptionBytes() {
@@ -18171,7 +18758,7 @@ public final class SuchiProto {
         }
 
         /**
-         * <code>optional string description = 5;</code>
+         * <code>optional string description = 6;</code>
          */
         private void setDescription(
                 String value) {
@@ -18183,7 +18770,7 @@ public final class SuchiProto {
         }
 
         /**
-         * <code>optional string description = 5;</code>
+         * <code>optional string description = 6;</code>
          */
         private void clearDescription() {
 
@@ -18191,7 +18778,7 @@ public final class SuchiProto {
         }
 
         /**
-         * <code>optional string description = 5;</code>
+         * <code>optional string description = 6;</code>
          */
         private void setDescriptionBytes(
                 com.google.protobuf.ByteString value) {
@@ -18203,18 +18790,18 @@ public final class SuchiProto {
             description_ = value.toStringUtf8();
         }
 
-        public static final int UPDATEDAT_FIELD_NUMBER = 6;
+        public static final int UPDATEDAT_FIELD_NUMBER = 7;
         private long updatedAt_;
 
         /**
-         * <code>optional int64 updatedAt = 6;</code>
+         * <code>optional int64 updatedAt = 7;</code>
          */
         public long getUpdatedAt() {
             return updatedAt_;
         }
 
         /**
-         * <code>optional int64 updatedAt = 6;</code>
+         * <code>optional int64 updatedAt = 7;</code>
          */
         private void setUpdatedAt(long value) {
 
@@ -18222,25 +18809,25 @@ public final class SuchiProto {
         }
 
         /**
-         * <code>optional int64 updatedAt = 6;</code>
+         * <code>optional int64 updatedAt = 7;</code>
          */
         private void clearUpdatedAt() {
 
             updatedAt_ = 0L;
         }
 
-        public static final int SYNC_FIELD_NUMBER = 7;
+        public static final int SYNC_FIELD_NUMBER = 8;
         private boolean sync_;
 
         /**
-         * <code>optional bool sync = 7;</code>
+         * <code>optional bool sync = 8;</code>
          */
         public boolean getSync() {
             return sync_;
         }
 
         /**
-         * <code>optional bool sync = 7;</code>
+         * <code>optional bool sync = 8;</code>
          */
         private void setSync(boolean value) {
 
@@ -18248,25 +18835,25 @@ public final class SuchiProto {
         }
 
         /**
-         * <code>optional bool sync = 7;</code>
+         * <code>optional bool sync = 8;</code>
          */
         private void clearSync() {
 
             sync_ = false;
         }
 
-        public static final int SALE_ID_FIELD_NUMBER = 8;
+        public static final int SALE_ID_FIELD_NUMBER = 9;
         private String saleId_;
 
         /**
-         * <code>optional string sale_id = 8;</code>
+         * <code>optional string sale_id = 9;</code>
          */
         public String getSaleId() {
             return saleId_;
         }
 
         /**
-         * <code>optional string sale_id = 8;</code>
+         * <code>optional string sale_id = 9;</code>
          */
         public com.google.protobuf.ByteString
         getSaleIdBytes() {
@@ -18274,7 +18861,7 @@ public final class SuchiProto {
         }
 
         /**
-         * <code>optional string sale_id = 8;</code>
+         * <code>optional string sale_id = 9;</code>
          */
         private void setSaleId(
                 String value) {
@@ -18286,7 +18873,7 @@ public final class SuchiProto {
         }
 
         /**
-         * <code>optional string sale_id = 8;</code>
+         * <code>optional string sale_id = 9;</code>
          */
         private void clearSaleId() {
 
@@ -18294,7 +18881,7 @@ public final class SuchiProto {
         }
 
         /**
-         * <code>optional string sale_id = 8;</code>
+         * <code>optional string sale_id = 9;</code>
          */
         private void setSaleIdBytes(
                 com.google.protobuf.ByteString value) {
@@ -18317,20 +18904,23 @@ public final class SuchiProto {
             if (createdDate_ != 0L) {
                 output.writeInt64(3, createdDate_);
             }
-            if (amount_ != 0D) {
-                output.writeDouble(4, amount_);
+            if (dueAmount_ != 0D) {
+                output.writeDouble(4, dueAmount_);
+            }
+            if (paidAmount_ != 0D) {
+                output.writeDouble(5, paidAmount_);
             }
             if (!description_.isEmpty()) {
-                output.writeString(5, getDescription());
+                output.writeString(6, getDescription());
             }
             if (updatedAt_ != 0L) {
-                output.writeInt64(6, updatedAt_);
+                output.writeInt64(7, updatedAt_);
             }
             if (sync_ != false) {
-                output.writeBool(7, sync_);
+                output.writeBool(8, sync_);
             }
             if (!saleId_.isEmpty()) {
-                output.writeString(8, getSaleId());
+                output.writeString(9, getSaleId());
             }
         }
 
@@ -18351,25 +18941,29 @@ public final class SuchiProto {
                 size += com.google.protobuf.CodedOutputStream
                         .computeInt64Size(3, createdDate_);
             }
-            if (amount_ != 0D) {
+            if (dueAmount_ != 0D) {
                 size += com.google.protobuf.CodedOutputStream
-                        .computeDoubleSize(4, amount_);
+                        .computeDoubleSize(4, dueAmount_);
+            }
+            if (paidAmount_ != 0D) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeDoubleSize(5, paidAmount_);
             }
             if (!description_.isEmpty()) {
                 size += com.google.protobuf.CodedOutputStream
-                        .computeStringSize(5, getDescription());
+                        .computeStringSize(6, getDescription());
             }
             if (updatedAt_ != 0L) {
                 size += com.google.protobuf.CodedOutputStream
-                        .computeInt64Size(6, updatedAt_);
+                        .computeInt64Size(7, updatedAt_);
             }
             if (sync_ != false) {
                 size += com.google.protobuf.CodedOutputStream
-                        .computeBoolSize(7, sync_);
+                        .computeBoolSize(8, sync_);
             }
             if (!saleId_.isEmpty()) {
                 size += com.google.protobuf.CodedOutputStream
-                        .computeStringSize(8, getSaleId());
+                        .computeStringSize(9, getSaleId());
             }
             memoizedSerializedSize = size;
             return size;
@@ -18581,39 +19175,64 @@ public final class SuchiProto {
             }
 
             /**
-             * <code>optional double amount = 4;</code>
+             * <code>optional double dueAmount = 4;</code>
              */
-            public double getAmount() {
-                return instance.getAmount();
+            public double getDueAmount() {
+                return instance.getDueAmount();
             }
 
             /**
-             * <code>optional double amount = 4;</code>
+             * <code>optional double dueAmount = 4;</code>
              */
-            public Builder setAmount(double value) {
+            public Builder setDueAmount(double value) {
                 copyOnWrite();
-                instance.setAmount(value);
+                instance.setDueAmount(value);
                 return this;
             }
 
             /**
-             * <code>optional double amount = 4;</code>
+             * <code>optional double dueAmount = 4;</code>
              */
-            public Builder clearAmount() {
+            public Builder clearDueAmount() {
                 copyOnWrite();
-                instance.clearAmount();
+                instance.clearDueAmount();
                 return this;
             }
 
             /**
-             * <code>optional string description = 5;</code>
+             * <code>optional double paidAmount = 5;</code>
+             */
+            public double getPaidAmount() {
+                return instance.getPaidAmount();
+            }
+
+            /**
+             * <code>optional double paidAmount = 5;</code>
+             */
+            public Builder setPaidAmount(double value) {
+                copyOnWrite();
+                instance.setPaidAmount(value);
+                return this;
+            }
+
+            /**
+             * <code>optional double paidAmount = 5;</code>
+             */
+            public Builder clearPaidAmount() {
+                copyOnWrite();
+                instance.clearPaidAmount();
+                return this;
+            }
+
+            /**
+             * <code>optional string description = 6;</code>
              */
             public String getDescription() {
                 return instance.getDescription();
             }
 
             /**
-             * <code>optional string description = 5;</code>
+             * <code>optional string description = 6;</code>
              */
             public com.google.protobuf.ByteString
             getDescriptionBytes() {
@@ -18621,7 +19240,7 @@ public final class SuchiProto {
             }
 
             /**
-             * <code>optional string description = 5;</code>
+             * <code>optional string description = 6;</code>
              */
             public Builder setDescription(
                     String value) {
@@ -18631,7 +19250,7 @@ public final class SuchiProto {
             }
 
             /**
-             * <code>optional string description = 5;</code>
+             * <code>optional string description = 6;</code>
              */
             public Builder clearDescription() {
                 copyOnWrite();
@@ -18640,7 +19259,7 @@ public final class SuchiProto {
             }
 
             /**
-             * <code>optional string description = 5;</code>
+             * <code>optional string description = 6;</code>
              */
             public Builder setDescriptionBytes(
                     com.google.protobuf.ByteString value) {
@@ -18650,14 +19269,14 @@ public final class SuchiProto {
             }
 
             /**
-             * <code>optional int64 updatedAt = 6;</code>
+             * <code>optional int64 updatedAt = 7;</code>
              */
             public long getUpdatedAt() {
                 return instance.getUpdatedAt();
             }
 
             /**
-             * <code>optional int64 updatedAt = 6;</code>
+             * <code>optional int64 updatedAt = 7;</code>
              */
             public Builder setUpdatedAt(long value) {
                 copyOnWrite();
@@ -18666,7 +19285,7 @@ public final class SuchiProto {
             }
 
             /**
-             * <code>optional int64 updatedAt = 6;</code>
+             * <code>optional int64 updatedAt = 7;</code>
              */
             public Builder clearUpdatedAt() {
                 copyOnWrite();
@@ -18675,14 +19294,14 @@ public final class SuchiProto {
             }
 
             /**
-             * <code>optional bool sync = 7;</code>
+             * <code>optional bool sync = 8;</code>
              */
             public boolean getSync() {
                 return instance.getSync();
             }
 
             /**
-             * <code>optional bool sync = 7;</code>
+             * <code>optional bool sync = 8;</code>
              */
             public Builder setSync(boolean value) {
                 copyOnWrite();
@@ -18691,7 +19310,7 @@ public final class SuchiProto {
             }
 
             /**
-             * <code>optional bool sync = 7;</code>
+             * <code>optional bool sync = 8;</code>
              */
             public Builder clearSync() {
                 copyOnWrite();
@@ -18700,14 +19319,14 @@ public final class SuchiProto {
             }
 
             /**
-             * <code>optional string sale_id = 8;</code>
+             * <code>optional string sale_id = 9;</code>
              */
             public String getSaleId() {
                 return instance.getSaleId();
             }
 
             /**
-             * <code>optional string sale_id = 8;</code>
+             * <code>optional string sale_id = 9;</code>
              */
             public com.google.protobuf.ByteString
             getSaleIdBytes() {
@@ -18715,7 +19334,7 @@ public final class SuchiProto {
             }
 
             /**
-             * <code>optional string sale_id = 8;</code>
+             * <code>optional string sale_id = 9;</code>
              */
             public Builder setSaleId(
                     String value) {
@@ -18725,7 +19344,7 @@ public final class SuchiProto {
             }
 
             /**
-             * <code>optional string sale_id = 8;</code>
+             * <code>optional string sale_id = 9;</code>
              */
             public Builder clearSaleId() {
                 copyOnWrite();
@@ -18734,7 +19353,7 @@ public final class SuchiProto {
             }
 
             /**
-             * <code>optional string sale_id = 8;</code>
+             * <code>optional string sale_id = 9;</code>
              */
             public Builder setSaleIdBytes(
                     com.google.protobuf.ByteString value) {
@@ -18771,8 +19390,10 @@ public final class SuchiProto {
                             !other.creditorId_.isEmpty(), other.creditorId_);
                     createdDate_ = visitor.visitLong(createdDate_ != 0L, createdDate_,
                             other.createdDate_ != 0L, other.createdDate_);
-                    amount_ = visitor.visitDouble(amount_ != 0D, amount_,
-                            other.amount_ != 0D, other.amount_);
+                    dueAmount_ = visitor.visitDouble(dueAmount_ != 0D, dueAmount_,
+                            other.dueAmount_ != 0D, other.dueAmount_);
+                    paidAmount_ = visitor.visitDouble(paidAmount_ != 0D, paidAmount_,
+                            other.paidAmount_ != 0D, other.paidAmount_);
                     description_ = visitor.visitString(!description_.isEmpty(), description_,
                             !other.description_.isEmpty(), other.description_);
                     updatedAt_ = visitor.visitLong(updatedAt_ != 0L, updatedAt_,
@@ -18824,26 +19445,31 @@ public final class SuchiProto {
                                 }
                                 case 33: {
 
-                                    amount_ = input.readDouble();
+                                    dueAmount_ = input.readDouble();
                                     break;
                                 }
-                                case 42: {
+                                case 41: {
+
+                                    paidAmount_ = input.readDouble();
+                                    break;
+                                }
+                                case 50: {
                                     String s = input.readStringRequireUtf8();
 
                                     description_ = s;
                                     break;
                                 }
-                                case 48: {
+                                case 56: {
 
                                     updatedAt_ = input.readInt64();
                                     break;
                                 }
-                                case 56: {
+                                case 64: {
 
                                     sync_ = input.readBool();
                                     break;
                                 }
-                                case 66: {
+                                case 74: {
                                     String s = input.readStringRequireUtf8();
 
                                     saleId_ = s;

@@ -136,4 +136,6 @@
     <string name="chart">CHART</string>
     <string name="table">TABLE</string>
     <string name="billing_statement">Billing Statement</string>
+    <string name="view_credit_details">View credit details</string>
+    <string name="add_creditor_details">Add creditor details</string>
 </resources>

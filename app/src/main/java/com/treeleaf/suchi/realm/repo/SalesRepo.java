@@ -1,7 +1,11 @@
 package com.treeleaf.suchi.realm.repo;
 
+import android.text.format.DateUtils;
+
 import com.treeleaf.suchi.realm.RealmDatabase;
 import com.treeleaf.suchi.realm.models.Sales;
+import com.treeleaf.suchi.realm.models.SalesStock;
+import com.treeleaf.suchi.utils.AppUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,6 +58,49 @@ public class SalesRepo extends Repo {
         }
     }
 
+    public List<Sales> getSalesByDate(long fromDate, long tillDate) {
+        Realm realm = RealmDatabase.getInstance().getRealm();
+        try {
+            return new ArrayList<>(realm.where(Sales.class)
+                    .between("createdAt", fromDate, tillDate)
+                    .findAll());
+
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+            return null;
+        }
+    }
+
+    public List<Sales> getUnsyncedSalesList() {
+        Realm realm = RealmDatabase.getInstance().getRealm();
+        try {
+            return new ArrayList<>(realm.where(Sales.class).equalTo("synced", false).findAll());
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+            return null;
+
+        }
+    }
+
+    public List<Sales> getSalesStockOfToday() {
+        try {
+            List<Sales> allStocks = getAllSalesList();
+            List<Sales> todaysSales = new ArrayList<>();
+            for (Sales sales : allStocks
+            ) {
+                AppUtils.showLog(TAG, "todayTimeStamp:" + sales.getCreatedAt());
+                if (DateUtils.isToday(sales.getCreatedAt())) {
+                    todaysSales.add(sales);
+                }
+            }
+
+            return todaysSales;
+
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+            return null;
+        }
+    }
 
 
 

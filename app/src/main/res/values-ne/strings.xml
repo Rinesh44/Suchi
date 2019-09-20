@@ -132,4 +132,6 @@
     <string name="report">रिपोर्ट</string>
     <string name="sales_details">बिक्री विवरण</string>
     <string name="table">तालिका</string>
+    <string name="add_creditor_details">लेनदार विवरण थप्नुहोस्</string>
+    <string name="view_credit_details">"क्रेडिट विवरण हेर्नुहोस् "</string>
 </resources>

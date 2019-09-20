@@ -30,6 +30,8 @@ public interface Endpoints {
     String INVENTORY = "inventory";
     String ADD_SKU = "sku";
     String SALES = "sale/sync";
+    String CREDITORS = "creditor/sync";
+    String CREDIT_DETAILS = "credit/sync";
 
     String ADD_UNSYNCED_INVENTORIES = "inventory/sync";
 
@@ -72,5 +74,14 @@ public interface Endpoints {
 
     @GET(API_BASE_URL + SALES)
     Call<SuchiRpcProto.SuchiBaseResponse> getSales(@Header(AUTHORIZATION) String auth);
+
+    @POST(API_BASE_URL + CREDITORS)
+    Call<SuchiRpcProto.SuchiBaseResponse> addCreditors(@Header(AUTHORIZATION) String auth,
+                                                       @Body SuchiProto.SyncRequest syncRequest);
+
+    @POST(API_BASE_URL + CREDIT_DETAILS)
+    Call<SuchiRpcProto.SuchiBaseResponse> addCredits(@Header(AUTHORIZATION) String auth,
+                                                     @Body SuchiProto.SyncRequest syncRequest);
+
 
 }

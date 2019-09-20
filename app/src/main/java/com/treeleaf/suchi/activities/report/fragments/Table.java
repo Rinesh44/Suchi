@@ -327,7 +327,7 @@ public class Table extends Fragment implements ReportActivity.OnListReceiveListe
             salesStockDto.setBrand(salesStock.getBrand());
             salesStockDto.setSubBrand(salesStock.getSubBrand());
             salesStockDto.setCategories(salesStock.getCategories());
-            salesStockDto.setSynced(salesStock.isSynced());
+//            salesStockDto.setSynced(salesStock.isSynced());
             salesStockDto.setUnit(salesStock.getUnit());
             salesStockDto.setUnitPrice(salesStock.getUnitPrice());
             salesStockDto.setCreatedAt(salesStock.getCreatedAt());

@@ -180,7 +180,7 @@ public class SalesActivity extends BaseActivity implements SalesView {
             salesStockDto.setInventory_id(salesStock.getInventory_id());
             salesStockDto.setPhotoUrl(salesStock.getPhotoUrl());
             salesStockDto.setQuantity(salesStock.getQuantity());
-            salesStockDto.setSynced(salesStock.isSynced());
+//            salesStockDto.setSynced(salesStock.isSynced());
             salesStockDto.setUnit(salesStock.getUnit());
             salesStockDto.setUnitPrice(salesStock.getUnitPrice());
 

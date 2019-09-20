@@ -7,7 +7,6 @@ import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
 public class SalesStock extends RealmObject implements Parcelable {
-    @PrimaryKey
     private String id;
     private String inventory_id;
     private String amount;
@@ -19,15 +18,12 @@ public class SalesStock extends RealmObject implements Parcelable {
     private String brand;
     private String subBrand;
     private String categories;
-    private boolean synced;
+    @PrimaryKey
     private long createdAt;
     private long updatedAt;
-    private boolean isCredit;
-    private String creditId;
 
 
-    public SalesStock(String id, String inventory_id, String amount, String quantity, String unit, String name, String photoUrl, String unitPrice, String brand, String subBrand, String categories, boolean synced, long createdAt, long updatedAt,
-                      boolean isCredit, String creditId) {
+    public SalesStock(String id, String inventory_id, String amount, String quantity, String unit, String name, String photoUrl, String unitPrice, String brand, String subBrand, String categories, long createdAt, long updatedAt) {
         this.id = id;
         this.inventory_id = inventory_id;
         this.amount = amount;
@@ -39,23 +35,12 @@ public class SalesStock extends RealmObject implements Parcelable {
         this.brand = brand;
         this.subBrand = subBrand;
         this.categories = categories;
-        this.synced = synced;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
-        this.isCredit = isCredit;
-        this.creditId = creditId;
     }
 
 
     public SalesStock() {
-    }
-
-    public boolean isSynced() {
-        return synced;
-    }
-
-    public void setSynced(boolean synced) {
-        this.synced = synced;
     }
 
     public String getName() {
@@ -122,22 +107,6 @@ public class SalesStock extends RealmObject implements Parcelable {
         this.inventory_id = inventory_id;
     }
 
-    public long getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(long createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public long getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(long updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
     public String getBrand() {
         return brand;
     }
@@ -162,20 +131,20 @@ public class SalesStock extends RealmObject implements Parcelable {
         this.categories = categories;
     }
 
-    public boolean isCredit() {
-        return isCredit;
+    public long getCreatedAt() {
+        return createdAt;
     }
 
-    public void setCredit(boolean credit) {
-        isCredit = credit;
+    public void setCreatedAt(long createdAt) {
+        this.createdAt = createdAt;
     }
 
-    public String getCreditId() {
-        return creditId;
+    public long getUpdatedAt() {
+        return updatedAt;
     }
 
-    public void setCreditId(String creditId) {
-        this.creditId = creditId;
+    public void setUpdatedAt(long updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
     protected SalesStock(Parcel in) {
@@ -190,11 +159,8 @@ public class SalesStock extends RealmObject implements Parcelable {
         brand = in.readString();
         subBrand = in.readString();
         categories = in.readString();
-        synced = in.readByte() != 0x00;
         createdAt = in.readLong();
         updatedAt = in.readLong();
-        isCredit = in.readByte() != 0x00;
-        creditId = in.readString();
     }
 
     @Override
@@ -215,11 +181,8 @@ public class SalesStock extends RealmObject implements Parcelable {
         dest.writeString(brand);
         dest.writeString(subBrand);
         dest.writeString(categories);
-        dest.writeByte((byte) (synced ? 0x01 : 0x00));
         dest.writeLong(createdAt);
         dest.writeLong(updatedAt);
-        dest.writeByte((byte) (synced ? 0x01 : 0x00));
-        dest.writeString(creditId);
     }
 
     @SuppressWarnings("unused")

@@ -100,7 +100,7 @@ public class SalesPresenterImpl implements SalesPresenter {
                 salesStock.setName(saleInventory.getInventory().getSku().getName());
                 salesStock.setPhotoUrl(saleInventory.getInventory().getSku().getPhoto());
                 salesStock.setUnitPrice(String.valueOf(saleInventory.getAmount()));
-                salesStock.setSynced(saleInventory.getSync());
+//                salesStock.setSynced(saleInventory.getSync());
                 salesStock.setCreatedAt(sale.getCreatedAt());
 
                 salesStockList.add(salesStock);

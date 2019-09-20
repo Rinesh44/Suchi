@@ -17,7 +17,9 @@ import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.activities.base.BaseActivity;
 import com.treeleaf.suchi.activities.credit.CreditEntry;
 import com.treeleaf.suchi.activities.inventory.InventoryActivity;
+import com.treeleaf.suchi.realm.models.InventoryStocks;
 import com.treeleaf.suchi.realm.models.SalesStock;
+import com.treeleaf.suchi.realm.repo.InventoryStocksRepo;
 import com.treeleaf.suchi.realm.repo.Repo;
 import com.treeleaf.suchi.realm.repo.SalesStockRepo;
 import com.treeleaf.suchi.utils.AppUtils;
@@ -84,10 +86,6 @@ public class SalesBill extends BaseActivity {
             }
         });
 
-
-    }
-
-    private void updateExistingSales() {
 
     }
 
@@ -162,45 +160,7 @@ public class SalesBill extends BaseActivity {
 
 
     public void saveSalesData() {
-        List<SalesStock> allSalesStock = SalesStockRepo.getInstance().getAllSalesStockList();
-        //lists to prevent concurrent modification exception
-        List<SalesStock> stocksToRemove = new ArrayList<>();
-        List<SalesStock> stocksToAdd = new ArrayList<>();
-        for (SalesStock salesStockCurrent : updatedSalesStockList
-        ) {
-            for (SalesStock salesStockDb : allSalesStock
-            ) {
-                if (salesStockDb.getId().equalsIgnoreCase(salesStockCurrent.getId())) {
-                    stocksToRemove.add(salesStockCurrent);
-
-                    String quantity = String.valueOf(Double.valueOf(salesStockDb.getQuantity()) +
-                            Double.valueOf(salesStockCurrent.getQuantity()));
-
-                    String amount = String.valueOf(Double.valueOf(quantity) *
-                            Double.valueOf(salesStockCurrent.getUnitPrice()));
-
-                    SalesStock salesStock = new SalesStock(salesStockCurrent.getId(), salesStockCurrent.getInventory_id(),
-                            amount, quantity, salesStockCurrent.getUnit(), salesStockCurrent.getName(),
-                            salesStockCurrent.getPhotoUrl(), salesStockCurrent.getUnitPrice(),
-                            salesStockCurrent.getBrand(), salesStockCurrent.getSubBrand(), salesStockCurrent.getCategories(),
-                            false, salesStockCurrent.getCreatedAt(), System.currentTimeMillis(), false, "");
-
-                    stocksToAdd.add(salesStock);
-                } else {
-
-                    SalesStock salesStock = new SalesStock(salesStockCurrent.getId(), salesStockCurrent.getInventory_id(),
-                            salesStockCurrent.getAmount(), salesStockCurrent.getQuantity(), salesStockCurrent.getUnit(), salesStockCurrent.getName(),
-                            salesStockCurrent.getPhotoUrl(), salesStockCurrent.getUnitPrice(),
-                            salesStockCurrent.getBrand(), salesStockCurrent.getSubBrand(), salesStockCurrent.getCategories(),
-                            false, System.currentTimeMillis(), 0, false, "");
-
-                    stocksToAdd.add(salesStock);
-                }
-            }
-        }
-
-        updatedSalesStockList.removeAll(stocksToRemove);
-        updatedSalesStockList.addAll(stocksToAdd);
+        deductInventoryStockQuantity();
 
         SalesStockRepo.getInstance().saveSalesStockList(updatedSalesStockList, new Repo.Callback() {
             @Override
@@ -217,6 +177,43 @@ public class SalesBill extends BaseActivity {
             @Override
             public void fail() {
                 AppUtils.showLog(TAG, "failed to save sale item");
+            }
+        });
+    }
+
+    private void deductInventoryStockQuantity() {
+        List<InventoryStocks> updateInventoryStockList = new ArrayList<>();
+        List<InventoryStocks> allInventoryStock = InventoryStocksRepo.getInstance().getAllInventoryStocks();
+        if (allInventoryStock != null) {
+            for (InventoryStocks inventoryStocks : allInventoryStock
+            ) {
+                for (SalesStock salesStock : updatedSalesStockList
+                ) {
+                    if (inventoryStocks.getId().equalsIgnoreCase(salesStock.getId())) {
+                        int remainingQuantity = Integer.valueOf(inventoryStocks.getQuantity()) -
+                                Integer.valueOf(salesStock.getQuantity());
+
+
+                        InventoryStocks updatedInventoryStock = new InventoryStocks(inventoryStocks.getId(),
+                                inventoryStocks.getInventory_id(), String.valueOf(remainingQuantity),
+                                inventoryStocks.getMarkedPrice(), inventoryStocks.getSalesPrice(),
+                                inventoryStocks.getUnitId(), inventoryStocks.isSynced());
+
+                        updateInventoryStockList.add(updatedInventoryStock);
+                    }
+                }
+            }
+        } else AppUtils.showLog(TAG, "list is null ");
+
+        InventoryStocksRepo.getInstance().saveInventoryStocks(updateInventoryStockList, new Repo.Callback() {
+            @Override
+            public void success(Object o) {
+                AppUtils.showLog(TAG, "inventoryStock Updated");
+            }
+
+            @Override
+            public void fail() {
+                AppUtils.showLog(TAG, "failed to update inventory stocks");
             }
         });
     }

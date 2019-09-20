@@ -205,6 +205,10 @@ public class CreditEntry extends BaseActivity implements View.OnClickListener {
             @Override
             public void success(Object o) {
                 AppUtils.showLog(TAG, "credit saved to db");
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putBoolean(Constants.CREDIT_DATA_REMAINING_TO_SYNC, true);
+                editor.apply();
+
                 Intent i = new Intent(CreditEntry.this, DashboardActivity.class);
                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(i);
@@ -299,22 +303,22 @@ public class CreditEntry extends BaseActivity implements View.OnClickListener {
                     String amount = String.valueOf(Double.valueOf(quantity) *
                             Double.valueOf(salesStockCurrent.getUnitPrice()));
 
-                    SalesStock salesStock = new SalesStock(salesStockCurrent.getId(), salesStockCurrent.getInventory_id(),
+             /*       SalesStock salesStock = new SalesStock(salesStockCurrent.getId(), salesStockCurrent.getInventory_id(),
                             amount, quantity, salesStockCurrent.getUnit(), salesStockCurrent.getName(),
                             salesStockCurrent.getPhotoUrl(), salesStockCurrent.getUnitPrice(),
                             salesStockCurrent.getBrand(), salesStockCurrent.getSubBrand(), salesStockCurrent.getCategories(),
-                            false, salesStockCurrent.getCreatedAt(), System.currentTimeMillis(), true, creditId);
+                            false, salesStockCurrent.getCreatedAt(), System.currentTimeMillis(), true, creditId);*/
 
-                    stocksToAdd.add(salesStock);
+//                    stocksToAdd.add(salesStock);
                 } else {
                     AppUtils.showLog(TAG, "id not matched" + salesStockCurrent.getName());
-                    SalesStock salesStock = new SalesStock(salesStockCurrent.getId(), salesStockCurrent.getInventory_id(),
+              /*      SalesStock salesStock = new SalesStock(salesStockCurrent.getId(), salesStockCurrent.getInventory_id(),
                             salesStockCurrent.getAmount(), salesStockCurrent.getQuantity(), salesStockCurrent.getUnit(), salesStockCurrent.getName(),
                             salesStockCurrent.getPhotoUrl(), salesStockCurrent.getUnitPrice(),
                             salesStockCurrent.getBrand(), salesStockCurrent.getSubBrand(), salesStockCurrent.getCategories(),
-                            false, System.currentTimeMillis(), 0, true, creditId);
+                            false, System.currentTimeMillis(), 0, true, creditId);*/
 
-                    stocksToAdd.add(salesStock);
+//                    stocksToAdd.add(salesStock);
                 }
             }
         }

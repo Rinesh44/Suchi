@@ -3,6 +3,7 @@ package com.treeleaf.suchi.realm.repo;
 
 import com.treeleaf.suchi.realm.RealmDatabase;
 import com.treeleaf.suchi.realm.models.Credit;
+import com.treeleaf.suchi.realm.models.Creditors;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,6 +42,19 @@ public class CreditRepo extends Repo {
             close(realm);
         }
     }
+
+    public List<Credit> getUnsyncedCredits() {
+        Realm realm = RealmDatabase.getInstance().getRealm();
+        try {
+            return new ArrayList<>(realm.where(Credit.class)
+                    .equalTo("sync", false).findAll());
+
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+            return null;
+        }
+    }
+
 
     public List<Credit> getAllCredits() {
         Realm realm = RealmDatabase.getInstance().getRealm();

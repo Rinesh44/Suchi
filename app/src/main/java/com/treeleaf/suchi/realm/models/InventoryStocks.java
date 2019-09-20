@@ -86,7 +86,6 @@ public class InventoryStocks extends RealmObject implements Parcelable {
     }
 
 
-
     protected InventoryStocks(Parcel in) {
         id = in.readString();
         inventory_id = in.readString();

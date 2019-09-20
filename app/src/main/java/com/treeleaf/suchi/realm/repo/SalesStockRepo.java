@@ -5,6 +5,7 @@ import android.text.format.DateUtils;
 import androidx.lifecycle.LiveData;
 
 import com.treeleaf.suchi.realm.RealmDatabase;
+import com.treeleaf.suchi.realm.models.Sales;
 import com.treeleaf.suchi.realm.models.SalesStock;
 import com.treeleaf.suchi.utils.AppUtils;
 import com.treeleaf.suchi.utils.RealmLiveData;
@@ -112,26 +113,6 @@ public class SalesStockRepo extends Repo {
     }
 
 
-    public List<SalesStock> getSalesStockOfToday() {
-        try {
-            List<SalesStock> allStocks = getAllSalesStockList();
-            List<SalesStock> todaysStock = new ArrayList<>();
-            for (SalesStock salesStock : allStocks
-            ) {
-                AppUtils.showLog(TAG, "todayTimeStamp:" + salesStock.getCreatedAt());
-                if (DateUtils.isToday(salesStock.getCreatedAt())) {
-                    todaysStock.add(salesStock);
-                }
-            }
-
-            return todaysStock;
-
-        } catch (Throwable throwable) {
-            throwable.printStackTrace();
-            return null;
-        }
-    }
-
     public List<SalesStock> getSalesStockByDate(long fromDate, long tillDate) {
         Realm realm = RealmDatabase.getInstance().getRealm();
         try {
@@ -155,6 +136,28 @@ public class SalesStockRepo extends Repo {
 
         }
     }
+
+
+    public List<SalesStock> getSalesStockOfToday() {
+        try {
+            List<SalesStock> allStocks = getAllSalesStockList();
+            List<SalesStock> todaysSales = new ArrayList<>();
+            for (SalesStock salesStock : allStocks
+            ) {
+                AppUtils.showLog(TAG, "todayTimeStamp:" + salesStock.getCreatedAt());
+                if (DateUtils.isToday(salesStock.getCreatedAt())) {
+                    todaysSales.add(salesStock);
+                }
+            }
+
+            return todaysSales;
+
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+            return null;
+        }
+    }
+
 
     public List<SalesStock> getSyncedSalesStockList() {
         Realm realm = RealmDatabase.getInstance().getRealm();

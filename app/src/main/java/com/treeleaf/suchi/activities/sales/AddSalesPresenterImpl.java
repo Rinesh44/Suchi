@@ -78,9 +78,9 @@ public class AddSalesPresenterImpl implements AddSalesPresenter {
                 }
 
                 AppUtils.showLog(TAG, "GetSalesResponse: " + baseResponse);
-                List<Sales> salesList = mapSalesPbToModel(baseResponse.getSalesList());
+//                List<Sales> salesList = mapSalesPbToModel(baseResponse.getSalesList());
 
-                activity.getSalesSuccess(salesList);
+//                activity.getSalesSuccess(salesList);
             }
 
             @Override
@@ -91,14 +91,14 @@ public class AddSalesPresenterImpl implements AddSalesPresenter {
         }));
     }
 
-    private List<Sales> mapSalesPbToModel(List<SuchiProto.Sale> salesListPb) {
+/*    private List<Sales> mapSalesPbToModel(List<SuchiProto.Sale> salesListPb) {
         List<Sales> salesList = new ArrayList<>();
         for (SuchiProto.Sale salePb : salesListPb
         ) {
             Sales sales = new Sales();
             sales.setSaleId(salePb.getSaleId());
-            sales.setAmount(String.valueOf(salePb.getAmount()));
-            sales.setCreatedAt(String.valueOf(salePb.getCreatedAt()));
+      *//*      sales.setAmount(String.valueOf(salePb.getAmount()));
+            sales.setCreatedAt(String.valueOf(salePb.getCreatedAt()));*//*
             sales.setSync(salePb.getSync());
             sales.setUserId(salePb.getUserId());
 
@@ -143,12 +143,12 @@ public class AddSalesPresenterImpl implements AddSalesPresenter {
                 saleInventoryMainList.add(salesInventoryMain);
             }
 
-            sales.setSalesInventoryMain(saleInventoryMainList);
+//            sales.setSalesInventoryMain(saleInventoryMainList);
             salesList.add(sales);
         }
 
         return salesList;
-    }
+    }*/
 
 
 }

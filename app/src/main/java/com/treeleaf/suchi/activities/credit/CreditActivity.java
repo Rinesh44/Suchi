@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.card.MaterialCardView;
 import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.activities.base.BaseActivity;
 
@@ -20,9 +21,9 @@ public class CreditActivity extends BaseActivity implements View.OnClickListener
     @BindView(R.id.toolbar_title)
     TextView mToolbarTitle;
     @BindView(R.id.btn_credit_history)
-    MaterialButton mHistory;
+    MaterialCardView mHistory;
     @BindView(R.id.btn_creditors)
-    MaterialButton mAddCreditors;
+    MaterialCardView mAddCreditors;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
