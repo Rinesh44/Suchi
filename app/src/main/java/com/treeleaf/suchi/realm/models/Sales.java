@@ -3,8 +3,6 @@ package com.treeleaf.suchi.realm.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.util.List;
-
 import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;

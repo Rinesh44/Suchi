@@ -77,8 +77,6 @@ public class CreditorRepo extends Repo {
         } catch (Throwable throwable) {
             throwable.printStackTrace();
             return null;
-        } finally {
-            close(realm);
         }
     }
 

@@ -45,6 +45,8 @@ public class SalesDetailsActivity extends BaseActivity {
     TextView mSubBrand;
     @BindView(R.id.tv_category)
     TextView mCategory;
+    @BindView(R.id.tv_sold_at)
+    TextView mSoldAt;
 
     private SalesStockDto saleItems;
 
@@ -65,7 +67,7 @@ public class SalesDetailsActivity extends BaseActivity {
         mItemId.setText(saleItems.getId());
 
         StringBuilder unitPriceBuilder = new StringBuilder();
-        unitPriceBuilder.append("Rs. ");
+        if (!saleItems.getUnitPrice().contains("Rs. ")) unitPriceBuilder.append("Rs. ");
         unitPriceBuilder.append(saleItems.getUnitPrice());
         mUnitPrice.setText(unitPriceBuilder);
 
@@ -83,7 +85,7 @@ public class SalesDetailsActivity extends BaseActivity {
         mQuantity.setText(saleItems.getQuantity());
 
         StringBuilder sellingPriceBuilder = new StringBuilder();
-        sellingPriceBuilder.append("Rs. ");
+        if (!saleItems.getUnitPrice().contains("Rs. ")) sellingPriceBuilder.append("Rs. ");
         sellingPriceBuilder.append(saleItems.getUnitPrice());
         mSellingPrice.setText(sellingPriceBuilder);
 
@@ -96,6 +98,7 @@ public class SalesDetailsActivity extends BaseActivity {
         mSubBrand.setText(saleItems.getSubBrand());
         mCategory.setText(saleItems.getCategories());
 
+        mSoldAt.setText(getDate(saleItems.getCreatedAt()));
     }
 
     private void getIntentData() {

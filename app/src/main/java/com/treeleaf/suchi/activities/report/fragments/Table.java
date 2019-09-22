@@ -32,6 +32,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 
 import butterknife.BindView;
@@ -123,8 +124,11 @@ public class Table extends Fragment implements ReportActivity.OnListReceiveListe
                         List<SalesStock> weeksSalesStock = SalesStockRepo.getInstance().
                                 getSalesStockByDate(timeStampsWeek[0], timeStampsWeek[1]);
 
-                        if (weeksSalesStock != null && !weeksSalesStock.isEmpty())
+                        if (weeksSalesStock != null && !weeksSalesStock.isEmpty()) {
                             manageReportRecyclerView(weeksSalesStock);
+                        } else {
+                            AppUtils.showLog(TAG, "week sales empty or null");
+                        }
 
                         break;
 
@@ -175,8 +179,8 @@ public class Table extends Fragment implements ReportActivity.OnListReceiveListe
 
         Date end = c.getTime();
         c.add(Calendar.DATE, -i);
-        c.set(Calendar.HOUR_OF_DAY, 6);
-        c.set(Calendar.MINUTE, 0);
+        c.set(Calendar.HOUR_OF_DAY, 0);
+        c.set(Calendar.MINUTE, 1);
         c.set(Calendar.SECOND, 0);
         Date start = c.getTime();
 
@@ -246,7 +250,13 @@ public class Table extends Fragment implements ReportActivity.OnListReceiveListe
 
 
     private void manageReportRecyclerView(List<SalesStock> salesStockList) {
-        totalItemCount = salesStockList.size();
+        HashSet<String> uniqueItems = new HashSet<>();
+        for (SalesStock salesStock : salesStockList
+        ) {
+            uniqueItems.add(salesStock.getName());
+        }
+
+        totalItemCount = uniqueItems.size();
         setVisibilityToViews();
         if (salesStockList.size() == 0) {
             mNoReports.setVisibility(View.VISIBLE);
@@ -275,7 +285,6 @@ public class Table extends Fragment implements ReportActivity.OnListReceiveListe
 
     private void setVisibilityToViews() {
         if (totalItemCount <= 0) {
-            mFilter.setVisibility(View.GONE);
             mItemsSold.setVisibility(View.GONE);
             mTotalAmountTop.setVisibility(View.GONE);
             mTotalAmountTopTitle.setVisibility(View.GONE);
@@ -283,7 +292,6 @@ public class Table extends Fragment implements ReportActivity.OnListReceiveListe
             mTotalAmountHolder.setVisibility(View.GONE);
             mTableReport.setVisibility(View.GONE);
         } else {
-            mFilter.setVisibility(View.VISIBLE);
             mItemsSold.setVisibility(View.VISIBLE);
             mTotalAmountTop.setVisibility(View.VISIBLE);
             mTotalAmountTopTitle.setVisibility(View.VISIBLE);

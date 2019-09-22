@@ -271,8 +271,8 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:fontFamily="@font/proxima_regular"
-            android:paddingBottom="80dp"
-            android:text="@string/no_reports_available"
+            android:paddingBottom="40dp"
+            android:text="@string/no_data_available"
             android:textSize="20sp" />
 
     </RelativeLayout>

@@ -110,6 +110,7 @@
                     android:layout_toEndOf="@+id/tv_sub_brand_title"
                     android:ellipsize="end"
                     android:fontFamily="@font/proxima_regular"
+                    android:maxLength="13"
                     android:singleLine="true"
                     android:textColor="@color/black" />
 
@@ -194,9 +195,30 @@
         android:layout_marginEnd="20dp">
 
         <TextView
+            android:id="@+id/tv_sold_at_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/proxima_regular"
+            android:text="@string/sold_at"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_sold_at"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toStartOf="@+id/tv_unit"
+            android:fontFamily="@font/proxima_regular"
+            android:text="22nd dec 2019, 4: 00 "
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <TextView
             android:id="@+id/qty_to_sell"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/tv_sold_at"
+            android:layout_marginTop="10dp"
             android:fontFamily="@font/proxima_regular"
             android:text="@string/sold_quantity"
             android:textColor="@color/black"
@@ -206,7 +228,8 @@
             android:id="@+id/tv_qty"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
+            android:layout_below="@id/tv_sold_at"
+            android:layout_marginTop="10dp"
             android:layout_toStartOf="@+id/tv_unit"
             android:fontFamily="@font/proxima_regular"
             android:text="6"
@@ -217,6 +240,7 @@
             android:id="@+id/tv_unit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_qty"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="0dp"
             android:fontFamily="@font/proxima_regular"
@@ -227,7 +251,7 @@
             android:id="@+id/tv_selling_price_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_unit"
+            android:layout_below="@+id/qty_to_sell"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/proxima_regular"
             android:text="@string/unit_price"
@@ -239,7 +263,7 @@
             android:id="@+id/tv_selling_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_unit"
+            android:layout_below="@+id/qty_to_sell"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="10dp"
             android:text="Rs. 25"

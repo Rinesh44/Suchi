@@ -7,12 +7,15 @@ import com.treeleaf.suchi.realm.models.Brands;
 import com.treeleaf.suchi.realm.models.Categories;
 import com.treeleaf.suchi.realm.models.Inventory;
 import com.treeleaf.suchi.realm.models.InventoryStocks;
+import com.treeleaf.suchi.realm.models.Sales;
+import com.treeleaf.suchi.realm.models.SalesStock;
 import com.treeleaf.suchi.realm.models.StockKeepingUnit;
 import com.treeleaf.suchi.realm.models.SubBrands;
 import com.treeleaf.suchi.realm.models.Units;
 import com.treeleaf.suchi.realm.repo.BrandRepo;
 import com.treeleaf.suchi.realm.repo.CategoryRepo;
 import com.treeleaf.suchi.realm.repo.InventoryRepo;
+import com.treeleaf.suchi.realm.repo.SalesRepo;
 import com.treeleaf.suchi.realm.repo.StockKeepingUnitRepo;
 import com.treeleaf.suchi.realm.repo.Repo;
 import com.treeleaf.suchi.realm.repo.SubBrandRepo;
@@ -103,12 +106,22 @@ public class LoginPresenterImpl implements LoginPresenter {
 
                 AppUtils.showLog(TAG, "subBrands: " + baseResponse.getSubBrandsList().toString());
 
-                mapInventories(baseResponse.getInventoriesList());
-                mapStockKeepingUnits(baseResponse.getStockKeepingUnitsList());
-                mapBrands(baseResponse.getBrandsList());
-                mapSubBrands(baseResponse.getSubBrandsList());
-                mapCategories(baseResponse.getCategoriesList());
-                mapUnits(baseResponse.getUnitsList());
+                AppUtils.showLog(TAG, "sales: " + baseResponse.getSalesList());
+
+                if (baseResponse.getInventoriesList() != null && !baseResponse.getInventoriesList().isEmpty())
+                    mapInventories(baseResponse.getInventoriesList());
+                if (baseResponse.getStockKeepingUnitsList() != null && !baseResponse.getStockKeepingUnitsList().isEmpty())
+                    mapStockKeepingUnits(baseResponse.getStockKeepingUnitsList());
+                if (baseResponse.getBrandsList() != null && !baseResponse.getBrandsList().isEmpty())
+                    mapBrands(baseResponse.getBrandsList());
+                if (baseResponse.getSubBrandsList() != null && !baseResponse.getSubBrandsList().isEmpty())
+                    mapSubBrands(baseResponse.getSubBrandsList());
+                if (baseResponse.getCategoriesList() != null && !baseResponse.getCategoriesList().isEmpty())
+                    mapCategories(baseResponse.getCategoriesList());
+                if (baseResponse.getUnitsList() != null && !baseResponse.getUnitsList().isEmpty())
+                    mapUnits(baseResponse.getUnitsList());
+                if (baseResponse.getSalesList() != null && !baseResponse.getSalesList().isEmpty())
+                    mapSales(baseResponse.getSalesList());
 
                 activity.getAllDataSuccess();
 
@@ -121,6 +134,64 @@ public class LoginPresenterImpl implements LoginPresenter {
 
             }
         }));
+    }
+
+    private void mapSales(List<SuchiProto.Sale> salesList) {
+        List<Sales> sales = new ArrayList<>();
+        for (SuchiProto.Sale salePb : salesList
+        ) {
+            Sales salesModel = new Sales();
+
+            RealmList<SalesStock> salesStockList = new RealmList<>();
+            List<SuchiProto.SaleInventory> saleInventoryListPb = salePb.getSaleInventoriesList();
+            for (SuchiProto.SaleInventory saleInventoryPb : saleInventoryListPb
+            ) {
+                SalesStock salesStock = new SalesStock();
+
+                Inventory inventory = InventoryRepo.getInstance().getInventoryById(saleInventoryPb.getInventoryId());
+                salesStock.setId(saleInventoryPb.getInventoryStockId());
+                salesStock.setInventory_id(saleInventoryPb.getInventoryId());
+                salesStock.setAmount(String.valueOf(saleInventoryPb.getAmount()));
+                salesStock.setQuantity(String.valueOf(saleInventoryPb.getQuantity()));
+                salesStock.setUnit(saleInventoryPb.getUnit().getName());
+                salesStock.setName(inventory.getSku().getName());
+                salesStock.setPhotoUrl(inventory.getSku().getPhoto_url());
+                salesStock.setUnitPrice(inventory.getSku().getUnitPrice());
+                salesStock.setBrand(inventory.getSku().getBrand().getName());
+                salesStock.setSubBrand(inventory.getSku().getSubBrands().getName());
+                salesStock.setCategories(inventory.getSku().getCategories().getName());
+                salesStock.setCreatedAt(saleInventoryPb.getCreatedAt());
+                salesStock.setUpdatedAt(saleInventoryPb.getUpdatedAt());
+
+                salesStockList.add(salesStock);
+            }
+
+            salesModel.setSaleId(salePb.getSaleId());
+            salesModel.setTotalAmount(String.valueOf(salePb.getAmount()));
+            salesModel.setCreatedAt(salePb.getCreatedAt());
+            salesModel.setUpdatedAt(salePb.getUpdatedAt());
+            salesModel.setSync(salePb.getSync());
+            salesModel.setUserId(salePb.getUserId());
+            salesModel.setCredit(salePb.getIsCredit());
+            salesModel.setCreditId(salePb.getCreditorId());
+            salesModel.setSalesStocks(salesStockList);
+
+            sales.add(salesModel);
+        }
+
+        SalesRepo.getInstance().saveSalesList(sales, new Repo.Callback() {
+            @Override
+            public void success(Object o) {
+                AppUtils.showLog(TAG, "sales data saved");
+            }
+
+            @Override
+            public void fail() {
+                AppUtils.showLog(TAG, "failed to save sales data");
+            }
+        });
+
+
     }
 
     private void mapInventories(List<SuchiProto.Inventory> inventoriesListPb) {

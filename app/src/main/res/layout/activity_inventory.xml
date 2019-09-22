@@ -43,7 +43,7 @@
                 android:layout_toRightOf="@+id/iv_sales"
                 android:elevation="8dp"
                 android:fontFamily="@font/proxima_regular"
-                android:text="@string/sales"
+                android:text="Sell stocks"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="25sp"
                 android:textStyle="bold" />
@@ -55,7 +55,7 @@
                 android:layout_marginStart="15dp"
                 android:layout_toRightOf="@+id/iv_sales"
                 android:fontFamily="@font/proxima_regular"
-                android:text="@string/view_sales_details" />
+                android:text="@string/sell_items_from_stock" />
 
         </RelativeLayout>
 
@@ -159,7 +159,7 @@
                 android:layout_marginStart="15dp"
                 android:layout_toRightOf="@id/iv_report"
                 android:fontFamily="@font/proxima_regular"
-                android:text="@string/view_report_details" />
+                android:text="@string/sale_details_in_chart_and_table" />
 
         </RelativeLayout>
 

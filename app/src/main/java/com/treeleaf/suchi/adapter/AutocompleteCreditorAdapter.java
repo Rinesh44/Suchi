@@ -68,14 +68,17 @@ public class AutocompleteCreditorAdapter extends ArrayAdapter {
 
         CircleImageView itemImage = (CircleImageView) view.findViewById(R.id.iv_item_icon);
         String image = creditorsDto.getPic();
-        Bitmap imageBitmap = decodeBase64(image);
         if (image != null) {
+            Bitmap imageBitmap = decodeBase64(image);
+
             RequestOptions options = new RequestOptions()
                     .fitCenter()
                     .placeholder(R.drawable.ic_user_proto)
                     .error(R.drawable.ic_user_proto);
 
             Glide.with(mContext).load(imageBitmap).apply(options).into(itemImage);
+        } else {
+            itemImage.setImageDrawable(mContext.getDrawable(R.drawable.ic_user_proto));
         }
 
         return view;

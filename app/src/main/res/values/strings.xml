@@ -65,7 +65,7 @@
     <string name="add_creditors">Add Creditors</string>
     <string name="sold_items">Sold items</string>
     <string name="amount_rs">AMOUNT (Rs.)</string>
-    <string name="total_amount">Total Amount:</string>
+    <string name="total_amount">Total Amount: </string>
     <string name="creditor_info">Creditor info</string>
     <string name="clear_dues">Clear dues</string>
     <string name="no_data_available">No Data Available</string>
@@ -107,8 +107,8 @@
     <string name="from_date">From date:</string>
     <string name="till_date">Till date:</string>
     <string name="price">Price</string>
-    <string name="highest_sold_item">Highest sold item</string>
-    <string name="lowest_sold_item">Lowest sold item</string>
+    <string name="highest_sold_item">Highest sold items</string>
+    <string name="lowest_sold_item">Lowest sold items</string>
     <string name="today">today</string>
     <string name="week">Week</string>
     <string name="month">Month</string>
@@ -138,4 +138,10 @@
     <string name="billing_statement">Billing Statement</string>
     <string name="view_credit_details">View credit details</string>
     <string name="add_creditor_details">Add creditor details</string>
+    <string name="sold_at">Sold at</string>
+    <string name="sale_details_in_chart_and_table">Sale details in chart and table</string>
+    <string name="sell_items_from_stock">Sell items from stock</string>
+    <string name="sync">Sync</string>
+    <string name="creditor">Creditor</string>
+    <string name="total_dues">Total Dues:</string>
 </resources>

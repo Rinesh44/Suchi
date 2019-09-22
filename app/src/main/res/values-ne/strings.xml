@@ -134,4 +134,8 @@
     <string name="table">तालिका</string>
     <string name="add_creditor_details">लेनदार विवरण थप्नुहोस्</string>
     <string name="view_credit_details">"क्रेडिट विवरण हेर्नुहोस् "</string>
+    <string name="sold_at">"बेचिएको समय "</string>
+    <string name="sell_items_from_stock">स्टकबाट आईटमहरू बिक्री गर्नुहोस्</string>
+    <string name="sale_details_in_chart_and_table">चार्ट र तालिकामा बिक्री विवरणहरू</string>
+    <string name="sync">"स्ञ्क "</string>
 </resources>

@@ -31,12 +31,23 @@ import com.treeleaf.suchi.activities.base.BaseActivity;
 import com.treeleaf.suchi.activities.credit.CreditActivity;
 import com.treeleaf.suchi.activities.inventory.InventoryActivity;
 import com.treeleaf.suchi.activities.profile.ProfileActivity;
+import com.treeleaf.suchi.activities.sales.SalesActivity;
 import com.treeleaf.suchi.api.Endpoints;
+import com.treeleaf.suchi.entities.SuchiProto;
+import com.treeleaf.suchi.realm.models.Sales;
+import com.treeleaf.suchi.realm.models.SalesStock;
+import com.treeleaf.suchi.realm.repo.SalesRepo;
+import com.treeleaf.suchi.realm.repo.SalesStockRepo;
+import com.treeleaf.suchi.realm.repo.UnitRepo;
 import com.treeleaf.suchi.utils.AppUtils;
 import com.treeleaf.suchi.utils.Constants;
 import com.treeleaf.suchi.utils.LocaleHelper;
+import com.treeleaf.suchi.utils.NetworkUtils;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
+import java.util.UUID;
 
 import javax.inject.Inject;
 
@@ -69,6 +80,7 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
     private DashboardPresenter presenter;
     private SharedPreferences preferences;
     private ActionBarDrawerToggle actionBarToggle;
+    private String token, userId;
 
     @Override
     protected void onResume() {
@@ -76,6 +88,7 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
         super.onResume();
         Menu menu = mNavigationView.getMenu();
         MenuItem nav_profile = menu.findItem(R.id.profile);
+        MenuItem nav_sales = menu.findItem(R.id.sync);
         MenuItem nav_settings = menu.findItem(R.id.settings);
         MenuItem nav_logout = menu.findItem(R.id.logout);
 
@@ -87,6 +100,7 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
         mCreditTitle.setText(resources.getString(R.string.credit));
         nav_profile.setTitle(resources.getString(R.string.profile));
         nav_settings.setTitle(resources.getString(R.string.settings));
+        nav_sales.setTitle(resources.getString(R.string.sync));
         nav_logout.setTitle(resources.getString(R.string.logout));
         mToolbarTitle.setText(resources.getString(R.string.dashboard));
     }
@@ -101,6 +115,8 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
 
         init();
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        token = preferences.getString(Constants.TOKEN, "");
+        userId = preferences.getString(Constants.USER_ID, "");
         presenter = new DashboardPresenterImpl(endpoints, this);
 
         mInventory.setOnClickListener(this);
@@ -114,6 +130,10 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
                 switch (id) {
                     case R.id.profile:
                         startActivity(new Intent(DashboardActivity.this, ProfileActivity.class));
+                        break;
+
+                    case R.id.sync:
+                        syncData();
                         break;
 
                     case R.id.settings:
@@ -132,6 +152,80 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
             }
         });
 
+    }
+
+    private void syncData() {
+        if (NetworkUtils.isNetworkConnected(this)) {
+            List<Sales> unSyncedSalesList = SalesRepo.getInstance().getUnsyncedSalesList();
+            if (token != null) {
+                if (unSyncedSalesList != null && !unSyncedSalesList.isEmpty()) {
+                    showLoading();
+                    postSalesDataToServer(unSyncedSalesList);
+                } else
+                    Toast.makeText(this, "No data found to sync", Toast.LENGTH_SHORT).show();
+            } else Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show();
+
+        } else {
+            Toast.makeText(this, "Please connect to internet.", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    private void postSalesDataToServer(List<Sales> unSyncedSalesList) {
+        List<SuchiProto.Sale> saleListProto = mapSalesToProto(unSyncedSalesList);
+        SuchiProto.SyncRequest syncRequest = SuchiProto.SyncRequest.newBuilder()
+                .addAllSales(saleListProto)
+                .build();
+
+        presenter.syncSalesData(token, syncRequest);
+    }
+
+    private List<SuchiProto.Sale> mapSalesToProto(List<Sales> unSyncedSalesList) {
+        List<SuchiProto.Sale> salesList = new ArrayList<>();
+        for (Sales sales : unSyncedSalesList
+        ) {
+            List<SalesStock> salesStockList = sales.getSalesStocks();
+            List<SuchiProto.SaleInventory> saleInventoryList = new ArrayList<>();
+            for (SalesStock salesStock : salesStockList
+            ) {
+
+                String unitId = UnitRepo.getInstance().getUnitIdByUnitName(salesStock.getUnit());
+
+                String formattedQuantity = "";
+                if (salesStock.getQuantity().contains(".")) {
+                    formattedQuantity = salesStock.getQuantity().substring
+                            (0, salesStock.getQuantity().length() - 2);
+                } else formattedQuantity = salesStock.getQuantity();
+
+                AppUtils.showLog(TAG, "formatedQwuantitY; " + formattedQuantity);
+
+                SuchiProto.SaleInventory saleInventory = SuchiProto.SaleInventory.newBuilder()
+                        .setAmount(Double.valueOf(salesStock.getAmount()))
+//                        .setCreatedAt(salesStock.getCreatedAt())
+                        .setInventoryId(salesStock.getInventory_id())
+                        .setInventoryStockId(salesStock.getId())
+                        .setQuantity(Integer.valueOf(formattedQuantity))
+                        .setUnitId(unitId)
+//                        .setUpdatedAt(salesStock.getUpdatedAt())
+                        .build();
+
+                saleInventoryList.add(saleInventory);
+            }
+
+
+            SuchiProto.Sale saleProto = SuchiProto.Sale.newBuilder()
+                    .setSaleId(sales.getSaleId())
+                    .setAmount(Double.valueOf(sales.getTotalAmount()))
+                    .setCreatedAt(sales.getCreatedAt())
+                    .setUpdatedAt(sales.getUpdatedAt())
+                    .addAllSaleInventories(saleInventoryList)
+                    .setUserId(userId)
+                    .build();
+
+            salesList.add(saleProto);
+        }
+
+        return salesList;
     }
 
 
@@ -172,6 +266,17 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
     @Override
     public void logoutFail(String msg) {
         showMessage(msg);
+    }
+
+    @Override
+    public void syncSuccess() {
+        AppUtils.showLog(TAG, "sync success");
+        Toast.makeText(this, "Sync success", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void syncFailed(String msg) {
+        AppUtils.showLog(TAG, msg);
     }
 
 

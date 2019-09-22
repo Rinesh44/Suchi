@@ -112,7 +112,7 @@ public class CreditEntry extends BaseActivity implements View.OnClickListener {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (!charSequence.toString().isEmpty()) {
+                if (!charSequence.toString().isEmpty() && charSequence.length() > 1) {
                     double paidAmount = Double.valueOf(charSequence.toString());
                     double amountDiff = totalAmount - paidAmount;
                     if (amountDiff >= 0) {

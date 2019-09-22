@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.google.android.material.card.MaterialCardView;
 import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.activities.base.BaseActivity;
+import com.treeleaf.suchi.activities.dashboard.DashboardActivity;
 import com.treeleaf.suchi.activities.inventory.stock.StockActivity;
 import com.treeleaf.suchi.activities.report.ReportActivity;
 import com.treeleaf.suchi.activities.sales.AddSalesActivity;
@@ -69,6 +70,14 @@ public class InventoryActivity extends BaseActivity implements View.OnClickListe
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent i = new Intent(InventoryActivity.this, DashboardActivity.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(new Intent(i));
     }
 
     @Override

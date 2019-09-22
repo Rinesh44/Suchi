@@ -382,11 +382,6 @@ public class SalesActivity extends BaseActivity implements SalesView {
         showMessage(msg);
     }
 
-    @Override
-    public void onBackPressed() {
-        startActivity(new Intent(SalesActivity.this, InventoryActivity.class));
-    }
-
     /*    @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

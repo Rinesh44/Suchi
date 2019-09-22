@@ -26,6 +26,24 @@ public class SalesRepo extends Repo {
         return salesRepo;
     }
 
+    public void saveSales(final Sales sales, final Callback callback) {
+        final Realm realm = RealmDatabase.getInstance().getRealm();
+        try {
+            realm.executeTransaction(new Realm.Transaction() {
+                @Override
+                public void execute(Realm realm) {
+                    realm.copyToRealmOrUpdate(sales);
+                    callback.success(true);
+                }
+            });
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+            callback.fail();
+        } finally {
+            close(realm);
+        }
+    }
+
     public void saveSalesList(final List<Sales> salesList, final Callback callback) {
         final Realm realm = RealmDatabase.getInstance().getRealm();
 
@@ -74,7 +92,7 @@ public class SalesRepo extends Repo {
     public List<Sales> getUnsyncedSalesList() {
         Realm realm = RealmDatabase.getInstance().getRealm();
         try {
-            return new ArrayList<>(realm.where(Sales.class).equalTo("synced", false).findAll());
+            return new ArrayList<>(realm.where(Sales.class).equalTo("sync", false).findAll());
         } catch (Throwable throwable) {
             throwable.printStackTrace();
             return null;
@@ -101,7 +119,6 @@ public class SalesRepo extends Repo {
             return null;
         }
     }
-
 
 
     public void deleteAllSales(final Callback callback) {

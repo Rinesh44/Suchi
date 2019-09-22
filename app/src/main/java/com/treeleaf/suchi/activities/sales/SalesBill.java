@@ -18,18 +18,22 @@ import com.treeleaf.suchi.activities.base.BaseActivity;
 import com.treeleaf.suchi.activities.credit.CreditEntry;
 import com.treeleaf.suchi.activities.inventory.InventoryActivity;
 import com.treeleaf.suchi.realm.models.InventoryStocks;
+import com.treeleaf.suchi.realm.models.Sales;
 import com.treeleaf.suchi.realm.models.SalesStock;
 import com.treeleaf.suchi.realm.repo.InventoryStocksRepo;
 import com.treeleaf.suchi.realm.repo.Repo;
+import com.treeleaf.suchi.realm.repo.SalesRepo;
 import com.treeleaf.suchi.realm.repo.SalesStockRepo;
 import com.treeleaf.suchi.utils.AppUtils;
 import com.treeleaf.suchi.utils.Constants;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.realm.RealmList;
 
 public class SalesBill extends BaseActivity {
     private static final String TAG = "SalesBill";
@@ -54,6 +58,7 @@ public class SalesBill extends BaseActivity {
 
     List<SalesStock> updatedSalesStockList;
     private SharedPreferences preferences;
+    private String userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -129,6 +134,7 @@ public class SalesBill extends BaseActivity {
         }
         mToolbarTitle.setText(getResources().getString(R.string.billing_statement));
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        userId = preferences.getString(Constants.USER_ID, "");
 
     }
 
@@ -162,7 +168,35 @@ public class SalesBill extends BaseActivity {
     public void saveSalesData() {
         deductInventoryStockQuantity();
 
-        SalesStockRepo.getInstance().saveSalesStockList(updatedSalesStockList, new Repo.Callback() {
+        RealmList<SalesStock> realmUpdatedList = new RealmList<>();
+        realmUpdatedList.addAll(updatedSalesStockList);
+
+        String saleId = UUID.randomUUID().toString().replace("-", "");
+        Sales sales = new Sales(saleId, String.valueOf(totalAmount), System.currentTimeMillis(), 0,
+                false, userId, false, "0", realmUpdatedList);
+
+        SalesRepo.getInstance().saveSales(sales, new Repo.Callback() {
+            @Override
+            public void success(Object o) {
+                AppUtils.showLog(TAG, "sales saved");
+                Toast.makeText(SalesBill.this, "Items sold", Toast.LENGTH_SHORT).show();
+
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putBoolean(Constants.SALES_DATA_REMAINING_TO_SYNC, true);
+                editor.apply();
+
+                gotoSalesActivity();
+
+            }
+
+            @Override
+            public void fail() {
+                AppUtils.showLog(TAG, "failed to save sales");
+            }
+        });
+
+
+   /*     SalesStockRepo.getInstance().saveSalesStockList(updatedSalesStockList, new Repo.Callback() {
             @Override
             public void success(Object o) {
                 Toast.makeText(SalesBill.this, "Sale item added", Toast.LENGTH_SHORT).show();
@@ -178,7 +212,9 @@ public class SalesBill extends BaseActivity {
             public void fail() {
                 AppUtils.showLog(TAG, "failed to save sale item");
             }
-        });
+        });*/
+
+
     }
 
     private void deductInventoryStockQuantity() {
@@ -218,8 +254,8 @@ public class SalesBill extends BaseActivity {
         });
     }
 
-    public void gotoInventoryActivity() {
-        Intent intent = new Intent(SalesBill.this, InventoryActivity.class);
+    public void gotoSalesActivity() {
+        Intent intent = new Intent(SalesBill.this, AddSalesActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }

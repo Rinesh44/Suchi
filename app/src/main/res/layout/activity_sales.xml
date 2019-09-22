@@ -41,16 +41,126 @@
             android:paddingStart="15dp"
             android:paddingEnd="10dp" />
 
+        <LinearLayout
+            android:id="@+id/ll_table_titles"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@id/et_search"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@color/colorPrimary"
+            android:orientation="horizontal"
+            android:weightSum="17">
+
+            <TextView
+                android:id="@+id/tv_name_title"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="4"
+                android:fontFamily="@font/proxima_regular"
+                android:gravity="center"
+                android:text="@string/name"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_qty_title"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:fontFamily="@font/proxima_regular"
+                android:gravity="center"
+                android:text="@string/qty"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/tv_date_title"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="8"
+                android:fontFamily="@font/proxima_regular"
+                android:gravity="center"
+                android:text="@string/date"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/tv_amount_title"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:fontFamily="@font/proxima_regular"
+                android:gravity="center"
+                android:text="@string/amount"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_sales"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/et_search"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ll_table_titles"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
             android:clipToPadding="false" />
+
+        <LinearLayout
+            android:id="@+id/ll_total_amount_holder"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@+id/rv_sales"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/table_row_bg"
+            android:orientation="horizontal"
+            android:weightSum="17">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="11">
+
+                <TextView
+                    android:id="@+id/tv_total_amount_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/proxima_regular"
+                    android:gravity="end"
+                    android:text="@string/total_amount"
+                    android:textColor="@color/black"
+                    android:textSize="17sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="6">
+
+                <TextView
+                    android:id="@+id/tv_total_amount"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="10dp"
+                    android:fontFamily="@font/proxima_regular"
+                    android:gravity="center_vertical|end"
+                    android:text="23536"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+
+        </LinearLayout>
 
     </RelativeLayout>
 
