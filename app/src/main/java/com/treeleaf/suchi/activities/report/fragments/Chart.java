@@ -72,8 +72,6 @@ public class Chart extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
     }
 
     @Override
@@ -117,6 +115,7 @@ public class Chart extends Fragment {
                         String uniqueItemsSoldThisWeek = getSoldItemsUnique(weeksSalesStock);
                         mSoldItemsCount.setText(uniqueItemsSoldThisWeek);
                         setVisibilityToViews(weeksSalesStock);
+
                         break;
 
                     case R.id.btn_month:
@@ -127,6 +126,7 @@ public class Chart extends Fragment {
 
                         mSoldItemsCount.setText(uniqueItemsSoldThisMonth);
                         setVisibilityToViews(monthSalesStock);
+
                         break;
 
                     case R.id.btn_3months:
@@ -146,6 +146,7 @@ public class Chart extends Fragment {
                         String uniqueItemsSoldP6M = getSoldItemsUnique(p6monthSalesStock);
                         mSoldItemsCount.setText(uniqueItemsSoldP6M);
                         setVisibilityToViews(p6monthSalesStock);
+
                         break;
                 }
 
@@ -154,6 +155,7 @@ public class Chart extends Fragment {
 
         todaysSalesStocks = SalesStockRepo.getInstance().getSalesStockOfToday();
         mSoldItemsCount.setText(String.valueOf(todaysSalesStocks.size()));
+
         if (todaysSalesStocks != null) {
             AppUtils.showLog(TAG, "list is null or empty");
             setVisibilityToViews(todaysSalesStocks);
@@ -504,5 +506,6 @@ public class Chart extends Fragment {
         AppUtils.showLog(TAG, "end6: " + end);
         return new long[]{start.getTime(), end.getTime()};
     }
+
 
 }
