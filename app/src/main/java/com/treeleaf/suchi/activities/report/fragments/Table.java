@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -250,6 +251,7 @@ public class Table extends Fragment implements ReportActivity.OnListReceiveListe
 
 
     private void manageReportRecyclerView(List<SalesStock> salesStockList) {
+        totalItemCount = 0;
         HashSet<String> uniqueItems = new HashSet<>();
         for (SalesStock salesStock : salesStockList
         ) {
@@ -366,12 +368,13 @@ public class Table extends Fragment implements ReportActivity.OnListReceiveListe
 
     @Override
     public void onListReceive(List<SalesStock> salesStockListByDate) {
-        if (salesStockListByDate != null && !salesStockListByDate.isEmpty()) {
+        if (salesStockListByDate != null) {
             AppUtils.showLog(TAG, "salesStockListSize: " + salesStockListByDate.size());
 
             manageReportRecyclerView(salesStockListByDate);
         } else {
-            AppUtils.showLog(TAG, "sales list is empty");
+            totalItemCount = 0;
+            setVisibilityToViews();
         }
     }
 }

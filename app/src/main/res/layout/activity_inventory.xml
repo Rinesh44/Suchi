@@ -43,7 +43,7 @@
                 android:layout_toRightOf="@+id/iv_sales"
                 android:elevation="8dp"
                 android:fontFamily="@font/proxima_regular"
-                android:text="Sell stocks"
+                android:text="@string/sell_stocks"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="25sp"
                 android:textStyle="bold" />

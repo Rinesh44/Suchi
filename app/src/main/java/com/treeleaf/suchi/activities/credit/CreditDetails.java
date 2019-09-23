@@ -58,6 +58,8 @@ public class CreditDetails extends BaseActivity {
     TextView mTotalAmount;
     @BindView(R.id.btn_clear_dues)
     MaterialButton mClearDues;
+    @BindView(R.id.tv_added_at)
+    TextView mAddedAt;
 
     private CreditDto credit;
     private double totalAmount = 0;
@@ -149,6 +151,11 @@ public class CreditDetails extends BaseActivity {
         phoneBuilder.append("Phone: ");
         phoneBuilder.append(creditors.getPhone());
         mPhone.setText(phoneBuilder);
+
+        StringBuilder addedDateBuilder = new StringBuilder();
+        addedDateBuilder.append("Added At: ");
+        addedDateBuilder.append(getDate(creditors.getCreatedAt()));
+        mAddedAt.setText(addedDateBuilder);
 
     }
 

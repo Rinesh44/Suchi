@@ -72,7 +72,6 @@
     <string name="date">मिति</string>
     <string name="details">विवरण</string>
     <string name="due_amount">" बाँकी रकम"</string>
-    <string name="english">"अंग्रेजी "</string>
     <string name="enter_the_key_provided_to_you">" तपाइँलाई प्रदान गरिएको कुञ्जी प्रविष्ट गर्नुहोस्"</string>
     <string name="filter_by">फिल्टर:</string>
     <string name="from_date">" मिति देखि: "</string>
@@ -99,7 +98,7 @@
     <string name="search_creditor">"लेनदेन खोज्नुहोस् "</string>
     <string name="search_stocks">"स्टक खोज्नुहोस् "</string>
     <string name="select">"चयन गर्नुहोस् "</string>
-    <string name="search_sku">"सामान खोज्नुहोस् "</string>
+    <string name="search_sku">"स्टक खोज्नुहोस् "</string>
     <string name="select_brand">"ब्रान्ड चयन गर्नुहोस्: "</string>
     <string name="select_category">" कोटी चयन गर्नुहोस्:"</string>
     <string name="select_item">" वस्तु चयन गर्नुहोस्:"</string>
@@ -138,4 +137,9 @@
     <string name="sell_items_from_stock">स्टकबाट आईटमहरू बिक्री गर्नुहोस्</string>
     <string name="sale_details_in_chart_and_table">चार्ट र तालिकामा बिक्री विवरणहरू</string>
     <string name="sync">"स्ञ्क "</string>
+    <string name="creditor">लेनदार</string>
+    <string name="select_date">"मिति चयन गर्नुहोस् "</string>
+    <string name="show_all">"सबै देखाऊ "</string>
+    <string name="total_dues">"जम्मा रकम: "</string>
+    <string name="sell_stocks">स्टक बेच्ने</string>
 </resources>

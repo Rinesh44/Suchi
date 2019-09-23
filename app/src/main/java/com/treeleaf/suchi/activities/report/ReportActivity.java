@@ -116,22 +116,27 @@ public class ReportActivity extends BaseActivity {
                 switch (selectedFilter) {
                     case 1:
                         filterByBrand();
+                        mViewpager.setCurrentItem(1);
                         break;
 
                     case 2:
                         filterBySubBrand();
+                        mViewpager.setCurrentItem(1);
                         break;
 
                     case 3:
                         filterByCategories();
+                        mViewpager.setCurrentItem(1);
                         break;
 
                     case 4:
                         filterByDates(mFromDate, mToDate);
+                        mViewpager.setCurrentItem(1);
                         break;
 
                     case 5:
                         filterByItems();
+                        mViewpager.setCurrentItem(1);
                         break;
                 }
 
@@ -143,46 +148,27 @@ public class ReportActivity extends BaseActivity {
 
     private void filterByItems() {
         List<SalesStock> stocksByItems = SalesStockRepo.getInstance().getSalesStockByItem((String) itemSpinner.getSelectedItem());
-        if (stocksByItems != null && !stocksByItems.isEmpty()) {
-            toggleBottomSheet();
-            onListReceiveListener.onListReceive(stocksByItems);
-        } else {
-            toggleBottomSheet();
-            Toast.makeText(this, "Not found", Toast.LENGTH_SHORT).show();
-        }
+        toggleBottomSheet();
+        onListReceiveListener.onListReceive(stocksByItems);
     }
 
     private void filterByCategories() {
         List<SalesStock> stocksByCategory = SalesStockRepo.getInstance().getSalesStockByCategory((String) categorySpinner.getSelectedItem());
-        if (stocksByCategory != null && !stocksByCategory.isEmpty()) {
-            toggleBottomSheet();
-            onListReceiveListener.onListReceive(stocksByCategory);
-        } else {
-            toggleBottomSheet();
-            Toast.makeText(this, "Not found", Toast.LENGTH_SHORT).show();
-        }
+        toggleBottomSheet();
+        onListReceiveListener.onListReceive(stocksByCategory);
     }
 
     private void filterBySubBrand() {
         List<SalesStock> stocksBySubBrand = SalesStockRepo.getInstance().getSalesStockBySubBrand((String) subBrandSpinner.getSelectedItem());
-        if (stocksBySubBrand != null && !stocksBySubBrand.isEmpty()) {
-            toggleBottomSheet();
-            onListReceiveListener.onListReceive(stocksBySubBrand);
-        } else {
-            toggleBottomSheet();
-            Toast.makeText(this, "Not found", Toast.LENGTH_SHORT).show();
-        }
+        toggleBottomSheet();
+        onListReceiveListener.onListReceive(stocksBySubBrand);
+
     }
 
     private void filterByBrand() {
         List<SalesStock> stocksByBrand = SalesStockRepo.getInstance().getSalesStockByBrand((String) brandSpinner.getSelectedItem());
-        if (stocksByBrand != null && !stocksByBrand.isEmpty()) {
-            toggleBottomSheet();
-            onListReceiveListener.onListReceive(stocksByBrand);
-        } else {
-            toggleBottomSheet();
-            Toast.makeText(this, "Not found", Toast.LENGTH_SHORT).show();
-        }
+        toggleBottomSheet();
+        onListReceiveListener.onListReceive(stocksByBrand);
     }
 
     private void filterByDates(EditText mFromDate, EditText mToDate) {

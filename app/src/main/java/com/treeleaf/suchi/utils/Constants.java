@@ -15,5 +15,7 @@ public class Constants {
     public static final String ADDRESS = "address";
     public static final String OWNERNAME = "owner_name";
     public static final String SELECTED_LANGUAGE = "Locale.Helper.Selected.Language";
+    public static final String NOTIFICATION = "notification";
+    public static final String STOCK_THRESHOLD_NOTIFICATION = "stock_threshold_notification";
 
 }

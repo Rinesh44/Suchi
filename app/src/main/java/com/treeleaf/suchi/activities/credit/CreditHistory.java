@@ -124,7 +124,8 @@ public class CreditHistory extends BaseActivity implements CreditHistoryView {
         mTotalAmtBottomHolder.setVisibility(View.GONE);
         mTableTitles.setVisibility(View.GONE);
         mTotalAmtTop.setVisibility(View.GONE);
-
+        mCreditHistory.setVisibility(View.GONE);
+        mSearch.setVisibility(View.GONE);
     }
 
 
@@ -133,6 +134,8 @@ public class CreditHistory extends BaseActivity implements CreditHistoryView {
         mTotalAmtBottomHolder.setVisibility(View.VISIBLE);
         mTableTitles.setVisibility(View.VISIBLE);
         mTotalAmtTop.setVisibility(View.VISIBLE);
+        mCreditHistory.setVisibility(View.VISIBLE);
+        mSearch.setVisibility(View.VISIBLE);
     }
 
 
@@ -160,11 +163,12 @@ public class CreditHistory extends BaseActivity implements CreditHistoryView {
         super.onResume();
         mSearch.getText().clear();
         setUpRecyclerView(creditList);
-        invalidateOptionsMenu();
+//        invalidateOptionsMenu();
 
     }
 
     private void setUpRecyclerView(List<Credit> creditList) {
+        makeViewsVisible();
         mCreditHistory.setLayoutManager(new LinearLayoutManager(this));
         if (creditList == null || creditList.isEmpty()) {
             mNoData.setVisibility(View.VISIBLE);
@@ -253,8 +257,7 @@ public class CreditHistory extends BaseActivity implements CreditHistoryView {
     }
 
     @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-//        if (preferences.getBoolean(Constants.CREDIT_DATA_REMAINING_TO_SYNC, false))
+    public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_date, menu);
         return true;
     }
@@ -297,6 +300,10 @@ public class CreditHistory extends BaseActivity implements CreditHistoryView {
                 }*/
                 return true;
 
+            case R.id.action_all:
+                setUpRecyclerView(creditList);
+                return true;
+
 
             default:
                 return super.onOptionsItemSelected(item);
@@ -331,7 +338,7 @@ public class CreditHistory extends BaseActivity implements CreditHistoryView {
         if (!filterByDate.isEmpty()) {
             setUpRecyclerView(filterByDate);
         } else {
-            Toast.makeText(this, "no data found", Toast.LENGTH_SHORT).show();
+            makeViewsInVisible();
         }
     }
 
