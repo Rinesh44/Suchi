@@ -3,7 +3,6 @@ package com.treeleaf.suchi.activities.report.fragments;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +11,6 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -27,11 +25,12 @@ import com.treeleaf.suchi.dto.SalesStockDto;
 import com.treeleaf.suchi.realm.models.SalesStock;
 import com.treeleaf.suchi.realm.repo.SalesStockRepo;
 import com.treeleaf.suchi.utils.AppUtils;
-import com.treeleaf.suchi.viewmodel.SalesListViewModel;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -165,6 +164,7 @@ public class Table extends Fragment implements ReportActivity.OnListReceiveListe
         });
 
         todaysSalesStocks = SalesStockRepo.getInstance().getSalesStockOfToday();
+        AppUtils.showLog(TAG, "listSizetable: " + todaysSalesStocks.size());
         manageReportRecyclerView(todaysSalesStocks);
 
     }
@@ -251,6 +251,15 @@ public class Table extends Fragment implements ReportActivity.OnListReceiveListe
 
 
     private void manageReportRecyclerView(List<SalesStock> salesStockList) {
+
+        Collections.sort(salesStockList, new Comparator<SalesStock>() {
+            @Override
+            public int compare(SalesStock salesStock, SalesStock t1) {
+                return Long.compare(t1.getCreatedAt(), salesStock.getCreatedAt());
+            }
+        });
+
+
         totalItemCount = 0;
         HashSet<String> uniqueItems = new HashSet<>();
         for (SalesStock salesStock : salesStockList

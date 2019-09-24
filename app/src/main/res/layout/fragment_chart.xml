@@ -132,7 +132,6 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
                 android:orientation="horizontal"
                 android:visibility="visible"
                 android:weightSum="2">
@@ -245,6 +244,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
                 android:orientation="horizontal"
                 android:visibility="visible"
                 android:weightSum="2">
@@ -386,6 +386,12 @@
                 </RelativeLayout>
 
             </LinearLayout>
+
+            <com.github.mikephil.charting.charts.PieChart
+                android:id="@+id/pie_chart"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:layout_below="@+id/ll_bottom" />
 
             <TextView
                 android:id="@+id/tv_no_reports"
