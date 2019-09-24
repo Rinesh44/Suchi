@@ -13,10 +13,20 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.AxisBase;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.formatter.IAxisValueFormatter;
+import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.realm.models.SalesStock;
 import com.treeleaf.suchi.realm.repo.SalesStockRepo;
@@ -25,6 +35,8 @@ import com.treeleaf.suchi.utils.AppUtils;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -59,6 +71,8 @@ public class Chart extends Fragment {
     LinearLayout mHighestSoldItemHolder;
     @BindView(R.id.ll_lowest_holder)
     LinearLayout mLowestSoldItemHolder;
+    @BindView(R.id.line_chart)
+    LineChart lineChart;
 
     private Unbinder unbinder;
     private List<SalesStock> todaysSalesStocks;
@@ -106,6 +120,7 @@ public class Chart extends Fragment {
                         String uniqueItemsSoldToday = getSoldItemsUnique(todaysSalesStocks);
                         mSoldItemsCount.setText(uniqueItemsSoldToday);
                         setVisibilityToViews(todaysSalesStocks);
+                        setUpLineChart(todaysSalesStocks, "hours");
                         break;
 
                     case R.id.btn_week:
@@ -115,7 +130,7 @@ public class Chart extends Fragment {
                         String uniqueItemsSoldThisWeek = getSoldItemsUnique(weeksSalesStock);
                         mSoldItemsCount.setText(uniqueItemsSoldThisWeek);
                         setVisibilityToViews(weeksSalesStock);
-
+                        setUpLineChart(weeksSalesStock, "weekdays");
                         break;
 
                     case R.id.btn_month:
@@ -159,8 +174,113 @@ public class Chart extends Fragment {
         if (todaysSalesStocks != null) {
             AppUtils.showLog(TAG, "list is null or empty");
             setVisibilityToViews(todaysSalesStocks);
+
+            setUpLineChart(todaysSalesStocks, "hours");
         }
 
+    }
+
+    private void setUpLineChart(List<SalesStock> salesList, String type) {
+        ArrayList<Entry> entries = new ArrayList<>();
+
+        Collections.sort(salesList, new Comparator<SalesStock>() {
+            @Override
+            public int compare(SalesStock o1, SalesStock o2) {
+                return Long.compare(o1.getCreatedAt(), o2.getCreatedAt());
+            }
+        });
+
+
+        for (SalesStock salesStock : salesList
+        ) {
+            switch (type) {
+                case "hours":
+                    String getTimeHours = java.text.DateFormat.getTimeInstance().format(salesStock.getCreatedAt());
+                    String[] separatedHours = getTimeHours.split(":");
+                    String hour = separatedHours[0];
+                    AppUtils.showLog(TAG, "hours: " + hour);
+                    AppUtils.showLog(TAG, "amounts: " + salesStock.getAmount());
+
+                    entries.add(new Entry(Float.valueOf(hour), Float.valueOf(salesStock.getAmount())));
+                    break;
+
+                case "weekdays":
+                    Calendar c = Calendar.getInstance();
+                    c.setTimeInMillis(salesStock.getCreatedAt());
+                    float dayInWeek = c.get(Calendar.DAY_OF_WEEK);
+
+                    AppUtils.showLog(TAG, "weekDayNum: " + dayInWeek);
+                    AppUtils.showLog(TAG, "amounts: " + salesStock.getAmount());
+
+                    entries.add(new Entry(dayInWeek, Float.valueOf(salesStock.getAmount())));
+                    break;
+
+                case "monthdays":
+                    String getTimeMonthDays = java.text.DateFormat.getTimeInstance().format(salesStock.getCreatedAt());
+                    String[] separatedMonthDays = getTimeMonthDays.split(":");
+                    String dayInMonth = separatedMonthDays[0];
+                    AppUtils.showLog(TAG, "hours: " + dayInMonth);
+                    AppUtils.showLog(TAG, "amounts: " + salesStock.getAmount());
+
+                    entries.add(new Entry(Float.valueOf(dayInMonth), Float.valueOf(salesStock.getAmount())));
+                    break;
+
+                case "months":
+                    String getTimeMonths = java.text.DateFormat.getTimeInstance().format(salesStock.getCreatedAt());
+                    String[] separatedMonths = getTimeMonths.split(":");
+                    String month = separatedMonths[0];
+                    AppUtils.showLog(TAG, "hours: " + month);
+                    AppUtils.showLog(TAG, "amounts: " + salesStock.getAmount());
+
+                    entries.add(new Entry(Float.valueOf(month), Float.valueOf(salesStock.getAmount())));
+                    break;
+            }
+
+
+        }
+
+        LineDataSet dataSet = new LineDataSet(entries, "Amount vs Time");
+        dataSet.setColor(ContextCompat.getColor(getActivity(), R.color.colorPrimary));
+        dataSet.setValueTextColor(ContextCompat.getColor(getActivity(), R.color.colorPrimaryDark));
+
+        //****
+        // Controlling X axis
+        XAxis xAxis = lineChart.getXAxis();
+        // Set the xAxis position to bottom. Default is top
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+
+        if (type.equals("weekdays")) {
+            //Customizing x axis value
+            final String[] weekDays = new String[]{"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
+
+            ValueFormatter valueFormatter = new ValueFormatter() {
+                @Override
+                public String getFormattedValue(float value) {
+                    return weekDays[(int) value];
+                }
+            };
+            xAxis.setValueFormatter(valueFormatter);
+        }
+
+
+        xAxis.setGranularity(1f); // minimum axis-step (interval) is 1
+
+        //***
+        // Controlling right side of y axis
+        YAxis yAxisRight = lineChart.getAxisRight();
+        yAxisRight.setEnabled(false);
+
+        //***
+        // Controlling left side of y axis
+        YAxis yAxisLeft = lineChart.getAxisLeft();
+        yAxisLeft.setGranularity(1f);
+
+        // Setting Data
+        LineData data = new LineData(dataSet);
+        lineChart.setData(data);
+        lineChart.animateX(1500);
+        //refresh
+        lineChart.invalidate();
     }
 
     private String getSoldItemsUnique(List<SalesStock> todaysSalesStocks) {
@@ -178,11 +298,12 @@ public class Chart extends Fragment {
             mNoReports.setVisibility(View.VISIBLE);
             mTop.setVisibility(View.GONE);
             mBottom.setVisibility(View.GONE);
+            lineChart.setVisibility(View.GONE);
         } else {
             mNoReports.setVisibility(View.GONE);
             mTop.setVisibility(View.VISIBLE);
             mBottom.setVisibility(View.VISIBLE);
-
+            lineChart.setVisibility(View.VISIBLE);
 
             List<SalesStock> filteredStockList = new ArrayList<>();
             if (!salesStockList.isEmpty() && salesStockList.size() > 1) {

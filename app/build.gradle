@@ -127,4 +127,7 @@ dependencies {
 
     //swipe reveal layout for reclerview
     implementation 'com.chauthai.swipereveallayout:swipe-reveal-layout:1.4.1'
+
+    //for charts
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 }

@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="Gradle: io.fotoapparat.fotoapparat:adapter-rxjava2:2.7.0@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/bf0d669c8ee4678ebcedb95c4f674ed2/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/bf0d669c8ee4678ebcedb95c4f674ed2/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/8f11131b30b7d2dcf542bbb3ce4bb7f1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/8f11131b30b7d2dcf542bbb3ce4bb7f1/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

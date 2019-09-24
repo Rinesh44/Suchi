@@ -44,6 +44,7 @@ public class InventoryActivity extends BaseActivity implements View.OnClickListe
         ButterKnife.bind(this);
 
         init();
+        AppUtils.showLog(TAG, "timestamp: " + System.currentTimeMillis());
 
         mSales.setOnClickListener(this);
         mStock.setOnClickListener(this);

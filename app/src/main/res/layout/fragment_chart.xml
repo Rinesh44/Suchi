@@ -117,11 +117,18 @@
 
             </HorizontalScrollView>
 
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/line_chart"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:layout_below="@id/hsv_filter"
+                android:layout_margin="10dp" />
+
             <LinearLayout
                 android:id="@+id/ll_top"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/hsv_filter"
+                android:layout_below="@+id/line_chart"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
