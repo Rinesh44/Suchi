@@ -122,13 +122,59 @@
                 android:layout_width="match_parent"
                 android:layout_height="400dp"
                 android:layout_below="@id/hsv_filter"
-                android:layout_margin="10dp" />
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_toEndOf="@+id/tv_yaxis" />
+
+            <TextView
+                android:id="@+id/tv_yaxis"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="270dp"
+                android:rotation="-90"
+                android:text="(Amount)" />
+
+            <TextView
+                android:id="@+id/tv_xaxis"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/line_chart"
+                android:layout_centerHorizontal="true"
+                android:text="(Hours)" />
+
+            <RelativeLayout
+                android:id="@+id/rl_stats"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/pie_chart"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp">
+
+                <TextView
+                    android:id="@+id/tv_stat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/statistics"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_toEndOf="@+id/tv_stat"
+                    android:background="@color/colorAccent" />
+
+            </RelativeLayout>
 
             <LinearLayout
                 android:id="@+id/ll_top"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/line_chart"
+                android:layout_below="@id/rl_stats"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
@@ -235,6 +281,7 @@
                 </RelativeLayout>
 
             </LinearLayout>
+
 
             <LinearLayout
                 android:id="@+id/ll_bottom"
@@ -391,7 +438,9 @@
                 android:id="@+id/pie_chart"
                 android:layout_width="match_parent"
                 android:layout_height="400dp"
-                android:layout_below="@+id/ll_bottom" />
+                android:layout_below="@+id/tv_xaxis"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp" />
 
             <TextView
                 android:id="@+id/tv_no_reports"

@@ -148,4 +148,8 @@
     <string name="show_all">Show all</string>
     <string name="sell_stocks">Sell stocks</string>
     <string name="notification_settings">Notification settings</string>
+    <string name="hours">(Hour)</string>
+    <string name="days">(Days)</string>
+    <string name="months">Months</string>
+    <string name="statistics">Statistics</string>
 </resources>
