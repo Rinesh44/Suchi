@@ -4,9604 +4,10064 @@
 package com.treeleaf.suchi.rpc;
 
 public final class SuchiRpcProto {
-    private SuchiRpcProto() {
-    }
+  private SuchiRpcProto() {}
+  public static void registerAllExtensions(
+      com.google.protobuf.ExtensionRegistryLite registry) {
+  }
+  public interface SuchiBaseRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:treeleaf.suchi.rpc.SuchiBaseRequest)
+      com.google.protobuf.MessageLiteOrBuilder {
 
-    public static void registerAllExtensions(
-            com.google.protobuf.ExtensionRegistryLite registry) {
-    }
-
-    public interface SuchiBaseRequestOrBuilder extends
-            // @@protoc_insertion_point(interface_extends:treeleaf.suchi.rpc.SuchiBaseRequest)
-            com.google.protobuf.MessageLiteOrBuilder {
-
-        /**
-         * <code>optional string refId = 1;</code>
-         */
-        String getRefId();
-
-        /**
-         * <code>optional string refId = 1;</code>
-         */
-        com.google.protobuf.ByteString
+    /**
+     * <code>optional string refId = 1;</code>
+     */
+    String getRefId();
+    /**
+     * <code>optional string refId = 1;</code>
+     */
+    com.google.protobuf.ByteString
         getRefIdBytes();
 
-        /**
-         * <code>optional string stringValue = 2;</code>
-         */
-        String getStringValue();
-
-        /**
-         * <code>optional string stringValue = 2;</code>
-         */
-        com.google.protobuf.ByteString
+    /**
+     * <code>optional string stringValue = 2;</code>
+     */
+    String getStringValue();
+    /**
+     * <code>optional string stringValue = 2;</code>
+     */
+    com.google.protobuf.ByteString
         getStringValueBytes();
 
-        /**
-         * <code>optional int32 intValue = 3;</code>
-         */
-        int getIntValue();
+    /**
+     * <code>optional int32 intValue = 3;</code>
+     */
+    int getIntValue();
 
-        /**
-         * <code>optional int64 longValue = 4;</code>
-         */
-        long getLongValue();
+    /**
+     * <code>optional int64 longValue = 4;</code>
+     */
+    long getLongValue();
 
-        /**
-         * <code>optional bool boolValue = 5;</code>
-         */
-        boolean getBoolValue();
+    /**
+     * <code>optional bool boolValue = 5;</code>
+     */
+    boolean getBoolValue();
 
-        /**
-         * <code>optional double doubleValue = 6;</code>
-         */
-        double getDoubleValue();
+    /**
+     * <code>optional double doubleValue = 6;</code>
+     */
+    double getDoubleValue();
 
-        /**
-         * <code>optional .treeleaf.entities.Authorization authorization = 7;</code>
-         */
-        boolean hasAuthorization();
+    /**
+     * <code>optional .treeleaf.entities.Authorization authorization = 7;</code>
+     */
+    boolean hasAuthorization();
+    /**
+     * <code>optional .treeleaf.entities.Authorization authorization = 7;</code>
+     */
+    com.treeleaf.suchi.entities.TreeleafProto.Authorization getAuthorization();
 
-        /**
-         * <code>optional .treeleaf.entities.Authorization authorization = 7;</code>
-         */
-        com.treeleaf.suchi.entities.TreeleafProto.Authorization getAuthorization();
+    /**
+     * <code>optional .treeleaf.entities.UserAccount user = 8;</code>
+     */
+    boolean hasUser();
+    /**
+     * <code>optional .treeleaf.entities.UserAccount user = 8;</code>
+     */
+    com.treeleaf.suchi.entities.TreeleafProto.UserAccount getUser();
 
-        /**
-         * <code>optional .treeleaf.entities.UserAccount user = 8;</code>
-         */
-        boolean hasUser();
+    /**
+     * <code>optional .treeleaf.entities.LoginRequest loginRequest = 9;</code>
+     */
+    boolean hasLoginRequest();
+    /**
+     * <code>optional .treeleaf.entities.LoginRequest loginRequest = 9;</code>
+     */
+    com.treeleaf.suchi.entities.TreeleafProto.LoginRequest getLoginRequest();
 
-        /**
-         * <code>optional .treeleaf.entities.UserAccount user = 8;</code>
-         */
-        com.treeleaf.suchi.entities.TreeleafProto.UserAccount getUser();
+    /**
+     * <code>optional .treeleaf.entities.PasswordChangeRequest passwordUpdateRequest = 10;</code>
+     */
+    boolean hasPasswordUpdateRequest();
+    /**
+     * <code>optional .treeleaf.entities.PasswordChangeRequest passwordUpdateRequest = 10;</code>
+     */
+    com.treeleaf.suchi.entities.TreeleafProto.PasswordChangeRequest getPasswordUpdateRequest();
 
-        /**
-         * <code>optional .treeleaf.entities.LoginRequest loginRequest = 9;</code>
-         */
-        boolean hasLoginRequest();
+    /**
+     * <code>optional .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnit = 11;</code>
+     */
+    boolean hasStockKeepingUnit();
+    /**
+     * <code>optional .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnit = 11;</code>
+     */
+    com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit getStockKeepingUnit();
 
-        /**
-         * <code>optional .treeleaf.entities.LoginRequest loginRequest = 9;</code>
-         */
-        com.treeleaf.suchi.entities.TreeleafProto.LoginRequest getLoginRequest();
-
-        /**
-         * <code>optional .treeleaf.entities.PasswordChangeRequest passwordUpdateRequest = 10;</code>
-         */
-        boolean hasPasswordUpdateRequest();
-
-        /**
-         * <code>optional .treeleaf.entities.PasswordChangeRequest passwordUpdateRequest = 10;</code>
-         */
-        com.treeleaf.suchi.entities.TreeleafProto.PasswordChangeRequest getPasswordUpdateRequest();
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnit = 11;</code>
-         */
-        boolean hasStockKeepingUnit();
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnit = 11;</code>
-         */
-        com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit getStockKeepingUnit();
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
-         */
-        java.util.List<com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit>
+    /**
+     * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
+     */
+    java.util.List<com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit> 
         getStockKeepingUnitsList();
+    /**
+     * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
+     */
+    com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit getStockKeepingUnits(int index);
+    /**
+     * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
+     */
+    int getStockKeepingUnitsCount();
 
-        /**
-         * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
-         */
-        com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit getStockKeepingUnits(int index);
+    /**
+     * <code>optional .treeleaf.suchi.entities.Brand brand = 13;</code>
+     */
+    boolean hasBrand();
+    /**
+     * <code>optional .treeleaf.suchi.entities.Brand brand = 13;</code>
+     */
+    com.treeleaf.suchi.entities.SuchiProto.Brand getBrand();
 
-        /**
-         * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
-         */
-        int getStockKeepingUnitsCount();
+    /**
+     * <code>optional .treeleaf.suchi.entities.SubBrand subBrand = 14;</code>
+     */
+    boolean hasSubBrand();
+    /**
+     * <code>optional .treeleaf.suchi.entities.SubBrand subBrand = 14;</code>
+     */
+    com.treeleaf.suchi.entities.SuchiProto.SubBrand getSubBrand();
 
-        /**
-         * <code>optional .treeleaf.suchi.entities.Brand brand = 13;</code>
-         */
-        boolean hasBrand();
+    /**
+     * <code>optional .treeleaf.suchi.entities.Unit unit = 15;</code>
+     */
+    boolean hasUnit();
+    /**
+     * <code>optional .treeleaf.suchi.entities.Unit unit = 15;</code>
+     */
+    com.treeleaf.suchi.entities.SuchiProto.Unit getUnit();
 
-        /**
-         * <code>optional .treeleaf.suchi.entities.Brand brand = 13;</code>
-         */
-        com.treeleaf.suchi.entities.SuchiProto.Brand getBrand();
+    /**
+     * <code>optional .treeleaf.suchi.entities.Category category = 16;</code>
+     */
+    boolean hasCategory();
+    /**
+     * <code>optional .treeleaf.suchi.entities.Category category = 16;</code>
+     */
+    com.treeleaf.suchi.entities.SuchiProto.Category getCategory();
 
-        /**
-         * <code>optional .treeleaf.suchi.entities.SubBrand subBrand = 14;</code>
-         */
-        boolean hasSubBrand();
+    /**
+     * <code>optional .treeleaf.suchi.entities.Creditor creditor = 17;</code>
+     */
+    boolean hasCreditor();
+    /**
+     * <code>optional .treeleaf.suchi.entities.Creditor creditor = 17;</code>
+     */
+    com.treeleaf.suchi.entities.SuchiProto.Creditor getCreditor();
 
-        /**
-         * <code>optional .treeleaf.suchi.entities.SubBrand subBrand = 14;</code>
-         */
-        com.treeleaf.suchi.entities.SuchiProto.SubBrand getSubBrand();
+    /**
+     * <code>optional .treeleaf.suchi.entities.Inventory inventory = 18;</code>
+     */
+    boolean hasInventory();
+    /**
+     * <code>optional .treeleaf.suchi.entities.Inventory inventory = 18;</code>
+     */
+    com.treeleaf.suchi.entities.SuchiProto.Inventory getInventory();
 
-        /**
-         * <code>optional .treeleaf.suchi.entities.Unit unit = 15;</code>
-         */
-        boolean hasUnit();
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Unit unit = 15;</code>
-         */
-        com.treeleaf.suchi.entities.SuchiProto.Unit getUnit();
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Category category = 16;</code>
-         */
-        boolean hasCategory();
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Category category = 16;</code>
-         */
-        com.treeleaf.suchi.entities.SuchiProto.Category getCategory();
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Creditor creditor = 17;</code>
-         */
-        boolean hasCreditor();
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Creditor creditor = 17;</code>
-         */
-        com.treeleaf.suchi.entities.SuchiProto.Creditor getCreditor();
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Inventory inventory = 18;</code>
-         */
-        boolean hasInventory();
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Inventory inventory = 18;</code>
-         */
-        com.treeleaf.suchi.entities.SuchiProto.Inventory getInventory();
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 19;</code>
-         */
-        java.util.List<com.treeleaf.suchi.entities.SuchiProto.Inventory>
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 19;</code>
+     */
+    java.util.List<com.treeleaf.suchi.entities.SuchiProto.Inventory> 
         getInventoriesList();
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 19;</code>
+     */
+    com.treeleaf.suchi.entities.SuchiProto.Inventory getInventories(int index);
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 19;</code>
+     */
+    int getInventoriesCount();
 
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 19;</code>
-         */
-        com.treeleaf.suchi.entities.SuchiProto.Inventory getInventories(int index);
+    /**
+     * <code>optional .treeleaf.suchi.entities.Sale sale = 20;</code>
+     */
+    boolean hasSale();
+    /**
+     * <code>optional .treeleaf.suchi.entities.Sale sale = 20;</code>
+     */
+    com.treeleaf.suchi.entities.SuchiProto.Sale getSale();
 
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 19;</code>
-         */
-        int getInventoriesCount();
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Sale sale = 20;</code>
-         */
-        boolean hasSale();
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Sale sale = 20;</code>
-         */
-        com.treeleaf.suchi.entities.SuchiProto.Sale getSale();
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Sale sales = 21;</code>
-         */
-        java.util.List<com.treeleaf.suchi.entities.SuchiProto.Sale>
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Sale sales = 21;</code>
+     */
+    java.util.List<com.treeleaf.suchi.entities.SuchiProto.Sale> 
         getSalesList();
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Sale sales = 21;</code>
+     */
+    com.treeleaf.suchi.entities.SuchiProto.Sale getSales(int index);
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Sale sales = 21;</code>
+     */
+    int getSalesCount();
 
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Sale sales = 21;</code>
-         */
-        com.treeleaf.suchi.entities.SuchiProto.Sale getSales(int index);
+    /**
+     * <code>optional .treeleaf.suchi.entities.SuchiKey suchiKey = 22;</code>
+     */
+    boolean hasSuchiKey();
+    /**
+     * <code>optional .treeleaf.suchi.entities.SuchiKey suchiKey = 22;</code>
+     */
+    com.treeleaf.suchi.entities.SuchiProto.SuchiKey getSuchiKey();
 
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Sale sales = 21;</code>
-         */
-        int getSalesCount();
+    /**
+     * <code>optional .treeleaf.suchi.entities.EsewaPaymentRequest esewaPaymentRequest = 23;</code>
+     */
+    boolean hasEsewaPaymentRequest();
+    /**
+     * <code>optional .treeleaf.suchi.entities.EsewaPaymentRequest esewaPaymentRequest = 23;</code>
+     */
+    com.treeleaf.suchi.entities.SuchiProto.EsewaPaymentRequest getEsewaPaymentRequest();
+  }
+  /**
+   * Protobuf type {@code treeleaf.suchi.rpc.SuchiBaseRequest}
+   */
+  public  static final class SuchiBaseRequest extends
+      com.google.protobuf.GeneratedMessageLite<
+          SuchiBaseRequest, SuchiBaseRequest.Builder> implements
+      // @@protoc_insertion_point(message_implements:treeleaf.suchi.rpc.SuchiBaseRequest)
+      SuchiBaseRequestOrBuilder {
+    private SuchiBaseRequest() {
+      refId_ = "";
+      stringValue_ = "";
+      stockKeepingUnits_ = emptyProtobufList();
+      inventories_ = emptyProtobufList();
+      sales_ = emptyProtobufList();
+    }
+    private int bitField0_;
+    public static final int REFID_FIELD_NUMBER = 1;
+    private String refId_;
+    /**
+     * <code>optional string refId = 1;</code>
+     */
+    public String getRefId() {
+      return refId_;
+    }
+    /**
+     * <code>optional string refId = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getRefIdBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(refId_);
+    }
+    /**
+     * <code>optional string refId = 1;</code>
+     */
+    private void setRefId(
+        String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      refId_ = value;
+    }
+    /**
+     * <code>optional string refId = 1;</code>
+     */
+    private void clearRefId() {
+      
+      refId_ = getDefaultInstance().getRefId();
+    }
+    /**
+     * <code>optional string refId = 1;</code>
+     */
+    private void setRefIdBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      refId_ = value.toStringUtf8();
+    }
+
+    public static final int STRINGVALUE_FIELD_NUMBER = 2;
+    private String stringValue_;
+    /**
+     * <code>optional string stringValue = 2;</code>
+     */
+    public String getStringValue() {
+      return stringValue_;
+    }
+    /**
+     * <code>optional string stringValue = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getStringValueBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(stringValue_);
+    }
+    /**
+     * <code>optional string stringValue = 2;</code>
+     */
+    private void setStringValue(
+        String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      stringValue_ = value;
+    }
+    /**
+     * <code>optional string stringValue = 2;</code>
+     */
+    private void clearStringValue() {
+      
+      stringValue_ = getDefaultInstance().getStringValue();
+    }
+    /**
+     * <code>optional string stringValue = 2;</code>
+     */
+    private void setStringValueBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      stringValue_ = value.toStringUtf8();
+    }
+
+    public static final int INTVALUE_FIELD_NUMBER = 3;
+    private int intValue_;
+    /**
+     * <code>optional int32 intValue = 3;</code>
+     */
+    public int getIntValue() {
+      return intValue_;
+    }
+    /**
+     * <code>optional int32 intValue = 3;</code>
+     */
+    private void setIntValue(int value) {
+      
+      intValue_ = value;
+    }
+    /**
+     * <code>optional int32 intValue = 3;</code>
+     */
+    private void clearIntValue() {
+      
+      intValue_ = 0;
+    }
+
+    public static final int LONGVALUE_FIELD_NUMBER = 4;
+    private long longValue_;
+    /**
+     * <code>optional int64 longValue = 4;</code>
+     */
+    public long getLongValue() {
+      return longValue_;
+    }
+    /**
+     * <code>optional int64 longValue = 4;</code>
+     */
+    private void setLongValue(long value) {
+      
+      longValue_ = value;
+    }
+    /**
+     * <code>optional int64 longValue = 4;</code>
+     */
+    private void clearLongValue() {
+      
+      longValue_ = 0L;
+    }
+
+    public static final int BOOLVALUE_FIELD_NUMBER = 5;
+    private boolean boolValue_;
+    /**
+     * <code>optional bool boolValue = 5;</code>
+     */
+    public boolean getBoolValue() {
+      return boolValue_;
+    }
+    /**
+     * <code>optional bool boolValue = 5;</code>
+     */
+    private void setBoolValue(boolean value) {
+      
+      boolValue_ = value;
+    }
+    /**
+     * <code>optional bool boolValue = 5;</code>
+     */
+    private void clearBoolValue() {
+      
+      boolValue_ = false;
+    }
+
+    public static final int DOUBLEVALUE_FIELD_NUMBER = 6;
+    private double doubleValue_;
+    /**
+     * <code>optional double doubleValue = 6;</code>
+     */
+    public double getDoubleValue() {
+      return doubleValue_;
+    }
+    /**
+     * <code>optional double doubleValue = 6;</code>
+     */
+    private void setDoubleValue(double value) {
+      
+      doubleValue_ = value;
+    }
+    /**
+     * <code>optional double doubleValue = 6;</code>
+     */
+    private void clearDoubleValue() {
+      
+      doubleValue_ = 0D;
+    }
+
+    public static final int AUTHORIZATION_FIELD_NUMBER = 7;
+    private com.treeleaf.suchi.entities.TreeleafProto.Authorization authorization_;
+    /**
+     * <code>optional .treeleaf.entities.Authorization authorization = 7;</code>
+     */
+    public boolean hasAuthorization() {
+      return authorization_ != null;
+    }
+    /**
+     * <code>optional .treeleaf.entities.Authorization authorization = 7;</code>
+     */
+    public com.treeleaf.suchi.entities.TreeleafProto.Authorization getAuthorization() {
+      return authorization_ == null ? com.treeleaf.suchi.entities.TreeleafProto.Authorization.getDefaultInstance() : authorization_;
+    }
+    /**
+     * <code>optional .treeleaf.entities.Authorization authorization = 7;</code>
+     */
+    private void setAuthorization(com.treeleaf.suchi.entities.TreeleafProto.Authorization value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      authorization_ = value;
+      
+      }
+    /**
+     * <code>optional .treeleaf.entities.Authorization authorization = 7;</code>
+     */
+    private void setAuthorization(
+        com.treeleaf.suchi.entities.TreeleafProto.Authorization.Builder builderForValue) {
+      authorization_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>optional .treeleaf.entities.Authorization authorization = 7;</code>
+     */
+    private void mergeAuthorization(com.treeleaf.suchi.entities.TreeleafProto.Authorization value) {
+      if (authorization_ != null &&
+          authorization_ != com.treeleaf.suchi.entities.TreeleafProto.Authorization.getDefaultInstance()) {
+        authorization_ =
+          com.treeleaf.suchi.entities.TreeleafProto.Authorization.newBuilder(authorization_).mergeFrom(value).buildPartial();
+      } else {
+        authorization_ = value;
+      }
+      
+    }
+    /**
+     * <code>optional .treeleaf.entities.Authorization authorization = 7;</code>
+     */
+    private void clearAuthorization() {  authorization_ = null;
+      
+    }
+
+    public static final int USER_FIELD_NUMBER = 8;
+    private com.treeleaf.suchi.entities.TreeleafProto.UserAccount user_;
+    /**
+     * <code>optional .treeleaf.entities.UserAccount user = 8;</code>
+     */
+    public boolean hasUser() {
+      return user_ != null;
+    }
+    /**
+     * <code>optional .treeleaf.entities.UserAccount user = 8;</code>
+     */
+    public com.treeleaf.suchi.entities.TreeleafProto.UserAccount getUser() {
+      return user_ == null ? com.treeleaf.suchi.entities.TreeleafProto.UserAccount.getDefaultInstance() : user_;
+    }
+    /**
+     * <code>optional .treeleaf.entities.UserAccount user = 8;</code>
+     */
+    private void setUser(com.treeleaf.suchi.entities.TreeleafProto.UserAccount value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      user_ = value;
+      
+      }
+    /**
+     * <code>optional .treeleaf.entities.UserAccount user = 8;</code>
+     */
+    private void setUser(
+        com.treeleaf.suchi.entities.TreeleafProto.UserAccount.Builder builderForValue) {
+      user_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>optional .treeleaf.entities.UserAccount user = 8;</code>
+     */
+    private void mergeUser(com.treeleaf.suchi.entities.TreeleafProto.UserAccount value) {
+      if (user_ != null &&
+          user_ != com.treeleaf.suchi.entities.TreeleafProto.UserAccount.getDefaultInstance()) {
+        user_ =
+          com.treeleaf.suchi.entities.TreeleafProto.UserAccount.newBuilder(user_).mergeFrom(value).buildPartial();
+      } else {
+        user_ = value;
+      }
+      
+    }
+    /**
+     * <code>optional .treeleaf.entities.UserAccount user = 8;</code>
+     */
+    private void clearUser() {  user_ = null;
+      
+    }
+
+    public static final int LOGINREQUEST_FIELD_NUMBER = 9;
+    private com.treeleaf.suchi.entities.TreeleafProto.LoginRequest loginRequest_;
+    /**
+     * <code>optional .treeleaf.entities.LoginRequest loginRequest = 9;</code>
+     */
+    public boolean hasLoginRequest() {
+      return loginRequest_ != null;
+    }
+    /**
+     * <code>optional .treeleaf.entities.LoginRequest loginRequest = 9;</code>
+     */
+    public com.treeleaf.suchi.entities.TreeleafProto.LoginRequest getLoginRequest() {
+      return loginRequest_ == null ? com.treeleaf.suchi.entities.TreeleafProto.LoginRequest.getDefaultInstance() : loginRequest_;
+    }
+    /**
+     * <code>optional .treeleaf.entities.LoginRequest loginRequest = 9;</code>
+     */
+    private void setLoginRequest(com.treeleaf.suchi.entities.TreeleafProto.LoginRequest value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      loginRequest_ = value;
+      
+      }
+    /**
+     * <code>optional .treeleaf.entities.LoginRequest loginRequest = 9;</code>
+     */
+    private void setLoginRequest(
+        com.treeleaf.suchi.entities.TreeleafProto.LoginRequest.Builder builderForValue) {
+      loginRequest_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>optional .treeleaf.entities.LoginRequest loginRequest = 9;</code>
+     */
+    private void mergeLoginRequest(com.treeleaf.suchi.entities.TreeleafProto.LoginRequest value) {
+      if (loginRequest_ != null &&
+          loginRequest_ != com.treeleaf.suchi.entities.TreeleafProto.LoginRequest.getDefaultInstance()) {
+        loginRequest_ =
+          com.treeleaf.suchi.entities.TreeleafProto.LoginRequest.newBuilder(loginRequest_).mergeFrom(value).buildPartial();
+      } else {
+        loginRequest_ = value;
+      }
+      
+    }
+    /**
+     * <code>optional .treeleaf.entities.LoginRequest loginRequest = 9;</code>
+     */
+    private void clearLoginRequest() {  loginRequest_ = null;
+      
+    }
+
+    public static final int PASSWORDUPDATEREQUEST_FIELD_NUMBER = 10;
+    private com.treeleaf.suchi.entities.TreeleafProto.PasswordChangeRequest passwordUpdateRequest_;
+    /**
+     * <code>optional .treeleaf.entities.PasswordChangeRequest passwordUpdateRequest = 10;</code>
+     */
+    public boolean hasPasswordUpdateRequest() {
+      return passwordUpdateRequest_ != null;
+    }
+    /**
+     * <code>optional .treeleaf.entities.PasswordChangeRequest passwordUpdateRequest = 10;</code>
+     */
+    public com.treeleaf.suchi.entities.TreeleafProto.PasswordChangeRequest getPasswordUpdateRequest() {
+      return passwordUpdateRequest_ == null ? com.treeleaf.suchi.entities.TreeleafProto.PasswordChangeRequest.getDefaultInstance() : passwordUpdateRequest_;
+    }
+    /**
+     * <code>optional .treeleaf.entities.PasswordChangeRequest passwordUpdateRequest = 10;</code>
+     */
+    private void setPasswordUpdateRequest(com.treeleaf.suchi.entities.TreeleafProto.PasswordChangeRequest value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      passwordUpdateRequest_ = value;
+      
+      }
+    /**
+     * <code>optional .treeleaf.entities.PasswordChangeRequest passwordUpdateRequest = 10;</code>
+     */
+    private void setPasswordUpdateRequest(
+        com.treeleaf.suchi.entities.TreeleafProto.PasswordChangeRequest.Builder builderForValue) {
+      passwordUpdateRequest_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>optional .treeleaf.entities.PasswordChangeRequest passwordUpdateRequest = 10;</code>
+     */
+    private void mergePasswordUpdateRequest(com.treeleaf.suchi.entities.TreeleafProto.PasswordChangeRequest value) {
+      if (passwordUpdateRequest_ != null &&
+          passwordUpdateRequest_ != com.treeleaf.suchi.entities.TreeleafProto.PasswordChangeRequest.getDefaultInstance()) {
+        passwordUpdateRequest_ =
+          com.treeleaf.suchi.entities.TreeleafProto.PasswordChangeRequest.newBuilder(passwordUpdateRequest_).mergeFrom(value).buildPartial();
+      } else {
+        passwordUpdateRequest_ = value;
+      }
+      
+    }
+    /**
+     * <code>optional .treeleaf.entities.PasswordChangeRequest passwordUpdateRequest = 10;</code>
+     */
+    private void clearPasswordUpdateRequest() {  passwordUpdateRequest_ = null;
+      
+    }
+
+    public static final int STOCKKEEPINGUNIT_FIELD_NUMBER = 11;
+    private com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit stockKeepingUnit_;
+    /**
+     * <code>optional .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnit = 11;</code>
+     */
+    public boolean hasStockKeepingUnit() {
+      return stockKeepingUnit_ != null;
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnit = 11;</code>
+     */
+    public com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit getStockKeepingUnit() {
+      return stockKeepingUnit_ == null ? com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit.getDefaultInstance() : stockKeepingUnit_;
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnit = 11;</code>
+     */
+    private void setStockKeepingUnit(com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      stockKeepingUnit_ = value;
+      
+      }
+    /**
+     * <code>optional .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnit = 11;</code>
+     */
+    private void setStockKeepingUnit(
+        com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit.Builder builderForValue) {
+      stockKeepingUnit_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnit = 11;</code>
+     */
+    private void mergeStockKeepingUnit(com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit value) {
+      if (stockKeepingUnit_ != null &&
+          stockKeepingUnit_ != com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit.getDefaultInstance()) {
+        stockKeepingUnit_ =
+          com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit.newBuilder(stockKeepingUnit_).mergeFrom(value).buildPartial();
+      } else {
+        stockKeepingUnit_ = value;
+      }
+      
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnit = 11;</code>
+     */
+    private void clearStockKeepingUnit() {  stockKeepingUnit_ = null;
+      
+    }
+
+    public static final int STOCKKEEPINGUNITS_FIELD_NUMBER = 12;
+    private com.google.protobuf.Internal.ProtobufList<com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit> stockKeepingUnits_;
+    /**
+     * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
+     */
+    public java.util.List<com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit> getStockKeepingUnitsList() {
+      return stockKeepingUnits_;
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
+     */
+    public java.util.List<? extends com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnitOrBuilder> 
+        getStockKeepingUnitsOrBuilderList() {
+      return stockKeepingUnits_;
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
+     */
+    public int getStockKeepingUnitsCount() {
+      return stockKeepingUnits_.size();
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
+     */
+    public com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit getStockKeepingUnits(int index) {
+      return stockKeepingUnits_.get(index);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
+     */
+    public com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnitOrBuilder getStockKeepingUnitsOrBuilder(
+        int index) {
+      return stockKeepingUnits_.get(index);
+    }
+    private void ensureStockKeepingUnitsIsMutable() {
+      if (!stockKeepingUnits_.isModifiable()) {
+        stockKeepingUnits_ =
+            com.google.protobuf.GeneratedMessageLite.mutableCopy(stockKeepingUnits_);
+       }
+    }
+
+    /**
+     * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
+     */
+    private void setStockKeepingUnits(
+        int index, com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureStockKeepingUnitsIsMutable();
+      stockKeepingUnits_.set(index, value);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
+     */
+    private void setStockKeepingUnits(
+        int index, com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit.Builder builderForValue) {
+      ensureStockKeepingUnitsIsMutable();
+      stockKeepingUnits_.set(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
+     */
+    private void addStockKeepingUnits(com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureStockKeepingUnitsIsMutable();
+      stockKeepingUnits_.add(value);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
+     */
+    private void addStockKeepingUnits(
+        int index, com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureStockKeepingUnitsIsMutable();
+      stockKeepingUnits_.add(index, value);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
+     */
+    private void addStockKeepingUnits(
+        com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit.Builder builderForValue) {
+      ensureStockKeepingUnitsIsMutable();
+      stockKeepingUnits_.add(builderForValue.build());
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
+     */
+    private void addStockKeepingUnits(
+        int index, com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit.Builder builderForValue) {
+      ensureStockKeepingUnitsIsMutable();
+      stockKeepingUnits_.add(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
+     */
+    private void addAllStockKeepingUnits(
+        Iterable<? extends com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit> values) {
+      ensureStockKeepingUnitsIsMutable();
+      com.google.protobuf.AbstractMessageLite.addAll(
+          values, stockKeepingUnits_);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
+     */
+    private void clearStockKeepingUnits() {
+      stockKeepingUnits_ = emptyProtobufList();
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
+     */
+    private void removeStockKeepingUnits(int index) {
+      ensureStockKeepingUnitsIsMutable();
+      stockKeepingUnits_.remove(index);
+    }
+
+    public static final int BRAND_FIELD_NUMBER = 13;
+    private com.treeleaf.suchi.entities.SuchiProto.Brand brand_;
+    /**
+     * <code>optional .treeleaf.suchi.entities.Brand brand = 13;</code>
+     */
+    public boolean hasBrand() {
+      return brand_ != null;
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.Brand brand = 13;</code>
+     */
+    public com.treeleaf.suchi.entities.SuchiProto.Brand getBrand() {
+      return brand_ == null ? com.treeleaf.suchi.entities.SuchiProto.Brand.getDefaultInstance() : brand_;
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.Brand brand = 13;</code>
+     */
+    private void setBrand(com.treeleaf.suchi.entities.SuchiProto.Brand value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      brand_ = value;
+      
+      }
+    /**
+     * <code>optional .treeleaf.suchi.entities.Brand brand = 13;</code>
+     */
+    private void setBrand(
+        com.treeleaf.suchi.entities.SuchiProto.Brand.Builder builderForValue) {
+      brand_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.Brand brand = 13;</code>
+     */
+    private void mergeBrand(com.treeleaf.suchi.entities.SuchiProto.Brand value) {
+      if (brand_ != null &&
+          brand_ != com.treeleaf.suchi.entities.SuchiProto.Brand.getDefaultInstance()) {
+        brand_ =
+          com.treeleaf.suchi.entities.SuchiProto.Brand.newBuilder(brand_).mergeFrom(value).buildPartial();
+      } else {
+        brand_ = value;
+      }
+      
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.Brand brand = 13;</code>
+     */
+    private void clearBrand() {  brand_ = null;
+      
+    }
+
+    public static final int SUBBRAND_FIELD_NUMBER = 14;
+    private com.treeleaf.suchi.entities.SuchiProto.SubBrand subBrand_;
+    /**
+     * <code>optional .treeleaf.suchi.entities.SubBrand subBrand = 14;</code>
+     */
+    public boolean hasSubBrand() {
+      return subBrand_ != null;
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.SubBrand subBrand = 14;</code>
+     */
+    public com.treeleaf.suchi.entities.SuchiProto.SubBrand getSubBrand() {
+      return subBrand_ == null ? com.treeleaf.suchi.entities.SuchiProto.SubBrand.getDefaultInstance() : subBrand_;
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.SubBrand subBrand = 14;</code>
+     */
+    private void setSubBrand(com.treeleaf.suchi.entities.SuchiProto.SubBrand value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      subBrand_ = value;
+      
+      }
+    /**
+     * <code>optional .treeleaf.suchi.entities.SubBrand subBrand = 14;</code>
+     */
+    private void setSubBrand(
+        com.treeleaf.suchi.entities.SuchiProto.SubBrand.Builder builderForValue) {
+      subBrand_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.SubBrand subBrand = 14;</code>
+     */
+    private void mergeSubBrand(com.treeleaf.suchi.entities.SuchiProto.SubBrand value) {
+      if (subBrand_ != null &&
+          subBrand_ != com.treeleaf.suchi.entities.SuchiProto.SubBrand.getDefaultInstance()) {
+        subBrand_ =
+          com.treeleaf.suchi.entities.SuchiProto.SubBrand.newBuilder(subBrand_).mergeFrom(value).buildPartial();
+      } else {
+        subBrand_ = value;
+      }
+      
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.SubBrand subBrand = 14;</code>
+     */
+    private void clearSubBrand() {  subBrand_ = null;
+      
+    }
+
+    public static final int UNIT_FIELD_NUMBER = 15;
+    private com.treeleaf.suchi.entities.SuchiProto.Unit unit_;
+    /**
+     * <code>optional .treeleaf.suchi.entities.Unit unit = 15;</code>
+     */
+    public boolean hasUnit() {
+      return unit_ != null;
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.Unit unit = 15;</code>
+     */
+    public com.treeleaf.suchi.entities.SuchiProto.Unit getUnit() {
+      return unit_ == null ? com.treeleaf.suchi.entities.SuchiProto.Unit.getDefaultInstance() : unit_;
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.Unit unit = 15;</code>
+     */
+    private void setUnit(com.treeleaf.suchi.entities.SuchiProto.Unit value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      unit_ = value;
+      
+      }
+    /**
+     * <code>optional .treeleaf.suchi.entities.Unit unit = 15;</code>
+     */
+    private void setUnit(
+        com.treeleaf.suchi.entities.SuchiProto.Unit.Builder builderForValue) {
+      unit_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.Unit unit = 15;</code>
+     */
+    private void mergeUnit(com.treeleaf.suchi.entities.SuchiProto.Unit value) {
+      if (unit_ != null &&
+          unit_ != com.treeleaf.suchi.entities.SuchiProto.Unit.getDefaultInstance()) {
+        unit_ =
+          com.treeleaf.suchi.entities.SuchiProto.Unit.newBuilder(unit_).mergeFrom(value).buildPartial();
+      } else {
+        unit_ = value;
+      }
+      
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.Unit unit = 15;</code>
+     */
+    private void clearUnit() {  unit_ = null;
+      
+    }
+
+    public static final int CATEGORY_FIELD_NUMBER = 16;
+    private com.treeleaf.suchi.entities.SuchiProto.Category category_;
+    /**
+     * <code>optional .treeleaf.suchi.entities.Category category = 16;</code>
+     */
+    public boolean hasCategory() {
+      return category_ != null;
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.Category category = 16;</code>
+     */
+    public com.treeleaf.suchi.entities.SuchiProto.Category getCategory() {
+      return category_ == null ? com.treeleaf.suchi.entities.SuchiProto.Category.getDefaultInstance() : category_;
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.Category category = 16;</code>
+     */
+    private void setCategory(com.treeleaf.suchi.entities.SuchiProto.Category value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      category_ = value;
+      
+      }
+    /**
+     * <code>optional .treeleaf.suchi.entities.Category category = 16;</code>
+     */
+    private void setCategory(
+        com.treeleaf.suchi.entities.SuchiProto.Category.Builder builderForValue) {
+      category_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.Category category = 16;</code>
+     */
+    private void mergeCategory(com.treeleaf.suchi.entities.SuchiProto.Category value) {
+      if (category_ != null &&
+          category_ != com.treeleaf.suchi.entities.SuchiProto.Category.getDefaultInstance()) {
+        category_ =
+          com.treeleaf.suchi.entities.SuchiProto.Category.newBuilder(category_).mergeFrom(value).buildPartial();
+      } else {
+        category_ = value;
+      }
+      
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.Category category = 16;</code>
+     */
+    private void clearCategory() {  category_ = null;
+      
+    }
+
+    public static final int CREDITOR_FIELD_NUMBER = 17;
+    private com.treeleaf.suchi.entities.SuchiProto.Creditor creditor_;
+    /**
+     * <code>optional .treeleaf.suchi.entities.Creditor creditor = 17;</code>
+     */
+    public boolean hasCreditor() {
+      return creditor_ != null;
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.Creditor creditor = 17;</code>
+     */
+    public com.treeleaf.suchi.entities.SuchiProto.Creditor getCreditor() {
+      return creditor_ == null ? com.treeleaf.suchi.entities.SuchiProto.Creditor.getDefaultInstance() : creditor_;
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.Creditor creditor = 17;</code>
+     */
+    private void setCreditor(com.treeleaf.suchi.entities.SuchiProto.Creditor value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      creditor_ = value;
+      
+      }
+    /**
+     * <code>optional .treeleaf.suchi.entities.Creditor creditor = 17;</code>
+     */
+    private void setCreditor(
+        com.treeleaf.suchi.entities.SuchiProto.Creditor.Builder builderForValue) {
+      creditor_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.Creditor creditor = 17;</code>
+     */
+    private void mergeCreditor(com.treeleaf.suchi.entities.SuchiProto.Creditor value) {
+      if (creditor_ != null &&
+          creditor_ != com.treeleaf.suchi.entities.SuchiProto.Creditor.getDefaultInstance()) {
+        creditor_ =
+          com.treeleaf.suchi.entities.SuchiProto.Creditor.newBuilder(creditor_).mergeFrom(value).buildPartial();
+      } else {
+        creditor_ = value;
+      }
+      
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.Creditor creditor = 17;</code>
+     */
+    private void clearCreditor() {  creditor_ = null;
+      
+    }
+
+    public static final int INVENTORY_FIELD_NUMBER = 18;
+    private com.treeleaf.suchi.entities.SuchiProto.Inventory inventory_;
+    /**
+     * <code>optional .treeleaf.suchi.entities.Inventory inventory = 18;</code>
+     */
+    public boolean hasInventory() {
+      return inventory_ != null;
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.Inventory inventory = 18;</code>
+     */
+    public com.treeleaf.suchi.entities.SuchiProto.Inventory getInventory() {
+      return inventory_ == null ? com.treeleaf.suchi.entities.SuchiProto.Inventory.getDefaultInstance() : inventory_;
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.Inventory inventory = 18;</code>
+     */
+    private void setInventory(com.treeleaf.suchi.entities.SuchiProto.Inventory value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      inventory_ = value;
+      
+      }
+    /**
+     * <code>optional .treeleaf.suchi.entities.Inventory inventory = 18;</code>
+     */
+    private void setInventory(
+        com.treeleaf.suchi.entities.SuchiProto.Inventory.Builder builderForValue) {
+      inventory_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.Inventory inventory = 18;</code>
+     */
+    private void mergeInventory(com.treeleaf.suchi.entities.SuchiProto.Inventory value) {
+      if (inventory_ != null &&
+          inventory_ != com.treeleaf.suchi.entities.SuchiProto.Inventory.getDefaultInstance()) {
+        inventory_ =
+          com.treeleaf.suchi.entities.SuchiProto.Inventory.newBuilder(inventory_).mergeFrom(value).buildPartial();
+      } else {
+        inventory_ = value;
+      }
+      
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.Inventory inventory = 18;</code>
+     */
+    private void clearInventory() {  inventory_ = null;
+      
+    }
+
+    public static final int INVENTORIES_FIELD_NUMBER = 19;
+    private com.google.protobuf.Internal.ProtobufList<com.treeleaf.suchi.entities.SuchiProto.Inventory> inventories_;
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 19;</code>
+     */
+    public java.util.List<com.treeleaf.suchi.entities.SuchiProto.Inventory> getInventoriesList() {
+      return inventories_;
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 19;</code>
+     */
+    public java.util.List<? extends com.treeleaf.suchi.entities.SuchiProto.InventoryOrBuilder> 
+        getInventoriesOrBuilderList() {
+      return inventories_;
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 19;</code>
+     */
+    public int getInventoriesCount() {
+      return inventories_.size();
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 19;</code>
+     */
+    public com.treeleaf.suchi.entities.SuchiProto.Inventory getInventories(int index) {
+      return inventories_.get(index);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 19;</code>
+     */
+    public com.treeleaf.suchi.entities.SuchiProto.InventoryOrBuilder getInventoriesOrBuilder(
+        int index) {
+      return inventories_.get(index);
+    }
+    private void ensureInventoriesIsMutable() {
+      if (!inventories_.isModifiable()) {
+        inventories_ =
+            com.google.protobuf.GeneratedMessageLite.mutableCopy(inventories_);
+       }
+    }
+
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 19;</code>
+     */
+    private void setInventories(
+        int index, com.treeleaf.suchi.entities.SuchiProto.Inventory value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureInventoriesIsMutable();
+      inventories_.set(index, value);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 19;</code>
+     */
+    private void setInventories(
+        int index, com.treeleaf.suchi.entities.SuchiProto.Inventory.Builder builderForValue) {
+      ensureInventoriesIsMutable();
+      inventories_.set(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 19;</code>
+     */
+    private void addInventories(com.treeleaf.suchi.entities.SuchiProto.Inventory value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureInventoriesIsMutable();
+      inventories_.add(value);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 19;</code>
+     */
+    private void addInventories(
+        int index, com.treeleaf.suchi.entities.SuchiProto.Inventory value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureInventoriesIsMutable();
+      inventories_.add(index, value);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 19;</code>
+     */
+    private void addInventories(
+        com.treeleaf.suchi.entities.SuchiProto.Inventory.Builder builderForValue) {
+      ensureInventoriesIsMutable();
+      inventories_.add(builderForValue.build());
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 19;</code>
+     */
+    private void addInventories(
+        int index, com.treeleaf.suchi.entities.SuchiProto.Inventory.Builder builderForValue) {
+      ensureInventoriesIsMutable();
+      inventories_.add(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 19;</code>
+     */
+    private void addAllInventories(
+        Iterable<? extends com.treeleaf.suchi.entities.SuchiProto.Inventory> values) {
+      ensureInventoriesIsMutable();
+      com.google.protobuf.AbstractMessageLite.addAll(
+          values, inventories_);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 19;</code>
+     */
+    private void clearInventories() {
+      inventories_ = emptyProtobufList();
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 19;</code>
+     */
+    private void removeInventories(int index) {
+      ensureInventoriesIsMutable();
+      inventories_.remove(index);
+    }
+
+    public static final int SALE_FIELD_NUMBER = 20;
+    private com.treeleaf.suchi.entities.SuchiProto.Sale sale_;
+    /**
+     * <code>optional .treeleaf.suchi.entities.Sale sale = 20;</code>
+     */
+    public boolean hasSale() {
+      return sale_ != null;
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.Sale sale = 20;</code>
+     */
+    public com.treeleaf.suchi.entities.SuchiProto.Sale getSale() {
+      return sale_ == null ? com.treeleaf.suchi.entities.SuchiProto.Sale.getDefaultInstance() : sale_;
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.Sale sale = 20;</code>
+     */
+    private void setSale(com.treeleaf.suchi.entities.SuchiProto.Sale value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      sale_ = value;
+      
+      }
+    /**
+     * <code>optional .treeleaf.suchi.entities.Sale sale = 20;</code>
+     */
+    private void setSale(
+        com.treeleaf.suchi.entities.SuchiProto.Sale.Builder builderForValue) {
+      sale_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.Sale sale = 20;</code>
+     */
+    private void mergeSale(com.treeleaf.suchi.entities.SuchiProto.Sale value) {
+      if (sale_ != null &&
+          sale_ != com.treeleaf.suchi.entities.SuchiProto.Sale.getDefaultInstance()) {
+        sale_ =
+          com.treeleaf.suchi.entities.SuchiProto.Sale.newBuilder(sale_).mergeFrom(value).buildPartial();
+      } else {
+        sale_ = value;
+      }
+      
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.Sale sale = 20;</code>
+     */
+    private void clearSale() {  sale_ = null;
+      
+    }
+
+    public static final int SALES_FIELD_NUMBER = 21;
+    private com.google.protobuf.Internal.ProtobufList<com.treeleaf.suchi.entities.SuchiProto.Sale> sales_;
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Sale sales = 21;</code>
+     */
+    public java.util.List<com.treeleaf.suchi.entities.SuchiProto.Sale> getSalesList() {
+      return sales_;
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Sale sales = 21;</code>
+     */
+    public java.util.List<? extends com.treeleaf.suchi.entities.SuchiProto.SaleOrBuilder> 
+        getSalesOrBuilderList() {
+      return sales_;
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Sale sales = 21;</code>
+     */
+    public int getSalesCount() {
+      return sales_.size();
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Sale sales = 21;</code>
+     */
+    public com.treeleaf.suchi.entities.SuchiProto.Sale getSales(int index) {
+      return sales_.get(index);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Sale sales = 21;</code>
+     */
+    public com.treeleaf.suchi.entities.SuchiProto.SaleOrBuilder getSalesOrBuilder(
+        int index) {
+      return sales_.get(index);
+    }
+    private void ensureSalesIsMutable() {
+      if (!sales_.isModifiable()) {
+        sales_ =
+            com.google.protobuf.GeneratedMessageLite.mutableCopy(sales_);
+       }
+    }
+
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Sale sales = 21;</code>
+     */
+    private void setSales(
+        int index, com.treeleaf.suchi.entities.SuchiProto.Sale value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureSalesIsMutable();
+      sales_.set(index, value);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Sale sales = 21;</code>
+     */
+    private void setSales(
+        int index, com.treeleaf.suchi.entities.SuchiProto.Sale.Builder builderForValue) {
+      ensureSalesIsMutable();
+      sales_.set(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Sale sales = 21;</code>
+     */
+    private void addSales(com.treeleaf.suchi.entities.SuchiProto.Sale value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureSalesIsMutable();
+      sales_.add(value);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Sale sales = 21;</code>
+     */
+    private void addSales(
+        int index, com.treeleaf.suchi.entities.SuchiProto.Sale value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureSalesIsMutable();
+      sales_.add(index, value);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Sale sales = 21;</code>
+     */
+    private void addSales(
+        com.treeleaf.suchi.entities.SuchiProto.Sale.Builder builderForValue) {
+      ensureSalesIsMutable();
+      sales_.add(builderForValue.build());
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Sale sales = 21;</code>
+     */
+    private void addSales(
+        int index, com.treeleaf.suchi.entities.SuchiProto.Sale.Builder builderForValue) {
+      ensureSalesIsMutable();
+      sales_.add(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Sale sales = 21;</code>
+     */
+    private void addAllSales(
+        Iterable<? extends com.treeleaf.suchi.entities.SuchiProto.Sale> values) {
+      ensureSalesIsMutable();
+      com.google.protobuf.AbstractMessageLite.addAll(
+          values, sales_);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Sale sales = 21;</code>
+     */
+    private void clearSales() {
+      sales_ = emptyProtobufList();
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Sale sales = 21;</code>
+     */
+    private void removeSales(int index) {
+      ensureSalesIsMutable();
+      sales_.remove(index);
+    }
+
+    public static final int SUCHIKEY_FIELD_NUMBER = 22;
+    private com.treeleaf.suchi.entities.SuchiProto.SuchiKey suchiKey_;
+    /**
+     * <code>optional .treeleaf.suchi.entities.SuchiKey suchiKey = 22;</code>
+     */
+    public boolean hasSuchiKey() {
+      return suchiKey_ != null;
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.SuchiKey suchiKey = 22;</code>
+     */
+    public com.treeleaf.suchi.entities.SuchiProto.SuchiKey getSuchiKey() {
+      return suchiKey_ == null ? com.treeleaf.suchi.entities.SuchiProto.SuchiKey.getDefaultInstance() : suchiKey_;
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.SuchiKey suchiKey = 22;</code>
+     */
+    private void setSuchiKey(com.treeleaf.suchi.entities.SuchiProto.SuchiKey value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      suchiKey_ = value;
+      
+      }
+    /**
+     * <code>optional .treeleaf.suchi.entities.SuchiKey suchiKey = 22;</code>
+     */
+    private void setSuchiKey(
+        com.treeleaf.suchi.entities.SuchiProto.SuchiKey.Builder builderForValue) {
+      suchiKey_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.SuchiKey suchiKey = 22;</code>
+     */
+    private void mergeSuchiKey(com.treeleaf.suchi.entities.SuchiProto.SuchiKey value) {
+      if (suchiKey_ != null &&
+          suchiKey_ != com.treeleaf.suchi.entities.SuchiProto.SuchiKey.getDefaultInstance()) {
+        suchiKey_ =
+          com.treeleaf.suchi.entities.SuchiProto.SuchiKey.newBuilder(suchiKey_).mergeFrom(value).buildPartial();
+      } else {
+        suchiKey_ = value;
+      }
+      
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.SuchiKey suchiKey = 22;</code>
+     */
+    private void clearSuchiKey() {  suchiKey_ = null;
+      
+    }
+
+    public static final int ESEWAPAYMENTREQUEST_FIELD_NUMBER = 23;
+    private com.treeleaf.suchi.entities.SuchiProto.EsewaPaymentRequest esewaPaymentRequest_;
+    /**
+     * <code>optional .treeleaf.suchi.entities.EsewaPaymentRequest esewaPaymentRequest = 23;</code>
+     */
+    public boolean hasEsewaPaymentRequest() {
+      return esewaPaymentRequest_ != null;
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.EsewaPaymentRequest esewaPaymentRequest = 23;</code>
+     */
+    public com.treeleaf.suchi.entities.SuchiProto.EsewaPaymentRequest getEsewaPaymentRequest() {
+      return esewaPaymentRequest_ == null ? com.treeleaf.suchi.entities.SuchiProto.EsewaPaymentRequest.getDefaultInstance() : esewaPaymentRequest_;
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.EsewaPaymentRequest esewaPaymentRequest = 23;</code>
+     */
+    private void setEsewaPaymentRequest(com.treeleaf.suchi.entities.SuchiProto.EsewaPaymentRequest value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      esewaPaymentRequest_ = value;
+      
+      }
+    /**
+     * <code>optional .treeleaf.suchi.entities.EsewaPaymentRequest esewaPaymentRequest = 23;</code>
+     */
+    private void setEsewaPaymentRequest(
+        com.treeleaf.suchi.entities.SuchiProto.EsewaPaymentRequest.Builder builderForValue) {
+      esewaPaymentRequest_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.EsewaPaymentRequest esewaPaymentRequest = 23;</code>
+     */
+    private void mergeEsewaPaymentRequest(com.treeleaf.suchi.entities.SuchiProto.EsewaPaymentRequest value) {
+      if (esewaPaymentRequest_ != null &&
+          esewaPaymentRequest_ != com.treeleaf.suchi.entities.SuchiProto.EsewaPaymentRequest.getDefaultInstance()) {
+        esewaPaymentRequest_ =
+          com.treeleaf.suchi.entities.SuchiProto.EsewaPaymentRequest.newBuilder(esewaPaymentRequest_).mergeFrom(value).buildPartial();
+      } else {
+        esewaPaymentRequest_ = value;
+      }
+      
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.EsewaPaymentRequest esewaPaymentRequest = 23;</code>
+     */
+    private void clearEsewaPaymentRequest() {  esewaPaymentRequest_ = null;
+      
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!refId_.isEmpty()) {
+        output.writeString(1, getRefId());
+      }
+      if (!stringValue_.isEmpty()) {
+        output.writeString(2, getStringValue());
+      }
+      if (intValue_ != 0) {
+        output.writeInt32(3, intValue_);
+      }
+      if (longValue_ != 0L) {
+        output.writeInt64(4, longValue_);
+      }
+      if (boolValue_ != false) {
+        output.writeBool(5, boolValue_);
+      }
+      if (doubleValue_ != 0D) {
+        output.writeDouble(6, doubleValue_);
+      }
+      if (authorization_ != null) {
+        output.writeMessage(7, getAuthorization());
+      }
+      if (user_ != null) {
+        output.writeMessage(8, getUser());
+      }
+      if (loginRequest_ != null) {
+        output.writeMessage(9, getLoginRequest());
+      }
+      if (passwordUpdateRequest_ != null) {
+        output.writeMessage(10, getPasswordUpdateRequest());
+      }
+      if (stockKeepingUnit_ != null) {
+        output.writeMessage(11, getStockKeepingUnit());
+      }
+      for (int i = 0; i < stockKeepingUnits_.size(); i++) {
+        output.writeMessage(12, stockKeepingUnits_.get(i));
+      }
+      if (brand_ != null) {
+        output.writeMessage(13, getBrand());
+      }
+      if (subBrand_ != null) {
+        output.writeMessage(14, getSubBrand());
+      }
+      if (unit_ != null) {
+        output.writeMessage(15, getUnit());
+      }
+      if (category_ != null) {
+        output.writeMessage(16, getCategory());
+      }
+      if (creditor_ != null) {
+        output.writeMessage(17, getCreditor());
+      }
+      if (inventory_ != null) {
+        output.writeMessage(18, getInventory());
+      }
+      for (int i = 0; i < inventories_.size(); i++) {
+        output.writeMessage(19, inventories_.get(i));
+      }
+      if (sale_ != null) {
+        output.writeMessage(20, getSale());
+      }
+      for (int i = 0; i < sales_.size(); i++) {
+        output.writeMessage(21, sales_.get(i));
+      }
+      if (suchiKey_ != null) {
+        output.writeMessage(22, getSuchiKey());
+      }
+      if (esewaPaymentRequest_ != null) {
+        output.writeMessage(23, getEsewaPaymentRequest());
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!refId_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeStringSize(1, getRefId());
+      }
+      if (!stringValue_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeStringSize(2, getStringValue());
+      }
+      if (intValue_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, intValue_);
+      }
+      if (longValue_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(4, longValue_);
+      }
+      if (boolValue_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(5, boolValue_);
+      }
+      if (doubleValue_ != 0D) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(6, doubleValue_);
+      }
+      if (authorization_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(7, getAuthorization());
+      }
+      if (user_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(8, getUser());
+      }
+      if (loginRequest_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(9, getLoginRequest());
+      }
+      if (passwordUpdateRequest_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(10, getPasswordUpdateRequest());
+      }
+      if (stockKeepingUnit_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(11, getStockKeepingUnit());
+      }
+      for (int i = 0; i < stockKeepingUnits_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(12, stockKeepingUnits_.get(i));
+      }
+      if (brand_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(13, getBrand());
+      }
+      if (subBrand_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(14, getSubBrand());
+      }
+      if (unit_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(15, getUnit());
+      }
+      if (category_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(16, getCategory());
+      }
+      if (creditor_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(17, getCreditor());
+      }
+      if (inventory_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(18, getInventory());
+      }
+      for (int i = 0; i < inventories_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(19, inventories_.get(i));
+      }
+      if (sale_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(20, getSale());
+      }
+      for (int i = 0; i < sales_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(21, sales_.get(i));
+      }
+      if (suchiKey_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(22, getSuchiKey());
+      }
+      if (esewaPaymentRequest_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(23, getEsewaPaymentRequest());
+      }
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    public static SuchiBaseRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static SuchiBaseRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static SuchiBaseRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static SuchiBaseRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static SuchiBaseRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static SuchiBaseRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static SuchiBaseRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    }
+    public static SuchiBaseRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static SuchiBaseRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static SuchiBaseRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(SuchiBaseRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
 
     /**
      * Protobuf type {@code treeleaf.suchi.rpc.SuchiBaseRequest}
      */
-    public static final class SuchiBaseRequest extends
-            com.google.protobuf.GeneratedMessageLite<
-                    SuchiBaseRequest, SuchiBaseRequest.Builder> implements
-            // @@protoc_insertion_point(message_implements:treeleaf.suchi.rpc.SuchiBaseRequest)
-            SuchiBaseRequestOrBuilder {
-        private SuchiBaseRequest() {
-            refId_ = "";
-            stringValue_ = "";
-            stockKeepingUnits_ = emptyProtobufList();
-            inventories_ = emptyProtobufList();
-            sales_ = emptyProtobufList();
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          SuchiBaseRequest, Builder> implements
+        // @@protoc_insertion_point(builder_implements:treeleaf.suchi.rpc.SuchiBaseRequest)
+        SuchiBaseRequestOrBuilder {
+      // Construct using com.treeleaf.suchi.rpc.SuchiRpcProto.SuchiBaseRequest.newBuilder()
+      private Builder() {
+        super(DEFAULT_INSTANCE);
+      }
+
+
+      /**
+       * <code>optional string refId = 1;</code>
+       */
+      public String getRefId() {
+        return instance.getRefId();
+      }
+      /**
+       * <code>optional string refId = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getRefIdBytes() {
+        return instance.getRefIdBytes();
+      }
+      /**
+       * <code>optional string refId = 1;</code>
+       */
+      public Builder setRefId(
+          String value) {
+        copyOnWrite();
+        instance.setRefId(value);
+        return this;
+      }
+      /**
+       * <code>optional string refId = 1;</code>
+       */
+      public Builder clearRefId() {
+        copyOnWrite();
+        instance.clearRefId();
+        return this;
+      }
+      /**
+       * <code>optional string refId = 1;</code>
+       */
+      public Builder setRefIdBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setRefIdBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>optional string stringValue = 2;</code>
+       */
+      public String getStringValue() {
+        return instance.getStringValue();
+      }
+      /**
+       * <code>optional string stringValue = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getStringValueBytes() {
+        return instance.getStringValueBytes();
+      }
+      /**
+       * <code>optional string stringValue = 2;</code>
+       */
+      public Builder setStringValue(
+          String value) {
+        copyOnWrite();
+        instance.setStringValue(value);
+        return this;
+      }
+      /**
+       * <code>optional string stringValue = 2;</code>
+       */
+      public Builder clearStringValue() {
+        copyOnWrite();
+        instance.clearStringValue();
+        return this;
+      }
+      /**
+       * <code>optional string stringValue = 2;</code>
+       */
+      public Builder setStringValueBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setStringValueBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>optional int32 intValue = 3;</code>
+       */
+      public int getIntValue() {
+        return instance.getIntValue();
+      }
+      /**
+       * <code>optional int32 intValue = 3;</code>
+       */
+      public Builder setIntValue(int value) {
+        copyOnWrite();
+        instance.setIntValue(value);
+        return this;
+      }
+      /**
+       * <code>optional int32 intValue = 3;</code>
+       */
+      public Builder clearIntValue() {
+        copyOnWrite();
+        instance.clearIntValue();
+        return this;
+      }
+
+      /**
+       * <code>optional int64 longValue = 4;</code>
+       */
+      public long getLongValue() {
+        return instance.getLongValue();
+      }
+      /**
+       * <code>optional int64 longValue = 4;</code>
+       */
+      public Builder setLongValue(long value) {
+        copyOnWrite();
+        instance.setLongValue(value);
+        return this;
+      }
+      /**
+       * <code>optional int64 longValue = 4;</code>
+       */
+      public Builder clearLongValue() {
+        copyOnWrite();
+        instance.clearLongValue();
+        return this;
+      }
+
+      /**
+       * <code>optional bool boolValue = 5;</code>
+       */
+      public boolean getBoolValue() {
+        return instance.getBoolValue();
+      }
+      /**
+       * <code>optional bool boolValue = 5;</code>
+       */
+      public Builder setBoolValue(boolean value) {
+        copyOnWrite();
+        instance.setBoolValue(value);
+        return this;
+      }
+      /**
+       * <code>optional bool boolValue = 5;</code>
+       */
+      public Builder clearBoolValue() {
+        copyOnWrite();
+        instance.clearBoolValue();
+        return this;
+      }
+
+      /**
+       * <code>optional double doubleValue = 6;</code>
+       */
+      public double getDoubleValue() {
+        return instance.getDoubleValue();
+      }
+      /**
+       * <code>optional double doubleValue = 6;</code>
+       */
+      public Builder setDoubleValue(double value) {
+        copyOnWrite();
+        instance.setDoubleValue(value);
+        return this;
+      }
+      /**
+       * <code>optional double doubleValue = 6;</code>
+       */
+      public Builder clearDoubleValue() {
+        copyOnWrite();
+        instance.clearDoubleValue();
+        return this;
+      }
+
+      /**
+       * <code>optional .treeleaf.entities.Authorization authorization = 7;</code>
+       */
+      public boolean hasAuthorization() {
+        return instance.hasAuthorization();
+      }
+      /**
+       * <code>optional .treeleaf.entities.Authorization authorization = 7;</code>
+       */
+      public com.treeleaf.suchi.entities.TreeleafProto.Authorization getAuthorization() {
+        return instance.getAuthorization();
+      }
+      /**
+       * <code>optional .treeleaf.entities.Authorization authorization = 7;</code>
+       */
+      public Builder setAuthorization(com.treeleaf.suchi.entities.TreeleafProto.Authorization value) {
+        copyOnWrite();
+        instance.setAuthorization(value);
+        return this;
         }
+      /**
+       * <code>optional .treeleaf.entities.Authorization authorization = 7;</code>
+       */
+      public Builder setAuthorization(
+          com.treeleaf.suchi.entities.TreeleafProto.Authorization.Builder builderForValue) {
+        copyOnWrite();
+        instance.setAuthorization(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.entities.Authorization authorization = 7;</code>
+       */
+      public Builder mergeAuthorization(com.treeleaf.suchi.entities.TreeleafProto.Authorization value) {
+        copyOnWrite();
+        instance.mergeAuthorization(value);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.entities.Authorization authorization = 7;</code>
+       */
+      public Builder clearAuthorization() {  copyOnWrite();
+        instance.clearAuthorization();
+        return this;
+      }
 
-        private int bitField0_;
-        public static final int REFID_FIELD_NUMBER = 1;
-        private String refId_;
-
-        /**
-         * <code>optional string refId = 1;</code>
-         */
-        public String getRefId() {
-            return refId_;
+      /**
+       * <code>optional .treeleaf.entities.UserAccount user = 8;</code>
+       */
+      public boolean hasUser() {
+        return instance.hasUser();
+      }
+      /**
+       * <code>optional .treeleaf.entities.UserAccount user = 8;</code>
+       */
+      public com.treeleaf.suchi.entities.TreeleafProto.UserAccount getUser() {
+        return instance.getUser();
+      }
+      /**
+       * <code>optional .treeleaf.entities.UserAccount user = 8;</code>
+       */
+      public Builder setUser(com.treeleaf.suchi.entities.TreeleafProto.UserAccount value) {
+        copyOnWrite();
+        instance.setUser(value);
+        return this;
         }
+      /**
+       * <code>optional .treeleaf.entities.UserAccount user = 8;</code>
+       */
+      public Builder setUser(
+          com.treeleaf.suchi.entities.TreeleafProto.UserAccount.Builder builderForValue) {
+        copyOnWrite();
+        instance.setUser(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.entities.UserAccount user = 8;</code>
+       */
+      public Builder mergeUser(com.treeleaf.suchi.entities.TreeleafProto.UserAccount value) {
+        copyOnWrite();
+        instance.mergeUser(value);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.entities.UserAccount user = 8;</code>
+       */
+      public Builder clearUser() {  copyOnWrite();
+        instance.clearUser();
+        return this;
+      }
 
-        /**
-         * <code>optional string refId = 1;</code>
-         */
-        public com.google.protobuf.ByteString
-        getRefIdBytes() {
-            return com.google.protobuf.ByteString.copyFromUtf8(refId_);
+      /**
+       * <code>optional .treeleaf.entities.LoginRequest loginRequest = 9;</code>
+       */
+      public boolean hasLoginRequest() {
+        return instance.hasLoginRequest();
+      }
+      /**
+       * <code>optional .treeleaf.entities.LoginRequest loginRequest = 9;</code>
+       */
+      public com.treeleaf.suchi.entities.TreeleafProto.LoginRequest getLoginRequest() {
+        return instance.getLoginRequest();
+      }
+      /**
+       * <code>optional .treeleaf.entities.LoginRequest loginRequest = 9;</code>
+       */
+      public Builder setLoginRequest(com.treeleaf.suchi.entities.TreeleafProto.LoginRequest value) {
+        copyOnWrite();
+        instance.setLoginRequest(value);
+        return this;
         }
+      /**
+       * <code>optional .treeleaf.entities.LoginRequest loginRequest = 9;</code>
+       */
+      public Builder setLoginRequest(
+          com.treeleaf.suchi.entities.TreeleafProto.LoginRequest.Builder builderForValue) {
+        copyOnWrite();
+        instance.setLoginRequest(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.entities.LoginRequest loginRequest = 9;</code>
+       */
+      public Builder mergeLoginRequest(com.treeleaf.suchi.entities.TreeleafProto.LoginRequest value) {
+        copyOnWrite();
+        instance.mergeLoginRequest(value);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.entities.LoginRequest loginRequest = 9;</code>
+       */
+      public Builder clearLoginRequest() {  copyOnWrite();
+        instance.clearLoginRequest();
+        return this;
+      }
 
-        /**
-         * <code>optional string refId = 1;</code>
-         */
-        private void setRefId(
-                String value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-
-            refId_ = value;
+      /**
+       * <code>optional .treeleaf.entities.PasswordChangeRequest passwordUpdateRequest = 10;</code>
+       */
+      public boolean hasPasswordUpdateRequest() {
+        return instance.hasPasswordUpdateRequest();
+      }
+      /**
+       * <code>optional .treeleaf.entities.PasswordChangeRequest passwordUpdateRequest = 10;</code>
+       */
+      public com.treeleaf.suchi.entities.TreeleafProto.PasswordChangeRequest getPasswordUpdateRequest() {
+        return instance.getPasswordUpdateRequest();
+      }
+      /**
+       * <code>optional .treeleaf.entities.PasswordChangeRequest passwordUpdateRequest = 10;</code>
+       */
+      public Builder setPasswordUpdateRequest(com.treeleaf.suchi.entities.TreeleafProto.PasswordChangeRequest value) {
+        copyOnWrite();
+        instance.setPasswordUpdateRequest(value);
+        return this;
         }
+      /**
+       * <code>optional .treeleaf.entities.PasswordChangeRequest passwordUpdateRequest = 10;</code>
+       */
+      public Builder setPasswordUpdateRequest(
+          com.treeleaf.suchi.entities.TreeleafProto.PasswordChangeRequest.Builder builderForValue) {
+        copyOnWrite();
+        instance.setPasswordUpdateRequest(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.entities.PasswordChangeRequest passwordUpdateRequest = 10;</code>
+       */
+      public Builder mergePasswordUpdateRequest(com.treeleaf.suchi.entities.TreeleafProto.PasswordChangeRequest value) {
+        copyOnWrite();
+        instance.mergePasswordUpdateRequest(value);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.entities.PasswordChangeRequest passwordUpdateRequest = 10;</code>
+       */
+      public Builder clearPasswordUpdateRequest() {  copyOnWrite();
+        instance.clearPasswordUpdateRequest();
+        return this;
+      }
 
-        /**
-         * <code>optional string refId = 1;</code>
-         */
-        private void clearRefId() {
-
-            refId_ = getDefaultInstance().getRefId();
+      /**
+       * <code>optional .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnit = 11;</code>
+       */
+      public boolean hasStockKeepingUnit() {
+        return instance.hasStockKeepingUnit();
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnit = 11;</code>
+       */
+      public com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit getStockKeepingUnit() {
+        return instance.getStockKeepingUnit();
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnit = 11;</code>
+       */
+      public Builder setStockKeepingUnit(com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit value) {
+        copyOnWrite();
+        instance.setStockKeepingUnit(value);
+        return this;
         }
+      /**
+       * <code>optional .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnit = 11;</code>
+       */
+      public Builder setStockKeepingUnit(
+          com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit.Builder builderForValue) {
+        copyOnWrite();
+        instance.setStockKeepingUnit(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnit = 11;</code>
+       */
+      public Builder mergeStockKeepingUnit(com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit value) {
+        copyOnWrite();
+        instance.mergeStockKeepingUnit(value);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnit = 11;</code>
+       */
+      public Builder clearStockKeepingUnit() {  copyOnWrite();
+        instance.clearStockKeepingUnit();
+        return this;
+      }
 
-        /**
-         * <code>optional string refId = 1;</code>
-         */
-        private void setRefIdBytes(
-                com.google.protobuf.ByteString value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            checkByteStringIsUtf8(value);
+      /**
+       * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
+       */
+      public java.util.List<com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit> getStockKeepingUnitsList() {
+        return java.util.Collections.unmodifiableList(
+            instance.getStockKeepingUnitsList());
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
+       */
+      public int getStockKeepingUnitsCount() {
+        return instance.getStockKeepingUnitsCount();
+      }/**
+       * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
+       */
+      public com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit getStockKeepingUnits(int index) {
+        return instance.getStockKeepingUnits(index);
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
+       */
+      public Builder setStockKeepingUnits(
+          int index, com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit value) {
+        copyOnWrite();
+        instance.setStockKeepingUnits(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
+       */
+      public Builder setStockKeepingUnits(
+          int index, com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit.Builder builderForValue) {
+        copyOnWrite();
+        instance.setStockKeepingUnits(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
+       */
+      public Builder addStockKeepingUnits(com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit value) {
+        copyOnWrite();
+        instance.addStockKeepingUnits(value);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
+       */
+      public Builder addStockKeepingUnits(
+          int index, com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit value) {
+        copyOnWrite();
+        instance.addStockKeepingUnits(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
+       */
+      public Builder addStockKeepingUnits(
+          com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit.Builder builderForValue) {
+        copyOnWrite();
+        instance.addStockKeepingUnits(builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
+       */
+      public Builder addStockKeepingUnits(
+          int index, com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit.Builder builderForValue) {
+        copyOnWrite();
+        instance.addStockKeepingUnits(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
+       */
+      public Builder addAllStockKeepingUnits(
+          Iterable<? extends com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit> values) {
+        copyOnWrite();
+        instance.addAllStockKeepingUnits(values);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
+       */
+      public Builder clearStockKeepingUnits() {
+        copyOnWrite();
+        instance.clearStockKeepingUnits();
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
+       */
+      public Builder removeStockKeepingUnits(int index) {
+        copyOnWrite();
+        instance.removeStockKeepingUnits(index);
+        return this;
+      }
 
-            refId_ = value.toStringUtf8();
+      /**
+       * <code>optional .treeleaf.suchi.entities.Brand brand = 13;</code>
+       */
+      public boolean hasBrand() {
+        return instance.hasBrand();
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.Brand brand = 13;</code>
+       */
+      public com.treeleaf.suchi.entities.SuchiProto.Brand getBrand() {
+        return instance.getBrand();
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.Brand brand = 13;</code>
+       */
+      public Builder setBrand(com.treeleaf.suchi.entities.SuchiProto.Brand value) {
+        copyOnWrite();
+        instance.setBrand(value);
+        return this;
         }
+      /**
+       * <code>optional .treeleaf.suchi.entities.Brand brand = 13;</code>
+       */
+      public Builder setBrand(
+          com.treeleaf.suchi.entities.SuchiProto.Brand.Builder builderForValue) {
+        copyOnWrite();
+        instance.setBrand(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.Brand brand = 13;</code>
+       */
+      public Builder mergeBrand(com.treeleaf.suchi.entities.SuchiProto.Brand value) {
+        copyOnWrite();
+        instance.mergeBrand(value);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.Brand brand = 13;</code>
+       */
+      public Builder clearBrand() {  copyOnWrite();
+        instance.clearBrand();
+        return this;
+      }
 
-        public static final int STRINGVALUE_FIELD_NUMBER = 2;
-        private String stringValue_;
-
-        /**
-         * <code>optional string stringValue = 2;</code>
-         */
-        public String getStringValue() {
-            return stringValue_;
+      /**
+       * <code>optional .treeleaf.suchi.entities.SubBrand subBrand = 14;</code>
+       */
+      public boolean hasSubBrand() {
+        return instance.hasSubBrand();
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.SubBrand subBrand = 14;</code>
+       */
+      public com.treeleaf.suchi.entities.SuchiProto.SubBrand getSubBrand() {
+        return instance.getSubBrand();
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.SubBrand subBrand = 14;</code>
+       */
+      public Builder setSubBrand(com.treeleaf.suchi.entities.SuchiProto.SubBrand value) {
+        copyOnWrite();
+        instance.setSubBrand(value);
+        return this;
         }
+      /**
+       * <code>optional .treeleaf.suchi.entities.SubBrand subBrand = 14;</code>
+       */
+      public Builder setSubBrand(
+          com.treeleaf.suchi.entities.SuchiProto.SubBrand.Builder builderForValue) {
+        copyOnWrite();
+        instance.setSubBrand(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.SubBrand subBrand = 14;</code>
+       */
+      public Builder mergeSubBrand(com.treeleaf.suchi.entities.SuchiProto.SubBrand value) {
+        copyOnWrite();
+        instance.mergeSubBrand(value);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.SubBrand subBrand = 14;</code>
+       */
+      public Builder clearSubBrand() {  copyOnWrite();
+        instance.clearSubBrand();
+        return this;
+      }
 
-        /**
-         * <code>optional string stringValue = 2;</code>
-         */
-        public com.google.protobuf.ByteString
-        getStringValueBytes() {
-            return com.google.protobuf.ByteString.copyFromUtf8(stringValue_);
+      /**
+       * <code>optional .treeleaf.suchi.entities.Unit unit = 15;</code>
+       */
+      public boolean hasUnit() {
+        return instance.hasUnit();
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.Unit unit = 15;</code>
+       */
+      public com.treeleaf.suchi.entities.SuchiProto.Unit getUnit() {
+        return instance.getUnit();
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.Unit unit = 15;</code>
+       */
+      public Builder setUnit(com.treeleaf.suchi.entities.SuchiProto.Unit value) {
+        copyOnWrite();
+        instance.setUnit(value);
+        return this;
         }
+      /**
+       * <code>optional .treeleaf.suchi.entities.Unit unit = 15;</code>
+       */
+      public Builder setUnit(
+          com.treeleaf.suchi.entities.SuchiProto.Unit.Builder builderForValue) {
+        copyOnWrite();
+        instance.setUnit(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.Unit unit = 15;</code>
+       */
+      public Builder mergeUnit(com.treeleaf.suchi.entities.SuchiProto.Unit value) {
+        copyOnWrite();
+        instance.mergeUnit(value);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.Unit unit = 15;</code>
+       */
+      public Builder clearUnit() {  copyOnWrite();
+        instance.clearUnit();
+        return this;
+      }
 
-        /**
-         * <code>optional string stringValue = 2;</code>
-         */
-        private void setStringValue(
-                String value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-
-            stringValue_ = value;
+      /**
+       * <code>optional .treeleaf.suchi.entities.Category category = 16;</code>
+       */
+      public boolean hasCategory() {
+        return instance.hasCategory();
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.Category category = 16;</code>
+       */
+      public com.treeleaf.suchi.entities.SuchiProto.Category getCategory() {
+        return instance.getCategory();
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.Category category = 16;</code>
+       */
+      public Builder setCategory(com.treeleaf.suchi.entities.SuchiProto.Category value) {
+        copyOnWrite();
+        instance.setCategory(value);
+        return this;
         }
+      /**
+       * <code>optional .treeleaf.suchi.entities.Category category = 16;</code>
+       */
+      public Builder setCategory(
+          com.treeleaf.suchi.entities.SuchiProto.Category.Builder builderForValue) {
+        copyOnWrite();
+        instance.setCategory(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.Category category = 16;</code>
+       */
+      public Builder mergeCategory(com.treeleaf.suchi.entities.SuchiProto.Category value) {
+        copyOnWrite();
+        instance.mergeCategory(value);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.Category category = 16;</code>
+       */
+      public Builder clearCategory() {  copyOnWrite();
+        instance.clearCategory();
+        return this;
+      }
 
-        /**
-         * <code>optional string stringValue = 2;</code>
-         */
-        private void clearStringValue() {
-
-            stringValue_ = getDefaultInstance().getStringValue();
+      /**
+       * <code>optional .treeleaf.suchi.entities.Creditor creditor = 17;</code>
+       */
+      public boolean hasCreditor() {
+        return instance.hasCreditor();
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.Creditor creditor = 17;</code>
+       */
+      public com.treeleaf.suchi.entities.SuchiProto.Creditor getCreditor() {
+        return instance.getCreditor();
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.Creditor creditor = 17;</code>
+       */
+      public Builder setCreditor(com.treeleaf.suchi.entities.SuchiProto.Creditor value) {
+        copyOnWrite();
+        instance.setCreditor(value);
+        return this;
         }
+      /**
+       * <code>optional .treeleaf.suchi.entities.Creditor creditor = 17;</code>
+       */
+      public Builder setCreditor(
+          com.treeleaf.suchi.entities.SuchiProto.Creditor.Builder builderForValue) {
+        copyOnWrite();
+        instance.setCreditor(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.Creditor creditor = 17;</code>
+       */
+      public Builder mergeCreditor(com.treeleaf.suchi.entities.SuchiProto.Creditor value) {
+        copyOnWrite();
+        instance.mergeCreditor(value);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.Creditor creditor = 17;</code>
+       */
+      public Builder clearCreditor() {  copyOnWrite();
+        instance.clearCreditor();
+        return this;
+      }
 
-        /**
-         * <code>optional string stringValue = 2;</code>
-         */
-        private void setStringValueBytes(
-                com.google.protobuf.ByteString value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            checkByteStringIsUtf8(value);
-
-            stringValue_ = value.toStringUtf8();
+      /**
+       * <code>optional .treeleaf.suchi.entities.Inventory inventory = 18;</code>
+       */
+      public boolean hasInventory() {
+        return instance.hasInventory();
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.Inventory inventory = 18;</code>
+       */
+      public com.treeleaf.suchi.entities.SuchiProto.Inventory getInventory() {
+        return instance.getInventory();
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.Inventory inventory = 18;</code>
+       */
+      public Builder setInventory(com.treeleaf.suchi.entities.SuchiProto.Inventory value) {
+        copyOnWrite();
+        instance.setInventory(value);
+        return this;
         }
+      /**
+       * <code>optional .treeleaf.suchi.entities.Inventory inventory = 18;</code>
+       */
+      public Builder setInventory(
+          com.treeleaf.suchi.entities.SuchiProto.Inventory.Builder builderForValue) {
+        copyOnWrite();
+        instance.setInventory(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.Inventory inventory = 18;</code>
+       */
+      public Builder mergeInventory(com.treeleaf.suchi.entities.SuchiProto.Inventory value) {
+        copyOnWrite();
+        instance.mergeInventory(value);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.Inventory inventory = 18;</code>
+       */
+      public Builder clearInventory() {  copyOnWrite();
+        instance.clearInventory();
+        return this;
+      }
 
-        public static final int INTVALUE_FIELD_NUMBER = 3;
-        private int intValue_;
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 19;</code>
+       */
+      public java.util.List<com.treeleaf.suchi.entities.SuchiProto.Inventory> getInventoriesList() {
+        return java.util.Collections.unmodifiableList(
+            instance.getInventoriesList());
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 19;</code>
+       */
+      public int getInventoriesCount() {
+        return instance.getInventoriesCount();
+      }/**
+       * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 19;</code>
+       */
+      public com.treeleaf.suchi.entities.SuchiProto.Inventory getInventories(int index) {
+        return instance.getInventories(index);
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 19;</code>
+       */
+      public Builder setInventories(
+          int index, com.treeleaf.suchi.entities.SuchiProto.Inventory value) {
+        copyOnWrite();
+        instance.setInventories(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 19;</code>
+       */
+      public Builder setInventories(
+          int index, com.treeleaf.suchi.entities.SuchiProto.Inventory.Builder builderForValue) {
+        copyOnWrite();
+        instance.setInventories(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 19;</code>
+       */
+      public Builder addInventories(com.treeleaf.suchi.entities.SuchiProto.Inventory value) {
+        copyOnWrite();
+        instance.addInventories(value);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 19;</code>
+       */
+      public Builder addInventories(
+          int index, com.treeleaf.suchi.entities.SuchiProto.Inventory value) {
+        copyOnWrite();
+        instance.addInventories(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 19;</code>
+       */
+      public Builder addInventories(
+          com.treeleaf.suchi.entities.SuchiProto.Inventory.Builder builderForValue) {
+        copyOnWrite();
+        instance.addInventories(builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 19;</code>
+       */
+      public Builder addInventories(
+          int index, com.treeleaf.suchi.entities.SuchiProto.Inventory.Builder builderForValue) {
+        copyOnWrite();
+        instance.addInventories(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 19;</code>
+       */
+      public Builder addAllInventories(
+          Iterable<? extends com.treeleaf.suchi.entities.SuchiProto.Inventory> values) {
+        copyOnWrite();
+        instance.addAllInventories(values);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 19;</code>
+       */
+      public Builder clearInventories() {
+        copyOnWrite();
+        instance.clearInventories();
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 19;</code>
+       */
+      public Builder removeInventories(int index) {
+        copyOnWrite();
+        instance.removeInventories(index);
+        return this;
+      }
 
-        /**
-         * <code>optional int32 intValue = 3;</code>
-         */
-        public int getIntValue() {
-            return intValue_;
+      /**
+       * <code>optional .treeleaf.suchi.entities.Sale sale = 20;</code>
+       */
+      public boolean hasSale() {
+        return instance.hasSale();
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.Sale sale = 20;</code>
+       */
+      public com.treeleaf.suchi.entities.SuchiProto.Sale getSale() {
+        return instance.getSale();
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.Sale sale = 20;</code>
+       */
+      public Builder setSale(com.treeleaf.suchi.entities.SuchiProto.Sale value) {
+        copyOnWrite();
+        instance.setSale(value);
+        return this;
         }
+      /**
+       * <code>optional .treeleaf.suchi.entities.Sale sale = 20;</code>
+       */
+      public Builder setSale(
+          com.treeleaf.suchi.entities.SuchiProto.Sale.Builder builderForValue) {
+        copyOnWrite();
+        instance.setSale(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.Sale sale = 20;</code>
+       */
+      public Builder mergeSale(com.treeleaf.suchi.entities.SuchiProto.Sale value) {
+        copyOnWrite();
+        instance.mergeSale(value);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.Sale sale = 20;</code>
+       */
+      public Builder clearSale() {  copyOnWrite();
+        instance.clearSale();
+        return this;
+      }
 
-        /**
-         * <code>optional int32 intValue = 3;</code>
-         */
-        private void setIntValue(int value) {
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Sale sales = 21;</code>
+       */
+      public java.util.List<com.treeleaf.suchi.entities.SuchiProto.Sale> getSalesList() {
+        return java.util.Collections.unmodifiableList(
+            instance.getSalesList());
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Sale sales = 21;</code>
+       */
+      public int getSalesCount() {
+        return instance.getSalesCount();
+      }/**
+       * <code>repeated .treeleaf.suchi.entities.Sale sales = 21;</code>
+       */
+      public com.treeleaf.suchi.entities.SuchiProto.Sale getSales(int index) {
+        return instance.getSales(index);
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Sale sales = 21;</code>
+       */
+      public Builder setSales(
+          int index, com.treeleaf.suchi.entities.SuchiProto.Sale value) {
+        copyOnWrite();
+        instance.setSales(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Sale sales = 21;</code>
+       */
+      public Builder setSales(
+          int index, com.treeleaf.suchi.entities.SuchiProto.Sale.Builder builderForValue) {
+        copyOnWrite();
+        instance.setSales(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Sale sales = 21;</code>
+       */
+      public Builder addSales(com.treeleaf.suchi.entities.SuchiProto.Sale value) {
+        copyOnWrite();
+        instance.addSales(value);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Sale sales = 21;</code>
+       */
+      public Builder addSales(
+          int index, com.treeleaf.suchi.entities.SuchiProto.Sale value) {
+        copyOnWrite();
+        instance.addSales(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Sale sales = 21;</code>
+       */
+      public Builder addSales(
+          com.treeleaf.suchi.entities.SuchiProto.Sale.Builder builderForValue) {
+        copyOnWrite();
+        instance.addSales(builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Sale sales = 21;</code>
+       */
+      public Builder addSales(
+          int index, com.treeleaf.suchi.entities.SuchiProto.Sale.Builder builderForValue) {
+        copyOnWrite();
+        instance.addSales(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Sale sales = 21;</code>
+       */
+      public Builder addAllSales(
+          Iterable<? extends com.treeleaf.suchi.entities.SuchiProto.Sale> values) {
+        copyOnWrite();
+        instance.addAllSales(values);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Sale sales = 21;</code>
+       */
+      public Builder clearSales() {
+        copyOnWrite();
+        instance.clearSales();
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Sale sales = 21;</code>
+       */
+      public Builder removeSales(int index) {
+        copyOnWrite();
+        instance.removeSales(index);
+        return this;
+      }
 
-            intValue_ = value;
+      /**
+       * <code>optional .treeleaf.suchi.entities.SuchiKey suchiKey = 22;</code>
+       */
+      public boolean hasSuchiKey() {
+        return instance.hasSuchiKey();
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.SuchiKey suchiKey = 22;</code>
+       */
+      public com.treeleaf.suchi.entities.SuchiProto.SuchiKey getSuchiKey() {
+        return instance.getSuchiKey();
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.SuchiKey suchiKey = 22;</code>
+       */
+      public Builder setSuchiKey(com.treeleaf.suchi.entities.SuchiProto.SuchiKey value) {
+        copyOnWrite();
+        instance.setSuchiKey(value);
+        return this;
         }
+      /**
+       * <code>optional .treeleaf.suchi.entities.SuchiKey suchiKey = 22;</code>
+       */
+      public Builder setSuchiKey(
+          com.treeleaf.suchi.entities.SuchiProto.SuchiKey.Builder builderForValue) {
+        copyOnWrite();
+        instance.setSuchiKey(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.SuchiKey suchiKey = 22;</code>
+       */
+      public Builder mergeSuchiKey(com.treeleaf.suchi.entities.SuchiProto.SuchiKey value) {
+        copyOnWrite();
+        instance.mergeSuchiKey(value);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.SuchiKey suchiKey = 22;</code>
+       */
+      public Builder clearSuchiKey() {  copyOnWrite();
+        instance.clearSuchiKey();
+        return this;
+      }
 
-        /**
-         * <code>optional int32 intValue = 3;</code>
-         */
-        private void clearIntValue() {
-
-            intValue_ = 0;
+      /**
+       * <code>optional .treeleaf.suchi.entities.EsewaPaymentRequest esewaPaymentRequest = 23;</code>
+       */
+      public boolean hasEsewaPaymentRequest() {
+        return instance.hasEsewaPaymentRequest();
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.EsewaPaymentRequest esewaPaymentRequest = 23;</code>
+       */
+      public com.treeleaf.suchi.entities.SuchiProto.EsewaPaymentRequest getEsewaPaymentRequest() {
+        return instance.getEsewaPaymentRequest();
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.EsewaPaymentRequest esewaPaymentRequest = 23;</code>
+       */
+      public Builder setEsewaPaymentRequest(com.treeleaf.suchi.entities.SuchiProto.EsewaPaymentRequest value) {
+        copyOnWrite();
+        instance.setEsewaPaymentRequest(value);
+        return this;
         }
+      /**
+       * <code>optional .treeleaf.suchi.entities.EsewaPaymentRequest esewaPaymentRequest = 23;</code>
+       */
+      public Builder setEsewaPaymentRequest(
+          com.treeleaf.suchi.entities.SuchiProto.EsewaPaymentRequest.Builder builderForValue) {
+        copyOnWrite();
+        instance.setEsewaPaymentRequest(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.EsewaPaymentRequest esewaPaymentRequest = 23;</code>
+       */
+      public Builder mergeEsewaPaymentRequest(com.treeleaf.suchi.entities.SuchiProto.EsewaPaymentRequest value) {
+        copyOnWrite();
+        instance.mergeEsewaPaymentRequest(value);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.EsewaPaymentRequest esewaPaymentRequest = 23;</code>
+       */
+      public Builder clearEsewaPaymentRequest() {  copyOnWrite();
+        instance.clearEsewaPaymentRequest();
+        return this;
+      }
 
-        public static final int LONGVALUE_FIELD_NUMBER = 4;
-        private long longValue_;
-
-        /**
-         * <code>optional int64 longValue = 4;</code>
-         */
-        public long getLongValue() {
-            return longValue_;
+      // @@protoc_insertion_point(builder_scope:treeleaf.suchi.rpc.SuchiBaseRequest)
+    }
+    protected final Object dynamicMethod(
+        MethodToInvoke method,
+        Object arg0, Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new SuchiBaseRequest();
         }
-
-        /**
-         * <code>optional int64 longValue = 4;</code>
-         */
-        private void setLongValue(long value) {
-
-            longValue_ = value;
+        case IS_INITIALIZED: {
+          return DEFAULT_INSTANCE;
         }
-
-        /**
-         * <code>optional int64 longValue = 4;</code>
-         */
-        private void clearLongValue() {
-
-            longValue_ = 0L;
+        case MAKE_IMMUTABLE: {
+          stockKeepingUnits_.makeImmutable();
+          inventories_.makeImmutable();
+          sales_.makeImmutable();
+          return null;
         }
-
-        public static final int BOOLVALUE_FIELD_NUMBER = 5;
-        private boolean boolValue_;
-
-        /**
-         * <code>optional bool boolValue = 5;</code>
-         */
-        public boolean getBoolValue() {
-            return boolValue_;
+        case NEW_BUILDER: {
+          return new Builder();
         }
-
-        /**
-         * <code>optional bool boolValue = 5;</code>
-         */
-        private void setBoolValue(boolean value) {
-
-            boolValue_ = value;
+        case VISIT: {
+          Visitor visitor = (Visitor) arg0;
+          SuchiBaseRequest other = (SuchiBaseRequest) arg1;
+          refId_ = visitor.visitString(!refId_.isEmpty(), refId_,
+              !other.refId_.isEmpty(), other.refId_);
+          stringValue_ = visitor.visitString(!stringValue_.isEmpty(), stringValue_,
+              !other.stringValue_.isEmpty(), other.stringValue_);
+          intValue_ = visitor.visitInt(intValue_ != 0, intValue_,
+              other.intValue_ != 0, other.intValue_);
+          longValue_ = visitor.visitLong(longValue_ != 0L, longValue_,
+              other.longValue_ != 0L, other.longValue_);
+          boolValue_ = visitor.visitBoolean(boolValue_ != false, boolValue_,
+              other.boolValue_ != false, other.boolValue_);
+          doubleValue_ = visitor.visitDouble(doubleValue_ != 0D, doubleValue_,
+              other.doubleValue_ != 0D, other.doubleValue_);
+          authorization_ = visitor.visitMessage(authorization_, other.authorization_);
+          user_ = visitor.visitMessage(user_, other.user_);
+          loginRequest_ = visitor.visitMessage(loginRequest_, other.loginRequest_);
+          passwordUpdateRequest_ = visitor.visitMessage(passwordUpdateRequest_, other.passwordUpdateRequest_);
+          stockKeepingUnit_ = visitor.visitMessage(stockKeepingUnit_, other.stockKeepingUnit_);
+          stockKeepingUnits_= visitor.visitList(stockKeepingUnits_, other.stockKeepingUnits_);
+          brand_ = visitor.visitMessage(brand_, other.brand_);
+          subBrand_ = visitor.visitMessage(subBrand_, other.subBrand_);
+          unit_ = visitor.visitMessage(unit_, other.unit_);
+          category_ = visitor.visitMessage(category_, other.category_);
+          creditor_ = visitor.visitMessage(creditor_, other.creditor_);
+          inventory_ = visitor.visitMessage(inventory_, other.inventory_);
+          inventories_= visitor.visitList(inventories_, other.inventories_);
+          sale_ = visitor.visitMessage(sale_, other.sale_);
+          sales_= visitor.visitList(sales_, other.sales_);
+          suchiKey_ = visitor.visitMessage(suchiKey_, other.suchiKey_);
+          esewaPaymentRequest_ = visitor.visitMessage(esewaPaymentRequest_, other.esewaPaymentRequest_);
+          if (visitor == MergeFromVisitor
+              .INSTANCE) {
+            bitField0_ |= other.bitField0_;
+          }
+          return this;
         }
-
-        /**
-         * <code>optional bool boolValue = 5;</code>
-         */
-        private void clearBoolValue() {
-
-            boolValue_ = false;
-        }
-
-        public static final int DOUBLEVALUE_FIELD_NUMBER = 6;
-        private double doubleValue_;
-
-        /**
-         * <code>optional double doubleValue = 6;</code>
-         */
-        public double getDoubleValue() {
-            return doubleValue_;
-        }
-
-        /**
-         * <code>optional double doubleValue = 6;</code>
-         */
-        private void setDoubleValue(double value) {
-
-            doubleValue_ = value;
-        }
-
-        /**
-         * <code>optional double doubleValue = 6;</code>
-         */
-        private void clearDoubleValue() {
-
-            doubleValue_ = 0D;
-        }
-
-        public static final int AUTHORIZATION_FIELD_NUMBER = 7;
-        private com.treeleaf.suchi.entities.TreeleafProto.Authorization authorization_;
-
-        /**
-         * <code>optional .treeleaf.entities.Authorization authorization = 7;</code>
-         */
-        public boolean hasAuthorization() {
-            return authorization_ != null;
-        }
-
-        /**
-         * <code>optional .treeleaf.entities.Authorization authorization = 7;</code>
-         */
-        public com.treeleaf.suchi.entities.TreeleafProto.Authorization getAuthorization() {
-            return authorization_ == null ? com.treeleaf.suchi.entities.TreeleafProto.Authorization.getDefaultInstance() : authorization_;
-        }
-
-        /**
-         * <code>optional .treeleaf.entities.Authorization authorization = 7;</code>
-         */
-        private void setAuthorization(com.treeleaf.suchi.entities.TreeleafProto.Authorization value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            authorization_ = value;
-
-        }
-
-        /**
-         * <code>optional .treeleaf.entities.Authorization authorization = 7;</code>
-         */
-        private void setAuthorization(
-                com.treeleaf.suchi.entities.TreeleafProto.Authorization.Builder builderForValue) {
-            authorization_ = builderForValue.build();
-
-        }
-
-        /**
-         * <code>optional .treeleaf.entities.Authorization authorization = 7;</code>
-         */
-        private void mergeAuthorization(com.treeleaf.suchi.entities.TreeleafProto.Authorization value) {
-            if (authorization_ != null &&
-                    authorization_ != com.treeleaf.suchi.entities.TreeleafProto.Authorization.getDefaultInstance()) {
-                authorization_ =
-                        com.treeleaf.suchi.entities.TreeleafProto.Authorization.newBuilder(authorization_).mergeFrom(value).buildPartial();
-            } else {
-                authorization_ = value;
-            }
-
-        }
-
-        /**
-         * <code>optional .treeleaf.entities.Authorization authorization = 7;</code>
-         */
-        private void clearAuthorization() {
-            authorization_ = null;
-
-        }
-
-        public static final int USER_FIELD_NUMBER = 8;
-        private com.treeleaf.suchi.entities.TreeleafProto.UserAccount user_;
-
-        /**
-         * <code>optional .treeleaf.entities.UserAccount user = 8;</code>
-         */
-        public boolean hasUser() {
-            return user_ != null;
-        }
-
-        /**
-         * <code>optional .treeleaf.entities.UserAccount user = 8;</code>
-         */
-        public com.treeleaf.suchi.entities.TreeleafProto.UserAccount getUser() {
-            return user_ == null ? com.treeleaf.suchi.entities.TreeleafProto.UserAccount.getDefaultInstance() : user_;
-        }
-
-        /**
-         * <code>optional .treeleaf.entities.UserAccount user = 8;</code>
-         */
-        private void setUser(com.treeleaf.suchi.entities.TreeleafProto.UserAccount value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            user_ = value;
-
-        }
-
-        /**
-         * <code>optional .treeleaf.entities.UserAccount user = 8;</code>
-         */
-        private void setUser(
-                com.treeleaf.suchi.entities.TreeleafProto.UserAccount.Builder builderForValue) {
-            user_ = builderForValue.build();
-
-        }
-
-        /**
-         * <code>optional .treeleaf.entities.UserAccount user = 8;</code>
-         */
-        private void mergeUser(com.treeleaf.suchi.entities.TreeleafProto.UserAccount value) {
-            if (user_ != null &&
-                    user_ != com.treeleaf.suchi.entities.TreeleafProto.UserAccount.getDefaultInstance()) {
-                user_ =
-                        com.treeleaf.suchi.entities.TreeleafProto.UserAccount.newBuilder(user_).mergeFrom(value).buildPartial();
-            } else {
-                user_ = value;
-            }
-
-        }
-
-        /**
-         * <code>optional .treeleaf.entities.UserAccount user = 8;</code>
-         */
-        private void clearUser() {
-            user_ = null;
-
-        }
-
-        public static final int LOGINREQUEST_FIELD_NUMBER = 9;
-        private com.treeleaf.suchi.entities.TreeleafProto.LoginRequest loginRequest_;
-
-        /**
-         * <code>optional .treeleaf.entities.LoginRequest loginRequest = 9;</code>
-         */
-        public boolean hasLoginRequest() {
-            return loginRequest_ != null;
-        }
-
-        /**
-         * <code>optional .treeleaf.entities.LoginRequest loginRequest = 9;</code>
-         */
-        public com.treeleaf.suchi.entities.TreeleafProto.LoginRequest getLoginRequest() {
-            return loginRequest_ == null ? com.treeleaf.suchi.entities.TreeleafProto.LoginRequest.getDefaultInstance() : loginRequest_;
-        }
-
-        /**
-         * <code>optional .treeleaf.entities.LoginRequest loginRequest = 9;</code>
-         */
-        private void setLoginRequest(com.treeleaf.suchi.entities.TreeleafProto.LoginRequest value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            loginRequest_ = value;
-
-        }
-
-        /**
-         * <code>optional .treeleaf.entities.LoginRequest loginRequest = 9;</code>
-         */
-        private void setLoginRequest(
-                com.treeleaf.suchi.entities.TreeleafProto.LoginRequest.Builder builderForValue) {
-            loginRequest_ = builderForValue.build();
-
-        }
-
-        /**
-         * <code>optional .treeleaf.entities.LoginRequest loginRequest = 9;</code>
-         */
-        private void mergeLoginRequest(com.treeleaf.suchi.entities.TreeleafProto.LoginRequest value) {
-            if (loginRequest_ != null &&
-                    loginRequest_ != com.treeleaf.suchi.entities.TreeleafProto.LoginRequest.getDefaultInstance()) {
-                loginRequest_ =
-                        com.treeleaf.suchi.entities.TreeleafProto.LoginRequest.newBuilder(loginRequest_).mergeFrom(value).buildPartial();
-            } else {
-                loginRequest_ = value;
-            }
-
-        }
-
-        /**
-         * <code>optional .treeleaf.entities.LoginRequest loginRequest = 9;</code>
-         */
-        private void clearLoginRequest() {
-            loginRequest_ = null;
-
-        }
-
-        public static final int PASSWORDUPDATEREQUEST_FIELD_NUMBER = 10;
-        private com.treeleaf.suchi.entities.TreeleafProto.PasswordChangeRequest passwordUpdateRequest_;
-
-        /**
-         * <code>optional .treeleaf.entities.PasswordChangeRequest passwordUpdateRequest = 10;</code>
-         */
-        public boolean hasPasswordUpdateRequest() {
-            return passwordUpdateRequest_ != null;
-        }
-
-        /**
-         * <code>optional .treeleaf.entities.PasswordChangeRequest passwordUpdateRequest = 10;</code>
-         */
-        public com.treeleaf.suchi.entities.TreeleafProto.PasswordChangeRequest getPasswordUpdateRequest() {
-            return passwordUpdateRequest_ == null ? com.treeleaf.suchi.entities.TreeleafProto.PasswordChangeRequest.getDefaultInstance() : passwordUpdateRequest_;
-        }
-
-        /**
-         * <code>optional .treeleaf.entities.PasswordChangeRequest passwordUpdateRequest = 10;</code>
-         */
-        private void setPasswordUpdateRequest(com.treeleaf.suchi.entities.TreeleafProto.PasswordChangeRequest value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            passwordUpdateRequest_ = value;
-
-        }
-
-        /**
-         * <code>optional .treeleaf.entities.PasswordChangeRequest passwordUpdateRequest = 10;</code>
-         */
-        private void setPasswordUpdateRequest(
-                com.treeleaf.suchi.entities.TreeleafProto.PasswordChangeRequest.Builder builderForValue) {
-            passwordUpdateRequest_ = builderForValue.build();
-
-        }
-
-        /**
-         * <code>optional .treeleaf.entities.PasswordChangeRequest passwordUpdateRequest = 10;</code>
-         */
-        private void mergePasswordUpdateRequest(com.treeleaf.suchi.entities.TreeleafProto.PasswordChangeRequest value) {
-            if (passwordUpdateRequest_ != null &&
-                    passwordUpdateRequest_ != com.treeleaf.suchi.entities.TreeleafProto.PasswordChangeRequest.getDefaultInstance()) {
-                passwordUpdateRequest_ =
-                        com.treeleaf.suchi.entities.TreeleafProto.PasswordChangeRequest.newBuilder(passwordUpdateRequest_).mergeFrom(value).buildPartial();
-            } else {
-                passwordUpdateRequest_ = value;
-            }
-
-        }
-
-        /**
-         * <code>optional .treeleaf.entities.PasswordChangeRequest passwordUpdateRequest = 10;</code>
-         */
-        private void clearPasswordUpdateRequest() {
-            passwordUpdateRequest_ = null;
-
-        }
-
-        public static final int STOCKKEEPINGUNIT_FIELD_NUMBER = 11;
-        private com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit stockKeepingUnit_;
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnit = 11;</code>
-         */
-        public boolean hasStockKeepingUnit() {
-            return stockKeepingUnit_ != null;
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnit = 11;</code>
-         */
-        public com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit getStockKeepingUnit() {
-            return stockKeepingUnit_ == null ? com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit.getDefaultInstance() : stockKeepingUnit_;
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnit = 11;</code>
-         */
-        private void setStockKeepingUnit(com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            stockKeepingUnit_ = value;
-
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnit = 11;</code>
-         */
-        private void setStockKeepingUnit(
-                com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit.Builder builderForValue) {
-            stockKeepingUnit_ = builderForValue.build();
-
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnit = 11;</code>
-         */
-        private void mergeStockKeepingUnit(com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit value) {
-            if (stockKeepingUnit_ != null &&
-                    stockKeepingUnit_ != com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit.getDefaultInstance()) {
-                stockKeepingUnit_ =
-                        com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit.newBuilder(stockKeepingUnit_).mergeFrom(value).buildPartial();
-            } else {
-                stockKeepingUnit_ = value;
-            }
-
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnit = 11;</code>
-         */
-        private void clearStockKeepingUnit() {
-            stockKeepingUnit_ = null;
-
-        }
-
-        public static final int STOCKKEEPINGUNITS_FIELD_NUMBER = 12;
-        private com.google.protobuf.Internal.ProtobufList<com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit> stockKeepingUnits_;
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
-         */
-        public java.util.List<com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit> getStockKeepingUnitsList() {
-            return stockKeepingUnits_;
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
-         */
-        public java.util.List<? extends com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnitOrBuilder>
-        getStockKeepingUnitsOrBuilderList() {
-            return stockKeepingUnits_;
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
-         */
-        public int getStockKeepingUnitsCount() {
-            return stockKeepingUnits_.size();
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
-         */
-        public com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit getStockKeepingUnits(int index) {
-            return stockKeepingUnits_.get(index);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
-         */
-        public com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnitOrBuilder getStockKeepingUnitsOrBuilder(
-                int index) {
-            return stockKeepingUnits_.get(index);
-        }
-
-        private void ensureStockKeepingUnitsIsMutable() {
-            if (!stockKeepingUnits_.isModifiable()) {
-                stockKeepingUnits_ =
+        case MERGE_FROM_STREAM: {
+          com.google.protobuf.CodedInputStream input =
+              (com.google.protobuf.CodedInputStream) arg0;
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry =
+              (com.google.protobuf.ExtensionRegistryLite) arg1;
+          try {
+            boolean done = false;
+            while (!done) {
+              int tag = input.readTag();
+              switch (tag) {
+                case 0:
+                  done = true;
+                  break;
+                default: {
+                  if (!input.skipField(tag)) {
+                    done = true;
+                  }
+                  break;
+                }
+                case 10: {
+                  String s = input.readStringRequireUtf8();
+
+                  refId_ = s;
+                  break;
+                }
+                case 18: {
+                  String s = input.readStringRequireUtf8();
+
+                  stringValue_ = s;
+                  break;
+                }
+                case 24: {
+
+                  intValue_ = input.readInt32();
+                  break;
+                }
+                case 32: {
+
+                  longValue_ = input.readInt64();
+                  break;
+                }
+                case 40: {
+
+                  boolValue_ = input.readBool();
+                  break;
+                }
+                case 49: {
+
+                  doubleValue_ = input.readDouble();
+                  break;
+                }
+                case 58: {
+                  com.treeleaf.suchi.entities.TreeleafProto.Authorization.Builder subBuilder = null;
+                  if (authorization_ != null) {
+                    subBuilder = authorization_.toBuilder();
+                  }
+                  authorization_ = input.readMessage(com.treeleaf.suchi.entities.TreeleafProto.Authorization.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(authorization_);
+                    authorization_ = subBuilder.buildPartial();
+                  }
+
+                  break;
+                }
+                case 66: {
+                  com.treeleaf.suchi.entities.TreeleafProto.UserAccount.Builder subBuilder = null;
+                  if (user_ != null) {
+                    subBuilder = user_.toBuilder();
+                  }
+                  user_ = input.readMessage(com.treeleaf.suchi.entities.TreeleafProto.UserAccount.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(user_);
+                    user_ = subBuilder.buildPartial();
+                  }
+
+                  break;
+                }
+                case 74: {
+                  com.treeleaf.suchi.entities.TreeleafProto.LoginRequest.Builder subBuilder = null;
+                  if (loginRequest_ != null) {
+                    subBuilder = loginRequest_.toBuilder();
+                  }
+                  loginRequest_ = input.readMessage(com.treeleaf.suchi.entities.TreeleafProto.LoginRequest.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(loginRequest_);
+                    loginRequest_ = subBuilder.buildPartial();
+                  }
+
+                  break;
+                }
+                case 82: {
+                  com.treeleaf.suchi.entities.TreeleafProto.PasswordChangeRequest.Builder subBuilder = null;
+                  if (passwordUpdateRequest_ != null) {
+                    subBuilder = passwordUpdateRequest_.toBuilder();
+                  }
+                  passwordUpdateRequest_ = input.readMessage(com.treeleaf.suchi.entities.TreeleafProto.PasswordChangeRequest.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(passwordUpdateRequest_);
+                    passwordUpdateRequest_ = subBuilder.buildPartial();
+                  }
+
+                  break;
+                }
+                case 90: {
+                  com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit.Builder subBuilder = null;
+                  if (stockKeepingUnit_ != null) {
+                    subBuilder = stockKeepingUnit_.toBuilder();
+                  }
+                  stockKeepingUnit_ = input.readMessage(com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(stockKeepingUnit_);
+                    stockKeepingUnit_ = subBuilder.buildPartial();
+                  }
+
+                  break;
+                }
+                case 98: {
+                  if (!stockKeepingUnits_.isModifiable()) {
+                    stockKeepingUnits_ =
                         com.google.protobuf.GeneratedMessageLite.mutableCopy(stockKeepingUnits_);
-            }
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
-         */
-        private void setStockKeepingUnits(
-                int index, com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            ensureStockKeepingUnitsIsMutable();
-            stockKeepingUnits_.set(index, value);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
-         */
-        private void setStockKeepingUnits(
-                int index, com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit.Builder builderForValue) {
-            ensureStockKeepingUnitsIsMutable();
-            stockKeepingUnits_.set(index, builderForValue.build());
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
-         */
-        private void addStockKeepingUnits(com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            ensureStockKeepingUnitsIsMutable();
-            stockKeepingUnits_.add(value);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
-         */
-        private void addStockKeepingUnits(
-                int index, com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            ensureStockKeepingUnitsIsMutable();
-            stockKeepingUnits_.add(index, value);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
-         */
-        private void addStockKeepingUnits(
-                com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit.Builder builderForValue) {
-            ensureStockKeepingUnitsIsMutable();
-            stockKeepingUnits_.add(builderForValue.build());
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
-         */
-        private void addStockKeepingUnits(
-                int index, com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit.Builder builderForValue) {
-            ensureStockKeepingUnitsIsMutable();
-            stockKeepingUnits_.add(index, builderForValue.build());
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
-         */
-        private void addAllStockKeepingUnits(
-                Iterable<? extends com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit> values) {
-            ensureStockKeepingUnitsIsMutable();
-            com.google.protobuf.AbstractMessageLite.addAll(
-                    values, stockKeepingUnits_);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
-         */
-        private void clearStockKeepingUnits() {
-            stockKeepingUnits_ = emptyProtobufList();
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
-         */
-        private void removeStockKeepingUnits(int index) {
-            ensureStockKeepingUnitsIsMutable();
-            stockKeepingUnits_.remove(index);
-        }
-
-        public static final int BRAND_FIELD_NUMBER = 13;
-        private com.treeleaf.suchi.entities.SuchiProto.Brand brand_;
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Brand brand = 13;</code>
-         */
-        public boolean hasBrand() {
-            return brand_ != null;
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Brand brand = 13;</code>
-         */
-        public com.treeleaf.suchi.entities.SuchiProto.Brand getBrand() {
-            return brand_ == null ? com.treeleaf.suchi.entities.SuchiProto.Brand.getDefaultInstance() : brand_;
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Brand brand = 13;</code>
-         */
-        private void setBrand(com.treeleaf.suchi.entities.SuchiProto.Brand value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            brand_ = value;
-
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Brand brand = 13;</code>
-         */
-        private void setBrand(
-                com.treeleaf.suchi.entities.SuchiProto.Brand.Builder builderForValue) {
-            brand_ = builderForValue.build();
-
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Brand brand = 13;</code>
-         */
-        private void mergeBrand(com.treeleaf.suchi.entities.SuchiProto.Brand value) {
-            if (brand_ != null &&
-                    brand_ != com.treeleaf.suchi.entities.SuchiProto.Brand.getDefaultInstance()) {
-                brand_ =
-                        com.treeleaf.suchi.entities.SuchiProto.Brand.newBuilder(brand_).mergeFrom(value).buildPartial();
-            } else {
-                brand_ = value;
-            }
-
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Brand brand = 13;</code>
-         */
-        private void clearBrand() {
-            brand_ = null;
-
-        }
-
-        public static final int SUBBRAND_FIELD_NUMBER = 14;
-        private com.treeleaf.suchi.entities.SuchiProto.SubBrand subBrand_;
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.SubBrand subBrand = 14;</code>
-         */
-        public boolean hasSubBrand() {
-            return subBrand_ != null;
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.SubBrand subBrand = 14;</code>
-         */
-        public com.treeleaf.suchi.entities.SuchiProto.SubBrand getSubBrand() {
-            return subBrand_ == null ? com.treeleaf.suchi.entities.SuchiProto.SubBrand.getDefaultInstance() : subBrand_;
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.SubBrand subBrand = 14;</code>
-         */
-        private void setSubBrand(com.treeleaf.suchi.entities.SuchiProto.SubBrand value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            subBrand_ = value;
-
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.SubBrand subBrand = 14;</code>
-         */
-        private void setSubBrand(
-                com.treeleaf.suchi.entities.SuchiProto.SubBrand.Builder builderForValue) {
-            subBrand_ = builderForValue.build();
-
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.SubBrand subBrand = 14;</code>
-         */
-        private void mergeSubBrand(com.treeleaf.suchi.entities.SuchiProto.SubBrand value) {
-            if (subBrand_ != null &&
-                    subBrand_ != com.treeleaf.suchi.entities.SuchiProto.SubBrand.getDefaultInstance()) {
-                subBrand_ =
-                        com.treeleaf.suchi.entities.SuchiProto.SubBrand.newBuilder(subBrand_).mergeFrom(value).buildPartial();
-            } else {
-                subBrand_ = value;
-            }
-
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.SubBrand subBrand = 14;</code>
-         */
-        private void clearSubBrand() {
-            subBrand_ = null;
-
-        }
-
-        public static final int UNIT_FIELD_NUMBER = 15;
-        private com.treeleaf.suchi.entities.SuchiProto.Unit unit_;
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Unit unit = 15;</code>
-         */
-        public boolean hasUnit() {
-            return unit_ != null;
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Unit unit = 15;</code>
-         */
-        public com.treeleaf.suchi.entities.SuchiProto.Unit getUnit() {
-            return unit_ == null ? com.treeleaf.suchi.entities.SuchiProto.Unit.getDefaultInstance() : unit_;
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Unit unit = 15;</code>
-         */
-        private void setUnit(com.treeleaf.suchi.entities.SuchiProto.Unit value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            unit_ = value;
-
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Unit unit = 15;</code>
-         */
-        private void setUnit(
-                com.treeleaf.suchi.entities.SuchiProto.Unit.Builder builderForValue) {
-            unit_ = builderForValue.build();
-
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Unit unit = 15;</code>
-         */
-        private void mergeUnit(com.treeleaf.suchi.entities.SuchiProto.Unit value) {
-            if (unit_ != null &&
-                    unit_ != com.treeleaf.suchi.entities.SuchiProto.Unit.getDefaultInstance()) {
-                unit_ =
-                        com.treeleaf.suchi.entities.SuchiProto.Unit.newBuilder(unit_).mergeFrom(value).buildPartial();
-            } else {
-                unit_ = value;
-            }
-
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Unit unit = 15;</code>
-         */
-        private void clearUnit() {
-            unit_ = null;
-
-        }
-
-        public static final int CATEGORY_FIELD_NUMBER = 16;
-        private com.treeleaf.suchi.entities.SuchiProto.Category category_;
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Category category = 16;</code>
-         */
-        public boolean hasCategory() {
-            return category_ != null;
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Category category = 16;</code>
-         */
-        public com.treeleaf.suchi.entities.SuchiProto.Category getCategory() {
-            return category_ == null ? com.treeleaf.suchi.entities.SuchiProto.Category.getDefaultInstance() : category_;
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Category category = 16;</code>
-         */
-        private void setCategory(com.treeleaf.suchi.entities.SuchiProto.Category value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            category_ = value;
-
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Category category = 16;</code>
-         */
-        private void setCategory(
-                com.treeleaf.suchi.entities.SuchiProto.Category.Builder builderForValue) {
-            category_ = builderForValue.build();
-
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Category category = 16;</code>
-         */
-        private void mergeCategory(com.treeleaf.suchi.entities.SuchiProto.Category value) {
-            if (category_ != null &&
-                    category_ != com.treeleaf.suchi.entities.SuchiProto.Category.getDefaultInstance()) {
-                category_ =
-                        com.treeleaf.suchi.entities.SuchiProto.Category.newBuilder(category_).mergeFrom(value).buildPartial();
-            } else {
-                category_ = value;
-            }
-
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Category category = 16;</code>
-         */
-        private void clearCategory() {
-            category_ = null;
-
-        }
-
-        public static final int CREDITOR_FIELD_NUMBER = 17;
-        private com.treeleaf.suchi.entities.SuchiProto.Creditor creditor_;
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Creditor creditor = 17;</code>
-         */
-        public boolean hasCreditor() {
-            return creditor_ != null;
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Creditor creditor = 17;</code>
-         */
-        public com.treeleaf.suchi.entities.SuchiProto.Creditor getCreditor() {
-            return creditor_ == null ? com.treeleaf.suchi.entities.SuchiProto.Creditor.getDefaultInstance() : creditor_;
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Creditor creditor = 17;</code>
-         */
-        private void setCreditor(com.treeleaf.suchi.entities.SuchiProto.Creditor value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            creditor_ = value;
-
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Creditor creditor = 17;</code>
-         */
-        private void setCreditor(
-                com.treeleaf.suchi.entities.SuchiProto.Creditor.Builder builderForValue) {
-            creditor_ = builderForValue.build();
-
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Creditor creditor = 17;</code>
-         */
-        private void mergeCreditor(com.treeleaf.suchi.entities.SuchiProto.Creditor value) {
-            if (creditor_ != null &&
-                    creditor_ != com.treeleaf.suchi.entities.SuchiProto.Creditor.getDefaultInstance()) {
-                creditor_ =
-                        com.treeleaf.suchi.entities.SuchiProto.Creditor.newBuilder(creditor_).mergeFrom(value).buildPartial();
-            } else {
-                creditor_ = value;
-            }
-
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Creditor creditor = 17;</code>
-         */
-        private void clearCreditor() {
-            creditor_ = null;
-
-        }
-
-        public static final int INVENTORY_FIELD_NUMBER = 18;
-        private com.treeleaf.suchi.entities.SuchiProto.Inventory inventory_;
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Inventory inventory = 18;</code>
-         */
-        public boolean hasInventory() {
-            return inventory_ != null;
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Inventory inventory = 18;</code>
-         */
-        public com.treeleaf.suchi.entities.SuchiProto.Inventory getInventory() {
-            return inventory_ == null ? com.treeleaf.suchi.entities.SuchiProto.Inventory.getDefaultInstance() : inventory_;
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Inventory inventory = 18;</code>
-         */
-        private void setInventory(com.treeleaf.suchi.entities.SuchiProto.Inventory value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            inventory_ = value;
-
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Inventory inventory = 18;</code>
-         */
-        private void setInventory(
-                com.treeleaf.suchi.entities.SuchiProto.Inventory.Builder builderForValue) {
-            inventory_ = builderForValue.build();
-
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Inventory inventory = 18;</code>
-         */
-        private void mergeInventory(com.treeleaf.suchi.entities.SuchiProto.Inventory value) {
-            if (inventory_ != null &&
-                    inventory_ != com.treeleaf.suchi.entities.SuchiProto.Inventory.getDefaultInstance()) {
-                inventory_ =
-                        com.treeleaf.suchi.entities.SuchiProto.Inventory.newBuilder(inventory_).mergeFrom(value).buildPartial();
-            } else {
-                inventory_ = value;
-            }
-
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Inventory inventory = 18;</code>
-         */
-        private void clearInventory() {
-            inventory_ = null;
-
-        }
-
-        public static final int INVENTORIES_FIELD_NUMBER = 19;
-        private com.google.protobuf.Internal.ProtobufList<com.treeleaf.suchi.entities.SuchiProto.Inventory> inventories_;
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 19;</code>
-         */
-        public java.util.List<com.treeleaf.suchi.entities.SuchiProto.Inventory> getInventoriesList() {
-            return inventories_;
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 19;</code>
-         */
-        public java.util.List<? extends com.treeleaf.suchi.entities.SuchiProto.InventoryOrBuilder>
-        getInventoriesOrBuilderList() {
-            return inventories_;
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 19;</code>
-         */
-        public int getInventoriesCount() {
-            return inventories_.size();
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 19;</code>
-         */
-        public com.treeleaf.suchi.entities.SuchiProto.Inventory getInventories(int index) {
-            return inventories_.get(index);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 19;</code>
-         */
-        public com.treeleaf.suchi.entities.SuchiProto.InventoryOrBuilder getInventoriesOrBuilder(
-                int index) {
-            return inventories_.get(index);
-        }
-
-        private void ensureInventoriesIsMutable() {
-            if (!inventories_.isModifiable()) {
-                inventories_ =
+                  }
+                  stockKeepingUnits_.add(
+                      input.readMessage(com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit.parser(), extensionRegistry));
+                  break;
+                }
+                case 106: {
+                  com.treeleaf.suchi.entities.SuchiProto.Brand.Builder subBuilder = null;
+                  if (brand_ != null) {
+                    subBuilder = brand_.toBuilder();
+                  }
+                  brand_ = input.readMessage(com.treeleaf.suchi.entities.SuchiProto.Brand.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(brand_);
+                    brand_ = subBuilder.buildPartial();
+                  }
+
+                  break;
+                }
+                case 114: {
+                  com.treeleaf.suchi.entities.SuchiProto.SubBrand.Builder subBuilder = null;
+                  if (subBrand_ != null) {
+                    subBuilder = subBrand_.toBuilder();
+                  }
+                  subBrand_ = input.readMessage(com.treeleaf.suchi.entities.SuchiProto.SubBrand.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(subBrand_);
+                    subBrand_ = subBuilder.buildPartial();
+                  }
+
+                  break;
+                }
+                case 122: {
+                  com.treeleaf.suchi.entities.SuchiProto.Unit.Builder subBuilder = null;
+                  if (unit_ != null) {
+                    subBuilder = unit_.toBuilder();
+                  }
+                  unit_ = input.readMessage(com.treeleaf.suchi.entities.SuchiProto.Unit.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(unit_);
+                    unit_ = subBuilder.buildPartial();
+                  }
+
+                  break;
+                }
+                case 130: {
+                  com.treeleaf.suchi.entities.SuchiProto.Category.Builder subBuilder = null;
+                  if (category_ != null) {
+                    subBuilder = category_.toBuilder();
+                  }
+                  category_ = input.readMessage(com.treeleaf.suchi.entities.SuchiProto.Category.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(category_);
+                    category_ = subBuilder.buildPartial();
+                  }
+
+                  break;
+                }
+                case 138: {
+                  com.treeleaf.suchi.entities.SuchiProto.Creditor.Builder subBuilder = null;
+                  if (creditor_ != null) {
+                    subBuilder = creditor_.toBuilder();
+                  }
+                  creditor_ = input.readMessage(com.treeleaf.suchi.entities.SuchiProto.Creditor.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(creditor_);
+                    creditor_ = subBuilder.buildPartial();
+                  }
+
+                  break;
+                }
+                case 146: {
+                  com.treeleaf.suchi.entities.SuchiProto.Inventory.Builder subBuilder = null;
+                  if (inventory_ != null) {
+                    subBuilder = inventory_.toBuilder();
+                  }
+                  inventory_ = input.readMessage(com.treeleaf.suchi.entities.SuchiProto.Inventory.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(inventory_);
+                    inventory_ = subBuilder.buildPartial();
+                  }
+
+                  break;
+                }
+                case 154: {
+                  if (!inventories_.isModifiable()) {
+                    inventories_ =
                         com.google.protobuf.GeneratedMessageLite.mutableCopy(inventories_);
-            }
-        }
+                  }
+                  inventories_.add(
+                      input.readMessage(com.treeleaf.suchi.entities.SuchiProto.Inventory.parser(), extensionRegistry));
+                  break;
+                }
+                case 162: {
+                  com.treeleaf.suchi.entities.SuchiProto.Sale.Builder subBuilder = null;
+                  if (sale_ != null) {
+                    subBuilder = sale_.toBuilder();
+                  }
+                  sale_ = input.readMessage(com.treeleaf.suchi.entities.SuchiProto.Sale.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(sale_);
+                    sale_ = subBuilder.buildPartial();
+                  }
 
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 19;</code>
-         */
-        private void setInventories(
-                int index, com.treeleaf.suchi.entities.SuchiProto.Inventory value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            ensureInventoriesIsMutable();
-            inventories_.set(index, value);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 19;</code>
-         */
-        private void setInventories(
-                int index, com.treeleaf.suchi.entities.SuchiProto.Inventory.Builder builderForValue) {
-            ensureInventoriesIsMutable();
-            inventories_.set(index, builderForValue.build());
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 19;</code>
-         */
-        private void addInventories(com.treeleaf.suchi.entities.SuchiProto.Inventory value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            ensureInventoriesIsMutable();
-            inventories_.add(value);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 19;</code>
-         */
-        private void addInventories(
-                int index, com.treeleaf.suchi.entities.SuchiProto.Inventory value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            ensureInventoriesIsMutable();
-            inventories_.add(index, value);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 19;</code>
-         */
-        private void addInventories(
-                com.treeleaf.suchi.entities.SuchiProto.Inventory.Builder builderForValue) {
-            ensureInventoriesIsMutable();
-            inventories_.add(builderForValue.build());
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 19;</code>
-         */
-        private void addInventories(
-                int index, com.treeleaf.suchi.entities.SuchiProto.Inventory.Builder builderForValue) {
-            ensureInventoriesIsMutable();
-            inventories_.add(index, builderForValue.build());
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 19;</code>
-         */
-        private void addAllInventories(
-                Iterable<? extends com.treeleaf.suchi.entities.SuchiProto.Inventory> values) {
-            ensureInventoriesIsMutable();
-            com.google.protobuf.AbstractMessageLite.addAll(
-                    values, inventories_);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 19;</code>
-         */
-        private void clearInventories() {
-            inventories_ = emptyProtobufList();
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 19;</code>
-         */
-        private void removeInventories(int index) {
-            ensureInventoriesIsMutable();
-            inventories_.remove(index);
-        }
-
-        public static final int SALE_FIELD_NUMBER = 20;
-        private com.treeleaf.suchi.entities.SuchiProto.Sale sale_;
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Sale sale = 20;</code>
-         */
-        public boolean hasSale() {
-            return sale_ != null;
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Sale sale = 20;</code>
-         */
-        public com.treeleaf.suchi.entities.SuchiProto.Sale getSale() {
-            return sale_ == null ? com.treeleaf.suchi.entities.SuchiProto.Sale.getDefaultInstance() : sale_;
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Sale sale = 20;</code>
-         */
-        private void setSale(com.treeleaf.suchi.entities.SuchiProto.Sale value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            sale_ = value;
-
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Sale sale = 20;</code>
-         */
-        private void setSale(
-                com.treeleaf.suchi.entities.SuchiProto.Sale.Builder builderForValue) {
-            sale_ = builderForValue.build();
-
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Sale sale = 20;</code>
-         */
-        private void mergeSale(com.treeleaf.suchi.entities.SuchiProto.Sale value) {
-            if (sale_ != null &&
-                    sale_ != com.treeleaf.suchi.entities.SuchiProto.Sale.getDefaultInstance()) {
-                sale_ =
-                        com.treeleaf.suchi.entities.SuchiProto.Sale.newBuilder(sale_).mergeFrom(value).buildPartial();
-            } else {
-                sale_ = value;
-            }
-
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Sale sale = 20;</code>
-         */
-        private void clearSale() {
-            sale_ = null;
-
-        }
-
-        public static final int SALES_FIELD_NUMBER = 21;
-        private com.google.protobuf.Internal.ProtobufList<com.treeleaf.suchi.entities.SuchiProto.Sale> sales_;
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Sale sales = 21;</code>
-         */
-        public java.util.List<com.treeleaf.suchi.entities.SuchiProto.Sale> getSalesList() {
-            return sales_;
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Sale sales = 21;</code>
-         */
-        public java.util.List<? extends com.treeleaf.suchi.entities.SuchiProto.SaleOrBuilder>
-        getSalesOrBuilderList() {
-            return sales_;
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Sale sales = 21;</code>
-         */
-        public int getSalesCount() {
-            return sales_.size();
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Sale sales = 21;</code>
-         */
-        public com.treeleaf.suchi.entities.SuchiProto.Sale getSales(int index) {
-            return sales_.get(index);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Sale sales = 21;</code>
-         */
-        public com.treeleaf.suchi.entities.SuchiProto.SaleOrBuilder getSalesOrBuilder(
-                int index) {
-            return sales_.get(index);
-        }
-
-        private void ensureSalesIsMutable() {
-            if (!sales_.isModifiable()) {
-                sales_ =
+                  break;
+                }
+                case 170: {
+                  if (!sales_.isModifiable()) {
+                    sales_ =
                         com.google.protobuf.GeneratedMessageLite.mutableCopy(sales_);
-            }
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Sale sales = 21;</code>
-         */
-        private void setSales(
-                int index, com.treeleaf.suchi.entities.SuchiProto.Sale value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            ensureSalesIsMutable();
-            sales_.set(index, value);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Sale sales = 21;</code>
-         */
-        private void setSales(
-                int index, com.treeleaf.suchi.entities.SuchiProto.Sale.Builder builderForValue) {
-            ensureSalesIsMutable();
-            sales_.set(index, builderForValue.build());
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Sale sales = 21;</code>
-         */
-        private void addSales(com.treeleaf.suchi.entities.SuchiProto.Sale value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            ensureSalesIsMutable();
-            sales_.add(value);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Sale sales = 21;</code>
-         */
-        private void addSales(
-                int index, com.treeleaf.suchi.entities.SuchiProto.Sale value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            ensureSalesIsMutable();
-            sales_.add(index, value);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Sale sales = 21;</code>
-         */
-        private void addSales(
-                com.treeleaf.suchi.entities.SuchiProto.Sale.Builder builderForValue) {
-            ensureSalesIsMutable();
-            sales_.add(builderForValue.build());
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Sale sales = 21;</code>
-         */
-        private void addSales(
-                int index, com.treeleaf.suchi.entities.SuchiProto.Sale.Builder builderForValue) {
-            ensureSalesIsMutable();
-            sales_.add(index, builderForValue.build());
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Sale sales = 21;</code>
-         */
-        private void addAllSales(
-                Iterable<? extends com.treeleaf.suchi.entities.SuchiProto.Sale> values) {
-            ensureSalesIsMutable();
-            com.google.protobuf.AbstractMessageLite.addAll(
-                    values, sales_);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Sale sales = 21;</code>
-         */
-        private void clearSales() {
-            sales_ = emptyProtobufList();
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Sale sales = 21;</code>
-         */
-        private void removeSales(int index) {
-            ensureSalesIsMutable();
-            sales_.remove(index);
-        }
-
-        public void writeTo(com.google.protobuf.CodedOutputStream output)
-                throws java.io.IOException {
-            if (!refId_.isEmpty()) {
-                output.writeString(1, getRefId());
-            }
-            if (!stringValue_.isEmpty()) {
-                output.writeString(2, getStringValue());
-            }
-            if (intValue_ != 0) {
-                output.writeInt32(3, intValue_);
-            }
-            if (longValue_ != 0L) {
-                output.writeInt64(4, longValue_);
-            }
-            if (boolValue_ != false) {
-                output.writeBool(5, boolValue_);
-            }
-            if (doubleValue_ != 0D) {
-                output.writeDouble(6, doubleValue_);
-            }
-            if (authorization_ != null) {
-                output.writeMessage(7, getAuthorization());
-            }
-            if (user_ != null) {
-                output.writeMessage(8, getUser());
-            }
-            if (loginRequest_ != null) {
-                output.writeMessage(9, getLoginRequest());
-            }
-            if (passwordUpdateRequest_ != null) {
-                output.writeMessage(10, getPasswordUpdateRequest());
-            }
-            if (stockKeepingUnit_ != null) {
-                output.writeMessage(11, getStockKeepingUnit());
-            }
-            for (int i = 0; i < stockKeepingUnits_.size(); i++) {
-                output.writeMessage(12, stockKeepingUnits_.get(i));
-            }
-            if (brand_ != null) {
-                output.writeMessage(13, getBrand());
-            }
-            if (subBrand_ != null) {
-                output.writeMessage(14, getSubBrand());
-            }
-            if (unit_ != null) {
-                output.writeMessage(15, getUnit());
-            }
-            if (category_ != null) {
-                output.writeMessage(16, getCategory());
-            }
-            if (creditor_ != null) {
-                output.writeMessage(17, getCreditor());
-            }
-            if (inventory_ != null) {
-                output.writeMessage(18, getInventory());
-            }
-            for (int i = 0; i < inventories_.size(); i++) {
-                output.writeMessage(19, inventories_.get(i));
-            }
-            if (sale_ != null) {
-                output.writeMessage(20, getSale());
-            }
-            for (int i = 0; i < sales_.size(); i++) {
-                output.writeMessage(21, sales_.get(i));
-            }
-        }
-
-        public int getSerializedSize() {
-            int size = memoizedSerializedSize;
-            if (size != -1) return size;
-
-            size = 0;
-            if (!refId_.isEmpty()) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeStringSize(1, getRefId());
-            }
-            if (!stringValue_.isEmpty()) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeStringSize(2, getStringValue());
-            }
-            if (intValue_ != 0) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(3, intValue_);
-            }
-            if (longValue_ != 0L) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeInt64Size(4, longValue_);
-            }
-            if (boolValue_ != false) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeBoolSize(5, boolValue_);
-            }
-            if (doubleValue_ != 0D) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeDoubleSize(6, doubleValue_);
-            }
-            if (authorization_ != null) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeMessageSize(7, getAuthorization());
-            }
-            if (user_ != null) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeMessageSize(8, getUser());
-            }
-            if (loginRequest_ != null) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeMessageSize(9, getLoginRequest());
-            }
-            if (passwordUpdateRequest_ != null) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeMessageSize(10, getPasswordUpdateRequest());
-            }
-            if (stockKeepingUnit_ != null) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeMessageSize(11, getStockKeepingUnit());
-            }
-            for (int i = 0; i < stockKeepingUnits_.size(); i++) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeMessageSize(12, stockKeepingUnits_.get(i));
-            }
-            if (brand_ != null) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeMessageSize(13, getBrand());
-            }
-            if (subBrand_ != null) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeMessageSize(14, getSubBrand());
-            }
-            if (unit_ != null) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeMessageSize(15, getUnit());
-            }
-            if (category_ != null) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeMessageSize(16, getCategory());
-            }
-            if (creditor_ != null) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeMessageSize(17, getCreditor());
-            }
-            if (inventory_ != null) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeMessageSize(18, getInventory());
-            }
-            for (int i = 0; i < inventories_.size(); i++) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeMessageSize(19, inventories_.get(i));
-            }
-            if (sale_ != null) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeMessageSize(20, getSale());
-            }
-            for (int i = 0; i < sales_.size(); i++) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeMessageSize(21, sales_.get(i));
-            }
-            memoizedSerializedSize = size;
-            return size;
-        }
-
-        public static SuchiBaseRequest parseFrom(
-                com.google.protobuf.ByteString data)
-                throws com.google.protobuf.InvalidProtocolBufferException {
-            return com.google.protobuf.GeneratedMessageLite.parseFrom(
-                    DEFAULT_INSTANCE, data);
-        }
-
-        public static SuchiBaseRequest parseFrom(
-                com.google.protobuf.ByteString data,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws com.google.protobuf.InvalidProtocolBufferException {
-            return com.google.protobuf.GeneratedMessageLite.parseFrom(
-                    DEFAULT_INSTANCE, data, extensionRegistry);
-        }
-
-        public static SuchiBaseRequest parseFrom(byte[] data)
-                throws com.google.protobuf.InvalidProtocolBufferException {
-            return com.google.protobuf.GeneratedMessageLite.parseFrom(
-                    DEFAULT_INSTANCE, data);
-        }
-
-        public static SuchiBaseRequest parseFrom(
-                byte[] data,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws com.google.protobuf.InvalidProtocolBufferException {
-            return com.google.protobuf.GeneratedMessageLite.parseFrom(
-                    DEFAULT_INSTANCE, data, extensionRegistry);
-        }
-
-        public static SuchiBaseRequest parseFrom(java.io.InputStream input)
-                throws java.io.IOException {
-            return com.google.protobuf.GeneratedMessageLite.parseFrom(
-                    DEFAULT_INSTANCE, input);
-        }
-
-        public static SuchiBaseRequest parseFrom(
-                java.io.InputStream input,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws java.io.IOException {
-            return com.google.protobuf.GeneratedMessageLite.parseFrom(
-                    DEFAULT_INSTANCE, input, extensionRegistry);
-        }
-
-        public static SuchiBaseRequest parseDelimitedFrom(java.io.InputStream input)
-                throws java.io.IOException {
-            return parseDelimitedFrom(DEFAULT_INSTANCE, input);
-        }
-
-        public static SuchiBaseRequest parseDelimitedFrom(
-                java.io.InputStream input,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws java.io.IOException {
-            return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
-        }
-
-        public static SuchiBaseRequest parseFrom(
-                com.google.protobuf.CodedInputStream input)
-                throws java.io.IOException {
-            return com.google.protobuf.GeneratedMessageLite.parseFrom(
-                    DEFAULT_INSTANCE, input);
-        }
-
-        public static SuchiBaseRequest parseFrom(
-                com.google.protobuf.CodedInputStream input,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws java.io.IOException {
-            return com.google.protobuf.GeneratedMessageLite.parseFrom(
-                    DEFAULT_INSTANCE, input, extensionRegistry);
-        }
-
-        public static Builder newBuilder() {
-            return DEFAULT_INSTANCE.toBuilder();
-        }
-
-        public static Builder newBuilder(SuchiBaseRequest prototype) {
-            return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-        }
-
-        /**
-         * Protobuf type {@code treeleaf.suchi.rpc.SuchiBaseRequest}
-         */
-        public static final class Builder extends
-                com.google.protobuf.GeneratedMessageLite.Builder<
-                        SuchiBaseRequest, Builder> implements
-                // @@protoc_insertion_point(builder_implements:treeleaf.suchi.rpc.SuchiBaseRequest)
-                SuchiBaseRequestOrBuilder {
-            // Construct using com.treeleaf.suchi.rpc.SuchiRpcProto.SuchiBaseRequest.newBuilder()
-            private Builder() {
-                super(DEFAULT_INSTANCE);
-            }
-
-
-            /**
-             * <code>optional string refId = 1;</code>
-             */
-            public String getRefId() {
-                return instance.getRefId();
-            }
-
-            /**
-             * <code>optional string refId = 1;</code>
-             */
-            public com.google.protobuf.ByteString
-            getRefIdBytes() {
-                return instance.getRefIdBytes();
-            }
-
-            /**
-             * <code>optional string refId = 1;</code>
-             */
-            public Builder setRefId(
-                    String value) {
-                copyOnWrite();
-                instance.setRefId(value);
-                return this;
-            }
-
-            /**
-             * <code>optional string refId = 1;</code>
-             */
-            public Builder clearRefId() {
-                copyOnWrite();
-                instance.clearRefId();
-                return this;
-            }
-
-            /**
-             * <code>optional string refId = 1;</code>
-             */
-            public Builder setRefIdBytes(
-                    com.google.protobuf.ByteString value) {
-                copyOnWrite();
-                instance.setRefIdBytes(value);
-                return this;
-            }
-
-            /**
-             * <code>optional string stringValue = 2;</code>
-             */
-            public String getStringValue() {
-                return instance.getStringValue();
-            }
-
-            /**
-             * <code>optional string stringValue = 2;</code>
-             */
-            public com.google.protobuf.ByteString
-            getStringValueBytes() {
-                return instance.getStringValueBytes();
-            }
-
-            /**
-             * <code>optional string stringValue = 2;</code>
-             */
-            public Builder setStringValue(
-                    String value) {
-                copyOnWrite();
-                instance.setStringValue(value);
-                return this;
-            }
-
-            /**
-             * <code>optional string stringValue = 2;</code>
-             */
-            public Builder clearStringValue() {
-                copyOnWrite();
-                instance.clearStringValue();
-                return this;
-            }
-
-            /**
-             * <code>optional string stringValue = 2;</code>
-             */
-            public Builder setStringValueBytes(
-                    com.google.protobuf.ByteString value) {
-                copyOnWrite();
-                instance.setStringValueBytes(value);
-                return this;
-            }
-
-            /**
-             * <code>optional int32 intValue = 3;</code>
-             */
-            public int getIntValue() {
-                return instance.getIntValue();
-            }
-
-            /**
-             * <code>optional int32 intValue = 3;</code>
-             */
-            public Builder setIntValue(int value) {
-                copyOnWrite();
-                instance.setIntValue(value);
-                return this;
-            }
-
-            /**
-             * <code>optional int32 intValue = 3;</code>
-             */
-            public Builder clearIntValue() {
-                copyOnWrite();
-                instance.clearIntValue();
-                return this;
-            }
-
-            /**
-             * <code>optional int64 longValue = 4;</code>
-             */
-            public long getLongValue() {
-                return instance.getLongValue();
-            }
-
-            /**
-             * <code>optional int64 longValue = 4;</code>
-             */
-            public Builder setLongValue(long value) {
-                copyOnWrite();
-                instance.setLongValue(value);
-                return this;
-            }
-
-            /**
-             * <code>optional int64 longValue = 4;</code>
-             */
-            public Builder clearLongValue() {
-                copyOnWrite();
-                instance.clearLongValue();
-                return this;
-            }
-
-            /**
-             * <code>optional bool boolValue = 5;</code>
-             */
-            public boolean getBoolValue() {
-                return instance.getBoolValue();
-            }
-
-            /**
-             * <code>optional bool boolValue = 5;</code>
-             */
-            public Builder setBoolValue(boolean value) {
-                copyOnWrite();
-                instance.setBoolValue(value);
-                return this;
-            }
-
-            /**
-             * <code>optional bool boolValue = 5;</code>
-             */
-            public Builder clearBoolValue() {
-                copyOnWrite();
-                instance.clearBoolValue();
-                return this;
-            }
-
-            /**
-             * <code>optional double doubleValue = 6;</code>
-             */
-            public double getDoubleValue() {
-                return instance.getDoubleValue();
-            }
-
-            /**
-             * <code>optional double doubleValue = 6;</code>
-             */
-            public Builder setDoubleValue(double value) {
-                copyOnWrite();
-                instance.setDoubleValue(value);
-                return this;
-            }
-
-            /**
-             * <code>optional double doubleValue = 6;</code>
-             */
-            public Builder clearDoubleValue() {
-                copyOnWrite();
-                instance.clearDoubleValue();
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.Authorization authorization = 7;</code>
-             */
-            public boolean hasAuthorization() {
-                return instance.hasAuthorization();
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.Authorization authorization = 7;</code>
-             */
-            public com.treeleaf.suchi.entities.TreeleafProto.Authorization getAuthorization() {
-                return instance.getAuthorization();
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.Authorization authorization = 7;</code>
-             */
-            public Builder setAuthorization(com.treeleaf.suchi.entities.TreeleafProto.Authorization value) {
-                copyOnWrite();
-                instance.setAuthorization(value);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.Authorization authorization = 7;</code>
-             */
-            public Builder setAuthorization(
-                    com.treeleaf.suchi.entities.TreeleafProto.Authorization.Builder builderForValue) {
-                copyOnWrite();
-                instance.setAuthorization(builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.Authorization authorization = 7;</code>
-             */
-            public Builder mergeAuthorization(com.treeleaf.suchi.entities.TreeleafProto.Authorization value) {
-                copyOnWrite();
-                instance.mergeAuthorization(value);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.Authorization authorization = 7;</code>
-             */
-            public Builder clearAuthorization() {
-                copyOnWrite();
-                instance.clearAuthorization();
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.UserAccount user = 8;</code>
-             */
-            public boolean hasUser() {
-                return instance.hasUser();
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.UserAccount user = 8;</code>
-             */
-            public com.treeleaf.suchi.entities.TreeleafProto.UserAccount getUser() {
-                return instance.getUser();
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.UserAccount user = 8;</code>
-             */
-            public Builder setUser(com.treeleaf.suchi.entities.TreeleafProto.UserAccount value) {
-                copyOnWrite();
-                instance.setUser(value);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.UserAccount user = 8;</code>
-             */
-            public Builder setUser(
-                    com.treeleaf.suchi.entities.TreeleafProto.UserAccount.Builder builderForValue) {
-                copyOnWrite();
-                instance.setUser(builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.UserAccount user = 8;</code>
-             */
-            public Builder mergeUser(com.treeleaf.suchi.entities.TreeleafProto.UserAccount value) {
-                copyOnWrite();
-                instance.mergeUser(value);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.UserAccount user = 8;</code>
-             */
-            public Builder clearUser() {
-                copyOnWrite();
-                instance.clearUser();
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.LoginRequest loginRequest = 9;</code>
-             */
-            public boolean hasLoginRequest() {
-                return instance.hasLoginRequest();
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.LoginRequest loginRequest = 9;</code>
-             */
-            public com.treeleaf.suchi.entities.TreeleafProto.LoginRequest getLoginRequest() {
-                return instance.getLoginRequest();
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.LoginRequest loginRequest = 9;</code>
-             */
-            public Builder setLoginRequest(com.treeleaf.suchi.entities.TreeleafProto.LoginRequest value) {
-                copyOnWrite();
-                instance.setLoginRequest(value);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.LoginRequest loginRequest = 9;</code>
-             */
-            public Builder setLoginRequest(
-                    com.treeleaf.suchi.entities.TreeleafProto.LoginRequest.Builder builderForValue) {
-                copyOnWrite();
-                instance.setLoginRequest(builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.LoginRequest loginRequest = 9;</code>
-             */
-            public Builder mergeLoginRequest(com.treeleaf.suchi.entities.TreeleafProto.LoginRequest value) {
-                copyOnWrite();
-                instance.mergeLoginRequest(value);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.LoginRequest loginRequest = 9;</code>
-             */
-            public Builder clearLoginRequest() {
-                copyOnWrite();
-                instance.clearLoginRequest();
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.PasswordChangeRequest passwordUpdateRequest = 10;</code>
-             */
-            public boolean hasPasswordUpdateRequest() {
-                return instance.hasPasswordUpdateRequest();
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.PasswordChangeRequest passwordUpdateRequest = 10;</code>
-             */
-            public com.treeleaf.suchi.entities.TreeleafProto.PasswordChangeRequest getPasswordUpdateRequest() {
-                return instance.getPasswordUpdateRequest();
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.PasswordChangeRequest passwordUpdateRequest = 10;</code>
-             */
-            public Builder setPasswordUpdateRequest(com.treeleaf.suchi.entities.TreeleafProto.PasswordChangeRequest value) {
-                copyOnWrite();
-                instance.setPasswordUpdateRequest(value);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.PasswordChangeRequest passwordUpdateRequest = 10;</code>
-             */
-            public Builder setPasswordUpdateRequest(
-                    com.treeleaf.suchi.entities.TreeleafProto.PasswordChangeRequest.Builder builderForValue) {
-                copyOnWrite();
-                instance.setPasswordUpdateRequest(builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.PasswordChangeRequest passwordUpdateRequest = 10;</code>
-             */
-            public Builder mergePasswordUpdateRequest(com.treeleaf.suchi.entities.TreeleafProto.PasswordChangeRequest value) {
-                copyOnWrite();
-                instance.mergePasswordUpdateRequest(value);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.PasswordChangeRequest passwordUpdateRequest = 10;</code>
-             */
-            public Builder clearPasswordUpdateRequest() {
-                copyOnWrite();
-                instance.clearPasswordUpdateRequest();
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnit = 11;</code>
-             */
-            public boolean hasStockKeepingUnit() {
-                return instance.hasStockKeepingUnit();
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnit = 11;</code>
-             */
-            public com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit getStockKeepingUnit() {
-                return instance.getStockKeepingUnit();
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnit = 11;</code>
-             */
-            public Builder setStockKeepingUnit(com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit value) {
-                copyOnWrite();
-                instance.setStockKeepingUnit(value);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnit = 11;</code>
-             */
-            public Builder setStockKeepingUnit(
-                    com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit.Builder builderForValue) {
-                copyOnWrite();
-                instance.setStockKeepingUnit(builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnit = 11;</code>
-             */
-            public Builder mergeStockKeepingUnit(com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit value) {
-                copyOnWrite();
-                instance.mergeStockKeepingUnit(value);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnit = 11;</code>
-             */
-            public Builder clearStockKeepingUnit() {
-                copyOnWrite();
-                instance.clearStockKeepingUnit();
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
-             */
-            public java.util.List<com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit> getStockKeepingUnitsList() {
-                return java.util.Collections.unmodifiableList(
-                        instance.getStockKeepingUnitsList());
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
-             */
-            public int getStockKeepingUnitsCount() {
-                return instance.getStockKeepingUnitsCount();
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
-             */
-            public com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit getStockKeepingUnits(int index) {
-                return instance.getStockKeepingUnits(index);
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
-             */
-            public Builder setStockKeepingUnits(
-                    int index, com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit value) {
-                copyOnWrite();
-                instance.setStockKeepingUnits(index, value);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
-             */
-            public Builder setStockKeepingUnits(
-                    int index, com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit.Builder builderForValue) {
-                copyOnWrite();
-                instance.setStockKeepingUnits(index, builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
-             */
-            public Builder addStockKeepingUnits(com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit value) {
-                copyOnWrite();
-                instance.addStockKeepingUnits(value);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
-             */
-            public Builder addStockKeepingUnits(
-                    int index, com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit value) {
-                copyOnWrite();
-                instance.addStockKeepingUnits(index, value);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
-             */
-            public Builder addStockKeepingUnits(
-                    com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit.Builder builderForValue) {
-                copyOnWrite();
-                instance.addStockKeepingUnits(builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
-             */
-            public Builder addStockKeepingUnits(
-                    int index, com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit.Builder builderForValue) {
-                copyOnWrite();
-                instance.addStockKeepingUnits(index, builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
-             */
-            public Builder addAllStockKeepingUnits(
-                    Iterable<? extends com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit> values) {
-                copyOnWrite();
-                instance.addAllStockKeepingUnits(values);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
-             */
-            public Builder clearStockKeepingUnits() {
-                copyOnWrite();
-                instance.clearStockKeepingUnits();
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
-             */
-            public Builder removeStockKeepingUnits(int index) {
-                copyOnWrite();
-                instance.removeStockKeepingUnits(index);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Brand brand = 13;</code>
-             */
-            public boolean hasBrand() {
-                return instance.hasBrand();
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Brand brand = 13;</code>
-             */
-            public com.treeleaf.suchi.entities.SuchiProto.Brand getBrand() {
-                return instance.getBrand();
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Brand brand = 13;</code>
-             */
-            public Builder setBrand(com.treeleaf.suchi.entities.SuchiProto.Brand value) {
-                copyOnWrite();
-                instance.setBrand(value);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Brand brand = 13;</code>
-             */
-            public Builder setBrand(
-                    com.treeleaf.suchi.entities.SuchiProto.Brand.Builder builderForValue) {
-                copyOnWrite();
-                instance.setBrand(builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Brand brand = 13;</code>
-             */
-            public Builder mergeBrand(com.treeleaf.suchi.entities.SuchiProto.Brand value) {
-                copyOnWrite();
-                instance.mergeBrand(value);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Brand brand = 13;</code>
-             */
-            public Builder clearBrand() {
-                copyOnWrite();
-                instance.clearBrand();
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.SubBrand subBrand = 14;</code>
-             */
-            public boolean hasSubBrand() {
-                return instance.hasSubBrand();
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.SubBrand subBrand = 14;</code>
-             */
-            public com.treeleaf.suchi.entities.SuchiProto.SubBrand getSubBrand() {
-                return instance.getSubBrand();
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.SubBrand subBrand = 14;</code>
-             */
-            public Builder setSubBrand(com.treeleaf.suchi.entities.SuchiProto.SubBrand value) {
-                copyOnWrite();
-                instance.setSubBrand(value);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.SubBrand subBrand = 14;</code>
-             */
-            public Builder setSubBrand(
-                    com.treeleaf.suchi.entities.SuchiProto.SubBrand.Builder builderForValue) {
-                copyOnWrite();
-                instance.setSubBrand(builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.SubBrand subBrand = 14;</code>
-             */
-            public Builder mergeSubBrand(com.treeleaf.suchi.entities.SuchiProto.SubBrand value) {
-                copyOnWrite();
-                instance.mergeSubBrand(value);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.SubBrand subBrand = 14;</code>
-             */
-            public Builder clearSubBrand() {
-                copyOnWrite();
-                instance.clearSubBrand();
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Unit unit = 15;</code>
-             */
-            public boolean hasUnit() {
-                return instance.hasUnit();
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Unit unit = 15;</code>
-             */
-            public com.treeleaf.suchi.entities.SuchiProto.Unit getUnit() {
-                return instance.getUnit();
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Unit unit = 15;</code>
-             */
-            public Builder setUnit(com.treeleaf.suchi.entities.SuchiProto.Unit value) {
-                copyOnWrite();
-                instance.setUnit(value);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Unit unit = 15;</code>
-             */
-            public Builder setUnit(
-                    com.treeleaf.suchi.entities.SuchiProto.Unit.Builder builderForValue) {
-                copyOnWrite();
-                instance.setUnit(builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Unit unit = 15;</code>
-             */
-            public Builder mergeUnit(com.treeleaf.suchi.entities.SuchiProto.Unit value) {
-                copyOnWrite();
-                instance.mergeUnit(value);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Unit unit = 15;</code>
-             */
-            public Builder clearUnit() {
-                copyOnWrite();
-                instance.clearUnit();
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Category category = 16;</code>
-             */
-            public boolean hasCategory() {
-                return instance.hasCategory();
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Category category = 16;</code>
-             */
-            public com.treeleaf.suchi.entities.SuchiProto.Category getCategory() {
-                return instance.getCategory();
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Category category = 16;</code>
-             */
-            public Builder setCategory(com.treeleaf.suchi.entities.SuchiProto.Category value) {
-                copyOnWrite();
-                instance.setCategory(value);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Category category = 16;</code>
-             */
-            public Builder setCategory(
-                    com.treeleaf.suchi.entities.SuchiProto.Category.Builder builderForValue) {
-                copyOnWrite();
-                instance.setCategory(builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Category category = 16;</code>
-             */
-            public Builder mergeCategory(com.treeleaf.suchi.entities.SuchiProto.Category value) {
-                copyOnWrite();
-                instance.mergeCategory(value);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Category category = 16;</code>
-             */
-            public Builder clearCategory() {
-                copyOnWrite();
-                instance.clearCategory();
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Creditor creditor = 17;</code>
-             */
-            public boolean hasCreditor() {
-                return instance.hasCreditor();
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Creditor creditor = 17;</code>
-             */
-            public com.treeleaf.suchi.entities.SuchiProto.Creditor getCreditor() {
-                return instance.getCreditor();
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Creditor creditor = 17;</code>
-             */
-            public Builder setCreditor(com.treeleaf.suchi.entities.SuchiProto.Creditor value) {
-                copyOnWrite();
-                instance.setCreditor(value);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Creditor creditor = 17;</code>
-             */
-            public Builder setCreditor(
-                    com.treeleaf.suchi.entities.SuchiProto.Creditor.Builder builderForValue) {
-                copyOnWrite();
-                instance.setCreditor(builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Creditor creditor = 17;</code>
-             */
-            public Builder mergeCreditor(com.treeleaf.suchi.entities.SuchiProto.Creditor value) {
-                copyOnWrite();
-                instance.mergeCreditor(value);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Creditor creditor = 17;</code>
-             */
-            public Builder clearCreditor() {
-                copyOnWrite();
-                instance.clearCreditor();
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Inventory inventory = 18;</code>
-             */
-            public boolean hasInventory() {
-                return instance.hasInventory();
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Inventory inventory = 18;</code>
-             */
-            public com.treeleaf.suchi.entities.SuchiProto.Inventory getInventory() {
-                return instance.getInventory();
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Inventory inventory = 18;</code>
-             */
-            public Builder setInventory(com.treeleaf.suchi.entities.SuchiProto.Inventory value) {
-                copyOnWrite();
-                instance.setInventory(value);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Inventory inventory = 18;</code>
-             */
-            public Builder setInventory(
-                    com.treeleaf.suchi.entities.SuchiProto.Inventory.Builder builderForValue) {
-                copyOnWrite();
-                instance.setInventory(builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Inventory inventory = 18;</code>
-             */
-            public Builder mergeInventory(com.treeleaf.suchi.entities.SuchiProto.Inventory value) {
-                copyOnWrite();
-                instance.mergeInventory(value);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Inventory inventory = 18;</code>
-             */
-            public Builder clearInventory() {
-                copyOnWrite();
-                instance.clearInventory();
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 19;</code>
-             */
-            public java.util.List<com.treeleaf.suchi.entities.SuchiProto.Inventory> getInventoriesList() {
-                return java.util.Collections.unmodifiableList(
-                        instance.getInventoriesList());
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 19;</code>
-             */
-            public int getInventoriesCount() {
-                return instance.getInventoriesCount();
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 19;</code>
-             */
-            public com.treeleaf.suchi.entities.SuchiProto.Inventory getInventories(int index) {
-                return instance.getInventories(index);
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 19;</code>
-             */
-            public Builder setInventories(
-                    int index, com.treeleaf.suchi.entities.SuchiProto.Inventory value) {
-                copyOnWrite();
-                instance.setInventories(index, value);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 19;</code>
-             */
-            public Builder setInventories(
-                    int index, com.treeleaf.suchi.entities.SuchiProto.Inventory.Builder builderForValue) {
-                copyOnWrite();
-                instance.setInventories(index, builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 19;</code>
-             */
-            public Builder addInventories(com.treeleaf.suchi.entities.SuchiProto.Inventory value) {
-                copyOnWrite();
-                instance.addInventories(value);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 19;</code>
-             */
-            public Builder addInventories(
-                    int index, com.treeleaf.suchi.entities.SuchiProto.Inventory value) {
-                copyOnWrite();
-                instance.addInventories(index, value);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 19;</code>
-             */
-            public Builder addInventories(
-                    com.treeleaf.suchi.entities.SuchiProto.Inventory.Builder builderForValue) {
-                copyOnWrite();
-                instance.addInventories(builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 19;</code>
-             */
-            public Builder addInventories(
-                    int index, com.treeleaf.suchi.entities.SuchiProto.Inventory.Builder builderForValue) {
-                copyOnWrite();
-                instance.addInventories(index, builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 19;</code>
-             */
-            public Builder addAllInventories(
-                    Iterable<? extends com.treeleaf.suchi.entities.SuchiProto.Inventory> values) {
-                copyOnWrite();
-                instance.addAllInventories(values);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 19;</code>
-             */
-            public Builder clearInventories() {
-                copyOnWrite();
-                instance.clearInventories();
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 19;</code>
-             */
-            public Builder removeInventories(int index) {
-                copyOnWrite();
-                instance.removeInventories(index);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Sale sale = 20;</code>
-             */
-            public boolean hasSale() {
-                return instance.hasSale();
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Sale sale = 20;</code>
-             */
-            public com.treeleaf.suchi.entities.SuchiProto.Sale getSale() {
-                return instance.getSale();
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Sale sale = 20;</code>
-             */
-            public Builder setSale(com.treeleaf.suchi.entities.SuchiProto.Sale value) {
-                copyOnWrite();
-                instance.setSale(value);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Sale sale = 20;</code>
-             */
-            public Builder setSale(
-                    com.treeleaf.suchi.entities.SuchiProto.Sale.Builder builderForValue) {
-                copyOnWrite();
-                instance.setSale(builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Sale sale = 20;</code>
-             */
-            public Builder mergeSale(com.treeleaf.suchi.entities.SuchiProto.Sale value) {
-                copyOnWrite();
-                instance.mergeSale(value);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Sale sale = 20;</code>
-             */
-            public Builder clearSale() {
-                copyOnWrite();
-                instance.clearSale();
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Sale sales = 21;</code>
-             */
-            public java.util.List<com.treeleaf.suchi.entities.SuchiProto.Sale> getSalesList() {
-                return java.util.Collections.unmodifiableList(
-                        instance.getSalesList());
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Sale sales = 21;</code>
-             */
-            public int getSalesCount() {
-                return instance.getSalesCount();
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Sale sales = 21;</code>
-             */
-            public com.treeleaf.suchi.entities.SuchiProto.Sale getSales(int index) {
-                return instance.getSales(index);
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Sale sales = 21;</code>
-             */
-            public Builder setSales(
-                    int index, com.treeleaf.suchi.entities.SuchiProto.Sale value) {
-                copyOnWrite();
-                instance.setSales(index, value);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Sale sales = 21;</code>
-             */
-            public Builder setSales(
-                    int index, com.treeleaf.suchi.entities.SuchiProto.Sale.Builder builderForValue) {
-                copyOnWrite();
-                instance.setSales(index, builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Sale sales = 21;</code>
-             */
-            public Builder addSales(com.treeleaf.suchi.entities.SuchiProto.Sale value) {
-                copyOnWrite();
-                instance.addSales(value);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Sale sales = 21;</code>
-             */
-            public Builder addSales(
-                    int index, com.treeleaf.suchi.entities.SuchiProto.Sale value) {
-                copyOnWrite();
-                instance.addSales(index, value);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Sale sales = 21;</code>
-             */
-            public Builder addSales(
-                    com.treeleaf.suchi.entities.SuchiProto.Sale.Builder builderForValue) {
-                copyOnWrite();
-                instance.addSales(builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Sale sales = 21;</code>
-             */
-            public Builder addSales(
-                    int index, com.treeleaf.suchi.entities.SuchiProto.Sale.Builder builderForValue) {
-                copyOnWrite();
-                instance.addSales(index, builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Sale sales = 21;</code>
-             */
-            public Builder addAllSales(
-                    Iterable<? extends com.treeleaf.suchi.entities.SuchiProto.Sale> values) {
-                copyOnWrite();
-                instance.addAllSales(values);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Sale sales = 21;</code>
-             */
-            public Builder clearSales() {
-                copyOnWrite();
-                instance.clearSales();
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Sale sales = 21;</code>
-             */
-            public Builder removeSales(int index) {
-                copyOnWrite();
-                instance.removeSales(index);
-                return this;
-            }
-
-            // @@protoc_insertion_point(builder_scope:treeleaf.suchi.rpc.SuchiBaseRequest)
-        }
-
-        protected final Object dynamicMethod(
-                MethodToInvoke method,
-                Object arg0, Object arg1) {
-            switch (method) {
-                case NEW_MUTABLE_INSTANCE: {
-                    return new SuchiBaseRequest();
+                  }
+                  sales_.add(
+                      input.readMessage(com.treeleaf.suchi.entities.SuchiProto.Sale.parser(), extensionRegistry));
+                  break;
                 }
-                case IS_INITIALIZED: {
-                    return DEFAULT_INSTANCE;
+                case 178: {
+                  com.treeleaf.suchi.entities.SuchiProto.SuchiKey.Builder subBuilder = null;
+                  if (suchiKey_ != null) {
+                    subBuilder = suchiKey_.toBuilder();
+                  }
+                  suchiKey_ = input.readMessage(com.treeleaf.suchi.entities.SuchiProto.SuchiKey.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(suchiKey_);
+                    suchiKey_ = subBuilder.buildPartial();
+                  }
+
+                  break;
                 }
-                case MAKE_IMMUTABLE: {
-                    stockKeepingUnits_.makeImmutable();
-                    inventories_.makeImmutable();
-                    sales_.makeImmutable();
-                    return null;
+                case 186: {
+                  com.treeleaf.suchi.entities.SuchiProto.EsewaPaymentRequest.Builder subBuilder = null;
+                  if (esewaPaymentRequest_ != null) {
+                    subBuilder = esewaPaymentRequest_.toBuilder();
+                  }
+                  esewaPaymentRequest_ = input.readMessage(com.treeleaf.suchi.entities.SuchiProto.EsewaPaymentRequest.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(esewaPaymentRequest_);
+                    esewaPaymentRequest_ = subBuilder.buildPartial();
+                  }
+
+                  break;
                 }
-                case NEW_BUILDER: {
-                    return new Builder();
-                }
-                case VISIT: {
-                    Visitor visitor = (Visitor) arg0;
-                    SuchiBaseRequest other = (SuchiBaseRequest) arg1;
-                    refId_ = visitor.visitString(!refId_.isEmpty(), refId_,
-                            !other.refId_.isEmpty(), other.refId_);
-                    stringValue_ = visitor.visitString(!stringValue_.isEmpty(), stringValue_,
-                            !other.stringValue_.isEmpty(), other.stringValue_);
-                    intValue_ = visitor.visitInt(intValue_ != 0, intValue_,
-                            other.intValue_ != 0, other.intValue_);
-                    longValue_ = visitor.visitLong(longValue_ != 0L, longValue_,
-                            other.longValue_ != 0L, other.longValue_);
-                    boolValue_ = visitor.visitBoolean(boolValue_ != false, boolValue_,
-                            other.boolValue_ != false, other.boolValue_);
-                    doubleValue_ = visitor.visitDouble(doubleValue_ != 0D, doubleValue_,
-                            other.doubleValue_ != 0D, other.doubleValue_);
-                    authorization_ = visitor.visitMessage(authorization_, other.authorization_);
-                    user_ = visitor.visitMessage(user_, other.user_);
-                    loginRequest_ = visitor.visitMessage(loginRequest_, other.loginRequest_);
-                    passwordUpdateRequest_ = visitor.visitMessage(passwordUpdateRequest_, other.passwordUpdateRequest_);
-                    stockKeepingUnit_ = visitor.visitMessage(stockKeepingUnit_, other.stockKeepingUnit_);
-                    stockKeepingUnits_ = visitor.visitList(stockKeepingUnits_, other.stockKeepingUnits_);
-                    brand_ = visitor.visitMessage(brand_, other.brand_);
-                    subBrand_ = visitor.visitMessage(subBrand_, other.subBrand_);
-                    unit_ = visitor.visitMessage(unit_, other.unit_);
-                    category_ = visitor.visitMessage(category_, other.category_);
-                    creditor_ = visitor.visitMessage(creditor_, other.creditor_);
-                    inventory_ = visitor.visitMessage(inventory_, other.inventory_);
-                    inventories_ = visitor.visitList(inventories_, other.inventories_);
-                    sale_ = visitor.visitMessage(sale_, other.sale_);
-                    sales_ = visitor.visitList(sales_, other.sales_);
-                    if (visitor == MergeFromVisitor
-                            .INSTANCE) {
-                        bitField0_ |= other.bitField0_;
-                    }
-                    return this;
-                }
-                case MERGE_FROM_STREAM: {
-                    com.google.protobuf.CodedInputStream input =
-                            (com.google.protobuf.CodedInputStream) arg0;
-                    com.google.protobuf.ExtensionRegistryLite extensionRegistry =
-                            (com.google.protobuf.ExtensionRegistryLite) arg1;
-                    try {
-                        boolean done = false;
-                        while (!done) {
-                            int tag = input.readTag();
-                            switch (tag) {
-                                case 0:
-                                    done = true;
-                                    break;
-                                default: {
-                                    if (!input.skipField(tag)) {
-                                        done = true;
-                                    }
-                                    break;
-                                }
-                                case 10: {
-                                    String s = input.readStringRequireUtf8();
-
-                                    refId_ = s;
-                                    break;
-                                }
-                                case 18: {
-                                    String s = input.readStringRequireUtf8();
-
-                                    stringValue_ = s;
-                                    break;
-                                }
-                                case 24: {
-
-                                    intValue_ = input.readInt32();
-                                    break;
-                                }
-                                case 32: {
-
-                                    longValue_ = input.readInt64();
-                                    break;
-                                }
-                                case 40: {
-
-                                    boolValue_ = input.readBool();
-                                    break;
-                                }
-                                case 49: {
-
-                                    doubleValue_ = input.readDouble();
-                                    break;
-                                }
-                                case 58: {
-                                    com.treeleaf.suchi.entities.TreeleafProto.Authorization.Builder subBuilder = null;
-                                    if (authorization_ != null) {
-                                        subBuilder = authorization_.toBuilder();
-                                    }
-                                    authorization_ = input.readMessage(com.treeleaf.suchi.entities.TreeleafProto.Authorization.parser(), extensionRegistry);
-                                    if (subBuilder != null) {
-                                        subBuilder.mergeFrom(authorization_);
-                                        authorization_ = subBuilder.buildPartial();
-                                    }
-
-                                    break;
-                                }
-                                case 66: {
-                                    com.treeleaf.suchi.entities.TreeleafProto.UserAccount.Builder subBuilder = null;
-                                    if (user_ != null) {
-                                        subBuilder = user_.toBuilder();
-                                    }
-                                    user_ = input.readMessage(com.treeleaf.suchi.entities.TreeleafProto.UserAccount.parser(), extensionRegistry);
-                                    if (subBuilder != null) {
-                                        subBuilder.mergeFrom(user_);
-                                        user_ = subBuilder.buildPartial();
-                                    }
-
-                                    break;
-                                }
-                                case 74: {
-                                    com.treeleaf.suchi.entities.TreeleafProto.LoginRequest.Builder subBuilder = null;
-                                    if (loginRequest_ != null) {
-                                        subBuilder = loginRequest_.toBuilder();
-                                    }
-                                    loginRequest_ = input.readMessage(com.treeleaf.suchi.entities.TreeleafProto.LoginRequest.parser(), extensionRegistry);
-                                    if (subBuilder != null) {
-                                        subBuilder.mergeFrom(loginRequest_);
-                                        loginRequest_ = subBuilder.buildPartial();
-                                    }
-
-                                    break;
-                                }
-                                case 82: {
-                                    com.treeleaf.suchi.entities.TreeleafProto.PasswordChangeRequest.Builder subBuilder = null;
-                                    if (passwordUpdateRequest_ != null) {
-                                        subBuilder = passwordUpdateRequest_.toBuilder();
-                                    }
-                                    passwordUpdateRequest_ = input.readMessage(com.treeleaf.suchi.entities.TreeleafProto.PasswordChangeRequest.parser(), extensionRegistry);
-                                    if (subBuilder != null) {
-                                        subBuilder.mergeFrom(passwordUpdateRequest_);
-                                        passwordUpdateRequest_ = subBuilder.buildPartial();
-                                    }
-
-                                    break;
-                                }
-                                case 90: {
-                                    com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit.Builder subBuilder = null;
-                                    if (stockKeepingUnit_ != null) {
-                                        subBuilder = stockKeepingUnit_.toBuilder();
-                                    }
-                                    stockKeepingUnit_ = input.readMessage(com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit.parser(), extensionRegistry);
-                                    if (subBuilder != null) {
-                                        subBuilder.mergeFrom(stockKeepingUnit_);
-                                        stockKeepingUnit_ = subBuilder.buildPartial();
-                                    }
-
-                                    break;
-                                }
-                                case 98: {
-                                    if (!stockKeepingUnits_.isModifiable()) {
-                                        stockKeepingUnits_ =
-                                                com.google.protobuf.GeneratedMessageLite.mutableCopy(stockKeepingUnits_);
-                                    }
-                                    stockKeepingUnits_.add(
-                                            input.readMessage(com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit.parser(), extensionRegistry));
-                                    break;
-                                }
-                                case 106: {
-                                    com.treeleaf.suchi.entities.SuchiProto.Brand.Builder subBuilder = null;
-                                    if (brand_ != null) {
-                                        subBuilder = brand_.toBuilder();
-                                    }
-                                    brand_ = input.readMessage(com.treeleaf.suchi.entities.SuchiProto.Brand.parser(), extensionRegistry);
-                                    if (subBuilder != null) {
-                                        subBuilder.mergeFrom(brand_);
-                                        brand_ = subBuilder.buildPartial();
-                                    }
-
-                                    break;
-                                }
-                                case 114: {
-                                    com.treeleaf.suchi.entities.SuchiProto.SubBrand.Builder subBuilder = null;
-                                    if (subBrand_ != null) {
-                                        subBuilder = subBrand_.toBuilder();
-                                    }
-                                    subBrand_ = input.readMessage(com.treeleaf.suchi.entities.SuchiProto.SubBrand.parser(), extensionRegistry);
-                                    if (subBuilder != null) {
-                                        subBuilder.mergeFrom(subBrand_);
-                                        subBrand_ = subBuilder.buildPartial();
-                                    }
-
-                                    break;
-                                }
-                                case 122: {
-                                    com.treeleaf.suchi.entities.SuchiProto.Unit.Builder subBuilder = null;
-                                    if (unit_ != null) {
-                                        subBuilder = unit_.toBuilder();
-                                    }
-                                    unit_ = input.readMessage(com.treeleaf.suchi.entities.SuchiProto.Unit.parser(), extensionRegistry);
-                                    if (subBuilder != null) {
-                                        subBuilder.mergeFrom(unit_);
-                                        unit_ = subBuilder.buildPartial();
-                                    }
-
-                                    break;
-                                }
-                                case 130: {
-                                    com.treeleaf.suchi.entities.SuchiProto.Category.Builder subBuilder = null;
-                                    if (category_ != null) {
-                                        subBuilder = category_.toBuilder();
-                                    }
-                                    category_ = input.readMessage(com.treeleaf.suchi.entities.SuchiProto.Category.parser(), extensionRegistry);
-                                    if (subBuilder != null) {
-                                        subBuilder.mergeFrom(category_);
-                                        category_ = subBuilder.buildPartial();
-                                    }
-
-                                    break;
-                                }
-                                case 138: {
-                                    com.treeleaf.suchi.entities.SuchiProto.Creditor.Builder subBuilder = null;
-                                    if (creditor_ != null) {
-                                        subBuilder = creditor_.toBuilder();
-                                    }
-                                    creditor_ = input.readMessage(com.treeleaf.suchi.entities.SuchiProto.Creditor.parser(), extensionRegistry);
-                                    if (subBuilder != null) {
-                                        subBuilder.mergeFrom(creditor_);
-                                        creditor_ = subBuilder.buildPartial();
-                                    }
-
-                                    break;
-                                }
-                                case 146: {
-                                    com.treeleaf.suchi.entities.SuchiProto.Inventory.Builder subBuilder = null;
-                                    if (inventory_ != null) {
-                                        subBuilder = inventory_.toBuilder();
-                                    }
-                                    inventory_ = input.readMessage(com.treeleaf.suchi.entities.SuchiProto.Inventory.parser(), extensionRegistry);
-                                    if (subBuilder != null) {
-                                        subBuilder.mergeFrom(inventory_);
-                                        inventory_ = subBuilder.buildPartial();
-                                    }
-
-                                    break;
-                                }
-                                case 154: {
-                                    if (!inventories_.isModifiable()) {
-                                        inventories_ =
-                                                com.google.protobuf.GeneratedMessageLite.mutableCopy(inventories_);
-                                    }
-                                    inventories_.add(
-                                            input.readMessage(com.treeleaf.suchi.entities.SuchiProto.Inventory.parser(), extensionRegistry));
-                                    break;
-                                }
-                                case 162: {
-                                    com.treeleaf.suchi.entities.SuchiProto.Sale.Builder subBuilder = null;
-                                    if (sale_ != null) {
-                                        subBuilder = sale_.toBuilder();
-                                    }
-                                    sale_ = input.readMessage(com.treeleaf.suchi.entities.SuchiProto.Sale.parser(), extensionRegistry);
-                                    if (subBuilder != null) {
-                                        subBuilder.mergeFrom(sale_);
-                                        sale_ = subBuilder.buildPartial();
-                                    }
-
-                                    break;
-                                }
-                                case 170: {
-                                    if (!sales_.isModifiable()) {
-                                        sales_ =
-                                                com.google.protobuf.GeneratedMessageLite.mutableCopy(sales_);
-                                    }
-                                    sales_.add(
-                                            input.readMessage(com.treeleaf.suchi.entities.SuchiProto.Sale.parser(), extensionRegistry));
-                                    break;
-                                }
-                            }
-                        }
-                    } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                        throw new RuntimeException(e.setUnfinishedMessage(this));
-                    } catch (java.io.IOException e) {
-                        throw new RuntimeException(
-                                new com.google.protobuf.InvalidProtocolBufferException(
-                                        e.getMessage()).setUnfinishedMessage(this));
-                    } finally {
-                    }
-                }
-                case GET_DEFAULT_INSTANCE: {
-                    return DEFAULT_INSTANCE;
-                }
-                case GET_PARSER: {
-                    if (PARSER == null) {
-                        synchronized (SuchiBaseRequest.class) {
-                            if (PARSER == null) {
-                                PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
-                            }
-                        }
-                    }
-                    return PARSER;
-                }
+              }
             }
-            throw new UnsupportedOperationException();
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw new RuntimeException(e.setUnfinishedMessage(this));
+          } catch (java.io.IOException e) {
+            throw new RuntimeException(
+                new com.google.protobuf.InvalidProtocolBufferException(
+                    e.getMessage()).setUnfinishedMessage(this));
+          } finally {
+          }
         }
-
-
-        // @@protoc_insertion_point(class_scope:treeleaf.suchi.rpc.SuchiBaseRequest)
-        private static final SuchiBaseRequest DEFAULT_INSTANCE;
-
-        static {
-            DEFAULT_INSTANCE = new SuchiBaseRequest();
-            DEFAULT_INSTANCE.makeImmutable();
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
         }
-
-        public static SuchiBaseRequest getDefaultInstance() {
-            return DEFAULT_INSTANCE;
+        case GET_PARSER: {
+          if (PARSER == null) {    synchronized (SuchiBaseRequest.class) {
+              if (PARSER == null) {
+                PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+              }
+            }
+          }
+          return PARSER;
         }
-
-        private static volatile com.google.protobuf.Parser<SuchiBaseRequest> PARSER;
-
-        public static com.google.protobuf.Parser<SuchiBaseRequest> parser() {
-            return DEFAULT_INSTANCE.getParserForType();
-        }
+      }
+      throw new UnsupportedOperationException();
     }
 
-    public interface SuchiBaseResponseOrBuilder extends
-            // @@protoc_insertion_point(interface_extends:treeleaf.suchi.rpc.SuchiBaseResponse)
-            com.google.protobuf.MessageLiteOrBuilder {
 
-        /**
-         * <code>optional bool error = 1;</code>
-         */
-        boolean getError();
+    // @@protoc_insertion_point(class_scope:treeleaf.suchi.rpc.SuchiBaseRequest)
+    private static final SuchiBaseRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new SuchiBaseRequest();
+      DEFAULT_INSTANCE.makeImmutable();
+    }
 
-        /**
-         * <code>optional string msg = 2;</code>
-         */
-        String getMsg();
+    public static SuchiBaseRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
 
-        /**
-         * <code>optional string msg = 2;</code>
-         */
-        com.google.protobuf.ByteString
+    private static volatile com.google.protobuf.Parser<SuchiBaseRequest> PARSER;
+
+    public static com.google.protobuf.Parser<SuchiBaseRequest> parser() {
+      return DEFAULT_INSTANCE.getParserForType();
+    }
+  }
+
+  public interface SuchiBaseResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:treeleaf.suchi.rpc.SuchiBaseResponse)
+      com.google.protobuf.MessageLiteOrBuilder {
+
+    /**
+     * <code>optional bool error = 1;</code>
+     */
+    boolean getError();
+
+    /**
+     * <code>optional string msg = 2;</code>
+     */
+    String getMsg();
+    /**
+     * <code>optional string msg = 2;</code>
+     */
+    com.google.protobuf.ByteString
         getMsgBytes();
 
-        /**
-         * <code>optional .treeleaf.entities.ErrorCode errorCode = 3;</code>
-         */
-        int getErrorCodeValue();
+    /**
+     * <code>optional .treeleaf.entities.ErrorCode errorCode = 3;</code>
+     */
+    int getErrorCodeValue();
+    /**
+     * <code>optional .treeleaf.entities.ErrorCode errorCode = 3;</code>
+     */
+    com.treeleaf.suchi.entities.TreeleafProto.ErrorCode getErrorCode();
 
-        /**
-         * <code>optional .treeleaf.entities.ErrorCode errorCode = 3;</code>
-         */
-        com.treeleaf.suchi.entities.TreeleafProto.ErrorCode getErrorCode();
+    /**
+     * <code>optional bool success = 4;</code>
+     */
+    boolean getSuccess();
 
-        /**
-         * <code>optional bool success = 4;</code>
-         */
-        boolean getSuccess();
+    /**
+     * <code>optional .treeleaf.entities.UserAccount user = 5;</code>
+     */
+    boolean hasUser();
+    /**
+     * <code>optional .treeleaf.entities.UserAccount user = 5;</code>
+     */
+    com.treeleaf.suchi.entities.TreeleafProto.UserAccount getUser();
 
-        /**
-         * <code>optional .treeleaf.entities.UserAccount user = 5;</code>
-         */
-        boolean hasUser();
-
-        /**
-         * <code>optional .treeleaf.entities.UserAccount user = 5;</code>
-         */
-        com.treeleaf.suchi.entities.TreeleafProto.UserAccount getUser();
-
-        /**
-         * <code>repeated .treeleaf.entities.UserAccount users = 6;</code>
-         */
-        java.util.List<com.treeleaf.suchi.entities.TreeleafProto.UserAccount>
+    /**
+     * <code>repeated .treeleaf.entities.UserAccount users = 6;</code>
+     */
+    java.util.List<com.treeleaf.suchi.entities.TreeleafProto.UserAccount> 
         getUsersList();
+    /**
+     * <code>repeated .treeleaf.entities.UserAccount users = 6;</code>
+     */
+    com.treeleaf.suchi.entities.TreeleafProto.UserAccount getUsers(int index);
+    /**
+     * <code>repeated .treeleaf.entities.UserAccount users = 6;</code>
+     */
+    int getUsersCount();
 
-        /**
-         * <code>repeated .treeleaf.entities.UserAccount users = 6;</code>
-         */
-        com.treeleaf.suchi.entities.TreeleafProto.UserAccount getUsers(int index);
+    /**
+     * <code>optional .treeleaf.entities.Session session = 7;</code>
+     */
+    boolean hasSession();
+    /**
+     * <code>optional .treeleaf.entities.Session session = 7;</code>
+     */
+    com.treeleaf.suchi.entities.TreeleafProto.Session getSession();
 
-        /**
-         * <code>repeated .treeleaf.entities.UserAccount users = 6;</code>
-         */
-        int getUsersCount();
+    /**
+     * <code>optional .treeleaf.entities.LoginResult loginResult = 8;</code>
+     */
+    boolean hasLoginResult();
+    /**
+     * <code>optional .treeleaf.entities.LoginResult loginResult = 8;</code>
+     */
+    com.treeleaf.suchi.entities.TreeleafProto.LoginResult getLoginResult();
 
-        /**
-         * <code>optional .treeleaf.entities.Session session = 7;</code>
-         */
-        boolean hasSession();
+    /**
+     * <code>optional .treeleaf.entities.AuthResponse authResponse = 9;</code>
+     */
+    boolean hasAuthResponse();
+    /**
+     * <code>optional .treeleaf.entities.AuthResponse authResponse = 9;</code>
+     */
+    com.treeleaf.suchi.entities.TreeleafProto.AuthResponse getAuthResponse();
 
-        /**
-         * <code>optional .treeleaf.entities.Session session = 7;</code>
-         */
-        com.treeleaf.suchi.entities.TreeleafProto.Session getSession();
+    /**
+     * <code>optional .treeleaf.entities.Authorization authorization = 10;</code>
+     */
+    boolean hasAuthorization();
+    /**
+     * <code>optional .treeleaf.entities.Authorization authorization = 10;</code>
+     */
+    com.treeleaf.suchi.entities.TreeleafProto.Authorization getAuthorization();
 
-        /**
-         * <code>optional .treeleaf.entities.LoginResult loginResult = 8;</code>
-         */
-        boolean hasLoginResult();
+    /**
+     * <code>optional .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnit = 11;</code>
+     */
+    boolean hasStockKeepingUnit();
+    /**
+     * <code>optional .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnit = 11;</code>
+     */
+    com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit getStockKeepingUnit();
 
-        /**
-         * <code>optional .treeleaf.entities.LoginResult loginResult = 8;</code>
-         */
-        com.treeleaf.suchi.entities.TreeleafProto.LoginResult getLoginResult();
-
-        /**
-         * <code>optional .treeleaf.entities.AuthResponse authResponse = 9;</code>
-         */
-        boolean hasAuthResponse();
-
-        /**
-         * <code>optional .treeleaf.entities.AuthResponse authResponse = 9;</code>
-         */
-        com.treeleaf.suchi.entities.TreeleafProto.AuthResponse getAuthResponse();
-
-        /**
-         * <code>optional .treeleaf.entities.Authorization authorization = 10;</code>
-         */
-        boolean hasAuthorization();
-
-        /**
-         * <code>optional .treeleaf.entities.Authorization authorization = 10;</code>
-         */
-        com.treeleaf.suchi.entities.TreeleafProto.Authorization getAuthorization();
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnit = 11;</code>
-         */
-        boolean hasStockKeepingUnit();
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnit = 11;</code>
-         */
-        com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit getStockKeepingUnit();
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
-         */
-        java.util.List<com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit>
+    /**
+     * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
+     */
+    java.util.List<com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit> 
         getStockKeepingUnitsList();
+    /**
+     * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
+     */
+    com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit getStockKeepingUnits(int index);
+    /**
+     * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
+     */
+    int getStockKeepingUnitsCount();
 
-        /**
-         * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
-         */
-        com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit getStockKeepingUnits(int index);
+    /**
+     * <code>optional .treeleaf.suchi.entities.Inventory inventory = 13;</code>
+     */
+    boolean hasInventory();
+    /**
+     * <code>optional .treeleaf.suchi.entities.Inventory inventory = 13;</code>
+     */
+    com.treeleaf.suchi.entities.SuchiProto.Inventory getInventory();
 
-        /**
-         * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
-         */
-        int getStockKeepingUnitsCount();
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Inventory inventory = 13;</code>
-         */
-        boolean hasInventory();
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Inventory inventory = 13;</code>
-         */
-        com.treeleaf.suchi.entities.SuchiProto.Inventory getInventory();
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 14;</code>
-         */
-        java.util.List<com.treeleaf.suchi.entities.SuchiProto.Inventory>
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 14;</code>
+     */
+    java.util.List<com.treeleaf.suchi.entities.SuchiProto.Inventory> 
         getInventoriesList();
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 14;</code>
+     */
+    com.treeleaf.suchi.entities.SuchiProto.Inventory getInventories(int index);
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 14;</code>
+     */
+    int getInventoriesCount();
 
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 14;</code>
-         */
-        com.treeleaf.suchi.entities.SuchiProto.Inventory getInventories(int index);
+    /**
+     * <code>optional .treeleaf.suchi.entities.Brand brand = 15;</code>
+     */
+    boolean hasBrand();
+    /**
+     * <code>optional .treeleaf.suchi.entities.Brand brand = 15;</code>
+     */
+    com.treeleaf.suchi.entities.SuchiProto.Brand getBrand();
 
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 14;</code>
-         */
-        int getInventoriesCount();
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Brand brand = 15;</code>
-         */
-        boolean hasBrand();
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Brand brand = 15;</code>
-         */
-        com.treeleaf.suchi.entities.SuchiProto.Brand getBrand();
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Brand brands = 16;</code>
-         */
-        java.util.List<com.treeleaf.suchi.entities.SuchiProto.Brand>
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Brand brands = 16;</code>
+     */
+    java.util.List<com.treeleaf.suchi.entities.SuchiProto.Brand> 
         getBrandsList();
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Brand brands = 16;</code>
+     */
+    com.treeleaf.suchi.entities.SuchiProto.Brand getBrands(int index);
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Brand brands = 16;</code>
+     */
+    int getBrandsCount();
 
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Brand brands = 16;</code>
-         */
-        com.treeleaf.suchi.entities.SuchiProto.Brand getBrands(int index);
+    /**
+     * <code>optional .treeleaf.suchi.entities.SubBrand subBrand = 17;</code>
+     */
+    boolean hasSubBrand();
+    /**
+     * <code>optional .treeleaf.suchi.entities.SubBrand subBrand = 17;</code>
+     */
+    com.treeleaf.suchi.entities.SuchiProto.SubBrand getSubBrand();
 
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Brand brands = 16;</code>
-         */
-        int getBrandsCount();
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.SubBrand subBrand = 17;</code>
-         */
-        boolean hasSubBrand();
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.SubBrand subBrand = 17;</code>
-         */
-        com.treeleaf.suchi.entities.SuchiProto.SubBrand getSubBrand();
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.SubBrand subBrands = 18;</code>
-         */
-        java.util.List<com.treeleaf.suchi.entities.SuchiProto.SubBrand>
+    /**
+     * <code>repeated .treeleaf.suchi.entities.SubBrand subBrands = 18;</code>
+     */
+    java.util.List<com.treeleaf.suchi.entities.SuchiProto.SubBrand> 
         getSubBrandsList();
+    /**
+     * <code>repeated .treeleaf.suchi.entities.SubBrand subBrands = 18;</code>
+     */
+    com.treeleaf.suchi.entities.SuchiProto.SubBrand getSubBrands(int index);
+    /**
+     * <code>repeated .treeleaf.suchi.entities.SubBrand subBrands = 18;</code>
+     */
+    int getSubBrandsCount();
 
-        /**
-         * <code>repeated .treeleaf.suchi.entities.SubBrand subBrands = 18;</code>
-         */
-        com.treeleaf.suchi.entities.SuchiProto.SubBrand getSubBrands(int index);
+    /**
+     * <code>optional .treeleaf.suchi.entities.Unit unit = 19;</code>
+     */
+    boolean hasUnit();
+    /**
+     * <code>optional .treeleaf.suchi.entities.Unit unit = 19;</code>
+     */
+    com.treeleaf.suchi.entities.SuchiProto.Unit getUnit();
 
-        /**
-         * <code>repeated .treeleaf.suchi.entities.SubBrand subBrands = 18;</code>
-         */
-        int getSubBrandsCount();
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Unit unit = 19;</code>
-         */
-        boolean hasUnit();
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Unit unit = 19;</code>
-         */
-        com.treeleaf.suchi.entities.SuchiProto.Unit getUnit();
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Unit units = 20;</code>
-         */
-        java.util.List<com.treeleaf.suchi.entities.SuchiProto.Unit>
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Unit units = 20;</code>
+     */
+    java.util.List<com.treeleaf.suchi.entities.SuchiProto.Unit> 
         getUnitsList();
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Unit units = 20;</code>
+     */
+    com.treeleaf.suchi.entities.SuchiProto.Unit getUnits(int index);
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Unit units = 20;</code>
+     */
+    int getUnitsCount();
 
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Unit units = 20;</code>
-         */
-        com.treeleaf.suchi.entities.SuchiProto.Unit getUnits(int index);
+    /**
+     * <code>optional .treeleaf.suchi.entities.Category category = 21;</code>
+     */
+    boolean hasCategory();
+    /**
+     * <code>optional .treeleaf.suchi.entities.Category category = 21;</code>
+     */
+    com.treeleaf.suchi.entities.SuchiProto.Category getCategory();
 
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Unit units = 20;</code>
-         */
-        int getUnitsCount();
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Category category = 21;</code>
-         */
-        boolean hasCategory();
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Category category = 21;</code>
-         */
-        com.treeleaf.suchi.entities.SuchiProto.Category getCategory();
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Category categories = 22;</code>
-         */
-        java.util.List<com.treeleaf.suchi.entities.SuchiProto.Category>
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Category categories = 22;</code>
+     */
+    java.util.List<com.treeleaf.suchi.entities.SuchiProto.Category> 
         getCategoriesList();
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Category categories = 22;</code>
+     */
+    com.treeleaf.suchi.entities.SuchiProto.Category getCategories(int index);
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Category categories = 22;</code>
+     */
+    int getCategoriesCount();
 
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Category categories = 22;</code>
-         */
-        com.treeleaf.suchi.entities.SuchiProto.Category getCategories(int index);
+    /**
+     * <code>optional .treeleaf.suchi.entities.Creditor creditor = 23;</code>
+     */
+    boolean hasCreditor();
+    /**
+     * <code>optional .treeleaf.suchi.entities.Creditor creditor = 23;</code>
+     */
+    com.treeleaf.suchi.entities.SuchiProto.Creditor getCreditor();
 
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Category categories = 22;</code>
-         */
-        int getCategoriesCount();
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Creditor creditor = 23;</code>
-         */
-        boolean hasCreditor();
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Creditor creditor = 23;</code>
-         */
-        com.treeleaf.suchi.entities.SuchiProto.Creditor getCreditor();
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 24;</code>
-         */
-        java.util.List<com.treeleaf.suchi.entities.SuchiProto.Creditor>
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 24;</code>
+     */
+    java.util.List<com.treeleaf.suchi.entities.SuchiProto.Creditor> 
         getCreditorsList();
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 24;</code>
+     */
+    com.treeleaf.suchi.entities.SuchiProto.Creditor getCreditors(int index);
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 24;</code>
+     */
+    int getCreditorsCount();
 
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 24;</code>
-         */
-        com.treeleaf.suchi.entities.SuchiProto.Creditor getCreditors(int index);
+    /**
+     * <code>optional .treeleaf.suchi.entities.CreditDetail creditDetail = 25;</code>
+     */
+    boolean hasCreditDetail();
+    /**
+     * <code>optional .treeleaf.suchi.entities.CreditDetail creditDetail = 25;</code>
+     */
+    com.treeleaf.suchi.entities.SuchiProto.CreditDetail getCreditDetail();
 
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 24;</code>
-         */
-        int getCreditorsCount();
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.CreditDetail creditDetail = 25;</code>
-         */
-        boolean hasCreditDetail();
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.CreditDetail creditDetail = 25;</code>
-         */
-        com.treeleaf.suchi.entities.SuchiProto.CreditDetail getCreditDetail();
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 26;</code>
-         */
-        java.util.List<com.treeleaf.suchi.entities.SuchiProto.CreditDetail>
+    /**
+     * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 26;</code>
+     */
+    java.util.List<com.treeleaf.suchi.entities.SuchiProto.CreditDetail> 
         getCreditDetailsList();
+    /**
+     * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 26;</code>
+     */
+    com.treeleaf.suchi.entities.SuchiProto.CreditDetail getCreditDetails(int index);
+    /**
+     * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 26;</code>
+     */
+    int getCreditDetailsCount();
 
-        /**
-         * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 26;</code>
-         */
-        com.treeleaf.suchi.entities.SuchiProto.CreditDetail getCreditDetails(int index);
+    /**
+     * <code>optional .treeleaf.suchi.entities.Sale sale = 27;</code>
+     */
+    boolean hasSale();
+    /**
+     * <code>optional .treeleaf.suchi.entities.Sale sale = 27;</code>
+     */
+    com.treeleaf.suchi.entities.SuchiProto.Sale getSale();
 
-        /**
-         * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 26;</code>
-         */
-        int getCreditDetailsCount();
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Sale sale = 27;</code>
-         */
-        boolean hasSale();
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Sale sale = 27;</code>
-         */
-        com.treeleaf.suchi.entities.SuchiProto.Sale getSale();
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Sale sales = 28;</code>
-         */
-        java.util.List<com.treeleaf.suchi.entities.SuchiProto.Sale>
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Sale sales = 28;</code>
+     */
+    java.util.List<com.treeleaf.suchi.entities.SuchiProto.Sale> 
         getSalesList();
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Sale sales = 28;</code>
+     */
+    com.treeleaf.suchi.entities.SuchiProto.Sale getSales(int index);
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Sale sales = 28;</code>
+     */
+    int getSalesCount();
 
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Sale sales = 28;</code>
-         */
-        com.treeleaf.suchi.entities.SuchiProto.Sale getSales(int index);
+    /**
+     * <code>optional .treeleaf.suchi.entities.UnitConversion unitConversion = 29;</code>
+     */
+    boolean hasUnitConversion();
+    /**
+     * <code>optional .treeleaf.suchi.entities.UnitConversion unitConversion = 29;</code>
+     */
+    com.treeleaf.suchi.entities.SuchiProto.UnitConversion getUnitConversion();
 
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Sale sales = 28;</code>
-         */
-        int getSalesCount();
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.UnitConversion unitConversion = 29;</code>
-         */
-        boolean hasUnitConversion();
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.UnitConversion unitConversion = 29;</code>
-         */
-        com.treeleaf.suchi.entities.SuchiProto.UnitConversion getUnitConversion();
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.UnitConversion unitConversions = 30;</code>
-         */
-        java.util.List<com.treeleaf.suchi.entities.SuchiProto.UnitConversion>
+    /**
+     * <code>repeated .treeleaf.suchi.entities.UnitConversion unitConversions = 30;</code>
+     */
+    java.util.List<com.treeleaf.suchi.entities.SuchiProto.UnitConversion> 
         getUnitConversionsList();
+    /**
+     * <code>repeated .treeleaf.suchi.entities.UnitConversion unitConversions = 30;</code>
+     */
+    com.treeleaf.suchi.entities.SuchiProto.UnitConversion getUnitConversions(int index);
+    /**
+     * <code>repeated .treeleaf.suchi.entities.UnitConversion unitConversions = 30;</code>
+     */
+    int getUnitConversionsCount();
 
-        /**
-         * <code>repeated .treeleaf.suchi.entities.UnitConversion unitConversions = 30;</code>
-         */
-        com.treeleaf.suchi.entities.SuchiProto.UnitConversion getUnitConversions(int index);
+    /**
+     * <code>optional .treeleaf.entities.LoginResponse loginResponse = 31;</code>
+     */
+    boolean hasLoginResponse();
+    /**
+     * <code>optional .treeleaf.entities.LoginResponse loginResponse = 31;</code>
+     */
+    com.treeleaf.suchi.entities.TreeleafProto.LoginResponse getLoginResponse();
 
-        /**
-         * <code>repeated .treeleaf.suchi.entities.UnitConversion unitConversions = 30;</code>
-         */
-        int getUnitConversionsCount();
+    /**
+     * <code>optional .treeleaf.suchi.entities.InventoryStock inventoryStock = 32;</code>
+     */
+    boolean hasInventoryStock();
+    /**
+     * <code>optional .treeleaf.suchi.entities.InventoryStock inventoryStock = 32;</code>
+     */
+    com.treeleaf.suchi.entities.SuchiProto.InventoryStock getInventoryStock();
 
-        /**
-         * <code>optional .treeleaf.entities.LoginResponse loginResponse = 31;</code>
-         */
-        boolean hasLoginResponse();
-
-        /**
-         * <code>optional .treeleaf.entities.LoginResponse loginResponse = 31;</code>
-         */
-        com.treeleaf.suchi.entities.TreeleafProto.LoginResponse getLoginResponse();
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.InventoryStock inventoryStock = 32;</code>
-         */
-        boolean hasInventoryStock();
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.InventoryStock inventoryStock = 32;</code>
-         */
-        com.treeleaf.suchi.entities.SuchiProto.InventoryStock getInventoryStock();
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.InventoryStock inventoryStocks = 33;</code>
-         */
-        java.util.List<com.treeleaf.suchi.entities.SuchiProto.InventoryStock>
+    /**
+     * <code>repeated .treeleaf.suchi.entities.InventoryStock inventoryStocks = 33;</code>
+     */
+    java.util.List<com.treeleaf.suchi.entities.SuchiProto.InventoryStock> 
         getInventoryStocksList();
+    /**
+     * <code>repeated .treeleaf.suchi.entities.InventoryStock inventoryStocks = 33;</code>
+     */
+    com.treeleaf.suchi.entities.SuchiProto.InventoryStock getInventoryStocks(int index);
+    /**
+     * <code>repeated .treeleaf.suchi.entities.InventoryStock inventoryStocks = 33;</code>
+     */
+    int getInventoryStocksCount();
 
-        /**
-         * <code>repeated .treeleaf.suchi.entities.InventoryStock inventoryStocks = 33;</code>
-         */
-        com.treeleaf.suchi.entities.SuchiProto.InventoryStock getInventoryStocks(int index);
+    /**
+     * <code>optional .treeleaf.suchi.entities.SuchiKey suchiKey = 34;</code>
+     */
+    boolean hasSuchiKey();
+    /**
+     * <code>optional .treeleaf.suchi.entities.SuchiKey suchiKey = 34;</code>
+     */
+    com.treeleaf.suchi.entities.SuchiProto.SuchiKey getSuchiKey();
 
-        /**
-         * <code>repeated .treeleaf.suchi.entities.InventoryStock inventoryStocks = 33;</code>
-         */
-        int getInventoryStocksCount();
+    /**
+     * <code>repeated .treeleaf.suchi.entities.SuchiKey suchiKeys = 35;</code>
+     */
+    java.util.List<com.treeleaf.suchi.entities.SuchiProto.SuchiKey> 
+        getSuchiKeysList();
+    /**
+     * <code>repeated .treeleaf.suchi.entities.SuchiKey suchiKeys = 35;</code>
+     */
+    com.treeleaf.suchi.entities.SuchiProto.SuchiKey getSuchiKeys(int index);
+    /**
+     * <code>repeated .treeleaf.suchi.entities.SuchiKey suchiKeys = 35;</code>
+     */
+    int getSuchiKeysCount();
+
+    /**
+     * <code>optional .treeleaf.suchi.entities.EsewaQuery esewaQuery = 36;</code>
+     */
+    boolean hasEsewaQuery();
+    /**
+     * <code>optional .treeleaf.suchi.entities.EsewaQuery esewaQuery = 36;</code>
+     */
+    com.treeleaf.suchi.entities.SuchiProto.EsewaQuery getEsewaQuery();
+
+    /**
+     * <code>optional .treeleaf.suchi.entities.EsewaInquiryResponse esewaInquiryResponse = 37;</code>
+     */
+    boolean hasEsewaInquiryResponse();
+    /**
+     * <code>optional .treeleaf.suchi.entities.EsewaInquiryResponse esewaInquiryResponse = 37;</code>
+     */
+    com.treeleaf.suchi.entities.SuchiProto.EsewaInquiryResponse getEsewaInquiryResponse();
+
+    /**
+     * <code>optional .treeleaf.suchi.entities.EsewaPaymentResponse esewaPaymentResponse = 38;</code>
+     */
+    boolean hasEsewaPaymentResponse();
+    /**
+     * <code>optional .treeleaf.suchi.entities.EsewaPaymentResponse esewaPaymentResponse = 38;</code>
+     */
+    com.treeleaf.suchi.entities.SuchiProto.EsewaPaymentResponse getEsewaPaymentResponse();
+
+    /**
+     * <code>optional .treeleaf.suchi.entities.AccessToken accessToken = 39;</code>
+     */
+    boolean hasAccessToken();
+    /**
+     * <code>optional .treeleaf.suchi.entities.AccessToken accessToken = 39;</code>
+     */
+    com.treeleaf.suchi.entities.AccessProto.AccessToken getAccessToken();
+
+    /**
+     * <code>repeated .treeleaf.suchi.entities.AccessToken accessTokens = 40;</code>
+     */
+    java.util.List<com.treeleaf.suchi.entities.AccessProto.AccessToken> 
+        getAccessTokensList();
+    /**
+     * <code>repeated .treeleaf.suchi.entities.AccessToken accessTokens = 40;</code>
+     */
+    com.treeleaf.suchi.entities.AccessProto.AccessToken getAccessTokens(int index);
+    /**
+     * <code>repeated .treeleaf.suchi.entities.AccessToken accessTokens = 40;</code>
+     */
+    int getAccessTokensCount();
+  }
+  /**
+   * Protobuf type {@code treeleaf.suchi.rpc.SuchiBaseResponse}
+   */
+  public  static final class SuchiBaseResponse extends
+      com.google.protobuf.GeneratedMessageLite<
+          SuchiBaseResponse, SuchiBaseResponse.Builder> implements
+      // @@protoc_insertion_point(message_implements:treeleaf.suchi.rpc.SuchiBaseResponse)
+      SuchiBaseResponseOrBuilder {
+    private SuchiBaseResponse() {
+      msg_ = "";
+      users_ = emptyProtobufList();
+      stockKeepingUnits_ = emptyProtobufList();
+      inventories_ = emptyProtobufList();
+      brands_ = emptyProtobufList();
+      subBrands_ = emptyProtobufList();
+      units_ = emptyProtobufList();
+      categories_ = emptyProtobufList();
+      creditors_ = emptyProtobufList();
+      creditDetails_ = emptyProtobufList();
+      sales_ = emptyProtobufList();
+      unitConversions_ = emptyProtobufList();
+      inventoryStocks_ = emptyProtobufList();
+      suchiKeys_ = emptyProtobufList();
+      accessTokens_ = emptyProtobufList();
+    }
+    private int bitField0_;
+    public static final int ERROR_FIELD_NUMBER = 1;
+    private boolean error_;
+    /**
+     * <code>optional bool error = 1;</code>
+     */
+    public boolean getError() {
+      return error_;
+    }
+    /**
+     * <code>optional bool error = 1;</code>
+     */
+    private void setError(boolean value) {
+      
+      error_ = value;
+    }
+    /**
+     * <code>optional bool error = 1;</code>
+     */
+    private void clearError() {
+      
+      error_ = false;
+    }
+
+    public static final int MSG_FIELD_NUMBER = 2;
+    private String msg_;
+    /**
+     * <code>optional string msg = 2;</code>
+     */
+    public String getMsg() {
+      return msg_;
+    }
+    /**
+     * <code>optional string msg = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getMsgBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(msg_);
+    }
+    /**
+     * <code>optional string msg = 2;</code>
+     */
+    private void setMsg(
+        String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      msg_ = value;
+    }
+    /**
+     * <code>optional string msg = 2;</code>
+     */
+    private void clearMsg() {
+      
+      msg_ = getDefaultInstance().getMsg();
+    }
+    /**
+     * <code>optional string msg = 2;</code>
+     */
+    private void setMsgBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      msg_ = value.toStringUtf8();
+    }
+
+    public static final int ERRORCODE_FIELD_NUMBER = 3;
+    private int errorCode_;
+    /**
+     * <code>optional .treeleaf.entities.ErrorCode errorCode = 3;</code>
+     */
+    public int getErrorCodeValue() {
+      return errorCode_;
+    }
+    /**
+     * <code>optional .treeleaf.entities.ErrorCode errorCode = 3;</code>
+     */
+    public com.treeleaf.suchi.entities.TreeleafProto.ErrorCode getErrorCode() {
+      com.treeleaf.suchi.entities.TreeleafProto.ErrorCode result = com.treeleaf.suchi.entities.TreeleafProto.ErrorCode.forNumber(errorCode_);
+      return result == null ? com.treeleaf.suchi.entities.TreeleafProto.ErrorCode.UNRECOGNIZED : result;
+    }
+    /**
+     * <code>optional .treeleaf.entities.ErrorCode errorCode = 3;</code>
+     */
+    private void setErrorCodeValue(int value) {
+        errorCode_ = value;
+    }
+    /**
+     * <code>optional .treeleaf.entities.ErrorCode errorCode = 3;</code>
+     */
+    private void setErrorCode(com.treeleaf.suchi.entities.TreeleafProto.ErrorCode value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      
+      errorCode_ = value.getNumber();
+    }
+    /**
+     * <code>optional .treeleaf.entities.ErrorCode errorCode = 3;</code>
+     */
+    private void clearErrorCode() {
+      
+      errorCode_ = 0;
+    }
+
+    public static final int SUCCESS_FIELD_NUMBER = 4;
+    private boolean success_;
+    /**
+     * <code>optional bool success = 4;</code>
+     */
+    public boolean getSuccess() {
+      return success_;
+    }
+    /**
+     * <code>optional bool success = 4;</code>
+     */
+    private void setSuccess(boolean value) {
+      
+      success_ = value;
+    }
+    /**
+     * <code>optional bool success = 4;</code>
+     */
+    private void clearSuccess() {
+      
+      success_ = false;
+    }
+
+    public static final int USER_FIELD_NUMBER = 5;
+    private com.treeleaf.suchi.entities.TreeleafProto.UserAccount user_;
+    /**
+     * <code>optional .treeleaf.entities.UserAccount user = 5;</code>
+     */
+    public boolean hasUser() {
+      return user_ != null;
+    }
+    /**
+     * <code>optional .treeleaf.entities.UserAccount user = 5;</code>
+     */
+    public com.treeleaf.suchi.entities.TreeleafProto.UserAccount getUser() {
+      return user_ == null ? com.treeleaf.suchi.entities.TreeleafProto.UserAccount.getDefaultInstance() : user_;
+    }
+    /**
+     * <code>optional .treeleaf.entities.UserAccount user = 5;</code>
+     */
+    private void setUser(com.treeleaf.suchi.entities.TreeleafProto.UserAccount value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      user_ = value;
+      
+      }
+    /**
+     * <code>optional .treeleaf.entities.UserAccount user = 5;</code>
+     */
+    private void setUser(
+        com.treeleaf.suchi.entities.TreeleafProto.UserAccount.Builder builderForValue) {
+      user_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>optional .treeleaf.entities.UserAccount user = 5;</code>
+     */
+    private void mergeUser(com.treeleaf.suchi.entities.TreeleafProto.UserAccount value) {
+      if (user_ != null &&
+          user_ != com.treeleaf.suchi.entities.TreeleafProto.UserAccount.getDefaultInstance()) {
+        user_ =
+          com.treeleaf.suchi.entities.TreeleafProto.UserAccount.newBuilder(user_).mergeFrom(value).buildPartial();
+      } else {
+        user_ = value;
+      }
+      
+    }
+    /**
+     * <code>optional .treeleaf.entities.UserAccount user = 5;</code>
+     */
+    private void clearUser() {  user_ = null;
+      
+    }
+
+    public static final int USERS_FIELD_NUMBER = 6;
+    private com.google.protobuf.Internal.ProtobufList<com.treeleaf.suchi.entities.TreeleafProto.UserAccount> users_;
+    /**
+     * <code>repeated .treeleaf.entities.UserAccount users = 6;</code>
+     */
+    public java.util.List<com.treeleaf.suchi.entities.TreeleafProto.UserAccount> getUsersList() {
+      return users_;
+    }
+    /**
+     * <code>repeated .treeleaf.entities.UserAccount users = 6;</code>
+     */
+    public java.util.List<? extends com.treeleaf.suchi.entities.TreeleafProto.UserAccountOrBuilder> 
+        getUsersOrBuilderList() {
+      return users_;
+    }
+    /**
+     * <code>repeated .treeleaf.entities.UserAccount users = 6;</code>
+     */
+    public int getUsersCount() {
+      return users_.size();
+    }
+    /**
+     * <code>repeated .treeleaf.entities.UserAccount users = 6;</code>
+     */
+    public com.treeleaf.suchi.entities.TreeleafProto.UserAccount getUsers(int index) {
+      return users_.get(index);
+    }
+    /**
+     * <code>repeated .treeleaf.entities.UserAccount users = 6;</code>
+     */
+    public com.treeleaf.suchi.entities.TreeleafProto.UserAccountOrBuilder getUsersOrBuilder(
+        int index) {
+      return users_.get(index);
+    }
+    private void ensureUsersIsMutable() {
+      if (!users_.isModifiable()) {
+        users_ =
+            com.google.protobuf.GeneratedMessageLite.mutableCopy(users_);
+       }
+    }
+
+    /**
+     * <code>repeated .treeleaf.entities.UserAccount users = 6;</code>
+     */
+    private void setUsers(
+        int index, com.treeleaf.suchi.entities.TreeleafProto.UserAccount value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureUsersIsMutable();
+      users_.set(index, value);
+    }
+    /**
+     * <code>repeated .treeleaf.entities.UserAccount users = 6;</code>
+     */
+    private void setUsers(
+        int index, com.treeleaf.suchi.entities.TreeleafProto.UserAccount.Builder builderForValue) {
+      ensureUsersIsMutable();
+      users_.set(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .treeleaf.entities.UserAccount users = 6;</code>
+     */
+    private void addUsers(com.treeleaf.suchi.entities.TreeleafProto.UserAccount value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureUsersIsMutable();
+      users_.add(value);
+    }
+    /**
+     * <code>repeated .treeleaf.entities.UserAccount users = 6;</code>
+     */
+    private void addUsers(
+        int index, com.treeleaf.suchi.entities.TreeleafProto.UserAccount value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureUsersIsMutable();
+      users_.add(index, value);
+    }
+    /**
+     * <code>repeated .treeleaf.entities.UserAccount users = 6;</code>
+     */
+    private void addUsers(
+        com.treeleaf.suchi.entities.TreeleafProto.UserAccount.Builder builderForValue) {
+      ensureUsersIsMutable();
+      users_.add(builderForValue.build());
+    }
+    /**
+     * <code>repeated .treeleaf.entities.UserAccount users = 6;</code>
+     */
+    private void addUsers(
+        int index, com.treeleaf.suchi.entities.TreeleafProto.UserAccount.Builder builderForValue) {
+      ensureUsersIsMutable();
+      users_.add(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .treeleaf.entities.UserAccount users = 6;</code>
+     */
+    private void addAllUsers(
+        Iterable<? extends com.treeleaf.suchi.entities.TreeleafProto.UserAccount> values) {
+      ensureUsersIsMutable();
+      com.google.protobuf.AbstractMessageLite.addAll(
+          values, users_);
+    }
+    /**
+     * <code>repeated .treeleaf.entities.UserAccount users = 6;</code>
+     */
+    private void clearUsers() {
+      users_ = emptyProtobufList();
+    }
+    /**
+     * <code>repeated .treeleaf.entities.UserAccount users = 6;</code>
+     */
+    private void removeUsers(int index) {
+      ensureUsersIsMutable();
+      users_.remove(index);
+    }
+
+    public static final int SESSION_FIELD_NUMBER = 7;
+    private com.treeleaf.suchi.entities.TreeleafProto.Session session_;
+    /**
+     * <code>optional .treeleaf.entities.Session session = 7;</code>
+     */
+    public boolean hasSession() {
+      return session_ != null;
+    }
+    /**
+     * <code>optional .treeleaf.entities.Session session = 7;</code>
+     */
+    public com.treeleaf.suchi.entities.TreeleafProto.Session getSession() {
+      return session_ == null ? com.treeleaf.suchi.entities.TreeleafProto.Session.getDefaultInstance() : session_;
+    }
+    /**
+     * <code>optional .treeleaf.entities.Session session = 7;</code>
+     */
+    private void setSession(com.treeleaf.suchi.entities.TreeleafProto.Session value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      session_ = value;
+      
+      }
+    /**
+     * <code>optional .treeleaf.entities.Session session = 7;</code>
+     */
+    private void setSession(
+        com.treeleaf.suchi.entities.TreeleafProto.Session.Builder builderForValue) {
+      session_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>optional .treeleaf.entities.Session session = 7;</code>
+     */
+    private void mergeSession(com.treeleaf.suchi.entities.TreeleafProto.Session value) {
+      if (session_ != null &&
+          session_ != com.treeleaf.suchi.entities.TreeleafProto.Session.getDefaultInstance()) {
+        session_ =
+          com.treeleaf.suchi.entities.TreeleafProto.Session.newBuilder(session_).mergeFrom(value).buildPartial();
+      } else {
+        session_ = value;
+      }
+      
+    }
+    /**
+     * <code>optional .treeleaf.entities.Session session = 7;</code>
+     */
+    private void clearSession() {  session_ = null;
+      
+    }
+
+    public static final int LOGINRESULT_FIELD_NUMBER = 8;
+    private com.treeleaf.suchi.entities.TreeleafProto.LoginResult loginResult_;
+    /**
+     * <code>optional .treeleaf.entities.LoginResult loginResult = 8;</code>
+     */
+    public boolean hasLoginResult() {
+      return loginResult_ != null;
+    }
+    /**
+     * <code>optional .treeleaf.entities.LoginResult loginResult = 8;</code>
+     */
+    public com.treeleaf.suchi.entities.TreeleafProto.LoginResult getLoginResult() {
+      return loginResult_ == null ? com.treeleaf.suchi.entities.TreeleafProto.LoginResult.getDefaultInstance() : loginResult_;
+    }
+    /**
+     * <code>optional .treeleaf.entities.LoginResult loginResult = 8;</code>
+     */
+    private void setLoginResult(com.treeleaf.suchi.entities.TreeleafProto.LoginResult value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      loginResult_ = value;
+      
+      }
+    /**
+     * <code>optional .treeleaf.entities.LoginResult loginResult = 8;</code>
+     */
+    private void setLoginResult(
+        com.treeleaf.suchi.entities.TreeleafProto.LoginResult.Builder builderForValue) {
+      loginResult_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>optional .treeleaf.entities.LoginResult loginResult = 8;</code>
+     */
+    private void mergeLoginResult(com.treeleaf.suchi.entities.TreeleafProto.LoginResult value) {
+      if (loginResult_ != null &&
+          loginResult_ != com.treeleaf.suchi.entities.TreeleafProto.LoginResult.getDefaultInstance()) {
+        loginResult_ =
+          com.treeleaf.suchi.entities.TreeleafProto.LoginResult.newBuilder(loginResult_).mergeFrom(value).buildPartial();
+      } else {
+        loginResult_ = value;
+      }
+      
+    }
+    /**
+     * <code>optional .treeleaf.entities.LoginResult loginResult = 8;</code>
+     */
+    private void clearLoginResult() {  loginResult_ = null;
+      
+    }
+
+    public static final int AUTHRESPONSE_FIELD_NUMBER = 9;
+    private com.treeleaf.suchi.entities.TreeleafProto.AuthResponse authResponse_;
+    /**
+     * <code>optional .treeleaf.entities.AuthResponse authResponse = 9;</code>
+     */
+    public boolean hasAuthResponse() {
+      return authResponse_ != null;
+    }
+    /**
+     * <code>optional .treeleaf.entities.AuthResponse authResponse = 9;</code>
+     */
+    public com.treeleaf.suchi.entities.TreeleafProto.AuthResponse getAuthResponse() {
+      return authResponse_ == null ? com.treeleaf.suchi.entities.TreeleafProto.AuthResponse.getDefaultInstance() : authResponse_;
+    }
+    /**
+     * <code>optional .treeleaf.entities.AuthResponse authResponse = 9;</code>
+     */
+    private void setAuthResponse(com.treeleaf.suchi.entities.TreeleafProto.AuthResponse value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      authResponse_ = value;
+      
+      }
+    /**
+     * <code>optional .treeleaf.entities.AuthResponse authResponse = 9;</code>
+     */
+    private void setAuthResponse(
+        com.treeleaf.suchi.entities.TreeleafProto.AuthResponse.Builder builderForValue) {
+      authResponse_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>optional .treeleaf.entities.AuthResponse authResponse = 9;</code>
+     */
+    private void mergeAuthResponse(com.treeleaf.suchi.entities.TreeleafProto.AuthResponse value) {
+      if (authResponse_ != null &&
+          authResponse_ != com.treeleaf.suchi.entities.TreeleafProto.AuthResponse.getDefaultInstance()) {
+        authResponse_ =
+          com.treeleaf.suchi.entities.TreeleafProto.AuthResponse.newBuilder(authResponse_).mergeFrom(value).buildPartial();
+      } else {
+        authResponse_ = value;
+      }
+      
+    }
+    /**
+     * <code>optional .treeleaf.entities.AuthResponse authResponse = 9;</code>
+     */
+    private void clearAuthResponse() {  authResponse_ = null;
+      
+    }
+
+    public static final int AUTHORIZATION_FIELD_NUMBER = 10;
+    private com.treeleaf.suchi.entities.TreeleafProto.Authorization authorization_;
+    /**
+     * <code>optional .treeleaf.entities.Authorization authorization = 10;</code>
+     */
+    public boolean hasAuthorization() {
+      return authorization_ != null;
+    }
+    /**
+     * <code>optional .treeleaf.entities.Authorization authorization = 10;</code>
+     */
+    public com.treeleaf.suchi.entities.TreeleafProto.Authorization getAuthorization() {
+      return authorization_ == null ? com.treeleaf.suchi.entities.TreeleafProto.Authorization.getDefaultInstance() : authorization_;
+    }
+    /**
+     * <code>optional .treeleaf.entities.Authorization authorization = 10;</code>
+     */
+    private void setAuthorization(com.treeleaf.suchi.entities.TreeleafProto.Authorization value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      authorization_ = value;
+      
+      }
+    /**
+     * <code>optional .treeleaf.entities.Authorization authorization = 10;</code>
+     */
+    private void setAuthorization(
+        com.treeleaf.suchi.entities.TreeleafProto.Authorization.Builder builderForValue) {
+      authorization_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>optional .treeleaf.entities.Authorization authorization = 10;</code>
+     */
+    private void mergeAuthorization(com.treeleaf.suchi.entities.TreeleafProto.Authorization value) {
+      if (authorization_ != null &&
+          authorization_ != com.treeleaf.suchi.entities.TreeleafProto.Authorization.getDefaultInstance()) {
+        authorization_ =
+          com.treeleaf.suchi.entities.TreeleafProto.Authorization.newBuilder(authorization_).mergeFrom(value).buildPartial();
+      } else {
+        authorization_ = value;
+      }
+      
+    }
+    /**
+     * <code>optional .treeleaf.entities.Authorization authorization = 10;</code>
+     */
+    private void clearAuthorization() {  authorization_ = null;
+      
+    }
+
+    public static final int STOCKKEEPINGUNIT_FIELD_NUMBER = 11;
+    private com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit stockKeepingUnit_;
+    /**
+     * <code>optional .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnit = 11;</code>
+     */
+    public boolean hasStockKeepingUnit() {
+      return stockKeepingUnit_ != null;
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnit = 11;</code>
+     */
+    public com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit getStockKeepingUnit() {
+      return stockKeepingUnit_ == null ? com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit.getDefaultInstance() : stockKeepingUnit_;
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnit = 11;</code>
+     */
+    private void setStockKeepingUnit(com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      stockKeepingUnit_ = value;
+      
+      }
+    /**
+     * <code>optional .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnit = 11;</code>
+     */
+    private void setStockKeepingUnit(
+        com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit.Builder builderForValue) {
+      stockKeepingUnit_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnit = 11;</code>
+     */
+    private void mergeStockKeepingUnit(com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit value) {
+      if (stockKeepingUnit_ != null &&
+          stockKeepingUnit_ != com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit.getDefaultInstance()) {
+        stockKeepingUnit_ =
+          com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit.newBuilder(stockKeepingUnit_).mergeFrom(value).buildPartial();
+      } else {
+        stockKeepingUnit_ = value;
+      }
+      
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnit = 11;</code>
+     */
+    private void clearStockKeepingUnit() {  stockKeepingUnit_ = null;
+      
+    }
+
+    public static final int STOCKKEEPINGUNITS_FIELD_NUMBER = 12;
+    private com.google.protobuf.Internal.ProtobufList<com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit> stockKeepingUnits_;
+    /**
+     * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
+     */
+    public java.util.List<com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit> getStockKeepingUnitsList() {
+      return stockKeepingUnits_;
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
+     */
+    public java.util.List<? extends com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnitOrBuilder> 
+        getStockKeepingUnitsOrBuilderList() {
+      return stockKeepingUnits_;
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
+     */
+    public int getStockKeepingUnitsCount() {
+      return stockKeepingUnits_.size();
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
+     */
+    public com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit getStockKeepingUnits(int index) {
+      return stockKeepingUnits_.get(index);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
+     */
+    public com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnitOrBuilder getStockKeepingUnitsOrBuilder(
+        int index) {
+      return stockKeepingUnits_.get(index);
+    }
+    private void ensureStockKeepingUnitsIsMutable() {
+      if (!stockKeepingUnits_.isModifiable()) {
+        stockKeepingUnits_ =
+            com.google.protobuf.GeneratedMessageLite.mutableCopy(stockKeepingUnits_);
+       }
+    }
+
+    /**
+     * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
+     */
+    private void setStockKeepingUnits(
+        int index, com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureStockKeepingUnitsIsMutable();
+      stockKeepingUnits_.set(index, value);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
+     */
+    private void setStockKeepingUnits(
+        int index, com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit.Builder builderForValue) {
+      ensureStockKeepingUnitsIsMutable();
+      stockKeepingUnits_.set(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
+     */
+    private void addStockKeepingUnits(com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureStockKeepingUnitsIsMutable();
+      stockKeepingUnits_.add(value);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
+     */
+    private void addStockKeepingUnits(
+        int index, com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureStockKeepingUnitsIsMutable();
+      stockKeepingUnits_.add(index, value);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
+     */
+    private void addStockKeepingUnits(
+        com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit.Builder builderForValue) {
+      ensureStockKeepingUnitsIsMutable();
+      stockKeepingUnits_.add(builderForValue.build());
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
+     */
+    private void addStockKeepingUnits(
+        int index, com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit.Builder builderForValue) {
+      ensureStockKeepingUnitsIsMutable();
+      stockKeepingUnits_.add(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
+     */
+    private void addAllStockKeepingUnits(
+        Iterable<? extends com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit> values) {
+      ensureStockKeepingUnitsIsMutable();
+      com.google.protobuf.AbstractMessageLite.addAll(
+          values, stockKeepingUnits_);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
+     */
+    private void clearStockKeepingUnits() {
+      stockKeepingUnits_ = emptyProtobufList();
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
+     */
+    private void removeStockKeepingUnits(int index) {
+      ensureStockKeepingUnitsIsMutable();
+      stockKeepingUnits_.remove(index);
+    }
+
+    public static final int INVENTORY_FIELD_NUMBER = 13;
+    private com.treeleaf.suchi.entities.SuchiProto.Inventory inventory_;
+    /**
+     * <code>optional .treeleaf.suchi.entities.Inventory inventory = 13;</code>
+     */
+    public boolean hasInventory() {
+      return inventory_ != null;
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.Inventory inventory = 13;</code>
+     */
+    public com.treeleaf.suchi.entities.SuchiProto.Inventory getInventory() {
+      return inventory_ == null ? com.treeleaf.suchi.entities.SuchiProto.Inventory.getDefaultInstance() : inventory_;
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.Inventory inventory = 13;</code>
+     */
+    private void setInventory(com.treeleaf.suchi.entities.SuchiProto.Inventory value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      inventory_ = value;
+      
+      }
+    /**
+     * <code>optional .treeleaf.suchi.entities.Inventory inventory = 13;</code>
+     */
+    private void setInventory(
+        com.treeleaf.suchi.entities.SuchiProto.Inventory.Builder builderForValue) {
+      inventory_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.Inventory inventory = 13;</code>
+     */
+    private void mergeInventory(com.treeleaf.suchi.entities.SuchiProto.Inventory value) {
+      if (inventory_ != null &&
+          inventory_ != com.treeleaf.suchi.entities.SuchiProto.Inventory.getDefaultInstance()) {
+        inventory_ =
+          com.treeleaf.suchi.entities.SuchiProto.Inventory.newBuilder(inventory_).mergeFrom(value).buildPartial();
+      } else {
+        inventory_ = value;
+      }
+      
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.Inventory inventory = 13;</code>
+     */
+    private void clearInventory() {  inventory_ = null;
+      
+    }
+
+    public static final int INVENTORIES_FIELD_NUMBER = 14;
+    private com.google.protobuf.Internal.ProtobufList<com.treeleaf.suchi.entities.SuchiProto.Inventory> inventories_;
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 14;</code>
+     */
+    public java.util.List<com.treeleaf.suchi.entities.SuchiProto.Inventory> getInventoriesList() {
+      return inventories_;
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 14;</code>
+     */
+    public java.util.List<? extends com.treeleaf.suchi.entities.SuchiProto.InventoryOrBuilder> 
+        getInventoriesOrBuilderList() {
+      return inventories_;
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 14;</code>
+     */
+    public int getInventoriesCount() {
+      return inventories_.size();
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 14;</code>
+     */
+    public com.treeleaf.suchi.entities.SuchiProto.Inventory getInventories(int index) {
+      return inventories_.get(index);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 14;</code>
+     */
+    public com.treeleaf.suchi.entities.SuchiProto.InventoryOrBuilder getInventoriesOrBuilder(
+        int index) {
+      return inventories_.get(index);
+    }
+    private void ensureInventoriesIsMutable() {
+      if (!inventories_.isModifiable()) {
+        inventories_ =
+            com.google.protobuf.GeneratedMessageLite.mutableCopy(inventories_);
+       }
+    }
+
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 14;</code>
+     */
+    private void setInventories(
+        int index, com.treeleaf.suchi.entities.SuchiProto.Inventory value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureInventoriesIsMutable();
+      inventories_.set(index, value);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 14;</code>
+     */
+    private void setInventories(
+        int index, com.treeleaf.suchi.entities.SuchiProto.Inventory.Builder builderForValue) {
+      ensureInventoriesIsMutable();
+      inventories_.set(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 14;</code>
+     */
+    private void addInventories(com.treeleaf.suchi.entities.SuchiProto.Inventory value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureInventoriesIsMutable();
+      inventories_.add(value);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 14;</code>
+     */
+    private void addInventories(
+        int index, com.treeleaf.suchi.entities.SuchiProto.Inventory value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureInventoriesIsMutable();
+      inventories_.add(index, value);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 14;</code>
+     */
+    private void addInventories(
+        com.treeleaf.suchi.entities.SuchiProto.Inventory.Builder builderForValue) {
+      ensureInventoriesIsMutable();
+      inventories_.add(builderForValue.build());
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 14;</code>
+     */
+    private void addInventories(
+        int index, com.treeleaf.suchi.entities.SuchiProto.Inventory.Builder builderForValue) {
+      ensureInventoriesIsMutable();
+      inventories_.add(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 14;</code>
+     */
+    private void addAllInventories(
+        Iterable<? extends com.treeleaf.suchi.entities.SuchiProto.Inventory> values) {
+      ensureInventoriesIsMutable();
+      com.google.protobuf.AbstractMessageLite.addAll(
+          values, inventories_);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 14;</code>
+     */
+    private void clearInventories() {
+      inventories_ = emptyProtobufList();
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 14;</code>
+     */
+    private void removeInventories(int index) {
+      ensureInventoriesIsMutable();
+      inventories_.remove(index);
+    }
+
+    public static final int BRAND_FIELD_NUMBER = 15;
+    private com.treeleaf.suchi.entities.SuchiProto.Brand brand_;
+    /**
+     * <code>optional .treeleaf.suchi.entities.Brand brand = 15;</code>
+     */
+    public boolean hasBrand() {
+      return brand_ != null;
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.Brand brand = 15;</code>
+     */
+    public com.treeleaf.suchi.entities.SuchiProto.Brand getBrand() {
+      return brand_ == null ? com.treeleaf.suchi.entities.SuchiProto.Brand.getDefaultInstance() : brand_;
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.Brand brand = 15;</code>
+     */
+    private void setBrand(com.treeleaf.suchi.entities.SuchiProto.Brand value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      brand_ = value;
+      
+      }
+    /**
+     * <code>optional .treeleaf.suchi.entities.Brand brand = 15;</code>
+     */
+    private void setBrand(
+        com.treeleaf.suchi.entities.SuchiProto.Brand.Builder builderForValue) {
+      brand_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.Brand brand = 15;</code>
+     */
+    private void mergeBrand(com.treeleaf.suchi.entities.SuchiProto.Brand value) {
+      if (brand_ != null &&
+          brand_ != com.treeleaf.suchi.entities.SuchiProto.Brand.getDefaultInstance()) {
+        brand_ =
+          com.treeleaf.suchi.entities.SuchiProto.Brand.newBuilder(brand_).mergeFrom(value).buildPartial();
+      } else {
+        brand_ = value;
+      }
+      
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.Brand brand = 15;</code>
+     */
+    private void clearBrand() {  brand_ = null;
+      
+    }
+
+    public static final int BRANDS_FIELD_NUMBER = 16;
+    private com.google.protobuf.Internal.ProtobufList<com.treeleaf.suchi.entities.SuchiProto.Brand> brands_;
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Brand brands = 16;</code>
+     */
+    public java.util.List<com.treeleaf.suchi.entities.SuchiProto.Brand> getBrandsList() {
+      return brands_;
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Brand brands = 16;</code>
+     */
+    public java.util.List<? extends com.treeleaf.suchi.entities.SuchiProto.BrandOrBuilder> 
+        getBrandsOrBuilderList() {
+      return brands_;
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Brand brands = 16;</code>
+     */
+    public int getBrandsCount() {
+      return brands_.size();
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Brand brands = 16;</code>
+     */
+    public com.treeleaf.suchi.entities.SuchiProto.Brand getBrands(int index) {
+      return brands_.get(index);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Brand brands = 16;</code>
+     */
+    public com.treeleaf.suchi.entities.SuchiProto.BrandOrBuilder getBrandsOrBuilder(
+        int index) {
+      return brands_.get(index);
+    }
+    private void ensureBrandsIsMutable() {
+      if (!brands_.isModifiable()) {
+        brands_ =
+            com.google.protobuf.GeneratedMessageLite.mutableCopy(brands_);
+       }
+    }
+
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Brand brands = 16;</code>
+     */
+    private void setBrands(
+        int index, com.treeleaf.suchi.entities.SuchiProto.Brand value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureBrandsIsMutable();
+      brands_.set(index, value);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Brand brands = 16;</code>
+     */
+    private void setBrands(
+        int index, com.treeleaf.suchi.entities.SuchiProto.Brand.Builder builderForValue) {
+      ensureBrandsIsMutable();
+      brands_.set(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Brand brands = 16;</code>
+     */
+    private void addBrands(com.treeleaf.suchi.entities.SuchiProto.Brand value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureBrandsIsMutable();
+      brands_.add(value);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Brand brands = 16;</code>
+     */
+    private void addBrands(
+        int index, com.treeleaf.suchi.entities.SuchiProto.Brand value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureBrandsIsMutable();
+      brands_.add(index, value);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Brand brands = 16;</code>
+     */
+    private void addBrands(
+        com.treeleaf.suchi.entities.SuchiProto.Brand.Builder builderForValue) {
+      ensureBrandsIsMutable();
+      brands_.add(builderForValue.build());
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Brand brands = 16;</code>
+     */
+    private void addBrands(
+        int index, com.treeleaf.suchi.entities.SuchiProto.Brand.Builder builderForValue) {
+      ensureBrandsIsMutable();
+      brands_.add(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Brand brands = 16;</code>
+     */
+    private void addAllBrands(
+        Iterable<? extends com.treeleaf.suchi.entities.SuchiProto.Brand> values) {
+      ensureBrandsIsMutable();
+      com.google.protobuf.AbstractMessageLite.addAll(
+          values, brands_);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Brand brands = 16;</code>
+     */
+    private void clearBrands() {
+      brands_ = emptyProtobufList();
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Brand brands = 16;</code>
+     */
+    private void removeBrands(int index) {
+      ensureBrandsIsMutable();
+      brands_.remove(index);
+    }
+
+    public static final int SUBBRAND_FIELD_NUMBER = 17;
+    private com.treeleaf.suchi.entities.SuchiProto.SubBrand subBrand_;
+    /**
+     * <code>optional .treeleaf.suchi.entities.SubBrand subBrand = 17;</code>
+     */
+    public boolean hasSubBrand() {
+      return subBrand_ != null;
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.SubBrand subBrand = 17;</code>
+     */
+    public com.treeleaf.suchi.entities.SuchiProto.SubBrand getSubBrand() {
+      return subBrand_ == null ? com.treeleaf.suchi.entities.SuchiProto.SubBrand.getDefaultInstance() : subBrand_;
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.SubBrand subBrand = 17;</code>
+     */
+    private void setSubBrand(com.treeleaf.suchi.entities.SuchiProto.SubBrand value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      subBrand_ = value;
+      
+      }
+    /**
+     * <code>optional .treeleaf.suchi.entities.SubBrand subBrand = 17;</code>
+     */
+    private void setSubBrand(
+        com.treeleaf.suchi.entities.SuchiProto.SubBrand.Builder builderForValue) {
+      subBrand_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.SubBrand subBrand = 17;</code>
+     */
+    private void mergeSubBrand(com.treeleaf.suchi.entities.SuchiProto.SubBrand value) {
+      if (subBrand_ != null &&
+          subBrand_ != com.treeleaf.suchi.entities.SuchiProto.SubBrand.getDefaultInstance()) {
+        subBrand_ =
+          com.treeleaf.suchi.entities.SuchiProto.SubBrand.newBuilder(subBrand_).mergeFrom(value).buildPartial();
+      } else {
+        subBrand_ = value;
+      }
+      
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.SubBrand subBrand = 17;</code>
+     */
+    private void clearSubBrand() {  subBrand_ = null;
+      
+    }
+
+    public static final int SUBBRANDS_FIELD_NUMBER = 18;
+    private com.google.protobuf.Internal.ProtobufList<com.treeleaf.suchi.entities.SuchiProto.SubBrand> subBrands_;
+    /**
+     * <code>repeated .treeleaf.suchi.entities.SubBrand subBrands = 18;</code>
+     */
+    public java.util.List<com.treeleaf.suchi.entities.SuchiProto.SubBrand> getSubBrandsList() {
+      return subBrands_;
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.SubBrand subBrands = 18;</code>
+     */
+    public java.util.List<? extends com.treeleaf.suchi.entities.SuchiProto.SubBrandOrBuilder> 
+        getSubBrandsOrBuilderList() {
+      return subBrands_;
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.SubBrand subBrands = 18;</code>
+     */
+    public int getSubBrandsCount() {
+      return subBrands_.size();
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.SubBrand subBrands = 18;</code>
+     */
+    public com.treeleaf.suchi.entities.SuchiProto.SubBrand getSubBrands(int index) {
+      return subBrands_.get(index);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.SubBrand subBrands = 18;</code>
+     */
+    public com.treeleaf.suchi.entities.SuchiProto.SubBrandOrBuilder getSubBrandsOrBuilder(
+        int index) {
+      return subBrands_.get(index);
+    }
+    private void ensureSubBrandsIsMutable() {
+      if (!subBrands_.isModifiable()) {
+        subBrands_ =
+            com.google.protobuf.GeneratedMessageLite.mutableCopy(subBrands_);
+       }
+    }
+
+    /**
+     * <code>repeated .treeleaf.suchi.entities.SubBrand subBrands = 18;</code>
+     */
+    private void setSubBrands(
+        int index, com.treeleaf.suchi.entities.SuchiProto.SubBrand value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureSubBrandsIsMutable();
+      subBrands_.set(index, value);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.SubBrand subBrands = 18;</code>
+     */
+    private void setSubBrands(
+        int index, com.treeleaf.suchi.entities.SuchiProto.SubBrand.Builder builderForValue) {
+      ensureSubBrandsIsMutable();
+      subBrands_.set(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.SubBrand subBrands = 18;</code>
+     */
+    private void addSubBrands(com.treeleaf.suchi.entities.SuchiProto.SubBrand value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureSubBrandsIsMutable();
+      subBrands_.add(value);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.SubBrand subBrands = 18;</code>
+     */
+    private void addSubBrands(
+        int index, com.treeleaf.suchi.entities.SuchiProto.SubBrand value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureSubBrandsIsMutable();
+      subBrands_.add(index, value);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.SubBrand subBrands = 18;</code>
+     */
+    private void addSubBrands(
+        com.treeleaf.suchi.entities.SuchiProto.SubBrand.Builder builderForValue) {
+      ensureSubBrandsIsMutable();
+      subBrands_.add(builderForValue.build());
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.SubBrand subBrands = 18;</code>
+     */
+    private void addSubBrands(
+        int index, com.treeleaf.suchi.entities.SuchiProto.SubBrand.Builder builderForValue) {
+      ensureSubBrandsIsMutable();
+      subBrands_.add(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.SubBrand subBrands = 18;</code>
+     */
+    private void addAllSubBrands(
+        Iterable<? extends com.treeleaf.suchi.entities.SuchiProto.SubBrand> values) {
+      ensureSubBrandsIsMutable();
+      com.google.protobuf.AbstractMessageLite.addAll(
+          values, subBrands_);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.SubBrand subBrands = 18;</code>
+     */
+    private void clearSubBrands() {
+      subBrands_ = emptyProtobufList();
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.SubBrand subBrands = 18;</code>
+     */
+    private void removeSubBrands(int index) {
+      ensureSubBrandsIsMutable();
+      subBrands_.remove(index);
+    }
+
+    public static final int UNIT_FIELD_NUMBER = 19;
+    private com.treeleaf.suchi.entities.SuchiProto.Unit unit_;
+    /**
+     * <code>optional .treeleaf.suchi.entities.Unit unit = 19;</code>
+     */
+    public boolean hasUnit() {
+      return unit_ != null;
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.Unit unit = 19;</code>
+     */
+    public com.treeleaf.suchi.entities.SuchiProto.Unit getUnit() {
+      return unit_ == null ? com.treeleaf.suchi.entities.SuchiProto.Unit.getDefaultInstance() : unit_;
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.Unit unit = 19;</code>
+     */
+    private void setUnit(com.treeleaf.suchi.entities.SuchiProto.Unit value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      unit_ = value;
+      
+      }
+    /**
+     * <code>optional .treeleaf.suchi.entities.Unit unit = 19;</code>
+     */
+    private void setUnit(
+        com.treeleaf.suchi.entities.SuchiProto.Unit.Builder builderForValue) {
+      unit_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.Unit unit = 19;</code>
+     */
+    private void mergeUnit(com.treeleaf.suchi.entities.SuchiProto.Unit value) {
+      if (unit_ != null &&
+          unit_ != com.treeleaf.suchi.entities.SuchiProto.Unit.getDefaultInstance()) {
+        unit_ =
+          com.treeleaf.suchi.entities.SuchiProto.Unit.newBuilder(unit_).mergeFrom(value).buildPartial();
+      } else {
+        unit_ = value;
+      }
+      
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.Unit unit = 19;</code>
+     */
+    private void clearUnit() {  unit_ = null;
+      
+    }
+
+    public static final int UNITS_FIELD_NUMBER = 20;
+    private com.google.protobuf.Internal.ProtobufList<com.treeleaf.suchi.entities.SuchiProto.Unit> units_;
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Unit units = 20;</code>
+     */
+    public java.util.List<com.treeleaf.suchi.entities.SuchiProto.Unit> getUnitsList() {
+      return units_;
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Unit units = 20;</code>
+     */
+    public java.util.List<? extends com.treeleaf.suchi.entities.SuchiProto.UnitOrBuilder> 
+        getUnitsOrBuilderList() {
+      return units_;
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Unit units = 20;</code>
+     */
+    public int getUnitsCount() {
+      return units_.size();
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Unit units = 20;</code>
+     */
+    public com.treeleaf.suchi.entities.SuchiProto.Unit getUnits(int index) {
+      return units_.get(index);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Unit units = 20;</code>
+     */
+    public com.treeleaf.suchi.entities.SuchiProto.UnitOrBuilder getUnitsOrBuilder(
+        int index) {
+      return units_.get(index);
+    }
+    private void ensureUnitsIsMutable() {
+      if (!units_.isModifiable()) {
+        units_ =
+            com.google.protobuf.GeneratedMessageLite.mutableCopy(units_);
+       }
+    }
+
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Unit units = 20;</code>
+     */
+    private void setUnits(
+        int index, com.treeleaf.suchi.entities.SuchiProto.Unit value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureUnitsIsMutable();
+      units_.set(index, value);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Unit units = 20;</code>
+     */
+    private void setUnits(
+        int index, com.treeleaf.suchi.entities.SuchiProto.Unit.Builder builderForValue) {
+      ensureUnitsIsMutable();
+      units_.set(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Unit units = 20;</code>
+     */
+    private void addUnits(com.treeleaf.suchi.entities.SuchiProto.Unit value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureUnitsIsMutable();
+      units_.add(value);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Unit units = 20;</code>
+     */
+    private void addUnits(
+        int index, com.treeleaf.suchi.entities.SuchiProto.Unit value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureUnitsIsMutable();
+      units_.add(index, value);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Unit units = 20;</code>
+     */
+    private void addUnits(
+        com.treeleaf.suchi.entities.SuchiProto.Unit.Builder builderForValue) {
+      ensureUnitsIsMutable();
+      units_.add(builderForValue.build());
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Unit units = 20;</code>
+     */
+    private void addUnits(
+        int index, com.treeleaf.suchi.entities.SuchiProto.Unit.Builder builderForValue) {
+      ensureUnitsIsMutable();
+      units_.add(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Unit units = 20;</code>
+     */
+    private void addAllUnits(
+        Iterable<? extends com.treeleaf.suchi.entities.SuchiProto.Unit> values) {
+      ensureUnitsIsMutable();
+      com.google.protobuf.AbstractMessageLite.addAll(
+          values, units_);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Unit units = 20;</code>
+     */
+    private void clearUnits() {
+      units_ = emptyProtobufList();
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Unit units = 20;</code>
+     */
+    private void removeUnits(int index) {
+      ensureUnitsIsMutable();
+      units_.remove(index);
+    }
+
+    public static final int CATEGORY_FIELD_NUMBER = 21;
+    private com.treeleaf.suchi.entities.SuchiProto.Category category_;
+    /**
+     * <code>optional .treeleaf.suchi.entities.Category category = 21;</code>
+     */
+    public boolean hasCategory() {
+      return category_ != null;
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.Category category = 21;</code>
+     */
+    public com.treeleaf.suchi.entities.SuchiProto.Category getCategory() {
+      return category_ == null ? com.treeleaf.suchi.entities.SuchiProto.Category.getDefaultInstance() : category_;
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.Category category = 21;</code>
+     */
+    private void setCategory(com.treeleaf.suchi.entities.SuchiProto.Category value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      category_ = value;
+      
+      }
+    /**
+     * <code>optional .treeleaf.suchi.entities.Category category = 21;</code>
+     */
+    private void setCategory(
+        com.treeleaf.suchi.entities.SuchiProto.Category.Builder builderForValue) {
+      category_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.Category category = 21;</code>
+     */
+    private void mergeCategory(com.treeleaf.suchi.entities.SuchiProto.Category value) {
+      if (category_ != null &&
+          category_ != com.treeleaf.suchi.entities.SuchiProto.Category.getDefaultInstance()) {
+        category_ =
+          com.treeleaf.suchi.entities.SuchiProto.Category.newBuilder(category_).mergeFrom(value).buildPartial();
+      } else {
+        category_ = value;
+      }
+      
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.Category category = 21;</code>
+     */
+    private void clearCategory() {  category_ = null;
+      
+    }
+
+    public static final int CATEGORIES_FIELD_NUMBER = 22;
+    private com.google.protobuf.Internal.ProtobufList<com.treeleaf.suchi.entities.SuchiProto.Category> categories_;
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Category categories = 22;</code>
+     */
+    public java.util.List<com.treeleaf.suchi.entities.SuchiProto.Category> getCategoriesList() {
+      return categories_;
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Category categories = 22;</code>
+     */
+    public java.util.List<? extends com.treeleaf.suchi.entities.SuchiProto.CategoryOrBuilder> 
+        getCategoriesOrBuilderList() {
+      return categories_;
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Category categories = 22;</code>
+     */
+    public int getCategoriesCount() {
+      return categories_.size();
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Category categories = 22;</code>
+     */
+    public com.treeleaf.suchi.entities.SuchiProto.Category getCategories(int index) {
+      return categories_.get(index);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Category categories = 22;</code>
+     */
+    public com.treeleaf.suchi.entities.SuchiProto.CategoryOrBuilder getCategoriesOrBuilder(
+        int index) {
+      return categories_.get(index);
+    }
+    private void ensureCategoriesIsMutable() {
+      if (!categories_.isModifiable()) {
+        categories_ =
+            com.google.protobuf.GeneratedMessageLite.mutableCopy(categories_);
+       }
+    }
+
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Category categories = 22;</code>
+     */
+    private void setCategories(
+        int index, com.treeleaf.suchi.entities.SuchiProto.Category value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureCategoriesIsMutable();
+      categories_.set(index, value);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Category categories = 22;</code>
+     */
+    private void setCategories(
+        int index, com.treeleaf.suchi.entities.SuchiProto.Category.Builder builderForValue) {
+      ensureCategoriesIsMutable();
+      categories_.set(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Category categories = 22;</code>
+     */
+    private void addCategories(com.treeleaf.suchi.entities.SuchiProto.Category value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureCategoriesIsMutable();
+      categories_.add(value);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Category categories = 22;</code>
+     */
+    private void addCategories(
+        int index, com.treeleaf.suchi.entities.SuchiProto.Category value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureCategoriesIsMutable();
+      categories_.add(index, value);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Category categories = 22;</code>
+     */
+    private void addCategories(
+        com.treeleaf.suchi.entities.SuchiProto.Category.Builder builderForValue) {
+      ensureCategoriesIsMutable();
+      categories_.add(builderForValue.build());
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Category categories = 22;</code>
+     */
+    private void addCategories(
+        int index, com.treeleaf.suchi.entities.SuchiProto.Category.Builder builderForValue) {
+      ensureCategoriesIsMutable();
+      categories_.add(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Category categories = 22;</code>
+     */
+    private void addAllCategories(
+        Iterable<? extends com.treeleaf.suchi.entities.SuchiProto.Category> values) {
+      ensureCategoriesIsMutable();
+      com.google.protobuf.AbstractMessageLite.addAll(
+          values, categories_);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Category categories = 22;</code>
+     */
+    private void clearCategories() {
+      categories_ = emptyProtobufList();
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Category categories = 22;</code>
+     */
+    private void removeCategories(int index) {
+      ensureCategoriesIsMutable();
+      categories_.remove(index);
+    }
+
+    public static final int CREDITOR_FIELD_NUMBER = 23;
+    private com.treeleaf.suchi.entities.SuchiProto.Creditor creditor_;
+    /**
+     * <code>optional .treeleaf.suchi.entities.Creditor creditor = 23;</code>
+     */
+    public boolean hasCreditor() {
+      return creditor_ != null;
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.Creditor creditor = 23;</code>
+     */
+    public com.treeleaf.suchi.entities.SuchiProto.Creditor getCreditor() {
+      return creditor_ == null ? com.treeleaf.suchi.entities.SuchiProto.Creditor.getDefaultInstance() : creditor_;
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.Creditor creditor = 23;</code>
+     */
+    private void setCreditor(com.treeleaf.suchi.entities.SuchiProto.Creditor value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      creditor_ = value;
+      
+      }
+    /**
+     * <code>optional .treeleaf.suchi.entities.Creditor creditor = 23;</code>
+     */
+    private void setCreditor(
+        com.treeleaf.suchi.entities.SuchiProto.Creditor.Builder builderForValue) {
+      creditor_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.Creditor creditor = 23;</code>
+     */
+    private void mergeCreditor(com.treeleaf.suchi.entities.SuchiProto.Creditor value) {
+      if (creditor_ != null &&
+          creditor_ != com.treeleaf.suchi.entities.SuchiProto.Creditor.getDefaultInstance()) {
+        creditor_ =
+          com.treeleaf.suchi.entities.SuchiProto.Creditor.newBuilder(creditor_).mergeFrom(value).buildPartial();
+      } else {
+        creditor_ = value;
+      }
+      
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.Creditor creditor = 23;</code>
+     */
+    private void clearCreditor() {  creditor_ = null;
+      
+    }
+
+    public static final int CREDITORS_FIELD_NUMBER = 24;
+    private com.google.protobuf.Internal.ProtobufList<com.treeleaf.suchi.entities.SuchiProto.Creditor> creditors_;
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 24;</code>
+     */
+    public java.util.List<com.treeleaf.suchi.entities.SuchiProto.Creditor> getCreditorsList() {
+      return creditors_;
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 24;</code>
+     */
+    public java.util.List<? extends com.treeleaf.suchi.entities.SuchiProto.CreditorOrBuilder> 
+        getCreditorsOrBuilderList() {
+      return creditors_;
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 24;</code>
+     */
+    public int getCreditorsCount() {
+      return creditors_.size();
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 24;</code>
+     */
+    public com.treeleaf.suchi.entities.SuchiProto.Creditor getCreditors(int index) {
+      return creditors_.get(index);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 24;</code>
+     */
+    public com.treeleaf.suchi.entities.SuchiProto.CreditorOrBuilder getCreditorsOrBuilder(
+        int index) {
+      return creditors_.get(index);
+    }
+    private void ensureCreditorsIsMutable() {
+      if (!creditors_.isModifiable()) {
+        creditors_ =
+            com.google.protobuf.GeneratedMessageLite.mutableCopy(creditors_);
+       }
+    }
+
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 24;</code>
+     */
+    private void setCreditors(
+        int index, com.treeleaf.suchi.entities.SuchiProto.Creditor value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureCreditorsIsMutable();
+      creditors_.set(index, value);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 24;</code>
+     */
+    private void setCreditors(
+        int index, com.treeleaf.suchi.entities.SuchiProto.Creditor.Builder builderForValue) {
+      ensureCreditorsIsMutable();
+      creditors_.set(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 24;</code>
+     */
+    private void addCreditors(com.treeleaf.suchi.entities.SuchiProto.Creditor value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureCreditorsIsMutable();
+      creditors_.add(value);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 24;</code>
+     */
+    private void addCreditors(
+        int index, com.treeleaf.suchi.entities.SuchiProto.Creditor value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureCreditorsIsMutable();
+      creditors_.add(index, value);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 24;</code>
+     */
+    private void addCreditors(
+        com.treeleaf.suchi.entities.SuchiProto.Creditor.Builder builderForValue) {
+      ensureCreditorsIsMutable();
+      creditors_.add(builderForValue.build());
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 24;</code>
+     */
+    private void addCreditors(
+        int index, com.treeleaf.suchi.entities.SuchiProto.Creditor.Builder builderForValue) {
+      ensureCreditorsIsMutable();
+      creditors_.add(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 24;</code>
+     */
+    private void addAllCreditors(
+        Iterable<? extends com.treeleaf.suchi.entities.SuchiProto.Creditor> values) {
+      ensureCreditorsIsMutable();
+      com.google.protobuf.AbstractMessageLite.addAll(
+          values, creditors_);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 24;</code>
+     */
+    private void clearCreditors() {
+      creditors_ = emptyProtobufList();
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 24;</code>
+     */
+    private void removeCreditors(int index) {
+      ensureCreditorsIsMutable();
+      creditors_.remove(index);
+    }
+
+    public static final int CREDITDETAIL_FIELD_NUMBER = 25;
+    private com.treeleaf.suchi.entities.SuchiProto.CreditDetail creditDetail_;
+    /**
+     * <code>optional .treeleaf.suchi.entities.CreditDetail creditDetail = 25;</code>
+     */
+    public boolean hasCreditDetail() {
+      return creditDetail_ != null;
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.CreditDetail creditDetail = 25;</code>
+     */
+    public com.treeleaf.suchi.entities.SuchiProto.CreditDetail getCreditDetail() {
+      return creditDetail_ == null ? com.treeleaf.suchi.entities.SuchiProto.CreditDetail.getDefaultInstance() : creditDetail_;
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.CreditDetail creditDetail = 25;</code>
+     */
+    private void setCreditDetail(com.treeleaf.suchi.entities.SuchiProto.CreditDetail value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      creditDetail_ = value;
+      
+      }
+    /**
+     * <code>optional .treeleaf.suchi.entities.CreditDetail creditDetail = 25;</code>
+     */
+    private void setCreditDetail(
+        com.treeleaf.suchi.entities.SuchiProto.CreditDetail.Builder builderForValue) {
+      creditDetail_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.CreditDetail creditDetail = 25;</code>
+     */
+    private void mergeCreditDetail(com.treeleaf.suchi.entities.SuchiProto.CreditDetail value) {
+      if (creditDetail_ != null &&
+          creditDetail_ != com.treeleaf.suchi.entities.SuchiProto.CreditDetail.getDefaultInstance()) {
+        creditDetail_ =
+          com.treeleaf.suchi.entities.SuchiProto.CreditDetail.newBuilder(creditDetail_).mergeFrom(value).buildPartial();
+      } else {
+        creditDetail_ = value;
+      }
+      
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.CreditDetail creditDetail = 25;</code>
+     */
+    private void clearCreditDetail() {  creditDetail_ = null;
+      
+    }
+
+    public static final int CREDITDETAILS_FIELD_NUMBER = 26;
+    private com.google.protobuf.Internal.ProtobufList<com.treeleaf.suchi.entities.SuchiProto.CreditDetail> creditDetails_;
+    /**
+     * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 26;</code>
+     */
+    public java.util.List<com.treeleaf.suchi.entities.SuchiProto.CreditDetail> getCreditDetailsList() {
+      return creditDetails_;
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 26;</code>
+     */
+    public java.util.List<? extends com.treeleaf.suchi.entities.SuchiProto.CreditDetailOrBuilder> 
+        getCreditDetailsOrBuilderList() {
+      return creditDetails_;
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 26;</code>
+     */
+    public int getCreditDetailsCount() {
+      return creditDetails_.size();
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 26;</code>
+     */
+    public com.treeleaf.suchi.entities.SuchiProto.CreditDetail getCreditDetails(int index) {
+      return creditDetails_.get(index);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 26;</code>
+     */
+    public com.treeleaf.suchi.entities.SuchiProto.CreditDetailOrBuilder getCreditDetailsOrBuilder(
+        int index) {
+      return creditDetails_.get(index);
+    }
+    private void ensureCreditDetailsIsMutable() {
+      if (!creditDetails_.isModifiable()) {
+        creditDetails_ =
+            com.google.protobuf.GeneratedMessageLite.mutableCopy(creditDetails_);
+       }
+    }
+
+    /**
+     * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 26;</code>
+     */
+    private void setCreditDetails(
+        int index, com.treeleaf.suchi.entities.SuchiProto.CreditDetail value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureCreditDetailsIsMutable();
+      creditDetails_.set(index, value);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 26;</code>
+     */
+    private void setCreditDetails(
+        int index, com.treeleaf.suchi.entities.SuchiProto.CreditDetail.Builder builderForValue) {
+      ensureCreditDetailsIsMutable();
+      creditDetails_.set(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 26;</code>
+     */
+    private void addCreditDetails(com.treeleaf.suchi.entities.SuchiProto.CreditDetail value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureCreditDetailsIsMutable();
+      creditDetails_.add(value);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 26;</code>
+     */
+    private void addCreditDetails(
+        int index, com.treeleaf.suchi.entities.SuchiProto.CreditDetail value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureCreditDetailsIsMutable();
+      creditDetails_.add(index, value);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 26;</code>
+     */
+    private void addCreditDetails(
+        com.treeleaf.suchi.entities.SuchiProto.CreditDetail.Builder builderForValue) {
+      ensureCreditDetailsIsMutable();
+      creditDetails_.add(builderForValue.build());
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 26;</code>
+     */
+    private void addCreditDetails(
+        int index, com.treeleaf.suchi.entities.SuchiProto.CreditDetail.Builder builderForValue) {
+      ensureCreditDetailsIsMutable();
+      creditDetails_.add(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 26;</code>
+     */
+    private void addAllCreditDetails(
+        Iterable<? extends com.treeleaf.suchi.entities.SuchiProto.CreditDetail> values) {
+      ensureCreditDetailsIsMutable();
+      com.google.protobuf.AbstractMessageLite.addAll(
+          values, creditDetails_);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 26;</code>
+     */
+    private void clearCreditDetails() {
+      creditDetails_ = emptyProtobufList();
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 26;</code>
+     */
+    private void removeCreditDetails(int index) {
+      ensureCreditDetailsIsMutable();
+      creditDetails_.remove(index);
+    }
+
+    public static final int SALE_FIELD_NUMBER = 27;
+    private com.treeleaf.suchi.entities.SuchiProto.Sale sale_;
+    /**
+     * <code>optional .treeleaf.suchi.entities.Sale sale = 27;</code>
+     */
+    public boolean hasSale() {
+      return sale_ != null;
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.Sale sale = 27;</code>
+     */
+    public com.treeleaf.suchi.entities.SuchiProto.Sale getSale() {
+      return sale_ == null ? com.treeleaf.suchi.entities.SuchiProto.Sale.getDefaultInstance() : sale_;
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.Sale sale = 27;</code>
+     */
+    private void setSale(com.treeleaf.suchi.entities.SuchiProto.Sale value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      sale_ = value;
+      
+      }
+    /**
+     * <code>optional .treeleaf.suchi.entities.Sale sale = 27;</code>
+     */
+    private void setSale(
+        com.treeleaf.suchi.entities.SuchiProto.Sale.Builder builderForValue) {
+      sale_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.Sale sale = 27;</code>
+     */
+    private void mergeSale(com.treeleaf.suchi.entities.SuchiProto.Sale value) {
+      if (sale_ != null &&
+          sale_ != com.treeleaf.suchi.entities.SuchiProto.Sale.getDefaultInstance()) {
+        sale_ =
+          com.treeleaf.suchi.entities.SuchiProto.Sale.newBuilder(sale_).mergeFrom(value).buildPartial();
+      } else {
+        sale_ = value;
+      }
+      
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.Sale sale = 27;</code>
+     */
+    private void clearSale() {  sale_ = null;
+      
+    }
+
+    public static final int SALES_FIELD_NUMBER = 28;
+    private com.google.protobuf.Internal.ProtobufList<com.treeleaf.suchi.entities.SuchiProto.Sale> sales_;
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Sale sales = 28;</code>
+     */
+    public java.util.List<com.treeleaf.suchi.entities.SuchiProto.Sale> getSalesList() {
+      return sales_;
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Sale sales = 28;</code>
+     */
+    public java.util.List<? extends com.treeleaf.suchi.entities.SuchiProto.SaleOrBuilder> 
+        getSalesOrBuilderList() {
+      return sales_;
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Sale sales = 28;</code>
+     */
+    public int getSalesCount() {
+      return sales_.size();
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Sale sales = 28;</code>
+     */
+    public com.treeleaf.suchi.entities.SuchiProto.Sale getSales(int index) {
+      return sales_.get(index);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Sale sales = 28;</code>
+     */
+    public com.treeleaf.suchi.entities.SuchiProto.SaleOrBuilder getSalesOrBuilder(
+        int index) {
+      return sales_.get(index);
+    }
+    private void ensureSalesIsMutable() {
+      if (!sales_.isModifiable()) {
+        sales_ =
+            com.google.protobuf.GeneratedMessageLite.mutableCopy(sales_);
+       }
+    }
+
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Sale sales = 28;</code>
+     */
+    private void setSales(
+        int index, com.treeleaf.suchi.entities.SuchiProto.Sale value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureSalesIsMutable();
+      sales_.set(index, value);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Sale sales = 28;</code>
+     */
+    private void setSales(
+        int index, com.treeleaf.suchi.entities.SuchiProto.Sale.Builder builderForValue) {
+      ensureSalesIsMutable();
+      sales_.set(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Sale sales = 28;</code>
+     */
+    private void addSales(com.treeleaf.suchi.entities.SuchiProto.Sale value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureSalesIsMutable();
+      sales_.add(value);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Sale sales = 28;</code>
+     */
+    private void addSales(
+        int index, com.treeleaf.suchi.entities.SuchiProto.Sale value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureSalesIsMutable();
+      sales_.add(index, value);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Sale sales = 28;</code>
+     */
+    private void addSales(
+        com.treeleaf.suchi.entities.SuchiProto.Sale.Builder builderForValue) {
+      ensureSalesIsMutable();
+      sales_.add(builderForValue.build());
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Sale sales = 28;</code>
+     */
+    private void addSales(
+        int index, com.treeleaf.suchi.entities.SuchiProto.Sale.Builder builderForValue) {
+      ensureSalesIsMutable();
+      sales_.add(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Sale sales = 28;</code>
+     */
+    private void addAllSales(
+        Iterable<? extends com.treeleaf.suchi.entities.SuchiProto.Sale> values) {
+      ensureSalesIsMutable();
+      com.google.protobuf.AbstractMessageLite.addAll(
+          values, sales_);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Sale sales = 28;</code>
+     */
+    private void clearSales() {
+      sales_ = emptyProtobufList();
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.Sale sales = 28;</code>
+     */
+    private void removeSales(int index) {
+      ensureSalesIsMutable();
+      sales_.remove(index);
+    }
+
+    public static final int UNITCONVERSION_FIELD_NUMBER = 29;
+    private com.treeleaf.suchi.entities.SuchiProto.UnitConversion unitConversion_;
+    /**
+     * <code>optional .treeleaf.suchi.entities.UnitConversion unitConversion = 29;</code>
+     */
+    public boolean hasUnitConversion() {
+      return unitConversion_ != null;
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.UnitConversion unitConversion = 29;</code>
+     */
+    public com.treeleaf.suchi.entities.SuchiProto.UnitConversion getUnitConversion() {
+      return unitConversion_ == null ? com.treeleaf.suchi.entities.SuchiProto.UnitConversion.getDefaultInstance() : unitConversion_;
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.UnitConversion unitConversion = 29;</code>
+     */
+    private void setUnitConversion(com.treeleaf.suchi.entities.SuchiProto.UnitConversion value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      unitConversion_ = value;
+      
+      }
+    /**
+     * <code>optional .treeleaf.suchi.entities.UnitConversion unitConversion = 29;</code>
+     */
+    private void setUnitConversion(
+        com.treeleaf.suchi.entities.SuchiProto.UnitConversion.Builder builderForValue) {
+      unitConversion_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.UnitConversion unitConversion = 29;</code>
+     */
+    private void mergeUnitConversion(com.treeleaf.suchi.entities.SuchiProto.UnitConversion value) {
+      if (unitConversion_ != null &&
+          unitConversion_ != com.treeleaf.suchi.entities.SuchiProto.UnitConversion.getDefaultInstance()) {
+        unitConversion_ =
+          com.treeleaf.suchi.entities.SuchiProto.UnitConversion.newBuilder(unitConversion_).mergeFrom(value).buildPartial();
+      } else {
+        unitConversion_ = value;
+      }
+      
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.UnitConversion unitConversion = 29;</code>
+     */
+    private void clearUnitConversion() {  unitConversion_ = null;
+      
+    }
+
+    public static final int UNITCONVERSIONS_FIELD_NUMBER = 30;
+    private com.google.protobuf.Internal.ProtobufList<com.treeleaf.suchi.entities.SuchiProto.UnitConversion> unitConversions_;
+    /**
+     * <code>repeated .treeleaf.suchi.entities.UnitConversion unitConversions = 30;</code>
+     */
+    public java.util.List<com.treeleaf.suchi.entities.SuchiProto.UnitConversion> getUnitConversionsList() {
+      return unitConversions_;
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.UnitConversion unitConversions = 30;</code>
+     */
+    public java.util.List<? extends com.treeleaf.suchi.entities.SuchiProto.UnitConversionOrBuilder> 
+        getUnitConversionsOrBuilderList() {
+      return unitConversions_;
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.UnitConversion unitConversions = 30;</code>
+     */
+    public int getUnitConversionsCount() {
+      return unitConversions_.size();
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.UnitConversion unitConversions = 30;</code>
+     */
+    public com.treeleaf.suchi.entities.SuchiProto.UnitConversion getUnitConversions(int index) {
+      return unitConversions_.get(index);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.UnitConversion unitConversions = 30;</code>
+     */
+    public com.treeleaf.suchi.entities.SuchiProto.UnitConversionOrBuilder getUnitConversionsOrBuilder(
+        int index) {
+      return unitConversions_.get(index);
+    }
+    private void ensureUnitConversionsIsMutable() {
+      if (!unitConversions_.isModifiable()) {
+        unitConversions_ =
+            com.google.protobuf.GeneratedMessageLite.mutableCopy(unitConversions_);
+       }
+    }
+
+    /**
+     * <code>repeated .treeleaf.suchi.entities.UnitConversion unitConversions = 30;</code>
+     */
+    private void setUnitConversions(
+        int index, com.treeleaf.suchi.entities.SuchiProto.UnitConversion value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureUnitConversionsIsMutable();
+      unitConversions_.set(index, value);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.UnitConversion unitConversions = 30;</code>
+     */
+    private void setUnitConversions(
+        int index, com.treeleaf.suchi.entities.SuchiProto.UnitConversion.Builder builderForValue) {
+      ensureUnitConversionsIsMutable();
+      unitConversions_.set(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.UnitConversion unitConversions = 30;</code>
+     */
+    private void addUnitConversions(com.treeleaf.suchi.entities.SuchiProto.UnitConversion value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureUnitConversionsIsMutable();
+      unitConversions_.add(value);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.UnitConversion unitConversions = 30;</code>
+     */
+    private void addUnitConversions(
+        int index, com.treeleaf.suchi.entities.SuchiProto.UnitConversion value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureUnitConversionsIsMutable();
+      unitConversions_.add(index, value);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.UnitConversion unitConversions = 30;</code>
+     */
+    private void addUnitConversions(
+        com.treeleaf.suchi.entities.SuchiProto.UnitConversion.Builder builderForValue) {
+      ensureUnitConversionsIsMutable();
+      unitConversions_.add(builderForValue.build());
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.UnitConversion unitConversions = 30;</code>
+     */
+    private void addUnitConversions(
+        int index, com.treeleaf.suchi.entities.SuchiProto.UnitConversion.Builder builderForValue) {
+      ensureUnitConversionsIsMutable();
+      unitConversions_.add(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.UnitConversion unitConversions = 30;</code>
+     */
+    private void addAllUnitConversions(
+        Iterable<? extends com.treeleaf.suchi.entities.SuchiProto.UnitConversion> values) {
+      ensureUnitConversionsIsMutable();
+      com.google.protobuf.AbstractMessageLite.addAll(
+          values, unitConversions_);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.UnitConversion unitConversions = 30;</code>
+     */
+    private void clearUnitConversions() {
+      unitConversions_ = emptyProtobufList();
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.UnitConversion unitConversions = 30;</code>
+     */
+    private void removeUnitConversions(int index) {
+      ensureUnitConversionsIsMutable();
+      unitConversions_.remove(index);
+    }
+
+    public static final int LOGINRESPONSE_FIELD_NUMBER = 31;
+    private com.treeleaf.suchi.entities.TreeleafProto.LoginResponse loginResponse_;
+    /**
+     * <code>optional .treeleaf.entities.LoginResponse loginResponse = 31;</code>
+     */
+    public boolean hasLoginResponse() {
+      return loginResponse_ != null;
+    }
+    /**
+     * <code>optional .treeleaf.entities.LoginResponse loginResponse = 31;</code>
+     */
+    public com.treeleaf.suchi.entities.TreeleafProto.LoginResponse getLoginResponse() {
+      return loginResponse_ == null ? com.treeleaf.suchi.entities.TreeleafProto.LoginResponse.getDefaultInstance() : loginResponse_;
+    }
+    /**
+     * <code>optional .treeleaf.entities.LoginResponse loginResponse = 31;</code>
+     */
+    private void setLoginResponse(com.treeleaf.suchi.entities.TreeleafProto.LoginResponse value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      loginResponse_ = value;
+      
+      }
+    /**
+     * <code>optional .treeleaf.entities.LoginResponse loginResponse = 31;</code>
+     */
+    private void setLoginResponse(
+        com.treeleaf.suchi.entities.TreeleafProto.LoginResponse.Builder builderForValue) {
+      loginResponse_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>optional .treeleaf.entities.LoginResponse loginResponse = 31;</code>
+     */
+    private void mergeLoginResponse(com.treeleaf.suchi.entities.TreeleafProto.LoginResponse value) {
+      if (loginResponse_ != null &&
+          loginResponse_ != com.treeleaf.suchi.entities.TreeleafProto.LoginResponse.getDefaultInstance()) {
+        loginResponse_ =
+          com.treeleaf.suchi.entities.TreeleafProto.LoginResponse.newBuilder(loginResponse_).mergeFrom(value).buildPartial();
+      } else {
+        loginResponse_ = value;
+      }
+      
+    }
+    /**
+     * <code>optional .treeleaf.entities.LoginResponse loginResponse = 31;</code>
+     */
+    private void clearLoginResponse() {  loginResponse_ = null;
+      
+    }
+
+    public static final int INVENTORYSTOCK_FIELD_NUMBER = 32;
+    private com.treeleaf.suchi.entities.SuchiProto.InventoryStock inventoryStock_;
+    /**
+     * <code>optional .treeleaf.suchi.entities.InventoryStock inventoryStock = 32;</code>
+     */
+    public boolean hasInventoryStock() {
+      return inventoryStock_ != null;
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.InventoryStock inventoryStock = 32;</code>
+     */
+    public com.treeleaf.suchi.entities.SuchiProto.InventoryStock getInventoryStock() {
+      return inventoryStock_ == null ? com.treeleaf.suchi.entities.SuchiProto.InventoryStock.getDefaultInstance() : inventoryStock_;
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.InventoryStock inventoryStock = 32;</code>
+     */
+    private void setInventoryStock(com.treeleaf.suchi.entities.SuchiProto.InventoryStock value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      inventoryStock_ = value;
+      
+      }
+    /**
+     * <code>optional .treeleaf.suchi.entities.InventoryStock inventoryStock = 32;</code>
+     */
+    private void setInventoryStock(
+        com.treeleaf.suchi.entities.SuchiProto.InventoryStock.Builder builderForValue) {
+      inventoryStock_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.InventoryStock inventoryStock = 32;</code>
+     */
+    private void mergeInventoryStock(com.treeleaf.suchi.entities.SuchiProto.InventoryStock value) {
+      if (inventoryStock_ != null &&
+          inventoryStock_ != com.treeleaf.suchi.entities.SuchiProto.InventoryStock.getDefaultInstance()) {
+        inventoryStock_ =
+          com.treeleaf.suchi.entities.SuchiProto.InventoryStock.newBuilder(inventoryStock_).mergeFrom(value).buildPartial();
+      } else {
+        inventoryStock_ = value;
+      }
+      
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.InventoryStock inventoryStock = 32;</code>
+     */
+    private void clearInventoryStock() {  inventoryStock_ = null;
+      
+    }
+
+    public static final int INVENTORYSTOCKS_FIELD_NUMBER = 33;
+    private com.google.protobuf.Internal.ProtobufList<com.treeleaf.suchi.entities.SuchiProto.InventoryStock> inventoryStocks_;
+    /**
+     * <code>repeated .treeleaf.suchi.entities.InventoryStock inventoryStocks = 33;</code>
+     */
+    public java.util.List<com.treeleaf.suchi.entities.SuchiProto.InventoryStock> getInventoryStocksList() {
+      return inventoryStocks_;
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.InventoryStock inventoryStocks = 33;</code>
+     */
+    public java.util.List<? extends com.treeleaf.suchi.entities.SuchiProto.InventoryStockOrBuilder> 
+        getInventoryStocksOrBuilderList() {
+      return inventoryStocks_;
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.InventoryStock inventoryStocks = 33;</code>
+     */
+    public int getInventoryStocksCount() {
+      return inventoryStocks_.size();
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.InventoryStock inventoryStocks = 33;</code>
+     */
+    public com.treeleaf.suchi.entities.SuchiProto.InventoryStock getInventoryStocks(int index) {
+      return inventoryStocks_.get(index);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.InventoryStock inventoryStocks = 33;</code>
+     */
+    public com.treeleaf.suchi.entities.SuchiProto.InventoryStockOrBuilder getInventoryStocksOrBuilder(
+        int index) {
+      return inventoryStocks_.get(index);
+    }
+    private void ensureInventoryStocksIsMutable() {
+      if (!inventoryStocks_.isModifiable()) {
+        inventoryStocks_ =
+            com.google.protobuf.GeneratedMessageLite.mutableCopy(inventoryStocks_);
+       }
+    }
+
+    /**
+     * <code>repeated .treeleaf.suchi.entities.InventoryStock inventoryStocks = 33;</code>
+     */
+    private void setInventoryStocks(
+        int index, com.treeleaf.suchi.entities.SuchiProto.InventoryStock value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureInventoryStocksIsMutable();
+      inventoryStocks_.set(index, value);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.InventoryStock inventoryStocks = 33;</code>
+     */
+    private void setInventoryStocks(
+        int index, com.treeleaf.suchi.entities.SuchiProto.InventoryStock.Builder builderForValue) {
+      ensureInventoryStocksIsMutable();
+      inventoryStocks_.set(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.InventoryStock inventoryStocks = 33;</code>
+     */
+    private void addInventoryStocks(com.treeleaf.suchi.entities.SuchiProto.InventoryStock value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureInventoryStocksIsMutable();
+      inventoryStocks_.add(value);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.InventoryStock inventoryStocks = 33;</code>
+     */
+    private void addInventoryStocks(
+        int index, com.treeleaf.suchi.entities.SuchiProto.InventoryStock value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureInventoryStocksIsMutable();
+      inventoryStocks_.add(index, value);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.InventoryStock inventoryStocks = 33;</code>
+     */
+    private void addInventoryStocks(
+        com.treeleaf.suchi.entities.SuchiProto.InventoryStock.Builder builderForValue) {
+      ensureInventoryStocksIsMutable();
+      inventoryStocks_.add(builderForValue.build());
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.InventoryStock inventoryStocks = 33;</code>
+     */
+    private void addInventoryStocks(
+        int index, com.treeleaf.suchi.entities.SuchiProto.InventoryStock.Builder builderForValue) {
+      ensureInventoryStocksIsMutable();
+      inventoryStocks_.add(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.InventoryStock inventoryStocks = 33;</code>
+     */
+    private void addAllInventoryStocks(
+        Iterable<? extends com.treeleaf.suchi.entities.SuchiProto.InventoryStock> values) {
+      ensureInventoryStocksIsMutable();
+      com.google.protobuf.AbstractMessageLite.addAll(
+          values, inventoryStocks_);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.InventoryStock inventoryStocks = 33;</code>
+     */
+    private void clearInventoryStocks() {
+      inventoryStocks_ = emptyProtobufList();
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.InventoryStock inventoryStocks = 33;</code>
+     */
+    private void removeInventoryStocks(int index) {
+      ensureInventoryStocksIsMutable();
+      inventoryStocks_.remove(index);
+    }
+
+    public static final int SUCHIKEY_FIELD_NUMBER = 34;
+    private com.treeleaf.suchi.entities.SuchiProto.SuchiKey suchiKey_;
+    /**
+     * <code>optional .treeleaf.suchi.entities.SuchiKey suchiKey = 34;</code>
+     */
+    public boolean hasSuchiKey() {
+      return suchiKey_ != null;
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.SuchiKey suchiKey = 34;</code>
+     */
+    public com.treeleaf.suchi.entities.SuchiProto.SuchiKey getSuchiKey() {
+      return suchiKey_ == null ? com.treeleaf.suchi.entities.SuchiProto.SuchiKey.getDefaultInstance() : suchiKey_;
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.SuchiKey suchiKey = 34;</code>
+     */
+    private void setSuchiKey(com.treeleaf.suchi.entities.SuchiProto.SuchiKey value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      suchiKey_ = value;
+      
+      }
+    /**
+     * <code>optional .treeleaf.suchi.entities.SuchiKey suchiKey = 34;</code>
+     */
+    private void setSuchiKey(
+        com.treeleaf.suchi.entities.SuchiProto.SuchiKey.Builder builderForValue) {
+      suchiKey_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.SuchiKey suchiKey = 34;</code>
+     */
+    private void mergeSuchiKey(com.treeleaf.suchi.entities.SuchiProto.SuchiKey value) {
+      if (suchiKey_ != null &&
+          suchiKey_ != com.treeleaf.suchi.entities.SuchiProto.SuchiKey.getDefaultInstance()) {
+        suchiKey_ =
+          com.treeleaf.suchi.entities.SuchiProto.SuchiKey.newBuilder(suchiKey_).mergeFrom(value).buildPartial();
+      } else {
+        suchiKey_ = value;
+      }
+      
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.SuchiKey suchiKey = 34;</code>
+     */
+    private void clearSuchiKey() {  suchiKey_ = null;
+      
+    }
+
+    public static final int SUCHIKEYS_FIELD_NUMBER = 35;
+    private com.google.protobuf.Internal.ProtobufList<com.treeleaf.suchi.entities.SuchiProto.SuchiKey> suchiKeys_;
+    /**
+     * <code>repeated .treeleaf.suchi.entities.SuchiKey suchiKeys = 35;</code>
+     */
+    public java.util.List<com.treeleaf.suchi.entities.SuchiProto.SuchiKey> getSuchiKeysList() {
+      return suchiKeys_;
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.SuchiKey suchiKeys = 35;</code>
+     */
+    public java.util.List<? extends com.treeleaf.suchi.entities.SuchiProto.SuchiKeyOrBuilder> 
+        getSuchiKeysOrBuilderList() {
+      return suchiKeys_;
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.SuchiKey suchiKeys = 35;</code>
+     */
+    public int getSuchiKeysCount() {
+      return suchiKeys_.size();
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.SuchiKey suchiKeys = 35;</code>
+     */
+    public com.treeleaf.suchi.entities.SuchiProto.SuchiKey getSuchiKeys(int index) {
+      return suchiKeys_.get(index);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.SuchiKey suchiKeys = 35;</code>
+     */
+    public com.treeleaf.suchi.entities.SuchiProto.SuchiKeyOrBuilder getSuchiKeysOrBuilder(
+        int index) {
+      return suchiKeys_.get(index);
+    }
+    private void ensureSuchiKeysIsMutable() {
+      if (!suchiKeys_.isModifiable()) {
+        suchiKeys_ =
+            com.google.protobuf.GeneratedMessageLite.mutableCopy(suchiKeys_);
+       }
+    }
+
+    /**
+     * <code>repeated .treeleaf.suchi.entities.SuchiKey suchiKeys = 35;</code>
+     */
+    private void setSuchiKeys(
+        int index, com.treeleaf.suchi.entities.SuchiProto.SuchiKey value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureSuchiKeysIsMutable();
+      suchiKeys_.set(index, value);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.SuchiKey suchiKeys = 35;</code>
+     */
+    private void setSuchiKeys(
+        int index, com.treeleaf.suchi.entities.SuchiProto.SuchiKey.Builder builderForValue) {
+      ensureSuchiKeysIsMutable();
+      suchiKeys_.set(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.SuchiKey suchiKeys = 35;</code>
+     */
+    private void addSuchiKeys(com.treeleaf.suchi.entities.SuchiProto.SuchiKey value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureSuchiKeysIsMutable();
+      suchiKeys_.add(value);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.SuchiKey suchiKeys = 35;</code>
+     */
+    private void addSuchiKeys(
+        int index, com.treeleaf.suchi.entities.SuchiProto.SuchiKey value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureSuchiKeysIsMutable();
+      suchiKeys_.add(index, value);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.SuchiKey suchiKeys = 35;</code>
+     */
+    private void addSuchiKeys(
+        com.treeleaf.suchi.entities.SuchiProto.SuchiKey.Builder builderForValue) {
+      ensureSuchiKeysIsMutable();
+      suchiKeys_.add(builderForValue.build());
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.SuchiKey suchiKeys = 35;</code>
+     */
+    private void addSuchiKeys(
+        int index, com.treeleaf.suchi.entities.SuchiProto.SuchiKey.Builder builderForValue) {
+      ensureSuchiKeysIsMutable();
+      suchiKeys_.add(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.SuchiKey suchiKeys = 35;</code>
+     */
+    private void addAllSuchiKeys(
+        Iterable<? extends com.treeleaf.suchi.entities.SuchiProto.SuchiKey> values) {
+      ensureSuchiKeysIsMutable();
+      com.google.protobuf.AbstractMessageLite.addAll(
+          values, suchiKeys_);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.SuchiKey suchiKeys = 35;</code>
+     */
+    private void clearSuchiKeys() {
+      suchiKeys_ = emptyProtobufList();
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.SuchiKey suchiKeys = 35;</code>
+     */
+    private void removeSuchiKeys(int index) {
+      ensureSuchiKeysIsMutable();
+      suchiKeys_.remove(index);
+    }
+
+    public static final int ESEWAQUERY_FIELD_NUMBER = 36;
+    private com.treeleaf.suchi.entities.SuchiProto.EsewaQuery esewaQuery_;
+    /**
+     * <code>optional .treeleaf.suchi.entities.EsewaQuery esewaQuery = 36;</code>
+     */
+    public boolean hasEsewaQuery() {
+      return esewaQuery_ != null;
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.EsewaQuery esewaQuery = 36;</code>
+     */
+    public com.treeleaf.suchi.entities.SuchiProto.EsewaQuery getEsewaQuery() {
+      return esewaQuery_ == null ? com.treeleaf.suchi.entities.SuchiProto.EsewaQuery.getDefaultInstance() : esewaQuery_;
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.EsewaQuery esewaQuery = 36;</code>
+     */
+    private void setEsewaQuery(com.treeleaf.suchi.entities.SuchiProto.EsewaQuery value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      esewaQuery_ = value;
+      
+      }
+    /**
+     * <code>optional .treeleaf.suchi.entities.EsewaQuery esewaQuery = 36;</code>
+     */
+    private void setEsewaQuery(
+        com.treeleaf.suchi.entities.SuchiProto.EsewaQuery.Builder builderForValue) {
+      esewaQuery_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.EsewaQuery esewaQuery = 36;</code>
+     */
+    private void mergeEsewaQuery(com.treeleaf.suchi.entities.SuchiProto.EsewaQuery value) {
+      if (esewaQuery_ != null &&
+          esewaQuery_ != com.treeleaf.suchi.entities.SuchiProto.EsewaQuery.getDefaultInstance()) {
+        esewaQuery_ =
+          com.treeleaf.suchi.entities.SuchiProto.EsewaQuery.newBuilder(esewaQuery_).mergeFrom(value).buildPartial();
+      } else {
+        esewaQuery_ = value;
+      }
+      
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.EsewaQuery esewaQuery = 36;</code>
+     */
+    private void clearEsewaQuery() {  esewaQuery_ = null;
+      
+    }
+
+    public static final int ESEWAINQUIRYRESPONSE_FIELD_NUMBER = 37;
+    private com.treeleaf.suchi.entities.SuchiProto.EsewaInquiryResponse esewaInquiryResponse_;
+    /**
+     * <code>optional .treeleaf.suchi.entities.EsewaInquiryResponse esewaInquiryResponse = 37;</code>
+     */
+    public boolean hasEsewaInquiryResponse() {
+      return esewaInquiryResponse_ != null;
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.EsewaInquiryResponse esewaInquiryResponse = 37;</code>
+     */
+    public com.treeleaf.suchi.entities.SuchiProto.EsewaInquiryResponse getEsewaInquiryResponse() {
+      return esewaInquiryResponse_ == null ? com.treeleaf.suchi.entities.SuchiProto.EsewaInquiryResponse.getDefaultInstance() : esewaInquiryResponse_;
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.EsewaInquiryResponse esewaInquiryResponse = 37;</code>
+     */
+    private void setEsewaInquiryResponse(com.treeleaf.suchi.entities.SuchiProto.EsewaInquiryResponse value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      esewaInquiryResponse_ = value;
+      
+      }
+    /**
+     * <code>optional .treeleaf.suchi.entities.EsewaInquiryResponse esewaInquiryResponse = 37;</code>
+     */
+    private void setEsewaInquiryResponse(
+        com.treeleaf.suchi.entities.SuchiProto.EsewaInquiryResponse.Builder builderForValue) {
+      esewaInquiryResponse_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.EsewaInquiryResponse esewaInquiryResponse = 37;</code>
+     */
+    private void mergeEsewaInquiryResponse(com.treeleaf.suchi.entities.SuchiProto.EsewaInquiryResponse value) {
+      if (esewaInquiryResponse_ != null &&
+          esewaInquiryResponse_ != com.treeleaf.suchi.entities.SuchiProto.EsewaInquiryResponse.getDefaultInstance()) {
+        esewaInquiryResponse_ =
+          com.treeleaf.suchi.entities.SuchiProto.EsewaInquiryResponse.newBuilder(esewaInquiryResponse_).mergeFrom(value).buildPartial();
+      } else {
+        esewaInquiryResponse_ = value;
+      }
+      
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.EsewaInquiryResponse esewaInquiryResponse = 37;</code>
+     */
+    private void clearEsewaInquiryResponse() {  esewaInquiryResponse_ = null;
+      
+    }
+
+    public static final int ESEWAPAYMENTRESPONSE_FIELD_NUMBER = 38;
+    private com.treeleaf.suchi.entities.SuchiProto.EsewaPaymentResponse esewaPaymentResponse_;
+    /**
+     * <code>optional .treeleaf.suchi.entities.EsewaPaymentResponse esewaPaymentResponse = 38;</code>
+     */
+    public boolean hasEsewaPaymentResponse() {
+      return esewaPaymentResponse_ != null;
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.EsewaPaymentResponse esewaPaymentResponse = 38;</code>
+     */
+    public com.treeleaf.suchi.entities.SuchiProto.EsewaPaymentResponse getEsewaPaymentResponse() {
+      return esewaPaymentResponse_ == null ? com.treeleaf.suchi.entities.SuchiProto.EsewaPaymentResponse.getDefaultInstance() : esewaPaymentResponse_;
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.EsewaPaymentResponse esewaPaymentResponse = 38;</code>
+     */
+    private void setEsewaPaymentResponse(com.treeleaf.suchi.entities.SuchiProto.EsewaPaymentResponse value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      esewaPaymentResponse_ = value;
+      
+      }
+    /**
+     * <code>optional .treeleaf.suchi.entities.EsewaPaymentResponse esewaPaymentResponse = 38;</code>
+     */
+    private void setEsewaPaymentResponse(
+        com.treeleaf.suchi.entities.SuchiProto.EsewaPaymentResponse.Builder builderForValue) {
+      esewaPaymentResponse_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.EsewaPaymentResponse esewaPaymentResponse = 38;</code>
+     */
+    private void mergeEsewaPaymentResponse(com.treeleaf.suchi.entities.SuchiProto.EsewaPaymentResponse value) {
+      if (esewaPaymentResponse_ != null &&
+          esewaPaymentResponse_ != com.treeleaf.suchi.entities.SuchiProto.EsewaPaymentResponse.getDefaultInstance()) {
+        esewaPaymentResponse_ =
+          com.treeleaf.suchi.entities.SuchiProto.EsewaPaymentResponse.newBuilder(esewaPaymentResponse_).mergeFrom(value).buildPartial();
+      } else {
+        esewaPaymentResponse_ = value;
+      }
+      
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.EsewaPaymentResponse esewaPaymentResponse = 38;</code>
+     */
+    private void clearEsewaPaymentResponse() {  esewaPaymentResponse_ = null;
+      
+    }
+
+    public static final int ACCESSTOKEN_FIELD_NUMBER = 39;
+    private com.treeleaf.suchi.entities.AccessProto.AccessToken accessToken_;
+    /**
+     * <code>optional .treeleaf.suchi.entities.AccessToken accessToken = 39;</code>
+     */
+    public boolean hasAccessToken() {
+      return accessToken_ != null;
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.AccessToken accessToken = 39;</code>
+     */
+    public com.treeleaf.suchi.entities.AccessProto.AccessToken getAccessToken() {
+      return accessToken_ == null ? com.treeleaf.suchi.entities.AccessProto.AccessToken.getDefaultInstance() : accessToken_;
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.AccessToken accessToken = 39;</code>
+     */
+    private void setAccessToken(com.treeleaf.suchi.entities.AccessProto.AccessToken value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      accessToken_ = value;
+      
+      }
+    /**
+     * <code>optional .treeleaf.suchi.entities.AccessToken accessToken = 39;</code>
+     */
+    private void setAccessToken(
+        com.treeleaf.suchi.entities.AccessProto.AccessToken.Builder builderForValue) {
+      accessToken_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.AccessToken accessToken = 39;</code>
+     */
+    private void mergeAccessToken(com.treeleaf.suchi.entities.AccessProto.AccessToken value) {
+      if (accessToken_ != null &&
+          accessToken_ != com.treeleaf.suchi.entities.AccessProto.AccessToken.getDefaultInstance()) {
+        accessToken_ =
+          com.treeleaf.suchi.entities.AccessProto.AccessToken.newBuilder(accessToken_).mergeFrom(value).buildPartial();
+      } else {
+        accessToken_ = value;
+      }
+      
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.AccessToken accessToken = 39;</code>
+     */
+    private void clearAccessToken() {  accessToken_ = null;
+      
+    }
+
+    public static final int ACCESSTOKENS_FIELD_NUMBER = 40;
+    private com.google.protobuf.Internal.ProtobufList<com.treeleaf.suchi.entities.AccessProto.AccessToken> accessTokens_;
+    /**
+     * <code>repeated .treeleaf.suchi.entities.AccessToken accessTokens = 40;</code>
+     */
+    public java.util.List<com.treeleaf.suchi.entities.AccessProto.AccessToken> getAccessTokensList() {
+      return accessTokens_;
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.AccessToken accessTokens = 40;</code>
+     */
+    public java.util.List<? extends com.treeleaf.suchi.entities.AccessProto.AccessTokenOrBuilder> 
+        getAccessTokensOrBuilderList() {
+      return accessTokens_;
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.AccessToken accessTokens = 40;</code>
+     */
+    public int getAccessTokensCount() {
+      return accessTokens_.size();
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.AccessToken accessTokens = 40;</code>
+     */
+    public com.treeleaf.suchi.entities.AccessProto.AccessToken getAccessTokens(int index) {
+      return accessTokens_.get(index);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.AccessToken accessTokens = 40;</code>
+     */
+    public com.treeleaf.suchi.entities.AccessProto.AccessTokenOrBuilder getAccessTokensOrBuilder(
+        int index) {
+      return accessTokens_.get(index);
+    }
+    private void ensureAccessTokensIsMutable() {
+      if (!accessTokens_.isModifiable()) {
+        accessTokens_ =
+            com.google.protobuf.GeneratedMessageLite.mutableCopy(accessTokens_);
+       }
+    }
+
+    /**
+     * <code>repeated .treeleaf.suchi.entities.AccessToken accessTokens = 40;</code>
+     */
+    private void setAccessTokens(
+        int index, com.treeleaf.suchi.entities.AccessProto.AccessToken value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureAccessTokensIsMutable();
+      accessTokens_.set(index, value);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.AccessToken accessTokens = 40;</code>
+     */
+    private void setAccessTokens(
+        int index, com.treeleaf.suchi.entities.AccessProto.AccessToken.Builder builderForValue) {
+      ensureAccessTokensIsMutable();
+      accessTokens_.set(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.AccessToken accessTokens = 40;</code>
+     */
+    private void addAccessTokens(com.treeleaf.suchi.entities.AccessProto.AccessToken value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureAccessTokensIsMutable();
+      accessTokens_.add(value);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.AccessToken accessTokens = 40;</code>
+     */
+    private void addAccessTokens(
+        int index, com.treeleaf.suchi.entities.AccessProto.AccessToken value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureAccessTokensIsMutable();
+      accessTokens_.add(index, value);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.AccessToken accessTokens = 40;</code>
+     */
+    private void addAccessTokens(
+        com.treeleaf.suchi.entities.AccessProto.AccessToken.Builder builderForValue) {
+      ensureAccessTokensIsMutable();
+      accessTokens_.add(builderForValue.build());
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.AccessToken accessTokens = 40;</code>
+     */
+    private void addAccessTokens(
+        int index, com.treeleaf.suchi.entities.AccessProto.AccessToken.Builder builderForValue) {
+      ensureAccessTokensIsMutable();
+      accessTokens_.add(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.AccessToken accessTokens = 40;</code>
+     */
+    private void addAllAccessTokens(
+        Iterable<? extends com.treeleaf.suchi.entities.AccessProto.AccessToken> values) {
+      ensureAccessTokensIsMutable();
+      com.google.protobuf.AbstractMessageLite.addAll(
+          values, accessTokens_);
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.AccessToken accessTokens = 40;</code>
+     */
+    private void clearAccessTokens() {
+      accessTokens_ = emptyProtobufList();
+    }
+    /**
+     * <code>repeated .treeleaf.suchi.entities.AccessToken accessTokens = 40;</code>
+     */
+    private void removeAccessTokens(int index) {
+      ensureAccessTokensIsMutable();
+      accessTokens_.remove(index);
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (error_ != false) {
+        output.writeBool(1, error_);
+      }
+      if (!msg_.isEmpty()) {
+        output.writeString(2, getMsg());
+      }
+      if (errorCode_ != com.treeleaf.suchi.entities.TreeleafProto.ErrorCode.UNKNOWN_ERROR.getNumber()) {
+        output.writeEnum(3, errorCode_);
+      }
+      if (success_ != false) {
+        output.writeBool(4, success_);
+      }
+      if (user_ != null) {
+        output.writeMessage(5, getUser());
+      }
+      for (int i = 0; i < users_.size(); i++) {
+        output.writeMessage(6, users_.get(i));
+      }
+      if (session_ != null) {
+        output.writeMessage(7, getSession());
+      }
+      if (loginResult_ != null) {
+        output.writeMessage(8, getLoginResult());
+      }
+      if (authResponse_ != null) {
+        output.writeMessage(9, getAuthResponse());
+      }
+      if (authorization_ != null) {
+        output.writeMessage(10, getAuthorization());
+      }
+      if (stockKeepingUnit_ != null) {
+        output.writeMessage(11, getStockKeepingUnit());
+      }
+      for (int i = 0; i < stockKeepingUnits_.size(); i++) {
+        output.writeMessage(12, stockKeepingUnits_.get(i));
+      }
+      if (inventory_ != null) {
+        output.writeMessage(13, getInventory());
+      }
+      for (int i = 0; i < inventories_.size(); i++) {
+        output.writeMessage(14, inventories_.get(i));
+      }
+      if (brand_ != null) {
+        output.writeMessage(15, getBrand());
+      }
+      for (int i = 0; i < brands_.size(); i++) {
+        output.writeMessage(16, brands_.get(i));
+      }
+      if (subBrand_ != null) {
+        output.writeMessage(17, getSubBrand());
+      }
+      for (int i = 0; i < subBrands_.size(); i++) {
+        output.writeMessage(18, subBrands_.get(i));
+      }
+      if (unit_ != null) {
+        output.writeMessage(19, getUnit());
+      }
+      for (int i = 0; i < units_.size(); i++) {
+        output.writeMessage(20, units_.get(i));
+      }
+      if (category_ != null) {
+        output.writeMessage(21, getCategory());
+      }
+      for (int i = 0; i < categories_.size(); i++) {
+        output.writeMessage(22, categories_.get(i));
+      }
+      if (creditor_ != null) {
+        output.writeMessage(23, getCreditor());
+      }
+      for (int i = 0; i < creditors_.size(); i++) {
+        output.writeMessage(24, creditors_.get(i));
+      }
+      if (creditDetail_ != null) {
+        output.writeMessage(25, getCreditDetail());
+      }
+      for (int i = 0; i < creditDetails_.size(); i++) {
+        output.writeMessage(26, creditDetails_.get(i));
+      }
+      if (sale_ != null) {
+        output.writeMessage(27, getSale());
+      }
+      for (int i = 0; i < sales_.size(); i++) {
+        output.writeMessage(28, sales_.get(i));
+      }
+      if (unitConversion_ != null) {
+        output.writeMessage(29, getUnitConversion());
+      }
+      for (int i = 0; i < unitConversions_.size(); i++) {
+        output.writeMessage(30, unitConversions_.get(i));
+      }
+      if (loginResponse_ != null) {
+        output.writeMessage(31, getLoginResponse());
+      }
+      if (inventoryStock_ != null) {
+        output.writeMessage(32, getInventoryStock());
+      }
+      for (int i = 0; i < inventoryStocks_.size(); i++) {
+        output.writeMessage(33, inventoryStocks_.get(i));
+      }
+      if (suchiKey_ != null) {
+        output.writeMessage(34, getSuchiKey());
+      }
+      for (int i = 0; i < suchiKeys_.size(); i++) {
+        output.writeMessage(35, suchiKeys_.get(i));
+      }
+      if (esewaQuery_ != null) {
+        output.writeMessage(36, getEsewaQuery());
+      }
+      if (esewaInquiryResponse_ != null) {
+        output.writeMessage(37, getEsewaInquiryResponse());
+      }
+      if (esewaPaymentResponse_ != null) {
+        output.writeMessage(38, getEsewaPaymentResponse());
+      }
+      if (accessToken_ != null) {
+        output.writeMessage(39, getAccessToken());
+      }
+      for (int i = 0; i < accessTokens_.size(); i++) {
+        output.writeMessage(40, accessTokens_.get(i));
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (error_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(1, error_);
+      }
+      if (!msg_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeStringSize(2, getMsg());
+      }
+      if (errorCode_ != com.treeleaf.suchi.entities.TreeleafProto.ErrorCode.UNKNOWN_ERROR.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(3, errorCode_);
+      }
+      if (success_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(4, success_);
+      }
+      if (user_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(5, getUser());
+      }
+      for (int i = 0; i < users_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(6, users_.get(i));
+      }
+      if (session_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(7, getSession());
+      }
+      if (loginResult_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(8, getLoginResult());
+      }
+      if (authResponse_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(9, getAuthResponse());
+      }
+      if (authorization_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(10, getAuthorization());
+      }
+      if (stockKeepingUnit_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(11, getStockKeepingUnit());
+      }
+      for (int i = 0; i < stockKeepingUnits_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(12, stockKeepingUnits_.get(i));
+      }
+      if (inventory_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(13, getInventory());
+      }
+      for (int i = 0; i < inventories_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(14, inventories_.get(i));
+      }
+      if (brand_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(15, getBrand());
+      }
+      for (int i = 0; i < brands_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(16, brands_.get(i));
+      }
+      if (subBrand_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(17, getSubBrand());
+      }
+      for (int i = 0; i < subBrands_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(18, subBrands_.get(i));
+      }
+      if (unit_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(19, getUnit());
+      }
+      for (int i = 0; i < units_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(20, units_.get(i));
+      }
+      if (category_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(21, getCategory());
+      }
+      for (int i = 0; i < categories_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(22, categories_.get(i));
+      }
+      if (creditor_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(23, getCreditor());
+      }
+      for (int i = 0; i < creditors_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(24, creditors_.get(i));
+      }
+      if (creditDetail_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(25, getCreditDetail());
+      }
+      for (int i = 0; i < creditDetails_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(26, creditDetails_.get(i));
+      }
+      if (sale_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(27, getSale());
+      }
+      for (int i = 0; i < sales_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(28, sales_.get(i));
+      }
+      if (unitConversion_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(29, getUnitConversion());
+      }
+      for (int i = 0; i < unitConversions_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(30, unitConversions_.get(i));
+      }
+      if (loginResponse_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(31, getLoginResponse());
+      }
+      if (inventoryStock_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(32, getInventoryStock());
+      }
+      for (int i = 0; i < inventoryStocks_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(33, inventoryStocks_.get(i));
+      }
+      if (suchiKey_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(34, getSuchiKey());
+      }
+      for (int i = 0; i < suchiKeys_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(35, suchiKeys_.get(i));
+      }
+      if (esewaQuery_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(36, getEsewaQuery());
+      }
+      if (esewaInquiryResponse_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(37, getEsewaInquiryResponse());
+      }
+      if (esewaPaymentResponse_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(38, getEsewaPaymentResponse());
+      }
+      if (accessToken_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(39, getAccessToken());
+      }
+      for (int i = 0; i < accessTokens_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(40, accessTokens_.get(i));
+      }
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    public static SuchiBaseResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static SuchiBaseResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static SuchiBaseResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static SuchiBaseResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static SuchiBaseResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static SuchiBaseResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static SuchiBaseResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    }
+    public static SuchiBaseResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static SuchiBaseResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static SuchiBaseResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(SuchiBaseResponse prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
 
     /**
      * Protobuf type {@code treeleaf.suchi.rpc.SuchiBaseResponse}
      */
-    public static final class SuchiBaseResponse extends
-            com.google.protobuf.GeneratedMessageLite<
-                    SuchiBaseResponse, SuchiBaseResponse.Builder> implements
-            // @@protoc_insertion_point(message_implements:treeleaf.suchi.rpc.SuchiBaseResponse)
-            SuchiBaseResponseOrBuilder {
-        private SuchiBaseResponse() {
-            msg_ = "";
-            users_ = emptyProtobufList();
-            stockKeepingUnits_ = emptyProtobufList();
-            inventories_ = emptyProtobufList();
-            brands_ = emptyProtobufList();
-            subBrands_ = emptyProtobufList();
-            units_ = emptyProtobufList();
-            categories_ = emptyProtobufList();
-            creditors_ = emptyProtobufList();
-            creditDetails_ = emptyProtobufList();
-            sales_ = emptyProtobufList();
-            unitConversions_ = emptyProtobufList();
-            inventoryStocks_ = emptyProtobufList();
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          SuchiBaseResponse, Builder> implements
+        // @@protoc_insertion_point(builder_implements:treeleaf.suchi.rpc.SuchiBaseResponse)
+        SuchiBaseResponseOrBuilder {
+      // Construct using com.treeleaf.suchi.rpc.SuchiRpcProto.SuchiBaseResponse.newBuilder()
+      private Builder() {
+        super(DEFAULT_INSTANCE);
+      }
+
+
+      /**
+       * <code>optional bool error = 1;</code>
+       */
+      public boolean getError() {
+        return instance.getError();
+      }
+      /**
+       * <code>optional bool error = 1;</code>
+       */
+      public Builder setError(boolean value) {
+        copyOnWrite();
+        instance.setError(value);
+        return this;
+      }
+      /**
+       * <code>optional bool error = 1;</code>
+       */
+      public Builder clearError() {
+        copyOnWrite();
+        instance.clearError();
+        return this;
+      }
+
+      /**
+       * <code>optional string msg = 2;</code>
+       */
+      public String getMsg() {
+        return instance.getMsg();
+      }
+      /**
+       * <code>optional string msg = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getMsgBytes() {
+        return instance.getMsgBytes();
+      }
+      /**
+       * <code>optional string msg = 2;</code>
+       */
+      public Builder setMsg(
+          String value) {
+        copyOnWrite();
+        instance.setMsg(value);
+        return this;
+      }
+      /**
+       * <code>optional string msg = 2;</code>
+       */
+      public Builder clearMsg() {
+        copyOnWrite();
+        instance.clearMsg();
+        return this;
+      }
+      /**
+       * <code>optional string msg = 2;</code>
+       */
+      public Builder setMsgBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setMsgBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>optional .treeleaf.entities.ErrorCode errorCode = 3;</code>
+       */
+      public int getErrorCodeValue() {
+        return instance.getErrorCodeValue();
+      }
+      /**
+       * <code>optional .treeleaf.entities.ErrorCode errorCode = 3;</code>
+       */
+      public Builder setErrorCodeValue(int value) {
+        copyOnWrite();
+        instance.setErrorCodeValue(value);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.entities.ErrorCode errorCode = 3;</code>
+       */
+      public com.treeleaf.suchi.entities.TreeleafProto.ErrorCode getErrorCode() {
+        return instance.getErrorCode();
+      }
+      /**
+       * <code>optional .treeleaf.entities.ErrorCode errorCode = 3;</code>
+       */
+      public Builder setErrorCode(com.treeleaf.suchi.entities.TreeleafProto.ErrorCode value) {
+        copyOnWrite();
+        instance.setErrorCode(value);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.entities.ErrorCode errorCode = 3;</code>
+       */
+      public Builder clearErrorCode() {
+        copyOnWrite();
+        instance.clearErrorCode();
+        return this;
+      }
+
+      /**
+       * <code>optional bool success = 4;</code>
+       */
+      public boolean getSuccess() {
+        return instance.getSuccess();
+      }
+      /**
+       * <code>optional bool success = 4;</code>
+       */
+      public Builder setSuccess(boolean value) {
+        copyOnWrite();
+        instance.setSuccess(value);
+        return this;
+      }
+      /**
+       * <code>optional bool success = 4;</code>
+       */
+      public Builder clearSuccess() {
+        copyOnWrite();
+        instance.clearSuccess();
+        return this;
+      }
+
+      /**
+       * <code>optional .treeleaf.entities.UserAccount user = 5;</code>
+       */
+      public boolean hasUser() {
+        return instance.hasUser();
+      }
+      /**
+       * <code>optional .treeleaf.entities.UserAccount user = 5;</code>
+       */
+      public com.treeleaf.suchi.entities.TreeleafProto.UserAccount getUser() {
+        return instance.getUser();
+      }
+      /**
+       * <code>optional .treeleaf.entities.UserAccount user = 5;</code>
+       */
+      public Builder setUser(com.treeleaf.suchi.entities.TreeleafProto.UserAccount value) {
+        copyOnWrite();
+        instance.setUser(value);
+        return this;
         }
+      /**
+       * <code>optional .treeleaf.entities.UserAccount user = 5;</code>
+       */
+      public Builder setUser(
+          com.treeleaf.suchi.entities.TreeleafProto.UserAccount.Builder builderForValue) {
+        copyOnWrite();
+        instance.setUser(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.entities.UserAccount user = 5;</code>
+       */
+      public Builder mergeUser(com.treeleaf.suchi.entities.TreeleafProto.UserAccount value) {
+        copyOnWrite();
+        instance.mergeUser(value);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.entities.UserAccount user = 5;</code>
+       */
+      public Builder clearUser() {  copyOnWrite();
+        instance.clearUser();
+        return this;
+      }
 
-        private int bitField0_;
-        public static final int ERROR_FIELD_NUMBER = 1;
-        private boolean error_;
+      /**
+       * <code>repeated .treeleaf.entities.UserAccount users = 6;</code>
+       */
+      public java.util.List<com.treeleaf.suchi.entities.TreeleafProto.UserAccount> getUsersList() {
+        return java.util.Collections.unmodifiableList(
+            instance.getUsersList());
+      }
+      /**
+       * <code>repeated .treeleaf.entities.UserAccount users = 6;</code>
+       */
+      public int getUsersCount() {
+        return instance.getUsersCount();
+      }/**
+       * <code>repeated .treeleaf.entities.UserAccount users = 6;</code>
+       */
+      public com.treeleaf.suchi.entities.TreeleafProto.UserAccount getUsers(int index) {
+        return instance.getUsers(index);
+      }
+      /**
+       * <code>repeated .treeleaf.entities.UserAccount users = 6;</code>
+       */
+      public Builder setUsers(
+          int index, com.treeleaf.suchi.entities.TreeleafProto.UserAccount value) {
+        copyOnWrite();
+        instance.setUsers(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.entities.UserAccount users = 6;</code>
+       */
+      public Builder setUsers(
+          int index, com.treeleaf.suchi.entities.TreeleafProto.UserAccount.Builder builderForValue) {
+        copyOnWrite();
+        instance.setUsers(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.entities.UserAccount users = 6;</code>
+       */
+      public Builder addUsers(com.treeleaf.suchi.entities.TreeleafProto.UserAccount value) {
+        copyOnWrite();
+        instance.addUsers(value);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.entities.UserAccount users = 6;</code>
+       */
+      public Builder addUsers(
+          int index, com.treeleaf.suchi.entities.TreeleafProto.UserAccount value) {
+        copyOnWrite();
+        instance.addUsers(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.entities.UserAccount users = 6;</code>
+       */
+      public Builder addUsers(
+          com.treeleaf.suchi.entities.TreeleafProto.UserAccount.Builder builderForValue) {
+        copyOnWrite();
+        instance.addUsers(builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.entities.UserAccount users = 6;</code>
+       */
+      public Builder addUsers(
+          int index, com.treeleaf.suchi.entities.TreeleafProto.UserAccount.Builder builderForValue) {
+        copyOnWrite();
+        instance.addUsers(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.entities.UserAccount users = 6;</code>
+       */
+      public Builder addAllUsers(
+          Iterable<? extends com.treeleaf.suchi.entities.TreeleafProto.UserAccount> values) {
+        copyOnWrite();
+        instance.addAllUsers(values);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.entities.UserAccount users = 6;</code>
+       */
+      public Builder clearUsers() {
+        copyOnWrite();
+        instance.clearUsers();
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.entities.UserAccount users = 6;</code>
+       */
+      public Builder removeUsers(int index) {
+        copyOnWrite();
+        instance.removeUsers(index);
+        return this;
+      }
 
-        /**
-         * <code>optional bool error = 1;</code>
-         */
-        public boolean getError() {
-            return error_;
+      /**
+       * <code>optional .treeleaf.entities.Session session = 7;</code>
+       */
+      public boolean hasSession() {
+        return instance.hasSession();
+      }
+      /**
+       * <code>optional .treeleaf.entities.Session session = 7;</code>
+       */
+      public com.treeleaf.suchi.entities.TreeleafProto.Session getSession() {
+        return instance.getSession();
+      }
+      /**
+       * <code>optional .treeleaf.entities.Session session = 7;</code>
+       */
+      public Builder setSession(com.treeleaf.suchi.entities.TreeleafProto.Session value) {
+        copyOnWrite();
+        instance.setSession(value);
+        return this;
         }
+      /**
+       * <code>optional .treeleaf.entities.Session session = 7;</code>
+       */
+      public Builder setSession(
+          com.treeleaf.suchi.entities.TreeleafProto.Session.Builder builderForValue) {
+        copyOnWrite();
+        instance.setSession(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.entities.Session session = 7;</code>
+       */
+      public Builder mergeSession(com.treeleaf.suchi.entities.TreeleafProto.Session value) {
+        copyOnWrite();
+        instance.mergeSession(value);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.entities.Session session = 7;</code>
+       */
+      public Builder clearSession() {  copyOnWrite();
+        instance.clearSession();
+        return this;
+      }
 
-        /**
-         * <code>optional bool error = 1;</code>
-         */
-        private void setError(boolean value) {
-
-            error_ = value;
+      /**
+       * <code>optional .treeleaf.entities.LoginResult loginResult = 8;</code>
+       */
+      public boolean hasLoginResult() {
+        return instance.hasLoginResult();
+      }
+      /**
+       * <code>optional .treeleaf.entities.LoginResult loginResult = 8;</code>
+       */
+      public com.treeleaf.suchi.entities.TreeleafProto.LoginResult getLoginResult() {
+        return instance.getLoginResult();
+      }
+      /**
+       * <code>optional .treeleaf.entities.LoginResult loginResult = 8;</code>
+       */
+      public Builder setLoginResult(com.treeleaf.suchi.entities.TreeleafProto.LoginResult value) {
+        copyOnWrite();
+        instance.setLoginResult(value);
+        return this;
         }
+      /**
+       * <code>optional .treeleaf.entities.LoginResult loginResult = 8;</code>
+       */
+      public Builder setLoginResult(
+          com.treeleaf.suchi.entities.TreeleafProto.LoginResult.Builder builderForValue) {
+        copyOnWrite();
+        instance.setLoginResult(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.entities.LoginResult loginResult = 8;</code>
+       */
+      public Builder mergeLoginResult(com.treeleaf.suchi.entities.TreeleafProto.LoginResult value) {
+        copyOnWrite();
+        instance.mergeLoginResult(value);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.entities.LoginResult loginResult = 8;</code>
+       */
+      public Builder clearLoginResult() {  copyOnWrite();
+        instance.clearLoginResult();
+        return this;
+      }
 
-        /**
-         * <code>optional bool error = 1;</code>
-         */
-        private void clearError() {
-
-            error_ = false;
+      /**
+       * <code>optional .treeleaf.entities.AuthResponse authResponse = 9;</code>
+       */
+      public boolean hasAuthResponse() {
+        return instance.hasAuthResponse();
+      }
+      /**
+       * <code>optional .treeleaf.entities.AuthResponse authResponse = 9;</code>
+       */
+      public com.treeleaf.suchi.entities.TreeleafProto.AuthResponse getAuthResponse() {
+        return instance.getAuthResponse();
+      }
+      /**
+       * <code>optional .treeleaf.entities.AuthResponse authResponse = 9;</code>
+       */
+      public Builder setAuthResponse(com.treeleaf.suchi.entities.TreeleafProto.AuthResponse value) {
+        copyOnWrite();
+        instance.setAuthResponse(value);
+        return this;
         }
+      /**
+       * <code>optional .treeleaf.entities.AuthResponse authResponse = 9;</code>
+       */
+      public Builder setAuthResponse(
+          com.treeleaf.suchi.entities.TreeleafProto.AuthResponse.Builder builderForValue) {
+        copyOnWrite();
+        instance.setAuthResponse(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.entities.AuthResponse authResponse = 9;</code>
+       */
+      public Builder mergeAuthResponse(com.treeleaf.suchi.entities.TreeleafProto.AuthResponse value) {
+        copyOnWrite();
+        instance.mergeAuthResponse(value);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.entities.AuthResponse authResponse = 9;</code>
+       */
+      public Builder clearAuthResponse() {  copyOnWrite();
+        instance.clearAuthResponse();
+        return this;
+      }
 
-        public static final int MSG_FIELD_NUMBER = 2;
-        private String msg_;
-
-        /**
-         * <code>optional string msg = 2;</code>
-         */
-        public String getMsg() {
-            return msg_;
+      /**
+       * <code>optional .treeleaf.entities.Authorization authorization = 10;</code>
+       */
+      public boolean hasAuthorization() {
+        return instance.hasAuthorization();
+      }
+      /**
+       * <code>optional .treeleaf.entities.Authorization authorization = 10;</code>
+       */
+      public com.treeleaf.suchi.entities.TreeleafProto.Authorization getAuthorization() {
+        return instance.getAuthorization();
+      }
+      /**
+       * <code>optional .treeleaf.entities.Authorization authorization = 10;</code>
+       */
+      public Builder setAuthorization(com.treeleaf.suchi.entities.TreeleafProto.Authorization value) {
+        copyOnWrite();
+        instance.setAuthorization(value);
+        return this;
         }
+      /**
+       * <code>optional .treeleaf.entities.Authorization authorization = 10;</code>
+       */
+      public Builder setAuthorization(
+          com.treeleaf.suchi.entities.TreeleafProto.Authorization.Builder builderForValue) {
+        copyOnWrite();
+        instance.setAuthorization(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.entities.Authorization authorization = 10;</code>
+       */
+      public Builder mergeAuthorization(com.treeleaf.suchi.entities.TreeleafProto.Authorization value) {
+        copyOnWrite();
+        instance.mergeAuthorization(value);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.entities.Authorization authorization = 10;</code>
+       */
+      public Builder clearAuthorization() {  copyOnWrite();
+        instance.clearAuthorization();
+        return this;
+      }
 
-        /**
-         * <code>optional string msg = 2;</code>
-         */
-        public com.google.protobuf.ByteString
-        getMsgBytes() {
-            return com.google.protobuf.ByteString.copyFromUtf8(msg_);
+      /**
+       * <code>optional .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnit = 11;</code>
+       */
+      public boolean hasStockKeepingUnit() {
+        return instance.hasStockKeepingUnit();
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnit = 11;</code>
+       */
+      public com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit getStockKeepingUnit() {
+        return instance.getStockKeepingUnit();
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnit = 11;</code>
+       */
+      public Builder setStockKeepingUnit(com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit value) {
+        copyOnWrite();
+        instance.setStockKeepingUnit(value);
+        return this;
         }
+      /**
+       * <code>optional .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnit = 11;</code>
+       */
+      public Builder setStockKeepingUnit(
+          com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit.Builder builderForValue) {
+        copyOnWrite();
+        instance.setStockKeepingUnit(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnit = 11;</code>
+       */
+      public Builder mergeStockKeepingUnit(com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit value) {
+        copyOnWrite();
+        instance.mergeStockKeepingUnit(value);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnit = 11;</code>
+       */
+      public Builder clearStockKeepingUnit() {  copyOnWrite();
+        instance.clearStockKeepingUnit();
+        return this;
+      }
 
-        /**
-         * <code>optional string msg = 2;</code>
-         */
-        private void setMsg(
-                String value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
+       */
+      public java.util.List<com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit> getStockKeepingUnitsList() {
+        return java.util.Collections.unmodifiableList(
+            instance.getStockKeepingUnitsList());
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
+       */
+      public int getStockKeepingUnitsCount() {
+        return instance.getStockKeepingUnitsCount();
+      }/**
+       * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
+       */
+      public com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit getStockKeepingUnits(int index) {
+        return instance.getStockKeepingUnits(index);
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
+       */
+      public Builder setStockKeepingUnits(
+          int index, com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit value) {
+        copyOnWrite();
+        instance.setStockKeepingUnits(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
+       */
+      public Builder setStockKeepingUnits(
+          int index, com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit.Builder builderForValue) {
+        copyOnWrite();
+        instance.setStockKeepingUnits(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
+       */
+      public Builder addStockKeepingUnits(com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit value) {
+        copyOnWrite();
+        instance.addStockKeepingUnits(value);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
+       */
+      public Builder addStockKeepingUnits(
+          int index, com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit value) {
+        copyOnWrite();
+        instance.addStockKeepingUnits(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
+       */
+      public Builder addStockKeepingUnits(
+          com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit.Builder builderForValue) {
+        copyOnWrite();
+        instance.addStockKeepingUnits(builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
+       */
+      public Builder addStockKeepingUnits(
+          int index, com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit.Builder builderForValue) {
+        copyOnWrite();
+        instance.addStockKeepingUnits(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
+       */
+      public Builder addAllStockKeepingUnits(
+          Iterable<? extends com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit> values) {
+        copyOnWrite();
+        instance.addAllStockKeepingUnits(values);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
+       */
+      public Builder clearStockKeepingUnits() {
+        copyOnWrite();
+        instance.clearStockKeepingUnits();
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
+       */
+      public Builder removeStockKeepingUnits(int index) {
+        copyOnWrite();
+        instance.removeStockKeepingUnits(index);
+        return this;
+      }
 
-            msg_ = value;
+      /**
+       * <code>optional .treeleaf.suchi.entities.Inventory inventory = 13;</code>
+       */
+      public boolean hasInventory() {
+        return instance.hasInventory();
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.Inventory inventory = 13;</code>
+       */
+      public com.treeleaf.suchi.entities.SuchiProto.Inventory getInventory() {
+        return instance.getInventory();
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.Inventory inventory = 13;</code>
+       */
+      public Builder setInventory(com.treeleaf.suchi.entities.SuchiProto.Inventory value) {
+        copyOnWrite();
+        instance.setInventory(value);
+        return this;
         }
+      /**
+       * <code>optional .treeleaf.suchi.entities.Inventory inventory = 13;</code>
+       */
+      public Builder setInventory(
+          com.treeleaf.suchi.entities.SuchiProto.Inventory.Builder builderForValue) {
+        copyOnWrite();
+        instance.setInventory(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.Inventory inventory = 13;</code>
+       */
+      public Builder mergeInventory(com.treeleaf.suchi.entities.SuchiProto.Inventory value) {
+        copyOnWrite();
+        instance.mergeInventory(value);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.Inventory inventory = 13;</code>
+       */
+      public Builder clearInventory() {  copyOnWrite();
+        instance.clearInventory();
+        return this;
+      }
 
-        /**
-         * <code>optional string msg = 2;</code>
-         */
-        private void clearMsg() {
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 14;</code>
+       */
+      public java.util.List<com.treeleaf.suchi.entities.SuchiProto.Inventory> getInventoriesList() {
+        return java.util.Collections.unmodifiableList(
+            instance.getInventoriesList());
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 14;</code>
+       */
+      public int getInventoriesCount() {
+        return instance.getInventoriesCount();
+      }/**
+       * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 14;</code>
+       */
+      public com.treeleaf.suchi.entities.SuchiProto.Inventory getInventories(int index) {
+        return instance.getInventories(index);
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 14;</code>
+       */
+      public Builder setInventories(
+          int index, com.treeleaf.suchi.entities.SuchiProto.Inventory value) {
+        copyOnWrite();
+        instance.setInventories(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 14;</code>
+       */
+      public Builder setInventories(
+          int index, com.treeleaf.suchi.entities.SuchiProto.Inventory.Builder builderForValue) {
+        copyOnWrite();
+        instance.setInventories(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 14;</code>
+       */
+      public Builder addInventories(com.treeleaf.suchi.entities.SuchiProto.Inventory value) {
+        copyOnWrite();
+        instance.addInventories(value);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 14;</code>
+       */
+      public Builder addInventories(
+          int index, com.treeleaf.suchi.entities.SuchiProto.Inventory value) {
+        copyOnWrite();
+        instance.addInventories(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 14;</code>
+       */
+      public Builder addInventories(
+          com.treeleaf.suchi.entities.SuchiProto.Inventory.Builder builderForValue) {
+        copyOnWrite();
+        instance.addInventories(builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 14;</code>
+       */
+      public Builder addInventories(
+          int index, com.treeleaf.suchi.entities.SuchiProto.Inventory.Builder builderForValue) {
+        copyOnWrite();
+        instance.addInventories(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 14;</code>
+       */
+      public Builder addAllInventories(
+          Iterable<? extends com.treeleaf.suchi.entities.SuchiProto.Inventory> values) {
+        copyOnWrite();
+        instance.addAllInventories(values);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 14;</code>
+       */
+      public Builder clearInventories() {
+        copyOnWrite();
+        instance.clearInventories();
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 14;</code>
+       */
+      public Builder removeInventories(int index) {
+        copyOnWrite();
+        instance.removeInventories(index);
+        return this;
+      }
 
-            msg_ = getDefaultInstance().getMsg();
+      /**
+       * <code>optional .treeleaf.suchi.entities.Brand brand = 15;</code>
+       */
+      public boolean hasBrand() {
+        return instance.hasBrand();
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.Brand brand = 15;</code>
+       */
+      public com.treeleaf.suchi.entities.SuchiProto.Brand getBrand() {
+        return instance.getBrand();
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.Brand brand = 15;</code>
+       */
+      public Builder setBrand(com.treeleaf.suchi.entities.SuchiProto.Brand value) {
+        copyOnWrite();
+        instance.setBrand(value);
+        return this;
         }
+      /**
+       * <code>optional .treeleaf.suchi.entities.Brand brand = 15;</code>
+       */
+      public Builder setBrand(
+          com.treeleaf.suchi.entities.SuchiProto.Brand.Builder builderForValue) {
+        copyOnWrite();
+        instance.setBrand(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.Brand brand = 15;</code>
+       */
+      public Builder mergeBrand(com.treeleaf.suchi.entities.SuchiProto.Brand value) {
+        copyOnWrite();
+        instance.mergeBrand(value);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.Brand brand = 15;</code>
+       */
+      public Builder clearBrand() {  copyOnWrite();
+        instance.clearBrand();
+        return this;
+      }
 
-        /**
-         * <code>optional string msg = 2;</code>
-         */
-        private void setMsgBytes(
-                com.google.protobuf.ByteString value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            checkByteStringIsUtf8(value);
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Brand brands = 16;</code>
+       */
+      public java.util.List<com.treeleaf.suchi.entities.SuchiProto.Brand> getBrandsList() {
+        return java.util.Collections.unmodifiableList(
+            instance.getBrandsList());
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Brand brands = 16;</code>
+       */
+      public int getBrandsCount() {
+        return instance.getBrandsCount();
+      }/**
+       * <code>repeated .treeleaf.suchi.entities.Brand brands = 16;</code>
+       */
+      public com.treeleaf.suchi.entities.SuchiProto.Brand getBrands(int index) {
+        return instance.getBrands(index);
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Brand brands = 16;</code>
+       */
+      public Builder setBrands(
+          int index, com.treeleaf.suchi.entities.SuchiProto.Brand value) {
+        copyOnWrite();
+        instance.setBrands(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Brand brands = 16;</code>
+       */
+      public Builder setBrands(
+          int index, com.treeleaf.suchi.entities.SuchiProto.Brand.Builder builderForValue) {
+        copyOnWrite();
+        instance.setBrands(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Brand brands = 16;</code>
+       */
+      public Builder addBrands(com.treeleaf.suchi.entities.SuchiProto.Brand value) {
+        copyOnWrite();
+        instance.addBrands(value);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Brand brands = 16;</code>
+       */
+      public Builder addBrands(
+          int index, com.treeleaf.suchi.entities.SuchiProto.Brand value) {
+        copyOnWrite();
+        instance.addBrands(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Brand brands = 16;</code>
+       */
+      public Builder addBrands(
+          com.treeleaf.suchi.entities.SuchiProto.Brand.Builder builderForValue) {
+        copyOnWrite();
+        instance.addBrands(builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Brand brands = 16;</code>
+       */
+      public Builder addBrands(
+          int index, com.treeleaf.suchi.entities.SuchiProto.Brand.Builder builderForValue) {
+        copyOnWrite();
+        instance.addBrands(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Brand brands = 16;</code>
+       */
+      public Builder addAllBrands(
+          Iterable<? extends com.treeleaf.suchi.entities.SuchiProto.Brand> values) {
+        copyOnWrite();
+        instance.addAllBrands(values);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Brand brands = 16;</code>
+       */
+      public Builder clearBrands() {
+        copyOnWrite();
+        instance.clearBrands();
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Brand brands = 16;</code>
+       */
+      public Builder removeBrands(int index) {
+        copyOnWrite();
+        instance.removeBrands(index);
+        return this;
+      }
 
-            msg_ = value.toStringUtf8();
+      /**
+       * <code>optional .treeleaf.suchi.entities.SubBrand subBrand = 17;</code>
+       */
+      public boolean hasSubBrand() {
+        return instance.hasSubBrand();
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.SubBrand subBrand = 17;</code>
+       */
+      public com.treeleaf.suchi.entities.SuchiProto.SubBrand getSubBrand() {
+        return instance.getSubBrand();
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.SubBrand subBrand = 17;</code>
+       */
+      public Builder setSubBrand(com.treeleaf.suchi.entities.SuchiProto.SubBrand value) {
+        copyOnWrite();
+        instance.setSubBrand(value);
+        return this;
         }
+      /**
+       * <code>optional .treeleaf.suchi.entities.SubBrand subBrand = 17;</code>
+       */
+      public Builder setSubBrand(
+          com.treeleaf.suchi.entities.SuchiProto.SubBrand.Builder builderForValue) {
+        copyOnWrite();
+        instance.setSubBrand(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.SubBrand subBrand = 17;</code>
+       */
+      public Builder mergeSubBrand(com.treeleaf.suchi.entities.SuchiProto.SubBrand value) {
+        copyOnWrite();
+        instance.mergeSubBrand(value);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.SubBrand subBrand = 17;</code>
+       */
+      public Builder clearSubBrand() {  copyOnWrite();
+        instance.clearSubBrand();
+        return this;
+      }
 
-        public static final int ERRORCODE_FIELD_NUMBER = 3;
-        private int errorCode_;
+      /**
+       * <code>repeated .treeleaf.suchi.entities.SubBrand subBrands = 18;</code>
+       */
+      public java.util.List<com.treeleaf.suchi.entities.SuchiProto.SubBrand> getSubBrandsList() {
+        return java.util.Collections.unmodifiableList(
+            instance.getSubBrandsList());
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.SubBrand subBrands = 18;</code>
+       */
+      public int getSubBrandsCount() {
+        return instance.getSubBrandsCount();
+      }/**
+       * <code>repeated .treeleaf.suchi.entities.SubBrand subBrands = 18;</code>
+       */
+      public com.treeleaf.suchi.entities.SuchiProto.SubBrand getSubBrands(int index) {
+        return instance.getSubBrands(index);
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.SubBrand subBrands = 18;</code>
+       */
+      public Builder setSubBrands(
+          int index, com.treeleaf.suchi.entities.SuchiProto.SubBrand value) {
+        copyOnWrite();
+        instance.setSubBrands(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.SubBrand subBrands = 18;</code>
+       */
+      public Builder setSubBrands(
+          int index, com.treeleaf.suchi.entities.SuchiProto.SubBrand.Builder builderForValue) {
+        copyOnWrite();
+        instance.setSubBrands(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.SubBrand subBrands = 18;</code>
+       */
+      public Builder addSubBrands(com.treeleaf.suchi.entities.SuchiProto.SubBrand value) {
+        copyOnWrite();
+        instance.addSubBrands(value);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.SubBrand subBrands = 18;</code>
+       */
+      public Builder addSubBrands(
+          int index, com.treeleaf.suchi.entities.SuchiProto.SubBrand value) {
+        copyOnWrite();
+        instance.addSubBrands(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.SubBrand subBrands = 18;</code>
+       */
+      public Builder addSubBrands(
+          com.treeleaf.suchi.entities.SuchiProto.SubBrand.Builder builderForValue) {
+        copyOnWrite();
+        instance.addSubBrands(builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.SubBrand subBrands = 18;</code>
+       */
+      public Builder addSubBrands(
+          int index, com.treeleaf.suchi.entities.SuchiProto.SubBrand.Builder builderForValue) {
+        copyOnWrite();
+        instance.addSubBrands(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.SubBrand subBrands = 18;</code>
+       */
+      public Builder addAllSubBrands(
+          Iterable<? extends com.treeleaf.suchi.entities.SuchiProto.SubBrand> values) {
+        copyOnWrite();
+        instance.addAllSubBrands(values);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.SubBrand subBrands = 18;</code>
+       */
+      public Builder clearSubBrands() {
+        copyOnWrite();
+        instance.clearSubBrands();
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.SubBrand subBrands = 18;</code>
+       */
+      public Builder removeSubBrands(int index) {
+        copyOnWrite();
+        instance.removeSubBrands(index);
+        return this;
+      }
 
-        /**
-         * <code>optional .treeleaf.entities.ErrorCode errorCode = 3;</code>
-         */
-        public int getErrorCodeValue() {
-            return errorCode_;
+      /**
+       * <code>optional .treeleaf.suchi.entities.Unit unit = 19;</code>
+       */
+      public boolean hasUnit() {
+        return instance.hasUnit();
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.Unit unit = 19;</code>
+       */
+      public com.treeleaf.suchi.entities.SuchiProto.Unit getUnit() {
+        return instance.getUnit();
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.Unit unit = 19;</code>
+       */
+      public Builder setUnit(com.treeleaf.suchi.entities.SuchiProto.Unit value) {
+        copyOnWrite();
+        instance.setUnit(value);
+        return this;
         }
+      /**
+       * <code>optional .treeleaf.suchi.entities.Unit unit = 19;</code>
+       */
+      public Builder setUnit(
+          com.treeleaf.suchi.entities.SuchiProto.Unit.Builder builderForValue) {
+        copyOnWrite();
+        instance.setUnit(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.Unit unit = 19;</code>
+       */
+      public Builder mergeUnit(com.treeleaf.suchi.entities.SuchiProto.Unit value) {
+        copyOnWrite();
+        instance.mergeUnit(value);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.Unit unit = 19;</code>
+       */
+      public Builder clearUnit() {  copyOnWrite();
+        instance.clearUnit();
+        return this;
+      }
 
-        /**
-         * <code>optional .treeleaf.entities.ErrorCode errorCode = 3;</code>
-         */
-        public com.treeleaf.suchi.entities.TreeleafProto.ErrorCode getErrorCode() {
-            com.treeleaf.suchi.entities.TreeleafProto.ErrorCode result = com.treeleaf.suchi.entities.TreeleafProto.ErrorCode.forNumber(errorCode_);
-            return result == null ? com.treeleaf.suchi.entities.TreeleafProto.ErrorCode.UNRECOGNIZED : result;
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Unit units = 20;</code>
+       */
+      public java.util.List<com.treeleaf.suchi.entities.SuchiProto.Unit> getUnitsList() {
+        return java.util.Collections.unmodifiableList(
+            instance.getUnitsList());
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Unit units = 20;</code>
+       */
+      public int getUnitsCount() {
+        return instance.getUnitsCount();
+      }/**
+       * <code>repeated .treeleaf.suchi.entities.Unit units = 20;</code>
+       */
+      public com.treeleaf.suchi.entities.SuchiProto.Unit getUnits(int index) {
+        return instance.getUnits(index);
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Unit units = 20;</code>
+       */
+      public Builder setUnits(
+          int index, com.treeleaf.suchi.entities.SuchiProto.Unit value) {
+        copyOnWrite();
+        instance.setUnits(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Unit units = 20;</code>
+       */
+      public Builder setUnits(
+          int index, com.treeleaf.suchi.entities.SuchiProto.Unit.Builder builderForValue) {
+        copyOnWrite();
+        instance.setUnits(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Unit units = 20;</code>
+       */
+      public Builder addUnits(com.treeleaf.suchi.entities.SuchiProto.Unit value) {
+        copyOnWrite();
+        instance.addUnits(value);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Unit units = 20;</code>
+       */
+      public Builder addUnits(
+          int index, com.treeleaf.suchi.entities.SuchiProto.Unit value) {
+        copyOnWrite();
+        instance.addUnits(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Unit units = 20;</code>
+       */
+      public Builder addUnits(
+          com.treeleaf.suchi.entities.SuchiProto.Unit.Builder builderForValue) {
+        copyOnWrite();
+        instance.addUnits(builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Unit units = 20;</code>
+       */
+      public Builder addUnits(
+          int index, com.treeleaf.suchi.entities.SuchiProto.Unit.Builder builderForValue) {
+        copyOnWrite();
+        instance.addUnits(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Unit units = 20;</code>
+       */
+      public Builder addAllUnits(
+          Iterable<? extends com.treeleaf.suchi.entities.SuchiProto.Unit> values) {
+        copyOnWrite();
+        instance.addAllUnits(values);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Unit units = 20;</code>
+       */
+      public Builder clearUnits() {
+        copyOnWrite();
+        instance.clearUnits();
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Unit units = 20;</code>
+       */
+      public Builder removeUnits(int index) {
+        copyOnWrite();
+        instance.removeUnits(index);
+        return this;
+      }
+
+      /**
+       * <code>optional .treeleaf.suchi.entities.Category category = 21;</code>
+       */
+      public boolean hasCategory() {
+        return instance.hasCategory();
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.Category category = 21;</code>
+       */
+      public com.treeleaf.suchi.entities.SuchiProto.Category getCategory() {
+        return instance.getCategory();
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.Category category = 21;</code>
+       */
+      public Builder setCategory(com.treeleaf.suchi.entities.SuchiProto.Category value) {
+        copyOnWrite();
+        instance.setCategory(value);
+        return this;
         }
+      /**
+       * <code>optional .treeleaf.suchi.entities.Category category = 21;</code>
+       */
+      public Builder setCategory(
+          com.treeleaf.suchi.entities.SuchiProto.Category.Builder builderForValue) {
+        copyOnWrite();
+        instance.setCategory(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.Category category = 21;</code>
+       */
+      public Builder mergeCategory(com.treeleaf.suchi.entities.SuchiProto.Category value) {
+        copyOnWrite();
+        instance.mergeCategory(value);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.Category category = 21;</code>
+       */
+      public Builder clearCategory() {  copyOnWrite();
+        instance.clearCategory();
+        return this;
+      }
 
-        /**
-         * <code>optional .treeleaf.entities.ErrorCode errorCode = 3;</code>
-         */
-        private void setErrorCodeValue(int value) {
-            errorCode_ = value;
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Category categories = 22;</code>
+       */
+      public java.util.List<com.treeleaf.suchi.entities.SuchiProto.Category> getCategoriesList() {
+        return java.util.Collections.unmodifiableList(
+            instance.getCategoriesList());
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Category categories = 22;</code>
+       */
+      public int getCategoriesCount() {
+        return instance.getCategoriesCount();
+      }/**
+       * <code>repeated .treeleaf.suchi.entities.Category categories = 22;</code>
+       */
+      public com.treeleaf.suchi.entities.SuchiProto.Category getCategories(int index) {
+        return instance.getCategories(index);
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Category categories = 22;</code>
+       */
+      public Builder setCategories(
+          int index, com.treeleaf.suchi.entities.SuchiProto.Category value) {
+        copyOnWrite();
+        instance.setCategories(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Category categories = 22;</code>
+       */
+      public Builder setCategories(
+          int index, com.treeleaf.suchi.entities.SuchiProto.Category.Builder builderForValue) {
+        copyOnWrite();
+        instance.setCategories(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Category categories = 22;</code>
+       */
+      public Builder addCategories(com.treeleaf.suchi.entities.SuchiProto.Category value) {
+        copyOnWrite();
+        instance.addCategories(value);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Category categories = 22;</code>
+       */
+      public Builder addCategories(
+          int index, com.treeleaf.suchi.entities.SuchiProto.Category value) {
+        copyOnWrite();
+        instance.addCategories(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Category categories = 22;</code>
+       */
+      public Builder addCategories(
+          com.treeleaf.suchi.entities.SuchiProto.Category.Builder builderForValue) {
+        copyOnWrite();
+        instance.addCategories(builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Category categories = 22;</code>
+       */
+      public Builder addCategories(
+          int index, com.treeleaf.suchi.entities.SuchiProto.Category.Builder builderForValue) {
+        copyOnWrite();
+        instance.addCategories(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Category categories = 22;</code>
+       */
+      public Builder addAllCategories(
+          Iterable<? extends com.treeleaf.suchi.entities.SuchiProto.Category> values) {
+        copyOnWrite();
+        instance.addAllCategories(values);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Category categories = 22;</code>
+       */
+      public Builder clearCategories() {
+        copyOnWrite();
+        instance.clearCategories();
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Category categories = 22;</code>
+       */
+      public Builder removeCategories(int index) {
+        copyOnWrite();
+        instance.removeCategories(index);
+        return this;
+      }
+
+      /**
+       * <code>optional .treeleaf.suchi.entities.Creditor creditor = 23;</code>
+       */
+      public boolean hasCreditor() {
+        return instance.hasCreditor();
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.Creditor creditor = 23;</code>
+       */
+      public com.treeleaf.suchi.entities.SuchiProto.Creditor getCreditor() {
+        return instance.getCreditor();
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.Creditor creditor = 23;</code>
+       */
+      public Builder setCreditor(com.treeleaf.suchi.entities.SuchiProto.Creditor value) {
+        copyOnWrite();
+        instance.setCreditor(value);
+        return this;
         }
+      /**
+       * <code>optional .treeleaf.suchi.entities.Creditor creditor = 23;</code>
+       */
+      public Builder setCreditor(
+          com.treeleaf.suchi.entities.SuchiProto.Creditor.Builder builderForValue) {
+        copyOnWrite();
+        instance.setCreditor(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.Creditor creditor = 23;</code>
+       */
+      public Builder mergeCreditor(com.treeleaf.suchi.entities.SuchiProto.Creditor value) {
+        copyOnWrite();
+        instance.mergeCreditor(value);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.Creditor creditor = 23;</code>
+       */
+      public Builder clearCreditor() {  copyOnWrite();
+        instance.clearCreditor();
+        return this;
+      }
 
-        /**
-         * <code>optional .treeleaf.entities.ErrorCode errorCode = 3;</code>
-         */
-        private void setErrorCode(com.treeleaf.suchi.entities.TreeleafProto.ErrorCode value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 24;</code>
+       */
+      public java.util.List<com.treeleaf.suchi.entities.SuchiProto.Creditor> getCreditorsList() {
+        return java.util.Collections.unmodifiableList(
+            instance.getCreditorsList());
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 24;</code>
+       */
+      public int getCreditorsCount() {
+        return instance.getCreditorsCount();
+      }/**
+       * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 24;</code>
+       */
+      public com.treeleaf.suchi.entities.SuchiProto.Creditor getCreditors(int index) {
+        return instance.getCreditors(index);
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 24;</code>
+       */
+      public Builder setCreditors(
+          int index, com.treeleaf.suchi.entities.SuchiProto.Creditor value) {
+        copyOnWrite();
+        instance.setCreditors(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 24;</code>
+       */
+      public Builder setCreditors(
+          int index, com.treeleaf.suchi.entities.SuchiProto.Creditor.Builder builderForValue) {
+        copyOnWrite();
+        instance.setCreditors(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 24;</code>
+       */
+      public Builder addCreditors(com.treeleaf.suchi.entities.SuchiProto.Creditor value) {
+        copyOnWrite();
+        instance.addCreditors(value);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 24;</code>
+       */
+      public Builder addCreditors(
+          int index, com.treeleaf.suchi.entities.SuchiProto.Creditor value) {
+        copyOnWrite();
+        instance.addCreditors(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 24;</code>
+       */
+      public Builder addCreditors(
+          com.treeleaf.suchi.entities.SuchiProto.Creditor.Builder builderForValue) {
+        copyOnWrite();
+        instance.addCreditors(builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 24;</code>
+       */
+      public Builder addCreditors(
+          int index, com.treeleaf.suchi.entities.SuchiProto.Creditor.Builder builderForValue) {
+        copyOnWrite();
+        instance.addCreditors(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 24;</code>
+       */
+      public Builder addAllCreditors(
+          Iterable<? extends com.treeleaf.suchi.entities.SuchiProto.Creditor> values) {
+        copyOnWrite();
+        instance.addAllCreditors(values);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 24;</code>
+       */
+      public Builder clearCreditors() {
+        copyOnWrite();
+        instance.clearCreditors();
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 24;</code>
+       */
+      public Builder removeCreditors(int index) {
+        copyOnWrite();
+        instance.removeCreditors(index);
+        return this;
+      }
 
-            errorCode_ = value.getNumber();
+      /**
+       * <code>optional .treeleaf.suchi.entities.CreditDetail creditDetail = 25;</code>
+       */
+      public boolean hasCreditDetail() {
+        return instance.hasCreditDetail();
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.CreditDetail creditDetail = 25;</code>
+       */
+      public com.treeleaf.suchi.entities.SuchiProto.CreditDetail getCreditDetail() {
+        return instance.getCreditDetail();
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.CreditDetail creditDetail = 25;</code>
+       */
+      public Builder setCreditDetail(com.treeleaf.suchi.entities.SuchiProto.CreditDetail value) {
+        copyOnWrite();
+        instance.setCreditDetail(value);
+        return this;
         }
+      /**
+       * <code>optional .treeleaf.suchi.entities.CreditDetail creditDetail = 25;</code>
+       */
+      public Builder setCreditDetail(
+          com.treeleaf.suchi.entities.SuchiProto.CreditDetail.Builder builderForValue) {
+        copyOnWrite();
+        instance.setCreditDetail(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.CreditDetail creditDetail = 25;</code>
+       */
+      public Builder mergeCreditDetail(com.treeleaf.suchi.entities.SuchiProto.CreditDetail value) {
+        copyOnWrite();
+        instance.mergeCreditDetail(value);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.CreditDetail creditDetail = 25;</code>
+       */
+      public Builder clearCreditDetail() {  copyOnWrite();
+        instance.clearCreditDetail();
+        return this;
+      }
 
-        /**
-         * <code>optional .treeleaf.entities.ErrorCode errorCode = 3;</code>
-         */
-        private void clearErrorCode() {
+      /**
+       * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 26;</code>
+       */
+      public java.util.List<com.treeleaf.suchi.entities.SuchiProto.CreditDetail> getCreditDetailsList() {
+        return java.util.Collections.unmodifiableList(
+            instance.getCreditDetailsList());
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 26;</code>
+       */
+      public int getCreditDetailsCount() {
+        return instance.getCreditDetailsCount();
+      }/**
+       * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 26;</code>
+       */
+      public com.treeleaf.suchi.entities.SuchiProto.CreditDetail getCreditDetails(int index) {
+        return instance.getCreditDetails(index);
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 26;</code>
+       */
+      public Builder setCreditDetails(
+          int index, com.treeleaf.suchi.entities.SuchiProto.CreditDetail value) {
+        copyOnWrite();
+        instance.setCreditDetails(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 26;</code>
+       */
+      public Builder setCreditDetails(
+          int index, com.treeleaf.suchi.entities.SuchiProto.CreditDetail.Builder builderForValue) {
+        copyOnWrite();
+        instance.setCreditDetails(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 26;</code>
+       */
+      public Builder addCreditDetails(com.treeleaf.suchi.entities.SuchiProto.CreditDetail value) {
+        copyOnWrite();
+        instance.addCreditDetails(value);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 26;</code>
+       */
+      public Builder addCreditDetails(
+          int index, com.treeleaf.suchi.entities.SuchiProto.CreditDetail value) {
+        copyOnWrite();
+        instance.addCreditDetails(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 26;</code>
+       */
+      public Builder addCreditDetails(
+          com.treeleaf.suchi.entities.SuchiProto.CreditDetail.Builder builderForValue) {
+        copyOnWrite();
+        instance.addCreditDetails(builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 26;</code>
+       */
+      public Builder addCreditDetails(
+          int index, com.treeleaf.suchi.entities.SuchiProto.CreditDetail.Builder builderForValue) {
+        copyOnWrite();
+        instance.addCreditDetails(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 26;</code>
+       */
+      public Builder addAllCreditDetails(
+          Iterable<? extends com.treeleaf.suchi.entities.SuchiProto.CreditDetail> values) {
+        copyOnWrite();
+        instance.addAllCreditDetails(values);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 26;</code>
+       */
+      public Builder clearCreditDetails() {
+        copyOnWrite();
+        instance.clearCreditDetails();
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 26;</code>
+       */
+      public Builder removeCreditDetails(int index) {
+        copyOnWrite();
+        instance.removeCreditDetails(index);
+        return this;
+      }
 
-            errorCode_ = 0;
+      /**
+       * <code>optional .treeleaf.suchi.entities.Sale sale = 27;</code>
+       */
+      public boolean hasSale() {
+        return instance.hasSale();
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.Sale sale = 27;</code>
+       */
+      public com.treeleaf.suchi.entities.SuchiProto.Sale getSale() {
+        return instance.getSale();
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.Sale sale = 27;</code>
+       */
+      public Builder setSale(com.treeleaf.suchi.entities.SuchiProto.Sale value) {
+        copyOnWrite();
+        instance.setSale(value);
+        return this;
         }
+      /**
+       * <code>optional .treeleaf.suchi.entities.Sale sale = 27;</code>
+       */
+      public Builder setSale(
+          com.treeleaf.suchi.entities.SuchiProto.Sale.Builder builderForValue) {
+        copyOnWrite();
+        instance.setSale(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.Sale sale = 27;</code>
+       */
+      public Builder mergeSale(com.treeleaf.suchi.entities.SuchiProto.Sale value) {
+        copyOnWrite();
+        instance.mergeSale(value);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.Sale sale = 27;</code>
+       */
+      public Builder clearSale() {  copyOnWrite();
+        instance.clearSale();
+        return this;
+      }
 
-        public static final int SUCCESS_FIELD_NUMBER = 4;
-        private boolean success_;
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Sale sales = 28;</code>
+       */
+      public java.util.List<com.treeleaf.suchi.entities.SuchiProto.Sale> getSalesList() {
+        return java.util.Collections.unmodifiableList(
+            instance.getSalesList());
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Sale sales = 28;</code>
+       */
+      public int getSalesCount() {
+        return instance.getSalesCount();
+      }/**
+       * <code>repeated .treeleaf.suchi.entities.Sale sales = 28;</code>
+       */
+      public com.treeleaf.suchi.entities.SuchiProto.Sale getSales(int index) {
+        return instance.getSales(index);
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Sale sales = 28;</code>
+       */
+      public Builder setSales(
+          int index, com.treeleaf.suchi.entities.SuchiProto.Sale value) {
+        copyOnWrite();
+        instance.setSales(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Sale sales = 28;</code>
+       */
+      public Builder setSales(
+          int index, com.treeleaf.suchi.entities.SuchiProto.Sale.Builder builderForValue) {
+        copyOnWrite();
+        instance.setSales(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Sale sales = 28;</code>
+       */
+      public Builder addSales(com.treeleaf.suchi.entities.SuchiProto.Sale value) {
+        copyOnWrite();
+        instance.addSales(value);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Sale sales = 28;</code>
+       */
+      public Builder addSales(
+          int index, com.treeleaf.suchi.entities.SuchiProto.Sale value) {
+        copyOnWrite();
+        instance.addSales(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Sale sales = 28;</code>
+       */
+      public Builder addSales(
+          com.treeleaf.suchi.entities.SuchiProto.Sale.Builder builderForValue) {
+        copyOnWrite();
+        instance.addSales(builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Sale sales = 28;</code>
+       */
+      public Builder addSales(
+          int index, com.treeleaf.suchi.entities.SuchiProto.Sale.Builder builderForValue) {
+        copyOnWrite();
+        instance.addSales(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Sale sales = 28;</code>
+       */
+      public Builder addAllSales(
+          Iterable<? extends com.treeleaf.suchi.entities.SuchiProto.Sale> values) {
+        copyOnWrite();
+        instance.addAllSales(values);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Sale sales = 28;</code>
+       */
+      public Builder clearSales() {
+        copyOnWrite();
+        instance.clearSales();
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.Sale sales = 28;</code>
+       */
+      public Builder removeSales(int index) {
+        copyOnWrite();
+        instance.removeSales(index);
+        return this;
+      }
 
-        /**
-         * <code>optional bool success = 4;</code>
-         */
-        public boolean getSuccess() {
-            return success_;
+      /**
+       * <code>optional .treeleaf.suchi.entities.UnitConversion unitConversion = 29;</code>
+       */
+      public boolean hasUnitConversion() {
+        return instance.hasUnitConversion();
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.UnitConversion unitConversion = 29;</code>
+       */
+      public com.treeleaf.suchi.entities.SuchiProto.UnitConversion getUnitConversion() {
+        return instance.getUnitConversion();
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.UnitConversion unitConversion = 29;</code>
+       */
+      public Builder setUnitConversion(com.treeleaf.suchi.entities.SuchiProto.UnitConversion value) {
+        copyOnWrite();
+        instance.setUnitConversion(value);
+        return this;
         }
+      /**
+       * <code>optional .treeleaf.suchi.entities.UnitConversion unitConversion = 29;</code>
+       */
+      public Builder setUnitConversion(
+          com.treeleaf.suchi.entities.SuchiProto.UnitConversion.Builder builderForValue) {
+        copyOnWrite();
+        instance.setUnitConversion(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.UnitConversion unitConversion = 29;</code>
+       */
+      public Builder mergeUnitConversion(com.treeleaf.suchi.entities.SuchiProto.UnitConversion value) {
+        copyOnWrite();
+        instance.mergeUnitConversion(value);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.UnitConversion unitConversion = 29;</code>
+       */
+      public Builder clearUnitConversion() {  copyOnWrite();
+        instance.clearUnitConversion();
+        return this;
+      }
 
-        /**
-         * <code>optional bool success = 4;</code>
-         */
-        private void setSuccess(boolean value) {
+      /**
+       * <code>repeated .treeleaf.suchi.entities.UnitConversion unitConversions = 30;</code>
+       */
+      public java.util.List<com.treeleaf.suchi.entities.SuchiProto.UnitConversion> getUnitConversionsList() {
+        return java.util.Collections.unmodifiableList(
+            instance.getUnitConversionsList());
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.UnitConversion unitConversions = 30;</code>
+       */
+      public int getUnitConversionsCount() {
+        return instance.getUnitConversionsCount();
+      }/**
+       * <code>repeated .treeleaf.suchi.entities.UnitConversion unitConversions = 30;</code>
+       */
+      public com.treeleaf.suchi.entities.SuchiProto.UnitConversion getUnitConversions(int index) {
+        return instance.getUnitConversions(index);
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.UnitConversion unitConversions = 30;</code>
+       */
+      public Builder setUnitConversions(
+          int index, com.treeleaf.suchi.entities.SuchiProto.UnitConversion value) {
+        copyOnWrite();
+        instance.setUnitConversions(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.UnitConversion unitConversions = 30;</code>
+       */
+      public Builder setUnitConversions(
+          int index, com.treeleaf.suchi.entities.SuchiProto.UnitConversion.Builder builderForValue) {
+        copyOnWrite();
+        instance.setUnitConversions(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.UnitConversion unitConversions = 30;</code>
+       */
+      public Builder addUnitConversions(com.treeleaf.suchi.entities.SuchiProto.UnitConversion value) {
+        copyOnWrite();
+        instance.addUnitConversions(value);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.UnitConversion unitConversions = 30;</code>
+       */
+      public Builder addUnitConversions(
+          int index, com.treeleaf.suchi.entities.SuchiProto.UnitConversion value) {
+        copyOnWrite();
+        instance.addUnitConversions(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.UnitConversion unitConversions = 30;</code>
+       */
+      public Builder addUnitConversions(
+          com.treeleaf.suchi.entities.SuchiProto.UnitConversion.Builder builderForValue) {
+        copyOnWrite();
+        instance.addUnitConversions(builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.UnitConversion unitConversions = 30;</code>
+       */
+      public Builder addUnitConversions(
+          int index, com.treeleaf.suchi.entities.SuchiProto.UnitConversion.Builder builderForValue) {
+        copyOnWrite();
+        instance.addUnitConversions(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.UnitConversion unitConversions = 30;</code>
+       */
+      public Builder addAllUnitConversions(
+          Iterable<? extends com.treeleaf.suchi.entities.SuchiProto.UnitConversion> values) {
+        copyOnWrite();
+        instance.addAllUnitConversions(values);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.UnitConversion unitConversions = 30;</code>
+       */
+      public Builder clearUnitConversions() {
+        copyOnWrite();
+        instance.clearUnitConversions();
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.UnitConversion unitConversions = 30;</code>
+       */
+      public Builder removeUnitConversions(int index) {
+        copyOnWrite();
+        instance.removeUnitConversions(index);
+        return this;
+      }
 
-            success_ = value;
+      /**
+       * <code>optional .treeleaf.entities.LoginResponse loginResponse = 31;</code>
+       */
+      public boolean hasLoginResponse() {
+        return instance.hasLoginResponse();
+      }
+      /**
+       * <code>optional .treeleaf.entities.LoginResponse loginResponse = 31;</code>
+       */
+      public com.treeleaf.suchi.entities.TreeleafProto.LoginResponse getLoginResponse() {
+        return instance.getLoginResponse();
+      }
+      /**
+       * <code>optional .treeleaf.entities.LoginResponse loginResponse = 31;</code>
+       */
+      public Builder setLoginResponse(com.treeleaf.suchi.entities.TreeleafProto.LoginResponse value) {
+        copyOnWrite();
+        instance.setLoginResponse(value);
+        return this;
         }
+      /**
+       * <code>optional .treeleaf.entities.LoginResponse loginResponse = 31;</code>
+       */
+      public Builder setLoginResponse(
+          com.treeleaf.suchi.entities.TreeleafProto.LoginResponse.Builder builderForValue) {
+        copyOnWrite();
+        instance.setLoginResponse(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.entities.LoginResponse loginResponse = 31;</code>
+       */
+      public Builder mergeLoginResponse(com.treeleaf.suchi.entities.TreeleafProto.LoginResponse value) {
+        copyOnWrite();
+        instance.mergeLoginResponse(value);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.entities.LoginResponse loginResponse = 31;</code>
+       */
+      public Builder clearLoginResponse() {  copyOnWrite();
+        instance.clearLoginResponse();
+        return this;
+      }
 
-        /**
-         * <code>optional bool success = 4;</code>
-         */
-        private void clearSuccess() {
-
-            success_ = false;
+      /**
+       * <code>optional .treeleaf.suchi.entities.InventoryStock inventoryStock = 32;</code>
+       */
+      public boolean hasInventoryStock() {
+        return instance.hasInventoryStock();
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.InventoryStock inventoryStock = 32;</code>
+       */
+      public com.treeleaf.suchi.entities.SuchiProto.InventoryStock getInventoryStock() {
+        return instance.getInventoryStock();
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.InventoryStock inventoryStock = 32;</code>
+       */
+      public Builder setInventoryStock(com.treeleaf.suchi.entities.SuchiProto.InventoryStock value) {
+        copyOnWrite();
+        instance.setInventoryStock(value);
+        return this;
         }
+      /**
+       * <code>optional .treeleaf.suchi.entities.InventoryStock inventoryStock = 32;</code>
+       */
+      public Builder setInventoryStock(
+          com.treeleaf.suchi.entities.SuchiProto.InventoryStock.Builder builderForValue) {
+        copyOnWrite();
+        instance.setInventoryStock(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.InventoryStock inventoryStock = 32;</code>
+       */
+      public Builder mergeInventoryStock(com.treeleaf.suchi.entities.SuchiProto.InventoryStock value) {
+        copyOnWrite();
+        instance.mergeInventoryStock(value);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.InventoryStock inventoryStock = 32;</code>
+       */
+      public Builder clearInventoryStock() {  copyOnWrite();
+        instance.clearInventoryStock();
+        return this;
+      }
 
-        public static final int USER_FIELD_NUMBER = 5;
-        private com.treeleaf.suchi.entities.TreeleafProto.UserAccount user_;
+      /**
+       * <code>repeated .treeleaf.suchi.entities.InventoryStock inventoryStocks = 33;</code>
+       */
+      public java.util.List<com.treeleaf.suchi.entities.SuchiProto.InventoryStock> getInventoryStocksList() {
+        return java.util.Collections.unmodifiableList(
+            instance.getInventoryStocksList());
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.InventoryStock inventoryStocks = 33;</code>
+       */
+      public int getInventoryStocksCount() {
+        return instance.getInventoryStocksCount();
+      }/**
+       * <code>repeated .treeleaf.suchi.entities.InventoryStock inventoryStocks = 33;</code>
+       */
+      public com.treeleaf.suchi.entities.SuchiProto.InventoryStock getInventoryStocks(int index) {
+        return instance.getInventoryStocks(index);
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.InventoryStock inventoryStocks = 33;</code>
+       */
+      public Builder setInventoryStocks(
+          int index, com.treeleaf.suchi.entities.SuchiProto.InventoryStock value) {
+        copyOnWrite();
+        instance.setInventoryStocks(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.InventoryStock inventoryStocks = 33;</code>
+       */
+      public Builder setInventoryStocks(
+          int index, com.treeleaf.suchi.entities.SuchiProto.InventoryStock.Builder builderForValue) {
+        copyOnWrite();
+        instance.setInventoryStocks(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.InventoryStock inventoryStocks = 33;</code>
+       */
+      public Builder addInventoryStocks(com.treeleaf.suchi.entities.SuchiProto.InventoryStock value) {
+        copyOnWrite();
+        instance.addInventoryStocks(value);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.InventoryStock inventoryStocks = 33;</code>
+       */
+      public Builder addInventoryStocks(
+          int index, com.treeleaf.suchi.entities.SuchiProto.InventoryStock value) {
+        copyOnWrite();
+        instance.addInventoryStocks(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.InventoryStock inventoryStocks = 33;</code>
+       */
+      public Builder addInventoryStocks(
+          com.treeleaf.suchi.entities.SuchiProto.InventoryStock.Builder builderForValue) {
+        copyOnWrite();
+        instance.addInventoryStocks(builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.InventoryStock inventoryStocks = 33;</code>
+       */
+      public Builder addInventoryStocks(
+          int index, com.treeleaf.suchi.entities.SuchiProto.InventoryStock.Builder builderForValue) {
+        copyOnWrite();
+        instance.addInventoryStocks(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.InventoryStock inventoryStocks = 33;</code>
+       */
+      public Builder addAllInventoryStocks(
+          Iterable<? extends com.treeleaf.suchi.entities.SuchiProto.InventoryStock> values) {
+        copyOnWrite();
+        instance.addAllInventoryStocks(values);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.InventoryStock inventoryStocks = 33;</code>
+       */
+      public Builder clearInventoryStocks() {
+        copyOnWrite();
+        instance.clearInventoryStocks();
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.InventoryStock inventoryStocks = 33;</code>
+       */
+      public Builder removeInventoryStocks(int index) {
+        copyOnWrite();
+        instance.removeInventoryStocks(index);
+        return this;
+      }
 
-        /**
-         * <code>optional .treeleaf.entities.UserAccount user = 5;</code>
-         */
-        public boolean hasUser() {
-            return user_ != null;
+      /**
+       * <code>optional .treeleaf.suchi.entities.SuchiKey suchiKey = 34;</code>
+       */
+      public boolean hasSuchiKey() {
+        return instance.hasSuchiKey();
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.SuchiKey suchiKey = 34;</code>
+       */
+      public com.treeleaf.suchi.entities.SuchiProto.SuchiKey getSuchiKey() {
+        return instance.getSuchiKey();
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.SuchiKey suchiKey = 34;</code>
+       */
+      public Builder setSuchiKey(com.treeleaf.suchi.entities.SuchiProto.SuchiKey value) {
+        copyOnWrite();
+        instance.setSuchiKey(value);
+        return this;
         }
+      /**
+       * <code>optional .treeleaf.suchi.entities.SuchiKey suchiKey = 34;</code>
+       */
+      public Builder setSuchiKey(
+          com.treeleaf.suchi.entities.SuchiProto.SuchiKey.Builder builderForValue) {
+        copyOnWrite();
+        instance.setSuchiKey(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.SuchiKey suchiKey = 34;</code>
+       */
+      public Builder mergeSuchiKey(com.treeleaf.suchi.entities.SuchiProto.SuchiKey value) {
+        copyOnWrite();
+        instance.mergeSuchiKey(value);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.SuchiKey suchiKey = 34;</code>
+       */
+      public Builder clearSuchiKey() {  copyOnWrite();
+        instance.clearSuchiKey();
+        return this;
+      }
 
-        /**
-         * <code>optional .treeleaf.entities.UserAccount user = 5;</code>
-         */
-        public com.treeleaf.suchi.entities.TreeleafProto.UserAccount getUser() {
-            return user_ == null ? com.treeleaf.suchi.entities.TreeleafProto.UserAccount.getDefaultInstance() : user_;
+      /**
+       * <code>repeated .treeleaf.suchi.entities.SuchiKey suchiKeys = 35;</code>
+       */
+      public java.util.List<com.treeleaf.suchi.entities.SuchiProto.SuchiKey> getSuchiKeysList() {
+        return java.util.Collections.unmodifiableList(
+            instance.getSuchiKeysList());
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.SuchiKey suchiKeys = 35;</code>
+       */
+      public int getSuchiKeysCount() {
+        return instance.getSuchiKeysCount();
+      }/**
+       * <code>repeated .treeleaf.suchi.entities.SuchiKey suchiKeys = 35;</code>
+       */
+      public com.treeleaf.suchi.entities.SuchiProto.SuchiKey getSuchiKeys(int index) {
+        return instance.getSuchiKeys(index);
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.SuchiKey suchiKeys = 35;</code>
+       */
+      public Builder setSuchiKeys(
+          int index, com.treeleaf.suchi.entities.SuchiProto.SuchiKey value) {
+        copyOnWrite();
+        instance.setSuchiKeys(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.SuchiKey suchiKeys = 35;</code>
+       */
+      public Builder setSuchiKeys(
+          int index, com.treeleaf.suchi.entities.SuchiProto.SuchiKey.Builder builderForValue) {
+        copyOnWrite();
+        instance.setSuchiKeys(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.SuchiKey suchiKeys = 35;</code>
+       */
+      public Builder addSuchiKeys(com.treeleaf.suchi.entities.SuchiProto.SuchiKey value) {
+        copyOnWrite();
+        instance.addSuchiKeys(value);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.SuchiKey suchiKeys = 35;</code>
+       */
+      public Builder addSuchiKeys(
+          int index, com.treeleaf.suchi.entities.SuchiProto.SuchiKey value) {
+        copyOnWrite();
+        instance.addSuchiKeys(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.SuchiKey suchiKeys = 35;</code>
+       */
+      public Builder addSuchiKeys(
+          com.treeleaf.suchi.entities.SuchiProto.SuchiKey.Builder builderForValue) {
+        copyOnWrite();
+        instance.addSuchiKeys(builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.SuchiKey suchiKeys = 35;</code>
+       */
+      public Builder addSuchiKeys(
+          int index, com.treeleaf.suchi.entities.SuchiProto.SuchiKey.Builder builderForValue) {
+        copyOnWrite();
+        instance.addSuchiKeys(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.SuchiKey suchiKeys = 35;</code>
+       */
+      public Builder addAllSuchiKeys(
+          Iterable<? extends com.treeleaf.suchi.entities.SuchiProto.SuchiKey> values) {
+        copyOnWrite();
+        instance.addAllSuchiKeys(values);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.SuchiKey suchiKeys = 35;</code>
+       */
+      public Builder clearSuchiKeys() {
+        copyOnWrite();
+        instance.clearSuchiKeys();
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.SuchiKey suchiKeys = 35;</code>
+       */
+      public Builder removeSuchiKeys(int index) {
+        copyOnWrite();
+        instance.removeSuchiKeys(index);
+        return this;
+      }
+
+      /**
+       * <code>optional .treeleaf.suchi.entities.EsewaQuery esewaQuery = 36;</code>
+       */
+      public boolean hasEsewaQuery() {
+        return instance.hasEsewaQuery();
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.EsewaQuery esewaQuery = 36;</code>
+       */
+      public com.treeleaf.suchi.entities.SuchiProto.EsewaQuery getEsewaQuery() {
+        return instance.getEsewaQuery();
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.EsewaQuery esewaQuery = 36;</code>
+       */
+      public Builder setEsewaQuery(com.treeleaf.suchi.entities.SuchiProto.EsewaQuery value) {
+        copyOnWrite();
+        instance.setEsewaQuery(value);
+        return this;
         }
+      /**
+       * <code>optional .treeleaf.suchi.entities.EsewaQuery esewaQuery = 36;</code>
+       */
+      public Builder setEsewaQuery(
+          com.treeleaf.suchi.entities.SuchiProto.EsewaQuery.Builder builderForValue) {
+        copyOnWrite();
+        instance.setEsewaQuery(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.EsewaQuery esewaQuery = 36;</code>
+       */
+      public Builder mergeEsewaQuery(com.treeleaf.suchi.entities.SuchiProto.EsewaQuery value) {
+        copyOnWrite();
+        instance.mergeEsewaQuery(value);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.EsewaQuery esewaQuery = 36;</code>
+       */
+      public Builder clearEsewaQuery() {  copyOnWrite();
+        instance.clearEsewaQuery();
+        return this;
+      }
 
-        /**
-         * <code>optional .treeleaf.entities.UserAccount user = 5;</code>
-         */
-        private void setUser(com.treeleaf.suchi.entities.TreeleafProto.UserAccount value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            user_ = value;
-
+      /**
+       * <code>optional .treeleaf.suchi.entities.EsewaInquiryResponse esewaInquiryResponse = 37;</code>
+       */
+      public boolean hasEsewaInquiryResponse() {
+        return instance.hasEsewaInquiryResponse();
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.EsewaInquiryResponse esewaInquiryResponse = 37;</code>
+       */
+      public com.treeleaf.suchi.entities.SuchiProto.EsewaInquiryResponse getEsewaInquiryResponse() {
+        return instance.getEsewaInquiryResponse();
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.EsewaInquiryResponse esewaInquiryResponse = 37;</code>
+       */
+      public Builder setEsewaInquiryResponse(com.treeleaf.suchi.entities.SuchiProto.EsewaInquiryResponse value) {
+        copyOnWrite();
+        instance.setEsewaInquiryResponse(value);
+        return this;
         }
+      /**
+       * <code>optional .treeleaf.suchi.entities.EsewaInquiryResponse esewaInquiryResponse = 37;</code>
+       */
+      public Builder setEsewaInquiryResponse(
+          com.treeleaf.suchi.entities.SuchiProto.EsewaInquiryResponse.Builder builderForValue) {
+        copyOnWrite();
+        instance.setEsewaInquiryResponse(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.EsewaInquiryResponse esewaInquiryResponse = 37;</code>
+       */
+      public Builder mergeEsewaInquiryResponse(com.treeleaf.suchi.entities.SuchiProto.EsewaInquiryResponse value) {
+        copyOnWrite();
+        instance.mergeEsewaInquiryResponse(value);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.EsewaInquiryResponse esewaInquiryResponse = 37;</code>
+       */
+      public Builder clearEsewaInquiryResponse() {  copyOnWrite();
+        instance.clearEsewaInquiryResponse();
+        return this;
+      }
 
-        /**
-         * <code>optional .treeleaf.entities.UserAccount user = 5;</code>
-         */
-        private void setUser(
-                com.treeleaf.suchi.entities.TreeleafProto.UserAccount.Builder builderForValue) {
-            user_ = builderForValue.build();
-
+      /**
+       * <code>optional .treeleaf.suchi.entities.EsewaPaymentResponse esewaPaymentResponse = 38;</code>
+       */
+      public boolean hasEsewaPaymentResponse() {
+        return instance.hasEsewaPaymentResponse();
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.EsewaPaymentResponse esewaPaymentResponse = 38;</code>
+       */
+      public com.treeleaf.suchi.entities.SuchiProto.EsewaPaymentResponse getEsewaPaymentResponse() {
+        return instance.getEsewaPaymentResponse();
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.EsewaPaymentResponse esewaPaymentResponse = 38;</code>
+       */
+      public Builder setEsewaPaymentResponse(com.treeleaf.suchi.entities.SuchiProto.EsewaPaymentResponse value) {
+        copyOnWrite();
+        instance.setEsewaPaymentResponse(value);
+        return this;
         }
+      /**
+       * <code>optional .treeleaf.suchi.entities.EsewaPaymentResponse esewaPaymentResponse = 38;</code>
+       */
+      public Builder setEsewaPaymentResponse(
+          com.treeleaf.suchi.entities.SuchiProto.EsewaPaymentResponse.Builder builderForValue) {
+        copyOnWrite();
+        instance.setEsewaPaymentResponse(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.EsewaPaymentResponse esewaPaymentResponse = 38;</code>
+       */
+      public Builder mergeEsewaPaymentResponse(com.treeleaf.suchi.entities.SuchiProto.EsewaPaymentResponse value) {
+        copyOnWrite();
+        instance.mergeEsewaPaymentResponse(value);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.EsewaPaymentResponse esewaPaymentResponse = 38;</code>
+       */
+      public Builder clearEsewaPaymentResponse() {  copyOnWrite();
+        instance.clearEsewaPaymentResponse();
+        return this;
+      }
 
-        /**
-         * <code>optional .treeleaf.entities.UserAccount user = 5;</code>
-         */
-        private void mergeUser(com.treeleaf.suchi.entities.TreeleafProto.UserAccount value) {
-            if (user_ != null &&
-                    user_ != com.treeleaf.suchi.entities.TreeleafProto.UserAccount.getDefaultInstance()) {
-                user_ =
-                        com.treeleaf.suchi.entities.TreeleafProto.UserAccount.newBuilder(user_).mergeFrom(value).buildPartial();
-            } else {
-                user_ = value;
-            }
-
+      /**
+       * <code>optional .treeleaf.suchi.entities.AccessToken accessToken = 39;</code>
+       */
+      public boolean hasAccessToken() {
+        return instance.hasAccessToken();
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.AccessToken accessToken = 39;</code>
+       */
+      public com.treeleaf.suchi.entities.AccessProto.AccessToken getAccessToken() {
+        return instance.getAccessToken();
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.AccessToken accessToken = 39;</code>
+       */
+      public Builder setAccessToken(com.treeleaf.suchi.entities.AccessProto.AccessToken value) {
+        copyOnWrite();
+        instance.setAccessToken(value);
+        return this;
         }
+      /**
+       * <code>optional .treeleaf.suchi.entities.AccessToken accessToken = 39;</code>
+       */
+      public Builder setAccessToken(
+          com.treeleaf.suchi.entities.AccessProto.AccessToken.Builder builderForValue) {
+        copyOnWrite();
+        instance.setAccessToken(builderForValue);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.AccessToken accessToken = 39;</code>
+       */
+      public Builder mergeAccessToken(com.treeleaf.suchi.entities.AccessProto.AccessToken value) {
+        copyOnWrite();
+        instance.mergeAccessToken(value);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.AccessToken accessToken = 39;</code>
+       */
+      public Builder clearAccessToken() {  copyOnWrite();
+        instance.clearAccessToken();
+        return this;
+      }
 
-        /**
-         * <code>optional .treeleaf.entities.UserAccount user = 5;</code>
-         */
-        private void clearUser() {
-            user_ = null;
+      /**
+       * <code>repeated .treeleaf.suchi.entities.AccessToken accessTokens = 40;</code>
+       */
+      public java.util.List<com.treeleaf.suchi.entities.AccessProto.AccessToken> getAccessTokensList() {
+        return java.util.Collections.unmodifiableList(
+            instance.getAccessTokensList());
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.AccessToken accessTokens = 40;</code>
+       */
+      public int getAccessTokensCount() {
+        return instance.getAccessTokensCount();
+      }/**
+       * <code>repeated .treeleaf.suchi.entities.AccessToken accessTokens = 40;</code>
+       */
+      public com.treeleaf.suchi.entities.AccessProto.AccessToken getAccessTokens(int index) {
+        return instance.getAccessTokens(index);
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.AccessToken accessTokens = 40;</code>
+       */
+      public Builder setAccessTokens(
+          int index, com.treeleaf.suchi.entities.AccessProto.AccessToken value) {
+        copyOnWrite();
+        instance.setAccessTokens(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.AccessToken accessTokens = 40;</code>
+       */
+      public Builder setAccessTokens(
+          int index, com.treeleaf.suchi.entities.AccessProto.AccessToken.Builder builderForValue) {
+        copyOnWrite();
+        instance.setAccessTokens(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.AccessToken accessTokens = 40;</code>
+       */
+      public Builder addAccessTokens(com.treeleaf.suchi.entities.AccessProto.AccessToken value) {
+        copyOnWrite();
+        instance.addAccessTokens(value);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.AccessToken accessTokens = 40;</code>
+       */
+      public Builder addAccessTokens(
+          int index, com.treeleaf.suchi.entities.AccessProto.AccessToken value) {
+        copyOnWrite();
+        instance.addAccessTokens(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.AccessToken accessTokens = 40;</code>
+       */
+      public Builder addAccessTokens(
+          com.treeleaf.suchi.entities.AccessProto.AccessToken.Builder builderForValue) {
+        copyOnWrite();
+        instance.addAccessTokens(builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.AccessToken accessTokens = 40;</code>
+       */
+      public Builder addAccessTokens(
+          int index, com.treeleaf.suchi.entities.AccessProto.AccessToken.Builder builderForValue) {
+        copyOnWrite();
+        instance.addAccessTokens(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.AccessToken accessTokens = 40;</code>
+       */
+      public Builder addAllAccessTokens(
+          Iterable<? extends com.treeleaf.suchi.entities.AccessProto.AccessToken> values) {
+        copyOnWrite();
+        instance.addAllAccessTokens(values);
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.AccessToken accessTokens = 40;</code>
+       */
+      public Builder clearAccessTokens() {
+        copyOnWrite();
+        instance.clearAccessTokens();
+        return this;
+      }
+      /**
+       * <code>repeated .treeleaf.suchi.entities.AccessToken accessTokens = 40;</code>
+       */
+      public Builder removeAccessTokens(int index) {
+        copyOnWrite();
+        instance.removeAccessTokens(index);
+        return this;
+      }
 
+      // @@protoc_insertion_point(builder_scope:treeleaf.suchi.rpc.SuchiBaseResponse)
+    }
+    protected final Object dynamicMethod(
+        MethodToInvoke method,
+        Object arg0, Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new SuchiBaseResponse();
         }
-
-        public static final int USERS_FIELD_NUMBER = 6;
-        private com.google.protobuf.Internal.ProtobufList<com.treeleaf.suchi.entities.TreeleafProto.UserAccount> users_;
-
-        /**
-         * <code>repeated .treeleaf.entities.UserAccount users = 6;</code>
-         */
-        public java.util.List<com.treeleaf.suchi.entities.TreeleafProto.UserAccount> getUsersList() {
-            return users_;
+        case IS_INITIALIZED: {
+          return DEFAULT_INSTANCE;
         }
-
-        /**
-         * <code>repeated .treeleaf.entities.UserAccount users = 6;</code>
-         */
-        public java.util.List<? extends com.treeleaf.suchi.entities.TreeleafProto.UserAccountOrBuilder>
-        getUsersOrBuilderList() {
-            return users_;
+        case MAKE_IMMUTABLE: {
+          users_.makeImmutable();
+          stockKeepingUnits_.makeImmutable();
+          inventories_.makeImmutable();
+          brands_.makeImmutable();
+          subBrands_.makeImmutable();
+          units_.makeImmutable();
+          categories_.makeImmutable();
+          creditors_.makeImmutable();
+          creditDetails_.makeImmutable();
+          sales_.makeImmutable();
+          unitConversions_.makeImmutable();
+          inventoryStocks_.makeImmutable();
+          suchiKeys_.makeImmutable();
+          accessTokens_.makeImmutable();
+          return null;
         }
-
-        /**
-         * <code>repeated .treeleaf.entities.UserAccount users = 6;</code>
-         */
-        public int getUsersCount() {
-            return users_.size();
+        case NEW_BUILDER: {
+          return new Builder();
         }
-
-        /**
-         * <code>repeated .treeleaf.entities.UserAccount users = 6;</code>
-         */
-        public com.treeleaf.suchi.entities.TreeleafProto.UserAccount getUsers(int index) {
-            return users_.get(index);
+        case VISIT: {
+          Visitor visitor = (Visitor) arg0;
+          SuchiBaseResponse other = (SuchiBaseResponse) arg1;
+          error_ = visitor.visitBoolean(error_ != false, error_,
+              other.error_ != false, other.error_);
+          msg_ = visitor.visitString(!msg_.isEmpty(), msg_,
+              !other.msg_.isEmpty(), other.msg_);
+          errorCode_ = visitor.visitInt(errorCode_ != 0, errorCode_,    other.errorCode_ != 0, other.errorCode_);
+          success_ = visitor.visitBoolean(success_ != false, success_,
+              other.success_ != false, other.success_);
+          user_ = visitor.visitMessage(user_, other.user_);
+          users_= visitor.visitList(users_, other.users_);
+          session_ = visitor.visitMessage(session_, other.session_);
+          loginResult_ = visitor.visitMessage(loginResult_, other.loginResult_);
+          authResponse_ = visitor.visitMessage(authResponse_, other.authResponse_);
+          authorization_ = visitor.visitMessage(authorization_, other.authorization_);
+          stockKeepingUnit_ = visitor.visitMessage(stockKeepingUnit_, other.stockKeepingUnit_);
+          stockKeepingUnits_= visitor.visitList(stockKeepingUnits_, other.stockKeepingUnits_);
+          inventory_ = visitor.visitMessage(inventory_, other.inventory_);
+          inventories_= visitor.visitList(inventories_, other.inventories_);
+          brand_ = visitor.visitMessage(brand_, other.brand_);
+          brands_= visitor.visitList(brands_, other.brands_);
+          subBrand_ = visitor.visitMessage(subBrand_, other.subBrand_);
+          subBrands_= visitor.visitList(subBrands_, other.subBrands_);
+          unit_ = visitor.visitMessage(unit_, other.unit_);
+          units_= visitor.visitList(units_, other.units_);
+          category_ = visitor.visitMessage(category_, other.category_);
+          categories_= visitor.visitList(categories_, other.categories_);
+          creditor_ = visitor.visitMessage(creditor_, other.creditor_);
+          creditors_= visitor.visitList(creditors_, other.creditors_);
+          creditDetail_ = visitor.visitMessage(creditDetail_, other.creditDetail_);
+          creditDetails_= visitor.visitList(creditDetails_, other.creditDetails_);
+          sale_ = visitor.visitMessage(sale_, other.sale_);
+          sales_= visitor.visitList(sales_, other.sales_);
+          unitConversion_ = visitor.visitMessage(unitConversion_, other.unitConversion_);
+          unitConversions_= visitor.visitList(unitConversions_, other.unitConversions_);
+          loginResponse_ = visitor.visitMessage(loginResponse_, other.loginResponse_);
+          inventoryStock_ = visitor.visitMessage(inventoryStock_, other.inventoryStock_);
+          inventoryStocks_= visitor.visitList(inventoryStocks_, other.inventoryStocks_);
+          suchiKey_ = visitor.visitMessage(suchiKey_, other.suchiKey_);
+          suchiKeys_= visitor.visitList(suchiKeys_, other.suchiKeys_);
+          esewaQuery_ = visitor.visitMessage(esewaQuery_, other.esewaQuery_);
+          esewaInquiryResponse_ = visitor.visitMessage(esewaInquiryResponse_, other.esewaInquiryResponse_);
+          esewaPaymentResponse_ = visitor.visitMessage(esewaPaymentResponse_, other.esewaPaymentResponse_);
+          accessToken_ = visitor.visitMessage(accessToken_, other.accessToken_);
+          accessTokens_= visitor.visitList(accessTokens_, other.accessTokens_);
+          if (visitor == MergeFromVisitor
+              .INSTANCE) {
+            bitField0_ |= other.bitField0_;
+          }
+          return this;
         }
+        case MERGE_FROM_STREAM: {
+          com.google.protobuf.CodedInputStream input =
+              (com.google.protobuf.CodedInputStream) arg0;
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry =
+              (com.google.protobuf.ExtensionRegistryLite) arg1;
+          try {
+            boolean done = false;
+            while (!done) {
+              int tag = input.readTag();
+              switch (tag) {
+                case 0:
+                  done = true;
+                  break;
+                default: {
+                  if (!input.skipField(tag)) {
+                    done = true;
+                  }
+                  break;
+                }
+                case 8: {
 
-        /**
-         * <code>repeated .treeleaf.entities.UserAccount users = 6;</code>
-         */
-        public com.treeleaf.suchi.entities.TreeleafProto.UserAccountOrBuilder getUsersOrBuilder(
-                int index) {
-            return users_.get(index);
-        }
+                  error_ = input.readBool();
+                  break;
+                }
+                case 18: {
+                  String s = input.readStringRequireUtf8();
 
-        private void ensureUsersIsMutable() {
-            if (!users_.isModifiable()) {
-                users_ =
+                  msg_ = s;
+                  break;
+                }
+                case 24: {
+                  int rawValue = input.readEnum();
+
+                  errorCode_ = rawValue;
+                  break;
+                }
+                case 32: {
+
+                  success_ = input.readBool();
+                  break;
+                }
+                case 42: {
+                  com.treeleaf.suchi.entities.TreeleafProto.UserAccount.Builder subBuilder = null;
+                  if (user_ != null) {
+                    subBuilder = user_.toBuilder();
+                  }
+                  user_ = input.readMessage(com.treeleaf.suchi.entities.TreeleafProto.UserAccount.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(user_);
+                    user_ = subBuilder.buildPartial();
+                  }
+
+                  break;
+                }
+                case 50: {
+                  if (!users_.isModifiable()) {
+                    users_ =
                         com.google.protobuf.GeneratedMessageLite.mutableCopy(users_);
-            }
-        }
-
-        /**
-         * <code>repeated .treeleaf.entities.UserAccount users = 6;</code>
-         */
-        private void setUsers(
-                int index, com.treeleaf.suchi.entities.TreeleafProto.UserAccount value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            ensureUsersIsMutable();
-            users_.set(index, value);
-        }
-
-        /**
-         * <code>repeated .treeleaf.entities.UserAccount users = 6;</code>
-         */
-        private void setUsers(
-                int index, com.treeleaf.suchi.entities.TreeleafProto.UserAccount.Builder builderForValue) {
-            ensureUsersIsMutable();
-            users_.set(index, builderForValue.build());
-        }
-
-        /**
-         * <code>repeated .treeleaf.entities.UserAccount users = 6;</code>
-         */
-        private void addUsers(com.treeleaf.suchi.entities.TreeleafProto.UserAccount value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            ensureUsersIsMutable();
-            users_.add(value);
-        }
-
-        /**
-         * <code>repeated .treeleaf.entities.UserAccount users = 6;</code>
-         */
-        private void addUsers(
-                int index, com.treeleaf.suchi.entities.TreeleafProto.UserAccount value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            ensureUsersIsMutable();
-            users_.add(index, value);
-        }
-
-        /**
-         * <code>repeated .treeleaf.entities.UserAccount users = 6;</code>
-         */
-        private void addUsers(
-                com.treeleaf.suchi.entities.TreeleafProto.UserAccount.Builder builderForValue) {
-            ensureUsersIsMutable();
-            users_.add(builderForValue.build());
-        }
-
-        /**
-         * <code>repeated .treeleaf.entities.UserAccount users = 6;</code>
-         */
-        private void addUsers(
-                int index, com.treeleaf.suchi.entities.TreeleafProto.UserAccount.Builder builderForValue) {
-            ensureUsersIsMutable();
-            users_.add(index, builderForValue.build());
-        }
-
-        /**
-         * <code>repeated .treeleaf.entities.UserAccount users = 6;</code>
-         */
-        private void addAllUsers(
-                Iterable<? extends com.treeleaf.suchi.entities.TreeleafProto.UserAccount> values) {
-            ensureUsersIsMutable();
-            com.google.protobuf.AbstractMessageLite.addAll(
-                    values, users_);
-        }
-
-        /**
-         * <code>repeated .treeleaf.entities.UserAccount users = 6;</code>
-         */
-        private void clearUsers() {
-            users_ = emptyProtobufList();
-        }
-
-        /**
-         * <code>repeated .treeleaf.entities.UserAccount users = 6;</code>
-         */
-        private void removeUsers(int index) {
-            ensureUsersIsMutable();
-            users_.remove(index);
-        }
-
-        public static final int SESSION_FIELD_NUMBER = 7;
-        private com.treeleaf.suchi.entities.TreeleafProto.Session session_;
-
-        /**
-         * <code>optional .treeleaf.entities.Session session = 7;</code>
-         */
-        public boolean hasSession() {
-            return session_ != null;
-        }
-
-        /**
-         * <code>optional .treeleaf.entities.Session session = 7;</code>
-         */
-        public com.treeleaf.suchi.entities.TreeleafProto.Session getSession() {
-            return session_ == null ? com.treeleaf.suchi.entities.TreeleafProto.Session.getDefaultInstance() : session_;
-        }
-
-        /**
-         * <code>optional .treeleaf.entities.Session session = 7;</code>
-         */
-        private void setSession(com.treeleaf.suchi.entities.TreeleafProto.Session value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            session_ = value;
-
-        }
-
-        /**
-         * <code>optional .treeleaf.entities.Session session = 7;</code>
-         */
-        private void setSession(
-                com.treeleaf.suchi.entities.TreeleafProto.Session.Builder builderForValue) {
-            session_ = builderForValue.build();
-
-        }
-
-        /**
-         * <code>optional .treeleaf.entities.Session session = 7;</code>
-         */
-        private void mergeSession(com.treeleaf.suchi.entities.TreeleafProto.Session value) {
-            if (session_ != null &&
-                    session_ != com.treeleaf.suchi.entities.TreeleafProto.Session.getDefaultInstance()) {
-                session_ =
-                        com.treeleaf.suchi.entities.TreeleafProto.Session.newBuilder(session_).mergeFrom(value).buildPartial();
-            } else {
-                session_ = value;
-            }
-
-        }
-
-        /**
-         * <code>optional .treeleaf.entities.Session session = 7;</code>
-         */
-        private void clearSession() {
-            session_ = null;
-
-        }
-
-        public static final int LOGINRESULT_FIELD_NUMBER = 8;
-        private com.treeleaf.suchi.entities.TreeleafProto.LoginResult loginResult_;
-
-        /**
-         * <code>optional .treeleaf.entities.LoginResult loginResult = 8;</code>
-         */
-        public boolean hasLoginResult() {
-            return loginResult_ != null;
-        }
-
-        /**
-         * <code>optional .treeleaf.entities.LoginResult loginResult = 8;</code>
-         */
-        public com.treeleaf.suchi.entities.TreeleafProto.LoginResult getLoginResult() {
-            return loginResult_ == null ? com.treeleaf.suchi.entities.TreeleafProto.LoginResult.getDefaultInstance() : loginResult_;
-        }
-
-        /**
-         * <code>optional .treeleaf.entities.LoginResult loginResult = 8;</code>
-         */
-        private void setLoginResult(com.treeleaf.suchi.entities.TreeleafProto.LoginResult value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            loginResult_ = value;
-
-        }
-
-        /**
-         * <code>optional .treeleaf.entities.LoginResult loginResult = 8;</code>
-         */
-        private void setLoginResult(
-                com.treeleaf.suchi.entities.TreeleafProto.LoginResult.Builder builderForValue) {
-            loginResult_ = builderForValue.build();
-
-        }
-
-        /**
-         * <code>optional .treeleaf.entities.LoginResult loginResult = 8;</code>
-         */
-        private void mergeLoginResult(com.treeleaf.suchi.entities.TreeleafProto.LoginResult value) {
-            if (loginResult_ != null &&
-                    loginResult_ != com.treeleaf.suchi.entities.TreeleafProto.LoginResult.getDefaultInstance()) {
-                loginResult_ =
-                        com.treeleaf.suchi.entities.TreeleafProto.LoginResult.newBuilder(loginResult_).mergeFrom(value).buildPartial();
-            } else {
-                loginResult_ = value;
-            }
-
-        }
-
-        /**
-         * <code>optional .treeleaf.entities.LoginResult loginResult = 8;</code>
-         */
-        private void clearLoginResult() {
-            loginResult_ = null;
-
-        }
-
-        public static final int AUTHRESPONSE_FIELD_NUMBER = 9;
-        private com.treeleaf.suchi.entities.TreeleafProto.AuthResponse authResponse_;
-
-        /**
-         * <code>optional .treeleaf.entities.AuthResponse authResponse = 9;</code>
-         */
-        public boolean hasAuthResponse() {
-            return authResponse_ != null;
-        }
-
-        /**
-         * <code>optional .treeleaf.entities.AuthResponse authResponse = 9;</code>
-         */
-        public com.treeleaf.suchi.entities.TreeleafProto.AuthResponse getAuthResponse() {
-            return authResponse_ == null ? com.treeleaf.suchi.entities.TreeleafProto.AuthResponse.getDefaultInstance() : authResponse_;
-        }
-
-        /**
-         * <code>optional .treeleaf.entities.AuthResponse authResponse = 9;</code>
-         */
-        private void setAuthResponse(com.treeleaf.suchi.entities.TreeleafProto.AuthResponse value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            authResponse_ = value;
-
-        }
-
-        /**
-         * <code>optional .treeleaf.entities.AuthResponse authResponse = 9;</code>
-         */
-        private void setAuthResponse(
-                com.treeleaf.suchi.entities.TreeleafProto.AuthResponse.Builder builderForValue) {
-            authResponse_ = builderForValue.build();
-
-        }
-
-        /**
-         * <code>optional .treeleaf.entities.AuthResponse authResponse = 9;</code>
-         */
-        private void mergeAuthResponse(com.treeleaf.suchi.entities.TreeleafProto.AuthResponse value) {
-            if (authResponse_ != null &&
-                    authResponse_ != com.treeleaf.suchi.entities.TreeleafProto.AuthResponse.getDefaultInstance()) {
-                authResponse_ =
-                        com.treeleaf.suchi.entities.TreeleafProto.AuthResponse.newBuilder(authResponse_).mergeFrom(value).buildPartial();
-            } else {
-                authResponse_ = value;
-            }
-
-        }
-
-        /**
-         * <code>optional .treeleaf.entities.AuthResponse authResponse = 9;</code>
-         */
-        private void clearAuthResponse() {
-            authResponse_ = null;
-
-        }
-
-        public static final int AUTHORIZATION_FIELD_NUMBER = 10;
-        private com.treeleaf.suchi.entities.TreeleafProto.Authorization authorization_;
-
-        /**
-         * <code>optional .treeleaf.entities.Authorization authorization = 10;</code>
-         */
-        public boolean hasAuthorization() {
-            return authorization_ != null;
-        }
-
-        /**
-         * <code>optional .treeleaf.entities.Authorization authorization = 10;</code>
-         */
-        public com.treeleaf.suchi.entities.TreeleafProto.Authorization getAuthorization() {
-            return authorization_ == null ? com.treeleaf.suchi.entities.TreeleafProto.Authorization.getDefaultInstance() : authorization_;
-        }
-
-        /**
-         * <code>optional .treeleaf.entities.Authorization authorization = 10;</code>
-         */
-        private void setAuthorization(com.treeleaf.suchi.entities.TreeleafProto.Authorization value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            authorization_ = value;
-
-        }
-
-        /**
-         * <code>optional .treeleaf.entities.Authorization authorization = 10;</code>
-         */
-        private void setAuthorization(
-                com.treeleaf.suchi.entities.TreeleafProto.Authorization.Builder builderForValue) {
-            authorization_ = builderForValue.build();
-
-        }
-
-        /**
-         * <code>optional .treeleaf.entities.Authorization authorization = 10;</code>
-         */
-        private void mergeAuthorization(com.treeleaf.suchi.entities.TreeleafProto.Authorization value) {
-            if (authorization_ != null &&
-                    authorization_ != com.treeleaf.suchi.entities.TreeleafProto.Authorization.getDefaultInstance()) {
-                authorization_ =
-                        com.treeleaf.suchi.entities.TreeleafProto.Authorization.newBuilder(authorization_).mergeFrom(value).buildPartial();
-            } else {
-                authorization_ = value;
-            }
-
-        }
-
-        /**
-         * <code>optional .treeleaf.entities.Authorization authorization = 10;</code>
-         */
-        private void clearAuthorization() {
-            authorization_ = null;
-
-        }
-
-        public static final int STOCKKEEPINGUNIT_FIELD_NUMBER = 11;
-        private com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit stockKeepingUnit_;
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnit = 11;</code>
-         */
-        public boolean hasStockKeepingUnit() {
-            return stockKeepingUnit_ != null;
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnit = 11;</code>
-         */
-        public com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit getStockKeepingUnit() {
-            return stockKeepingUnit_ == null ? com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit.getDefaultInstance() : stockKeepingUnit_;
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnit = 11;</code>
-         */
-        private void setStockKeepingUnit(com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            stockKeepingUnit_ = value;
-
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnit = 11;</code>
-         */
-        private void setStockKeepingUnit(
-                com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit.Builder builderForValue) {
-            stockKeepingUnit_ = builderForValue.build();
-
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnit = 11;</code>
-         */
-        private void mergeStockKeepingUnit(com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit value) {
-            if (stockKeepingUnit_ != null &&
-                    stockKeepingUnit_ != com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit.getDefaultInstance()) {
-                stockKeepingUnit_ =
-                        com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit.newBuilder(stockKeepingUnit_).mergeFrom(value).buildPartial();
-            } else {
-                stockKeepingUnit_ = value;
-            }
-
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnit = 11;</code>
-         */
-        private void clearStockKeepingUnit() {
-            stockKeepingUnit_ = null;
-
-        }
-
-        public static final int STOCKKEEPINGUNITS_FIELD_NUMBER = 12;
-        private com.google.protobuf.Internal.ProtobufList<com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit> stockKeepingUnits_;
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
-         */
-        public java.util.List<com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit> getStockKeepingUnitsList() {
-            return stockKeepingUnits_;
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
-         */
-        public java.util.List<? extends com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnitOrBuilder>
-        getStockKeepingUnitsOrBuilderList() {
-            return stockKeepingUnits_;
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
-         */
-        public int getStockKeepingUnitsCount() {
-            return stockKeepingUnits_.size();
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
-         */
-        public com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit getStockKeepingUnits(int index) {
-            return stockKeepingUnits_.get(index);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
-         */
-        public com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnitOrBuilder getStockKeepingUnitsOrBuilder(
-                int index) {
-            return stockKeepingUnits_.get(index);
-        }
-
-        private void ensureStockKeepingUnitsIsMutable() {
-            if (!stockKeepingUnits_.isModifiable()) {
-                stockKeepingUnits_ =
+                  }
+                  users_.add(
+                      input.readMessage(com.treeleaf.suchi.entities.TreeleafProto.UserAccount.parser(), extensionRegistry));
+                  break;
+                }
+                case 58: {
+                  com.treeleaf.suchi.entities.TreeleafProto.Session.Builder subBuilder = null;
+                  if (session_ != null) {
+                    subBuilder = session_.toBuilder();
+                  }
+                  session_ = input.readMessage(com.treeleaf.suchi.entities.TreeleafProto.Session.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(session_);
+                    session_ = subBuilder.buildPartial();
+                  }
+
+                  break;
+                }
+                case 66: {
+                  com.treeleaf.suchi.entities.TreeleafProto.LoginResult.Builder subBuilder = null;
+                  if (loginResult_ != null) {
+                    subBuilder = loginResult_.toBuilder();
+                  }
+                  loginResult_ = input.readMessage(com.treeleaf.suchi.entities.TreeleafProto.LoginResult.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(loginResult_);
+                    loginResult_ = subBuilder.buildPartial();
+                  }
+
+                  break;
+                }
+                case 74: {
+                  com.treeleaf.suchi.entities.TreeleafProto.AuthResponse.Builder subBuilder = null;
+                  if (authResponse_ != null) {
+                    subBuilder = authResponse_.toBuilder();
+                  }
+                  authResponse_ = input.readMessage(com.treeleaf.suchi.entities.TreeleafProto.AuthResponse.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(authResponse_);
+                    authResponse_ = subBuilder.buildPartial();
+                  }
+
+                  break;
+                }
+                case 82: {
+                  com.treeleaf.suchi.entities.TreeleafProto.Authorization.Builder subBuilder = null;
+                  if (authorization_ != null) {
+                    subBuilder = authorization_.toBuilder();
+                  }
+                  authorization_ = input.readMessage(com.treeleaf.suchi.entities.TreeleafProto.Authorization.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(authorization_);
+                    authorization_ = subBuilder.buildPartial();
+                  }
+
+                  break;
+                }
+                case 90: {
+                  com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit.Builder subBuilder = null;
+                  if (stockKeepingUnit_ != null) {
+                    subBuilder = stockKeepingUnit_.toBuilder();
+                  }
+                  stockKeepingUnit_ = input.readMessage(com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(stockKeepingUnit_);
+                    stockKeepingUnit_ = subBuilder.buildPartial();
+                  }
+
+                  break;
+                }
+                case 98: {
+                  if (!stockKeepingUnits_.isModifiable()) {
+                    stockKeepingUnits_ =
                         com.google.protobuf.GeneratedMessageLite.mutableCopy(stockKeepingUnits_);
-            }
-        }
+                  }
+                  stockKeepingUnits_.add(
+                      input.readMessage(com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit.parser(), extensionRegistry));
+                  break;
+                }
+                case 106: {
+                  com.treeleaf.suchi.entities.SuchiProto.Inventory.Builder subBuilder = null;
+                  if (inventory_ != null) {
+                    subBuilder = inventory_.toBuilder();
+                  }
+                  inventory_ = input.readMessage(com.treeleaf.suchi.entities.SuchiProto.Inventory.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(inventory_);
+                    inventory_ = subBuilder.buildPartial();
+                  }
 
-        /**
-         * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
-         */
-        private void setStockKeepingUnits(
-                int index, com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            ensureStockKeepingUnitsIsMutable();
-            stockKeepingUnits_.set(index, value);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
-         */
-        private void setStockKeepingUnits(
-                int index, com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit.Builder builderForValue) {
-            ensureStockKeepingUnitsIsMutable();
-            stockKeepingUnits_.set(index, builderForValue.build());
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
-         */
-        private void addStockKeepingUnits(com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            ensureStockKeepingUnitsIsMutable();
-            stockKeepingUnits_.add(value);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
-         */
-        private void addStockKeepingUnits(
-                int index, com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            ensureStockKeepingUnitsIsMutable();
-            stockKeepingUnits_.add(index, value);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
-         */
-        private void addStockKeepingUnits(
-                com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit.Builder builderForValue) {
-            ensureStockKeepingUnitsIsMutable();
-            stockKeepingUnits_.add(builderForValue.build());
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
-         */
-        private void addStockKeepingUnits(
-                int index, com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit.Builder builderForValue) {
-            ensureStockKeepingUnitsIsMutable();
-            stockKeepingUnits_.add(index, builderForValue.build());
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
-         */
-        private void addAllStockKeepingUnits(
-                Iterable<? extends com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit> values) {
-            ensureStockKeepingUnitsIsMutable();
-            com.google.protobuf.AbstractMessageLite.addAll(
-                    values, stockKeepingUnits_);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
-         */
-        private void clearStockKeepingUnits() {
-            stockKeepingUnits_ = emptyProtobufList();
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
-         */
-        private void removeStockKeepingUnits(int index) {
-            ensureStockKeepingUnitsIsMutable();
-            stockKeepingUnits_.remove(index);
-        }
-
-        public static final int INVENTORY_FIELD_NUMBER = 13;
-        private com.treeleaf.suchi.entities.SuchiProto.Inventory inventory_;
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Inventory inventory = 13;</code>
-         */
-        public boolean hasInventory() {
-            return inventory_ != null;
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Inventory inventory = 13;</code>
-         */
-        public com.treeleaf.suchi.entities.SuchiProto.Inventory getInventory() {
-            return inventory_ == null ? com.treeleaf.suchi.entities.SuchiProto.Inventory.getDefaultInstance() : inventory_;
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Inventory inventory = 13;</code>
-         */
-        private void setInventory(com.treeleaf.suchi.entities.SuchiProto.Inventory value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            inventory_ = value;
-
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Inventory inventory = 13;</code>
-         */
-        private void setInventory(
-                com.treeleaf.suchi.entities.SuchiProto.Inventory.Builder builderForValue) {
-            inventory_ = builderForValue.build();
-
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Inventory inventory = 13;</code>
-         */
-        private void mergeInventory(com.treeleaf.suchi.entities.SuchiProto.Inventory value) {
-            if (inventory_ != null &&
-                    inventory_ != com.treeleaf.suchi.entities.SuchiProto.Inventory.getDefaultInstance()) {
-                inventory_ =
-                        com.treeleaf.suchi.entities.SuchiProto.Inventory.newBuilder(inventory_).mergeFrom(value).buildPartial();
-            } else {
-                inventory_ = value;
-            }
-
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Inventory inventory = 13;</code>
-         */
-        private void clearInventory() {
-            inventory_ = null;
-
-        }
-
-        public static final int INVENTORIES_FIELD_NUMBER = 14;
-        private com.google.protobuf.Internal.ProtobufList<com.treeleaf.suchi.entities.SuchiProto.Inventory> inventories_;
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 14;</code>
-         */
-        public java.util.List<com.treeleaf.suchi.entities.SuchiProto.Inventory> getInventoriesList() {
-            return inventories_;
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 14;</code>
-         */
-        public java.util.List<? extends com.treeleaf.suchi.entities.SuchiProto.InventoryOrBuilder>
-        getInventoriesOrBuilderList() {
-            return inventories_;
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 14;</code>
-         */
-        public int getInventoriesCount() {
-            return inventories_.size();
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 14;</code>
-         */
-        public com.treeleaf.suchi.entities.SuchiProto.Inventory getInventories(int index) {
-            return inventories_.get(index);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 14;</code>
-         */
-        public com.treeleaf.suchi.entities.SuchiProto.InventoryOrBuilder getInventoriesOrBuilder(
-                int index) {
-            return inventories_.get(index);
-        }
-
-        private void ensureInventoriesIsMutable() {
-            if (!inventories_.isModifiable()) {
-                inventories_ =
+                  break;
+                }
+                case 114: {
+                  if (!inventories_.isModifiable()) {
+                    inventories_ =
                         com.google.protobuf.GeneratedMessageLite.mutableCopy(inventories_);
-            }
-        }
+                  }
+                  inventories_.add(
+                      input.readMessage(com.treeleaf.suchi.entities.SuchiProto.Inventory.parser(), extensionRegistry));
+                  break;
+                }
+                case 122: {
+                  com.treeleaf.suchi.entities.SuchiProto.Brand.Builder subBuilder = null;
+                  if (brand_ != null) {
+                    subBuilder = brand_.toBuilder();
+                  }
+                  brand_ = input.readMessage(com.treeleaf.suchi.entities.SuchiProto.Brand.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(brand_);
+                    brand_ = subBuilder.buildPartial();
+                  }
 
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 14;</code>
-         */
-        private void setInventories(
-                int index, com.treeleaf.suchi.entities.SuchiProto.Inventory value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            ensureInventoriesIsMutable();
-            inventories_.set(index, value);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 14;</code>
-         */
-        private void setInventories(
-                int index, com.treeleaf.suchi.entities.SuchiProto.Inventory.Builder builderForValue) {
-            ensureInventoriesIsMutable();
-            inventories_.set(index, builderForValue.build());
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 14;</code>
-         */
-        private void addInventories(com.treeleaf.suchi.entities.SuchiProto.Inventory value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            ensureInventoriesIsMutable();
-            inventories_.add(value);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 14;</code>
-         */
-        private void addInventories(
-                int index, com.treeleaf.suchi.entities.SuchiProto.Inventory value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            ensureInventoriesIsMutable();
-            inventories_.add(index, value);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 14;</code>
-         */
-        private void addInventories(
-                com.treeleaf.suchi.entities.SuchiProto.Inventory.Builder builderForValue) {
-            ensureInventoriesIsMutable();
-            inventories_.add(builderForValue.build());
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 14;</code>
-         */
-        private void addInventories(
-                int index, com.treeleaf.suchi.entities.SuchiProto.Inventory.Builder builderForValue) {
-            ensureInventoriesIsMutable();
-            inventories_.add(index, builderForValue.build());
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 14;</code>
-         */
-        private void addAllInventories(
-                Iterable<? extends com.treeleaf.suchi.entities.SuchiProto.Inventory> values) {
-            ensureInventoriesIsMutable();
-            com.google.protobuf.AbstractMessageLite.addAll(
-                    values, inventories_);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 14;</code>
-         */
-        private void clearInventories() {
-            inventories_ = emptyProtobufList();
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 14;</code>
-         */
-        private void removeInventories(int index) {
-            ensureInventoriesIsMutable();
-            inventories_.remove(index);
-        }
-
-        public static final int BRAND_FIELD_NUMBER = 15;
-        private com.treeleaf.suchi.entities.SuchiProto.Brand brand_;
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Brand brand = 15;</code>
-         */
-        public boolean hasBrand() {
-            return brand_ != null;
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Brand brand = 15;</code>
-         */
-        public com.treeleaf.suchi.entities.SuchiProto.Brand getBrand() {
-            return brand_ == null ? com.treeleaf.suchi.entities.SuchiProto.Brand.getDefaultInstance() : brand_;
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Brand brand = 15;</code>
-         */
-        private void setBrand(com.treeleaf.suchi.entities.SuchiProto.Brand value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            brand_ = value;
-
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Brand brand = 15;</code>
-         */
-        private void setBrand(
-                com.treeleaf.suchi.entities.SuchiProto.Brand.Builder builderForValue) {
-            brand_ = builderForValue.build();
-
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Brand brand = 15;</code>
-         */
-        private void mergeBrand(com.treeleaf.suchi.entities.SuchiProto.Brand value) {
-            if (brand_ != null &&
-                    brand_ != com.treeleaf.suchi.entities.SuchiProto.Brand.getDefaultInstance()) {
-                brand_ =
-                        com.treeleaf.suchi.entities.SuchiProto.Brand.newBuilder(brand_).mergeFrom(value).buildPartial();
-            } else {
-                brand_ = value;
-            }
-
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Brand brand = 15;</code>
-         */
-        private void clearBrand() {
-            brand_ = null;
-
-        }
-
-        public static final int BRANDS_FIELD_NUMBER = 16;
-        private com.google.protobuf.Internal.ProtobufList<com.treeleaf.suchi.entities.SuchiProto.Brand> brands_;
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Brand brands = 16;</code>
-         */
-        public java.util.List<com.treeleaf.suchi.entities.SuchiProto.Brand> getBrandsList() {
-            return brands_;
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Brand brands = 16;</code>
-         */
-        public java.util.List<? extends com.treeleaf.suchi.entities.SuchiProto.BrandOrBuilder>
-        getBrandsOrBuilderList() {
-            return brands_;
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Brand brands = 16;</code>
-         */
-        public int getBrandsCount() {
-            return brands_.size();
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Brand brands = 16;</code>
-         */
-        public com.treeleaf.suchi.entities.SuchiProto.Brand getBrands(int index) {
-            return brands_.get(index);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Brand brands = 16;</code>
-         */
-        public com.treeleaf.suchi.entities.SuchiProto.BrandOrBuilder getBrandsOrBuilder(
-                int index) {
-            return brands_.get(index);
-        }
-
-        private void ensureBrandsIsMutable() {
-            if (!brands_.isModifiable()) {
-                brands_ =
+                  break;
+                }
+                case 130: {
+                  if (!brands_.isModifiable()) {
+                    brands_ =
                         com.google.protobuf.GeneratedMessageLite.mutableCopy(brands_);
-            }
-        }
+                  }
+                  brands_.add(
+                      input.readMessage(com.treeleaf.suchi.entities.SuchiProto.Brand.parser(), extensionRegistry));
+                  break;
+                }
+                case 138: {
+                  com.treeleaf.suchi.entities.SuchiProto.SubBrand.Builder subBuilder = null;
+                  if (subBrand_ != null) {
+                    subBuilder = subBrand_.toBuilder();
+                  }
+                  subBrand_ = input.readMessage(com.treeleaf.suchi.entities.SuchiProto.SubBrand.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(subBrand_);
+                    subBrand_ = subBuilder.buildPartial();
+                  }
 
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Brand brands = 16;</code>
-         */
-        private void setBrands(
-                int index, com.treeleaf.suchi.entities.SuchiProto.Brand value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            ensureBrandsIsMutable();
-            brands_.set(index, value);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Brand brands = 16;</code>
-         */
-        private void setBrands(
-                int index, com.treeleaf.suchi.entities.SuchiProto.Brand.Builder builderForValue) {
-            ensureBrandsIsMutable();
-            brands_.set(index, builderForValue.build());
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Brand brands = 16;</code>
-         */
-        private void addBrands(com.treeleaf.suchi.entities.SuchiProto.Brand value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            ensureBrandsIsMutable();
-            brands_.add(value);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Brand brands = 16;</code>
-         */
-        private void addBrands(
-                int index, com.treeleaf.suchi.entities.SuchiProto.Brand value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            ensureBrandsIsMutable();
-            brands_.add(index, value);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Brand brands = 16;</code>
-         */
-        private void addBrands(
-                com.treeleaf.suchi.entities.SuchiProto.Brand.Builder builderForValue) {
-            ensureBrandsIsMutable();
-            brands_.add(builderForValue.build());
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Brand brands = 16;</code>
-         */
-        private void addBrands(
-                int index, com.treeleaf.suchi.entities.SuchiProto.Brand.Builder builderForValue) {
-            ensureBrandsIsMutable();
-            brands_.add(index, builderForValue.build());
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Brand brands = 16;</code>
-         */
-        private void addAllBrands(
-                Iterable<? extends com.treeleaf.suchi.entities.SuchiProto.Brand> values) {
-            ensureBrandsIsMutable();
-            com.google.protobuf.AbstractMessageLite.addAll(
-                    values, brands_);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Brand brands = 16;</code>
-         */
-        private void clearBrands() {
-            brands_ = emptyProtobufList();
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Brand brands = 16;</code>
-         */
-        private void removeBrands(int index) {
-            ensureBrandsIsMutable();
-            brands_.remove(index);
-        }
-
-        public static final int SUBBRAND_FIELD_NUMBER = 17;
-        private com.treeleaf.suchi.entities.SuchiProto.SubBrand subBrand_;
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.SubBrand subBrand = 17;</code>
-         */
-        public boolean hasSubBrand() {
-            return subBrand_ != null;
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.SubBrand subBrand = 17;</code>
-         */
-        public com.treeleaf.suchi.entities.SuchiProto.SubBrand getSubBrand() {
-            return subBrand_ == null ? com.treeleaf.suchi.entities.SuchiProto.SubBrand.getDefaultInstance() : subBrand_;
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.SubBrand subBrand = 17;</code>
-         */
-        private void setSubBrand(com.treeleaf.suchi.entities.SuchiProto.SubBrand value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            subBrand_ = value;
-
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.SubBrand subBrand = 17;</code>
-         */
-        private void setSubBrand(
-                com.treeleaf.suchi.entities.SuchiProto.SubBrand.Builder builderForValue) {
-            subBrand_ = builderForValue.build();
-
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.SubBrand subBrand = 17;</code>
-         */
-        private void mergeSubBrand(com.treeleaf.suchi.entities.SuchiProto.SubBrand value) {
-            if (subBrand_ != null &&
-                    subBrand_ != com.treeleaf.suchi.entities.SuchiProto.SubBrand.getDefaultInstance()) {
-                subBrand_ =
-                        com.treeleaf.suchi.entities.SuchiProto.SubBrand.newBuilder(subBrand_).mergeFrom(value).buildPartial();
-            } else {
-                subBrand_ = value;
-            }
-
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.SubBrand subBrand = 17;</code>
-         */
-        private void clearSubBrand() {
-            subBrand_ = null;
-
-        }
-
-        public static final int SUBBRANDS_FIELD_NUMBER = 18;
-        private com.google.protobuf.Internal.ProtobufList<com.treeleaf.suchi.entities.SuchiProto.SubBrand> subBrands_;
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.SubBrand subBrands = 18;</code>
-         */
-        public java.util.List<com.treeleaf.suchi.entities.SuchiProto.SubBrand> getSubBrandsList() {
-            return subBrands_;
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.SubBrand subBrands = 18;</code>
-         */
-        public java.util.List<? extends com.treeleaf.suchi.entities.SuchiProto.SubBrandOrBuilder>
-        getSubBrandsOrBuilderList() {
-            return subBrands_;
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.SubBrand subBrands = 18;</code>
-         */
-        public int getSubBrandsCount() {
-            return subBrands_.size();
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.SubBrand subBrands = 18;</code>
-         */
-        public com.treeleaf.suchi.entities.SuchiProto.SubBrand getSubBrands(int index) {
-            return subBrands_.get(index);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.SubBrand subBrands = 18;</code>
-         */
-        public com.treeleaf.suchi.entities.SuchiProto.SubBrandOrBuilder getSubBrandsOrBuilder(
-                int index) {
-            return subBrands_.get(index);
-        }
-
-        private void ensureSubBrandsIsMutable() {
-            if (!subBrands_.isModifiable()) {
-                subBrands_ =
+                  break;
+                }
+                case 146: {
+                  if (!subBrands_.isModifiable()) {
+                    subBrands_ =
                         com.google.protobuf.GeneratedMessageLite.mutableCopy(subBrands_);
-            }
-        }
+                  }
+                  subBrands_.add(
+                      input.readMessage(com.treeleaf.suchi.entities.SuchiProto.SubBrand.parser(), extensionRegistry));
+                  break;
+                }
+                case 154: {
+                  com.treeleaf.suchi.entities.SuchiProto.Unit.Builder subBuilder = null;
+                  if (unit_ != null) {
+                    subBuilder = unit_.toBuilder();
+                  }
+                  unit_ = input.readMessage(com.treeleaf.suchi.entities.SuchiProto.Unit.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(unit_);
+                    unit_ = subBuilder.buildPartial();
+                  }
 
-        /**
-         * <code>repeated .treeleaf.suchi.entities.SubBrand subBrands = 18;</code>
-         */
-        private void setSubBrands(
-                int index, com.treeleaf.suchi.entities.SuchiProto.SubBrand value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            ensureSubBrandsIsMutable();
-            subBrands_.set(index, value);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.SubBrand subBrands = 18;</code>
-         */
-        private void setSubBrands(
-                int index, com.treeleaf.suchi.entities.SuchiProto.SubBrand.Builder builderForValue) {
-            ensureSubBrandsIsMutable();
-            subBrands_.set(index, builderForValue.build());
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.SubBrand subBrands = 18;</code>
-         */
-        private void addSubBrands(com.treeleaf.suchi.entities.SuchiProto.SubBrand value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            ensureSubBrandsIsMutable();
-            subBrands_.add(value);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.SubBrand subBrands = 18;</code>
-         */
-        private void addSubBrands(
-                int index, com.treeleaf.suchi.entities.SuchiProto.SubBrand value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            ensureSubBrandsIsMutable();
-            subBrands_.add(index, value);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.SubBrand subBrands = 18;</code>
-         */
-        private void addSubBrands(
-                com.treeleaf.suchi.entities.SuchiProto.SubBrand.Builder builderForValue) {
-            ensureSubBrandsIsMutable();
-            subBrands_.add(builderForValue.build());
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.SubBrand subBrands = 18;</code>
-         */
-        private void addSubBrands(
-                int index, com.treeleaf.suchi.entities.SuchiProto.SubBrand.Builder builderForValue) {
-            ensureSubBrandsIsMutable();
-            subBrands_.add(index, builderForValue.build());
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.SubBrand subBrands = 18;</code>
-         */
-        private void addAllSubBrands(
-                Iterable<? extends com.treeleaf.suchi.entities.SuchiProto.SubBrand> values) {
-            ensureSubBrandsIsMutable();
-            com.google.protobuf.AbstractMessageLite.addAll(
-                    values, subBrands_);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.SubBrand subBrands = 18;</code>
-         */
-        private void clearSubBrands() {
-            subBrands_ = emptyProtobufList();
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.SubBrand subBrands = 18;</code>
-         */
-        private void removeSubBrands(int index) {
-            ensureSubBrandsIsMutable();
-            subBrands_.remove(index);
-        }
-
-        public static final int UNIT_FIELD_NUMBER = 19;
-        private com.treeleaf.suchi.entities.SuchiProto.Unit unit_;
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Unit unit = 19;</code>
-         */
-        public boolean hasUnit() {
-            return unit_ != null;
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Unit unit = 19;</code>
-         */
-        public com.treeleaf.suchi.entities.SuchiProto.Unit getUnit() {
-            return unit_ == null ? com.treeleaf.suchi.entities.SuchiProto.Unit.getDefaultInstance() : unit_;
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Unit unit = 19;</code>
-         */
-        private void setUnit(com.treeleaf.suchi.entities.SuchiProto.Unit value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            unit_ = value;
-
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Unit unit = 19;</code>
-         */
-        private void setUnit(
-                com.treeleaf.suchi.entities.SuchiProto.Unit.Builder builderForValue) {
-            unit_ = builderForValue.build();
-
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Unit unit = 19;</code>
-         */
-        private void mergeUnit(com.treeleaf.suchi.entities.SuchiProto.Unit value) {
-            if (unit_ != null &&
-                    unit_ != com.treeleaf.suchi.entities.SuchiProto.Unit.getDefaultInstance()) {
-                unit_ =
-                        com.treeleaf.suchi.entities.SuchiProto.Unit.newBuilder(unit_).mergeFrom(value).buildPartial();
-            } else {
-                unit_ = value;
-            }
-
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Unit unit = 19;</code>
-         */
-        private void clearUnit() {
-            unit_ = null;
-
-        }
-
-        public static final int UNITS_FIELD_NUMBER = 20;
-        private com.google.protobuf.Internal.ProtobufList<com.treeleaf.suchi.entities.SuchiProto.Unit> units_;
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Unit units = 20;</code>
-         */
-        public java.util.List<com.treeleaf.suchi.entities.SuchiProto.Unit> getUnitsList() {
-            return units_;
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Unit units = 20;</code>
-         */
-        public java.util.List<? extends com.treeleaf.suchi.entities.SuchiProto.UnitOrBuilder>
-        getUnitsOrBuilderList() {
-            return units_;
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Unit units = 20;</code>
-         */
-        public int getUnitsCount() {
-            return units_.size();
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Unit units = 20;</code>
-         */
-        public com.treeleaf.suchi.entities.SuchiProto.Unit getUnits(int index) {
-            return units_.get(index);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Unit units = 20;</code>
-         */
-        public com.treeleaf.suchi.entities.SuchiProto.UnitOrBuilder getUnitsOrBuilder(
-                int index) {
-            return units_.get(index);
-        }
-
-        private void ensureUnitsIsMutable() {
-            if (!units_.isModifiable()) {
-                units_ =
+                  break;
+                }
+                case 162: {
+                  if (!units_.isModifiable()) {
+                    units_ =
                         com.google.protobuf.GeneratedMessageLite.mutableCopy(units_);
-            }
-        }
+                  }
+                  units_.add(
+                      input.readMessage(com.treeleaf.suchi.entities.SuchiProto.Unit.parser(), extensionRegistry));
+                  break;
+                }
+                case 170: {
+                  com.treeleaf.suchi.entities.SuchiProto.Category.Builder subBuilder = null;
+                  if (category_ != null) {
+                    subBuilder = category_.toBuilder();
+                  }
+                  category_ = input.readMessage(com.treeleaf.suchi.entities.SuchiProto.Category.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(category_);
+                    category_ = subBuilder.buildPartial();
+                  }
 
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Unit units = 20;</code>
-         */
-        private void setUnits(
-                int index, com.treeleaf.suchi.entities.SuchiProto.Unit value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            ensureUnitsIsMutable();
-            units_.set(index, value);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Unit units = 20;</code>
-         */
-        private void setUnits(
-                int index, com.treeleaf.suchi.entities.SuchiProto.Unit.Builder builderForValue) {
-            ensureUnitsIsMutable();
-            units_.set(index, builderForValue.build());
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Unit units = 20;</code>
-         */
-        private void addUnits(com.treeleaf.suchi.entities.SuchiProto.Unit value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            ensureUnitsIsMutable();
-            units_.add(value);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Unit units = 20;</code>
-         */
-        private void addUnits(
-                int index, com.treeleaf.suchi.entities.SuchiProto.Unit value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            ensureUnitsIsMutable();
-            units_.add(index, value);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Unit units = 20;</code>
-         */
-        private void addUnits(
-                com.treeleaf.suchi.entities.SuchiProto.Unit.Builder builderForValue) {
-            ensureUnitsIsMutable();
-            units_.add(builderForValue.build());
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Unit units = 20;</code>
-         */
-        private void addUnits(
-                int index, com.treeleaf.suchi.entities.SuchiProto.Unit.Builder builderForValue) {
-            ensureUnitsIsMutable();
-            units_.add(index, builderForValue.build());
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Unit units = 20;</code>
-         */
-        private void addAllUnits(
-                Iterable<? extends com.treeleaf.suchi.entities.SuchiProto.Unit> values) {
-            ensureUnitsIsMutable();
-            com.google.protobuf.AbstractMessageLite.addAll(
-                    values, units_);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Unit units = 20;</code>
-         */
-        private void clearUnits() {
-            units_ = emptyProtobufList();
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Unit units = 20;</code>
-         */
-        private void removeUnits(int index) {
-            ensureUnitsIsMutable();
-            units_.remove(index);
-        }
-
-        public static final int CATEGORY_FIELD_NUMBER = 21;
-        private com.treeleaf.suchi.entities.SuchiProto.Category category_;
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Category category = 21;</code>
-         */
-        public boolean hasCategory() {
-            return category_ != null;
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Category category = 21;</code>
-         */
-        public com.treeleaf.suchi.entities.SuchiProto.Category getCategory() {
-            return category_ == null ? com.treeleaf.suchi.entities.SuchiProto.Category.getDefaultInstance() : category_;
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Category category = 21;</code>
-         */
-        private void setCategory(com.treeleaf.suchi.entities.SuchiProto.Category value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            category_ = value;
-
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Category category = 21;</code>
-         */
-        private void setCategory(
-                com.treeleaf.suchi.entities.SuchiProto.Category.Builder builderForValue) {
-            category_ = builderForValue.build();
-
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Category category = 21;</code>
-         */
-        private void mergeCategory(com.treeleaf.suchi.entities.SuchiProto.Category value) {
-            if (category_ != null &&
-                    category_ != com.treeleaf.suchi.entities.SuchiProto.Category.getDefaultInstance()) {
-                category_ =
-                        com.treeleaf.suchi.entities.SuchiProto.Category.newBuilder(category_).mergeFrom(value).buildPartial();
-            } else {
-                category_ = value;
-            }
-
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Category category = 21;</code>
-         */
-        private void clearCategory() {
-            category_ = null;
-
-        }
-
-        public static final int CATEGORIES_FIELD_NUMBER = 22;
-        private com.google.protobuf.Internal.ProtobufList<com.treeleaf.suchi.entities.SuchiProto.Category> categories_;
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Category categories = 22;</code>
-         */
-        public java.util.List<com.treeleaf.suchi.entities.SuchiProto.Category> getCategoriesList() {
-            return categories_;
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Category categories = 22;</code>
-         */
-        public java.util.List<? extends com.treeleaf.suchi.entities.SuchiProto.CategoryOrBuilder>
-        getCategoriesOrBuilderList() {
-            return categories_;
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Category categories = 22;</code>
-         */
-        public int getCategoriesCount() {
-            return categories_.size();
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Category categories = 22;</code>
-         */
-        public com.treeleaf.suchi.entities.SuchiProto.Category getCategories(int index) {
-            return categories_.get(index);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Category categories = 22;</code>
-         */
-        public com.treeleaf.suchi.entities.SuchiProto.CategoryOrBuilder getCategoriesOrBuilder(
-                int index) {
-            return categories_.get(index);
-        }
-
-        private void ensureCategoriesIsMutable() {
-            if (!categories_.isModifiable()) {
-                categories_ =
+                  break;
+                }
+                case 178: {
+                  if (!categories_.isModifiable()) {
+                    categories_ =
                         com.google.protobuf.GeneratedMessageLite.mutableCopy(categories_);
-            }
-        }
+                  }
+                  categories_.add(
+                      input.readMessage(com.treeleaf.suchi.entities.SuchiProto.Category.parser(), extensionRegistry));
+                  break;
+                }
+                case 186: {
+                  com.treeleaf.suchi.entities.SuchiProto.Creditor.Builder subBuilder = null;
+                  if (creditor_ != null) {
+                    subBuilder = creditor_.toBuilder();
+                  }
+                  creditor_ = input.readMessage(com.treeleaf.suchi.entities.SuchiProto.Creditor.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(creditor_);
+                    creditor_ = subBuilder.buildPartial();
+                  }
 
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Category categories = 22;</code>
-         */
-        private void setCategories(
-                int index, com.treeleaf.suchi.entities.SuchiProto.Category value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            ensureCategoriesIsMutable();
-            categories_.set(index, value);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Category categories = 22;</code>
-         */
-        private void setCategories(
-                int index, com.treeleaf.suchi.entities.SuchiProto.Category.Builder builderForValue) {
-            ensureCategoriesIsMutable();
-            categories_.set(index, builderForValue.build());
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Category categories = 22;</code>
-         */
-        private void addCategories(com.treeleaf.suchi.entities.SuchiProto.Category value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            ensureCategoriesIsMutable();
-            categories_.add(value);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Category categories = 22;</code>
-         */
-        private void addCategories(
-                int index, com.treeleaf.suchi.entities.SuchiProto.Category value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            ensureCategoriesIsMutable();
-            categories_.add(index, value);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Category categories = 22;</code>
-         */
-        private void addCategories(
-                com.treeleaf.suchi.entities.SuchiProto.Category.Builder builderForValue) {
-            ensureCategoriesIsMutable();
-            categories_.add(builderForValue.build());
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Category categories = 22;</code>
-         */
-        private void addCategories(
-                int index, com.treeleaf.suchi.entities.SuchiProto.Category.Builder builderForValue) {
-            ensureCategoriesIsMutable();
-            categories_.add(index, builderForValue.build());
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Category categories = 22;</code>
-         */
-        private void addAllCategories(
-                Iterable<? extends com.treeleaf.suchi.entities.SuchiProto.Category> values) {
-            ensureCategoriesIsMutable();
-            com.google.protobuf.AbstractMessageLite.addAll(
-                    values, categories_);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Category categories = 22;</code>
-         */
-        private void clearCategories() {
-            categories_ = emptyProtobufList();
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Category categories = 22;</code>
-         */
-        private void removeCategories(int index) {
-            ensureCategoriesIsMutable();
-            categories_.remove(index);
-        }
-
-        public static final int CREDITOR_FIELD_NUMBER = 23;
-        private com.treeleaf.suchi.entities.SuchiProto.Creditor creditor_;
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Creditor creditor = 23;</code>
-         */
-        public boolean hasCreditor() {
-            return creditor_ != null;
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Creditor creditor = 23;</code>
-         */
-        public com.treeleaf.suchi.entities.SuchiProto.Creditor getCreditor() {
-            return creditor_ == null ? com.treeleaf.suchi.entities.SuchiProto.Creditor.getDefaultInstance() : creditor_;
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Creditor creditor = 23;</code>
-         */
-        private void setCreditor(com.treeleaf.suchi.entities.SuchiProto.Creditor value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            creditor_ = value;
-
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Creditor creditor = 23;</code>
-         */
-        private void setCreditor(
-                com.treeleaf.suchi.entities.SuchiProto.Creditor.Builder builderForValue) {
-            creditor_ = builderForValue.build();
-
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Creditor creditor = 23;</code>
-         */
-        private void mergeCreditor(com.treeleaf.suchi.entities.SuchiProto.Creditor value) {
-            if (creditor_ != null &&
-                    creditor_ != com.treeleaf.suchi.entities.SuchiProto.Creditor.getDefaultInstance()) {
-                creditor_ =
-                        com.treeleaf.suchi.entities.SuchiProto.Creditor.newBuilder(creditor_).mergeFrom(value).buildPartial();
-            } else {
-                creditor_ = value;
-            }
-
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Creditor creditor = 23;</code>
-         */
-        private void clearCreditor() {
-            creditor_ = null;
-
-        }
-
-        public static final int CREDITORS_FIELD_NUMBER = 24;
-        private com.google.protobuf.Internal.ProtobufList<com.treeleaf.suchi.entities.SuchiProto.Creditor> creditors_;
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 24;</code>
-         */
-        public java.util.List<com.treeleaf.suchi.entities.SuchiProto.Creditor> getCreditorsList() {
-            return creditors_;
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 24;</code>
-         */
-        public java.util.List<? extends com.treeleaf.suchi.entities.SuchiProto.CreditorOrBuilder>
-        getCreditorsOrBuilderList() {
-            return creditors_;
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 24;</code>
-         */
-        public int getCreditorsCount() {
-            return creditors_.size();
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 24;</code>
-         */
-        public com.treeleaf.suchi.entities.SuchiProto.Creditor getCreditors(int index) {
-            return creditors_.get(index);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 24;</code>
-         */
-        public com.treeleaf.suchi.entities.SuchiProto.CreditorOrBuilder getCreditorsOrBuilder(
-                int index) {
-            return creditors_.get(index);
-        }
-
-        private void ensureCreditorsIsMutable() {
-            if (!creditors_.isModifiable()) {
-                creditors_ =
+                  break;
+                }
+                case 194: {
+                  if (!creditors_.isModifiable()) {
+                    creditors_ =
                         com.google.protobuf.GeneratedMessageLite.mutableCopy(creditors_);
-            }
-        }
+                  }
+                  creditors_.add(
+                      input.readMessage(com.treeleaf.suchi.entities.SuchiProto.Creditor.parser(), extensionRegistry));
+                  break;
+                }
+                case 202: {
+                  com.treeleaf.suchi.entities.SuchiProto.CreditDetail.Builder subBuilder = null;
+                  if (creditDetail_ != null) {
+                    subBuilder = creditDetail_.toBuilder();
+                  }
+                  creditDetail_ = input.readMessage(com.treeleaf.suchi.entities.SuchiProto.CreditDetail.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(creditDetail_);
+                    creditDetail_ = subBuilder.buildPartial();
+                  }
 
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 24;</code>
-         */
-        private void setCreditors(
-                int index, com.treeleaf.suchi.entities.SuchiProto.Creditor value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            ensureCreditorsIsMutable();
-            creditors_.set(index, value);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 24;</code>
-         */
-        private void setCreditors(
-                int index, com.treeleaf.suchi.entities.SuchiProto.Creditor.Builder builderForValue) {
-            ensureCreditorsIsMutable();
-            creditors_.set(index, builderForValue.build());
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 24;</code>
-         */
-        private void addCreditors(com.treeleaf.suchi.entities.SuchiProto.Creditor value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            ensureCreditorsIsMutable();
-            creditors_.add(value);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 24;</code>
-         */
-        private void addCreditors(
-                int index, com.treeleaf.suchi.entities.SuchiProto.Creditor value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            ensureCreditorsIsMutable();
-            creditors_.add(index, value);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 24;</code>
-         */
-        private void addCreditors(
-                com.treeleaf.suchi.entities.SuchiProto.Creditor.Builder builderForValue) {
-            ensureCreditorsIsMutable();
-            creditors_.add(builderForValue.build());
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 24;</code>
-         */
-        private void addCreditors(
-                int index, com.treeleaf.suchi.entities.SuchiProto.Creditor.Builder builderForValue) {
-            ensureCreditorsIsMutable();
-            creditors_.add(index, builderForValue.build());
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 24;</code>
-         */
-        private void addAllCreditors(
-                Iterable<? extends com.treeleaf.suchi.entities.SuchiProto.Creditor> values) {
-            ensureCreditorsIsMutable();
-            com.google.protobuf.AbstractMessageLite.addAll(
-                    values, creditors_);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 24;</code>
-         */
-        private void clearCreditors() {
-            creditors_ = emptyProtobufList();
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 24;</code>
-         */
-        private void removeCreditors(int index) {
-            ensureCreditorsIsMutable();
-            creditors_.remove(index);
-        }
-
-        public static final int CREDITDETAIL_FIELD_NUMBER = 25;
-        private com.treeleaf.suchi.entities.SuchiProto.CreditDetail creditDetail_;
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.CreditDetail creditDetail = 25;</code>
-         */
-        public boolean hasCreditDetail() {
-            return creditDetail_ != null;
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.CreditDetail creditDetail = 25;</code>
-         */
-        public com.treeleaf.suchi.entities.SuchiProto.CreditDetail getCreditDetail() {
-            return creditDetail_ == null ? com.treeleaf.suchi.entities.SuchiProto.CreditDetail.getDefaultInstance() : creditDetail_;
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.CreditDetail creditDetail = 25;</code>
-         */
-        private void setCreditDetail(com.treeleaf.suchi.entities.SuchiProto.CreditDetail value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            creditDetail_ = value;
-
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.CreditDetail creditDetail = 25;</code>
-         */
-        private void setCreditDetail(
-                com.treeleaf.suchi.entities.SuchiProto.CreditDetail.Builder builderForValue) {
-            creditDetail_ = builderForValue.build();
-
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.CreditDetail creditDetail = 25;</code>
-         */
-        private void mergeCreditDetail(com.treeleaf.suchi.entities.SuchiProto.CreditDetail value) {
-            if (creditDetail_ != null &&
-                    creditDetail_ != com.treeleaf.suchi.entities.SuchiProto.CreditDetail.getDefaultInstance()) {
-                creditDetail_ =
-                        com.treeleaf.suchi.entities.SuchiProto.CreditDetail.newBuilder(creditDetail_).mergeFrom(value).buildPartial();
-            } else {
-                creditDetail_ = value;
-            }
-
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.CreditDetail creditDetail = 25;</code>
-         */
-        private void clearCreditDetail() {
-            creditDetail_ = null;
-
-        }
-
-        public static final int CREDITDETAILS_FIELD_NUMBER = 26;
-        private com.google.protobuf.Internal.ProtobufList<com.treeleaf.suchi.entities.SuchiProto.CreditDetail> creditDetails_;
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 26;</code>
-         */
-        public java.util.List<com.treeleaf.suchi.entities.SuchiProto.CreditDetail> getCreditDetailsList() {
-            return creditDetails_;
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 26;</code>
-         */
-        public java.util.List<? extends com.treeleaf.suchi.entities.SuchiProto.CreditDetailOrBuilder>
-        getCreditDetailsOrBuilderList() {
-            return creditDetails_;
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 26;</code>
-         */
-        public int getCreditDetailsCount() {
-            return creditDetails_.size();
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 26;</code>
-         */
-        public com.treeleaf.suchi.entities.SuchiProto.CreditDetail getCreditDetails(int index) {
-            return creditDetails_.get(index);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 26;</code>
-         */
-        public com.treeleaf.suchi.entities.SuchiProto.CreditDetailOrBuilder getCreditDetailsOrBuilder(
-                int index) {
-            return creditDetails_.get(index);
-        }
-
-        private void ensureCreditDetailsIsMutable() {
-            if (!creditDetails_.isModifiable()) {
-                creditDetails_ =
+                  break;
+                }
+                case 210: {
+                  if (!creditDetails_.isModifiable()) {
+                    creditDetails_ =
                         com.google.protobuf.GeneratedMessageLite.mutableCopy(creditDetails_);
-            }
-        }
+                  }
+                  creditDetails_.add(
+                      input.readMessage(com.treeleaf.suchi.entities.SuchiProto.CreditDetail.parser(), extensionRegistry));
+                  break;
+                }
+                case 218: {
+                  com.treeleaf.suchi.entities.SuchiProto.Sale.Builder subBuilder = null;
+                  if (sale_ != null) {
+                    subBuilder = sale_.toBuilder();
+                  }
+                  sale_ = input.readMessage(com.treeleaf.suchi.entities.SuchiProto.Sale.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(sale_);
+                    sale_ = subBuilder.buildPartial();
+                  }
 
-        /**
-         * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 26;</code>
-         */
-        private void setCreditDetails(
-                int index, com.treeleaf.suchi.entities.SuchiProto.CreditDetail value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            ensureCreditDetailsIsMutable();
-            creditDetails_.set(index, value);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 26;</code>
-         */
-        private void setCreditDetails(
-                int index, com.treeleaf.suchi.entities.SuchiProto.CreditDetail.Builder builderForValue) {
-            ensureCreditDetailsIsMutable();
-            creditDetails_.set(index, builderForValue.build());
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 26;</code>
-         */
-        private void addCreditDetails(com.treeleaf.suchi.entities.SuchiProto.CreditDetail value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            ensureCreditDetailsIsMutable();
-            creditDetails_.add(value);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 26;</code>
-         */
-        private void addCreditDetails(
-                int index, com.treeleaf.suchi.entities.SuchiProto.CreditDetail value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            ensureCreditDetailsIsMutable();
-            creditDetails_.add(index, value);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 26;</code>
-         */
-        private void addCreditDetails(
-                com.treeleaf.suchi.entities.SuchiProto.CreditDetail.Builder builderForValue) {
-            ensureCreditDetailsIsMutable();
-            creditDetails_.add(builderForValue.build());
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 26;</code>
-         */
-        private void addCreditDetails(
-                int index, com.treeleaf.suchi.entities.SuchiProto.CreditDetail.Builder builderForValue) {
-            ensureCreditDetailsIsMutable();
-            creditDetails_.add(index, builderForValue.build());
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 26;</code>
-         */
-        private void addAllCreditDetails(
-                Iterable<? extends com.treeleaf.suchi.entities.SuchiProto.CreditDetail> values) {
-            ensureCreditDetailsIsMutable();
-            com.google.protobuf.AbstractMessageLite.addAll(
-                    values, creditDetails_);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 26;</code>
-         */
-        private void clearCreditDetails() {
-            creditDetails_ = emptyProtobufList();
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 26;</code>
-         */
-        private void removeCreditDetails(int index) {
-            ensureCreditDetailsIsMutable();
-            creditDetails_.remove(index);
-        }
-
-        public static final int SALE_FIELD_NUMBER = 27;
-        private com.treeleaf.suchi.entities.SuchiProto.Sale sale_;
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Sale sale = 27;</code>
-         */
-        public boolean hasSale() {
-            return sale_ != null;
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Sale sale = 27;</code>
-         */
-        public com.treeleaf.suchi.entities.SuchiProto.Sale getSale() {
-            return sale_ == null ? com.treeleaf.suchi.entities.SuchiProto.Sale.getDefaultInstance() : sale_;
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Sale sale = 27;</code>
-         */
-        private void setSale(com.treeleaf.suchi.entities.SuchiProto.Sale value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            sale_ = value;
-
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Sale sale = 27;</code>
-         */
-        private void setSale(
-                com.treeleaf.suchi.entities.SuchiProto.Sale.Builder builderForValue) {
-            sale_ = builderForValue.build();
-
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Sale sale = 27;</code>
-         */
-        private void mergeSale(com.treeleaf.suchi.entities.SuchiProto.Sale value) {
-            if (sale_ != null &&
-                    sale_ != com.treeleaf.suchi.entities.SuchiProto.Sale.getDefaultInstance()) {
-                sale_ =
-                        com.treeleaf.suchi.entities.SuchiProto.Sale.newBuilder(sale_).mergeFrom(value).buildPartial();
-            } else {
-                sale_ = value;
-            }
-
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.Sale sale = 27;</code>
-         */
-        private void clearSale() {
-            sale_ = null;
-
-        }
-
-        public static final int SALES_FIELD_NUMBER = 28;
-        private com.google.protobuf.Internal.ProtobufList<com.treeleaf.suchi.entities.SuchiProto.Sale> sales_;
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Sale sales = 28;</code>
-         */
-        public java.util.List<com.treeleaf.suchi.entities.SuchiProto.Sale> getSalesList() {
-            return sales_;
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Sale sales = 28;</code>
-         */
-        public java.util.List<? extends com.treeleaf.suchi.entities.SuchiProto.SaleOrBuilder>
-        getSalesOrBuilderList() {
-            return sales_;
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Sale sales = 28;</code>
-         */
-        public int getSalesCount() {
-            return sales_.size();
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Sale sales = 28;</code>
-         */
-        public com.treeleaf.suchi.entities.SuchiProto.Sale getSales(int index) {
-            return sales_.get(index);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Sale sales = 28;</code>
-         */
-        public com.treeleaf.suchi.entities.SuchiProto.SaleOrBuilder getSalesOrBuilder(
-                int index) {
-            return sales_.get(index);
-        }
-
-        private void ensureSalesIsMutable() {
-            if (!sales_.isModifiable()) {
-                sales_ =
+                  break;
+                }
+                case 226: {
+                  if (!sales_.isModifiable()) {
+                    sales_ =
                         com.google.protobuf.GeneratedMessageLite.mutableCopy(sales_);
-            }
-        }
+                  }
+                  sales_.add(
+                      input.readMessage(com.treeleaf.suchi.entities.SuchiProto.Sale.parser(), extensionRegistry));
+                  break;
+                }
+                case 234: {
+                  com.treeleaf.suchi.entities.SuchiProto.UnitConversion.Builder subBuilder = null;
+                  if (unitConversion_ != null) {
+                    subBuilder = unitConversion_.toBuilder();
+                  }
+                  unitConversion_ = input.readMessage(com.treeleaf.suchi.entities.SuchiProto.UnitConversion.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(unitConversion_);
+                    unitConversion_ = subBuilder.buildPartial();
+                  }
 
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Sale sales = 28;</code>
-         */
-        private void setSales(
-                int index, com.treeleaf.suchi.entities.SuchiProto.Sale value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            ensureSalesIsMutable();
-            sales_.set(index, value);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Sale sales = 28;</code>
-         */
-        private void setSales(
-                int index, com.treeleaf.suchi.entities.SuchiProto.Sale.Builder builderForValue) {
-            ensureSalesIsMutable();
-            sales_.set(index, builderForValue.build());
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Sale sales = 28;</code>
-         */
-        private void addSales(com.treeleaf.suchi.entities.SuchiProto.Sale value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            ensureSalesIsMutable();
-            sales_.add(value);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Sale sales = 28;</code>
-         */
-        private void addSales(
-                int index, com.treeleaf.suchi.entities.SuchiProto.Sale value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            ensureSalesIsMutable();
-            sales_.add(index, value);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Sale sales = 28;</code>
-         */
-        private void addSales(
-                com.treeleaf.suchi.entities.SuchiProto.Sale.Builder builderForValue) {
-            ensureSalesIsMutable();
-            sales_.add(builderForValue.build());
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Sale sales = 28;</code>
-         */
-        private void addSales(
-                int index, com.treeleaf.suchi.entities.SuchiProto.Sale.Builder builderForValue) {
-            ensureSalesIsMutable();
-            sales_.add(index, builderForValue.build());
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Sale sales = 28;</code>
-         */
-        private void addAllSales(
-                Iterable<? extends com.treeleaf.suchi.entities.SuchiProto.Sale> values) {
-            ensureSalesIsMutable();
-            com.google.protobuf.AbstractMessageLite.addAll(
-                    values, sales_);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Sale sales = 28;</code>
-         */
-        private void clearSales() {
-            sales_ = emptyProtobufList();
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.Sale sales = 28;</code>
-         */
-        private void removeSales(int index) {
-            ensureSalesIsMutable();
-            sales_.remove(index);
-        }
-
-        public static final int UNITCONVERSION_FIELD_NUMBER = 29;
-        private com.treeleaf.suchi.entities.SuchiProto.UnitConversion unitConversion_;
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.UnitConversion unitConversion = 29;</code>
-         */
-        public boolean hasUnitConversion() {
-            return unitConversion_ != null;
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.UnitConversion unitConversion = 29;</code>
-         */
-        public com.treeleaf.suchi.entities.SuchiProto.UnitConversion getUnitConversion() {
-            return unitConversion_ == null ? com.treeleaf.suchi.entities.SuchiProto.UnitConversion.getDefaultInstance() : unitConversion_;
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.UnitConversion unitConversion = 29;</code>
-         */
-        private void setUnitConversion(com.treeleaf.suchi.entities.SuchiProto.UnitConversion value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            unitConversion_ = value;
-
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.UnitConversion unitConversion = 29;</code>
-         */
-        private void setUnitConversion(
-                com.treeleaf.suchi.entities.SuchiProto.UnitConversion.Builder builderForValue) {
-            unitConversion_ = builderForValue.build();
-
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.UnitConversion unitConversion = 29;</code>
-         */
-        private void mergeUnitConversion(com.treeleaf.suchi.entities.SuchiProto.UnitConversion value) {
-            if (unitConversion_ != null &&
-                    unitConversion_ != com.treeleaf.suchi.entities.SuchiProto.UnitConversion.getDefaultInstance()) {
-                unitConversion_ =
-                        com.treeleaf.suchi.entities.SuchiProto.UnitConversion.newBuilder(unitConversion_).mergeFrom(value).buildPartial();
-            } else {
-                unitConversion_ = value;
-            }
-
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.UnitConversion unitConversion = 29;</code>
-         */
-        private void clearUnitConversion() {
-            unitConversion_ = null;
-
-        }
-
-        public static final int UNITCONVERSIONS_FIELD_NUMBER = 30;
-        private com.google.protobuf.Internal.ProtobufList<com.treeleaf.suchi.entities.SuchiProto.UnitConversion> unitConversions_;
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.UnitConversion unitConversions = 30;</code>
-         */
-        public java.util.List<com.treeleaf.suchi.entities.SuchiProto.UnitConversion> getUnitConversionsList() {
-            return unitConversions_;
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.UnitConversion unitConversions = 30;</code>
-         */
-        public java.util.List<? extends com.treeleaf.suchi.entities.SuchiProto.UnitConversionOrBuilder>
-        getUnitConversionsOrBuilderList() {
-            return unitConversions_;
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.UnitConversion unitConversions = 30;</code>
-         */
-        public int getUnitConversionsCount() {
-            return unitConversions_.size();
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.UnitConversion unitConversions = 30;</code>
-         */
-        public com.treeleaf.suchi.entities.SuchiProto.UnitConversion getUnitConversions(int index) {
-            return unitConversions_.get(index);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.UnitConversion unitConversions = 30;</code>
-         */
-        public com.treeleaf.suchi.entities.SuchiProto.UnitConversionOrBuilder getUnitConversionsOrBuilder(
-                int index) {
-            return unitConversions_.get(index);
-        }
-
-        private void ensureUnitConversionsIsMutable() {
-            if (!unitConversions_.isModifiable()) {
-                unitConversions_ =
+                  break;
+                }
+                case 242: {
+                  if (!unitConversions_.isModifiable()) {
+                    unitConversions_ =
                         com.google.protobuf.GeneratedMessageLite.mutableCopy(unitConversions_);
-            }
-        }
+                  }
+                  unitConversions_.add(
+                      input.readMessage(com.treeleaf.suchi.entities.SuchiProto.UnitConversion.parser(), extensionRegistry));
+                  break;
+                }
+                case 250: {
+                  com.treeleaf.suchi.entities.TreeleafProto.LoginResponse.Builder subBuilder = null;
+                  if (loginResponse_ != null) {
+                    subBuilder = loginResponse_.toBuilder();
+                  }
+                  loginResponse_ = input.readMessage(com.treeleaf.suchi.entities.TreeleafProto.LoginResponse.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(loginResponse_);
+                    loginResponse_ = subBuilder.buildPartial();
+                  }
 
-        /**
-         * <code>repeated .treeleaf.suchi.entities.UnitConversion unitConversions = 30;</code>
-         */
-        private void setUnitConversions(
-                int index, com.treeleaf.suchi.entities.SuchiProto.UnitConversion value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            ensureUnitConversionsIsMutable();
-            unitConversions_.set(index, value);
-        }
+                  break;
+                }
+                case 258: {
+                  com.treeleaf.suchi.entities.SuchiProto.InventoryStock.Builder subBuilder = null;
+                  if (inventoryStock_ != null) {
+                    subBuilder = inventoryStock_.toBuilder();
+                  }
+                  inventoryStock_ = input.readMessage(com.treeleaf.suchi.entities.SuchiProto.InventoryStock.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(inventoryStock_);
+                    inventoryStock_ = subBuilder.buildPartial();
+                  }
 
-        /**
-         * <code>repeated .treeleaf.suchi.entities.UnitConversion unitConversions = 30;</code>
-         */
-        private void setUnitConversions(
-                int index, com.treeleaf.suchi.entities.SuchiProto.UnitConversion.Builder builderForValue) {
-            ensureUnitConversionsIsMutable();
-            unitConversions_.set(index, builderForValue.build());
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.UnitConversion unitConversions = 30;</code>
-         */
-        private void addUnitConversions(com.treeleaf.suchi.entities.SuchiProto.UnitConversion value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            ensureUnitConversionsIsMutable();
-            unitConversions_.add(value);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.UnitConversion unitConversions = 30;</code>
-         */
-        private void addUnitConversions(
-                int index, com.treeleaf.suchi.entities.SuchiProto.UnitConversion value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            ensureUnitConversionsIsMutable();
-            unitConversions_.add(index, value);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.UnitConversion unitConversions = 30;</code>
-         */
-        private void addUnitConversions(
-                com.treeleaf.suchi.entities.SuchiProto.UnitConversion.Builder builderForValue) {
-            ensureUnitConversionsIsMutable();
-            unitConversions_.add(builderForValue.build());
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.UnitConversion unitConversions = 30;</code>
-         */
-        private void addUnitConversions(
-                int index, com.treeleaf.suchi.entities.SuchiProto.UnitConversion.Builder builderForValue) {
-            ensureUnitConversionsIsMutable();
-            unitConversions_.add(index, builderForValue.build());
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.UnitConversion unitConversions = 30;</code>
-         */
-        private void addAllUnitConversions(
-                Iterable<? extends com.treeleaf.suchi.entities.SuchiProto.UnitConversion> values) {
-            ensureUnitConversionsIsMutable();
-            com.google.protobuf.AbstractMessageLite.addAll(
-                    values, unitConversions_);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.UnitConversion unitConversions = 30;</code>
-         */
-        private void clearUnitConversions() {
-            unitConversions_ = emptyProtobufList();
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.UnitConversion unitConversions = 30;</code>
-         */
-        private void removeUnitConversions(int index) {
-            ensureUnitConversionsIsMutable();
-            unitConversions_.remove(index);
-        }
-
-        public static final int LOGINRESPONSE_FIELD_NUMBER = 31;
-        private com.treeleaf.suchi.entities.TreeleafProto.LoginResponse loginResponse_;
-
-        /**
-         * <code>optional .treeleaf.entities.LoginResponse loginResponse = 31;</code>
-         */
-        public boolean hasLoginResponse() {
-            return loginResponse_ != null;
-        }
-
-        /**
-         * <code>optional .treeleaf.entities.LoginResponse loginResponse = 31;</code>
-         */
-        public com.treeleaf.suchi.entities.TreeleafProto.LoginResponse getLoginResponse() {
-            return loginResponse_ == null ? com.treeleaf.suchi.entities.TreeleafProto.LoginResponse.getDefaultInstance() : loginResponse_;
-        }
-
-        /**
-         * <code>optional .treeleaf.entities.LoginResponse loginResponse = 31;</code>
-         */
-        private void setLoginResponse(com.treeleaf.suchi.entities.TreeleafProto.LoginResponse value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            loginResponse_ = value;
-
-        }
-
-        /**
-         * <code>optional .treeleaf.entities.LoginResponse loginResponse = 31;</code>
-         */
-        private void setLoginResponse(
-                com.treeleaf.suchi.entities.TreeleafProto.LoginResponse.Builder builderForValue) {
-            loginResponse_ = builderForValue.build();
-
-        }
-
-        /**
-         * <code>optional .treeleaf.entities.LoginResponse loginResponse = 31;</code>
-         */
-        private void mergeLoginResponse(com.treeleaf.suchi.entities.TreeleafProto.LoginResponse value) {
-            if (loginResponse_ != null &&
-                    loginResponse_ != com.treeleaf.suchi.entities.TreeleafProto.LoginResponse.getDefaultInstance()) {
-                loginResponse_ =
-                        com.treeleaf.suchi.entities.TreeleafProto.LoginResponse.newBuilder(loginResponse_).mergeFrom(value).buildPartial();
-            } else {
-                loginResponse_ = value;
-            }
-
-        }
-
-        /**
-         * <code>optional .treeleaf.entities.LoginResponse loginResponse = 31;</code>
-         */
-        private void clearLoginResponse() {
-            loginResponse_ = null;
-
-        }
-
-        public static final int INVENTORYSTOCK_FIELD_NUMBER = 32;
-        private com.treeleaf.suchi.entities.SuchiProto.InventoryStock inventoryStock_;
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.InventoryStock inventoryStock = 32;</code>
-         */
-        public boolean hasInventoryStock() {
-            return inventoryStock_ != null;
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.InventoryStock inventoryStock = 32;</code>
-         */
-        public com.treeleaf.suchi.entities.SuchiProto.InventoryStock getInventoryStock() {
-            return inventoryStock_ == null ? com.treeleaf.suchi.entities.SuchiProto.InventoryStock.getDefaultInstance() : inventoryStock_;
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.InventoryStock inventoryStock = 32;</code>
-         */
-        private void setInventoryStock(com.treeleaf.suchi.entities.SuchiProto.InventoryStock value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            inventoryStock_ = value;
-
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.InventoryStock inventoryStock = 32;</code>
-         */
-        private void setInventoryStock(
-                com.treeleaf.suchi.entities.SuchiProto.InventoryStock.Builder builderForValue) {
-            inventoryStock_ = builderForValue.build();
-
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.InventoryStock inventoryStock = 32;</code>
-         */
-        private void mergeInventoryStock(com.treeleaf.suchi.entities.SuchiProto.InventoryStock value) {
-            if (inventoryStock_ != null &&
-                    inventoryStock_ != com.treeleaf.suchi.entities.SuchiProto.InventoryStock.getDefaultInstance()) {
-                inventoryStock_ =
-                        com.treeleaf.suchi.entities.SuchiProto.InventoryStock.newBuilder(inventoryStock_).mergeFrom(value).buildPartial();
-            } else {
-                inventoryStock_ = value;
-            }
-
-        }
-
-        /**
-         * <code>optional .treeleaf.suchi.entities.InventoryStock inventoryStock = 32;</code>
-         */
-        private void clearInventoryStock() {
-            inventoryStock_ = null;
-
-        }
-
-        public static final int INVENTORYSTOCKS_FIELD_NUMBER = 33;
-        private com.google.protobuf.Internal.ProtobufList<com.treeleaf.suchi.entities.SuchiProto.InventoryStock> inventoryStocks_;
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.InventoryStock inventoryStocks = 33;</code>
-         */
-        public java.util.List<com.treeleaf.suchi.entities.SuchiProto.InventoryStock> getInventoryStocksList() {
-            return inventoryStocks_;
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.InventoryStock inventoryStocks = 33;</code>
-         */
-        public java.util.List<? extends com.treeleaf.suchi.entities.SuchiProto.InventoryStockOrBuilder>
-        getInventoryStocksOrBuilderList() {
-            return inventoryStocks_;
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.InventoryStock inventoryStocks = 33;</code>
-         */
-        public int getInventoryStocksCount() {
-            return inventoryStocks_.size();
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.InventoryStock inventoryStocks = 33;</code>
-         */
-        public com.treeleaf.suchi.entities.SuchiProto.InventoryStock getInventoryStocks(int index) {
-            return inventoryStocks_.get(index);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.InventoryStock inventoryStocks = 33;</code>
-         */
-        public com.treeleaf.suchi.entities.SuchiProto.InventoryStockOrBuilder getInventoryStocksOrBuilder(
-                int index) {
-            return inventoryStocks_.get(index);
-        }
-
-        private void ensureInventoryStocksIsMutable() {
-            if (!inventoryStocks_.isModifiable()) {
-                inventoryStocks_ =
+                  break;
+                }
+                case 266: {
+                  if (!inventoryStocks_.isModifiable()) {
+                    inventoryStocks_ =
                         com.google.protobuf.GeneratedMessageLite.mutableCopy(inventoryStocks_);
-            }
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.InventoryStock inventoryStocks = 33;</code>
-         */
-        private void setInventoryStocks(
-                int index, com.treeleaf.suchi.entities.SuchiProto.InventoryStock value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            ensureInventoryStocksIsMutable();
-            inventoryStocks_.set(index, value);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.InventoryStock inventoryStocks = 33;</code>
-         */
-        private void setInventoryStocks(
-                int index, com.treeleaf.suchi.entities.SuchiProto.InventoryStock.Builder builderForValue) {
-            ensureInventoryStocksIsMutable();
-            inventoryStocks_.set(index, builderForValue.build());
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.InventoryStock inventoryStocks = 33;</code>
-         */
-        private void addInventoryStocks(com.treeleaf.suchi.entities.SuchiProto.InventoryStock value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            ensureInventoryStocksIsMutable();
-            inventoryStocks_.add(value);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.InventoryStock inventoryStocks = 33;</code>
-         */
-        private void addInventoryStocks(
-                int index, com.treeleaf.suchi.entities.SuchiProto.InventoryStock value) {
-            if (value == null) {
-                throw new NullPointerException();
-            }
-            ensureInventoryStocksIsMutable();
-            inventoryStocks_.add(index, value);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.InventoryStock inventoryStocks = 33;</code>
-         */
-        private void addInventoryStocks(
-                com.treeleaf.suchi.entities.SuchiProto.InventoryStock.Builder builderForValue) {
-            ensureInventoryStocksIsMutable();
-            inventoryStocks_.add(builderForValue.build());
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.InventoryStock inventoryStocks = 33;</code>
-         */
-        private void addInventoryStocks(
-                int index, com.treeleaf.suchi.entities.SuchiProto.InventoryStock.Builder builderForValue) {
-            ensureInventoryStocksIsMutable();
-            inventoryStocks_.add(index, builderForValue.build());
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.InventoryStock inventoryStocks = 33;</code>
-         */
-        private void addAllInventoryStocks(
-                Iterable<? extends com.treeleaf.suchi.entities.SuchiProto.InventoryStock> values) {
-            ensureInventoryStocksIsMutable();
-            com.google.protobuf.AbstractMessageLite.addAll(
-                    values, inventoryStocks_);
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.InventoryStock inventoryStocks = 33;</code>
-         */
-        private void clearInventoryStocks() {
-            inventoryStocks_ = emptyProtobufList();
-        }
-
-        /**
-         * <code>repeated .treeleaf.suchi.entities.InventoryStock inventoryStocks = 33;</code>
-         */
-        private void removeInventoryStocks(int index) {
-            ensureInventoryStocksIsMutable();
-            inventoryStocks_.remove(index);
-        }
-
-        public void writeTo(com.google.protobuf.CodedOutputStream output)
-                throws java.io.IOException {
-            if (error_ != false) {
-                output.writeBool(1, error_);
-            }
-            if (!msg_.isEmpty()) {
-                output.writeString(2, getMsg());
-            }
-            if (errorCode_ != com.treeleaf.suchi.entities.TreeleafProto.ErrorCode.UNKNOWN_ERROR.getNumber()) {
-                output.writeEnum(3, errorCode_);
-            }
-            if (success_ != false) {
-                output.writeBool(4, success_);
-            }
-            if (user_ != null) {
-                output.writeMessage(5, getUser());
-            }
-            for (int i = 0; i < users_.size(); i++) {
-                output.writeMessage(6, users_.get(i));
-            }
-            if (session_ != null) {
-                output.writeMessage(7, getSession());
-            }
-            if (loginResult_ != null) {
-                output.writeMessage(8, getLoginResult());
-            }
-            if (authResponse_ != null) {
-                output.writeMessage(9, getAuthResponse());
-            }
-            if (authorization_ != null) {
-                output.writeMessage(10, getAuthorization());
-            }
-            if (stockKeepingUnit_ != null) {
-                output.writeMessage(11, getStockKeepingUnit());
-            }
-            for (int i = 0; i < stockKeepingUnits_.size(); i++) {
-                output.writeMessage(12, stockKeepingUnits_.get(i));
-            }
-            if (inventory_ != null) {
-                output.writeMessage(13, getInventory());
-            }
-            for (int i = 0; i < inventories_.size(); i++) {
-                output.writeMessage(14, inventories_.get(i));
-            }
-            if (brand_ != null) {
-                output.writeMessage(15, getBrand());
-            }
-            for (int i = 0; i < brands_.size(); i++) {
-                output.writeMessage(16, brands_.get(i));
-            }
-            if (subBrand_ != null) {
-                output.writeMessage(17, getSubBrand());
-            }
-            for (int i = 0; i < subBrands_.size(); i++) {
-                output.writeMessage(18, subBrands_.get(i));
-            }
-            if (unit_ != null) {
-                output.writeMessage(19, getUnit());
-            }
-            for (int i = 0; i < units_.size(); i++) {
-                output.writeMessage(20, units_.get(i));
-            }
-            if (category_ != null) {
-                output.writeMessage(21, getCategory());
-            }
-            for (int i = 0; i < categories_.size(); i++) {
-                output.writeMessage(22, categories_.get(i));
-            }
-            if (creditor_ != null) {
-                output.writeMessage(23, getCreditor());
-            }
-            for (int i = 0; i < creditors_.size(); i++) {
-                output.writeMessage(24, creditors_.get(i));
-            }
-            if (creditDetail_ != null) {
-                output.writeMessage(25, getCreditDetail());
-            }
-            for (int i = 0; i < creditDetails_.size(); i++) {
-                output.writeMessage(26, creditDetails_.get(i));
-            }
-            if (sale_ != null) {
-                output.writeMessage(27, getSale());
-            }
-            for (int i = 0; i < sales_.size(); i++) {
-                output.writeMessage(28, sales_.get(i));
-            }
-            if (unitConversion_ != null) {
-                output.writeMessage(29, getUnitConversion());
-            }
-            for (int i = 0; i < unitConversions_.size(); i++) {
-                output.writeMessage(30, unitConversions_.get(i));
-            }
-            if (loginResponse_ != null) {
-                output.writeMessage(31, getLoginResponse());
-            }
-            if (inventoryStock_ != null) {
-                output.writeMessage(32, getInventoryStock());
-            }
-            for (int i = 0; i < inventoryStocks_.size(); i++) {
-                output.writeMessage(33, inventoryStocks_.get(i));
-            }
-        }
-
-        public int getSerializedSize() {
-            int size = memoizedSerializedSize;
-            if (size != -1) return size;
-
-            size = 0;
-            if (error_ != false) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeBoolSize(1, error_);
-            }
-            if (!msg_.isEmpty()) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeStringSize(2, getMsg());
-            }
-            if (errorCode_ != com.treeleaf.suchi.entities.TreeleafProto.ErrorCode.UNKNOWN_ERROR.getNumber()) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeEnumSize(3, errorCode_);
-            }
-            if (success_ != false) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeBoolSize(4, success_);
-            }
-            if (user_ != null) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeMessageSize(5, getUser());
-            }
-            for (int i = 0; i < users_.size(); i++) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeMessageSize(6, users_.get(i));
-            }
-            if (session_ != null) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeMessageSize(7, getSession());
-            }
-            if (loginResult_ != null) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeMessageSize(8, getLoginResult());
-            }
-            if (authResponse_ != null) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeMessageSize(9, getAuthResponse());
-            }
-            if (authorization_ != null) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeMessageSize(10, getAuthorization());
-            }
-            if (stockKeepingUnit_ != null) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeMessageSize(11, getStockKeepingUnit());
-            }
-            for (int i = 0; i < stockKeepingUnits_.size(); i++) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeMessageSize(12, stockKeepingUnits_.get(i));
-            }
-            if (inventory_ != null) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeMessageSize(13, getInventory());
-            }
-            for (int i = 0; i < inventories_.size(); i++) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeMessageSize(14, inventories_.get(i));
-            }
-            if (brand_ != null) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeMessageSize(15, getBrand());
-            }
-            for (int i = 0; i < brands_.size(); i++) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeMessageSize(16, brands_.get(i));
-            }
-            if (subBrand_ != null) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeMessageSize(17, getSubBrand());
-            }
-            for (int i = 0; i < subBrands_.size(); i++) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeMessageSize(18, subBrands_.get(i));
-            }
-            if (unit_ != null) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeMessageSize(19, getUnit());
-            }
-            for (int i = 0; i < units_.size(); i++) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeMessageSize(20, units_.get(i));
-            }
-            if (category_ != null) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeMessageSize(21, getCategory());
-            }
-            for (int i = 0; i < categories_.size(); i++) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeMessageSize(22, categories_.get(i));
-            }
-            if (creditor_ != null) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeMessageSize(23, getCreditor());
-            }
-            for (int i = 0; i < creditors_.size(); i++) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeMessageSize(24, creditors_.get(i));
-            }
-            if (creditDetail_ != null) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeMessageSize(25, getCreditDetail());
-            }
-            for (int i = 0; i < creditDetails_.size(); i++) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeMessageSize(26, creditDetails_.get(i));
-            }
-            if (sale_ != null) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeMessageSize(27, getSale());
-            }
-            for (int i = 0; i < sales_.size(); i++) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeMessageSize(28, sales_.get(i));
-            }
-            if (unitConversion_ != null) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeMessageSize(29, getUnitConversion());
-            }
-            for (int i = 0; i < unitConversions_.size(); i++) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeMessageSize(30, unitConversions_.get(i));
-            }
-            if (loginResponse_ != null) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeMessageSize(31, getLoginResponse());
-            }
-            if (inventoryStock_ != null) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeMessageSize(32, getInventoryStock());
-            }
-            for (int i = 0; i < inventoryStocks_.size(); i++) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeMessageSize(33, inventoryStocks_.get(i));
-            }
-            memoizedSerializedSize = size;
-            return size;
-        }
-
-        public static SuchiBaseResponse parseFrom(
-                com.google.protobuf.ByteString data)
-                throws com.google.protobuf.InvalidProtocolBufferException {
-            return com.google.protobuf.GeneratedMessageLite.parseFrom(
-                    DEFAULT_INSTANCE, data);
-        }
-
-        public static SuchiBaseResponse parseFrom(
-                com.google.protobuf.ByteString data,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws com.google.protobuf.InvalidProtocolBufferException {
-            return com.google.protobuf.GeneratedMessageLite.parseFrom(
-                    DEFAULT_INSTANCE, data, extensionRegistry);
-        }
-
-        public static SuchiBaseResponse parseFrom(byte[] data)
-                throws com.google.protobuf.InvalidProtocolBufferException {
-            return com.google.protobuf.GeneratedMessageLite.parseFrom(
-                    DEFAULT_INSTANCE, data);
-        }
-
-        public static SuchiBaseResponse parseFrom(
-                byte[] data,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws com.google.protobuf.InvalidProtocolBufferException {
-            return com.google.protobuf.GeneratedMessageLite.parseFrom(
-                    DEFAULT_INSTANCE, data, extensionRegistry);
-        }
-
-        public static SuchiBaseResponse parseFrom(java.io.InputStream input)
-                throws java.io.IOException {
-            return com.google.protobuf.GeneratedMessageLite.parseFrom(
-                    DEFAULT_INSTANCE, input);
-        }
-
-        public static SuchiBaseResponse parseFrom(
-                java.io.InputStream input,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws java.io.IOException {
-            return com.google.protobuf.GeneratedMessageLite.parseFrom(
-                    DEFAULT_INSTANCE, input, extensionRegistry);
-        }
-
-        public static SuchiBaseResponse parseDelimitedFrom(java.io.InputStream input)
-                throws java.io.IOException {
-            return parseDelimitedFrom(DEFAULT_INSTANCE, input);
-        }
-
-        public static SuchiBaseResponse parseDelimitedFrom(
-                java.io.InputStream input,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws java.io.IOException {
-            return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
-        }
-
-        public static SuchiBaseResponse parseFrom(
-                com.google.protobuf.CodedInputStream input)
-                throws java.io.IOException {
-            return com.google.protobuf.GeneratedMessageLite.parseFrom(
-                    DEFAULT_INSTANCE, input);
-        }
-
-        public static SuchiBaseResponse parseFrom(
-                com.google.protobuf.CodedInputStream input,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws java.io.IOException {
-            return com.google.protobuf.GeneratedMessageLite.parseFrom(
-                    DEFAULT_INSTANCE, input, extensionRegistry);
-        }
-
-        public static Builder newBuilder() {
-            return DEFAULT_INSTANCE.toBuilder();
-        }
-
-        public static Builder newBuilder(SuchiBaseResponse prototype) {
-            return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-        }
-
-        /**
-         * Protobuf type {@code treeleaf.suchi.rpc.SuchiBaseResponse}
-         */
-        public static final class Builder extends
-                com.google.protobuf.GeneratedMessageLite.Builder<
-                        SuchiBaseResponse, Builder> implements
-                // @@protoc_insertion_point(builder_implements:treeleaf.suchi.rpc.SuchiBaseResponse)
-                SuchiBaseResponseOrBuilder {
-            // Construct using com.treeleaf.suchi.rpc.SuchiRpcProto.SuchiBaseResponse.newBuilder()
-            private Builder() {
-                super(DEFAULT_INSTANCE);
-            }
-
-
-            /**
-             * <code>optional bool error = 1;</code>
-             */
-            public boolean getError() {
-                return instance.getError();
-            }
-
-            /**
-             * <code>optional bool error = 1;</code>
-             */
-            public Builder setError(boolean value) {
-                copyOnWrite();
-                instance.setError(value);
-                return this;
-            }
-
-            /**
-             * <code>optional bool error = 1;</code>
-             */
-            public Builder clearError() {
-                copyOnWrite();
-                instance.clearError();
-                return this;
-            }
-
-            /**
-             * <code>optional string msg = 2;</code>
-             */
-            public String getMsg() {
-                return instance.getMsg();
-            }
-
-            /**
-             * <code>optional string msg = 2;</code>
-             */
-            public com.google.protobuf.ByteString
-            getMsgBytes() {
-                return instance.getMsgBytes();
-            }
-
-            /**
-             * <code>optional string msg = 2;</code>
-             */
-            public Builder setMsg(
-                    String value) {
-                copyOnWrite();
-                instance.setMsg(value);
-                return this;
-            }
-
-            /**
-             * <code>optional string msg = 2;</code>
-             */
-            public Builder clearMsg() {
-                copyOnWrite();
-                instance.clearMsg();
-                return this;
-            }
-
-            /**
-             * <code>optional string msg = 2;</code>
-             */
-            public Builder setMsgBytes(
-                    com.google.protobuf.ByteString value) {
-                copyOnWrite();
-                instance.setMsgBytes(value);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.ErrorCode errorCode = 3;</code>
-             */
-            public int getErrorCodeValue() {
-                return instance.getErrorCodeValue();
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.ErrorCode errorCode = 3;</code>
-             */
-            public Builder setErrorCodeValue(int value) {
-                copyOnWrite();
-                instance.setErrorCodeValue(value);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.ErrorCode errorCode = 3;</code>
-             */
-            public com.treeleaf.suchi.entities.TreeleafProto.ErrorCode getErrorCode() {
-                return instance.getErrorCode();
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.ErrorCode errorCode = 3;</code>
-             */
-            public Builder setErrorCode(com.treeleaf.suchi.entities.TreeleafProto.ErrorCode value) {
-                copyOnWrite();
-                instance.setErrorCode(value);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.ErrorCode errorCode = 3;</code>
-             */
-            public Builder clearErrorCode() {
-                copyOnWrite();
-                instance.clearErrorCode();
-                return this;
-            }
-
-            /**
-             * <code>optional bool success = 4;</code>
-             */
-            public boolean getSuccess() {
-                return instance.getSuccess();
-            }
-
-            /**
-             * <code>optional bool success = 4;</code>
-             */
-            public Builder setSuccess(boolean value) {
-                copyOnWrite();
-                instance.setSuccess(value);
-                return this;
-            }
-
-            /**
-             * <code>optional bool success = 4;</code>
-             */
-            public Builder clearSuccess() {
-                copyOnWrite();
-                instance.clearSuccess();
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.UserAccount user = 5;</code>
-             */
-            public boolean hasUser() {
-                return instance.hasUser();
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.UserAccount user = 5;</code>
-             */
-            public com.treeleaf.suchi.entities.TreeleafProto.UserAccount getUser() {
-                return instance.getUser();
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.UserAccount user = 5;</code>
-             */
-            public Builder setUser(com.treeleaf.suchi.entities.TreeleafProto.UserAccount value) {
-                copyOnWrite();
-                instance.setUser(value);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.UserAccount user = 5;</code>
-             */
-            public Builder setUser(
-                    com.treeleaf.suchi.entities.TreeleafProto.UserAccount.Builder builderForValue) {
-                copyOnWrite();
-                instance.setUser(builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.UserAccount user = 5;</code>
-             */
-            public Builder mergeUser(com.treeleaf.suchi.entities.TreeleafProto.UserAccount value) {
-                copyOnWrite();
-                instance.mergeUser(value);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.UserAccount user = 5;</code>
-             */
-            public Builder clearUser() {
-                copyOnWrite();
-                instance.clearUser();
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.entities.UserAccount users = 6;</code>
-             */
-            public java.util.List<com.treeleaf.suchi.entities.TreeleafProto.UserAccount> getUsersList() {
-                return java.util.Collections.unmodifiableList(
-                        instance.getUsersList());
-            }
-
-            /**
-             * <code>repeated .treeleaf.entities.UserAccount users = 6;</code>
-             */
-            public int getUsersCount() {
-                return instance.getUsersCount();
-            }
-
-            /**
-             * <code>repeated .treeleaf.entities.UserAccount users = 6;</code>
-             */
-            public com.treeleaf.suchi.entities.TreeleafProto.UserAccount getUsers(int index) {
-                return instance.getUsers(index);
-            }
-
-            /**
-             * <code>repeated .treeleaf.entities.UserAccount users = 6;</code>
-             */
-            public Builder setUsers(
-                    int index, com.treeleaf.suchi.entities.TreeleafProto.UserAccount value) {
-                copyOnWrite();
-                instance.setUsers(index, value);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.entities.UserAccount users = 6;</code>
-             */
-            public Builder setUsers(
-                    int index, com.treeleaf.suchi.entities.TreeleafProto.UserAccount.Builder builderForValue) {
-                copyOnWrite();
-                instance.setUsers(index, builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.entities.UserAccount users = 6;</code>
-             */
-            public Builder addUsers(com.treeleaf.suchi.entities.TreeleafProto.UserAccount value) {
-                copyOnWrite();
-                instance.addUsers(value);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.entities.UserAccount users = 6;</code>
-             */
-            public Builder addUsers(
-                    int index, com.treeleaf.suchi.entities.TreeleafProto.UserAccount value) {
-                copyOnWrite();
-                instance.addUsers(index, value);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.entities.UserAccount users = 6;</code>
-             */
-            public Builder addUsers(
-                    com.treeleaf.suchi.entities.TreeleafProto.UserAccount.Builder builderForValue) {
-                copyOnWrite();
-                instance.addUsers(builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.entities.UserAccount users = 6;</code>
-             */
-            public Builder addUsers(
-                    int index, com.treeleaf.suchi.entities.TreeleafProto.UserAccount.Builder builderForValue) {
-                copyOnWrite();
-                instance.addUsers(index, builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.entities.UserAccount users = 6;</code>
-             */
-            public Builder addAllUsers(
-                    Iterable<? extends com.treeleaf.suchi.entities.TreeleafProto.UserAccount> values) {
-                copyOnWrite();
-                instance.addAllUsers(values);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.entities.UserAccount users = 6;</code>
-             */
-            public Builder clearUsers() {
-                copyOnWrite();
-                instance.clearUsers();
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.entities.UserAccount users = 6;</code>
-             */
-            public Builder removeUsers(int index) {
-                copyOnWrite();
-                instance.removeUsers(index);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.Session session = 7;</code>
-             */
-            public boolean hasSession() {
-                return instance.hasSession();
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.Session session = 7;</code>
-             */
-            public com.treeleaf.suchi.entities.TreeleafProto.Session getSession() {
-                return instance.getSession();
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.Session session = 7;</code>
-             */
-            public Builder setSession(com.treeleaf.suchi.entities.TreeleafProto.Session value) {
-                copyOnWrite();
-                instance.setSession(value);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.Session session = 7;</code>
-             */
-            public Builder setSession(
-                    com.treeleaf.suchi.entities.TreeleafProto.Session.Builder builderForValue) {
-                copyOnWrite();
-                instance.setSession(builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.Session session = 7;</code>
-             */
-            public Builder mergeSession(com.treeleaf.suchi.entities.TreeleafProto.Session value) {
-                copyOnWrite();
-                instance.mergeSession(value);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.Session session = 7;</code>
-             */
-            public Builder clearSession() {
-                copyOnWrite();
-                instance.clearSession();
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.LoginResult loginResult = 8;</code>
-             */
-            public boolean hasLoginResult() {
-                return instance.hasLoginResult();
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.LoginResult loginResult = 8;</code>
-             */
-            public com.treeleaf.suchi.entities.TreeleafProto.LoginResult getLoginResult() {
-                return instance.getLoginResult();
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.LoginResult loginResult = 8;</code>
-             */
-            public Builder setLoginResult(com.treeleaf.suchi.entities.TreeleafProto.LoginResult value) {
-                copyOnWrite();
-                instance.setLoginResult(value);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.LoginResult loginResult = 8;</code>
-             */
-            public Builder setLoginResult(
-                    com.treeleaf.suchi.entities.TreeleafProto.LoginResult.Builder builderForValue) {
-                copyOnWrite();
-                instance.setLoginResult(builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.LoginResult loginResult = 8;</code>
-             */
-            public Builder mergeLoginResult(com.treeleaf.suchi.entities.TreeleafProto.LoginResult value) {
-                copyOnWrite();
-                instance.mergeLoginResult(value);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.LoginResult loginResult = 8;</code>
-             */
-            public Builder clearLoginResult() {
-                copyOnWrite();
-                instance.clearLoginResult();
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.AuthResponse authResponse = 9;</code>
-             */
-            public boolean hasAuthResponse() {
-                return instance.hasAuthResponse();
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.AuthResponse authResponse = 9;</code>
-             */
-            public com.treeleaf.suchi.entities.TreeleafProto.AuthResponse getAuthResponse() {
-                return instance.getAuthResponse();
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.AuthResponse authResponse = 9;</code>
-             */
-            public Builder setAuthResponse(com.treeleaf.suchi.entities.TreeleafProto.AuthResponse value) {
-                copyOnWrite();
-                instance.setAuthResponse(value);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.AuthResponse authResponse = 9;</code>
-             */
-            public Builder setAuthResponse(
-                    com.treeleaf.suchi.entities.TreeleafProto.AuthResponse.Builder builderForValue) {
-                copyOnWrite();
-                instance.setAuthResponse(builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.AuthResponse authResponse = 9;</code>
-             */
-            public Builder mergeAuthResponse(com.treeleaf.suchi.entities.TreeleafProto.AuthResponse value) {
-                copyOnWrite();
-                instance.mergeAuthResponse(value);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.AuthResponse authResponse = 9;</code>
-             */
-            public Builder clearAuthResponse() {
-                copyOnWrite();
-                instance.clearAuthResponse();
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.Authorization authorization = 10;</code>
-             */
-            public boolean hasAuthorization() {
-                return instance.hasAuthorization();
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.Authorization authorization = 10;</code>
-             */
-            public com.treeleaf.suchi.entities.TreeleafProto.Authorization getAuthorization() {
-                return instance.getAuthorization();
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.Authorization authorization = 10;</code>
-             */
-            public Builder setAuthorization(com.treeleaf.suchi.entities.TreeleafProto.Authorization value) {
-                copyOnWrite();
-                instance.setAuthorization(value);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.Authorization authorization = 10;</code>
-             */
-            public Builder setAuthorization(
-                    com.treeleaf.suchi.entities.TreeleafProto.Authorization.Builder builderForValue) {
-                copyOnWrite();
-                instance.setAuthorization(builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.Authorization authorization = 10;</code>
-             */
-            public Builder mergeAuthorization(com.treeleaf.suchi.entities.TreeleafProto.Authorization value) {
-                copyOnWrite();
-                instance.mergeAuthorization(value);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.Authorization authorization = 10;</code>
-             */
-            public Builder clearAuthorization() {
-                copyOnWrite();
-                instance.clearAuthorization();
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnit = 11;</code>
-             */
-            public boolean hasStockKeepingUnit() {
-                return instance.hasStockKeepingUnit();
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnit = 11;</code>
-             */
-            public com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit getStockKeepingUnit() {
-                return instance.getStockKeepingUnit();
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnit = 11;</code>
-             */
-            public Builder setStockKeepingUnit(com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit value) {
-                copyOnWrite();
-                instance.setStockKeepingUnit(value);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnit = 11;</code>
-             */
-            public Builder setStockKeepingUnit(
-                    com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit.Builder builderForValue) {
-                copyOnWrite();
-                instance.setStockKeepingUnit(builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnit = 11;</code>
-             */
-            public Builder mergeStockKeepingUnit(com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit value) {
-                copyOnWrite();
-                instance.mergeStockKeepingUnit(value);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnit = 11;</code>
-             */
-            public Builder clearStockKeepingUnit() {
-                copyOnWrite();
-                instance.clearStockKeepingUnit();
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
-             */
-            public java.util.List<com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit> getStockKeepingUnitsList() {
-                return java.util.Collections.unmodifiableList(
-                        instance.getStockKeepingUnitsList());
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
-             */
-            public int getStockKeepingUnitsCount() {
-                return instance.getStockKeepingUnitsCount();
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
-             */
-            public com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit getStockKeepingUnits(int index) {
-                return instance.getStockKeepingUnits(index);
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
-             */
-            public Builder setStockKeepingUnits(
-                    int index, com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit value) {
-                copyOnWrite();
-                instance.setStockKeepingUnits(index, value);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
-             */
-            public Builder setStockKeepingUnits(
-                    int index, com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit.Builder builderForValue) {
-                copyOnWrite();
-                instance.setStockKeepingUnits(index, builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
-             */
-            public Builder addStockKeepingUnits(com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit value) {
-                copyOnWrite();
-                instance.addStockKeepingUnits(value);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
-             */
-            public Builder addStockKeepingUnits(
-                    int index, com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit value) {
-                copyOnWrite();
-                instance.addStockKeepingUnits(index, value);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
-             */
-            public Builder addStockKeepingUnits(
-                    com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit.Builder builderForValue) {
-                copyOnWrite();
-                instance.addStockKeepingUnits(builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
-             */
-            public Builder addStockKeepingUnits(
-                    int index, com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit.Builder builderForValue) {
-                copyOnWrite();
-                instance.addStockKeepingUnits(index, builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
-             */
-            public Builder addAllStockKeepingUnits(
-                    Iterable<? extends com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit> values) {
-                copyOnWrite();
-                instance.addAllStockKeepingUnits(values);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
-             */
-            public Builder clearStockKeepingUnits() {
-                copyOnWrite();
-                instance.clearStockKeepingUnits();
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.StockKeepingUnit stockKeepingUnits = 12;</code>
-             */
-            public Builder removeStockKeepingUnits(int index) {
-                copyOnWrite();
-                instance.removeStockKeepingUnits(index);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Inventory inventory = 13;</code>
-             */
-            public boolean hasInventory() {
-                return instance.hasInventory();
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Inventory inventory = 13;</code>
-             */
-            public com.treeleaf.suchi.entities.SuchiProto.Inventory getInventory() {
-                return instance.getInventory();
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Inventory inventory = 13;</code>
-             */
-            public Builder setInventory(com.treeleaf.suchi.entities.SuchiProto.Inventory value) {
-                copyOnWrite();
-                instance.setInventory(value);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Inventory inventory = 13;</code>
-             */
-            public Builder setInventory(
-                    com.treeleaf.suchi.entities.SuchiProto.Inventory.Builder builderForValue) {
-                copyOnWrite();
-                instance.setInventory(builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Inventory inventory = 13;</code>
-             */
-            public Builder mergeInventory(com.treeleaf.suchi.entities.SuchiProto.Inventory value) {
-                copyOnWrite();
-                instance.mergeInventory(value);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Inventory inventory = 13;</code>
-             */
-            public Builder clearInventory() {
-                copyOnWrite();
-                instance.clearInventory();
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 14;</code>
-             */
-            public java.util.List<com.treeleaf.suchi.entities.SuchiProto.Inventory> getInventoriesList() {
-                return java.util.Collections.unmodifiableList(
-                        instance.getInventoriesList());
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 14;</code>
-             */
-            public int getInventoriesCount() {
-                return instance.getInventoriesCount();
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 14;</code>
-             */
-            public com.treeleaf.suchi.entities.SuchiProto.Inventory getInventories(int index) {
-                return instance.getInventories(index);
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 14;</code>
-             */
-            public Builder setInventories(
-                    int index, com.treeleaf.suchi.entities.SuchiProto.Inventory value) {
-                copyOnWrite();
-                instance.setInventories(index, value);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 14;</code>
-             */
-            public Builder setInventories(
-                    int index, com.treeleaf.suchi.entities.SuchiProto.Inventory.Builder builderForValue) {
-                copyOnWrite();
-                instance.setInventories(index, builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 14;</code>
-             */
-            public Builder addInventories(com.treeleaf.suchi.entities.SuchiProto.Inventory value) {
-                copyOnWrite();
-                instance.addInventories(value);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 14;</code>
-             */
-            public Builder addInventories(
-                    int index, com.treeleaf.suchi.entities.SuchiProto.Inventory value) {
-                copyOnWrite();
-                instance.addInventories(index, value);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 14;</code>
-             */
-            public Builder addInventories(
-                    com.treeleaf.suchi.entities.SuchiProto.Inventory.Builder builderForValue) {
-                copyOnWrite();
-                instance.addInventories(builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 14;</code>
-             */
-            public Builder addInventories(
-                    int index, com.treeleaf.suchi.entities.SuchiProto.Inventory.Builder builderForValue) {
-                copyOnWrite();
-                instance.addInventories(index, builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 14;</code>
-             */
-            public Builder addAllInventories(
-                    Iterable<? extends com.treeleaf.suchi.entities.SuchiProto.Inventory> values) {
-                copyOnWrite();
-                instance.addAllInventories(values);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 14;</code>
-             */
-            public Builder clearInventories() {
-                copyOnWrite();
-                instance.clearInventories();
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Inventory inventories = 14;</code>
-             */
-            public Builder removeInventories(int index) {
-                copyOnWrite();
-                instance.removeInventories(index);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Brand brand = 15;</code>
-             */
-            public boolean hasBrand() {
-                return instance.hasBrand();
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Brand brand = 15;</code>
-             */
-            public com.treeleaf.suchi.entities.SuchiProto.Brand getBrand() {
-                return instance.getBrand();
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Brand brand = 15;</code>
-             */
-            public Builder setBrand(com.treeleaf.suchi.entities.SuchiProto.Brand value) {
-                copyOnWrite();
-                instance.setBrand(value);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Brand brand = 15;</code>
-             */
-            public Builder setBrand(
-                    com.treeleaf.suchi.entities.SuchiProto.Brand.Builder builderForValue) {
-                copyOnWrite();
-                instance.setBrand(builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Brand brand = 15;</code>
-             */
-            public Builder mergeBrand(com.treeleaf.suchi.entities.SuchiProto.Brand value) {
-                copyOnWrite();
-                instance.mergeBrand(value);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Brand brand = 15;</code>
-             */
-            public Builder clearBrand() {
-                copyOnWrite();
-                instance.clearBrand();
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Brand brands = 16;</code>
-             */
-            public java.util.List<com.treeleaf.suchi.entities.SuchiProto.Brand> getBrandsList() {
-                return java.util.Collections.unmodifiableList(
-                        instance.getBrandsList());
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Brand brands = 16;</code>
-             */
-            public int getBrandsCount() {
-                return instance.getBrandsCount();
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Brand brands = 16;</code>
-             */
-            public com.treeleaf.suchi.entities.SuchiProto.Brand getBrands(int index) {
-                return instance.getBrands(index);
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Brand brands = 16;</code>
-             */
-            public Builder setBrands(
-                    int index, com.treeleaf.suchi.entities.SuchiProto.Brand value) {
-                copyOnWrite();
-                instance.setBrands(index, value);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Brand brands = 16;</code>
-             */
-            public Builder setBrands(
-                    int index, com.treeleaf.suchi.entities.SuchiProto.Brand.Builder builderForValue) {
-                copyOnWrite();
-                instance.setBrands(index, builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Brand brands = 16;</code>
-             */
-            public Builder addBrands(com.treeleaf.suchi.entities.SuchiProto.Brand value) {
-                copyOnWrite();
-                instance.addBrands(value);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Brand brands = 16;</code>
-             */
-            public Builder addBrands(
-                    int index, com.treeleaf.suchi.entities.SuchiProto.Brand value) {
-                copyOnWrite();
-                instance.addBrands(index, value);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Brand brands = 16;</code>
-             */
-            public Builder addBrands(
-                    com.treeleaf.suchi.entities.SuchiProto.Brand.Builder builderForValue) {
-                copyOnWrite();
-                instance.addBrands(builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Brand brands = 16;</code>
-             */
-            public Builder addBrands(
-                    int index, com.treeleaf.suchi.entities.SuchiProto.Brand.Builder builderForValue) {
-                copyOnWrite();
-                instance.addBrands(index, builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Brand brands = 16;</code>
-             */
-            public Builder addAllBrands(
-                    Iterable<? extends com.treeleaf.suchi.entities.SuchiProto.Brand> values) {
-                copyOnWrite();
-                instance.addAllBrands(values);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Brand brands = 16;</code>
-             */
-            public Builder clearBrands() {
-                copyOnWrite();
-                instance.clearBrands();
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Brand brands = 16;</code>
-             */
-            public Builder removeBrands(int index) {
-                copyOnWrite();
-                instance.removeBrands(index);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.SubBrand subBrand = 17;</code>
-             */
-            public boolean hasSubBrand() {
-                return instance.hasSubBrand();
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.SubBrand subBrand = 17;</code>
-             */
-            public com.treeleaf.suchi.entities.SuchiProto.SubBrand getSubBrand() {
-                return instance.getSubBrand();
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.SubBrand subBrand = 17;</code>
-             */
-            public Builder setSubBrand(com.treeleaf.suchi.entities.SuchiProto.SubBrand value) {
-                copyOnWrite();
-                instance.setSubBrand(value);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.SubBrand subBrand = 17;</code>
-             */
-            public Builder setSubBrand(
-                    com.treeleaf.suchi.entities.SuchiProto.SubBrand.Builder builderForValue) {
-                copyOnWrite();
-                instance.setSubBrand(builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.SubBrand subBrand = 17;</code>
-             */
-            public Builder mergeSubBrand(com.treeleaf.suchi.entities.SuchiProto.SubBrand value) {
-                copyOnWrite();
-                instance.mergeSubBrand(value);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.SubBrand subBrand = 17;</code>
-             */
-            public Builder clearSubBrand() {
-                copyOnWrite();
-                instance.clearSubBrand();
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.SubBrand subBrands = 18;</code>
-             */
-            public java.util.List<com.treeleaf.suchi.entities.SuchiProto.SubBrand> getSubBrandsList() {
-                return java.util.Collections.unmodifiableList(
-                        instance.getSubBrandsList());
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.SubBrand subBrands = 18;</code>
-             */
-            public int getSubBrandsCount() {
-                return instance.getSubBrandsCount();
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.SubBrand subBrands = 18;</code>
-             */
-            public com.treeleaf.suchi.entities.SuchiProto.SubBrand getSubBrands(int index) {
-                return instance.getSubBrands(index);
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.SubBrand subBrands = 18;</code>
-             */
-            public Builder setSubBrands(
-                    int index, com.treeleaf.suchi.entities.SuchiProto.SubBrand value) {
-                copyOnWrite();
-                instance.setSubBrands(index, value);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.SubBrand subBrands = 18;</code>
-             */
-            public Builder setSubBrands(
-                    int index, com.treeleaf.suchi.entities.SuchiProto.SubBrand.Builder builderForValue) {
-                copyOnWrite();
-                instance.setSubBrands(index, builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.SubBrand subBrands = 18;</code>
-             */
-            public Builder addSubBrands(com.treeleaf.suchi.entities.SuchiProto.SubBrand value) {
-                copyOnWrite();
-                instance.addSubBrands(value);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.SubBrand subBrands = 18;</code>
-             */
-            public Builder addSubBrands(
-                    int index, com.treeleaf.suchi.entities.SuchiProto.SubBrand value) {
-                copyOnWrite();
-                instance.addSubBrands(index, value);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.SubBrand subBrands = 18;</code>
-             */
-            public Builder addSubBrands(
-                    com.treeleaf.suchi.entities.SuchiProto.SubBrand.Builder builderForValue) {
-                copyOnWrite();
-                instance.addSubBrands(builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.SubBrand subBrands = 18;</code>
-             */
-            public Builder addSubBrands(
-                    int index, com.treeleaf.suchi.entities.SuchiProto.SubBrand.Builder builderForValue) {
-                copyOnWrite();
-                instance.addSubBrands(index, builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.SubBrand subBrands = 18;</code>
-             */
-            public Builder addAllSubBrands(
-                    Iterable<? extends com.treeleaf.suchi.entities.SuchiProto.SubBrand> values) {
-                copyOnWrite();
-                instance.addAllSubBrands(values);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.SubBrand subBrands = 18;</code>
-             */
-            public Builder clearSubBrands() {
-                copyOnWrite();
-                instance.clearSubBrands();
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.SubBrand subBrands = 18;</code>
-             */
-            public Builder removeSubBrands(int index) {
-                copyOnWrite();
-                instance.removeSubBrands(index);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Unit unit = 19;</code>
-             */
-            public boolean hasUnit() {
-                return instance.hasUnit();
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Unit unit = 19;</code>
-             */
-            public com.treeleaf.suchi.entities.SuchiProto.Unit getUnit() {
-                return instance.getUnit();
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Unit unit = 19;</code>
-             */
-            public Builder setUnit(com.treeleaf.suchi.entities.SuchiProto.Unit value) {
-                copyOnWrite();
-                instance.setUnit(value);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Unit unit = 19;</code>
-             */
-            public Builder setUnit(
-                    com.treeleaf.suchi.entities.SuchiProto.Unit.Builder builderForValue) {
-                copyOnWrite();
-                instance.setUnit(builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Unit unit = 19;</code>
-             */
-            public Builder mergeUnit(com.treeleaf.suchi.entities.SuchiProto.Unit value) {
-                copyOnWrite();
-                instance.mergeUnit(value);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Unit unit = 19;</code>
-             */
-            public Builder clearUnit() {
-                copyOnWrite();
-                instance.clearUnit();
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Unit units = 20;</code>
-             */
-            public java.util.List<com.treeleaf.suchi.entities.SuchiProto.Unit> getUnitsList() {
-                return java.util.Collections.unmodifiableList(
-                        instance.getUnitsList());
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Unit units = 20;</code>
-             */
-            public int getUnitsCount() {
-                return instance.getUnitsCount();
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Unit units = 20;</code>
-             */
-            public com.treeleaf.suchi.entities.SuchiProto.Unit getUnits(int index) {
-                return instance.getUnits(index);
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Unit units = 20;</code>
-             */
-            public Builder setUnits(
-                    int index, com.treeleaf.suchi.entities.SuchiProto.Unit value) {
-                copyOnWrite();
-                instance.setUnits(index, value);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Unit units = 20;</code>
-             */
-            public Builder setUnits(
-                    int index, com.treeleaf.suchi.entities.SuchiProto.Unit.Builder builderForValue) {
-                copyOnWrite();
-                instance.setUnits(index, builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Unit units = 20;</code>
-             */
-            public Builder addUnits(com.treeleaf.suchi.entities.SuchiProto.Unit value) {
-                copyOnWrite();
-                instance.addUnits(value);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Unit units = 20;</code>
-             */
-            public Builder addUnits(
-                    int index, com.treeleaf.suchi.entities.SuchiProto.Unit value) {
-                copyOnWrite();
-                instance.addUnits(index, value);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Unit units = 20;</code>
-             */
-            public Builder addUnits(
-                    com.treeleaf.suchi.entities.SuchiProto.Unit.Builder builderForValue) {
-                copyOnWrite();
-                instance.addUnits(builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Unit units = 20;</code>
-             */
-            public Builder addUnits(
-                    int index, com.treeleaf.suchi.entities.SuchiProto.Unit.Builder builderForValue) {
-                copyOnWrite();
-                instance.addUnits(index, builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Unit units = 20;</code>
-             */
-            public Builder addAllUnits(
-                    Iterable<? extends com.treeleaf.suchi.entities.SuchiProto.Unit> values) {
-                copyOnWrite();
-                instance.addAllUnits(values);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Unit units = 20;</code>
-             */
-            public Builder clearUnits() {
-                copyOnWrite();
-                instance.clearUnits();
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Unit units = 20;</code>
-             */
-            public Builder removeUnits(int index) {
-                copyOnWrite();
-                instance.removeUnits(index);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Category category = 21;</code>
-             */
-            public boolean hasCategory() {
-                return instance.hasCategory();
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Category category = 21;</code>
-             */
-            public com.treeleaf.suchi.entities.SuchiProto.Category getCategory() {
-                return instance.getCategory();
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Category category = 21;</code>
-             */
-            public Builder setCategory(com.treeleaf.suchi.entities.SuchiProto.Category value) {
-                copyOnWrite();
-                instance.setCategory(value);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Category category = 21;</code>
-             */
-            public Builder setCategory(
-                    com.treeleaf.suchi.entities.SuchiProto.Category.Builder builderForValue) {
-                copyOnWrite();
-                instance.setCategory(builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Category category = 21;</code>
-             */
-            public Builder mergeCategory(com.treeleaf.suchi.entities.SuchiProto.Category value) {
-                copyOnWrite();
-                instance.mergeCategory(value);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Category category = 21;</code>
-             */
-            public Builder clearCategory() {
-                copyOnWrite();
-                instance.clearCategory();
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Category categories = 22;</code>
-             */
-            public java.util.List<com.treeleaf.suchi.entities.SuchiProto.Category> getCategoriesList() {
-                return java.util.Collections.unmodifiableList(
-                        instance.getCategoriesList());
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Category categories = 22;</code>
-             */
-            public int getCategoriesCount() {
-                return instance.getCategoriesCount();
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Category categories = 22;</code>
-             */
-            public com.treeleaf.suchi.entities.SuchiProto.Category getCategories(int index) {
-                return instance.getCategories(index);
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Category categories = 22;</code>
-             */
-            public Builder setCategories(
-                    int index, com.treeleaf.suchi.entities.SuchiProto.Category value) {
-                copyOnWrite();
-                instance.setCategories(index, value);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Category categories = 22;</code>
-             */
-            public Builder setCategories(
-                    int index, com.treeleaf.suchi.entities.SuchiProto.Category.Builder builderForValue) {
-                copyOnWrite();
-                instance.setCategories(index, builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Category categories = 22;</code>
-             */
-            public Builder addCategories(com.treeleaf.suchi.entities.SuchiProto.Category value) {
-                copyOnWrite();
-                instance.addCategories(value);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Category categories = 22;</code>
-             */
-            public Builder addCategories(
-                    int index, com.treeleaf.suchi.entities.SuchiProto.Category value) {
-                copyOnWrite();
-                instance.addCategories(index, value);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Category categories = 22;</code>
-             */
-            public Builder addCategories(
-                    com.treeleaf.suchi.entities.SuchiProto.Category.Builder builderForValue) {
-                copyOnWrite();
-                instance.addCategories(builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Category categories = 22;</code>
-             */
-            public Builder addCategories(
-                    int index, com.treeleaf.suchi.entities.SuchiProto.Category.Builder builderForValue) {
-                copyOnWrite();
-                instance.addCategories(index, builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Category categories = 22;</code>
-             */
-            public Builder addAllCategories(
-                    Iterable<? extends com.treeleaf.suchi.entities.SuchiProto.Category> values) {
-                copyOnWrite();
-                instance.addAllCategories(values);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Category categories = 22;</code>
-             */
-            public Builder clearCategories() {
-                copyOnWrite();
-                instance.clearCategories();
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Category categories = 22;</code>
-             */
-            public Builder removeCategories(int index) {
-                copyOnWrite();
-                instance.removeCategories(index);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Creditor creditor = 23;</code>
-             */
-            public boolean hasCreditor() {
-                return instance.hasCreditor();
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Creditor creditor = 23;</code>
-             */
-            public com.treeleaf.suchi.entities.SuchiProto.Creditor getCreditor() {
-                return instance.getCreditor();
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Creditor creditor = 23;</code>
-             */
-            public Builder setCreditor(com.treeleaf.suchi.entities.SuchiProto.Creditor value) {
-                copyOnWrite();
-                instance.setCreditor(value);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Creditor creditor = 23;</code>
-             */
-            public Builder setCreditor(
-                    com.treeleaf.suchi.entities.SuchiProto.Creditor.Builder builderForValue) {
-                copyOnWrite();
-                instance.setCreditor(builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Creditor creditor = 23;</code>
-             */
-            public Builder mergeCreditor(com.treeleaf.suchi.entities.SuchiProto.Creditor value) {
-                copyOnWrite();
-                instance.mergeCreditor(value);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Creditor creditor = 23;</code>
-             */
-            public Builder clearCreditor() {
-                copyOnWrite();
-                instance.clearCreditor();
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 24;</code>
-             */
-            public java.util.List<com.treeleaf.suchi.entities.SuchiProto.Creditor> getCreditorsList() {
-                return java.util.Collections.unmodifiableList(
-                        instance.getCreditorsList());
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 24;</code>
-             */
-            public int getCreditorsCount() {
-                return instance.getCreditorsCount();
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 24;</code>
-             */
-            public com.treeleaf.suchi.entities.SuchiProto.Creditor getCreditors(int index) {
-                return instance.getCreditors(index);
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 24;</code>
-             */
-            public Builder setCreditors(
-                    int index, com.treeleaf.suchi.entities.SuchiProto.Creditor value) {
-                copyOnWrite();
-                instance.setCreditors(index, value);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 24;</code>
-             */
-            public Builder setCreditors(
-                    int index, com.treeleaf.suchi.entities.SuchiProto.Creditor.Builder builderForValue) {
-                copyOnWrite();
-                instance.setCreditors(index, builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 24;</code>
-             */
-            public Builder addCreditors(com.treeleaf.suchi.entities.SuchiProto.Creditor value) {
-                copyOnWrite();
-                instance.addCreditors(value);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 24;</code>
-             */
-            public Builder addCreditors(
-                    int index, com.treeleaf.suchi.entities.SuchiProto.Creditor value) {
-                copyOnWrite();
-                instance.addCreditors(index, value);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 24;</code>
-             */
-            public Builder addCreditors(
-                    com.treeleaf.suchi.entities.SuchiProto.Creditor.Builder builderForValue) {
-                copyOnWrite();
-                instance.addCreditors(builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 24;</code>
-             */
-            public Builder addCreditors(
-                    int index, com.treeleaf.suchi.entities.SuchiProto.Creditor.Builder builderForValue) {
-                copyOnWrite();
-                instance.addCreditors(index, builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 24;</code>
-             */
-            public Builder addAllCreditors(
-                    Iterable<? extends com.treeleaf.suchi.entities.SuchiProto.Creditor> values) {
-                copyOnWrite();
-                instance.addAllCreditors(values);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 24;</code>
-             */
-            public Builder clearCreditors() {
-                copyOnWrite();
-                instance.clearCreditors();
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Creditor creditors = 24;</code>
-             */
-            public Builder removeCreditors(int index) {
-                copyOnWrite();
-                instance.removeCreditors(index);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.CreditDetail creditDetail = 25;</code>
-             */
-            public boolean hasCreditDetail() {
-                return instance.hasCreditDetail();
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.CreditDetail creditDetail = 25;</code>
-             */
-            public com.treeleaf.suchi.entities.SuchiProto.CreditDetail getCreditDetail() {
-                return instance.getCreditDetail();
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.CreditDetail creditDetail = 25;</code>
-             */
-            public Builder setCreditDetail(com.treeleaf.suchi.entities.SuchiProto.CreditDetail value) {
-                copyOnWrite();
-                instance.setCreditDetail(value);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.CreditDetail creditDetail = 25;</code>
-             */
-            public Builder setCreditDetail(
-                    com.treeleaf.suchi.entities.SuchiProto.CreditDetail.Builder builderForValue) {
-                copyOnWrite();
-                instance.setCreditDetail(builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.CreditDetail creditDetail = 25;</code>
-             */
-            public Builder mergeCreditDetail(com.treeleaf.suchi.entities.SuchiProto.CreditDetail value) {
-                copyOnWrite();
-                instance.mergeCreditDetail(value);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.CreditDetail creditDetail = 25;</code>
-             */
-            public Builder clearCreditDetail() {
-                copyOnWrite();
-                instance.clearCreditDetail();
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 26;</code>
-             */
-            public java.util.List<com.treeleaf.suchi.entities.SuchiProto.CreditDetail> getCreditDetailsList() {
-                return java.util.Collections.unmodifiableList(
-                        instance.getCreditDetailsList());
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 26;</code>
-             */
-            public int getCreditDetailsCount() {
-                return instance.getCreditDetailsCount();
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 26;</code>
-             */
-            public com.treeleaf.suchi.entities.SuchiProto.CreditDetail getCreditDetails(int index) {
-                return instance.getCreditDetails(index);
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 26;</code>
-             */
-            public Builder setCreditDetails(
-                    int index, com.treeleaf.suchi.entities.SuchiProto.CreditDetail value) {
-                copyOnWrite();
-                instance.setCreditDetails(index, value);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 26;</code>
-             */
-            public Builder setCreditDetails(
-                    int index, com.treeleaf.suchi.entities.SuchiProto.CreditDetail.Builder builderForValue) {
-                copyOnWrite();
-                instance.setCreditDetails(index, builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 26;</code>
-             */
-            public Builder addCreditDetails(com.treeleaf.suchi.entities.SuchiProto.CreditDetail value) {
-                copyOnWrite();
-                instance.addCreditDetails(value);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 26;</code>
-             */
-            public Builder addCreditDetails(
-                    int index, com.treeleaf.suchi.entities.SuchiProto.CreditDetail value) {
-                copyOnWrite();
-                instance.addCreditDetails(index, value);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 26;</code>
-             */
-            public Builder addCreditDetails(
-                    com.treeleaf.suchi.entities.SuchiProto.CreditDetail.Builder builderForValue) {
-                copyOnWrite();
-                instance.addCreditDetails(builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 26;</code>
-             */
-            public Builder addCreditDetails(
-                    int index, com.treeleaf.suchi.entities.SuchiProto.CreditDetail.Builder builderForValue) {
-                copyOnWrite();
-                instance.addCreditDetails(index, builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 26;</code>
-             */
-            public Builder addAllCreditDetails(
-                    Iterable<? extends com.treeleaf.suchi.entities.SuchiProto.CreditDetail> values) {
-                copyOnWrite();
-                instance.addAllCreditDetails(values);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 26;</code>
-             */
-            public Builder clearCreditDetails() {
-                copyOnWrite();
-                instance.clearCreditDetails();
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.CreditDetail creditDetails = 26;</code>
-             */
-            public Builder removeCreditDetails(int index) {
-                copyOnWrite();
-                instance.removeCreditDetails(index);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Sale sale = 27;</code>
-             */
-            public boolean hasSale() {
-                return instance.hasSale();
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Sale sale = 27;</code>
-             */
-            public com.treeleaf.suchi.entities.SuchiProto.Sale getSale() {
-                return instance.getSale();
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Sale sale = 27;</code>
-             */
-            public Builder setSale(com.treeleaf.suchi.entities.SuchiProto.Sale value) {
-                copyOnWrite();
-                instance.setSale(value);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Sale sale = 27;</code>
-             */
-            public Builder setSale(
-                    com.treeleaf.suchi.entities.SuchiProto.Sale.Builder builderForValue) {
-                copyOnWrite();
-                instance.setSale(builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Sale sale = 27;</code>
-             */
-            public Builder mergeSale(com.treeleaf.suchi.entities.SuchiProto.Sale value) {
-                copyOnWrite();
-                instance.mergeSale(value);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.Sale sale = 27;</code>
-             */
-            public Builder clearSale() {
-                copyOnWrite();
-                instance.clearSale();
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Sale sales = 28;</code>
-             */
-            public java.util.List<com.treeleaf.suchi.entities.SuchiProto.Sale> getSalesList() {
-                return java.util.Collections.unmodifiableList(
-                        instance.getSalesList());
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Sale sales = 28;</code>
-             */
-            public int getSalesCount() {
-                return instance.getSalesCount();
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Sale sales = 28;</code>
-             */
-            public com.treeleaf.suchi.entities.SuchiProto.Sale getSales(int index) {
-                return instance.getSales(index);
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Sale sales = 28;</code>
-             */
-            public Builder setSales(
-                    int index, com.treeleaf.suchi.entities.SuchiProto.Sale value) {
-                copyOnWrite();
-                instance.setSales(index, value);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Sale sales = 28;</code>
-             */
-            public Builder setSales(
-                    int index, com.treeleaf.suchi.entities.SuchiProto.Sale.Builder builderForValue) {
-                copyOnWrite();
-                instance.setSales(index, builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Sale sales = 28;</code>
-             */
-            public Builder addSales(com.treeleaf.suchi.entities.SuchiProto.Sale value) {
-                copyOnWrite();
-                instance.addSales(value);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Sale sales = 28;</code>
-             */
-            public Builder addSales(
-                    int index, com.treeleaf.suchi.entities.SuchiProto.Sale value) {
-                copyOnWrite();
-                instance.addSales(index, value);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Sale sales = 28;</code>
-             */
-            public Builder addSales(
-                    com.treeleaf.suchi.entities.SuchiProto.Sale.Builder builderForValue) {
-                copyOnWrite();
-                instance.addSales(builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Sale sales = 28;</code>
-             */
-            public Builder addSales(
-                    int index, com.treeleaf.suchi.entities.SuchiProto.Sale.Builder builderForValue) {
-                copyOnWrite();
-                instance.addSales(index, builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Sale sales = 28;</code>
-             */
-            public Builder addAllSales(
-                    Iterable<? extends com.treeleaf.suchi.entities.SuchiProto.Sale> values) {
-                copyOnWrite();
-                instance.addAllSales(values);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Sale sales = 28;</code>
-             */
-            public Builder clearSales() {
-                copyOnWrite();
-                instance.clearSales();
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.Sale sales = 28;</code>
-             */
-            public Builder removeSales(int index) {
-                copyOnWrite();
-                instance.removeSales(index);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.UnitConversion unitConversion = 29;</code>
-             */
-            public boolean hasUnitConversion() {
-                return instance.hasUnitConversion();
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.UnitConversion unitConversion = 29;</code>
-             */
-            public com.treeleaf.suchi.entities.SuchiProto.UnitConversion getUnitConversion() {
-                return instance.getUnitConversion();
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.UnitConversion unitConversion = 29;</code>
-             */
-            public Builder setUnitConversion(com.treeleaf.suchi.entities.SuchiProto.UnitConversion value) {
-                copyOnWrite();
-                instance.setUnitConversion(value);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.UnitConversion unitConversion = 29;</code>
-             */
-            public Builder setUnitConversion(
-                    com.treeleaf.suchi.entities.SuchiProto.UnitConversion.Builder builderForValue) {
-                copyOnWrite();
-                instance.setUnitConversion(builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.UnitConversion unitConversion = 29;</code>
-             */
-            public Builder mergeUnitConversion(com.treeleaf.suchi.entities.SuchiProto.UnitConversion value) {
-                copyOnWrite();
-                instance.mergeUnitConversion(value);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.UnitConversion unitConversion = 29;</code>
-             */
-            public Builder clearUnitConversion() {
-                copyOnWrite();
-                instance.clearUnitConversion();
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.UnitConversion unitConversions = 30;</code>
-             */
-            public java.util.List<com.treeleaf.suchi.entities.SuchiProto.UnitConversion> getUnitConversionsList() {
-                return java.util.Collections.unmodifiableList(
-                        instance.getUnitConversionsList());
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.UnitConversion unitConversions = 30;</code>
-             */
-            public int getUnitConversionsCount() {
-                return instance.getUnitConversionsCount();
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.UnitConversion unitConversions = 30;</code>
-             */
-            public com.treeleaf.suchi.entities.SuchiProto.UnitConversion getUnitConversions(int index) {
-                return instance.getUnitConversions(index);
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.UnitConversion unitConversions = 30;</code>
-             */
-            public Builder setUnitConversions(
-                    int index, com.treeleaf.suchi.entities.SuchiProto.UnitConversion value) {
-                copyOnWrite();
-                instance.setUnitConversions(index, value);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.UnitConversion unitConversions = 30;</code>
-             */
-            public Builder setUnitConversions(
-                    int index, com.treeleaf.suchi.entities.SuchiProto.UnitConversion.Builder builderForValue) {
-                copyOnWrite();
-                instance.setUnitConversions(index, builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.UnitConversion unitConversions = 30;</code>
-             */
-            public Builder addUnitConversions(com.treeleaf.suchi.entities.SuchiProto.UnitConversion value) {
-                copyOnWrite();
-                instance.addUnitConversions(value);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.UnitConversion unitConversions = 30;</code>
-             */
-            public Builder addUnitConversions(
-                    int index, com.treeleaf.suchi.entities.SuchiProto.UnitConversion value) {
-                copyOnWrite();
-                instance.addUnitConversions(index, value);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.UnitConversion unitConversions = 30;</code>
-             */
-            public Builder addUnitConversions(
-                    com.treeleaf.suchi.entities.SuchiProto.UnitConversion.Builder builderForValue) {
-                copyOnWrite();
-                instance.addUnitConversions(builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.UnitConversion unitConversions = 30;</code>
-             */
-            public Builder addUnitConversions(
-                    int index, com.treeleaf.suchi.entities.SuchiProto.UnitConversion.Builder builderForValue) {
-                copyOnWrite();
-                instance.addUnitConversions(index, builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.UnitConversion unitConversions = 30;</code>
-             */
-            public Builder addAllUnitConversions(
-                    Iterable<? extends com.treeleaf.suchi.entities.SuchiProto.UnitConversion> values) {
-                copyOnWrite();
-                instance.addAllUnitConversions(values);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.UnitConversion unitConversions = 30;</code>
-             */
-            public Builder clearUnitConversions() {
-                copyOnWrite();
-                instance.clearUnitConversions();
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.UnitConversion unitConversions = 30;</code>
-             */
-            public Builder removeUnitConversions(int index) {
-                copyOnWrite();
-                instance.removeUnitConversions(index);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.LoginResponse loginResponse = 31;</code>
-             */
-            public boolean hasLoginResponse() {
-                return instance.hasLoginResponse();
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.LoginResponse loginResponse = 31;</code>
-             */
-            public com.treeleaf.suchi.entities.TreeleafProto.LoginResponse getLoginResponse() {
-                return instance.getLoginResponse();
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.LoginResponse loginResponse = 31;</code>
-             */
-            public Builder setLoginResponse(com.treeleaf.suchi.entities.TreeleafProto.LoginResponse value) {
-                copyOnWrite();
-                instance.setLoginResponse(value);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.LoginResponse loginResponse = 31;</code>
-             */
-            public Builder setLoginResponse(
-                    com.treeleaf.suchi.entities.TreeleafProto.LoginResponse.Builder builderForValue) {
-                copyOnWrite();
-                instance.setLoginResponse(builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.LoginResponse loginResponse = 31;</code>
-             */
-            public Builder mergeLoginResponse(com.treeleaf.suchi.entities.TreeleafProto.LoginResponse value) {
-                copyOnWrite();
-                instance.mergeLoginResponse(value);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.entities.LoginResponse loginResponse = 31;</code>
-             */
-            public Builder clearLoginResponse() {
-                copyOnWrite();
-                instance.clearLoginResponse();
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.InventoryStock inventoryStock = 32;</code>
-             */
-            public boolean hasInventoryStock() {
-                return instance.hasInventoryStock();
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.InventoryStock inventoryStock = 32;</code>
-             */
-            public com.treeleaf.suchi.entities.SuchiProto.InventoryStock getInventoryStock() {
-                return instance.getInventoryStock();
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.InventoryStock inventoryStock = 32;</code>
-             */
-            public Builder setInventoryStock(com.treeleaf.suchi.entities.SuchiProto.InventoryStock value) {
-                copyOnWrite();
-                instance.setInventoryStock(value);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.InventoryStock inventoryStock = 32;</code>
-             */
-            public Builder setInventoryStock(
-                    com.treeleaf.suchi.entities.SuchiProto.InventoryStock.Builder builderForValue) {
-                copyOnWrite();
-                instance.setInventoryStock(builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.InventoryStock inventoryStock = 32;</code>
-             */
-            public Builder mergeInventoryStock(com.treeleaf.suchi.entities.SuchiProto.InventoryStock value) {
-                copyOnWrite();
-                instance.mergeInventoryStock(value);
-                return this;
-            }
-
-            /**
-             * <code>optional .treeleaf.suchi.entities.InventoryStock inventoryStock = 32;</code>
-             */
-            public Builder clearInventoryStock() {
-                copyOnWrite();
-                instance.clearInventoryStock();
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.InventoryStock inventoryStocks = 33;</code>
-             */
-            public java.util.List<com.treeleaf.suchi.entities.SuchiProto.InventoryStock> getInventoryStocksList() {
-                return java.util.Collections.unmodifiableList(
-                        instance.getInventoryStocksList());
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.InventoryStock inventoryStocks = 33;</code>
-             */
-            public int getInventoryStocksCount() {
-                return instance.getInventoryStocksCount();
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.InventoryStock inventoryStocks = 33;</code>
-             */
-            public com.treeleaf.suchi.entities.SuchiProto.InventoryStock getInventoryStocks(int index) {
-                return instance.getInventoryStocks(index);
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.InventoryStock inventoryStocks = 33;</code>
-             */
-            public Builder setInventoryStocks(
-                    int index, com.treeleaf.suchi.entities.SuchiProto.InventoryStock value) {
-                copyOnWrite();
-                instance.setInventoryStocks(index, value);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.InventoryStock inventoryStocks = 33;</code>
-             */
-            public Builder setInventoryStocks(
-                    int index, com.treeleaf.suchi.entities.SuchiProto.InventoryStock.Builder builderForValue) {
-                copyOnWrite();
-                instance.setInventoryStocks(index, builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.InventoryStock inventoryStocks = 33;</code>
-             */
-            public Builder addInventoryStocks(com.treeleaf.suchi.entities.SuchiProto.InventoryStock value) {
-                copyOnWrite();
-                instance.addInventoryStocks(value);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.InventoryStock inventoryStocks = 33;</code>
-             */
-            public Builder addInventoryStocks(
-                    int index, com.treeleaf.suchi.entities.SuchiProto.InventoryStock value) {
-                copyOnWrite();
-                instance.addInventoryStocks(index, value);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.InventoryStock inventoryStocks = 33;</code>
-             */
-            public Builder addInventoryStocks(
-                    com.treeleaf.suchi.entities.SuchiProto.InventoryStock.Builder builderForValue) {
-                copyOnWrite();
-                instance.addInventoryStocks(builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.InventoryStock inventoryStocks = 33;</code>
-             */
-            public Builder addInventoryStocks(
-                    int index, com.treeleaf.suchi.entities.SuchiProto.InventoryStock.Builder builderForValue) {
-                copyOnWrite();
-                instance.addInventoryStocks(index, builderForValue);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.InventoryStock inventoryStocks = 33;</code>
-             */
-            public Builder addAllInventoryStocks(
-                    Iterable<? extends com.treeleaf.suchi.entities.SuchiProto.InventoryStock> values) {
-                copyOnWrite();
-                instance.addAllInventoryStocks(values);
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.InventoryStock inventoryStocks = 33;</code>
-             */
-            public Builder clearInventoryStocks() {
-                copyOnWrite();
-                instance.clearInventoryStocks();
-                return this;
-            }
-
-            /**
-             * <code>repeated .treeleaf.suchi.entities.InventoryStock inventoryStocks = 33;</code>
-             */
-            public Builder removeInventoryStocks(int index) {
-                copyOnWrite();
-                instance.removeInventoryStocks(index);
-                return this;
-            }
-
-            // @@protoc_insertion_point(builder_scope:treeleaf.suchi.rpc.SuchiBaseResponse)
-        }
-
-        protected final Object dynamicMethod(
-                MethodToInvoke method,
-                Object arg0, Object arg1) {
-            switch (method) {
-                case NEW_MUTABLE_INSTANCE: {
-                    return new SuchiBaseResponse();
+                  }
+                  inventoryStocks_.add(
+                      input.readMessage(com.treeleaf.suchi.entities.SuchiProto.InventoryStock.parser(), extensionRegistry));
+                  break;
                 }
-                case IS_INITIALIZED: {
-                    return DEFAULT_INSTANCE;
+                case 274: {
+                  com.treeleaf.suchi.entities.SuchiProto.SuchiKey.Builder subBuilder = null;
+                  if (suchiKey_ != null) {
+                    subBuilder = suchiKey_.toBuilder();
+                  }
+                  suchiKey_ = input.readMessage(com.treeleaf.suchi.entities.SuchiProto.SuchiKey.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(suchiKey_);
+                    suchiKey_ = subBuilder.buildPartial();
+                  }
+
+                  break;
                 }
-                case MAKE_IMMUTABLE: {
-                    users_.makeImmutable();
-                    stockKeepingUnits_.makeImmutable();
-                    inventories_.makeImmutable();
-                    brands_.makeImmutable();
-                    subBrands_.makeImmutable();
-                    units_.makeImmutable();
-                    categories_.makeImmutable();
-                    creditors_.makeImmutable();
-                    creditDetails_.makeImmutable();
-                    sales_.makeImmutable();
-                    unitConversions_.makeImmutable();
-                    inventoryStocks_.makeImmutable();
-                    return null;
+                case 282: {
+                  if (!suchiKeys_.isModifiable()) {
+                    suchiKeys_ =
+                        com.google.protobuf.GeneratedMessageLite.mutableCopy(suchiKeys_);
+                  }
+                  suchiKeys_.add(
+                      input.readMessage(com.treeleaf.suchi.entities.SuchiProto.SuchiKey.parser(), extensionRegistry));
+                  break;
                 }
-                case NEW_BUILDER: {
-                    return new Builder();
+                case 290: {
+                  com.treeleaf.suchi.entities.SuchiProto.EsewaQuery.Builder subBuilder = null;
+                  if (esewaQuery_ != null) {
+                    subBuilder = esewaQuery_.toBuilder();
+                  }
+                  esewaQuery_ = input.readMessage(com.treeleaf.suchi.entities.SuchiProto.EsewaQuery.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(esewaQuery_);
+                    esewaQuery_ = subBuilder.buildPartial();
+                  }
+
+                  break;
                 }
-                case VISIT: {
-                    Visitor visitor = (Visitor) arg0;
-                    SuchiBaseResponse other = (SuchiBaseResponse) arg1;
-                    error_ = visitor.visitBoolean(error_ != false, error_,
-                            other.error_ != false, other.error_);
-                    msg_ = visitor.visitString(!msg_.isEmpty(), msg_,
-                            !other.msg_.isEmpty(), other.msg_);
-                    errorCode_ = visitor.visitInt(errorCode_ != 0, errorCode_, other.errorCode_ != 0, other.errorCode_);
-                    success_ = visitor.visitBoolean(success_ != false, success_,
-                            other.success_ != false, other.success_);
-                    user_ = visitor.visitMessage(user_, other.user_);
-                    users_ = visitor.visitList(users_, other.users_);
-                    session_ = visitor.visitMessage(session_, other.session_);
-                    loginResult_ = visitor.visitMessage(loginResult_, other.loginResult_);
-                    authResponse_ = visitor.visitMessage(authResponse_, other.authResponse_);
-                    authorization_ = visitor.visitMessage(authorization_, other.authorization_);
-                    stockKeepingUnit_ = visitor.visitMessage(stockKeepingUnit_, other.stockKeepingUnit_);
-                    stockKeepingUnits_ = visitor.visitList(stockKeepingUnits_, other.stockKeepingUnits_);
-                    inventory_ = visitor.visitMessage(inventory_, other.inventory_);
-                    inventories_ = visitor.visitList(inventories_, other.inventories_);
-                    brand_ = visitor.visitMessage(brand_, other.brand_);
-                    brands_ = visitor.visitList(brands_, other.brands_);
-                    subBrand_ = visitor.visitMessage(subBrand_, other.subBrand_);
-                    subBrands_ = visitor.visitList(subBrands_, other.subBrands_);
-                    unit_ = visitor.visitMessage(unit_, other.unit_);
-                    units_ = visitor.visitList(units_, other.units_);
-                    category_ = visitor.visitMessage(category_, other.category_);
-                    categories_ = visitor.visitList(categories_, other.categories_);
-                    creditor_ = visitor.visitMessage(creditor_, other.creditor_);
-                    creditors_ = visitor.visitList(creditors_, other.creditors_);
-                    creditDetail_ = visitor.visitMessage(creditDetail_, other.creditDetail_);
-                    creditDetails_ = visitor.visitList(creditDetails_, other.creditDetails_);
-                    sale_ = visitor.visitMessage(sale_, other.sale_);
-                    sales_ = visitor.visitList(sales_, other.sales_);
-                    unitConversion_ = visitor.visitMessage(unitConversion_, other.unitConversion_);
-                    unitConversions_ = visitor.visitList(unitConversions_, other.unitConversions_);
-                    loginResponse_ = visitor.visitMessage(loginResponse_, other.loginResponse_);
-                    inventoryStock_ = visitor.visitMessage(inventoryStock_, other.inventoryStock_);
-                    inventoryStocks_ = visitor.visitList(inventoryStocks_, other.inventoryStocks_);
-                    if (visitor == MergeFromVisitor
-                            .INSTANCE) {
-                        bitField0_ |= other.bitField0_;
-                    }
-                    return this;
+                case 298: {
+                  com.treeleaf.suchi.entities.SuchiProto.EsewaInquiryResponse.Builder subBuilder = null;
+                  if (esewaInquiryResponse_ != null) {
+                    subBuilder = esewaInquiryResponse_.toBuilder();
+                  }
+                  esewaInquiryResponse_ = input.readMessage(com.treeleaf.suchi.entities.SuchiProto.EsewaInquiryResponse.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(esewaInquiryResponse_);
+                    esewaInquiryResponse_ = subBuilder.buildPartial();
+                  }
+
+                  break;
                 }
-                case MERGE_FROM_STREAM: {
-                    com.google.protobuf.CodedInputStream input =
-                            (com.google.protobuf.CodedInputStream) arg0;
-                    com.google.protobuf.ExtensionRegistryLite extensionRegistry =
-                            (com.google.protobuf.ExtensionRegistryLite) arg1;
-                    try {
-                        boolean done = false;
-                        while (!done) {
-                            int tag = input.readTag();
-                            switch (tag) {
-                                case 0:
-                                    done = true;
-                                    break;
-                                default: {
-                                    if (!input.skipField(tag)) {
-                                        done = true;
-                                    }
-                                    break;
-                                }
-                                case 8: {
+                case 306: {
+                  com.treeleaf.suchi.entities.SuchiProto.EsewaPaymentResponse.Builder subBuilder = null;
+                  if (esewaPaymentResponse_ != null) {
+                    subBuilder = esewaPaymentResponse_.toBuilder();
+                  }
+                  esewaPaymentResponse_ = input.readMessage(com.treeleaf.suchi.entities.SuchiProto.EsewaPaymentResponse.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(esewaPaymentResponse_);
+                    esewaPaymentResponse_ = subBuilder.buildPartial();
+                  }
 
-                                    error_ = input.readBool();
-                                    break;
-                                }
-                                case 18: {
-                                    String s = input.readStringRequireUtf8();
-
-                                    msg_ = s;
-                                    break;
-                                }
-                                case 24: {
-                                    int rawValue = input.readEnum();
-
-                                    errorCode_ = rawValue;
-                                    break;
-                                }
-                                case 32: {
-
-                                    success_ = input.readBool();
-                                    break;
-                                }
-                                case 42: {
-                                    com.treeleaf.suchi.entities.TreeleafProto.UserAccount.Builder subBuilder = null;
-                                    if (user_ != null) {
-                                        subBuilder = user_.toBuilder();
-                                    }
-                                    user_ = input.readMessage(com.treeleaf.suchi.entities.TreeleafProto.UserAccount.parser(), extensionRegistry);
-                                    if (subBuilder != null) {
-                                        subBuilder.mergeFrom(user_);
-                                        user_ = subBuilder.buildPartial();
-                                    }
-
-                                    break;
-                                }
-                                case 50: {
-                                    if (!users_.isModifiable()) {
-                                        users_ =
-                                                com.google.protobuf.GeneratedMessageLite.mutableCopy(users_);
-                                    }
-                                    users_.add(
-                                            input.readMessage(com.treeleaf.suchi.entities.TreeleafProto.UserAccount.parser(), extensionRegistry));
-                                    break;
-                                }
-                                case 58: {
-                                    com.treeleaf.suchi.entities.TreeleafProto.Session.Builder subBuilder = null;
-                                    if (session_ != null) {
-                                        subBuilder = session_.toBuilder();
-                                    }
-                                    session_ = input.readMessage(com.treeleaf.suchi.entities.TreeleafProto.Session.parser(), extensionRegistry);
-                                    if (subBuilder != null) {
-                                        subBuilder.mergeFrom(session_);
-                                        session_ = subBuilder.buildPartial();
-                                    }
-
-                                    break;
-                                }
-                                case 66: {
-                                    com.treeleaf.suchi.entities.TreeleafProto.LoginResult.Builder subBuilder = null;
-                                    if (loginResult_ != null) {
-                                        subBuilder = loginResult_.toBuilder();
-                                    }
-                                    loginResult_ = input.readMessage(com.treeleaf.suchi.entities.TreeleafProto.LoginResult.parser(), extensionRegistry);
-                                    if (subBuilder != null) {
-                                        subBuilder.mergeFrom(loginResult_);
-                                        loginResult_ = subBuilder.buildPartial();
-                                    }
-
-                                    break;
-                                }
-                                case 74: {
-                                    com.treeleaf.suchi.entities.TreeleafProto.AuthResponse.Builder subBuilder = null;
-                                    if (authResponse_ != null) {
-                                        subBuilder = authResponse_.toBuilder();
-                                    }
-                                    authResponse_ = input.readMessage(com.treeleaf.suchi.entities.TreeleafProto.AuthResponse.parser(), extensionRegistry);
-                                    if (subBuilder != null) {
-                                        subBuilder.mergeFrom(authResponse_);
-                                        authResponse_ = subBuilder.buildPartial();
-                                    }
-
-                                    break;
-                                }
-                                case 82: {
-                                    com.treeleaf.suchi.entities.TreeleafProto.Authorization.Builder subBuilder = null;
-                                    if (authorization_ != null) {
-                                        subBuilder = authorization_.toBuilder();
-                                    }
-                                    authorization_ = input.readMessage(com.treeleaf.suchi.entities.TreeleafProto.Authorization.parser(), extensionRegistry);
-                                    if (subBuilder != null) {
-                                        subBuilder.mergeFrom(authorization_);
-                                        authorization_ = subBuilder.buildPartial();
-                                    }
-
-                                    break;
-                                }
-                                case 90: {
-                                    com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit.Builder subBuilder = null;
-                                    if (stockKeepingUnit_ != null) {
-                                        subBuilder = stockKeepingUnit_.toBuilder();
-                                    }
-                                    stockKeepingUnit_ = input.readMessage(com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit.parser(), extensionRegistry);
-                                    if (subBuilder != null) {
-                                        subBuilder.mergeFrom(stockKeepingUnit_);
-                                        stockKeepingUnit_ = subBuilder.buildPartial();
-                                    }
-
-                                    break;
-                                }
-                                case 98: {
-                                    if (!stockKeepingUnits_.isModifiable()) {
-                                        stockKeepingUnits_ =
-                                                com.google.protobuf.GeneratedMessageLite.mutableCopy(stockKeepingUnits_);
-                                    }
-                                    stockKeepingUnits_.add(
-                                            input.readMessage(com.treeleaf.suchi.entities.SuchiProto.StockKeepingUnit.parser(), extensionRegistry));
-                                    break;
-                                }
-                                case 106: {
-                                    com.treeleaf.suchi.entities.SuchiProto.Inventory.Builder subBuilder = null;
-                                    if (inventory_ != null) {
-                                        subBuilder = inventory_.toBuilder();
-                                    }
-                                    inventory_ = input.readMessage(com.treeleaf.suchi.entities.SuchiProto.Inventory.parser(), extensionRegistry);
-                                    if (subBuilder != null) {
-                                        subBuilder.mergeFrom(inventory_);
-                                        inventory_ = subBuilder.buildPartial();
-                                    }
-
-                                    break;
-                                }
-                                case 114: {
-                                    if (!inventories_.isModifiable()) {
-                                        inventories_ =
-                                                com.google.protobuf.GeneratedMessageLite.mutableCopy(inventories_);
-                                    }
-                                    inventories_.add(
-                                            input.readMessage(com.treeleaf.suchi.entities.SuchiProto.Inventory.parser(), extensionRegistry));
-                                    break;
-                                }
-                                case 122: {
-                                    com.treeleaf.suchi.entities.SuchiProto.Brand.Builder subBuilder = null;
-                                    if (brand_ != null) {
-                                        subBuilder = brand_.toBuilder();
-                                    }
-                                    brand_ = input.readMessage(com.treeleaf.suchi.entities.SuchiProto.Brand.parser(), extensionRegistry);
-                                    if (subBuilder != null) {
-                                        subBuilder.mergeFrom(brand_);
-                                        brand_ = subBuilder.buildPartial();
-                                    }
-
-                                    break;
-                                }
-                                case 130: {
-                                    if (!brands_.isModifiable()) {
-                                        brands_ =
-                                                com.google.protobuf.GeneratedMessageLite.mutableCopy(brands_);
-                                    }
-                                    brands_.add(
-                                            input.readMessage(com.treeleaf.suchi.entities.SuchiProto.Brand.parser(), extensionRegistry));
-                                    break;
-                                }
-                                case 138: {
-                                    com.treeleaf.suchi.entities.SuchiProto.SubBrand.Builder subBuilder = null;
-                                    if (subBrand_ != null) {
-                                        subBuilder = subBrand_.toBuilder();
-                                    }
-                                    subBrand_ = input.readMessage(com.treeleaf.suchi.entities.SuchiProto.SubBrand.parser(), extensionRegistry);
-                                    if (subBuilder != null) {
-                                        subBuilder.mergeFrom(subBrand_);
-                                        subBrand_ = subBuilder.buildPartial();
-                                    }
-
-                                    break;
-                                }
-                                case 146: {
-                                    if (!subBrands_.isModifiable()) {
-                                        subBrands_ =
-                                                com.google.protobuf.GeneratedMessageLite.mutableCopy(subBrands_);
-                                    }
-                                    subBrands_.add(
-                                            input.readMessage(com.treeleaf.suchi.entities.SuchiProto.SubBrand.parser(), extensionRegistry));
-                                    break;
-                                }
-                                case 154: {
-                                    com.treeleaf.suchi.entities.SuchiProto.Unit.Builder subBuilder = null;
-                                    if (unit_ != null) {
-                                        subBuilder = unit_.toBuilder();
-                                    }
-                                    unit_ = input.readMessage(com.treeleaf.suchi.entities.SuchiProto.Unit.parser(), extensionRegistry);
-                                    if (subBuilder != null) {
-                                        subBuilder.mergeFrom(unit_);
-                                        unit_ = subBuilder.buildPartial();
-                                    }
-
-                                    break;
-                                }
-                                case 162: {
-                                    if (!units_.isModifiable()) {
-                                        units_ =
-                                                com.google.protobuf.GeneratedMessageLite.mutableCopy(units_);
-                                    }
-                                    units_.add(
-                                            input.readMessage(com.treeleaf.suchi.entities.SuchiProto.Unit.parser(), extensionRegistry));
-                                    break;
-                                }
-                                case 170: {
-                                    com.treeleaf.suchi.entities.SuchiProto.Category.Builder subBuilder = null;
-                                    if (category_ != null) {
-                                        subBuilder = category_.toBuilder();
-                                    }
-                                    category_ = input.readMessage(com.treeleaf.suchi.entities.SuchiProto.Category.parser(), extensionRegistry);
-                                    if (subBuilder != null) {
-                                        subBuilder.mergeFrom(category_);
-                                        category_ = subBuilder.buildPartial();
-                                    }
-
-                                    break;
-                                }
-                                case 178: {
-                                    if (!categories_.isModifiable()) {
-                                        categories_ =
-                                                com.google.protobuf.GeneratedMessageLite.mutableCopy(categories_);
-                                    }
-                                    categories_.add(
-                                            input.readMessage(com.treeleaf.suchi.entities.SuchiProto.Category.parser(), extensionRegistry));
-                                    break;
-                                }
-                                case 186: {
-                                    com.treeleaf.suchi.entities.SuchiProto.Creditor.Builder subBuilder = null;
-                                    if (creditor_ != null) {
-                                        subBuilder = creditor_.toBuilder();
-                                    }
-                                    creditor_ = input.readMessage(com.treeleaf.suchi.entities.SuchiProto.Creditor.parser(), extensionRegistry);
-                                    if (subBuilder != null) {
-                                        subBuilder.mergeFrom(creditor_);
-                                        creditor_ = subBuilder.buildPartial();
-                                    }
-
-                                    break;
-                                }
-                                case 194: {
-                                    if (!creditors_.isModifiable()) {
-                                        creditors_ =
-                                                com.google.protobuf.GeneratedMessageLite.mutableCopy(creditors_);
-                                    }
-                                    creditors_.add(
-                                            input.readMessage(com.treeleaf.suchi.entities.SuchiProto.Creditor.parser(), extensionRegistry));
-                                    break;
-                                }
-                                case 202: {
-                                    com.treeleaf.suchi.entities.SuchiProto.CreditDetail.Builder subBuilder = null;
-                                    if (creditDetail_ != null) {
-                                        subBuilder = creditDetail_.toBuilder();
-                                    }
-                                    creditDetail_ = input.readMessage(com.treeleaf.suchi.entities.SuchiProto.CreditDetail.parser(), extensionRegistry);
-                                    if (subBuilder != null) {
-                                        subBuilder.mergeFrom(creditDetail_);
-                                        creditDetail_ = subBuilder.buildPartial();
-                                    }
-
-                                    break;
-                                }
-                                case 210: {
-                                    if (!creditDetails_.isModifiable()) {
-                                        creditDetails_ =
-                                                com.google.protobuf.GeneratedMessageLite.mutableCopy(creditDetails_);
-                                    }
-                                    creditDetails_.add(
-                                            input.readMessage(com.treeleaf.suchi.entities.SuchiProto.CreditDetail.parser(), extensionRegistry));
-                                    break;
-                                }
-                                case 218: {
-                                    com.treeleaf.suchi.entities.SuchiProto.Sale.Builder subBuilder = null;
-                                    if (sale_ != null) {
-                                        subBuilder = sale_.toBuilder();
-                                    }
-                                    sale_ = input.readMessage(com.treeleaf.suchi.entities.SuchiProto.Sale.parser(), extensionRegistry);
-                                    if (subBuilder != null) {
-                                        subBuilder.mergeFrom(sale_);
-                                        sale_ = subBuilder.buildPartial();
-                                    }
-
-                                    break;
-                                }
-                                case 226: {
-                                    if (!sales_.isModifiable()) {
-                                        sales_ =
-                                                com.google.protobuf.GeneratedMessageLite.mutableCopy(sales_);
-                                    }
-                                    sales_.add(
-                                            input.readMessage(com.treeleaf.suchi.entities.SuchiProto.Sale.parser(), extensionRegistry));
-                                    break;
-                                }
-                                case 234: {
-                                    com.treeleaf.suchi.entities.SuchiProto.UnitConversion.Builder subBuilder = null;
-                                    if (unitConversion_ != null) {
-                                        subBuilder = unitConversion_.toBuilder();
-                                    }
-                                    unitConversion_ = input.readMessage(com.treeleaf.suchi.entities.SuchiProto.UnitConversion.parser(), extensionRegistry);
-                                    if (subBuilder != null) {
-                                        subBuilder.mergeFrom(unitConversion_);
-                                        unitConversion_ = subBuilder.buildPartial();
-                                    }
-
-                                    break;
-                                }
-                                case 242: {
-                                    if (!unitConversions_.isModifiable()) {
-                                        unitConversions_ =
-                                                com.google.protobuf.GeneratedMessageLite.mutableCopy(unitConversions_);
-                                    }
-                                    unitConversions_.add(
-                                            input.readMessage(com.treeleaf.suchi.entities.SuchiProto.UnitConversion.parser(), extensionRegistry));
-                                    break;
-                                }
-                                case 250: {
-                                    com.treeleaf.suchi.entities.TreeleafProto.LoginResponse.Builder subBuilder = null;
-                                    if (loginResponse_ != null) {
-                                        subBuilder = loginResponse_.toBuilder();
-                                    }
-                                    loginResponse_ = input.readMessage(com.treeleaf.suchi.entities.TreeleafProto.LoginResponse.parser(), extensionRegistry);
-                                    if (subBuilder != null) {
-                                        subBuilder.mergeFrom(loginResponse_);
-                                        loginResponse_ = subBuilder.buildPartial();
-                                    }
-
-                                    break;
-                                }
-                                case 258: {
-                                    com.treeleaf.suchi.entities.SuchiProto.InventoryStock.Builder subBuilder = null;
-                                    if (inventoryStock_ != null) {
-                                        subBuilder = inventoryStock_.toBuilder();
-                                    }
-                                    inventoryStock_ = input.readMessage(com.treeleaf.suchi.entities.SuchiProto.InventoryStock.parser(), extensionRegistry);
-                                    if (subBuilder != null) {
-                                        subBuilder.mergeFrom(inventoryStock_);
-                                        inventoryStock_ = subBuilder.buildPartial();
-                                    }
-
-                                    break;
-                                }
-                                case 266: {
-                                    if (!inventoryStocks_.isModifiable()) {
-                                        inventoryStocks_ =
-                                                com.google.protobuf.GeneratedMessageLite.mutableCopy(inventoryStocks_);
-                                    }
-                                    inventoryStocks_.add(
-                                            input.readMessage(com.treeleaf.suchi.entities.SuchiProto.InventoryStock.parser(), extensionRegistry));
-                                    break;
-                                }
-                            }
-                        }
-                    } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                        throw new RuntimeException(e.setUnfinishedMessage(this));
-                    } catch (java.io.IOException e) {
-                        throw new RuntimeException(
-                                new com.google.protobuf.InvalidProtocolBufferException(
-                                        e.getMessage()).setUnfinishedMessage(this));
-                    } finally {
-                    }
+                  break;
                 }
-                case GET_DEFAULT_INSTANCE: {
-                    return DEFAULT_INSTANCE;
+                case 314: {
+                  com.treeleaf.suchi.entities.AccessProto.AccessToken.Builder subBuilder = null;
+                  if (accessToken_ != null) {
+                    subBuilder = accessToken_.toBuilder();
+                  }
+                  accessToken_ = input.readMessage(com.treeleaf.suchi.entities.AccessProto.AccessToken.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(accessToken_);
+                    accessToken_ = subBuilder.buildPartial();
+                  }
+
+                  break;
                 }
-                case GET_PARSER: {
-                    if (PARSER == null) {
-                        synchronized (SuchiBaseResponse.class) {
-                            if (PARSER == null) {
-                                PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
-                            }
-                        }
-                    }
-                    return PARSER;
+                case 322: {
+                  if (!accessTokens_.isModifiable()) {
+                    accessTokens_ =
+                        com.google.protobuf.GeneratedMessageLite.mutableCopy(accessTokens_);
+                  }
+                  accessTokens_.add(
+                      input.readMessage(com.treeleaf.suchi.entities.AccessProto.AccessToken.parser(), extensionRegistry));
+                  break;
                 }
+              }
             }
-            throw new UnsupportedOperationException();
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw new RuntimeException(e.setUnfinishedMessage(this));
+          } catch (java.io.IOException e) {
+            throw new RuntimeException(
+                new com.google.protobuf.InvalidProtocolBufferException(
+                    e.getMessage()).setUnfinishedMessage(this));
+          } finally {
+          }
         }
-
-
-        // @@protoc_insertion_point(class_scope:treeleaf.suchi.rpc.SuchiBaseResponse)
-        private static final SuchiBaseResponse DEFAULT_INSTANCE;
-
-        static {
-            DEFAULT_INSTANCE = new SuchiBaseResponse();
-            DEFAULT_INSTANCE.makeImmutable();
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
         }
-
-        public static SuchiBaseResponse getDefaultInstance() {
-            return DEFAULT_INSTANCE;
+        case GET_PARSER: {
+          if (PARSER == null) {    synchronized (SuchiBaseResponse.class) {
+              if (PARSER == null) {
+                PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+              }
+            }
+          }
+          return PARSER;
         }
-
-        private static volatile com.google.protobuf.Parser<SuchiBaseResponse> PARSER;
-
-        public static com.google.protobuf.Parser<SuchiBaseResponse> parser() {
-            return DEFAULT_INSTANCE.getParserForType();
-        }
+      }
+      throw new UnsupportedOperationException();
     }
 
 
+    // @@protoc_insertion_point(class_scope:treeleaf.suchi.rpc.SuchiBaseResponse)
+    private static final SuchiBaseResponse DEFAULT_INSTANCE;
     static {
+      DEFAULT_INSTANCE = new SuchiBaseResponse();
+      DEFAULT_INSTANCE.makeImmutable();
     }
 
-    // @@protoc_insertion_point(outer_class_scope)
+    public static SuchiBaseResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static volatile com.google.protobuf.Parser<SuchiBaseResponse> PARSER;
+
+    public static com.google.protobuf.Parser<SuchiBaseResponse> parser() {
+      return DEFAULT_INSTANCE.getParserForType();
+    }
+  }
+
+
+  static {
+  }
+
+  // @@protoc_insertion_point(outer_class_scope)
 }

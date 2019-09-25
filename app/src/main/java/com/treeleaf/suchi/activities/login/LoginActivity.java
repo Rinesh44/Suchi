@@ -19,6 +19,7 @@ import com.treeleaf.suchi.entities.TreeleafProto;
 import com.treeleaf.suchi.realm.repo.Repo;
 import com.treeleaf.suchi.realm.repo.UserRepo;
 
+import com.treeleaf.suchi.rpc.SuchiRpcProto;
 import com.treeleaf.suchi.utils.AppUtils;
 import com.treeleaf.suchi.utils.Constants;
 import com.treeleaf.suchi.utils.CustomProgress;
@@ -98,80 +99,73 @@ public class LoginActivity extends BaseActivity implements LoginView {
     }
 
     @Override
-    public void loginSuccess(TreeleafProto.LoginResponse loginResponse) {
+    public void loginSuccess(SuchiRpcProto.SuchiBaseResponse baseResponse) {
         AppUtils.showLog(TAG, "login success");
-        //show another progress dialog for fetching data
-        customProgress = CustomProgress.getInstance();
-        customProgress.showProgress(this, "Fetching data, please wait...", false);
+        TreeleafProto.LoginResponse loginResponse = baseResponse.getLoginResponse();
 
-        int loginStatus = loginResponse.getUser().getStatus().getNumber();
+        AppUtils.showLog(TAG, "KeyId: " + baseResponse.getSuchiKey().getKeyId());
+        if (baseResponse.getSuchiKey().getKeyId().isEmpty()) {
+            AppUtils.showLog(TAG, "key null");
+            Intent i = new Intent(LoginActivity.this, EnterKeyActivity.class);
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+            i.putExtra("token", loginResponse.getToken());
+            i.putExtra("user_id", loginResponse.getUser().getUserId());
+            startActivity(i);
+        } else {
+            if (baseResponse.getError()) {
+                showMessage(baseResponse.getMsg());
+                return;
+            }
 
-        switch (loginStatus) {
-            case 1:
-                gotoActivity(loginResponse, loginStatus);
-                break;
+            if (!baseResponse.getMsg().isEmpty()) showMessage(baseResponse.getMsg());
 
-            case 4:
-                showMessage("Sorry, your account has been suspended");
-                break;
-
-            case 3:
-                showMessage("Sorry, your account has been deleted");
-                break;
-
-            case 2:
-                gotoActivity(loginResponse, loginStatus);
-                break;
+            gotoActivity(loginResponse);
 
         }
 
 
     }
 
-    private void gotoActivity(TreeleafProto.LoginResponse loginResponse, int status) {
+    private void gotoActivity(TreeleafProto.LoginResponse loginResponse) {
+        //show another progress dialog for fetching data
+        customProgress = CustomProgress.getInstance();
+        customProgress.showProgress(this, "Fetching data, please wait...", false);
 
-        if (status == 1) {
+        UserRepo.getInstance().saveUser(loginResponse, new Repo.Callback() {
+            @Override
+            public void success(Object o) {
+                AppUtils.showLog(TAG, "successfully saved user");
 
-            UserRepo.getInstance().saveUser(loginResponse, new Repo.Callback() {
-                @Override
-                public void success(Object o) {
-                    AppUtils.showLog(TAG, "successfully saved user");
+                //save to shared prefs
 
-                    //save to shared prefs
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putString(Constants.TOKEN, loginResponse.getToken());
+                editor.putString(Constants.USER_ID, loginResponse.getUser().getUserId());
 
-                    SharedPreferences.Editor editor = preferences.edit();
-                    editor.putString(Constants.TOKEN, loginResponse.getToken());
-                    editor.putString(Constants.USER_ID, loginResponse.getUser().getUserId());
-
-                    editor.putString(Constants.USERNAME, loginResponse.getUser().getUsername());
-                    editor.putString(Constants.STORENAME, loginResponse.getUser().getStoreName());
-                    editor.putString(Constants.ADDRESS, loginResponse.getUser().getAddress());
-                    editor.putString(Constants.OWNERNAME, loginResponse.getUser().getOwnerName());
-                    editor.apply();
+                editor.putString(Constants.USERNAME, loginResponse.getUser().getUsername());
+                editor.putString(Constants.STORENAME, loginResponse.getUser().getStoreName());
+                editor.putString(Constants.ADDRESS, loginResponse.getUser().getAddress());
+                editor.putString(Constants.OWNERNAME, loginResponse.getUser().getOwnerName());
+                editor.apply();
 
 
-                    String token = preferences.getString(Constants.TOKEN, "");
-                    if (token != null) presenter.getAllData(token);
-                    else {
-                        customProgress.hideProgress();
-                        Toast.makeText(LoginActivity.this, "Unable to get token", Toast.LENGTH_SHORT).show();
-                    }
-
-                }
-
-                @Override
-                public void fail() {
-                    AppUtils.showLog(TAG, "User save failed");
+                String token = preferences.getString(Constants.TOKEN, "");
+                if (token != null) presenter.getAllData(token);
+                else {
                     customProgress.hideProgress();
-                    hideLoading();
+                    Toast.makeText(LoginActivity.this, "Unable to get token", Toast.LENGTH_SHORT).show();
                 }
-            });
-        } else {
-            customProgress.hideProgress();
-            Intent i = new Intent(LoginActivity.this, EnterKeyActivity.class);
-            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(i);
-        }
+
+            }
+
+            @Override
+            public void fail() {
+                AppUtils.showLog(TAG, "User save failed");
+                customProgress.hideProgress();
+                hideLoading();
+            }
+        });
+
     }
 
     @Override

@@ -1,10 +1,11 @@
 package com.treeleaf.suchi.activities.login;
 
 import com.treeleaf.suchi.entities.TreeleafProto;
+import com.treeleaf.suchi.rpc.SuchiRpcProto;
 
 public interface LoginView {
 
-    void loginSuccess(TreeleafProto.LoginResponse loginResponse);
+    void loginSuccess(SuchiRpcProto.SuchiBaseResponse baseResponse);
 
     void loginFail(String msg);
 

@@ -152,4 +152,6 @@
     <string name="days">(Days)</string>
     <string name="months">Months</string>
     <string name="statistics">Statistics</string>
+    <string name="most_sold_overall">Most sold(Overall)</string>
+    <string name="items_not_sold">Items not sold</string>
 </resources>

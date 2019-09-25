@@ -8,6 +8,7 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
+import retrofit2.http.HEAD;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.PATCH;
@@ -32,6 +33,7 @@ public interface Endpoints {
     String SALES = "sale/sync";
     String CREDITORS = "creditor/sync";
     String CREDIT_DETAILS = "credit/sync";
+    String FREE_TRIAL = "suchi/key/free";
 
     String ADD_UNSYNCED_INVENTORIES = "inventory/sync";
 
@@ -82,6 +84,10 @@ public interface Endpoints {
     @POST(API_BASE_URL + CREDIT_DETAILS)
     Call<SuchiRpcProto.SuchiBaseResponse> addCredits(@Header(AUTHORIZATION) String auth,
                                                      @Body SuchiProto.SyncRequest syncRequest);
+
+    @POST(API_BASE_URL + FREE_TRIAL)
+    Call<SuchiRpcProto.SuchiBaseResponse> getFreeTrial(@Header(AUTHORIZATION) String auth,
+                                                       @Body SuchiProto.SuchiKey suchiKey);
 
 
 }

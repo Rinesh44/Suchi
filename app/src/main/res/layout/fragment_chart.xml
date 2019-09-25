@@ -205,11 +205,20 @@
                                 android:id="@+id/tv_sold_items"
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
-                                android:layout_weight="4"
+                                android:layout_weight="3"
                                 android:fontFamily="@font/proxima_regular"
                                 android:gravity="center"
                                 android:textColor="@color/colorPrimary"
                                 android:textSize="30sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tv_status"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:paddingLeft="40dp"
+                                android:fontFamily="@font/proxima_regular"
                                 android:textStyle="bold" />
 
                             <TextView
@@ -433,6 +442,159 @@
                 </RelativeLayout>
 
             </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/ll_high_low"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ll_bottom"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal"
+                android:visibility="visible"
+                android:weightSum="2">
+
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:cardCornerRadius="6dp"
+                        app:cardUseCompatPadding="true">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="200dp"
+                            android:orientation="vertical"
+                            android:weightSum="5">
+
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="4">
+
+                                <HorizontalScrollView
+                                    android:id="@+id/hsv_highest_alltime"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:fillViewport="true"
+                                    android:scrollbars="none">
+
+                                    <LinearLayout
+                                        android:id="@+id/ll_highest_alltime_holder"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="match_parent"
+                                        android:gravity="center"
+                                        android:orientation="horizontal">
+
+                                    </LinearLayout>
+
+                                </HorizontalScrollView>
+
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:background="@color/colorAccent">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_centerVertical="true"
+                                    android:fontFamily="@font/proxima_regular"
+                                    android:gravity="center"
+                                    android:text="@string/most_sold_overall"
+                                    android:textColor="@color/white"
+                                    android:textStyle="bold" />
+
+                            </RelativeLayout>
+
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:cardCornerRadius="6dp"
+                        app:cardUseCompatPadding="true">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="200dp"
+                            android:orientation="vertical"
+                            android:weightSum="5">
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_weight="4">
+
+                                <HorizontalScrollView
+                                    android:id="@+id/hsv_not_sold"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:fillViewport="true"
+                                    android:scrollbars="none">
+
+                                    <LinearLayout
+                                        android:id="@+id/ll_not_sold_holder"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="match_parent"
+                                        android:gravity="center"
+                                        android:orientation="horizontal" />
+
+                                </HorizontalScrollView>
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:background="@color/colorAccent">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:fontFamily="@font/proxima_regular"
+                                    android:gravity="center"
+                                    android:text="@string/items_not_sold"
+                                    android:textColor="@color/white"
+                                    android:textStyle="bold" />
+
+
+                            </RelativeLayout>
+
+
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
 
             <com.github.mikephil.charting.charts.PieChart
                 android:id="@+id/pie_chart"

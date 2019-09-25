@@ -18,4 +18,9 @@ public class Constants {
     public static final String NOTIFICATION = "notification";
     public static final String STOCK_THRESHOLD_NOTIFICATION = "stock_threshold_notification";
 
+    public static final String FREE_TRIAL_KEY = "free_trial_key";
+    public static final String KEY_ID = "key_id";
+    public static final String FREE_TRIAL_CREATED_DATE = "free_trial_created_date";
+    public static final String FREE_TRIAL_EXPIRY_DATE = "free_trial_expirty_date";
+
 }

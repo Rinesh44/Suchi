@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="Gradle: com.chauthai.swipereveallayout:swipe-reveal-layout:1.4.1@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/fe15100eb1f6a0d21754224f1022e346/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/fe15100eb1f6a0d21754224f1022e346/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/4f23ea18be17debfda89996319263bcf/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/4f23ea18be17debfda89996319263bcf/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

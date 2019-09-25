@@ -73,7 +73,8 @@ public class LoginPresenterImpl implements LoginPresenter {
                     return;
                 }
 
-                activity.loginSuccess(baseResponse.getLoginResponse());
+
+                activity.loginSuccess(baseResponse);
             }
 
             @Override
