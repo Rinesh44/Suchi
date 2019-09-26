@@ -42,7 +42,7 @@ public class IndexAxisValueFormatter extends ValueFormatter {
         if (index < 0 || index >= mValueCount || index != (int) value)
             return "";
 
-        return mValues[index - 1];
+        return mValues[index];
     }
 
     public String[] getValues() {

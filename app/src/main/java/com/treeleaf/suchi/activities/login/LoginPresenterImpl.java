@@ -240,6 +240,8 @@ public class LoginPresenterImpl implements LoginPresenter {
             RealmList<InventoryStocks> inventoryStocksRealmList = new RealmList<>();
             for (SuchiProto.InventoryStock inventoryStockPb : inventoryStockPbList
             ) {
+
+                AppUtils.showLog(TAG, "inventoryIDProto: " + inventoryStockPb.getInventoryId());
                 InventoryStocks inventoryStocks = new InventoryStocks(inventoryStockPb.getInventoryStockId(), inventoryStockPb.getInventoryId(), String.valueOf(inventoryStockPb.getQuantity()),
                         String.valueOf(inventoryStockPb.getMarkedPrice()), String.valueOf(inventoryStockPb.getSalesPrice()),
                         String.valueOf(inventoryStockPb.getUnit().getUnitId()), inventoryStockPb.getSync());

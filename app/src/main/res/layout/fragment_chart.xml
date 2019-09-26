@@ -117,11 +117,38 @@
 
             </HorizontalScrollView>
 
+            <RelativeLayout
+                android:id="@+id/rl_chart_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ll_high_low"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp">
+
+                <TextView
+                    android:id="@+id/tv_chart_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_toEndOf="@+id/tv_chart_text"
+                    android:background="@color/colorAccent" />
+
+            </RelativeLayout>
+
             <com.github.mikephil.charting.charts.LineChart
                 android:id="@+id/line_chart"
                 android:layout_width="match_parent"
                 android:layout_height="400dp"
-                android:layout_below="@id/hsv_filter"
+                android:layout_below="@id/rl_chart_text"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
                 android:layout_toEndOf="@+id/tv_yaxis" />
@@ -146,7 +173,7 @@
                 android:id="@+id/rl_stats"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/pie_chart"
+                android:layout_below="@id/hsv_filter"
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp">
 
@@ -217,8 +244,8 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
                                 android:layout_weight="1"
-                                android:paddingLeft="40dp"
                                 android:fontFamily="@font/proxima_regular"
+                                android:paddingLeft="40dp"
                                 android:textStyle="bold" />
 
                             <TextView
@@ -263,11 +290,21 @@
                                 android:id="@+id/tv_total_amount"
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
-                                android:layout_weight="4"
+                                android:layout_weight="3"
                                 android:fontFamily="@font/proxima_regular"
                                 android:gravity="center"
                                 android:textColor="@color/colorPrimary"
                                 android:textSize="30sp"
+                                android:textStyle="bold" />
+
+
+                            <TextView
+                                android:id="@+id/tv_status2"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/proxima_regular"
+                                android:paddingLeft="40dp"
                                 android:textStyle="bold" />
 
                             <TextView
