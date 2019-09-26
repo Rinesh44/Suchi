@@ -142,4 +142,10 @@
     <string name="show_all">"सबै देखाऊ "</string>
     <string name="total_dues">"जम्मा रकम: "</string>
     <string name="sell_stocks">स्टक बेच्ने</string>
+    <string name="days">"(दिनहरू) "</string>
+    <string name="hours">"(घण्टा) "</string>
+    <string name="items_not_sold">"वस्तुहरू बिक्री भएन "</string>
+    <string name="months">महिना</string>
+    <string name="most_sold_overall">"सब भन्दा बढी बेचिएको (समग्र) "</string>
+    <string name="statistics">"तथ्यंक "</string>
 </resources>

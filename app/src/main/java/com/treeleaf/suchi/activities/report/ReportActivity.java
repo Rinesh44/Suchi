@@ -74,7 +74,6 @@ public class ReportActivity extends BaseActivity {
     private int selectedFilter = 1;
     private AppCompatSpinner brandSpinner, subBrandSpinner, categorySpinner, itemSpinner;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -149,26 +148,26 @@ public class ReportActivity extends BaseActivity {
     private void filterByItems() {
         List<SalesStock> stocksByItems = SalesStockRepo.getInstance().getSalesStockByItem((String) itemSpinner.getSelectedItem());
         toggleBottomSheet();
-        onListReceiveListener.onListReceive(stocksByItems);
+        onListReceiveListener.onListReceive(stocksByItems, false, "", "");
     }
 
     private void filterByCategories() {
         List<SalesStock> stocksByCategory = SalesStockRepo.getInstance().getSalesStockByCategory((String) categorySpinner.getSelectedItem());
         toggleBottomSheet();
-        onListReceiveListener.onListReceive(stocksByCategory);
+        onListReceiveListener.onListReceive(stocksByCategory, false, "", "");
     }
 
     private void filterBySubBrand() {
         List<SalesStock> stocksBySubBrand = SalesStockRepo.getInstance().getSalesStockBySubBrand((String) subBrandSpinner.getSelectedItem());
         toggleBottomSheet();
-        onListReceiveListener.onListReceive(stocksBySubBrand);
+        onListReceiveListener.onListReceive(stocksBySubBrand, false, "", "");
 
     }
 
     private void filterByBrand() {
         List<SalesStock> stocksByBrand = SalesStockRepo.getInstance().getSalesStockByBrand((String) brandSpinner.getSelectedItem());
         toggleBottomSheet();
-        onListReceiveListener.onListReceive(stocksByBrand);
+        onListReceiveListener.onListReceive(stocksByBrand, false, "", "");
     }
 
     private void filterByDates(EditText mFromDate, EditText mToDate) {
@@ -205,11 +204,12 @@ public class ReportActivity extends BaseActivity {
             AppUtils.showLog(TAG, "salesStockByDate: " + salesStockListByDate.size());
 
             toggleBottomSheet();
-            onListReceiveListener.onListReceive(salesStockListByDate);
+            onListReceiveListener.onListReceive(salesStockListByDate, true, fromDate, tillDate);
         } else {
             toggleBottomSheet();
             Toast.makeText(ReportActivity.this, "Data not available", Toast.LENGTH_SHORT).show();
         }
+
     }
 
     private void setUpFilterAdapter(AppCompatSpinner filterSpinner) {
@@ -331,7 +331,7 @@ public class ReportActivity extends BaseActivity {
     }
 
     public interface OnListReceiveListener {
-        void onListReceive(List<SalesStock> salesStockListByDate);
+        void onListReceive(List<SalesStock> salesStockListByDate, boolean filterByDate, String fromDate, String toDate);
     }
 
     public void setListReceiveListener(OnListReceiveListener listener) {

@@ -10,6 +10,7 @@ import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -62,6 +63,12 @@ public class Table extends Fragment implements ReportActivity.OnListReceiveListe
     LinearLayout mTotalAmountHolder;
     @BindView(R.id.rg_filter)
     RadioGroup mFilterByTime;
+    @BindView(R.id.rl_date_holder)
+    RelativeLayout mDateHolder;
+    @BindView(R.id.tv_from_date)
+    TextView mFromDate;
+    @BindView(R.id.tv_till_date)
+    TextView mTillDate;
 
     private Unbinder unbinder;
     private SalesAdapter mSalesAdapter;
@@ -376,9 +383,20 @@ public class Table extends Fragment implements ReportActivity.OnListReceiveListe
     }
 
     @Override
-    public void onListReceive(List<SalesStock> salesStockListByDate) {
+    public void onListReceive(List<SalesStock> salesStockListByDate, boolean filterByDate, String
+            fromDate, String toDate) {
         if (salesStockListByDate != null) {
             AppUtils.showLog(TAG, "salesStockListSize: " + salesStockListByDate.size());
+            if (filterByDate) {
+                mFilter.setVisibility(View.GONE);
+                mDateHolder.setVisibility(View.VISIBLE);
+                mFromDate.setText(fromDate);
+                mTillDate.setText(toDate);
+
+            } else {
+                mFilter.setVisibility(View.VISIBLE);
+                mDateHolder.setVisibility(View.GONE);
+            }
 
             manageReportRecyclerView(salesStockListByDate);
         } else {

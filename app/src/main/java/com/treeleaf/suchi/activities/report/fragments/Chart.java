@@ -331,6 +331,7 @@ public class Chart extends Fragment {
                 else more.setVisibility(View.GONE);
                 LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(300, 500);
                 view.setLayoutParams(layoutParams);
+                view.setPadding(10, 0, 10, 0);
             }
 
             more.setOnClickListener(new View.OnClickListener() {
@@ -411,43 +412,49 @@ public class Chart extends Fragment {
         List<SalesStock> dayBeforeSalesStocks = SalesStockRepo.getInstance().
                 getSalesStockByDate(dayBeforeFromDate, dayBeforeTillDate);
 
-        double yesterdaySalesTotal = 0;
-        double dayBeforeSalesTotal = 0;
+        if (yesterdaysSalesStocks.isEmpty() && dayBeforeSalesStocks.isEmpty()) {
+            mStatus.setVisibility(View.GONE);
+            mStatus2.setVisibility(View.GONE);
+        } else {
+
+            double yesterdaySalesTotal = 0;
+            double dayBeforeSalesTotal = 0;
 
 
-        for (SalesStock salesstock : yesterdaysSalesStocks
-        ) {
-            yesterdaySalesTotal += Integer.valueOf(salesstock.getQuantity());
-        }
+            for (SalesStock salesstock : yesterdaysSalesStocks
+            ) {
+                yesterdaySalesTotal += Integer.valueOf(salesstock.getQuantity());
+            }
 
-        for (SalesStock salesstock : dayBeforeSalesStocks
-        ) {
-            dayBeforeSalesTotal += Integer.valueOf(salesstock.getQuantity());
-        }
+            for (SalesStock salesstock : dayBeforeSalesStocks
+            ) {
+                dayBeforeSalesTotal += Integer.valueOf(salesstock.getQuantity());
+            }
 
-        double diff = yesterdaySalesTotal - dayBeforeSalesTotal;
-        AppUtils.showLog(TAG, "diff: " + diff);
-        AppUtils.showLog(TAG, "original: " + dayBeforeSalesTotal);
-        AppUtils.showLog(TAG, "new: " + yesterdaySalesTotal);
+            double diff = yesterdaySalesTotal - dayBeforeSalesTotal;
+            AppUtils.showLog(TAG, "diff: " + diff);
+            AppUtils.showLog(TAG, "original: " + dayBeforeSalesTotal);
+            AppUtils.showLog(TAG, "new: " + yesterdaySalesTotal);
 
-        double growth = diff / dayBeforeSalesTotal * 100;
-        mStatus.setText(String.format("%.2f", growth) + "%");
-        mStatus2.setText(String.format("%.2f", growth) + "%");
+            double growth = diff / dayBeforeSalesTotal * 100;
+            mStatus.setText(String.format("%.2f", growth) + "%");
+            mStatus2.setText(String.format("%.2f", growth) + "%");
 
-        if (growth > 0) {
-            mStatus.setTextColor(getContext().getResources().getColor(R.color.colorAccent));
-            mStatus2.setTextColor(getContext().getResources().getColor(R.color.colorAccent));
-            Drawable img = getContext().getResources().getDrawable(R.drawable.ic_increase);
-            img.setBounds(0, 0, 60, 60);
-            mStatus.setCompoundDrawables(img, null, null, null);
-            mStatus2.setCompoundDrawables(img, null, null, null);
-        } else if (growth < 0) {
-            mStatus.setTextColor(getContext().getResources().getColor(R.color.red));
-            mStatus2.setTextColor(getContext().getResources().getColor(R.color.red));
-            Drawable img = getContext().getResources().getDrawable(R.drawable.ic_decrease);
-            img.setBounds(0, 0, 60, 60);
-            mStatus.setCompoundDrawables(img, null, null, null);
-            mStatus2.setCompoundDrawables(img, null, null, null);
+            if (growth > 0) {
+                mStatus.setTextColor(getContext().getResources().getColor(R.color.colorAccent));
+                mStatus2.setTextColor(getContext().getResources().getColor(R.color.colorAccent));
+                Drawable img = getContext().getResources().getDrawable(R.drawable.ic_increase);
+                img.setBounds(0, 0, 60, 60);
+                mStatus.setCompoundDrawables(img, null, null, null);
+                mStatus2.setCompoundDrawables(img, null, null, null);
+            } else if (growth < 0) {
+                mStatus.setTextColor(getContext().getResources().getColor(R.color.red));
+                mStatus2.setTextColor(getContext().getResources().getColor(R.color.red));
+                Drawable img = getContext().getResources().getDrawable(R.drawable.ic_decrease);
+                img.setBounds(0, 0, 60, 60);
+                mStatus.setCompoundDrawables(img, null, null, null);
+                mStatus2.setCompoundDrawables(img, null, null, null);
+            }
         }
 
 
@@ -516,8 +523,16 @@ public class Chart extends Fragment {
                     String getTimeHours = java.text.DateFormat.getTimeInstance().format(salesStock.getCreatedAt());
                     String[] separatedHours = getTimeHours.split(":");
                     String hour = separatedHours[0];
-                    hoursList.add(hour);
-                    entries.add(new Entry(Float.valueOf(hour), Float.valueOf(salesStock.getAmount()), "hours"));
+                    if (hoursList.contains(hour)) {
+                  /*      Float addedQuantity = entries.get(entries.indexOf(hour)).getY() + Float.valueOf(salesStock.getAmount());
+                        entries.remove(hoursList.indexOf(hour));
+                        entries.add(new Entry(Float.valueOf(hour), addedQuantity));*/
+
+                    } else {
+                        hoursList.add(hour);
+                        entries.add(new Entry(Float.valueOf(hour), Float.valueOf(salesStock.getAmount()), "hours"));
+                    }
+
                     mXaxix.setText(Objects.requireNonNull(getContext()).getResources().getString(R.string.hours));
                     mChartText.setText("Items sold in hours");
                 }
@@ -827,6 +842,8 @@ public class Chart extends Fragment {
                 else more.setVisibility(View.GONE);
                 LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(300, 500);
                 view.setLayoutParams(layoutParams);
+                view.setPadding(10, 0, 10, 0);
+
             }
 
             more.setOnClickListener(new View.OnClickListener() {
@@ -884,6 +901,8 @@ public class Chart extends Fragment {
                 else more.setVisibility(View.GONE);
                 LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(300, 500);
                 view.setLayoutParams(layoutParams);
+                view.setPadding(10, 0, 10, 0);
+
             }
 
             more.setOnClickListener(new View.OnClickListener() {

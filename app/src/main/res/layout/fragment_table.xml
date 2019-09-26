@@ -10,6 +10,49 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <RelativeLayout
+            android:id="@+id/rl_date_holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="20dp"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tv_from_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/proxima_regular"
+                android:text="12 th dec 1029"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tv_to"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_toEndOf="@+id/tv_from_date"
+                android:fontFamily="@font/proxima_regular"
+                android:text="TO"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tv_till_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/tv_to"
+                android:fontFamily="@font/proxima_regular"
+                android:text="12 th dec 1029"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+        </RelativeLayout>
+
 
         <HorizontalScrollView
             android:id="@+id/hsv_filter"
@@ -115,6 +158,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/hsv_filter"
             android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             android:fontFamily="@font/proxima_regular"
             android:textColor="@color/black"
@@ -125,6 +169,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/hsv_filter"
+            android:layout_marginTop="10dp"
             android:layout_toStartOf="@+id/tv_total_amt_top"
             android:fontFamily="@font/proxima_regular"
             android:text="@string/total_amount"
@@ -137,6 +182,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/hsv_filter"
             android:layout_alignParentEnd="true"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             android:fontFamily="@font/proxima_regular"
             android:textColor="@color/black"
@@ -153,6 +199,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:clipToPadding="false"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -160,9 +207,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="20dp"
                     android:layout_marginEnd="10dp"
                     android:background="@color/colorPrimary"
+                    android:clipToPadding="false"
                     android:orientation="horizontal"
                     android:weightSum="17">
 

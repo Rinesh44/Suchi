@@ -207,7 +207,7 @@
     <last-search-timestamp>1569228326916</last-search-timestamp>
   </component>
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/report/fragments/Chart.java" line="940" mnemonic="1" />
+    <bookmark url="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/report/fragments/Chart.java" line="959" mnemonic="1" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="21f9e52c-02f4-47f6-9f2a-c9d2d92c0e1b" name="Default Changelist" comment="">
@@ -219,6 +219,8 @@
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_activity_activity_1_0_0_alpha06_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_activity_activity_1_0_0_alpha06_aar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_appcompat_appcompat_1_1_0_alpha04_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_appcompat_appcompat_1_1_0_alpha04_aar.xml" afterDir="false" />
@@ -294,11 +296,21 @@
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__io_realm_realm_android_library_5_7_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__io_realm_realm_android_library_5_7_0_aar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/login/LoginPresenterImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/login/LoginPresenterImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/dashboard/DashboardActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/dashboard/DashboardActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/enterkey/EnterKeyActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/enterkey/EnterKeyActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/report/ReportActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/report/ReportActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/report/fragments/Chart.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/report/fragments/Chart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/sales/AddSalesActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/sales/AddSalesActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/utils/IndexAxisValueFormatter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/utils/IndexAxisValueFormatter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/report/fragments/Table.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/report/fragments/Table.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_dashboard.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_dashboard.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_chart.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_chart.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_table.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_table.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/single_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/single_item.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-ne/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-ne/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/suchi_android_app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/suchi_android_app.iml" afterDir="false" />
     </list>
@@ -333,10 +345,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/credit/CreditHistoryView.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/register/RegisterActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="8" column="30" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
+            <state relative-caret-position="486">
+              <caret line="51" column="36" selection-start-line="51" selection-start-column="36" selection-end-line="51" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -344,24 +356,63 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/report/fragments/Chart.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="472">
-              <caret line="527" column="54" selection-start-line="527" selection-start-column="54" selection-end-line="527" selection-end-column="54" />
+            <state relative-caret-position="426">
+              <caret line="529" column="24" selection-start-line="529" selection-start-column="24" selection-end-line="529" selection-end-column="24" />
               <folding>
-                <element signature="e#21040#21117#0" expanded="true" />
-                <element signature="e#21251#21473#0" expanded="true" />
-                <element signature="e#21472#21473#0" expanded="true" />
-                <element signature="e#41547#41548#0" expanded="true" />
-                <element signature="e#41623#41624#0" expanded="true" />
+                <element signature="e#42182#42183#0" expanded="true" />
+                <element signature="e#42258#42259#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/utils/IndexAxisValueFormatter.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/login/LoginActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="41" column="70" selection-start-line="41" selection-start-column="70" selection-end-line="41" selection-end-column="70" />
+            <state relative-caret-position="486">
+              <caret line="58" column="42" selection-start-line="58" selection-start-column="42" selection-end-line="58" selection-end-column="42" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml">
+          <provider editor-type-id="android-designer2" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="17" column="36" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_dashboard.xml">
+          <provider editor-type-id="android-designer2" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="396">
+              <caret line="22" column="43" selection-start-line="22" selection-start-column="43" selection-end-line="22" selection-end-column="43" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_register.xml">
+          <provider editor-type-id="android-designer2" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="125">
+              <caret line="87" column="76" selection-start-line="87" selection-start-column="76" selection-end-line="87" selection-end-column="76" />
+              <folding>
+                <element signature="e#4730#4748#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/enterkey/EnterKeyActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="393">
+              <caret line="55" column="42" selection-start-line="55" selection-start-column="42" selection-end-line="55" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -370,29 +421,13 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/login/LoginPresenterImpl.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/payment/PaymentActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="471">
-              <caret line="236" column="47" selection-start-line="236" selection-start-column="47" selection-end-line="236" selection-end-column="47" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/sales/AddSalesActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="389">
-              <caret line="180" column="43" selection-start-line="180" selection-start-column="43" selection-end-line="180" selection-end-column="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_chart.xml">
-          <provider editor-type-id="android-designer2" />
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1052">
-              <caret line="303" column="59" selection-start-line="303" selection-start-column="59" selection-end-line="303" selection-end-column="59" />
+            <state relative-caret-position="262">
+              <caret line="34" column="43" selection-start-line="34" selection-start-column="43" selection-end-line="34" selection-end-column="43" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -402,45 +437,45 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="layoutResourceFile_vertical" />
         <option value="resourceFile" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="layoutResourceFile_vertical" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>highestsoldItem</find>
-      <find>diff</find>
-      <find>alltime</find>
-      <find>alltimehighestSize</find>
-      <find>insideloop</find>
-      <find>drawable</find>
-      <find>notsold</find>
-      <find>item</find>
-      <find>itemsnotsold</find>
-      <find>salesHashSetSize</find>
+      <find>showDia</find>
+      <find>repo</find>
+      <find>enterKey</find>
+      <find>environ</find>
       <find>com.treeleaf.entities</find>
-      <find>loginRe</find>
-      <find>Key:</find>
+      <find>exported</find>
+      <find>welcome</find>
+      <find>enter the ke</find>
+      <find>eSewaConfiguration</find>
+      <find>mDone</find>
+      <find>filter</find>
+      <find>filterBydate</find>
+      <find>filterBYdate</find>
+      <find>adapter</find>
+      <find>fromDa</find>
+      <find>enter the li</find>
       <find>initialize</find>
-      <find>KeyId</find>
-      <find>switch</find>
-      <find>presenter</find>
-      <find>setVisi</find>
-      <find>ll_bottom</find>
-      <find>highestSold</find>
-      <find>before</find>
-      <find>inventoryID</find>
-      <find>itemsNotSoldSize</find>
-      <find>notsoldItems</find>
-      <find>subLIst</find>
-      <find>setVi</find>
-      <find>line</find>
-      <find>indexAxisValue</find>
-      <find>mStatus</find>
-      <find>inventoryIDProto</find>
+      <find>listener</find>
+      <find>filterByDa</find>
+      <find>userN</find>
+      <find>username</find>
+      <find>inflate</find>
+      <find>itemsnotsol</find>
+      <find>highest</find>
+      <find>month</find>
+      <find>amount</find>
+      <find>setUp</find>
+      <find>diff</find>
+      <find>add</find>
+      <find>concurrent</find>
     </findStrings>
     <replaceStrings>
       <replace>entries</replace>
@@ -453,14 +488,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_sales.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/menu/menu_navigation.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/dashboard/DashboardView.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/dashboard/DashboardPresenterImpl.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/dashboard/DashboardPresenter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/realm/repo/SalesRepo.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/sales/SalesBill.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/dashboard/DashboardActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/credit/AddCreditor.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/adapter/AutocompleteCreditorAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/adapter/StockAdapter.java" />
@@ -473,22 +501,14 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/credit/CreditDetails.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/bill_row.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_credit_details.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/single_item.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/report/ReportActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_inventory.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_settings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/Settings/Settings.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/credit/CreditHistory.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/InventoryActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_table.xml" />
         <option value="$PROJECT_DIR$/build.gradle" />
-        <option value="$PROJECT_DIR$/app/build.gradle" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/report/fragments/Table.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/realm/repo/SalesStockRepo.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/rpc/SuchiRpcProto.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/entities/SuchiProto.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/login/LoginView.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/enterkey/EnterKeyView.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/dagger/component/AppComponent.java" />
@@ -498,20 +518,34 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/enterkey/EnterKeyPresenter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/enterkey/EnterKeyPresenterImpl.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/utils/Constants.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/enterkey/EnterKeyActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/login/LoginPresenterImpl.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/sales/AddSalesActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_chart.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/utils/IndexAxisValueFormatter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/free_trial_dialog.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/dashboard/DashboardActivity.java" />
+        <option value="$PROJECT_DIR$/app/build.gradle" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/entities/SuchiProto.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/report/ReportActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/report/fragments/Table.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_table.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_payment.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/enterkey/EnterKeyActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/payment/PaymentActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_dashboard.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/single_item.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_chart.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/sales/AddSalesActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/report/fragments/Chart.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="179" />
-    <option name="y" value="146" />
-    <option name="width" value="1379" />
-    <option name="height" value="789" />
+  <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="y" value="23" />
+    <option name="width" value="2048" />
+    <option name="height" value="1072" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -519,9 +553,23 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane" />
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="suchi_android_app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="suchi_android_app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="suchi_android_app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="suchi_android_app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -545,20 +593,36 @@
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="suchi" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="utils" type="462c0819:PsiDirectoryNode" />
+              <item name="activities" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="suchi_android_app" type="1abcf292:AndroidViewProjectNode" />
-              <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="suchi" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="activities" type="462c0819:PsiDirectoryNode" />
+              <item name="payment" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="suchi_android_app" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+            </path>
+            <path>
+              <item name="suchi_android_app" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="drawable" type="ddeffd01:AndroidResFolderTypeNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="device.picker.selection" value="520351c9f00ca3eb" />
+    <property name="device.picker.selection" value="52034ba6fa9f5323" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../tootle-client-android-project" />
     <property name="not.eligible.for.single.variant.sync" value="true" />
     <property name="project.structure.last.edited" value="Dependencies" />
@@ -567,9 +631,13 @@
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
   </component>
   <component name="RecentsManager">
+    <key name="android.template.packageName">
+      <recent name="com.treeleaf.suchi.activities.payment" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/rpc" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
       <recent name="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/entities" />
+      <recent name="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/rpc" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -584,10 +652,63 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Android App.app">
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EnterKeyActivity" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false" temporary="true">
+      <module name="app" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="specific_activity" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="com.treeleaf.suchi.activities.enterkey.EnterKeyActivity" />
       <method v="2">
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
@@ -645,6 +766,11 @@
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Android App.EnterKeyActivity" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -660,11 +786,11 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
+    <frame x="0" y="0" width="2048" height="1152" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.4983871" visible="true" weight="0.192031" />
+      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.4983871" visible="true" weight="0.1993988" />
       <window_info id="Structure" order="2" sideWeight="0.5016129" side_tool="true" weight="0.21250692" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Build Variants" order="4" side_tool="true" />
@@ -673,7 +799,7 @@
       <window_info id="Resources Explorer" order="7" />
       <window_info id="Capture Tool" order="8" />
       <window_info anchor="bottom" id="Run" order="0" />
-      <window_info anchor="bottom" id="Logcat" order="1" weight="0.4827214" />
+      <window_info anchor="bottom" id="Logcat" order="1" weight="0.48162475" />
       <window_info anchor="bottom" id="TODO" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" />
       <window_info anchor="bottom" id="Terminal" order="4" weight="0.32937366" />
@@ -688,114 +814,10 @@
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info anchor="right" id="Palette&#9;" order="4" />
       <window_info anchor="right" id="StringPreview" order="5" />
-      <window_info anchor="right" id="Preview" order="6" weight="0.26618704" />
+      <window_info anchor="right" id="Preview" order="6" weight="0.23597194" />
     </layout>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_inventory.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="426">
-          <caret line="45" column="44" lean-forward="true" selection-start-line="45" selection-start-column="44" selection-end-line="45" selection-end-column="44" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="android-dummy:///Users/innovisto/AndroidStudioProjects/treeleaf/suchi_android_app/app/Translations Editor" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_settings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="691">
-          <caret line="123" column="51" lean-forward="true" selection-start-line="123" selection-start-column="51" selection-end-line="123" selection-end-column="51" />
-          <folding>
-            <element signature="e#3845#3876#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.AnyChart/AnyChart-Android/1.1.2/7f85a378197959655268a7e0e5d229428d1b9857/AnyChart-Android-1.1.2-sources.jar!/com/anychart/chart/common/dataentry/DataEntry.java" />
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.AnyChart/AnyChart-Android/1.1.2/7f85a378197959655268a7e0e5d229428d1b9857/AnyChart-Android-1.1.2-sources.jar!/com/anychart/core/cartesian/series/Line.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/Settings/Settings.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="53" column="56" selection-start-line="53" selection-start-column="56" selection-end-line="53" selection-end-column="56" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/sales/SalesActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5130">
-          <caret line="340" column="80" selection-start-line="340" selection-start-column="80" selection-end-line="340" selection-end-column="80" />
-          <folding>
-            <element signature="e#14361#14362#0" expanded="true" />
-            <element signature="e#14393#14394#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Android/Sdk/sources/android-28/java/lang/System.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/sales/SalesBill.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3438">
-          <caret line="228" column="96" selection-start-line="228" selection-start-column="96" selection-end-line="228" selection-end-column="96" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="17" column="56" selection-start-line="17" selection-start-column="56" selection-end-line="17" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/credit/CreditDetails.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="78" column="24" selection-start-line="78" selection-start-column="24" selection-end-line="78" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/InventoryActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="15" column="60" lean-forward="true" selection-start-line="15" selection-start-column="60" selection-end-line="15" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="47" column="69" selection-start-line="47" selection-start-column="69" selection-end-line="47" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_table.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="923">
-          <caret line="125" column="48" lean-forward="true" selection-start-line="125" selection-start-column="48" selection-end-line="125" selection-end-column="48" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.PhilJay/MPAndroidChart/v3.1.0/45d3ce505f744a595313d5eb84efd3ca3c8d2d04/MPAndroidChart-v3.1.0-sources.jar!/com/github/mikephil/charting/utils/ColorTemplate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="732">
-          <caret line="50" column="23" lean-forward="true" selection-start-line="50" selection-start-column="23" selection-end-line="50" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/font/proxima_regular.otf">
-      <provider selected="true" editor-type-id="fontseditor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="524">
-          <caret line="135" column="39" lean-forward="true" selection-start-line="135" selection-start-column="39" selection-end-line="135" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/base/BaseActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1240">
@@ -809,14 +831,6 @@
           <caret line="186" column="22" selection-start-line="186" selection-start-column="12" selection-end-line="186" selection-end-column="22" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_stock_details.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="542">
-          <caret line="55" column="47" lean-forward="true" selection-start-line="55" selection-start-column="47" selection-end-line="55" selection-end-column="47" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/StockDetails.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -839,16 +853,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/report/fragments/Table.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="182" column="2" selection-start-line="182" selection-start-column="2" selection-end-line="184" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/realm/models/SalesStock.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
@@ -860,36 +864,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
           <caret line="154" column="39" selection-start-line="154" selection-start-column="39" selection-end-line="154" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/single_item.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="21" column="39" lean-forward="true" selection-start-line="21" selection-start-column="39" selection-end-line="21" selection-end-column="39" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="46" selection-start-line="2" selection-start-column="46" selection-end-line="2" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="13" column="41" lean-forward="true" selection-start-line="13" selection-start-column="41" selection-end-line="13" selection-end-column="41" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="36" column="38" selection-start-line="36" selection-start-column="38" selection-end-line="36" selection-end-column="38" />
         </state>
       </provider>
     </entry>
@@ -1258,13 +1232,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/entities/SuchiProto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="806">
-          <caret line="10943" lean-forward="true" selection-start-line="10943" selection-end-line="10943" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/login/LoginView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
@@ -1282,43 +1249,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/register/RegisterActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="519">
-          <caret line="160" column="13" selection-start-line="160" selection-start-column="13" selection-end-line="160" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/sales/AddSalesPresenterImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-102">
+        <state relative-caret-position="162">
           <caret line="24" column="82" selection-start-line="24" selection-start-column="82" selection-end-line="24" selection-end-column="82" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/api/Endpoints.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="716">
-          <caret line="89" column="89" selection-start-line="89" selection-start-column="89" selection-end-line="89" selection-end-column="89" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_enter_key.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="564">
-          <caret line="99" column="25" selection-start-line="99" selection-start-column="25" selection-end-line="99" selection-end-column="25" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/login/LoginActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="446">
-          <caret line="111" column="71" selection-start-line="111" selection-start-column="71" selection-end-line="111" selection-end-column="71" />
-          <folding>
-            <element signature="e#2431#2432#0" expanded="true" />
-            <element signature="e#2481#2482#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1345,24 +1279,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/enterkey/EnterKeyPresenterImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
+        <state relative-caret-position="558">
           <caret line="37" column="44" selection-start-line="37" selection-start-column="44" selection-end-line="37" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1484#1485#0" expanded="true" />
-            <element signature="e#1531#1532#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/enterkey/EnterKeyActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="70">
-          <caret line="123" column="84" lean-forward="true" selection-start-line="123" selection-start-column="84" selection-end-line="123" selection-end-column="84" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1856#1857#0" expanded="true" />
-            <element signature="e#1890#1891#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1374,32 +1294,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/login/LoginPresenterImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="471">
-          <caret line="236" column="47" selection-start-line="236" selection-start-column="47" selection-end-line="236" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_add_sales.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="18" column="41" lean-forward="true" selection-start-line="18" selection-start-column="41" selection-end-line="18" selection-end-column="41" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/sales/AddSalesActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
-          <caret line="180" column="43" selection-start-line="180" selection-start-column="43" selection-end-line="180" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_chart.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1052">
-          <caret line="303" column="59" selection-start-line="303" selection-start-column="59" selection-end-line="303" selection-end-column="59" />
         </state>
       </provider>
       <provider editor-type-id="android-designer2" />
@@ -1414,16 +1312,255 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/api/Endpoints.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="31" column="27" lean-forward="true" selection-start-line="31" selection-start-column="27" selection-end-line="31" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="13" column="41" lean-forward="true" selection-start-line="13" selection-start-column="41" selection-end-line="13" selection-end-column="41" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/1669af337916ec9479e3c1e4074456ca/res/layout/custom_dialog.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="7" column="36" lean-forward="true" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="143">
+          <caret line="28" column="31" selection-start-line="28" selection-start-column="31" selection-end-line="28" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/login/LoginPresenterImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="756">
+          <caret line="70" column="43" selection-start-line="70" selection-start-column="43" selection-end-line="70" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/free_trial_dialog.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="13" column="50" lean-forward="true" selection-start-line="13" selection-start-column="50" selection-end-line="13" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/entities/SuchiProto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="10943" lean-forward="true" selection-start-line="10943" selection-end-line="10943" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="756">
+          <caret line="42" column="37" lean-forward="true" selection-start-line="42" selection-start-column="37" selection-end-line="42" selection-end-column="37" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-manifest" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="23" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/dashboard/DashboardActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="75" column="29" selection-start-line="75" selection-start-column="29" selection-end-line="75" selection-end-column="29" />
+          <folding>
+            <element signature="e#11561#11562#0" expanded="true" />
+            <element signature="e#11593#11594#0" expanded="true" />
+            <element signature="e#11822#11823#0" expanded="true" />
+            <element signature="e#11864#11865#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_payment.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="21" column="44" lean-forward="true" selection-start-line="21" selection-start-column="44" selection-end-line="21" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_stock_details.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="36" column="44" lean-forward="true" selection-start-line="36" selection-start-column="44" selection-end-line="36" selection-end-column="44" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_table.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="30" selection-start-line="30" selection-end-line="30" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_enter_key.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="57" selection-start-line="57" selection-end-line="57" />
+          <folding>
+            <element signature="e#2505#2544#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/report/fragments/Table.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="90" selection-start-line="90" selection-end-line="90" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/report/ReportActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="708">
+          <caret line="374" column="47" selection-start-line="374" selection-start-column="47" selection-end-line="374" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/payment/PaymentActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="262">
+          <caret line="34" column="43" selection-start-line="34" selection-start-column="43" selection-end-line="34" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/enterkey/EnterKeyActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="393">
+          <caret line="55" column="42" selection-start-line="55" selection-start-column="42" selection-end-line="55" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_register.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="87" column="76" selection-start-line="87" selection-start-column="76" selection-end-line="87" selection-end-column="76" />
+          <folding>
+            <element signature="e#4730#4748#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="android-dummy:///Users/innovisto/AndroidStudioProjects/treeleaf/suchi_android_app/app/Translations Editor">
+      <provider selected="true" editor-type-id="string-resource-editor" />
+    </entry>
+    <entry file="android-dummy:///Users/innovisto/AndroidStudioProjects/treeleaf/suchi_android_app/app/Translations Editor">
+      <provider selected="true" editor-type-id="string-resource-editor" />
+    </entry>
+    <entry file="android-dummy:///Users/innovisto/AndroidStudioProjects/treeleaf/suchi_android_app/app/Translations Editor">
+      <provider selected="true" editor-type-id="string-resource-editor" />
+    </entry>
+    <entry file="android-dummy:///Users/innovisto/AndroidStudioProjects/treeleaf/suchi_android_app/app/Translations Editor">
+      <provider selected="true" editor-type-id="string-resource-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="44" column="49" lean-forward="true" selection-start-line="44" selection-start-column="49" selection-end-line="44" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="17" column="36" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_dashboard.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="22" column="43" selection-start-line="22" selection-start-column="43" selection-end-line="22" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/login/LoginActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="58" column="42" selection-start-line="58" selection-start-column="42" selection-end-line="58" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/register/RegisterActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="51" column="36" selection-start-line="51" selection-start-column="36" selection-end-line="51" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/single_item.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="6" column="35" lean-forward="true" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_chart.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="864">
+          <caret line="151" column="47" lean-forward="true" selection-start-line="151" selection-start-column="47" selection-end-line="151" selection-end-column="47" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/sales/AddSalesActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1050">
+          <caret line="892" column="55" lean-forward="true" selection-start-line="892" selection-start-column="55" selection-end-line="892" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/report/fragments/Chart.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="472">
-          <caret line="527" column="54" selection-start-line="527" selection-start-column="54" selection-end-line="527" selection-end-column="54" />
+        <state relative-caret-position="426">
+          <caret line="529" column="24" selection-start-line="529" selection-start-column="24" selection-end-line="529" selection-end-column="24" />
           <folding>
-            <element signature="e#21040#21117#0" expanded="true" />
-            <element signature="e#21251#21473#0" expanded="true" />
-            <element signature="e#21472#21473#0" expanded="true" />
-            <element signature="e#41547#41548#0" expanded="true" />
-            <element signature="e#41623#41624#0" expanded="true" />
+            <element signature="e#42182#42183#0" expanded="true" />
+            <element signature="e#42258#42259#0" expanded="true" />
           </folding>
         </state>
       </provider>

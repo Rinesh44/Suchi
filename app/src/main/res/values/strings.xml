@@ -5,7 +5,7 @@
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign in</string>
-    <string name="welcome">"Welcome !"</string>
+    <string name="welcome">"Welcome to Suchi!"</string>
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password" translatable="false">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
@@ -50,7 +50,7 @@
     <string name="sales_details">Sales Details</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="username">Username</string>
+    <string name="username">Username/email</string>
     <string name="done">Done</string>
     <string name="translate_this_to_nepali">Translate this to nepali</string>
     <string name="items_to_sell">Items to sell</string>
@@ -71,7 +71,7 @@
     <string name="no_data_available">No Data Available</string>
     <string name="congratulations">Congratulations!</string>
     <string name="new_user">New user ?</string>
-    <string name="enter_the_key_provided_to_you">Enter the key provided to you</string>
+    <string name="enter_the_key_provided_to_you">Enter the license key</string>
     <string name="welcome_users">Welcome Users !</string>
     <string name="sign_up">Sign up</string>
     <string name="owner_name">Owner Name</string>

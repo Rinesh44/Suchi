@@ -18,7 +18,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/Applications/Android%20Studio%202.app/Contents/plugins/android/lib/android.jar!/images/material_design_icons/action/ic_trending_down_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/Applications/Android%20Studio%202.app/Contents/plugins/android/lib/android.jar!/images/material_design_icons/device/ic_access_time_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -28,8 +28,8 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="color" value="ff0000" />
-                            <entry key="outputName" value="ic_decrease" />
+                            <entry key="color" value="fafafa" />
+                            <entry key="outputName" value="ic_remaining_time" />
                             <entry key="overrideSize" value="true" />
                             <entry key="sourceFile" value="$USER_HOME$" />
                           </map>

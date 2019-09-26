@@ -29,6 +29,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @BindView(R.id.btn_sign_up)
     TextView mSignUp;
 
+
     private SharedPreferences preferences;
 
     @Override

@@ -1,17 +1,26 @@
 package com.treeleaf.suchi.activities.enterkey;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+
+import com.esewa.android.sdk.payment.ESewaConfiguration;
+import com.esewa.android.sdk.payment.ESewaPayment;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.activities.base.BaseActivity;
 import com.treeleaf.suchi.activities.dashboard.DashboardActivity;
+import com.treeleaf.suchi.activities.payment.PaymentActivity;
 import com.treeleaf.suchi.api.Endpoints;
 import com.treeleaf.suchi.entities.SuchiProto;
 import com.treeleaf.suchi.utils.AppUtils;
@@ -62,7 +71,10 @@ public class EnterKeyActivity extends BaseActivity implements EnterKeyView, View
         userId = getUserId();
         mStart.setOnClickListener(this);
         mFreeTrail.setOnClickListener(this);
+        mPurchase.setOnClickListener(this);
+
     }
+
 
     private String getToken() {
         Intent i = getIntent();
@@ -105,9 +117,13 @@ public class EnterKeyActivity extends BaseActivity implements EnterKeyView, View
 
                 presenter.freeTrail(token, suchiKey);
 
+            case R.id.btn_buy:
+                startActivity(new Intent(EnterKeyActivity.this, PaymentActivity.class));
                 break;
+
         }
     }
+
 
     @Override
     public void freeTrialSuccess() {
@@ -122,6 +138,7 @@ public class EnterKeyActivity extends BaseActivity implements EnterKeyView, View
 
         Intent i = new Intent(EnterKeyActivity.this, DashboardActivity.class);
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        i.putExtra("free_trial", true);
         startActivity(i);
         finish();
     }

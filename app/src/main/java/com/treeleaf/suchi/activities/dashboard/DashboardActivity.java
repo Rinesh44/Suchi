@@ -6,7 +6,9 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -18,6 +20,8 @@ import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,9 +49,11 @@ import com.treeleaf.suchi.utils.LocaleHelper;
 import com.treeleaf.suchi.utils.NetworkUtils;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
 
@@ -76,6 +82,8 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
     TextView mInventoryTitle;
     @BindView(R.id.tv_credit_title)
     TextView mCreditTitle;
+    @BindView(R.id.tv_remaining_days)
+    TextView mRemainingDays;
 
     private DashboardPresenter presenter;
     private SharedPreferences preferences;
@@ -114,7 +122,7 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
         getMyApplication(this).getAppComponent().inject(this);
 
         init();
-        preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        checkIfFreeTrial();
         token = preferences.getString(Constants.TOKEN, "");
         userId = preferences.getString(Constants.USER_ID, "");
         presenter = new DashboardPresenterImpl(endpoints, this);
@@ -151,6 +159,27 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
 
             }
         });
+
+    }
+
+    private void checkIfFreeTrial() {
+        Intent i = getIntent();
+        boolean freeTrial = i.getBooleanExtra("free_trial", false);
+
+        if (freeTrial) {
+            showFreeTrialDialog();
+        }
+
+    }
+
+    public void showFreeTrialDialog() {
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setCancelable(false);
+        dialog.setContentView(R.layout.free_trial_dialog);
+        dialog.setCancelable(true);
+
+        dialog.show();
 
     }
 
@@ -242,7 +271,25 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
         mDrawerLayout.addDrawerListener(actionBarToggle);
         actionBarToggle.syncState();
 
+        preferences = PreferenceManager.getDefaultSharedPreferences(this);
+
         mNavigationView.getMenu().getItem(0).setChecked(true);
+
+        long freeTrialExpiryDate = preferences.getLong(Constants.FREE_TRIAL_EXPIRY_DATE, 0);
+        AppUtils.showLog(TAG, "expiryDate: " + freeTrialExpiryDate);
+
+        if (freeTrialExpiryDate != 0) {
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTimeInMillis(freeTrialExpiryDate);
+
+            long msDiff = Calendar.getInstance().getTimeInMillis() - calendar.getTimeInMillis();
+            String daysDiff = String.valueOf(TimeUnit.MILLISECONDS.toDays(msDiff) - 1).replace("-", "");
+
+            mRemainingDays.setVisibility(View.VISIBLE);
+
+            mRemainingDays.setText(daysDiff + " days remaining");
+
+        }
 
     }
 
