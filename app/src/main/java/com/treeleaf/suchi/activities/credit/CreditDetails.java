@@ -60,6 +60,8 @@ public class CreditDetails extends BaseActivity {
     MaterialButton mClearDues;
     @BindView(R.id.tv_added_at)
     TextView mAddedAt;
+    @BindView(R.id.tv_due_amount_title)
+    TextView mDueAmountTitle;
 
     private CreditDto credit;
     private double totalAmount = 0;
@@ -113,15 +115,28 @@ public class CreditDetails extends BaseActivity {
     }
 
     private void setCreditData() {
-        StringBuilder paidAmountBuilder = new StringBuilder();
-        paidAmountBuilder.append("Rs. ");
-        paidAmountBuilder.append(new DecimalFormat("##.##").format(Double.valueOf(credit.getPaidAmount())));
-        mPaidAmount.setText(paidAmountBuilder);
+        if (!credit.getDueAmount().equals("0")) {
+            StringBuilder paidAmountBuilder = new StringBuilder();
+            paidAmountBuilder.append("Rs. ");
+            paidAmountBuilder.append(new DecimalFormat("##.##").format(Double.valueOf(credit.getPaidAmount())));
+            mPaidAmount.setText(paidAmountBuilder);
 
-        StringBuilder dueAmountBuilder = new StringBuilder();
-        dueAmountBuilder.append("Rs. ");
-        dueAmountBuilder.append(new DecimalFormat("##.##").format(Double.valueOf(credit.getDueAmount())));
-        mDueAmount.setText(dueAmountBuilder);
+
+            StringBuilder dueAmountBuilder = new StringBuilder();
+            dueAmountBuilder.append("Rs. ");
+            dueAmountBuilder.append(new DecimalFormat("##.##").format(Double.valueOf(credit.getDueAmount())));
+            mDueAmount.setText(dueAmountBuilder);
+        } else {
+            mDueAmount.setVisibility(View.GONE);
+            mDueAmountTitle.setVisibility(View.GONE);
+            mClearDues.setVisibility(View.GONE);
+
+            String formattedTotalAmount = credit.getTotalAmount().replace("Rs. ", "");
+            StringBuilder paidAmountBuilder = new StringBuilder();
+            paidAmountBuilder.append("Rs. ");
+            paidAmountBuilder.append(new DecimalFormat("##.##").format(Double.valueOf(formattedTotalAmount  )));
+            mPaidAmount.setText(paidAmountBuilder);
+        }
 
         Creditors creditors = CreditorRepo.getInstance().getCreditorById(credit.getCreditorId());
 

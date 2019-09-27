@@ -9,6 +9,7 @@ import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -46,6 +47,8 @@ public class Settings extends BaseActivity {
     TextView mNotificationText;
     @BindView(R.id.sp_stock_threshold)
     AppCompatSpinner mStockThreshold;
+    @BindView(R.id.tv_notification_setting_title)
+    TextView mNotificationTitle;
 
     private SharedPreferences preferences;
     private SharedPreferences.Editor editor;
@@ -116,6 +119,9 @@ public class Settings extends BaseActivity {
                     resources = context.getResources();
                     mLanguageSettingTitle.setText(resources.getString(R.string.language_settings));
                     mToolbarTitle.setText(resources.getString(R.string.settings));
+                    mNotificationTitle.setText(resources.getString(R.string.notification_settings));
+                    mAllowNotification.setText(resources.getString(R.string.enable_notification_for_insufficient_stocks));
+                    mNotificationText.setText(resources.getString(R.string.minimum_stock_quantity_for_notification));
 
                 } else if (i == nepaliLangId) {
 
@@ -125,6 +131,9 @@ public class Settings extends BaseActivity {
                     resources = context.getResources();
                     mLanguageSettingTitle.setText(resources.getString(R.string.language_settings));
                     mToolbarTitle.setText(resources.getString(R.string.settings));
+                    mAllowNotification.setText(resources.getString(R.string.enable_notification_for_insufficient_stocks));
+                    mNotificationTitle.setText(resources.getString(R.string.notification_settings));
+                    mNotificationText.setText(resources.getString(R.string.minimum_stock_quantity_for_notification));
                 }
 
             }

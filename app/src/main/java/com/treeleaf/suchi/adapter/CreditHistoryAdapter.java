@@ -4,6 +4,7 @@ package com.treeleaf.suchi.adapter;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -64,15 +65,28 @@ public class CreditHistoryAdapter extends RecyclerView.Adapter<CreditHistoryAdap
         holder.mAddress.setText(creditors.getAddress());
         holder.mPhone.setText(creditors.getPhone());
 
-        StringBuilder dueAmountBuilder = new StringBuilder();
-        dueAmountBuilder.append("Rs. ");
-        dueAmountBuilder.append(new DecimalFormat("##.##").format(Double.valueOf(creditDto.getDueAmount())));
-        holder.mDueAmount.setText(dueAmountBuilder);
+        if (!creditDto.getDueAmount().equals("0")) {
+            StringBuilder dueAmountBuilder = new StringBuilder();
+            dueAmountBuilder.append("Rs. ");
+            dueAmountBuilder.append(new DecimalFormat("##.##").format(Double.valueOf(creditDto.getDueAmount())));
+            holder.mDueAmount.setText(dueAmountBuilder);
 
-        StringBuilder paidAmountBuilder = new StringBuilder();
-        paidAmountBuilder.append("Rs. ");
-        paidAmountBuilder.append(new DecimalFormat("##.##").format(Double.valueOf(creditDto.getPaidAmount())));
-        holder.mPaidAmount.setText(paidAmountBuilder);
+            StringBuilder paidAmountBuilder = new StringBuilder();
+            paidAmountBuilder.append("Rs. ");
+            paidAmountBuilder.append(new DecimalFormat("##.##").format(Double.valueOf(creditDto.getPaidAmount())));
+            holder.mPaidAmount.setText(paidAmountBuilder);
+        } else {
+            //remove amount and set paid text
+            holder.mDueAmount.setText("Paid");
+
+            String formattedTotalAmount = creditDto.getTotalAmount().replace("Rs. ", "");
+            StringBuilder paidAmountBuilder = new StringBuilder();
+            paidAmountBuilder.append("Rs. ");
+            paidAmountBuilder.append(new DecimalFormat("##.##").format(Double.valueOf(formattedTotalAmount)));
+            holder.mPaidAmount.setText(paidAmountBuilder);
+
+        }
+
 
         holder.mAddedDate.setText(getDateSimple(creditors.getCreatedAt()));
 
@@ -163,7 +177,6 @@ public class CreditHistoryAdapter extends RecyclerView.Adapter<CreditHistoryAdap
         private TextView mDueAmount;
         private TextView mPaidAmount;
         private TextView mAddedDate;
-
 
         public CreditHistoryHolder(@NonNull View itemView) {
             super(itemView);

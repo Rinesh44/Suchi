@@ -207,7 +207,7 @@
     <last-search-timestamp>1569228326916</last-search-timestamp>
   </component>
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/report/fragments/Chart.java" line="959" mnemonic="1" />
+    <bookmark url="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/report/fragments/Chart.java" line="980" mnemonic="1" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="21f9e52c-02f4-47f6-9f2a-c9d2d92c0e1b" name="Default Changelist" comment="">
@@ -222,6 +222,7 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle___eSewaSdk__aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle___eSewaSdk__aar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_activity_activity_1_0_0_alpha06_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_activity_activity_1_0_0_alpha06_aar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_appcompat_appcompat_1_1_0_alpha04_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_appcompat_appcompat_1_1_0_alpha04_aar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_appcompat_appcompat_resources_1_1_0_alpha04_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_appcompat_appcompat_resources_1_1_0_alpha04_aar.xml" afterDir="false" />
@@ -296,20 +297,17 @@
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__io_realm_realm_android_library_5_7_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__io_realm_realm_android_library_5_7_0_aar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/Settings/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/Settings/Settings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/credit/AddCreditor.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/credit/AddCreditor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/credit/CreditDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/credit/CreditDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/credit/CreditHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/credit/CreditHistory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/dashboard/DashboardActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/dashboard/DashboardActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/enterkey/EnterKeyActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/enterkey/EnterKeyActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/report/ReportActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/report/ReportActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/report/fragments/Chart.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/report/fragments/Chart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/report/fragments/Table.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/report/fragments/Table.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_dashboard.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_dashboard.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/adapter/CreditHistoryAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/adapter/CreditHistoryAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_credit_details.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_credit_details.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_settings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_chart.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_chart.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_table.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_table.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/single_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/single_item.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values-ne/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-ne/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/suchi_android_app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/suchi_android_app.iml" afterDir="false" />
@@ -345,10 +343,40 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/register/RegisterActivity.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/credit/CreditHistoryView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="486">
-              <caret line="51" column="36" selection-start-line="51" selection-start-column="36" selection-end-line="51" selection-end-column="36" />
+            <state relative-caret-position="200">
+              <caret line="10" column="37" selection-start-line="10" selection-start-column="37" selection-end-line="10" selection-end-column="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/sales/AddSalesActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17580">
+              <caret line="972" column="35" selection-start-line="972" selection-start-column="35" selection-end-line="972" selection-end-column="35" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/credit/AddCreditor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2120">
+              <caret line="141" column="49" selection-start-line="141" selection-start-column="49" selection-end-line="141" selection-end-column="49" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/credit/CreditHistory.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="820">
+              <caret line="91" selection-start-line="91" selection-end-line="91" />
             </state>
           </provider>
         </entry>
@@ -356,78 +384,39 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/report/fragments/Chart.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="426">
-              <caret line="529" column="24" selection-start-line="529" selection-start-column="24" selection-end-line="529" selection-end-column="24" />
+            <state relative-caret-position="681">
+              <caret line="556" column="108" selection-start-line="556" selection-start-column="108" selection-end-line="556" selection-end-column="108" />
               <folding>
-                <element signature="e#42182#42183#0" expanded="true" />
-                <element signature="e#42258#42259#0" expanded="true" />
+                <element signature="e#22519#22596#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/login/LoginActivity.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_chart.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="486">
-              <caret line="58" column="42" selection-start-line="58" selection-start-column="42" selection-end-line="58" selection-end-column="42" />
+            <state relative-caret-position="2780">
+              <caret line="139" column="52" selection-start-line="139" selection-start-column="52" selection-end-line="139" selection-end-column="52" />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml">
           <provider editor-type-id="android-designer2" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/Settings/Settings.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="17" column="36" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
+            <state relative-caret-position="380">
+              <caret line="45" column="40" lean-forward="true" selection-start-line="45" selection-start-column="40" selection-end-line="45" selection-end-column="40" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_dashboard.xml">
-          <provider editor-type-id="android-designer2" />
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/dashboard/DashboardActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="22" column="43" selection-start-line="22" selection-start-column="43" selection-end-line="22" selection-end-column="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_register.xml">
-          <provider editor-type-id="android-designer2" />
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="87" column="76" selection-start-line="87" selection-start-column="76" selection-end-line="87" selection-end-column="76" />
-              <folding>
-                <element signature="e#4730#4748#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/enterkey/EnterKeyActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="393">
-              <caret line="55" column="42" selection-start-line="55" selection-start-column="42" selection-end-line="55" selection-end-column="42" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/payment/PaymentActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="262">
-              <caret line="34" column="43" selection-start-line="34" selection-start-column="43" selection-end-line="34" selection-end-column="43" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="4080">
+              <caret line="265" column="66" selection-start-line="265" selection-start-column="66" selection-end-line="265" selection-end-column="66" />
             </state>
           </provider>
         </entry>
@@ -446,14 +435,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>showDia</find>
-      <find>repo</find>
-      <find>enterKey</find>
-      <find>environ</find>
-      <find>com.treeleaf.entities</find>
-      <find>exported</find>
-      <find>welcome</find>
-      <find>enter the ke</find>
       <find>eSewaConfiguration</find>
       <find>mDone</find>
       <find>filter</find>
@@ -476,6 +457,14 @@
       <find>diff</find>
       <find>add</find>
       <find>concurrent</find>
+      <find>dueAmount</find>
+      <find>paid</find>
+      <find>intent</find>
+      <find>recyclerV</find>
+      <find>setvisi</find>
+      <find>mStatus2</find>
+      <find>days re</find>
+      <find>hours</find>
     </findStrings>
     <replaceStrings>
       <replace>entries</replace>
@@ -489,22 +478,15 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/sales/SalesBill.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/credit/AddCreditor.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/adapter/AutocompleteCreditorAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/adapter/StockAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/realm/repo/CreditorRepo.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/credit/CreditEntry.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_credit_history.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/credit_history_item.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/adapter/CreditHistoryAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/menu/menu_date.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/credit/CreditDetails.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/bill_row.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_credit_details.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_inventory.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_settings.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/Settings/Settings.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/credit/CreditHistory.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/InventoryActivity.java" />
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/realm/repo/SalesStockRepo.java" />
@@ -522,7 +504,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/utils/IndexAxisValueFormatter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/free_trial_dialog.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/dashboard/DashboardActivity.java" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/entities/SuchiProto.java" />
@@ -536,16 +517,25 @@
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_dashboard.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/single_item.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_chart.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/sales/AddSalesActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/adapter/CreditHistoryAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_credit_details.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/credit/CreditDetails.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/credit/AddCreditor.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/credit/CreditHistory.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_chart.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_settings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/dashboard/DashboardActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/Settings/Settings.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/report/fragments/Chart.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="y" value="23" />
-    <option name="width" value="2048" />
-    <option name="height" value="1072" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="179" />
+    <option name="y" value="146" />
+    <option name="width" value="1379" />
+    <option name="height" value="789" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -553,7 +543,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -570,59 +559,23 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="AndroidView">
         <subPane>
           <expand>
             <path>
               <item name="suchi_android_app" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-            </path>
-            <path>
-              <item name="suchi_android_app" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-            </path>
-            <path>
-              <item name="suchi_android_app" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="suchi" type="cbb59c9e:AndroidPsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="suchi_android_app" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="suchi" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="activities" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="suchi_android_app" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="suchi" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="activities" type="462c0819:PsiDirectoryNode" />
-              <item name="payment" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="suchi_android_app" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-            </path>
-            <path>
-              <item name="suchi_android_app" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-              <item name="drawable" type="ddeffd01:AndroidResFolderTypeNode" />
+              <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="device.picker.selection" value="52034ba6fa9f5323" />
+    <property name="device.picker.selection" value="Pixel_3_API_29" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../tootle-client-android-project" />
     <property name="not.eligible.for.single.variant.sync" value="true" />
     <property name="project.structure.last.edited" value="Dependencies" />
@@ -786,11 +739,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="2048" height="1152" extended-state="0" />
-    <editor active="true" />
+    <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.4983871" visible="true" weight="0.1993988" />
+      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.4983871" visible="true" weight="0.192031" />
       <window_info id="Structure" order="2" sideWeight="0.5016129" side_tool="true" weight="0.21250692" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Build Variants" order="4" side_tool="true" />
@@ -799,7 +751,7 @@
       <window_info id="Resources Explorer" order="7" />
       <window_info id="Capture Tool" order="8" />
       <window_info anchor="bottom" id="Run" order="0" />
-      <window_info anchor="bottom" id="Logcat" order="1" weight="0.48162475" />
+      <window_info anchor="bottom" id="Logcat" order="1" weight="0.48056155" />
       <window_info anchor="bottom" id="TODO" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" />
       <window_info anchor="bottom" id="Terminal" order="4" weight="0.32937366" />
@@ -814,486 +766,10 @@
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info anchor="right" id="Palette&#9;" order="4" />
       <window_info anchor="right" id="StringPreview" order="5" />
-      <window_info anchor="right" id="Preview" order="6" weight="0.23597194" />
+      <window_info anchor="right" id="Preview" order="6" weight="0.25124517" />
     </layout>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/base/BaseActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1240">
-          <caret line="93" column="25" selection-start-line="93" selection-start-column="18" selection-end-line="93" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/credit/CreditHistory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="186" column="22" selection-start-line="186" selection-start-column="12" selection-end-line="186" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/inventory/stock/StockDetails.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="580">
-          <caret line="61" column="45" lean-forward="true" selection-start-line="61" selection-start-column="45" selection-end-line="61" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/realm/repo/SalesRepo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="28" column="35" selection-start-line="28" selection-start-column="35" selection-end-line="28" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/realm/models/Sales.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="18" column="28" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/realm/models/SalesStock.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="22" column="27" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/realm/repo/SalesStockRepo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="154" column="39" selection-start-line="154" selection-start-column="39" selection-end-line="154" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/rpc/SuchiRpcProto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2580">
-          <caret line="9919" column="19" lean-forward="true" selection-start-line="9919" selection-start-column="19" selection-end-line="9919" selection-end-column="19" />
-          <folding>
-            <element signature="e#7738#7739#0" expanded="true" />
-            <element signature="e#7765#7766#0" expanded="true" />
-            <element signature="e#7896#7897#0" expanded="true" />
-            <element signature="e#7968#7969#0" expanded="true" />
-            <element signature="e#8830#8831#0" expanded="true" />
-            <element signature="e#8863#8864#0" expanded="true" />
-            <element signature="e#9006#9007#0" expanded="true" />
-            <element signature="e#9084#9085#0" expanded="true" />
-            <element signature="e#9987#9988#0" expanded="true" />
-            <element signature="e#10017#10018#0" expanded="true" />
-            <element signature="e#10481#10482#0" expanded="true" />
-            <element signature="e#10512#10513#0" expanded="true" />
-            <element signature="e#10989#10990#0" expanded="true" />
-            <element signature="e#11020#11021#0" expanded="true" />
-            <element signature="e#11509#11510#0" expanded="true" />
-            <element signature="e#11542#11543#0" expanded="true" />
-            <element signature="e#12127#12128#0" expanded="true" />
-            <element signature="e#12170#12171#0" expanded="true" />
-            <element signature="e#14073#14074#0" expanded="true" />
-            <element signature="e#14107#14108#0" expanded="true" />
-            <element signature="e#15840#15841#0" expanded="true" />
-            <element signature="e#15882#15883#0" expanded="true" />
-            <element signature="e#17843#17844#0" expanded="true" />
-            <element signature="e#17894#17895#0" expanded="true" />
-            <element signature="e#20121#20122#0" expanded="true" />
-            <element signature="e#20167#20168#0" expanded="true" />
-            <element signature="e#22657#22658#0" expanded="true" />
-            <element signature="e#22696#22697#0" expanded="true" />
-            <element signature="e#22852#22853#0" expanded="true" />
-            <element signature="e#22898#22899#0" expanded="true" />
-            <element signature="e#26475#26476#0" expanded="true" />
-            <element signature="e#26529#26530#0" expanded="true" />
-            <element signature="e#27021#27022#0" expanded="true" />
-            <element signature="e#27056#27057#0" expanded="true" />
-            <element signature="e#28732#28733#0" expanded="true" />
-            <element signature="e#28770#28771#0" expanded="true" />
-            <element signature="e#30518#30519#0" expanded="true" />
-            <element signature="e#30552#30553#0" expanded="true" />
-            <element signature="e#32196#32197#0" expanded="true" />
-            <element signature="e#32234#32235#0" expanded="true" />
-            <element signature="e#34006#34007#0" expanded="true" />
-            <element signature="e#34044#34045#0" expanded="true" />
-            <element signature="e#35822#35823#0" expanded="true" />
-            <element signature="e#35861#35862#0" expanded="true" />
-            <element signature="e#38050#38051#0" expanded="true" />
-            <element signature="e#38083#38084#0" expanded="true" />
-            <element signature="e#38220#38221#0" expanded="true" />
-            <element signature="e#38260#38261#0" expanded="true" />
-            <element signature="e#41464#41465#0" expanded="true" />
-            <element signature="e#41512#41513#0" expanded="true" />
-            <element signature="e#41967#41968#0" expanded="true" />
-            <element signature="e#42001#42002#0" expanded="true" />
-            <element signature="e#43963#43964#0" expanded="true" />
-            <element signature="e#43990#43991#0" expanded="true" />
-            <element signature="e#44110#44111#0" expanded="true" />
-            <element signature="e#44144#44145#0" expanded="true" />
-            <element signature="e#47013#47014#0" expanded="true" />
-            <element signature="e#47055#47056#0" expanded="true" />
-            <element signature="e#47505#47506#0" expanded="true" />
-            <element signature="e#47543#47544#0" expanded="true" />
-            <element signature="e#49381#49382#0" expanded="true" />
-            <element signature="e#49430#49431#0" expanded="true" />
-            <element signature="e#59926#59927#0" expanded="true" />
-            <element signature="e#59975#59976#0" expanded="true" />
-            <element signature="e#60592#60593#0" expanded="true" />
-            <element signature="e#60633#60634#0" expanded="true" />
-            <element signature="e#60737#60738#0" expanded="true" />
-            <element signature="e#60781#60782#0" expanded="true" />
-            <element signature="e#60922#60923#0" expanded="true" />
-            <element signature="e#60971#60972#0" expanded="true" />
-            <element signature="e#61732#61733#0" expanded="true" />
-            <element signature="e#61782#61783#0" expanded="true" />
-            <element signature="e#61935#61936#0" expanded="true" />
-            <element signature="e#61990#61991#0" expanded="true" />
-            <element signature="e#62795#62796#0" expanded="true" />
-            <element signature="e#62842#62843#0" expanded="true" />
-            <element signature="e#63352#63353#0" expanded="true" />
-            <element signature="e#63400#63401#0" expanded="true" />
-            <element signature="e#63919#63920#0" expanded="true" />
-            <element signature="e#63967#63968#0" expanded="true" />
-            <element signature="e#64492#64493#0" expanded="true" />
-            <element signature="e#64542#64543#0" expanded="true" />
-            <element signature="e#65113#65114#0" expanded="true" />
-            <element signature="e#65165#65166#0" expanded="true" />
-            <element signature="e#66712#66713#0" expanded="true" />
-            <element signature="e#66755#66756#0" expanded="true" />
-            <element signature="e#68166#68167#0" expanded="true" />
-            <element signature="e#68217#68218#0" expanded="true" />
-            <element signature="e#69785#69786#0" expanded="true" />
-            <element signature="e#69845#69846#0" expanded="true" />
-            <element signature="e#71625#71626#0" expanded="true" />
-            <element signature="e#71680#71681#0" expanded="true" />
-            <element signature="e#73705#73706#0" expanded="true" />
-            <element signature="e#73766#73767#0" expanded="true" />
-            <element signature="e#77209#77210#0" expanded="true" />
-            <element signature="e#77253#77254#0" expanded="true" />
-            <element signature="e#77418#77419#0" expanded="true" />
-            <element signature="e#77462#77463#0" expanded="true" />
-            <element signature="e#78643#78644#0" expanded="true" />
-            <element signature="e#78690#78691#0" expanded="true" />
-            <element signature="e#80140#80141#0" expanded="true" />
-            <element signature="e#80183#80184#0" expanded="true" />
-            <element signature="e#80344#80345#0" expanded="true" />
-            <element signature="e#80387#80388#0" expanded="true" />
-            <element signature="e#81549#81550#0" expanded="true" />
-            <element signature="e#81596#81597#0" expanded="true" />
-            <element signature="e#83058#83059#0" expanded="true" />
-            <element signature="e#83105#83106#0" expanded="true" />
-            <element signature="e#84570#84571#0" expanded="true" />
-            <element signature="e#84618#84619#0" expanded="true" />
-            <element signature="e#86424#86425#0" expanded="true" />
-            <element signature="e#86479#86480#0" expanded="true" />
-            <element signature="e#89613#89614#0" expanded="true" />
-            <element signature="e#89656#89657#0" expanded="true" />
-            <element signature="e#89817#89818#0" expanded="true" />
-            <element signature="e#89860#89861#0" expanded="true" />
-            <element signature="e#91297#91298#0" expanded="true" />
-            <element signature="e#91346#91347#0" expanded="true" />
-            <element signature="e#94222#94223#0" expanded="true" />
-            <element signature="e#94269#94270#0" expanded="true" />
-            <element signature="e#95764#95765#0" expanded="true" />
-            <element signature="e#95822#95823#0" expanded="true" />
-            <element signature="e#112843#112844#0" expanded="true" />
-            <element signature="e#112880#112881#0" expanded="true" />
-            <element signature="e#128752#128753#0" expanded="true" />
-            <element signature="e#128779#128780#0" expanded="true" />
-            <element signature="e#129212#129213#0" expanded="true" />
-            <element signature="e#129237#129238#0" expanded="true" />
-            <element signature="e#129364#129365#0" expanded="true" />
-            <element signature="e#129434#129435#0" expanded="true" />
-            <element signature="e#130289#130290#0" expanded="true" />
-            <element signature="e#130320#130321#0" expanded="true" />
-            <element signature="e#130879#130880#0" expanded="true" />
-            <element signature="e#130913#130914#0" expanded="true" />
-            <element signature="e#131563#131564#0" expanded="true" />
-            <element signature="e#131592#131593#0" expanded="true" />
-            <element signature="e#132113#132114#0" expanded="true" />
-            <element signature="e#132147#132148#0" expanded="true" />
-            <element signature="e#134208#134209#0" expanded="true" />
-            <element signature="e#134235#134236#0" expanded="true" />
-            <element signature="e#134355#134356#0" expanded="true" />
-            <element signature="e#134389#134390#0" expanded="true" />
-            <element signature="e#137348#137349#0" expanded="true" />
-            <element signature="e#137390#137391#0" expanded="true" />
-            <element signature="e#137829#137830#0" expanded="true" />
-            <element signature="e#137866#137867#0" expanded="true" />
-            <element signature="e#139605#139606#0" expanded="true" />
-            <element signature="e#139646#139647#0" expanded="true" />
-            <element signature="e#141519#141520#0" expanded="true" />
-            <element signature="e#141561#141562#0" expanded="true" />
-            <element signature="e#143474#143475#0" expanded="true" />
-            <element signature="e#143517#143518#0" expanded="true" />
-            <element signature="e#145488#145489#0" expanded="true" />
-            <element signature="e#145534#145535#0" expanded="true" />
-            <element signature="e#148024#148025#0" expanded="true" />
-            <element signature="e#148063#148064#0" expanded="true" />
-            <element signature="e#148219#148220#0" expanded="true" />
-            <element signature="e#148265#148266#0" expanded="true" />
-            <element signature="e#151842#151843#0" expanded="true" />
-            <element signature="e#151896#151897#0" expanded="true" />
-            <element signature="e#152412#152413#0" expanded="true" />
-            <element signature="e#152451#152452#0" expanded="true" />
-            <element signature="e#154640#154641#0" expanded="true" />
-            <element signature="e#154673#154674#0" expanded="true" />
-            <element signature="e#154810#154811#0" expanded="true" />
-            <element signature="e#154850#154851#0" expanded="true" />
-            <element signature="e#158054#158055#0" expanded="true" />
-            <element signature="e#158102#158103#0" expanded="true" />
-            <element signature="e#158563#158564#0" expanded="true" />
-            <element signature="e#158598#158599#0" expanded="true" />
-            <element signature="e#160604#160605#0" expanded="true" />
-            <element signature="e#160632#160633#0" expanded="true" />
-            <element signature="e#160755#160756#0" expanded="true" />
-            <element signature="e#160790#160791#0" expanded="true" />
-            <element signature="e#163718#163719#0" expanded="true" />
-            <element signature="e#163761#163762#0" expanded="true" />
-            <element signature="e#164216#164217#0" expanded="true" />
-            <element signature="e#164254#164255#0" expanded="true" />
-            <element signature="e#166392#166393#0" expanded="true" />
-            <element signature="e#166423#166424#0" expanded="true" />
-            <element signature="e#166555#166556#0" expanded="true" />
-            <element signature="e#166593#166594#0" expanded="true" />
-            <element signature="e#169698#169699#0" expanded="true" />
-            <element signature="e#169744#169745#0" expanded="true" />
-            <element signature="e#170190#170191#0" expanded="true" />
-            <element signature="e#170224#170225#0" expanded="true" />
-            <element signature="e#172186#172187#0" expanded="true" />
-            <element signature="e#172213#172214#0" expanded="true" />
-            <element signature="e#172333#172334#0" expanded="true" />
-            <element signature="e#172367#172368#0" expanded="true" />
-            <element signature="e#175236#175237#0" expanded="true" />
-            <element signature="e#175278#175279#0" expanded="true" />
-            <element signature="e#175728#175729#0" expanded="true" />
-            <element signature="e#175766#175767#0" expanded="true" />
-            <element signature="e#177911#177912#0" expanded="true" />
-            <element signature="e#177943#177944#0" expanded="true" />
-            <element signature="e#178077#178078#0" expanded="true" />
-            <element signature="e#178116#178117#0" expanded="true" />
-            <element signature="e#181261#181262#0" expanded="true" />
-            <element signature="e#181308#181309#0" expanded="true" />
-            <element signature="e#181782#181783#0" expanded="true" />
-            <element signature="e#181820#181821#0" expanded="true" />
-            <element signature="e#183958#183959#0" expanded="true" />
-            <element signature="e#183989#183990#0" expanded="true" />
-            <element signature="e#184121#184122#0" expanded="true" />
-            <element signature="e#184159#184160#0" expanded="true" />
-            <element signature="e#187264#187265#0" expanded="true" />
-            <element signature="e#187310#187311#0" expanded="true" />
-            <element signature="e#187804#187805#0" expanded="true" />
-            <element signature="e#187846#187847#0" expanded="true" />
-            <element signature="e#190160#190161#0" expanded="true" />
-            <element signature="e#190195#190196#0" expanded="true" />
-            <element signature="e#190339#190340#0" expanded="true" />
-            <element signature="e#190381#190382#0" expanded="true" />
-            <element signature="e#193722#193723#0" expanded="true" />
-            <element signature="e#193772#193773#0" expanded="true" />
-            <element signature="e#194238#194239#0" expanded="true" />
-            <element signature="e#194272#194273#0" expanded="true" />
-            <element signature="e#196234#196235#0" expanded="true" />
-            <element signature="e#196261#196262#0" expanded="true" />
-            <element signature="e#196381#196382#0" expanded="true" />
-            <element signature="e#196415#196416#0" expanded="true" />
-            <element signature="e#199284#199285#0" expanded="true" />
-            <element signature="e#199326#199327#0" expanded="true" />
-            <element signature="e#199812#199813#0" expanded="true" />
-            <element signature="e#199856#199857#0" expanded="true" />
-            <element signature="e#202258#202259#0" expanded="true" />
-            <element signature="e#202295#202296#0" expanded="true" />
-            <element signature="e#202445#202446#0" expanded="true" />
-            <element signature="e#202489#202490#0" expanded="true" />
-            <element signature="e#205948#205949#0" expanded="true" />
-            <element signature="e#206000#206001#0" expanded="true" />
-            <element signature="e#206527#206528#0" expanded="true" />
-            <element signature="e#206570#206571#0" expanded="true" />
-            <element signature="e#208529#208530#0" expanded="true" />
-            <element signature="e#208573#208574#0" expanded="true" />
-            <element signature="e#210975#210976#0" expanded="true" />
-            <element signature="e#211012#211013#0" expanded="true" />
-            <element signature="e#211162#211163#0" expanded="true" />
-            <element signature="e#211206#211207#0" expanded="true" />
-            <element signature="e#214665#214666#0" expanded="true" />
-            <element signature="e#214717#214718#0" expanded="true" />
-            <element signature="e#215217#215218#0" expanded="true" />
-            <element signature="e#215255#215256#0" expanded="true" />
-            <element signature="e#217393#217394#0" expanded="true" />
-            <element signature="e#217424#217425#0" expanded="true" />
-            <element signature="e#217556#217557#0" expanded="true" />
-            <element signature="e#217594#217595#0" expanded="true" />
-            <element signature="e#220699#220700#0" expanded="true" />
-            <element signature="e#220745#220746#0" expanded="true" />
-            <element signature="e#221227#221228#0" expanded="true" />
-            <element signature="e#221267#221268#0" expanded="true" />
-            <element signature="e#223175#223176#0" expanded="true" />
-            <element signature="e#223225#223226#0" expanded="true" />
-            <element signature="e#225453#225454#0" expanded="true" />
-            <element signature="e#225503#225504#0" expanded="true" />
-            <element signature="e#227678#227679#0" expanded="true" />
-            <element signature="e#227719#227720#0" expanded="true" />
-            <element signature="e#229999#230000#0" expanded="true" />
-            <element signature="e#230033#230034#0" expanded="true" />
-            <element signature="e#230174#230175#0" expanded="true" />
-            <element signature="e#230215#230216#0" expanded="true" />
-            <element signature="e#233506#233507#0" expanded="true" />
-            <element signature="e#233555#233556#0" expanded="true" />
-            <element signature="e#247142#247143#0" expanded="true" />
-            <element signature="e#247191#247192#0" expanded="true" />
-            <element signature="e#247814#247815#0" expanded="true" />
-            <element signature="e#247855#247856#0" expanded="true" />
-            <element signature="e#247958#247959#0" expanded="true" />
-            <element signature="e#248002#248003#0" expanded="true" />
-            <element signature="e#248487#248488#0" expanded="true" />
-            <element signature="e#248529#248530#0" expanded="true" />
-            <element signature="e#248666#248667#0" expanded="true" />
-            <element signature="e#248713#248714#0" expanded="true" />
-            <element signature="e#249476#249477#0" expanded="true" />
-            <element signature="e#249529#249530#0" expanded="true" />
-            <element signature="e#250604#250605#0" expanded="true" />
-            <element signature="e#250650#250651#0" expanded="true" />
-            <element signature="e#251174#251175#0" expanded="true" />
-            <element signature="e#251217#251218#0" expanded="true" />
-            <element signature="e#252908#252909#0" expanded="true" />
-            <element signature="e#252957#252958#0" expanded="true" />
-            <element signature="e#255903#255904#0" expanded="true" />
-            <element signature="e#255949#255950#0" expanded="true" />
-            <element signature="e#257366#257367#0" expanded="true" />
-            <element signature="e#257416#257417#0" expanded="true" />
-            <element signature="e#258932#258933#0" expanded="true" />
-            <element signature="e#258983#258984#0" expanded="true" />
-            <element signature="e#260527#260528#0" expanded="true" />
-            <element signature="e#260579#260580#0" expanded="true" />
-            <element signature="e#262167#262168#0" expanded="true" />
-            <element signature="e#262222#262223#0" expanded="true" />
-            <element signature="e#264247#264248#0" expanded="true" />
-            <element signature="e#264308#264309#0" expanded="true" />
-            <element signature="e#267763#267764#0" expanded="true" />
-            <element signature="e#267811#267812#0" expanded="true" />
-            <element signature="e#269617#269618#0" expanded="true" />
-            <element signature="e#269672#269673#0" expanded="true" />
-            <element signature="e#272809#272810#0" expanded="true" />
-            <element signature="e#272853#272854#0" expanded="true" />
-            <element signature="e#273018#273019#0" expanded="true" />
-            <element signature="e#273062#273063#0" expanded="true" />
-            <element signature="e#274526#274527#0" expanded="true" />
-            <element signature="e#274576#274577#0" expanded="true" />
-            <element signature="e#277500#277501#0" expanded="true" />
-            <element signature="e#277547#277548#0" expanded="true" />
-            <element signature="e#279316#279317#0" expanded="true" />
-            <element signature="e#279369#279370#0" expanded="true" />
-            <element signature="e#282425#282426#0" expanded="true" />
-            <element signature="e#282468#282469#0" expanded="true" />
-            <element signature="e#282629#282630#0" expanded="true" />
-            <element signature="e#282672#282673#0" expanded="true" />
-            <element signature="e#284109#284110#0" expanded="true" />
-            <element signature="e#284158#284159#0" expanded="true" />
-            <element signature="e#287034#287035#0" expanded="true" />
-            <element signature="e#287081#287082#0" expanded="true" />
-            <element signature="e#288855#288856#0" expanded="true" />
-            <element signature="e#288909#288910#0" expanded="true" />
-            <element signature="e#292007#292008#0" expanded="true" />
-            <element signature="e#292054#292055#0" expanded="true" />
-            <element signature="e#293823#293824#0" expanded="true" />
-            <element signature="e#293876#293877#0" expanded="true" />
-            <element signature="e#296956#296957#0" expanded="true" />
-            <element signature="e#297007#297008#0" expanded="true" />
-            <element signature="e#298904#298905#0" expanded="true" />
-            <element signature="e#298961#298962#0" expanded="true" />
-            <element signature="e#302209#302210#0" expanded="true" />
-            <element signature="e#302252#302253#0" expanded="true" />
-            <element signature="e#302413#302414#0" expanded="true" />
-            <element signature="e#302456#302457#0" expanded="true" />
-            <element signature="e#303893#303894#0" expanded="true" />
-            <element signature="e#303942#303943#0" expanded="true" />
-            <element signature="e#306836#306837#0" expanded="true" />
-            <element signature="e#306889#306890#0" expanded="true" />
-            <element signature="e#308850#308851#0" expanded="true" />
-            <element signature="e#308909#308910#0" expanded="true" />
-            <element signature="e#312274#312275#0" expanded="true" />
-            <element signature="e#312326#312327#0" expanded="true" />
-            <element signature="e#313908#313909#0" expanded="true" />
-            <element signature="e#313961#313962#0" expanded="true" />
-            <element signature="e#315922#315923#0" expanded="true" />
-            <element signature="e#315981#315982#0" expanded="true" />
-            <element signature="e#319337#319338#0" expanded="true" />
-            <element signature="e#319384#319385#0" expanded="true" />
-            <element signature="e#321153#321154#0" expanded="true" />
-            <element signature="e#321206#321207#0" expanded="true" />
-            <element signature="e#324280#324281#0" expanded="true" />
-            <element signature="e#324329#324330#0" expanded="true" />
-            <element signature="e#325875#325876#0" expanded="true" />
-            <element signature="e#325934#325935#0" expanded="true" />
-            <element signature="e#327720#327721#0" expanded="true" />
-            <element signature="e#327779#327780#0" expanded="true" />
-            <element signature="e#329538#329539#0" expanded="true" />
-            <element signature="e#329588#329589#0" expanded="true" />
-            <element signature="e#331458#331459#0" expanded="true" />
-            <element signature="e#331514#331515#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/login/LoginView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="13" column="36" lean-forward="true" selection-start-line="13" selection-start-column="36" selection-end-line="13" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/dagger/component/AppComponent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="40" column="51" selection-start-line="40" selection-start-column="51" selection-end-line="40" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/sales/AddSalesPresenterImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="24" column="82" selection-start-line="24" selection-start-column="82" selection-end-line="24" selection-end-column="82" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/enterkey/EnterKeyPresenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/enterkey/EnterKeyView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/utils/Constants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="11" column="63" selection-start-line="11" selection-start-column="63" selection-end-line="11" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/enterkey/EnterKeyPresenterImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="558">
-          <caret line="37" column="44" selection-start-line="37" selection-start-column="44" selection-end-line="37" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/credit/CreditHistoryView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="8" column="30" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_add_sales.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
@@ -1301,16 +777,6 @@
         </state>
       </provider>
       <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/utils/IndexAxisValueFormatter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="41" column="70" selection-start-line="41" selection-start-column="70" selection-end-line="41" selection-end-column="70" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/api/Endpoints.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1327,14 +793,7 @@
       </provider>
       <provider editor-type-id="android-designer2" />
     </entry>
-    <entry file="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/1669af337916ec9479e3c1e4074456ca/res/layout/custom_dialog.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="7" column="36" lean-forward="true" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/1669af337916ec9479e3c1e4074456ca/res/layout/custom_dialog.xml" />
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="143">
@@ -1342,20 +801,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/login/LoginPresenterImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="756">
-          <caret line="70" column="43" selection-start-line="70" selection-start-column="43" selection-end-line="70" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/free_trial_dialog.xml">
-      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
           <caret line="13" column="50" lean-forward="true" selection-start-line="13" selection-start-column="50" selection-end-line="13" selection-end-column="50" />
         </state>
       </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/entities/SuchiProto.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1372,40 +824,13 @@
       </provider>
       <provider editor-type-id="android-manifest" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="23" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/dashboard/DashboardActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
-          <caret line="75" column="29" selection-start-line="75" selection-start-column="29" selection-end-line="75" selection-end-column="29" />
-          <folding>
-            <element signature="e#11561#11562#0" expanded="true" />
-            <element signature="e#11593#11594#0" expanded="true" />
-            <element signature="e#11822#11823#0" expanded="true" />
-            <element signature="e#11864#11865#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_payment.xml">
-      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
           <caret line="21" column="44" lean-forward="true" selection-start-line="21" selection-start-column="44" selection-end-line="21" selection-end-column="44" />
         </state>
       </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_stock_details.xml">
       <provider selected="true" editor-type-id="text-editor">
@@ -1472,7 +897,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_register.xml">
-      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="125">
           <caret line="87" column="76" selection-start-line="87" selection-start-column="76" selection-end-line="87" selection-end-column="76" />
@@ -1481,41 +905,24 @@
           </folding>
         </state>
       </provider>
-    </entry>
-    <entry file="android-dummy:///Users/innovisto/AndroidStudioProjects/treeleaf/suchi_android_app/app/Translations Editor">
-      <provider selected="true" editor-type-id="string-resource-editor" />
-    </entry>
-    <entry file="android-dummy:///Users/innovisto/AndroidStudioProjects/treeleaf/suchi_android_app/app/Translations Editor">
-      <provider selected="true" editor-type-id="string-resource-editor" />
-    </entry>
-    <entry file="android-dummy:///Users/innovisto/AndroidStudioProjects/treeleaf/suchi_android_app/app/Translations Editor">
-      <provider selected="true" editor-type-id="string-resource-editor" />
-    </entry>
-    <entry file="android-dummy:///Users/innovisto/AndroidStudioProjects/treeleaf/suchi_android_app/app/Translations Editor">
-      <provider selected="true" editor-type-id="string-resource-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="44" column="49" lean-forward="true" selection-start-line="44" selection-start-column="49" selection-end-line="44" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml">
       <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="android-dummy:///Users/innovisto/AndroidStudioProjects/treeleaf/suchi_android_app/app/Translations Editor" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="17" column="36" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
         </state>
       </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_dashboard.xml">
-      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
           <caret line="22" column="43" selection-start-line="22" selection-start-column="43" selection-end-line="22" selection-end-column="43" />
         </state>
       </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/login/LoginActivity.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1539,28 +946,227 @@
       </provider>
       <provider editor-type-id="android-designer2" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_chart.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/dagger/component/AppComponent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="864">
-          <caret line="151" column="47" lean-forward="true" selection-start-line="151" selection-start-column="47" selection-end-line="151" selection-end-column="47" />
+        <state relative-caret-position="500">
+          <caret line="40" column="51" selection-start-line="40" selection-start-column="51" selection-end-line="40" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/viewmodel/InventoryListViewModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="20" column="31" lean-forward="true" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/dagger/component/module/AppModule.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/login/LoginPresenterImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3240">
+          <caret line="236" column="47" selection-start-line="236" selection-start-column="47" selection-end-line="236" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/utils/IndexAxisValueFormatter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="820">
+          <caret line="41" column="70" selection-start-line="41" selection-start-column="70" selection-end-line="41" selection-end-column="70" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/adapter/StockSalesAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="35" column="41" lean-forward="true" selection-start-line="35" selection-start-column="41" selection-end-line="35" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/adapter/CartAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="30" column="63" lean-forward="true" selection-start-line="30" selection-start-column="63" selection-end-line="30" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/dagger/component/module/NetModule.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/proguard-rules.pro">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="5" column="69" lean-forward="true" selection-start-line="5" selection-start-column="69" selection-end-line="5" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/adapter/AutocompleteCreditorAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="6" column="47" lean-forward="true" selection-start-line="6" selection-start-column="47" selection-end-line="6" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/credit_history_item.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="111" column="45" lean-forward="true" selection-start-line="111" selection-start-column="45" selection-end-line="111" selection-end-column="45" />
         </state>
       </provider>
       <provider editor-type-id="android-designer2" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_credit_history.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-440">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/adapter/CreditHistoryAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="353">
+          <caret line="79" column="46" selection-start-line="79" selection-start-column="46" selection-end-line="79" selection-end-column="46" />
+          <folding>
+            <element signature="e#4370#4371#0" expanded="true" />
+            <element signature="e#4425#4426#0" expanded="true" />
+            <element signature="e#4473#4474#0" expanded="true" />
+            <element signature="e#4521#4522#0" expanded="true" />
+            <element signature="e#8265#8266#0" expanded="true" />
+            <element signature="e#8305#8306#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_credit_details.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="522">
+          <caret line="224" column="49" lean-forward="true" selection-start-line="224" selection-start-column="49" selection-end-line="224" selection-end-column="49" />
+          <folding>
+            <element signature="e#9996#10016#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/credit/CreditDetails.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1901">
+          <caret line="130" column="53" selection-start-line="130" selection-start-column="53" selection-end-line="130" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_settings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="126" column="20" selection-start-line="126" selection-start-column="20" selection-end-line="126" selection-end-column="20" />
+          <folding>
+            <element signature="e#3845#3876#0" expanded="true" />
+            <element signature="e#4739#4792#0" expanded="true" />
+            <element signature="e#5520#5569#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="android-dummy:///home/ubuntu/AndroidStudioProjects/Suchi/suchi_android_app/app/Translations Editor">
+      <provider selected="true" editor-type-id="string-resource-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/credit/CreditHistoryView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="10" column="37" selection-start-line="10" selection-start-column="37" selection-end-line="10" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/sales/AddSalesActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1050">
-          <caret line="892" column="55" lean-forward="true" selection-start-line="892" selection-start-column="55" selection-end-line="892" selection-end-column="55" />
+        <state relative-caret-position="17580">
+          <caret line="972" column="35" selection-start-line="972" selection-start-column="35" selection-end-line="972" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/credit/AddCreditor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2120">
+          <caret line="141" column="49" selection-start-line="141" selection-start-column="49" selection-end-line="141" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/credit/CreditHistory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="820">
+          <caret line="91" selection-start-line="91" selection-end-line="91" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_chart.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2780">
+          <caret line="139" column="52" selection-start-line="139" selection-start-column="52" selection-end-line="139" selection-end-column="52" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/dashboard/DashboardActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4080">
+          <caret line="265" column="66" selection-start-line="265" selection-start-column="66" selection-end-line="265" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-80">
+          <caret line="17" column="39" lean-forward="true" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/Settings/Settings.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="45" column="40" lean-forward="true" selection-start-line="45" selection-start-column="40" selection-end-line="45" selection-end-column="40" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/treeleaf/suchi/activities/report/fragments/Chart.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="426">
-          <caret line="529" column="24" selection-start-line="529" selection-start-column="24" selection-end-line="529" selection-end-column="24" />
+        <state relative-caret-position="681">
+          <caret line="556" column="108" selection-start-line="556" selection-start-column="108" selection-end-line="556" selection-end-column="108" />
           <folding>
-            <element signature="e#42182#42183#0" expanded="true" />
-            <element signature="e#42258#42259#0" expanded="true" />
+            <element signature="e#22519#22596#0" expanded="true" />
           </folding>
         </state>
       </provider>

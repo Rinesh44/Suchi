@@ -6,6 +6,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -287,7 +288,7 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
 
             mRemainingDays.setVisibility(View.VISIBLE);
 
-            mRemainingDays.setText(daysDiff + " days remaining");
+            mRemainingDays.setText(daysDiff + getString(R.string.days_remaining));
 
         }
 

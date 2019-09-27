@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -50,6 +51,7 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -114,6 +116,10 @@ public class Chart extends Fragment {
     TextView mChartText;
     @BindView(R.id.tv_status2)
     TextView mStatus2;
+    @BindView(R.id.iv_status)
+    ImageView mStatusImage;
+    @BindView(R.id.iv_status2)
+    ImageView mStatusImage2;
 
 
     private Unbinder unbinder;
@@ -412,9 +418,11 @@ public class Chart extends Fragment {
         List<SalesStock> dayBeforeSalesStocks = SalesStockRepo.getInstance().
                 getSalesStockByDate(dayBeforeFromDate, dayBeforeTillDate);
 
-        if (yesterdaysSalesStocks.isEmpty() && dayBeforeSalesStocks.isEmpty()) {
+        if (yesterdaysSalesStocks.isEmpty() || dayBeforeSalesStocks.isEmpty()) {
             mStatus.setVisibility(View.GONE);
+            mStatusImage.setVisibility(View.GONE);
             mStatus2.setVisibility(View.GONE);
+            mStatusImage2.setVisibility(View.GONE);
         } else {
 
             double yesterdaySalesTotal = 0;
@@ -505,38 +513,59 @@ public class Chart extends Fragment {
         lineChart.getDescription().setEnabled(false);
         ArrayList<Entry> entries = new ArrayList<>();
 
-        //sort list in ascending order by time
-        Collections.sort(salesList, new Comparator<SalesStock>() {
-            @Override
-            public int compare(SalesStock o1, SalesStock o2) {
-                return Long.compare(o1.getCreatedAt(), o2.getCreatedAt());
-            }
-        });
 
         AppUtils.showLog(TAG, "saleLIstSize: " + salesList.size());
         XAxis xAxis = lineChart.getXAxis();
         switch (type) {
             case "hours":
-                List<String> hoursList = new ArrayList<>();
+                //filter list so that each hours amount is added
+                HashMap hoursList = new HashMap();
+                List<SalesStock> removeList = new ArrayList<>();
+                List<SalesStock> addList = new ArrayList<>();
                 for (SalesStock salesStock : salesList
                 ) {
                     String getTimeHours = java.text.DateFormat.getTimeInstance().format(salesStock.getCreatedAt());
                     String[] separatedHours = getTimeHours.split(":");
                     String hour = separatedHours[0];
-                    if (hoursList.contains(hour)) {
-                  /*      Float addedQuantity = entries.get(entries.indexOf(hour)).getY() + Float.valueOf(salesStock.getAmount());
-                        entries.remove(hoursList.indexOf(hour));
-                        entries.add(new Entry(Float.valueOf(hour), addedQuantity));*/
+                    if (hoursList.containsKey(Float.valueOf(hour))) {
+                        removeList.add(salesStock);
 
+                        float addedAmount = Float.valueOf(salesStock.getAmount()) + (Float) hoursList.get(Float.valueOf(hour));
+                        SalesStock newSalesStock = new SalesStock(salesStock.getId(), salesStock.getInventory_id(),
+                                String.valueOf(addedAmount), salesStock.getQuantity(), salesStock.getUnit(), salesStock.getName(),
+                                salesStock.getPhotoUrl(), salesStock.getUnitPrice(), salesStock.getBrand(),
+                                salesStock.getSubBrand(), salesStock.getCategories(), salesStock.getCreatedAt(),
+                                salesStock.getUpdatedAt());
+
+                        addList.add(newSalesStock);
                     } else {
-                        hoursList.add(hour);
-                        entries.add(new Entry(Float.valueOf(hour), Float.valueOf(salesStock.getAmount()), "hours"));
+                        hoursList.put(Float.valueOf(hour), Float.valueOf(salesStock.getAmount()));
                     }
-
-                    mXaxix.setText(Objects.requireNonNull(getContext()).getResources().getString(R.string.hours));
-                    mChartText.setText("Items sold in hours");
                 }
 
+                //remove and add lists from above
+                salesList.removeAll(removeList);
+                salesList.addAll(addList);
+
+                //sort list in ascending order by time
+                Collections.sort(salesList, new Comparator<SalesStock>() {
+                    @Override
+                    public int compare(SalesStock o1, SalesStock o2) {
+                        return Long.compare(o1.getCreatedAt(), o2.getCreatedAt());
+                    }
+                });
+
+                //add data to line chart entries
+                for (SalesStock sales : salesList
+                ) {
+                    String getTimeHours = java.text.DateFormat.getTimeInstance().format(sales.getCreatedAt());
+                    String[] separatedHours = getTimeHours.split(":");
+                    String hour = separatedHours[0];
+                    entries.add(new Entry(Float.valueOf(hour), Float.valueOf(sales.getAmount()), "hours"));
+                }
+
+                mXaxix.setText(Objects.requireNonNull(getContext()).getResources().getString(R.string.hours));
+                mChartText.setText("Items sold in hours");
 
                 break;
 

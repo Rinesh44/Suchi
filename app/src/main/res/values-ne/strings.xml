@@ -148,4 +148,8 @@
     <string name="months">महिना</string>
     <string name="most_sold_overall">"सब भन्दा बढी बेचिएको (समग्र) "</string>
     <string name="statistics">"तथ्यंक "</string>
+    <string name="days_remaining">दिन बाँकी</string>
+    <string name="enable_notification_for_insufficient_stocks">अपर्याप्त स्टकहरूको लागि सूचना सक्षम गर्नुहोस्</string>
+    <string name="minimum_stock_quantity_for_notification">सूचनाको लागि न्यूनतम स्टक मात्रा</string>
+    <string name="notification_settings">सूचना सेटिंग्स</string>
 </resources>

@@ -154,4 +154,7 @@
     <string name="statistics">Statistics</string>
     <string name="most_sold_overall">Most sold(Overall)</string>
     <string name="items_not_sold">Items not sold</string>
+    <string name="enable_notification_for_insufficient_stocks">Enable notification for insufficient stocks</string>
+    <string name="minimum_stock_quantity_for_notification">Minimum stock quantity for notification</string>
+    <string name="days_remaining">days remaining</string>
 </resources>

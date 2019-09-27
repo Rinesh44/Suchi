@@ -239,14 +239,30 @@
                                 android:textSize="30sp"
                                 android:textStyle="bold" />
 
-                            <TextView
-                                android:id="@+id/tv_status"
+                            <RelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
                                 android:layout_weight="1"
-                                android:fontFamily="@font/proxima_regular"
-                                android:gravity="center"
-                                android:textStyle="bold" />
+                                android:gravity="center_horizontal">
+
+                                <ImageView
+                                    android:id="@+id/iv_status"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginEnd="5dp" />
+
+                                <TextView
+                                    android:id="@+id/tv_status"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerVertical="true"
+                                    android:layout_toEndOf="@+id/iv_status"
+                                    android:fontFamily="@font/proxima_regular"
+                                    android:textStyle="bold" />
+
+                            </RelativeLayout>
 
                             <TextView
                                 android:layout_width="match_parent"
@@ -298,15 +314,31 @@
                                 android:textStyle="bold" />
 
 
-                            <TextView
-                                android:id="@+id/tv_status2"
+                            <RelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
                                 android:layout_weight="1"
-                                android:fontFamily="@font/proxima_regular"
-                                android:gravity="center"
-                                android:paddingLeft="40dp"
-                                android:textStyle="bold" />
+                                android:gravity="center_horizontal">
+
+                                <ImageView
+                                    android:id="@+id/iv_status2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginEnd="5dp" />
+
+                                <TextView
+                                    android:id="@+id/tv_status2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentTop="true"
+                                    android:layout_marginTop="0dp"
+                                    android:layout_toEndOf="@+id/iv_status2"
+                                    android:fontFamily="@font/proxima_regular"
+                                    android:textStyle="bold" />
+
+                            </RelativeLayout>
 
                             <TextView
                                 android:layout_width="match_parent"

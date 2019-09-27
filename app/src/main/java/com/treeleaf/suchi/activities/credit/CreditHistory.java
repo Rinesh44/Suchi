@@ -93,6 +93,12 @@ public class CreditHistory extends BaseActivity implements CreditHistoryView {
         initialize();
 
         creditList = CreditRepo.getInstance().getAllCredits();
+        Collections.sort(creditList, new Comparator<Credit>() {
+            @Override
+            public int compare(Credit o1, Credit o2) {
+                return Long.compare(o2.getCreatedAt(), o1.getCreatedAt());
+            }
+        });
         setUpRecyclerView(creditList);
 
         mSearch.addTextChangedListener(new TextWatcher() {

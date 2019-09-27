@@ -132,6 +132,7 @@ public class AddCreditor extends BaseActivity implements View.OnClickListener {
             mNameLayout.setErrorEnabled(true);
             mNameLayout.setError("This field is required");
             mName.requestFocus();
+            return;
         } else {
             mNameLayout.setErrorEnabled(false);
         }
@@ -141,15 +142,17 @@ public class AddCreditor extends BaseActivity implements View.OnClickListener {
             mAddressLayout.setErrorEnabled(true);
             mAddressLayout.setError("This field is required");
             mAddress.requestFocus();
+            return;
         } else {
             mAddressLayout.setErrorEnabled(false);
         }
 
 
-        if (phone.isEmpty()) {
+        if (phone.isEmpty() || phone.length() != 10) {
             mPhoneLayout.setErrorEnabled(true);
-            mPhoneLayout.setError("This field is required");
+            mPhoneLayout.setError("Phone number must be 10 digits");
             mPhone.requestFocus();
+            return;
         } else {
             mPhoneLayout.setErrorEnabled(false);
         }
