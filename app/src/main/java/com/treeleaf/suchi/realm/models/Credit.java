@@ -13,6 +13,7 @@ public class Credit extends RealmObject {
     private String dueAmount;
     private String totalAmount;
     private String userId;
+    private String creditorSignature;
     private long createdAt;
     private long updatedAt;
     private boolean sync;
@@ -99,5 +100,13 @@ public class Credit extends RealmObject {
 
     public long getUpdatedAt() {
         return updatedAt;
+    }
+
+    public String getCreditorSignature() {
+        return creditorSignature;
+    }
+
+    public void setCreditorSignature(String creditorSignature) {
+        this.creditorSignature = creditorSignature;
     }
 }

@@ -227,6 +227,7 @@ public class CreditHistory extends BaseActivity implements CreditHistoryView {
             creditDto.setTotalAmount(credit.getTotalAmount());
             creditDto.setUpdatedAt(credit.getUpdatedAt());
             creditDto.setUserId(credit.getUserId());
+            creditDto.setCreditorSignature(credit.getCreditorSignature());
 
             creditDtoList.add(creditDto);
 

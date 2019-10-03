@@ -330,6 +330,14 @@
                 android:textColor="@color/black"
                 android:textSize="16sp" />
 
+            <ImageView
+                android:id="@+id/iv_creditor_sign"
+                android:layout_width="100dp"
+                    android:scaleType="fitXY"
+                android:layout_height="70dp"
+                android:layout_marginStart="10dp"/>
+
+
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_clear_dues"
                 android:layout_width="match_parent"

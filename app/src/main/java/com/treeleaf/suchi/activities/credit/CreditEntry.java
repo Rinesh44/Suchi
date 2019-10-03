@@ -2,10 +2,12 @@ package com.treeleaf.suchi.activities.credit;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Base64;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
@@ -15,6 +17,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 
+import com.github.gcacace.signaturepad.views.SignaturePad;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -33,6 +36,7 @@ import com.treeleaf.suchi.realm.repo.SalesStockRepo;
 import com.treeleaf.suchi.utils.AppUtils;
 import com.treeleaf.suchi.utils.Constants;
 
+import java.io.ByteArrayOutputStream;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -67,6 +71,8 @@ public class CreditEntry extends BaseActivity implements View.OnClickListener {
     MaterialButton mAddToCredit;
     @BindView(R.id.tv_total_amount)
     TextView mTotalAmount;
+    @BindView(R.id.signature_pad)
+    SignaturePad mSignaturePad;
 
     private double totalAmount = 0;
     private List<SalesStock> salesStockList = new RealmList<>();
@@ -74,12 +80,12 @@ public class CreditEntry extends BaseActivity implements View.OnClickListener {
     private CreditorsDto selectedCreditor;
     private SharedPreferences preferences;
     private String creditId;
+    private String creditorSignEncoded;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_credit_entry);
-
 
         ButterKnife.bind(this);
 
@@ -132,6 +138,23 @@ public class CreditEntry extends BaseActivity implements View.OnClickListener {
 
             }
         });
+
+        mSignaturePad.setOnSignedListener(new SignaturePad.OnSignedListener() {
+            @Override
+            public void onStartSigning() {
+
+            }
+
+            @Override
+            public void onSigned() {
+
+            }
+
+            @Override
+            public void onClear() {
+
+            }
+        });
     }
 
     private void getBillFromIntent() {
@@ -178,6 +201,14 @@ public class CreditEntry extends BaseActivity implements View.OnClickListener {
                 }
 
 
+                Bitmap signatureBitmap = mSignaturePad.getTransparentSignatureBitmap();
+                encodeBitmapToBase64(signatureBitmap);
+
+                if (creditorSignEncoded == null) {
+                    Toast.makeText(this, "Creditor's signature is empty", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 saveCreditToDb();
 
                 break;
@@ -198,7 +229,8 @@ public class CreditEntry extends BaseActivity implements View.OnClickListener {
         credit.setCreatedAt(System.currentTimeMillis());
         credit.setUpdatedAt(0);
         credit.setSoldItems(realmStockList);
-
+        if (creditorSignEncoded != null && !creditorSignEncoded.isEmpty())
+            credit.setCreditorSignature(creditorSignEncoded);
         saveSalesData();
 
         CreditRepo.getInstance().saveCredit(credit, new Repo.Callback() {
@@ -250,6 +282,15 @@ public class CreditEntry extends BaseActivity implements View.OnClickListener {
             mTotalAmount.setText(totalAmountBuilder);
 
         }
+    }
+
+    private void encodeBitmapToBase64(Bitmap bitmap) {
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+        byte[] byteArray = byteArrayOutputStream.toByteArray();
+
+        creditorSignEncoded = Base64.encodeToString(byteArray, Base64.DEFAULT);
+
     }
 
     private void setUpCreditorSearch() {

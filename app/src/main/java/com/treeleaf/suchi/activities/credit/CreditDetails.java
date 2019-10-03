@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Base64;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -62,6 +63,8 @@ public class CreditDetails extends BaseActivity {
     TextView mAddedAt;
     @BindView(R.id.tv_due_amount_title)
     TextView mDueAmountTitle;
+    @BindView(R.id.iv_creditor_sign)
+    ImageView mCreditorSign;
 
     private CreditDto credit;
     private double totalAmount = 0;
@@ -94,6 +97,7 @@ public class CreditDetails extends BaseActivity {
                 creditNew.setSync(credit.isSync());
                 creditNew.setTotalAmount(credit.getTotalAmount());
                 creditNew.setUserId(credit.getUserId());
+                creditNew.setCreditorSignature(credit.getCreditorSignature());
 
                 CreditRepo.getInstance().saveCredit(creditNew, new Repo.Callback() {
                     @Override
@@ -134,11 +138,12 @@ public class CreditDetails extends BaseActivity {
             String formattedTotalAmount = credit.getTotalAmount().replace("Rs. ", "");
             StringBuilder paidAmountBuilder = new StringBuilder();
             paidAmountBuilder.append("Rs. ");
-            paidAmountBuilder.append(new DecimalFormat("##.##").format(Double.valueOf(formattedTotalAmount  )));
+            paidAmountBuilder.append(new DecimalFormat("##.##").format(Double.valueOf(formattedTotalAmount)));
             mPaidAmount.setText(paidAmountBuilder);
         }
 
         Creditors creditors = CreditorRepo.getInstance().getCreditorById(credit.getCreditorId());
+        Bitmap creditorSign = decodeBase64(credit.getCreditorSignature());
 
         if (creditors.getPic() != null) {
             Bitmap creditorImage = decodeBase64(creditors.getPic());
@@ -149,6 +154,16 @@ public class CreditDetails extends BaseActivity {
                     .error(R.drawable.ic_user_proto);
 
             Glide.with(CreditDetails.this).load(creditorImage).apply(options).into(mCreditor);
+        }
+
+        if (creditorSign != null) {
+
+            RequestOptions options = new RequestOptions()
+                    .fitCenter()
+                    .placeholder(R.drawable.ic_user_proto)
+                    .error(R.drawable.ic_user_proto);
+
+            Glide.with(CreditDetails.this).load(creditorSign).apply(options).into(mCreditorSign);
         }
 
 

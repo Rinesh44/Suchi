@@ -137,4 +137,8 @@ dependencies {
 
     //for charts
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
+    //signature
+    implementation 'com.github.gcacace:signature-pad:1.2.1'
+
 }

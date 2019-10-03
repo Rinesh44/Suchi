@@ -75,7 +75,6 @@ public class SalesBill extends BaseActivity {
         setContentView(R.layout.activity_sales_bill);
 
         ButterKnife.bind(this);
-
         initialize();
 
         Intent i = getIntent();
@@ -99,7 +98,6 @@ public class SalesBill extends BaseActivity {
                 startActivity(i);
             }
         });
-
 
     }
 

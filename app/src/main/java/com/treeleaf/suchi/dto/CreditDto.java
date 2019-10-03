@@ -15,6 +15,7 @@ public class CreditDto implements Parcelable {
     private String dueAmount;
     private String totalAmount;
     private String userId;
+    private String creditorSignature;
     private long createdAt;
     private long updatedAt;
     private boolean sync;
@@ -105,6 +106,14 @@ public class CreditDto implements Parcelable {
         return updatedAt;
     }
 
+    public String getCreditorSignature() {
+        return creditorSignature;
+    }
+
+    public void setCreditorSignature(String creditorSignature) {
+        this.creditorSignature = creditorSignature;
+    }
+
     protected CreditDto(Parcel in) {
         id = in.readString();
         creditorId = in.readString();
@@ -112,6 +121,7 @@ public class CreditDto implements Parcelable {
         dueAmount = in.readString();
         totalAmount = in.readString();
         userId = in.readString();
+        creditorSignature = in.readString();
         createdAt = in.readLong();
         updatedAt = in.readLong();
         sync = in.readByte() != 0x00;
@@ -136,6 +146,7 @@ public class CreditDto implements Parcelable {
         dest.writeString(dueAmount);
         dest.writeString(totalAmount);
         dest.writeString(userId);
+        dest.writeString(creditorSignature);
         dest.writeLong(createdAt);
         dest.writeLong(updatedAt);
         dest.writeByte((byte) (sync ? 0x01 : 0x00));
