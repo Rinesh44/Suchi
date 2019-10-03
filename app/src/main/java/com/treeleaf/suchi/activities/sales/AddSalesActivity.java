@@ -893,7 +893,6 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
                     cartAdapter.notifyDataSetChanged();
 
                 } else {
-
                     SalesStock salesStockNew = new SalesStock(id, inventoryId, formatedAmount,
                             mQuantity.getText().toString(), unit, name, photoUrl, sellingPrice,
                             brand, subBrand, categories, System.currentTimeMillis(), 0);
@@ -923,7 +922,7 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
                         SalesStock salesStockNew = new SalesStock(defaultInventoryStock.getId(), defaultInventoryStock.getInventory_id()
                                 , formatedAmount, mQuantity.getText().toString(), units.getName(), selectedItem.getSku().getName(), selectedItem.getSku().getPhoto_url(),
                                 defaultInventoryStock.getSalesPrice(), selectedItem.getSku().getBrand().getName(), selectedItem.getSku().getSubBrands().getName(),
-                                selectedItem.getSku().getCategories().getName(), System.currentTimeMillis(), 0);
+                                selectedItem.getSku().getCategories().getName(), 1570085100000L, 0);
 
                         tempListAdd.add(salesStockNew);
                     } else {
@@ -954,7 +953,7 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
                     SalesStock salesStockNew = new SalesStock(defaultInventoryStock.getId(), defaultInventoryStock.getInventory_id()
                             , formatedAmount, mQuantity.getText().toString(), units.getName(), selectedItem.getSku().getName(), selectedItem.getSku().getPhoto_url(),
                             defaultInventoryStock.getSalesPrice(), selectedItem.getSku().getBrand().getName(), selectedItem.getSku().getSubBrands().getName(),
-                            selectedItem.getSku().getCategories().getName(), System.currentTimeMillis(), 0);
+                            selectedItem.getSku().getCategories().getName(), 1570085100000L, 0);
                     cartItemList.add(salesStockNew);
 
                     cartAdapter.notifyDataSetChanged();
@@ -1006,7 +1005,6 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
         mSaleStocksRecycler.setLayoutManager(linearLayoutManager);
         StockSalesAdapter stockSalesAdapter = new StockSalesAdapter(AddSalesActivity.this, selectedItem, mSaleStocksRecycler);
         mSaleStocksRecycler.setAdapter(stockSalesAdapter);
-
     }
 
     @Override

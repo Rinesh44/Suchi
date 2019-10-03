@@ -25,7 +25,6 @@ import com.treeleaf.suchi.utils.Constants;
 import com.treeleaf.suchi.utils.CustomProgress;
 
 import java.util.Objects;
-
 import javax.inject.Inject;
 
 import butterknife.BindView;
@@ -122,7 +121,6 @@ public class LoginActivity extends BaseActivity implements LoginView {
             gotoActivity(loginResponse);
 
         }
-
 
     }
 

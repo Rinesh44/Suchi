@@ -2,6 +2,7 @@ package com.treeleaf.suchi.activities.report.fragments;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -16,6 +17,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
@@ -32,9 +34,7 @@ import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
-import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
-import com.github.mikephil.charting.utils.ViewPortHandler;
 import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.realm.models.Inventory;
 import com.treeleaf.suchi.realm.models.InventoryStocks;
@@ -43,7 +43,6 @@ import com.treeleaf.suchi.realm.repo.InventoryRepo;
 import com.treeleaf.suchi.realm.repo.InventoryStocksRepo;
 import com.treeleaf.suchi.realm.repo.SalesStockRepo;
 import com.treeleaf.suchi.utils.AppUtils;
-import com.treeleaf.suchi.utils.IndexAxisValueFormatter;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -55,8 +54,9 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
-import java.util.Set;
+import java.util.TreeMap;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -146,6 +146,7 @@ public class Chart extends Fragment {
         return view;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -155,6 +156,7 @@ public class Chart extends Fragment {
         setItemsNotSold();
 
         mFilterByTime.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 RadioButton selectedRadioButton = group.findViewById(checkedId);
@@ -175,8 +177,8 @@ public class Chart extends Fragment {
                             String uniqueItemsSoldToday = getSoldItemsUnique(todaysSalesStocks);
                             mSoldItemsCount.setText(uniqueItemsSoldToday);
 
-                            setUpLineChart(todaysSalesStocks, "hours");
-                            setUpPieChart(todaysSalesStocks);
+                            setUpCharts(todaysSalesStocks, "hours");
+//                            setUpPieChart(todaysSalesStocks, "hours");
                             prepareListForStats(todaysSalesStocks);
                         }
 
@@ -191,8 +193,8 @@ public class Chart extends Fragment {
                         if (!weeksSalesStock.isEmpty()) {
                             String uniqueItemsSoldThisWeek = getSoldItemsUnique(weeksSalesStock);
                             mSoldItemsCount.setText(uniqueItemsSoldThisWeek);
-                            setUpLineChart(weeksSalesStock, "weekdays");
-                            setUpPieChart(weeksSalesStock);
+                            setUpCharts(weeksSalesStock, "weekdays");
+//                            setUpPieChart(weeksSalesStock, "weekdays");
                             prepareListForStats(weeksSalesStock);
                         }
                         break;
@@ -206,8 +208,8 @@ public class Chart extends Fragment {
                             String uniqueItemsSoldThisMonth = getSoldItemsUnique(monthSalesStock);
 
                             mSoldItemsCount.setText(uniqueItemsSoldThisMonth);
-                            setUpLineChart(monthSalesStock, "monthdays");
-                            setUpPieChart(monthSalesStock);
+                            setUpCharts(monthSalesStock, "monthdays");
+//                            setUpPieChart(monthSalesStock, "monthdays");
                             prepareListForStats(monthSalesStock);
                         }
                         break;
@@ -221,8 +223,8 @@ public class Chart extends Fragment {
                             String uniqueItemsSoldP3M = getSoldItemsUnique(p3monthSalesStock);
 
                             mSoldItemsCount.setText(uniqueItemsSoldP3M);
-                            setUpLineChart(p3monthSalesStock, "p3months");
-                            setUpPieChart(p3monthSalesStock);
+                            setUpCharts(p3monthSalesStock, "p3months");
+//                            setUpPieChart(p3monthSalesStock, "p3months");
                             prepareListForStats(p3monthSalesStock);
                         }
                         break;
@@ -235,8 +237,8 @@ public class Chart extends Fragment {
                         if (!p6monthSalesStock.isEmpty()) {
                             String uniqueItemsSoldP6M = getSoldItemsUnique(p6monthSalesStock);
                             mSoldItemsCount.setText(uniqueItemsSoldP6M);
-                            setUpLineChart(p6monthSalesStock, "p3months");
-                            setUpPieChart(p6monthSalesStock);
+                            setUpCharts(p6monthSalesStock, "p3months");
+//                            setUpPieChart(p6monthSalesStock, "p3months");
                             prepareListForStats(p6monthSalesStock);
                         }
                         break;
@@ -250,8 +252,8 @@ public class Chart extends Fragment {
         if (todaysSalesStocks != null && !todaysSalesStocks.isEmpty()) {
             mSoldItemsCount.setText(getSoldItemsUnique(todaysSalesStocks));
             AppUtils.showLog(TAG, "chartSize: " + todaysSalesStocks.size());
-            setUpLineChart(todaysSalesStocks, "hours");
-            setUpPieChart(todaysSalesStocks);
+            setUpCharts(todaysSalesStocks, "hours");
+//            setUpPieChart(todaysSalesStocks, "hours");
             prepareListForStats(todaysSalesStocks);
         }
 
@@ -468,27 +470,49 @@ public class Chart extends Fragment {
 
     }
 
-    private void setUpPieChart(List<SalesStock> salesList) {
+    private void setUpPieChart(List<SalesStock> salesList, String type) {
 
         ArrayList entries = new ArrayList();
         pieChart.getDescription().setEnabled(false);
 
-        for (SalesStock salesStock : salesList
-        ) {
-            String getTimeHours = java.text.DateFormat.getTimeInstance().format(salesStock.getCreatedAt());
-            String[] separatedHours = getTimeHours.split(":");
-            String hour = separatedHours[0];
-//            AppUtils.showLog(TAG, "hours: " + hour);
+        switch (type) {
+            case "hours":
+                for (SalesStock salesStock : salesList
+                ) {
+                    String getTimeHours = java.text.DateFormat.getTimeInstance().format(salesStock.getCreatedAt());
+                    Calendar cal = Calendar.getInstance();
+                    cal.setTime(new Date(salesStock.getCreatedAt()));
 
-            String formatedHour = "";
-            if (Integer.valueOf(hour) >= 12) {
-                formatedHour = hour + " P.M";
-            } else {
-                formatedHour = hour + " A.M";
-            }
+                    //var to separate am or pm
+                    int a = cal.get(Calendar.AM_PM);
+                    String[] separatedHours = getTimeHours.split(":");
+                    String hour = separatedHours[0];
 
-            entries.add(new PieEntry(Float.valueOf(salesStock.getAmount()), formatedHour));
+                    String formatedHour = "";
+
+                    if (a == Calendar.AM) {
+                        formatedHour = hour + " A.M";
+                    } else {
+                        formatedHour = hour + " P.M";
+                    }
+
+                    entries.add(new PieEntry(Float.valueOf(salesStock.getAmount()), formatedHour));
+                }
+                break;
+
+
+            case "weekdays":
+                for (SalesStock salesStock : salesList
+                ) {
+                    Calendar c = Calendar.getInstance();
+                    c.setTimeInMillis(salesStock.getCreatedAt());
+                    float dayInWeek = c.get(Calendar.DAY_OF_WEEK);
+
+
+                }
+                break;
         }
+
 
         PieDataSet dataSet = new PieDataSet(entries, "Amounts");
 
@@ -496,7 +520,6 @@ public class Chart extends Fragment {
         pieChart.setData(data);
         pieChart.setDrawEntryLabels(true);
         dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
-
 
         Legend l = pieChart.getLegend();
         l.setEnabled(false);
@@ -509,109 +532,155 @@ public class Chart extends Fragment {
     }
 
 
-    private void setUpLineChart(List<SalesStock> salesList, String type) {
-        lineChart.getDescription().setEnabled(false);
-        ArrayList<Entry> entries = new ArrayList<>();
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    private void setUpCharts(List<SalesStock> salesList, String type) {
 
+        //sort list in ascending order by time
+        Collections.sort(salesList, new Comparator<SalesStock>() {
+            @Override
+            public int compare(SalesStock o1, SalesStock o2) {
+                return Long.compare(o1.getCreatedAt(), o2.getCreatedAt());
+            }
+        });
+
+
+        lineChart.getDescription().setEnabled(false);
+        pieChart.getDescription().setEnabled(false);
+
+        ArrayList<Entry> entriesLineChart = new ArrayList<>();
+        ArrayList<PieEntry> entriesPieChart = new ArrayList<>();
 
         AppUtils.showLog(TAG, "saleLIstSize: " + salesList.size());
         XAxis xAxis = lineChart.getXAxis();
         switch (type) {
             case "hours":
                 //filter list so that each hours amount is added
-                HashMap hoursList = new HashMap();
-                List<SalesStock> removeList = new ArrayList<>();
-                List<SalesStock> addList = new ArrayList<>();
+                TreeMap<Float, Float> hoursList = new TreeMap<>();
                 for (SalesStock salesStock : salesList
                 ) {
                     String getTimeHours = java.text.DateFormat.getTimeInstance().format(salesStock.getCreatedAt());
                     String[] separatedHours = getTimeHours.split(":");
                     String hour = separatedHours[0];
+
                     if (hoursList.containsKey(Float.valueOf(hour))) {
-                        removeList.add(salesStock);
-
                         float addedAmount = Float.valueOf(salesStock.getAmount()) + (Float) hoursList.get(Float.valueOf(hour));
-                        SalesStock newSalesStock = new SalesStock(salesStock.getId(), salesStock.getInventory_id(),
-                                String.valueOf(addedAmount), salesStock.getQuantity(), salesStock.getUnit(), salesStock.getName(),
-                                salesStock.getPhotoUrl(), salesStock.getUnitPrice(), salesStock.getBrand(),
-                                salesStock.getSubBrand(), salesStock.getCategories(), salesStock.getCreatedAt(),
-                                salesStock.getUpdatedAt());
-
-                        addList.add(newSalesStock);
+                        hoursList.replace(Float.valueOf(hour), hoursList.get(Float.valueOf(hour)), addedAmount);
                     } else {
                         hoursList.put(Float.valueOf(hour), Float.valueOf(salesStock.getAmount()));
                     }
                 }
 
-                //remove and add lists from above
-                salesList.removeAll(removeList);
-                salesList.addAll(addList);
-
-                //sort list in ascending order by time
-                Collections.sort(salesList, new Comparator<SalesStock>() {
-                    @Override
-                    public int compare(SalesStock o1, SalesStock o2) {
-                        return Long.compare(o1.getCreatedAt(), o2.getCreatedAt());
-                    }
-                });
-
                 //add data to line chart entries
-                for (SalesStock sales : salesList
+                for (Map.Entry<Float, Float> entry : hoursList.entrySet()
                 ) {
-                    String getTimeHours = java.text.DateFormat.getTimeInstance().format(sales.getCreatedAt());
-                    String[] separatedHours = getTimeHours.split(":");
-                    String hour = separatedHours[0];
-                    entries.add(new Entry(Float.valueOf(hour), Float.valueOf(sales.getAmount()), "hours"));
+                    String formatedHour = "";
+                    if (entry.getKey().toString().length() == 2 &&
+                            entry.getKey() >= 12) {
+                        formatedHour = String.format("%.0f", entry.getKey()) + " P.M";
+                    } else {
+                        formatedHour = String.format("%.0f", entry.getKey()) + " A.M";
+                    }
+
+                    entriesLineChart.add(new Entry(entry.getKey(), Float.parseFloat(new DecimalFormat("##.##").format(entry.getValue()))));
+                    entriesPieChart.add(new PieEntry(Float.parseFloat(new DecimalFormat("##.##").format(entry.getValue())), formatedHour));
                 }
 
+                //config for  line chart
                 mXaxix.setText(Objects.requireNonNull(getContext()).getResources().getString(R.string.hours));
                 mChartText.setText("Items sold in hours");
 
                 break;
 
             case "weekdays":
-                List<String> weekDayList = new ArrayList<>();
+                TreeMap<Float, Float> weedayList = new TreeMap<>();
+
                 for (SalesStock salesStock : salesList
                 ) {
                     Calendar c = Calendar.getInstance();
                     c.setTimeInMillis(salesStock.getCreatedAt());
                     float dayInWeek = c.get(Calendar.DAY_OF_WEEK);
-                    weekDayList.add(String.valueOf(dayInWeek));
-                    entries.add(new Entry(dayInWeek, Float.valueOf(salesStock.getAmount()), "weekd"));
-                    mXaxix.setText(Objects.requireNonNull(getContext()).getResources().getString(R.string.days));
-                    mChartText.setText("Items sold in weekdays");
+
+                    if (weedayList.containsKey(dayInWeek)) {
+                        float addedAmount = Float.valueOf(salesStock.getAmount()) + (Float) weedayList.get(dayInWeek);
+                        weedayList.replace(dayInWeek, weedayList.get(dayInWeek), addedAmount);
+                    } else {
+                        weedayList.put(dayInWeek, Float.valueOf(salesStock.getAmount()));
+                    }
                 }
 
+                //add data to line chart entries
+                for (Map.Entry<Float, Float> entry : weedayList.entrySet()
+                ) {
+                    String weekDayName = getWeekDay(String.format("%.0f", entry.getKey()));
+                    AppUtils.showLog(TAG, "entryKey: " + entry.getKey());
+                    AppUtils.showLog(TAG, "weekDayName: " + weekDayName);
+                    entriesLineChart.add(new Entry(entry.getKey(), Float.parseFloat(String.format("%.0f", entry.getValue()))));
+                    entriesPieChart.add(new PieEntry(Float.parseFloat(String.format("%.0f", entry.getValue())), weekDayName));
+                }
+
+
+                mXaxix.setText(Objects.requireNonNull(getContext()).getResources().getString(R.string.days));
+                mChartText.setText("Items sold in weekdays");
                 break;
 
+
             case "monthdays":
-                List<String> monthDays = new ArrayList<>();
+                TreeMap<Float, Float> monthDayList = new TreeMap<>();
+                int month = 0;
                 for (SalesStock salesStock : salesList
                 ) {
                     Calendar c2 = Calendar.getInstance();
                     c2.setTimeInMillis(salesStock.getCreatedAt());
                     float dayInMonth = c2.get(Calendar.DAY_OF_MONTH);
-                    monthDays.add(String.valueOf(dayInMonth));
-                    entries.add(new Entry(dayInMonth, Float.valueOf(salesStock.getAmount()), "month"));
-                    mXaxix.setText(Objects.requireNonNull(getContext()).getResources().getString(R.string.days));
-                    mChartText.setText("Items sold in months");
+                    month = c2.get(Calendar.MONTH) + 1;
+
+                    if (monthDayList.containsKey(dayInMonth)) {
+                        float addedAmount = Float.valueOf(salesStock.getAmount()) + (Float) monthDayList.get(dayInMonth);
+                        monthDayList.replace(dayInMonth, monthDayList.get(dayInMonth), addedAmount);
+                    } else {
+                        monthDayList.put(dayInMonth, Float.valueOf(salesStock.getAmount()));
+                    }
                 }
 
+                String monthName = getMonth(month);
+
+                //add data to line chart entries
+                for (Map.Entry<Float, Float> entry : monthDayList.entrySet()
+                ) {
+                    entriesLineChart.add(new Entry(entry.getKey(), Float.parseFloat(String.format("%.0f", entry.getValue()))));
+                    entriesPieChart.add(new PieEntry(Float.parseFloat(String.format("%.0f", entry.getValue())), monthName + " " + String.format("%.0f", entry.getKey())));
+                }
+
+                mXaxix.setText(Objects.requireNonNull(getContext()).getResources().getString(R.string.days));
+                mChartText.setText("Items sold in months");
                 break;
 
             case "p3months":
-                List<String> p3mList = new ArrayList<>();
+                TreeMap<Float, Float> p3MonthList = new TreeMap<>();
                 for (SalesStock salesStock : salesList
                 ) {
                     Calendar c3 = Calendar.getInstance();
                     c3.setTimeInMillis(salesStock.getCreatedAt());
-                    float month = c3.get(Calendar.MONTH) + 1;
-                    p3mList.add(String.valueOf(month));
-                    entries.add(new Entry(month, Float.valueOf(salesStock.getAmount()), "month"));
-                    mXaxix.setText(Objects.requireNonNull(getContext()).getResources().getString(R.string.months));
-                    mChartText.setText("Items sold in months");
+                    float pMonth = c3.get(Calendar.MONTH) + 1;
+
+                    if (p3MonthList.containsKey(pMonth)) {
+                        float addedAmount = Float.valueOf(salesStock.getAmount()) + (Float) p3MonthList.get(pMonth);
+                        p3MonthList.replace(pMonth, p3MonthList.get(pMonth), addedAmount);
+                    } else {
+                        p3MonthList.put(pMonth, Float.valueOf(salesStock.getAmount()));
+                    }
                 }
 
+                //add data to line chart entries
+                for (Map.Entry<Float, Float> entry : p3MonthList.entrySet()
+                ) {
+                    String pMonthName = getMonth(Math.round(entry.getKey()));
+                    entriesLineChart.add(new Entry(entry.getKey(), Float.parseFloat(String.format("%.0f", entry.getValue()))));
+                    entriesPieChart.add(new PieEntry(Float.parseFloat(String.format("%.0f", entry.getValue())), pMonthName));
+                }
+
+                mXaxix.setText(Objects.requireNonNull(getContext()).getResources().getString(R.string.months));
+                mChartText.setText("Items sold in months");
 
                 break;
 
@@ -626,8 +695,8 @@ public class Chart extends Fragment {
                     break;*/
         }
 
-
-        LineDataSet dataSet = new LineDataSet(entries, "");
+        //config for line chart
+        LineDataSet dataSet = new LineDataSet(entriesLineChart, "");
         dataSet.setColor(ContextCompat.getColor(getActivity(), R.color.colorPrimary));
         dataSet.setValueTextColor(ContextCompat.getColor(getActivity(), R.color.colorPrimaryDark));
 
@@ -658,9 +727,97 @@ public class Chart extends Fragment {
         l.setEnabled(false);
 
         lineChart.animateX(500);
-        lineChart.getXAxis().setSpaceMin(1f);
+        lineChart.getXAxis().
+
+                setSpaceMin(1f);
         //refresh
         lineChart.invalidate();
+
+
+        //config for pie chart
+        PieDataSet dataSetPieChart = new PieDataSet(entriesPieChart, "Amounts");
+
+        PieData pieData = new PieData(dataSetPieChart);
+        pieChart.setData(pieData);
+        pieChart.setDrawEntryLabels(true);
+        dataSetPieChart.setColors(ColorTemplate.COLORFUL_COLORS);
+
+        Legend lPie = pieChart.getLegend();
+        lPie.setEnabled(false);
+
+        dataSetPieChart.setSliceSpace(2);
+        dataSetPieChart.setValueTextColor(getContext().getResources().getColor(R.color.white));
+        dataSetPieChart.setValueTextSize(12);
+        pieChart.animateXY(2000, 2000);
+    }
+
+    private String getMonth(int month) {
+        switch (month) {
+            case 1:
+                return "JAN";
+
+            case 2:
+                return "FEB";
+
+            case 3:
+                return "MAR";
+
+            case 4:
+                return "APR";
+
+            case 5:
+                return "MAY";
+
+            case 6:
+                return "JUN";
+
+            case 7:
+                return "JUL";
+
+            case 8:
+                return "AUG";
+
+            case 9:
+                return "SEP";
+
+            case 10:
+                return "OCT";
+
+            case 11:
+                return "NOV";
+
+            case 12:
+                return "DEC";
+        }
+
+        return "";
+    }
+
+    private String getWeekDay(String key) {
+        switch (key) {
+            case "1":
+                return "SUN";
+
+            case "2":
+                return "MON";
+
+            case "3":
+                return "TUE";
+
+            case "4":
+                return "WED";
+
+            case "5":
+                return "THU";
+
+            case "6":
+                return "FRI";
+
+            case "7":
+                return "SAT";
+        }
+
+        return "";
     }
 
     private String getSoldItemsUnique(List<SalesStock> todaysSalesStocks) {

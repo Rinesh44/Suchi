@@ -1,7 +1,5 @@
 package com.treeleaf.suchi.activities.sales;
 
-import android.app.Notification;
-import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -17,7 +15,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
@@ -27,16 +24,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.activities.base.BaseActivity;
-import com.treeleaf.suchi.activities.inventory.InventoryActivity;
-import com.treeleaf.suchi.activities.inventory.stock.SearchStock;
 import com.treeleaf.suchi.adapter.SalesAdapter;
 import com.treeleaf.suchi.api.Endpoints;
 import com.treeleaf.suchi.dto.SalesStockDto;
 import com.treeleaf.suchi.entities.SuchiProto;
-import com.treeleaf.suchi.realm.models.Inventory;
-import com.treeleaf.suchi.realm.models.InventoryStocks;
 import com.treeleaf.suchi.realm.models.SalesStock;
-import com.treeleaf.suchi.realm.repo.InventoryRepo;
 import com.treeleaf.suchi.realm.repo.SalesStockRepo;
 import com.treeleaf.suchi.realm.repo.UnitRepo;
 import com.treeleaf.suchi.utils.AppUtils;
@@ -54,7 +46,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.realm.RealmResults;
 
-import static com.treeleaf.suchi.SuchiApp.CHANNEL_ID;
 import static com.treeleaf.suchi.SuchiApp.getMyApplication;
 
 public class SalesActivity extends BaseActivity implements SalesView {
@@ -338,43 +329,6 @@ public class SalesActivity extends BaseActivity implements SalesView {
         invalidateOptionsMenu();
         mSalesAdapter.notifyDataSetChanged();
 
-        List<Inventory> allInventoryList = InventoryRepo.getInstance().getAllInventoryList();
-        StringBuilder scarceItems = new StringBuilder();
-        for (Inventory inventory : allInventoryList
-        ) {
-            for (InventoryStocks inventoryStocks : inventory.getInventoryStocks()
-            ) {
-                if (Double.valueOf(inventoryStocks.getQuantity()) < 5) {
-                    scarceItems.append(inventory.getSku().getName());
-                    scarceItems.append(", ");
-                }
-
-            }
-        }
-
-        String modifiedScarceItems = scarceItems.toString().substring(0, scarceItems.length() - 2);
-        pushNotification(modifiedScarceItems);
-
-    }
-
-    private void pushNotification(String skuNames) {
-        Intent resultIntent = new Intent(this, SearchStock.class);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 1, resultIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-
-
-        notificationManagerCompat = NotificationManagerCompat.from(this);
-        Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
-                .setSmallIcon(R.drawable.ic_logo)
-                .setContentTitle("Insufficient Stocks")
-                .setStyle(new NotificationCompat.BigTextStyle().bigText(skuNames + " are low on quantity"))
-                .setContentText(skuNames + " are low on quantity")
-                .setContentIntent(pendingIntent)
-                .setAutoCancel(true)
-                .setPriority(NotificationCompat.PRIORITY_HIGH)
-                .setCategory(NotificationCompat.CATEGORY_MESSAGE)
-                .build();
-
-        notificationManagerCompat.notify(1, notification);
     }
 
     @Override

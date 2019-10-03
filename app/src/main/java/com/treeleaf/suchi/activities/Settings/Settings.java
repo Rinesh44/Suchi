@@ -9,12 +9,10 @@ import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.widget.AppCompatCheckBox;
 import androidx.appcompat.widget.AppCompatSpinner;
@@ -80,12 +78,11 @@ public class Settings extends BaseActivity {
                     editor.putBoolean(Constants.NOTIFICATION, true);
                     editor.apply();
 
-
                     mStockThreshold.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                             String selectedItem = (String) adapterView.getSelectedItem();
-                            editor.putString(Constants.STOCK_THRESHOLD_NOTIFICATION, selectedItem);
+                            editor.putInt(Constants.STOCK_THRESHOLD_NOTIFICATION, Integer.valueOf(selectedItem));
                             editor.apply();
                         }
 
@@ -114,7 +111,6 @@ public class Settings extends BaseActivity {
                 int nepaliLangId = mNepali.getId();
 
                 if (i == englishLangId) {
-                    Toast.makeText(Settings.this, "english", Toast.LENGTH_SHORT).show();
                     context = LocaleHelper.setLocale(Settings.this, "en");
                     resources = context.getResources();
                     mLanguageSettingTitle.setText(resources.getString(R.string.language_settings));
@@ -124,9 +120,6 @@ public class Settings extends BaseActivity {
                     mNotificationText.setText(resources.getString(R.string.minimum_stock_quantity_for_notification));
 
                 } else if (i == nepaliLangId) {
-
-                    Toast.makeText(Settings.this, "nepali", Toast.LENGTH_SHORT).show();
-
                     context = LocaleHelper.setLocale(Settings.this, "ne");
                     resources = context.getResources();
                     mLanguageSettingTitle.setText(resources.getString(R.string.language_settings));

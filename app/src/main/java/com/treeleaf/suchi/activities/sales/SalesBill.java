@@ -1,5 +1,7 @@
 package com.treeleaf.suchi.activities.sales;
 
+import android.app.Notification;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -11,19 +13,22 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 import com.google.android.material.button.MaterialButton;
 import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.activities.base.BaseActivity;
 import com.treeleaf.suchi.activities.credit.CreditEntry;
-import com.treeleaf.suchi.activities.inventory.InventoryActivity;
+import com.treeleaf.suchi.activities.inventory.stock.SearchStock;
+import com.treeleaf.suchi.realm.models.Inventory;
 import com.treeleaf.suchi.realm.models.InventoryStocks;
 import com.treeleaf.suchi.realm.models.Sales;
 import com.treeleaf.suchi.realm.models.SalesStock;
+import com.treeleaf.suchi.realm.repo.InventoryRepo;
 import com.treeleaf.suchi.realm.repo.InventoryStocksRepo;
 import com.treeleaf.suchi.realm.repo.Repo;
 import com.treeleaf.suchi.realm.repo.SalesRepo;
-import com.treeleaf.suchi.realm.repo.SalesStockRepo;
 import com.treeleaf.suchi.utils.AppUtils;
 import com.treeleaf.suchi.utils.Constants;
 
@@ -34,6 +39,8 @@ import java.util.UUID;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.realm.RealmList;
+
+import static com.treeleaf.suchi.SuchiApp.CHANNEL_ID;
 
 public class SalesBill extends BaseActivity {
     private static final String TAG = "SalesBill";
@@ -59,6 +66,8 @@ public class SalesBill extends BaseActivity {
     List<SalesStock> updatedSalesStockList;
     private SharedPreferences preferences;
     private String userId;
+    private NotificationManagerCompat notificationManagerCompat;
+    private int notificationThreshold;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -164,6 +173,25 @@ public class SalesBill extends BaseActivity {
         return true;
     }
 
+    private void pushNotification(String skuNames) {
+        Intent resultIntent = new Intent(this, SearchStock.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 1, resultIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+
+        notificationManagerCompat = NotificationManagerCompat.from(this);
+        Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
+                .setSmallIcon(R.drawable.ic_logo)
+                .setContentTitle("Insufficient Stocks")
+                .setStyle(new NotificationCompat.BigTextStyle().bigText(skuNames + " is low on quantity"))
+                .setContentText(skuNames + " are low on quantity")
+                .setContentIntent(pendingIntent)
+                .setAutoCancel(true)
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                .build();
+
+        notificationManagerCompat.notify(1, notification);
+    }
 
     public void saveSalesData() {
         deductInventoryStockQuantity();
@@ -185,8 +213,11 @@ public class SalesBill extends BaseActivity {
                 editor.putBoolean(Constants.SALES_DATA_REMAINING_TO_SYNC, true);
                 editor.apply();
 
-                gotoSalesActivity();
+                if (preferences.getBoolean(Constants.NOTIFICATION, false)) {
+                    setUpNotification();
+                }
 
+                gotoSalesActivity();
             }
 
             @Override
@@ -215,6 +246,30 @@ public class SalesBill extends BaseActivity {
         });*/
 
 
+    }
+
+    private void setUpNotification() {
+        notificationThreshold = preferences.getInt(Constants.STOCK_THRESHOLD_NOTIFICATION, 0);
+        if (notificationThreshold > 0) {
+            List<Inventory> allInventoryList = InventoryRepo.getInstance().getAllInventoryList();
+            StringBuilder scarceItems = new StringBuilder();
+            for (Inventory inventory : allInventoryList
+            ) {
+                for (InventoryStocks inventoryStocks : inventory.getInventoryStocks()
+                ) {
+                    if (Double.valueOf(inventoryStocks.getQuantity()) <= notificationThreshold) {
+                        scarceItems.append(inventory.getSku().getName());
+                        scarceItems.append(", ");
+                    }
+
+                }
+            }
+
+            if (scarceItems.length() > 0) {
+                String modifiedScarceItems = scarceItems.toString().substring(0, scarceItems.length() - 2);
+                pushNotification(modifiedScarceItems);
+            }
+        }
     }
 
     private void deductInventoryStockQuantity() {

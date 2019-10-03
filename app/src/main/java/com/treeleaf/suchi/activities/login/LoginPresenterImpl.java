@@ -132,7 +132,6 @@ public class LoginPresenterImpl implements LoginPresenter {
             @Override
             public void onFailureResult() {
                 activity.getAllDataFail("failed");
-
             }
         }));
     }
@@ -149,8 +148,9 @@ public class LoginPresenterImpl implements LoginPresenter {
             ) {
                 SalesStock salesStock = new SalesStock();
 
-                Inventory inventory = InventoryRepo.getInstance().getInventoryById(saleInventoryPb.getInventoryId());
-                salesStock.setId(saleInventoryPb.getInventoryStockId());
+                Inventory inventory = InventoryRepo.getInstance().getInventoryById(saleInventoryPb.getInventory().getInventoryId());
+
+                salesStock.setId(saleInventoryPb.getInventory().getInventoryStock().getInventoryStockId());
                 salesStock.setInventory_id(saleInventoryPb.getInventoryId());
                 salesStock.setAmount(String.valueOf(saleInventoryPb.getAmount()));
                 salesStock.setQuantity(String.valueOf(saleInventoryPb.getQuantity()));
@@ -173,6 +173,8 @@ public class LoginPresenterImpl implements LoginPresenter {
             salesModel.setUpdatedAt(salePb.getUpdatedAt());
             salesModel.setSync(salePb.getSync());
             salesModel.setUserId(salePb.getUserId());
+
+
             salesModel.setCredit(salePb.getIsCredit());
             salesModel.setCreditId(salePb.getCreditorId());
             salesModel.setSalesStocks(salesStockList);
