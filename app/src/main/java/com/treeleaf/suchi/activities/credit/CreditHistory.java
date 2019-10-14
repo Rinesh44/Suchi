@@ -22,20 +22,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.activities.base.BaseActivity;
-import com.treeleaf.suchi.activities.report.ReportActivity;
 import com.treeleaf.suchi.adapter.CreditHistoryAdapter;
 import com.treeleaf.suchi.api.Endpoints;
 import com.treeleaf.suchi.dto.CreditDto;
 import com.treeleaf.suchi.realm.models.Credit;
-import com.treeleaf.suchi.realm.models.Creditors;
-import com.treeleaf.suchi.realm.models.Inventory;
 import com.treeleaf.suchi.realm.repo.CreditRepo;
-import com.treeleaf.suchi.realm.repo.CreditorRepo;
-import com.treeleaf.suchi.realm.repo.InventoryRepo;
 import com.treeleaf.suchi.utils.AppUtils;
 import com.treeleaf.suchi.utils.Constants;
-import com.treeleaf.suchi.utils.DatePicker;
-import com.treeleaf.suchi.utils.NetworkUtils;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -46,7 +39,6 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import butterknife.BindInt;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 

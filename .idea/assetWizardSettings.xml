@@ -3,6 +3,11 @@
   <component name="WizardSettings">
     <option name="children">
       <map>
+        <entry key="imageWizard">
+          <value>
+            <PersistentState />
+          </value>
+        </entry>
         <entry key="vectorWizard">
           <value>
             <PersistentState>
@@ -18,7 +23,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/usr/local/android-studio/plugins/android/lib/android.jar!/images/material_design_icons/action/ic_check_circle_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/Applications/Android%20Studio%202.app/Contents/plugins/android/lib/android.jar!/images/material_design_icons/image/ic_nature_people_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -28,9 +33,8 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="color" value="60ad5e" />
-                            <entry key="outputName" value="ic_paid" />
-                            <entry key="overrideSize" value="true" />
+                            <entry key="color" value="1e5a46" />
+                            <entry key="outputName" value="ic_creditor" />
                             <entry key="sourceFile" value="$USER_HOME$" />
                           </map>
                         </option>

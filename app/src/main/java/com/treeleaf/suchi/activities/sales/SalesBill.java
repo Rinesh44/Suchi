@@ -128,7 +128,6 @@ public class SalesBill extends BaseActivity {
             totalAmountBuilder.append("Rs. ");
             totalAmountBuilder.append(totalAmount);
             mTotalAmount.setText(totalAmountBuilder);
-
         }
     }
 

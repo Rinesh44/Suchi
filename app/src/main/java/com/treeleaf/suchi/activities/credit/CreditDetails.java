@@ -33,7 +33,6 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
-import io.realm.RealmList;
 
 public class CreditDetails extends BaseActivity {
     private static final String TAG = "CreditDetails";

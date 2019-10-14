@@ -23,6 +23,8 @@ public class CreditActivity extends BaseActivity implements View.OnClickListener
     @BindView(R.id.btn_credit_history)
     MaterialCardView mHistory;
     @BindView(R.id.btn_creditors)
+    MaterialCardView mCreditors;
+    @BindView(R.id.btn_add_creditors)
     MaterialCardView mAddCreditors;
 
     @Override
@@ -36,6 +38,7 @@ public class CreditActivity extends BaseActivity implements View.OnClickListener
 
         mHistory.setOnClickListener(this);
         mAddCreditors.setOnClickListener(this);
+        mCreditors.setOnClickListener(this);
     }
 
     private void init() {
@@ -62,6 +65,10 @@ public class CreditActivity extends BaseActivity implements View.OnClickListener
                 break;
 
             case R.id.btn_creditors:
+
+                break;
+
+            case R.id.btn_add_creditors:
                 startActivity(new Intent(CreditActivity.this, AddCreditor.class));
                 break;
         }

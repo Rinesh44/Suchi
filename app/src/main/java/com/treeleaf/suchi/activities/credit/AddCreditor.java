@@ -148,7 +148,7 @@ public class AddCreditor extends BaseActivity implements View.OnClickListener {
         }
 
 
-        if (phone.isEmpty() || phone.length() != 10) {
+        if (phone.length() != 10) {
             mPhoneLayout.setErrorEnabled(true);
             mPhoneLayout.setError("Phone number must be 10 digits");
             mPhone.requestFocus();

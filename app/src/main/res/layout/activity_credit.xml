@@ -69,6 +69,59 @@
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/btn_add_creditors"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            app:cardBackgroundColor="@color/greyish"
+            app:cardCornerRadius="8dp"
+            app:cardUseCompatPadding="true">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+
+                <ImageView
+                    android:id="@+id/iv_add_creditors"
+                    android:layout_width="38dp"
+                    android:layout_height="37dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_creditors" />
+
+                <TextView
+                    android:id="@+id/tv_add_creditors"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_toRightOf="@+id/iv_add_creditors"
+                    android:elevation="8dp"
+                    android:fontFamily="@font/proxima_regular"
+                    android:text="@string/add_creditors"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="23sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_add_creditors"
+                    android:layout_marginStart="15dp"
+                    android:layout_toRightOf="@+id/iv_add_creditors"
+                    android:fontFamily="@font/proxima_regular"
+                    android:text="@string/add_creditor_details" />
+
+            </RelativeLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/btn_creditors"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -93,7 +146,7 @@
                     android:layout_width="38dp"
                     android:layout_height="37dp"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/ic_creditors" />
+                    android:src="@drawable/ic_creditor" />
 
                 <TextView
                     android:id="@+id/tv_creditors"
@@ -103,7 +156,7 @@
                     android:layout_toRightOf="@+id/iv_creditors"
                     android:elevation="8dp"
                     android:fontFamily="@font/proxima_regular"
-                    android:text="@string/add_creditors"
+                    android:text="Creditors"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="23sp"
                     android:textStyle="bold" />
@@ -115,7 +168,7 @@
                     android:layout_marginStart="15dp"
                     android:layout_toRightOf="@+id/iv_creditors"
                     android:fontFamily="@font/proxima_regular"
-                    android:text="@string/add_creditor_details" />
+                    android:text="Creditor details" />
 
             </RelativeLayout>
 

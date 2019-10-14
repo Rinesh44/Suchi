@@ -10,7 +10,7 @@
     <string name="invalid_password" translatable="false">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="sales">Sales</string>
-    <string name="stock">Stock</string>
+    <string name="stock">Stocks</string>
     <string name="reports">Reports</string>
     <string name="credit_entry">Credit Entry</string>
     <string name="email_phone">Email/Phone</string>
