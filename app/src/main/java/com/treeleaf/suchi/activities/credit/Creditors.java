@@ -59,6 +59,7 @@ public class Creditors extends BaseActivity {
             getSupportActionBar().setHomeButtonEnabled(true);
             getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
+
         mToolbarTitle.setText(getResources().getString(R.string.creditors));
 
         mSearch.setOnTouchListener(new View.OnTouchListener() {

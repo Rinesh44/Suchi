@@ -33,9 +33,15 @@ import com.treeleaf.suchi.MainActivity;
 import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.activities.Settings.Settings;
 import com.treeleaf.suchi.activities.base.BaseActivity;
+import com.treeleaf.suchi.activities.credit.AddCreditor;
 import com.treeleaf.suchi.activities.credit.CreditActivity;
+import com.treeleaf.suchi.activities.credit.CreditHistory;
+import com.treeleaf.suchi.activities.credit.Creditors;
 import com.treeleaf.suchi.activities.inventory.InventoryActivity;
+import com.treeleaf.suchi.activities.inventory.stock.StockActivity;
 import com.treeleaf.suchi.activities.profile.ProfileActivity;
+import com.treeleaf.suchi.activities.report.ReportActivity;
+import com.treeleaf.suchi.activities.sales.AddSalesActivity;
 import com.treeleaf.suchi.activities.sales.SalesActivity;
 import com.treeleaf.suchi.api.Endpoints;
 import com.treeleaf.suchi.entities.SuchiProto;
@@ -71,20 +77,24 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
     Toolbar mToolbar;
     @BindView(R.id.toolbar_title)
     TextView mToolbarTitle;
-    @BindView(R.id.btn_inventory)
-    MaterialCardView mInventory;
-    @BindView(R.id.btn_credit)
-    MaterialCardView mCredit;
+    @BindView(R.id.btn_stocks)
+    MaterialCardView mStocks;
+    @BindView(R.id.btn_sales)
+    MaterialCardView mSales;
     @BindView(R.id.drawer_layout)
     DrawerLayout mDrawerLayout;
     @BindView(R.id.nv)
     NavigationView mNavigationView;
-    @BindView(R.id.tv_inventory_title)
-    TextView mInventoryTitle;
-    @BindView(R.id.tv_credit_title)
-    TextView mCreditTitle;
     @BindView(R.id.tv_remaining_days)
     TextView mRemainingDays;
+    @BindView(R.id.btn_credit_history)
+    MaterialCardView mCreditHistory;
+    @BindView(R.id.btn_creditors)
+    MaterialCardView mCreditors;
+    @BindView(R.id.btn_add_creditors)
+    MaterialCardView mAddCreditors;
+    @BindView(R.id.btn_reports)
+    MaterialCardView mReports;
 
     private DashboardPresenter presenter;
     private SharedPreferences preferences;
@@ -105,8 +115,6 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
         String selectedLanguage = preferences.getString(Constants.SELECTED_LANGUAGE, "");
         Context context = LocaleHelper.setLocale(this, selectedLanguage);
         Resources resources = context.getResources();
-        mInventoryTitle.setText(resources.getString(R.string.inventory));
-        mCreditTitle.setText(resources.getString(R.string.credit));
         nav_profile.setTitle(resources.getString(R.string.profile));
         nav_settings.setTitle(resources.getString(R.string.settings));
         nav_sales.setTitle(resources.getString(R.string.sync));
@@ -128,8 +136,12 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
         userId = preferences.getString(Constants.USER_ID, "");
         presenter = new DashboardPresenterImpl(endpoints, this);
 
-        mInventory.setOnClickListener(this);
-        mCredit.setOnClickListener(this);
+        mStocks.setOnClickListener(this);
+        mSales.setOnClickListener(this);
+        mCreditHistory.setOnClickListener(this);
+        mCreditors.setOnClickListener(this);
+        mAddCreditors.setOnClickListener(this);
+        mReports.setOnClickListener(this);
 
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -374,12 +386,28 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.btn_inventory:
-                startActivity(new Intent(DashboardActivity.this, InventoryActivity.class));
+            case R.id.btn_stocks:
+                startActivity(new Intent(DashboardActivity.this, StockActivity.class));
                 break;
 
-            case R.id.btn_credit:
-                startActivity(new Intent(DashboardActivity.this, CreditActivity.class));
+            case R.id.btn_sales:
+                startActivity(new Intent(DashboardActivity.this, AddSalesActivity.class));
+                break;
+
+            case R.id.btn_credit_history:
+                startActivity(new Intent(DashboardActivity.this, CreditHistory.class));
+                break;
+
+            case R.id.btn_creditors:
+                startActivity(new Intent(DashboardActivity.this, Creditors.class));
+                break;
+
+            case R.id.btn_add_creditors:
+                startActivity(new Intent(DashboardActivity.this, AddCreditor.class));
+                break;
+
+            case R.id.btn_reports:
+                startActivity(new Intent(DashboardActivity.this, ReportActivity.class));
                 break;
         }
     }

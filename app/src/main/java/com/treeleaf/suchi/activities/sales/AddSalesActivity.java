@@ -58,6 +58,7 @@ import com.journeyapps.barcodescanner.DecoratedBarcodeView;
 import com.journeyapps.barcodescanner.camera.CameraSettings;
 import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.activities.base.BaseActivity;
+import com.treeleaf.suchi.activities.dashboard.DashboardActivity;
 import com.treeleaf.suchi.activities.inventory.InventoryActivity;
 import com.treeleaf.suchi.adapter.CartAdapter;
 import com.treeleaf.suchi.adapter.InventorySalesAdapter;
@@ -1016,7 +1017,7 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent i = new Intent(AddSalesActivity.this, InventoryActivity.class);
+        Intent i = new Intent(AddSalesActivity.this, DashboardActivity.class);
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(i);
     }

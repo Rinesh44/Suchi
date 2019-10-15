@@ -72,6 +72,7 @@ public class AddCreditor extends BaseActivity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setBackgroundDrawable(getResources().getDrawable(R.drawable.bg_for_keyboard_glitch));
         setContentView(R.layout.activity_add_creditor);
 
         ButterKnife.bind(this);
