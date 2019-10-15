@@ -11,14 +11,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="10dp" >
+        android:clipToPadding="false"
+        android:padding="10dp">
 
         <EditText
             android:id="@+id/et_search"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_below="@+id/toolbar"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             android:background="@drawable/search_bg"
             android:drawableEnd="@drawable/ic_search"
@@ -29,12 +30,24 @@
             android:paddingStart="15dp"
             android:paddingEnd="10dp" />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_creditors"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:visibility="gone" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_creditors"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/tv_no_data"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="60dp"
+            android:fontFamily="@font/proxima_regular"
+            android:gravity="center"
+            android:text="@string/no_data_available"
+            android:textSize="18sp" />
 
     </LinearLayout>
+
 
 </LinearLayout>

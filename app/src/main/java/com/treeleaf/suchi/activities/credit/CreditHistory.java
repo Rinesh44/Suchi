@@ -91,6 +91,7 @@ public class CreditHistory extends BaseActivity implements CreditHistoryView {
                 return Long.compare(o2.getCreatedAt(), o1.getCreatedAt());
             }
         });
+
         setUpRecyclerView(creditList);
 
         mSearch.addTextChangedListener(new TextWatcher() {
@@ -246,9 +247,7 @@ public class CreditHistory extends BaseActivity implements CreditHistoryView {
         mSearch.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-
                 mSearch.setFocusableInTouchMode(true);
-
                 return false;
             }
         });

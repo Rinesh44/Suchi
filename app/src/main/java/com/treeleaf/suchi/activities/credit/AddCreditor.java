@@ -217,7 +217,7 @@ public class AddCreditor extends BaseActivity implements View.OnClickListener {
 
     private void encodeBitmapToBase64(Bitmap bitmap) {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 50, byteArrayOutputStream);
         byte[] byteArray = byteArrayOutputStream.toByteArray();
 
         encodedImage = Base64.encodeToString(byteArray, Base64.DEFAULT);

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/gray"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <include layout="@layout/toolbar"/>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        app:cardCornerRadius="6dp"
+        app:cardUseCompatPadding="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="15dp">
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_creditor_image"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/ic_reort"
+            app:civ_border_color="@color/primary_color"
+            app:civ_border_width="2dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/proxima_regular"
+            android:text="@string/name" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:id="@+id/tv_creditor_name"
+            android:layout_height="wrap_content"
+            android:text="Ricardo ferera"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:fontFamily="@font/proxima_regular"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Address"
+            android:fontFamily="@font/proxima_regular"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hattiban"
+            android:id="@+id/tv_creditor_address"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:fontFamily="@font/proxima_regular"
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/proxima_regular"
+            android:text="Phone" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="9845273629"
+            android:textColor="@color/black"
+            android:id="@+id/tv_creditor_number"
+            android:textSize="18sp"
+            android:fontFamily="@font/proxima_regular"
+            />
+
+
+    </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+
+</LinearLayout>

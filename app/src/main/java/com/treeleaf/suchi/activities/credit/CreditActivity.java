@@ -6,8 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-
-import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
 import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.activities.base.BaseActivity;
@@ -65,7 +63,7 @@ public class CreditActivity extends BaseActivity implements View.OnClickListener
                 break;
 
             case R.id.btn_creditors:
-
+                startActivity(new Intent(CreditActivity.this, Creditors.class));
                 break;
 
             case R.id.btn_add_creditors:

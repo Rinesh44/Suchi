@@ -306,13 +306,13 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="15dp">
+                android:padding="10dp"
+                >
 
                 <TextView
                     android:id="@+id/tv_signature"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
                     android:fontFamily="@font/proxima_regular"
                     android:text="Creditor's Signature (double tap to clear): "
                     android:textColor="@color/black"
@@ -323,6 +323,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
                     android:layout_below="@+id/tv_signature"
+                    android:background="@color/white"
                     app:clearOnDoubleClick="true"
                     app:penColor="@android:color/black" />
 

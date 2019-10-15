@@ -1,87 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/gray"
-    android:padding="10dp"
-    android:orientation="vertical">
+    app:cardCornerRadius="6dp"
+    app:cardUseCompatPadding="true">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/iv_creditor_image"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/ic_reort"/>
-
-
-    <TextView
-        android:id="@+id/tv_creditor_name_title"
-        android:layout_width="wrap_content"
-        android:layout_toRightOf="@+id/iv_creditor_image"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:fontFamily="@font/proxima_regular"
-        android:text="Name"/>
+        android:background="@color/white"
+        android:foreground="?attr/selectableItemBackground"
+        android:focusable="true"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/tv_creditor_name_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_toRightOf="@+id/iv_creditor_image"
+            android:fontFamily="@font/proxima_regular"
+            android:text="Name" />
 
 
-    <TextView
-        android:id="@+id/tv_creditor_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_creditor_name_title"
-        android:fontFamily="@font/proxima_regular"
-        android:layout_marginStart="10dp"
-        android:textColor="@color/black"
-        android:layout_toEndOf="@+id/iv_creditor_image"
-        android:text="Gaurav Adhikari"/>
+        <TextView
+            android:id="@+id/tv_creditor_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_creditor_name_title"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@+id/iv_creditor_image"
+            android:fontFamily="@font/proxima_regular"
+            android:text="Gaurav Adhikari"
+            android:textColor="@color/black" />
 
 
-    <TextView
-        android:id="@+id/tv_creditor_address_title"
-        android:layout_width="wrap_content"
-        android:layout_toEndOf="@+id/iv_creditor_image"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_below="@+id/tv_creditor_name"
-        android:fontFamily="@font/proxima_regular"
-        android:text="Address"/>
+        <TextView
+            android:id="@+id/tv_creditor_address_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_creditor_name"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/iv_creditor_image"
+            android:fontFamily="@font/proxima_regular"
+            android:text="Address" />
 
 
-    <TextView
-        android:id="@+id/tv_creditor_address"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_creditor_address_title"
-        android:fontFamily="@font/proxima_regular"
-        android:layout_marginStart="10dp"
-        android:textColor="@color/black"
-        android:layout_toEndOf="@+id/iv_creditor_image"
-        android:text="Gaurav Adhikari"/>
-
-    <TextView
-        android:id="@+id/tv_creditor_number_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_alignParentEnd="true"
-        android:fontFamily="@font/proxima_regular"
-        android:text="Phone"/>
+        <TextView
+            android:id="@+id/tv_creditor_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_creditor_address_title"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@+id/iv_creditor_image"
+            android:fontFamily="@font/proxima_regular"
+            android:text="Kumaripati, Lalitpur"
+            android:textColor="@color/black" />
 
 
-    <TextView
-        android:id="@+id/tv_creditor_number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_creditor_number_title"
-        android:layout_alignParentEnd="true"
-        android:fontFamily="@font/proxima_regular"
-        android:layout_marginStart="10dp"
-        android:textColor="@color/black"
-        android:layout_toEndOf="@+id/iv_creditor_image"
-        android:text="Kumaripati, Lalitpur"/>
+        <TextView
+            android:id="@+id/tv_creditor_number_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="10dp"
+            android:fontFamily="@font/proxima_regular"
+            android:text="Phone" />
+
+        <TextView
+            android:id="@+id/tv_creditor_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_creditor_number_title"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="10dp"
+            android:fontFamily="@font/proxima_regular"
+            android:text="98293462871"
+            android:textColor="@color/black" />
 
 
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_creditor_image"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_reort" />
+
+    </RelativeLayout>
 
 
-
-</RelativeLayout>
+</com.google.android.material.card.MaterialCardView>
