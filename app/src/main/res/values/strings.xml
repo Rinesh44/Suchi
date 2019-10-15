@@ -50,7 +50,7 @@
     <string name="sales_details">Sales Details</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="username">Username/email</string>
+    <string name="username">Email/Phone</string>
     <string name="done">Done</string>
     <string name="translate_this_to_nepali">Translate this to nepali</string>
     <string name="items_to_sell">Items to sell</string>

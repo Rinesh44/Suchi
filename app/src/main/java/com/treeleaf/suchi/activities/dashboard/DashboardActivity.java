@@ -1,13 +1,5 @@
 package com.treeleaf.suchi.activities.dashboard;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.widget.Toolbar;
-import androidx.drawerlayout.widget.DrawerLayout;
-
-import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
@@ -22,10 +14,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.navigation.NavigationView;
@@ -34,21 +30,17 @@ import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.activities.Settings.Settings;
 import com.treeleaf.suchi.activities.base.BaseActivity;
 import com.treeleaf.suchi.activities.credit.AddCreditor;
-import com.treeleaf.suchi.activities.credit.CreditActivity;
 import com.treeleaf.suchi.activities.credit.CreditHistory;
 import com.treeleaf.suchi.activities.credit.Creditors;
-import com.treeleaf.suchi.activities.inventory.InventoryActivity;
 import com.treeleaf.suchi.activities.inventory.stock.StockActivity;
 import com.treeleaf.suchi.activities.profile.ProfileActivity;
 import com.treeleaf.suchi.activities.report.ReportActivity;
 import com.treeleaf.suchi.activities.sales.AddSalesActivity;
-import com.treeleaf.suchi.activities.sales.SalesActivity;
 import com.treeleaf.suchi.api.Endpoints;
 import com.treeleaf.suchi.entities.SuchiProto;
 import com.treeleaf.suchi.realm.models.Sales;
 import com.treeleaf.suchi.realm.models.SalesStock;
 import com.treeleaf.suchi.realm.repo.SalesRepo;
-import com.treeleaf.suchi.realm.repo.SalesStockRepo;
 import com.treeleaf.suchi.realm.repo.UnitRepo;
 import com.treeleaf.suchi.utils.AppUtils;
 import com.treeleaf.suchi.utils.Constants;
@@ -58,8 +50,6 @@ import com.treeleaf.suchi.utils.NetworkUtils;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import java.util.Locale;
-import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;

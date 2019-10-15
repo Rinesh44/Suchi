@@ -40,7 +40,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
 
-                <com.google.android.material.textfield.TextInputLayout
+      <!--          <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/il_address"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
@@ -55,9 +55,9 @@
                         android:fontFamily="@font/proxima_regular" />
 
 
-                </com.google.android.material.textfield.TextInputLayout>
+                </com.google.android.material.textfield.TextInputLayout>-->
 
-                <com.google.android.material.textfield.TextInputLayout
+   <!--             <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/il_phone"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
@@ -74,7 +74,7 @@
                         android:maxLength="10" />
 
 
-                </com.google.android.material.textfield.TextInputLayout>
+                </com.google.android.material.textfield.TextInputLayout>-->
 
 
                 <com.google.android.material.textfield.TextInputLayout

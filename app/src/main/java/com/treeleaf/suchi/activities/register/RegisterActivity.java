@@ -1,10 +1,12 @@
 package com.treeleaf.suchi.activities.register;
 
+import androidx.appcompat.widget.AppCompatCheckBox;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,14 +36,14 @@ public class RegisterActivity extends BaseActivity implements RegisterView {
     TextInputEditText mStoreName;
     @BindView(R.id.il_store_name)
     TextInputLayout mStoreNameLayout;
-    @BindView(R.id.et_address)
+/*    @BindView(R.id.et_address)
     TextInputEditText mAddress;
     @BindView(R.id.il_address)
     TextInputLayout mAddressLayout;
     @BindView(R.id.et_phone)
     TextInputEditText mPhone;
     @BindView(R.id.il_phone)
-    TextInputLayout mPhoneLayout;
+    TextInputLayout mPhoneLayout;*/
     @BindView(R.id.et_owner_name)
     TextInputEditText mOwnerName;
     @BindView(R.id.il_owner_name)
@@ -60,6 +62,8 @@ public class RegisterActivity extends BaseActivity implements RegisterView {
     TextView mToolbarTitle;
     @BindView(R.id.btn_register)
     MaterialButton mRegister;
+    @BindView(R.id.cb_tnc)
+    CheckBox mTermsNConditions;
 
     private RegisterPresenter presenter;
 
@@ -95,23 +99,23 @@ public class RegisterActivity extends BaseActivity implements RegisterView {
             mStoreNameLayout.setErrorEnabled(false);
         }
 
-        if (Objects.requireNonNull(mAddress.getText()).toString().isEmpty()) {
+   /*     if (Objects.requireNonNull(mAddress.getText()).toString().isEmpty()) {
             mAddressLayout.setErrorEnabled(true);
             mAddressLayout.setError("This field is required");
             mAddress.requestFocus();
             return;
         } else {
             mAddressLayout.setErrorEnabled(false);
-        }
+        }*/
 
-        if (Objects.requireNonNull(mPhone.getText()).toString().isEmpty()) {
+     /*   if (Objects.requireNonNull(mPhone.getText()).toString().isEmpty()) {
             mPhoneLayout.setErrorEnabled(true);
             mPhoneLayout.setError("This field is required");
             mPhone.requestFocus();
             return;
         } else {
             mPhoneLayout.setErrorEnabled(false);
-        }
+        }*/
 
         if (Objects.requireNonNull(mOwnerName.getText()).toString().isEmpty()) {
             mOwnerNameLayout.setErrorEnabled(true);
@@ -140,9 +144,13 @@ public class RegisterActivity extends BaseActivity implements RegisterView {
             mPasswordLayout.setErrorEnabled(false);
         }
 
+        if(!mTermsNConditions.isChecked()){
+            Toast.makeText(this, "Please accept the terms and conditions", Toast.LENGTH_LONG).show();
+            return;
+        }
+
         showLoading();
-        presenter.register(mStoreName.getText().toString().trim(), mAddress.getText().toString().trim(),
-                mPhone.getText().toString().trim(), mOwnerName.getText().toString().trim(),
+        presenter.register(mStoreName.getText().toString().trim(), mOwnerName.getText().toString().trim(),
                 mUsername.getText().toString().trim(), mPassword.getText().toString().trim());
 
     }

@@ -19,11 +19,9 @@ public class RegisterPresenterImpl implements RegisterPresenter {
     }
 
     @Override
-    public void register(String storeName, String address, String phone, String ownerName, String username, String password) {
+    public void register(String storeName, String ownerName, String username, String password) {
         TreeleafProto.UserAccount user = TreeleafProto.UserAccount.newBuilder()
-                .setAddress(address)
                 .setStoreName(storeName)
-                .setPhone(phone)
                 .setOwnerName(ownerName)
                 .setUsername(username)
                 .setPassword(password)
