@@ -94,8 +94,6 @@ public class AddCreditor extends BaseActivity implements View.OnClickListener {
 
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
-//        getMyApplication(this).getAppComponent().inject(this);
-
     }
 
     @Override

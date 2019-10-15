@@ -146,7 +146,7 @@
     <string name="total_dues">Total Dues:</string>
     <string name="select_date">Select date</string>
     <string name="show_all">Show all</string>
-    <string name="sell_stocks">Sell stocks</string>
+    <string name="sell_stocks">Sell</string>
     <string name="notification_settings">Notification settings</string>
     <string name="hours">(Hour)</string>
     <string name="days">(Days)</string>
@@ -159,4 +159,5 @@
     <string name="enable_notification_for_insufficient_stocks">Enable notification for insufficient stocks</string>
     <string name="minimum_stock_quantity_for_notification">Minimum stock quantity for notification</string>
     <string name="days_remaining">days remaining</string>
+    <string name="remaining_amount">Remaining amount:</string>
 </resources>

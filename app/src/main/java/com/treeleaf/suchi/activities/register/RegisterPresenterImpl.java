@@ -52,7 +52,6 @@ public class RegisterPresenterImpl implements RegisterPresenter {
             public void onFailureResult() {
                 activity.hideLoading();
                 activity.registerFail(null);
-
             }
         }));
     }

@@ -7,7 +7,10 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.preference.PreferenceManager;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -58,8 +61,10 @@ public class SalesBill extends BaseActivity {
     MaterialButton mPay;
     @BindView(R.id.btn_add_to_credit)
     MaterialButton mAddToCredit;
-/*    @BindView(R.id.fab_done)
-    FloatingActionButton mDone;*/
+    @BindView(R.id.et_paid_amount)
+    EditText mPaidAmount;
+    @BindView(R.id.tv_remaining_amt)
+    TextView mRemainingAmount;
 
     private double totalAmount = 0;
 
@@ -96,6 +101,36 @@ public class SalesBill extends BaseActivity {
                 Intent i = new Intent(SalesBill.this, CreditEntry.class);
                 i.putParcelableArrayListExtra("sales_stock_list", (ArrayList<? extends Parcelable>) updatedSalesStockList);
                 startActivity(i);
+            }
+        });
+
+        mPaidAmount.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (!charSequence.toString().isEmpty()) {
+                    double remainingAmount = Double.valueOf(charSequence.toString()) - totalAmount;
+
+                    StringBuilder remainingAmountBuilder = new StringBuilder();
+                    remainingAmountBuilder.append(" Rs. ");
+                    remainingAmountBuilder.append(String.valueOf(remainingAmount));
+                    mRemainingAmount.setText(remainingAmountBuilder);
+
+                } else {
+                    StringBuilder remainingAmountBuilder = new StringBuilder();
+                    remainingAmountBuilder.append(" Rs. ");
+                    remainingAmountBuilder.append(String.valueOf(totalAmount));
+                    mRemainingAmount.setText(remainingAmountBuilder);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
             }
         });
 
