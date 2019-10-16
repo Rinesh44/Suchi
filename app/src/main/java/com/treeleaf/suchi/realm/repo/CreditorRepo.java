@@ -37,8 +37,6 @@ public class CreditorRepo extends Repo {
         } catch (Throwable throwable) {
             throwable.printStackTrace();
             callback.fail();
-        } finally {
-            close(realm);
         }
     }
 
@@ -63,8 +61,6 @@ public class CreditorRepo extends Repo {
         } catch (Throwable throwable) {
             throwable.printStackTrace();
             return null;
-        } finally {
-            close(realm);
         }
     }
 
@@ -78,6 +74,25 @@ public class CreditorRepo extends Repo {
             throwable.printStackTrace();
             return null;
         }
+    }
+
+
+    public void deleteCreditorById(String id) {
+        final Realm realm = RealmDatabase.getInstance().getRealm();
+    /*    try {
+            RealmResults<Creditors> creditors = realm.where(Creditors.class).equalTo("id", id).findAll();
+            creditors.deleteAllFromRealm();
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+        }*/
+
+        realm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                RealmResults<Creditors> result = realm.where(Creditors.class).equalTo("id",id).findAll();
+                result.deleteAllFromRealm();
+            }
+        });
     }
 
     public List<String> getAllCreditorNames() {
@@ -107,8 +122,6 @@ public class CreditorRepo extends Repo {
         } catch (Throwable throwable) {
             throwable.printStackTrace();
             callback.fail();
-        } finally {
-            close(realm);
         }
     }
 

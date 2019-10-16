@@ -16,6 +16,9 @@ public class Creditors extends RealmObject {
     private long updatedAt;
     private boolean sync;
 
+    public Creditors() {
+    }
+
     public String getId() {
         return id;
     }

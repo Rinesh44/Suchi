@@ -3,12 +3,14 @@ package com.treeleaf.suchi.adapter;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Bundle;
 import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,6 +18,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.chauthai.swipereveallayout.SwipeRevealLayout;
+import com.chauthai.swipereveallayout.ViewBinderHelper;
 import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.dto.CreditorsDto;
 import com.treeleaf.suchi.realm.models.Creditors;
@@ -29,16 +33,20 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class CreditorsAdapter extends RecyclerView.Adapter<CreditorsAdapter.CreditorsHolder> implements Filterable {
     public static final String TAG = "CreditorsAdapter";
+    private final ViewBinderHelper viewBinderHelper = new ViewBinderHelper();
     private List<CreditorsDto> creditorsList;
     private Context mContext;
     private List<CreditorsDto> creditorsListFiltered;
     private OnItemClickListener listener;
+    private onEditClickListener editListener;
+    private onDeleteClickListener deleteListener;
 
 
     public CreditorsAdapter(List<CreditorsDto> creditorsList, Context mContext) {
         this.creditorsList = creditorsList;
         this.mContext = mContext;
         this.creditorsListFiltered = creditorsList;
+        viewBinderHelper.setOpenOnlyOne(true);
     }
 
     @Override
@@ -55,10 +63,12 @@ public class CreditorsAdapter extends RecyclerView.Adapter<CreditorsAdapter.Cred
                     for (CreditorsDto row : creditorsList) {
                         Creditors creditor = CreditorRepo.getInstance().getCreditorById(row.getId());
 //                        AppUtils.showLog(TAG, "rows: " + row.getWalletAddress());
-                        if (creditor.getName().toLowerCase().contains(charString.toLowerCase()) ||
-                                creditor.getAddress().toLowerCase().contains(charString.toLowerCase()) ||
-                                creditor.getPhone().contains(charString)) {
-                            filteredList.add(row);
+                        if(creditor != null) {
+                            if (creditor.getName().toLowerCase().contains(charString.toLowerCase()) ||
+                                    creditor.getAddress().toLowerCase().contains(charString.toLowerCase()) ||
+                                    creditor.getPhone().contains(charString)) {
+                                filteredList.add(row);
+                            }
                         }
 
                     }
@@ -95,6 +105,8 @@ public class CreditorsAdapter extends RecyclerView.Adapter<CreditorsAdapter.Cred
 
         Creditors creditors = CreditorRepo.getInstance().getCreditorById(creditorsDto.getId());
 
+        viewBinderHelper.bind(holder.mSwipeRevealLayout, creditors.getId());
+
         holder.mName.setText(creditors.getName());
         holder.mAddress.setText(creditors.getAddress());
         holder.mPhone.setText(creditors.getPhone());
@@ -102,7 +114,6 @@ public class CreditorsAdapter extends RecyclerView.Adapter<CreditorsAdapter.Cred
         if (creditors.getPic() != null) {
             Bitmap creditorImage = decodeBase64(creditors.getPic());
             if (creditorImage != null) {
-
                 RequestOptions options = new RequestOptions()
                         .fitCenter()
                         .placeholder(R.drawable.ic_user_proto)
@@ -113,7 +124,27 @@ public class CreditorsAdapter extends RecyclerView.Adapter<CreditorsAdapter.Cred
         } else {
             holder.mCreditorImage.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_user_proto));
         }
+
+
+        holder.mEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (editListener != null) {
+                    editListener.onEditClicked(creditors.getId());
+                }
+            }
+        });
+
+        holder.mDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (deleteListener != null) {
+                    deleteListener.onDeleteClicked(creditors.getId());
+                }
+            }
+        });
     }
+
 
     @Override
     public int getItemCount() {
@@ -125,6 +156,9 @@ public class CreditorsAdapter extends RecyclerView.Adapter<CreditorsAdapter.Cred
         private TextView mName;
         private TextView mAddress;
         private TextView mPhone;
+        public SwipeRevealLayout mSwipeRevealLayout;
+        public ImageButton mEdit, mDelete;
+
 
         public CreditorsHolder(@NonNull View itemView) {
             super(itemView);
@@ -132,6 +166,9 @@ public class CreditorsAdapter extends RecyclerView.Adapter<CreditorsAdapter.Cred
             mName = itemView.findViewById(R.id.tv_creditor_name);
             mAddress = itemView.findViewById(R.id.tv_creditor_address);
             mPhone = itemView.findViewById(R.id.tv_creditor_number);
+            mSwipeRevealLayout = (SwipeRevealLayout) itemView.findViewById(R.id.srl_creditors);
+            mEdit = (ImageButton) itemView.findViewById(R.id.ib_edit);
+            mDelete = (ImageButton) itemView.findViewById(R.id.ib_delete);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -160,4 +197,47 @@ public class CreditorsAdapter extends RecyclerView.Adapter<CreditorsAdapter.Cred
     public void setOnItemClickListener(CreditorsAdapter.OnItemClickListener listener) {
         this.listener = listener;
     }
+
+    public void closeSwipeLayout(String layoutId) {
+        viewBinderHelper.closeLayout(layoutId);
+    }
+
+    public void saveStates(Bundle outState) {
+        viewBinderHelper.saveStates(outState);
+    }
+
+    public void restoreStates(Bundle inState) {
+        viewBinderHelper.restoreStates(inState);
+    }
+
+    public interface onEditClickListener {
+        void onEditClicked(String id);
+    }
+
+    public void deleteItem(String id) {
+        removeFromDb(id);
+
+        for (CreditorsDto creditorDto: creditorsListFiltered
+             ) {
+            if(creditorDto.getId().equals(id)) creditorsListFiltered.remove(creditorDto);
+        }
+        notifyDataSetChanged();
+    }
+
+    private void removeFromDb(String id) {
+        CreditorRepo.getInstance().deleteCreditorById(id);
+    }
+
+    public interface onDeleteClickListener {
+        void onDeleteClicked(String id);
+    }
+
+    public void setOnEditClickListener(CreditorsAdapter.onEditClickListener editListener) {
+        this.editListener = editListener;
+    }
+
+    public void setOnDeleteClickListener(CreditorsAdapter.onDeleteClickListener deleteListener) {
+        this.deleteListener = deleteListener;
+    }
+
 }

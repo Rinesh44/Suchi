@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -39,6 +40,7 @@ public class Creditors extends BaseActivity {
     TextView mNoData;
 
     private CreditorsAdapter adapter;
+    private List<CreditorsDto> creditDtoList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,6 +92,13 @@ public class Creditors extends BaseActivity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        if (adapter != null) adapter.notifyDataSetChanged();
+        mSearch.getText().clear();
+    }
+
+    @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
@@ -106,17 +115,42 @@ public class Creditors extends BaseActivity {
             mSearch.setVisibility(View.VISIBLE);
             mCreditors.setVisibility(View.VISIBLE);
 
-            List<CreditorsDto> creditDtoList = mapModelToDto(creditorsList);
+            creditDtoList = mapModelToDto(creditorsList);
             adapter = new CreditorsAdapter(creditDtoList, this);
-            adapter.setOnItemClickListener(new CreditorsAdapter.OnItemClickListener() {
+    /*        adapter.setOnItemClickListener(new CreditorsAdapter.OnItemClickListener() {
                 @Override
                 public void onItemClick(CreditorsDto creditorDto) {
                     Intent i = new Intent(Creditors.this, CreditorDetails.class);
                     i.putExtra("creditor_info", creditorDto);
                     startActivity(i);
                 }
-            });
+            });*/
             mCreditors.setAdapter(adapter);
+        }
+
+
+        if (adapter != null) {
+            adapter.setOnEditClickListener(new CreditorsAdapter.onEditClickListener() {
+                @Override
+                public void onEditClicked(String id) {
+                    adapter.closeSwipeLayout(id);
+                    for (CreditorsDto creditorDto : creditDtoList
+                    ) {
+                        if (creditorDto.getId().equals(id)) {
+                            Intent i = new Intent(Creditors.this, CreditorDetails.class);
+                            i.putExtra("edit_creditor", creditorDto);
+                            startActivity(i);
+                        }
+                    }
+                }
+            });
+
+            adapter.setOnDeleteClickListener(new CreditorsAdapter.onDeleteClickListener() {
+                @Override
+                public void onDeleteClicked(String id) {
+                    adapter.deleteItem(id);
+                }
+            });
         }
 
     }
@@ -140,6 +174,22 @@ public class Creditors extends BaseActivity {
         }
 
         return creditorDtoList;
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        if (adapter != null) {
+            adapter.saveStates(outState);
+        }
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        if (adapter != null) {
+            adapter.restoreStates(savedInstanceState);
+        }
     }
 
 

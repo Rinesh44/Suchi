@@ -150,9 +150,11 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
                     case R.id.settings:
                         startActivity(new Intent(DashboardActivity.this, Settings.class));
                         break;
+
                     case R.id.logout:
                         showLogoutDialog();
                         break;
+
                     default:
                         return true;
                 }

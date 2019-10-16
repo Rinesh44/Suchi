@@ -1,94 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.chauthai.swipereveallayout.SwipeRevealLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/srl_creditors"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="6dp"
-    app:cardUseCompatPadding="true">
+    app:dragEdge="right"
+    app:mode="normal">
 
-    <RelativeLayout
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/ib_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/green_circle_btn_bg"
+                android:src="@drawable/ic_edit" />
+
+            <ImageButton
+                android:id="@+id/ib_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/red_circle_btn_bg"
+                android:src="@drawable/ic_delete" />
+
+
+        </LinearLayout>
+
+
+    </FrameLayout>
+
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:foreground="?attr/selectableItemBackground"
-        android:focusable="true"
-        android:padding="10dp">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/tv_creditor_name_title"
-            android:layout_width="wrap_content"
+        <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_toRightOf="@+id/iv_creditor_image"
-            android:fontFamily="@font/proxima_regular"
-            android:text="Name" />
+            app:cardCornerRadius="6dp"
+            app:cardUseCompatPadding="true">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:padding="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_toEndOf="@id/iv_creditor_image"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_creditor_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:fontFamily="@font/proxima_regular"
+                        android:text="Gaurav Adhikari"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
 
-        <TextView
-            android:id="@+id/tv_creditor_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_creditor_name_title"
-            android:layout_marginStart="10dp"
-            android:layout_toEndOf="@+id/iv_creditor_image"
-            android:fontFamily="@font/proxima_regular"
-            android:text="Gaurav Adhikari"
-            android:textColor="@color/black" />
+                    <TextView
+                        android:id="@+id/tv_creditor_address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:fontFamily="@font/proxima_regular"
+                        android:text="Kumaripati, Lalitpur"
+                        android:textColor="@color/black" />
 
 
-        <TextView
-            android:id="@+id/tv_creditor_address_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_creditor_name"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_toEndOf="@+id/iv_creditor_image"
-            android:fontFamily="@font/proxima_regular"
-            android:text="Address" />
+                    <TextView
+                        android:id="@+id/tv_creditor_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:fontFamily="@font/proxima_regular"
+                        android:text="98293462871"
+                        android:textColor="@color/black" />
+
+                </LinearLayout>
 
 
-        <TextView
-            android:id="@+id/tv_creditor_address"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_creditor_address_title"
-            android:layout_marginStart="10dp"
-            android:layout_toEndOf="@+id/iv_creditor_image"
-            android:fontFamily="@font/proxima_regular"
-            android:text="Kumaripati, Lalitpur"
-            android:textColor="@color/black" />
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/iv_creditor_image"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_reort" />
+
+            </RelativeLayout>
 
 
-        <TextView
-            android:id="@+id/tv_creditor_number_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="10dp"
-            android:fontFamily="@font/proxima_regular"
-            android:text="Phone" />
+        </com.google.android.material.card.MaterialCardView>
 
-        <TextView
-            android:id="@+id/tv_creditor_number"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_creditor_number_title"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="10dp"
-            android:fontFamily="@font/proxima_regular"
-            android:text="98293462871"
-            android:textColor="@color/black" />
+    </FrameLayout>
 
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/iv_creditor_image"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_centerVertical="true"
-            android:src="@drawable/ic_reort" />
-
-    </RelativeLayout>
-
-
-</com.google.android.material.card.MaterialCardView>
+</com.chauthai.swipereveallayout.SwipeRevealLayout>

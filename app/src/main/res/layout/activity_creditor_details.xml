@@ -9,6 +9,16 @@
 
     <include layout="@layout/toolbar"/>
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,13 +35,25 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/iv_creditor_image"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:src="@drawable/ic_reort"
             app:civ_border_color="@color/primary_color"
             app:civ_border_width="2dp" />
+
+        <TextView
+            android:id="@+id/tv_change"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:background="@drawable/round_bg"
+            android:fontFamily="@font/proxima_regular"
+            android:layout_gravity="end"
+            android:text="Change"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -41,11 +63,10 @@
             android:text="@string/name" />
 
 
-        <TextView
-            android:layout_width="wrap_content"
+        <EditText
+            android:layout_width="match_parent"
             android:id="@+id/tv_creditor_name"
             android:layout_height="wrap_content"
-            android:text="Ricardo ferera"
             android:textColor="@color/black"
             android:textSize="18sp"
             android:fontFamily="@font/proxima_regular"/>
@@ -58,16 +79,14 @@
             android:fontFamily="@font/proxima_regular"
             android:layout_marginTop="10dp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
+        <EditText
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Hattiban"
             android:id="@+id/tv_creditor_address"
             android:textColor="@color/black"
             android:textSize="18sp"
             android:fontFamily="@font/proxima_regular"
             />
-
 
         <TextView
             android:layout_width="wrap_content"
@@ -76,10 +95,9 @@
             android:fontFamily="@font/proxima_regular"
             android:text="Phone" />
 
-        <TextView
-            android:layout_width="wrap_content"
+        <EditText
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="9845273629"
             android:textColor="@color/black"
             android:id="@+id/tv_creditor_number"
             android:textSize="18sp"
@@ -90,5 +108,17 @@
     </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_done"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:src="@drawable/ic_done_white"
+        android:layout_marginEnd="16dp"/>
+
+    </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>
