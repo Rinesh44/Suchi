@@ -69,6 +69,18 @@ public class CreditRepo extends Repo {
         }
     }
 
+    public Credit getCreditByCreditorId(String creditorId) {
+        Realm realm = RealmDatabase.getInstance().getRealm();
+        try {
+            return realm.where(Credit.class).equalTo("creditorId", creditorId).findFirst();
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+            return null;
+        } finally {
+            close(realm);
+        }
+    }
+
 
     public List<Credit> getCreditsWithDues() {
         Realm realm = RealmDatabase.getInstance().getRealm();

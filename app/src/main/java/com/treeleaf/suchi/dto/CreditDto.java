@@ -12,7 +12,7 @@ public class CreditDto implements Parcelable {
     private String id;
     private String creditorId;
     private String paidAmount;
-    private String dueAmount;
+    private String balance;
     private String totalAmount;
     private String userId;
     private String creditorSignature;
@@ -58,12 +58,12 @@ public class CreditDto implements Parcelable {
         this.paidAmount = paidAmount;
     }
 
-    public String getDueAmount() {
-        return dueAmount;
+    public String getBalance() {
+        return balance;
     }
 
-    public void setDueAmount(String dueAmount) {
-        this.dueAmount = dueAmount;
+    public void setBalance(String dueAmount) {
+        this.balance = dueAmount;
     }
 
     public String getTotalAmount() {
@@ -118,7 +118,7 @@ public class CreditDto implements Parcelable {
         id = in.readString();
         creditorId = in.readString();
         paidAmount = in.readString();
-        dueAmount = in.readString();
+        balance = in.readString();
         totalAmount = in.readString();
         userId = in.readString();
         creditorSignature = in.readString();
@@ -143,7 +143,7 @@ public class CreditDto implements Parcelable {
         dest.writeString(id);
         dest.writeString(creditorId);
         dest.writeString(paidAmount);
-        dest.writeString(dueAmount);
+        dest.writeString(balance);
         dest.writeString(totalAmount);
         dest.writeString(userId);
         dest.writeString(creditorSignature);

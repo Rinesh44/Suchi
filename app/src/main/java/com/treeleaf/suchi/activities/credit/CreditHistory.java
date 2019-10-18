@@ -142,7 +142,7 @@ public class CreditHistory extends BaseActivity implements CreditHistoryView {
         totalAmount = 0;
         for (CreditDto creditDto : filteredList
         ) {
-            totalAmount += Double.valueOf(creditDto.getDueAmount());
+            totalAmount += Double.valueOf(creditDto.getBalance());
         }
 
         StringBuilder totalDuesTop = new StringBuilder();
@@ -186,7 +186,7 @@ public class CreditHistory extends BaseActivity implements CreditHistoryView {
             Collections.sort(creditDtoList, new Comparator<CreditDto>() {
                 @Override
                 public int compare(CreditDto o1, CreditDto o2) {
-                    return Double.valueOf(o2.getDueAmount()).compareTo(Double.valueOf(o1.getDueAmount()));
+                    return Double.valueOf(o2.getBalance()).compareTo(Double.valueOf(o1.getBalance()));
                 }
             });
 
@@ -213,7 +213,7 @@ public class CreditHistory extends BaseActivity implements CreditHistoryView {
             creditDto.setId(credit.getId());
             creditDto.setCreatedAt(credit.getCreatedAt());
             creditDto.setCreditorId(credit.getCreditorId());
-            creditDto.setDueAmount(credit.getDueAmount());
+            creditDto.setBalance(credit.getBalance());
             creditDto.setPaidAmount(credit.getPaidAmount());
             creditDto.setSoldItems(credit.getSoldItems());
             creditDto.setSync(credit.isSync());

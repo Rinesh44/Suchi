@@ -90,7 +90,7 @@ public class CreditDetails extends BaseActivity {
                 creditNew.setCreatedAt(credit.getCreatedAt());
                 creditNew.setUpdatedAt(System.currentTimeMillis());
                 creditNew.setCreditorId(credit.getCreditorId());
-                creditNew.setDueAmount("0");
+                creditNew.setBalance("0");
                 creditNew.setPaidAmount(credit.getPaidAmount());
                 creditNew.setSoldItems(credit.getSoldItems());
                 creditNew.setSync(credit.isSync());
@@ -118,16 +118,18 @@ public class CreditDetails extends BaseActivity {
     }
 
     private void setCreditData() {
-        if (!credit.getDueAmount().equals("0")) {
-            StringBuilder paidAmountBuilder = new StringBuilder();
-            paidAmountBuilder.append("Rs. ");
-            paidAmountBuilder.append(new DecimalFormat("##.##").format(Double.valueOf(credit.getPaidAmount())));
-            mPaidAmount.setText(paidAmountBuilder);
+        if (!credit.getBalance().equals("0")) {
+            if(!credit.getPaidAmount().isEmpty()) {
+                StringBuilder paidAmountBuilder = new StringBuilder();
+                paidAmountBuilder.append("Rs. ");
+                paidAmountBuilder.append(new DecimalFormat("##.##").format(Double.valueOf(credit.getPaidAmount())));
+                mPaidAmount.setText(paidAmountBuilder);
+            } else mPaidAmount.setText("N/A");
 
 
             StringBuilder dueAmountBuilder = new StringBuilder();
             dueAmountBuilder.append("Rs. ");
-            dueAmountBuilder.append(new DecimalFormat("##.##").format(Double.valueOf(credit.getDueAmount())));
+            dueAmountBuilder.append(new DecimalFormat("##.##").format(Double.valueOf(credit.getBalance())));
             mDueAmount.setText(dueAmountBuilder);
         } else {
             mDueAmount.setVisibility(View.GONE);
@@ -142,7 +144,6 @@ public class CreditDetails extends BaseActivity {
         }
 
         Creditors creditors = CreditorRepo.getInstance().getCreditorById(credit.getCreditorId());
-        Bitmap creditorSign = decodeBase64(credit.getCreditorSignature());
 
         if (creditors.getPic() != null) {
             Bitmap creditorImage = decodeBase64(creditors.getPic());
@@ -155,15 +156,15 @@ public class CreditDetails extends BaseActivity {
             Glide.with(CreditDetails.this).load(creditorImage).apply(options).into(mCreditor);
         }
 
-        if (creditorSign != null) {
-
+        if (credit.getCreditorSignature() != null) {
+            Bitmap creditorSign = decodeBase64(credit.getCreditorSignature());
             RequestOptions options = new RequestOptions()
                     .fitCenter()
                     .placeholder(R.drawable.ic_user_proto)
                     .error(R.drawable.ic_user_proto);
 
             Glide.with(CreditDetails.this).load(creditorSign).apply(options).into(mCreditorSign);
-        }
+        } else mCreditorSign.setVisibility(View.GONE);
 
 
         StringBuilder nameBuilder = new StringBuilder();
@@ -222,15 +223,17 @@ public class CreditDetails extends BaseActivity {
             quantityHolder.append(salesStock.getUnit());
 
             qty.setText(quantityHolder);
-            price.setText(salesStock.getUnitPrice());
-            amount.setText(salesStock.getAmount());
+            price.setText(new DecimalFormat("#.##").format(Double.valueOf(salesStock.getUnitPrice())));
+            amount.setText(new DecimalFormat("#.##").format(Double.valueOf(salesStock.getAmount())));
 
+
+            AppUtils.showLog(TAG, "sales amount: " + salesStock.getAmount());
             totalAmount += Double.valueOf(salesStock.getAmount());
             mBillHolder.addView(view);
 
             StringBuilder totalAmountBuilder = new StringBuilder();
             totalAmountBuilder.append("Rs. ");
-            totalAmountBuilder.append(new DecimalFormat("##.##").format(totalAmount));
+            totalAmountBuilder.append(new DecimalFormat("#.##").format(totalAmount));
             mTotalAmount.setText(totalAmountBuilder);
 
         }

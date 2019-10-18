@@ -85,6 +85,37 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
     MaterialCardView mAddCreditors;
     @BindView(R.id.btn_reports)
     MaterialCardView mReports;
+    @BindView(R.id.tv_inventory)
+    TextView mInventory;
+    @BindView(R.id.tv_credit)
+    TextView mCredit;
+    @BindView(R.id.tv_report_title)
+    TextView mReport;
+    @BindView(R.id.tv_stock)
+    TextView mStock;
+    @BindView(R.id.tv_stock_detail)
+    TextView mStockDetail;
+    @BindView(R.id.tv_sales)
+    TextView mSell;
+    @BindView(R.id.tv_sales_details)
+    TextView mSalesDetails;
+    @BindView(R.id.tv_credit_history)
+    TextView mCreditHistoryTitle;
+    @BindView(R.id.tv_credit_history_details)
+    TextView mCreditHistoryDetail;
+    @BindView(R.id.tv_add_creditors)
+    TextView mAddCreditorsTitle;
+    @BindView(R.id.tv_add_creditors_details)
+    TextView mAddCreditorDetail;
+    @BindView(R.id.tv_creditors)
+    TextView mCreditorsTitle;
+    @BindView(R.id.tv_report)
+    TextView mReportTitle;
+    @BindView(R.id.tv_creditors_details)
+    TextView mCreditorDetails;
+    @BindView(R.id.tv_report_details)
+    TextView mReportDetails;
+
 
     private DashboardPresenter presenter;
     private SharedPreferences preferences;
@@ -110,6 +141,24 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
         nav_sales.setTitle(resources.getString(R.string.sync));
         nav_logout.setTitle(resources.getString(R.string.logout));
         mToolbarTitle.setText(resources.getString(R.string.dashboard));
+        mInventory.setText(resources.getString(R.string.inventory));
+        mCredit.setText(resources.getString(R.string.credit));
+        mReport.setText(resources.getString(R.string.report));
+        mStock.setText(resources.getString(R.string.stock));
+        mStockDetail.setText(resources.getString(R.string.view_stock_details));
+        mSell.setText(resources.getString(R.string.sell));
+        mCreditHistoryTitle.setText(resources.getString(R.string.credit_history));
+        mCreditHistoryDetail.setText(resources.getString(R.string.view_credit_details));
+        mReport.setText(resources.getString(R.string.report));
+        mAddCreditorsTitle.setText(resources.getString(R.string.add_creditors));
+        mAddCreditorDetail.setText(resources.getString(R.string.add_creditor_details));
+        mCreditorsTitle.setText(resources.getString(R.string.creditors));
+        mCreditorDetails.setText(resources.getString(R.string.creditor_details));
+        mReportTitle.setText(resources.getString(R.string.reports));
+        mReportDetails.setText(resources.getString(R.string.sale_details_in_chart_and_table));
+        mSalesDetails.setText(resources.getString(R.string.sell_items_from_stock));
+
+
     }
 
     @Override

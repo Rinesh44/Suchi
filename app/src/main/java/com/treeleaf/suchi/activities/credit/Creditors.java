@@ -45,6 +45,7 @@ public class Creditors extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setBackgroundDrawable(getResources().getDrawable(R.drawable.bg_for_keyboard_glitch));
         setContentView(R.layout.activity_creditors);
 
         ButterKnife.bind(this);

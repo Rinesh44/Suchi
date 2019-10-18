@@ -152,4 +152,8 @@
     <string name="enable_notification_for_insufficient_stocks">अपर्याप्त स्टकहरूको लागि सूचना सक्षम गर्नुहोस्</string>
     <string name="minimum_stock_quantity_for_notification">सूचनाको लागि न्यूनतम स्टक मात्रा</string>
     <string name="notification_settings">सूचना सेटिंग्स</string>
+    <string name="creditor_details">" लेनदार विवरण"</string>
+    <string name="creditors">लेनदार</string>
+    <string name="edit_creditor">"लेनदारहरू सम्पादन गर्नुहोस् "</string>
+    <string name="remaining_amount">" बाँकी रकम:"</string>
 </resources>

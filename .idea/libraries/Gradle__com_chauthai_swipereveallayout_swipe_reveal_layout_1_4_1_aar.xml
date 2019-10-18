@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="Gradle: com.chauthai.swipereveallayout:swipe-reveal-layout:1.4.1@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/4b3a0778a78c7f716353adb4e78be4fe/jetified-swipe-reveal-layout-1.4.1/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/4b3a0778a78c7f716353adb4e78be4fe/jetified-swipe-reveal-layout-1.4.1/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/3e580c3471efe8e86967d4e84a91bcdc/jetified-swipe-reveal-layout-1.4.1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/3e580c3471efe8e86967d4e84a91bcdc/jetified-swipe-reveal-layout-1.4.1/res" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.chauthai.swipereveallayout/swipe-reveal-layout/1.4.1/4cb70dfff631146eb4ce510e9d6aee014887fa4b/swipe-reveal-layout-1.4.1-javadoc.jar!/" />

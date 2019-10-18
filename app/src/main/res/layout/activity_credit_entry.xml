@@ -6,7 +6,6 @@
     android:background="@color/gray"
     android:orientation="vertical">
 
-
     <include layout="@layout/toolbar" />
 
     <ScrollView
@@ -174,7 +173,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="4"
                             android:fontFamily="@font/proxima_regular"
-                            android:gravity="center"
+                            android:gravity="end"
                             android:text="340"
                             android:textColor="@color/black"
                             android:textSize="17sp"
@@ -261,6 +260,16 @@
 
             </LinearLayout>
 
+            <Button
+                android:id="@+id/btn_show_creditor_history"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:fontFamily="@font/proxima_regular"
+                android:visibility="gone"
+                android:textStyle="bold"
+                android:text="Show creditor history"/>
+
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/il_paid_amount"
@@ -284,28 +293,43 @@
 
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/il_due_amount"
+                android:id="@+id/il_amount_type"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:hint="@string/due_amount">
-
+                android:hint="@string/due_amount"
+                android:layout_margin="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_due_amount"
+                    android:id="@+id/et_amount_type"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/proxima_regular"
+                    android:textColor="@color/red"
                     android:inputType="numberDecimal"
                     android:textSize="14sp" />
 
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <Button
+                android:id="@+id/btn_add_sign"
+                android:layout_width="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="5dp"
+                android:textStyle="bold"
+                android:fontFamily="@font/proxima_regular"
+                android:text="Add Creditor's Signature"
+                android:layout_marginBottom="5dp"
+                android:layout_height="wrap_content"/>
+
+
             <RelativeLayout
+                android:id="@+id/rl_sign"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:padding="10dp"
                 >
 
@@ -322,6 +346,7 @@
                     android:id="@+id/signature_pad"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
+                    android:layout_marginTop="10dp"
                     android:layout_below="@+id/tv_signature"
                     android:background="@color/white"
                     app:clearOnDoubleClick="true"
@@ -333,7 +358,7 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_add_to_credit"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:fontFamily="@font/proxima_regular"
                 android:text="@string/add_to_credit"

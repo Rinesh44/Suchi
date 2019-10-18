@@ -11,7 +11,9 @@ import android.util.Base64;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +27,7 @@ import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.activities.base.BaseActivity;
 import com.treeleaf.suchi.activities.dashboard.DashboardActivity;
 import com.treeleaf.suchi.adapter.AutocompleteCreditorAdapter;
+import com.treeleaf.suchi.dto.CreditDto;
 import com.treeleaf.suchi.dto.CreditorsDto;
 import com.treeleaf.suchi.realm.models.Credit;
 import com.treeleaf.suchi.realm.models.Creditors;
@@ -63,16 +66,22 @@ public class CreditEntry extends BaseActivity implements View.OnClickListener {
     TextInputLayout mPaidAmountLayout;
     @BindView(R.id.et_paid_amount)
     TextInputEditText mPaidAmount;
-    @BindView(R.id.il_due_amount)
-    TextInputLayout mDueAmountLayout;
-    @BindView(R.id.et_due_amount)
-    TextInputEditText mDueAmount;
+    @BindView(R.id.il_amount_type)
+    TextInputLayout mAmountTypeLayout;
+    @BindView(R.id.et_amount_type)
+    TextInputEditText mAmountType;
     @BindView(R.id.btn_add_to_credit)
     MaterialButton mAddToCredit;
     @BindView(R.id.tv_total_amount)
     TextView mTotalAmount;
     @BindView(R.id.signature_pad)
     SignaturePad mSignaturePad;
+    @BindView(R.id.btn_show_creditor_history)
+    Button mCreditorHistory;
+    @BindView(R.id.btn_add_sign)
+    Button mAddSign;
+    @BindView(R.id.rl_sign)
+    RelativeLayout mSignField;
 
     private double totalAmount = 0;
     private List<SalesStock> salesStockList = new RealmList<>();
@@ -81,6 +90,10 @@ public class CreditEntry extends BaseActivity implements View.OnClickListener {
     private SharedPreferences preferences;
     private String creditId;
     private String creditorSignEncoded;
+    private Credit selectedCredit;
+    private double amountDiff;
+    private double paidAmount = 0;
+    private boolean enableSign = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,18 +105,26 @@ public class CreditEntry extends BaseActivity implements View.OnClickListener {
         initialize();
         mCreateNewCreditor.setOnClickListener(this);
         mAddToCredit.setOnClickListener(this);
-        mDueAmount.setEnabled(false);
+        mAddSign.setOnClickListener(this);
+        mCreditorHistory.setOnClickListener(this);
+        mAmountType.setEnabled(false);
 
         getBillFromIntent();
         inflateListInBillHolder();
         setUpCreditorSearch();
 
-        mDueAmount.setText(String.valueOf(new DecimalFormat("##.##").format(totalAmount)));
+        mAmountType.setText(String.valueOf(new DecimalFormat("#.##").format(totalAmount)));
         mCreditorName.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 hideKeyboard();
                 selectedCreditor = (CreditorsDto) adapterView.getItemAtPosition(i);
+
+                selectedCredit = CreditRepo.getInstance().getCreditByCreditorId(selectedCreditor.getId());
+                if (selectedCredit != null && !selectedCredit.getBalance().isEmpty())
+                    mCreditorHistory.setVisibility(View.VISIBLE);
+                else mCreditorHistory.setVisibility(View.GONE);
+
                 AppUtils.showLog(TAG, "selectedname: " + selectedCreditor.getName());
                 mCreditorName.setText(selectedCreditor.getName());
             }
@@ -119,17 +140,21 @@ public class CreditEntry extends BaseActivity implements View.OnClickListener {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 if (!charSequence.toString().isEmpty() && charSequence.length() > 1) {
-                    double paidAmount = Double.valueOf(charSequence.toString());
-                    double amountDiff = totalAmount - paidAmount;
+                    paidAmount = Double.valueOf(charSequence.toString());
+                    amountDiff = paidAmount - totalAmount;
+                    AppUtils.showLog(TAG, "amountDiff: " + amountDiff);
                     if (amountDiff >= 0) {
-                        mDueAmount.setText(String.valueOf(amountDiff));
-                        mPaidAmountLayout.setErrorEnabled(false);
+                        mAmountType.setText(String.valueOf(amountDiff));
+                        mAmountType.setTextColor(getResources().getColor(R.color.green1));
+                        mAmountTypeLayout.setHint("Balance");
                     } else {
-                        mPaidAmountLayout.setErrorEnabled(true);
-                        mPaidAmountLayout.setError("Paid amount must be less than total");
+                        mAmountType.setText(String.valueOf(new DecimalFormat("#.##").
+                                format(Math.abs(amountDiff))));
+                        mAmountType.setTextColor(getResources().getColor(R.color.red));
+                        mAmountTypeLayout.setHint("Due Amount");
                     }
                 } else {
-                    mDueAmount.setText(String.valueOf(new DecimalFormat("##.##").format(totalAmount)));
+                    mAmountType.setText(String.valueOf(new DecimalFormat("#.##").format(totalAmount)));
                 }
             }
 
@@ -156,6 +181,24 @@ public class CreditEntry extends BaseActivity implements View.OnClickListener {
             }
         });
     }
+
+    private CreditDto mapCreditToDto(Credit selectedCredit) {
+        CreditDto creditDto = new CreditDto();
+        creditDto.setId(selectedCredit.getId());
+        creditDto.setCreditorId(selectedCredit.getCreditorId());
+        creditDto.setPaidAmount(selectedCredit.getPaidAmount());
+        creditDto.setBalance(selectedCredit.getBalance());
+        creditDto.setTotalAmount(selectedCredit.getTotalAmount());
+        creditDto.setUserId(selectedCredit.getUserId());
+        creditDto.setCreditorSignature(selectedCredit.getCreditorSignature());
+        creditDto.setCreatedAt(selectedCredit.getCreatedAt());
+        creditDto.setUpdatedAt(selectedCredit.getUpdatedAt());
+        creditDto.setSync(selectedCredit.isSync());
+        creditDto.setSoldItems(selectedCredit.getSoldItems());
+
+        return creditDto;
+    }
+
 
     private void getBillFromIntent() {
         Intent i = getIntent();
@@ -200,22 +243,47 @@ public class CreditEntry extends BaseActivity implements View.OnClickListener {
                     return;
                 }
 
-
-                Bitmap signatureBitmap = mSignaturePad.getTransparentSignatureBitmap();
-                encodeBitmapToBase64(signatureBitmap);
-
-                if (creditorSignEncoded == null) {
-                    Toast.makeText(this, "Creditor's signature is empty", Toast.LENGTH_SHORT).show();
-                    return;
+                if(enableSign) {
+                    Bitmap signatureBitmap = mSignaturePad.getTransparentSignatureBitmap();
+                    encodeBitmapToBase64(signatureBitmap);
                 }
 
+                amountDiff = paidAmount = totalAmount;
+                AppUtils.showLog(TAG, "AmountDiffer: " + amountDiff);
                 saveCreditToDb();
 
+                String newString;
+                for(int i = 0; i < newString.length(); i++){
+                    char c = newString.
+                    if(c == "a") count++;
+                }
+                break;
+
+            case R.id.btn_show_creditor_history:
+                Intent i = new Intent(CreditEntry.this, CreditDetails.class);
+                CreditDto creditDto = mapCreditToDto(selectedCredit);
+                i.putExtra("credit_info", creditDto);
+                Character.()
+                startActivity(i);
+                break;
+
+            case R.id.btn_add_sign:
+                enableSign = !enableSign;
+                if(enableSign) {
+                    mSignField.setVisibility(View.VISIBLE);
+                    mAddSign.setText("Remove creditor's signature");
+                }
+                else {
+                    mAddSign.setText("Add creditors's signature");
+                    mSignField.setVisibility(View.GONE);
+                    creditorSignEncoded = "";
+                }
                 break;
         }
     }
 
     private void saveCreditToDb() {
+
         RealmList<SalesStock> realmStockList = new RealmList<>();
         realmStockList.addAll(salesStockList);
         creditId = UUID.randomUUID().toString().replace("-", "");
@@ -223,8 +291,8 @@ public class CreditEntry extends BaseActivity implements View.OnClickListener {
         credit.setId(creditId);
         credit.setCreditorId(selectedCreditor.getId());
         credit.setPaidAmount(Objects.requireNonNull(mPaidAmount.getText()).toString());
-        credit.setDueAmount(Objects.requireNonNull(mDueAmount.getText()).toString());
-        credit.setTotalAmount(mTotalAmount.getText().toString());
+        credit.setBalance(Objects.requireNonNull(String.valueOf(amountDiff)));
+        credit.setTotalAmount(String.valueOf(totalAmount));
         credit.setUserId(preferences.getString(Constants.USER_ID, ""));
         credit.setCreatedAt(System.currentTimeMillis());
         credit.setUpdatedAt(0);
@@ -270,15 +338,15 @@ public class CreditEntry extends BaseActivity implements View.OnClickListener {
             quantityHolder.append(salesStock.getUnit());
 
             qty.setText(quantityHolder);
-            price.setText(salesStock.getUnitPrice());
-            amount.setText(salesStock.getAmount());
+            price.setText(new DecimalFormat("#.##").format(Double.valueOf(salesStock.getUnitPrice())));
+            amount.setText(new DecimalFormat("#.##").format(Double.valueOf(salesStock.getAmount())));
 
             totalAmount += Double.valueOf(salesStock.getAmount());
             mBillHolder.addView(view);
 
             StringBuilder totalAmountBuilder = new StringBuilder();
             totalAmountBuilder.append("Rs. ");
-            totalAmountBuilder.append(new DecimalFormat("##.##").format(totalAmount));
+            totalAmountBuilder.append(new DecimalFormat("#.##").format(totalAmount));
             mTotalAmount.setText(totalAmountBuilder);
 
         }
@@ -290,7 +358,6 @@ public class CreditEntry extends BaseActivity implements View.OnClickListener {
         byte[] byteArray = byteArrayOutputStream.toByteArray();
 
         creditorSignEncoded = Base64.encodeToString(byteArray, Base64.DEFAULT);
-
     }
 
     private void setUpCreditorSearch() {

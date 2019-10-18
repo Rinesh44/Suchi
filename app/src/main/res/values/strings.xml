@@ -53,7 +53,7 @@
     <string name="username">Email/Phone</string>
     <string name="done">Done</string>
     <string name="translate_this_to_nepali">Translate this to nepali</string>
-    <string name="items_to_sell">Items to sell</string>
+    <string name="items_to_sell">Items to be sold</string>
     <string name="credit_info">Credit Info</string>
     <string name="search_creditor">Search Creditor</string>
     <string name="create_new">Create new</string>
@@ -147,6 +147,7 @@
     <string name="select_date">Select date</string>
     <string name="show_all">Show all</string>
     <string name="sell_stocks">Sell</string>
+    <string name="edit_creditor">Edit Creditor</string>
     <string name="notification_settings">Notification settings</string>
     <string name="hours">(Hour)</string>
     <string name="days">(Days)</string>

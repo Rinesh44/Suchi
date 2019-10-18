@@ -74,7 +74,6 @@ import com.treeleaf.suchi.realm.models.SalesStock;
 import com.treeleaf.suchi.realm.models.StockKeepingUnit;
 import com.treeleaf.suchi.realm.models.Units;
 import com.treeleaf.suchi.realm.repo.InventoryRepo;
-import com.treeleaf.suchi.realm.repo.InventoryStocksRepo;
 import com.treeleaf.suchi.realm.repo.Repo;
 import com.treeleaf.suchi.realm.repo.SalesRepo;
 import com.treeleaf.suchi.realm.repo.UnitRepo;
@@ -263,7 +262,6 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
 //                mSell.setVisibility(View.VISIBLE);
                 selectedItem = (InventoryDto) adapterView.getItemAtPosition(i);
                 setUpViewForSkuDetails(selectedItem);
-
             }
         });
 
@@ -564,7 +562,6 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
 
             if (checked) mRecyclerHolder.setVisibility(View.GONE);
             else mRecyclerHolder.setVisibility(View.VISIBLE);
-
         }
     };
 
@@ -625,13 +622,11 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
         data.putParcelableArrayListExtra(EXTRA_TITLE, (ArrayList<? extends Parcelable>) cartItemList);
         setResult(RESULT_OK, data);*/
 
-
         Intent sendData = new Intent(AddSalesActivity.this, SalesBill.class);
         sendData.putParcelableArrayListExtra(EXTRA_TITLE, (ArrayList<? extends Parcelable>) cartItemList);
         startActivity(sendData);
 
 //        List<Sales> unSyncedSalesList = mapCartItemDataToSalesModel();
-
 
     }
 

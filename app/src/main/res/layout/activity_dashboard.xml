@@ -19,401 +19,405 @@
             android:layout_below="@+id/toolbar"
             android:fillViewport="true">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/toolbar"
-            android:clipToPadding="false"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="30dp"
-            android:orientation="vertical"
-            android:padding="20dp">
-
-
-            <RelativeLayout
-                android:id="@+id/rl_item_info"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/tv_item_info"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/inventory"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_toEndOf="@+id/tv_item_info"
-                    android:background="@color/colorAccent" />
-
-            </RelativeLayout>
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/btn_stocks"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                app:cardBackgroundColor="@color/greyish"
-                app:cardCornerRadius="8dp"
-              >
+                android:layout_below="@+id/toolbar"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="30dp"
+                android:clipToPadding="false"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+
+                <RelativeLayout
+                    android:id="@+id/rl_item_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tv_inventory"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/inventory"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_toEndOf="@+id/tv_inventory"
+                        android:background="@color/colorAccent" />
+
+                </RelativeLayout>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/btn_stocks"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    app:cardBackgroundColor="@color/greyish"
+                    app:cardCornerRadius="8dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clipToPadding="false"
+                        android:focusable="true"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:orientation="vertical"
+                        android:padding="15dp">
+
+                        <ImageView
+                            android:id="@+id/iv_stock"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/ic_stocks" />
+
+                        <TextView
+                            android:id="@+id/tv_stock"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="15dp"
+                            android:layout_toRightOf="@+id/iv_stock"
+                            android:elevation="8dp"
+                            android:fontFamily="@font/proxima_regular"
+                            android:text="@string/stock"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="25sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tv_stock_detail"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tv_stock"
+                            android:layout_marginStart="15dp"
+                            android:layout_toRightOf="@+id/iv_stock"
+                            android:fontFamily="@font/proxima_regular"
+                            android:text="@string/view_stock_details" />
+
+                    </RelativeLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/btn_sales"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    app:cardBackgroundColor="@color/greyish"
+                    app:cardCornerRadius="8dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clipToPadding="false"
+                        android:focusable="true"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:orientation="vertical"
+                        android:padding="15dp">
+
+
+                        <ImageView
+                            android:id="@+id/iv_sales"
+                            android:layout_width="38dp"
+                            android:layout_height="37dp"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/ic_sales" />
+
+                        <TextView
+                            android:id="@+id/tv_sales"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="15dp"
+                            android:layout_toRightOf="@+id/iv_sales"
+                            android:elevation="8dp"
+                            android:fontFamily="@font/proxima_regular"
+                            android:text="@string/sell_stocks"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="25sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tv_sales_details"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tv_sales"
+                            android:layout_marginStart="15dp"
+                            android:layout_toRightOf="@+id/iv_sales"
+                            android:fontFamily="@font/proxima_regular"
+                            android:text="@string/sell_items_from_stock" />
+
+                    </RelativeLayout>
+
+                </com.google.android.material.card.MaterialCardView>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:focusable="true"
-                    android:clipToPadding="false"
-                    android:foreground="?attr/selectableItemBackground"
-                    android:orientation="vertical"
-                    android:padding="15dp">
-
-                    <ImageView
-                        android:id="@+id/iv_stock"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_centerVertical="true"
-                        android:src="@drawable/ic_stocks" />
+                    android:layout_marginTop="15dp">
 
                     <TextView
-                        android:id="@+id/tv_stock"
+                        android:id="@+id/tv_credit"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="15dp"
-                        android:layout_toRightOf="@+id/iv_stock"
-                        android:elevation="8dp"
-                        android:fontFamily="@font/proxima_regular"
-                        android:text="@string/stock"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="25sp"
+                        android:text="@string/credit"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
                         android:textStyle="bold" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/tv_stock"
-                        android:layout_marginStart="15dp"
-                        android:layout_toRightOf="@+id/iv_stock"
-                        android:fontFamily="@font/proxima_regular"
-                        android:text="@string/view_stock_details" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_toEndOf="@+id/tv_credit"
+                        android:background="@color/colorAccent" />
 
                 </RelativeLayout>
 
-            </com.google.android.material.card.MaterialCardView>
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/btn_sales"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                app:cardBackgroundColor="@color/greyish"
-                app:cardCornerRadius="8dp"
-                >
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/btn_credit_history"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    app:cardBackgroundColor="@color/greyish"
+                    app:cardCornerRadius="8dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clipToPadding="false"
+                        android:focusable="true"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:orientation="vertical"
+                        android:padding="15dp">
+
+
+                        <ImageView
+                            android:id="@+id/iv_credit_history"
+                            android:layout_width="38dp"
+                            android:layout_height="37dp"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/ic_credit_history" />
+
+                        <TextView
+                            android:id="@+id/tv_credit_history"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="15dp"
+                            android:layout_toRightOf="@+id/iv_credit_history"
+                            android:elevation="8dp"
+                            android:fontFamily="@font/proxima_regular"
+                            android:text="@string/credit_history"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="23sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tv_credit_history_details"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tv_credit_history"
+                            android:layout_marginStart="15dp"
+                            android:layout_toRightOf="@+id/iv_credit_history"
+                            android:fontFamily="@font/proxima_regular"
+                            android:text="@string/view_credit_details" />
+
+                    </RelativeLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/btn_add_creditors"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    app:cardBackgroundColor="@color/greyish"
+                    app:cardCornerRadius="8dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clipToPadding="false"
+                        android:focusable="true"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:orientation="vertical"
+                        android:padding="15dp">
+
+
+                        <ImageView
+                            android:id="@+id/iv_add_creditors"
+                            android:layout_width="38dp"
+                            android:layout_height="37dp"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/ic_creditors" />
+
+                        <TextView
+                            android:id="@+id/tv_add_creditors"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="15dp"
+                            android:layout_toRightOf="@+id/iv_add_creditors"
+                            android:elevation="8dp"
+                            android:fontFamily="@font/proxima_regular"
+                            android:text="@string/add_creditors"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="23sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tv_add_creditors_details"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tv_add_creditors"
+                            android:layout_marginStart="15dp"
+                            android:layout_toRightOf="@+id/iv_add_creditors"
+                            android:fontFamily="@font/proxima_regular"
+                            android:text="@string/add_creditor_details" />
+
+                    </RelativeLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/btn_creditors"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    app:cardBackgroundColor="@color/greyish"
+                    app:cardCornerRadius="8dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clipToPadding="false"
+                        android:focusable="true"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:orientation="vertical"
+                        android:padding="15dp">
+
+
+                        <ImageView
+                            android:id="@+id/iv_creditors"
+                            android:layout_width="38dp"
+                            android:layout_height="37dp"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/ic_creditor" />
+
+                        <TextView
+                            android:id="@+id/tv_creditors"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="15dp"
+                            android:layout_toRightOf="@+id/iv_creditors"
+                            android:elevation="8dp"
+                            android:fontFamily="@font/proxima_regular"
+                            android:text="@string/creditors"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="23sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tv_creditors_details"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tv_creditors"
+                            android:layout_marginStart="15dp"
+                            android:layout_toRightOf="@+id/iv_creditors"
+                            android:fontFamily="@font/proxima_regular"
+                            android:text="@string/creditor_details" />
+
+                    </RelativeLayout>
+
+                </com.google.android.material.card.MaterialCardView>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:focusable="true"
-                    android:clipToPadding="false"
-                    android:foreground="?attr/selectableItemBackground"
-                    android:orientation="vertical"
-                    android:padding="15dp">
-
-
-                    <ImageView
-                        android:id="@+id/iv_sales"
-                        android:layout_width="38dp"
-                        android:layout_height="37dp"
-                        android:layout_centerVertical="true"
-                        android:src="@drawable/ic_sales" />
+                    android:layout_marginTop="15dp">
 
                     <TextView
-                        android:id="@+id/tv_sales"
+                        android:id="@+id/tv_report_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="15dp"
-                        android:layout_toRightOf="@+id/iv_sales"
-                        android:elevation="8dp"
-                        android:fontFamily="@font/proxima_regular"
-                        android:text="@string/sell_stocks"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="25sp"
+                        android:text="@string/report"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
                         android:textStyle="bold" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/tv_sales"
-                        android:layout_marginStart="15dp"
-                        android:layout_toRightOf="@+id/iv_sales"
-                        android:fontFamily="@font/proxima_regular"
-                        android:text="@string/sell_items_from_stock" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_toEndOf="@+id/tv_report_title"
+                        android:background="@color/colorAccent" />
 
                 </RelativeLayout>
 
-            </com.google.android.material.card.MaterialCardView>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp">
-
-                <TextView
-                    android:id="@+id/tv_credit"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/credit"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_toEndOf="@+id/tv_credit"
-                    android:background="@color/colorAccent" />
-
-            </RelativeLayout>
-
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/btn_credit_history"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                app:cardBackgroundColor="@color/greyish"
-                app:cardCornerRadius="8dp">
-
-                <RelativeLayout
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/btn_reports"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:focusable="true"
-                    android:clipToPadding="false"
-                    android:foreground="?attr/selectableItemBackground"
-                    android:orientation="vertical"
-                    android:padding="15dp">
+                    android:layout_marginTop="12dp"
+                    app:cardBackgroundColor="@color/greyish"
+                    app:cardCornerRadius="8dp">
 
-
-                    <ImageView
-                        android:id="@+id/iv_credit_history"
-                        android:layout_width="38dp"
-                        android:layout_height="37dp"
-                        android:layout_centerVertical="true"
-                        android:src="@drawable/ic_credit_history" />
-
-                    <TextView
-                        android:id="@+id/tv_credit_history"
-                        android:layout_width="wrap_content"
+                    <RelativeLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="15dp"
-                        android:layout_toRightOf="@+id/iv_credit_history"
-                        android:elevation="8dp"
-                        android:fontFamily="@font/proxima_regular"
-                        android:text="@string/credit_history"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="23sp"
-                        android:textStyle="bold" />
+                        android:clipToPadding="false"
+                        android:focusable="true"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:orientation="vertical"
+                        android:padding="15dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/tv_credit_history"
-                        android:layout_marginStart="15dp"
-                        android:layout_toRightOf="@+id/iv_credit_history"
-                        android:fontFamily="@font/proxima_regular"
-                        android:text="@string/view_credit_details" />
+                        <ImageView
+                            android:id="@+id/iv_report"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/ic_reports" />
 
-                </RelativeLayout>
+                        <TextView
+                            android:id="@+id/tv_report"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="15dp"
+                            android:layout_toRightOf="@+id/iv_report"
+                            android:elevation="8dp"
+                            android:fontFamily="@font/proxima_regular"
+                            android:text="@string/reports"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="25sp"
+                            android:textStyle="bold" />
 
-            </com.google.android.material.card.MaterialCardView>
+                        <TextView
+                            android:id="@+id/tv_report_details"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tv_report"
+                            android:layout_marginStart="15dp"
+                            android:layout_toRightOf="@id/iv_report"
+                            android:fontFamily="@font/proxima_regular"
+                            android:text="@string/sale_details_in_chart_and_table" />
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/btn_add_creditors"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                app:cardBackgroundColor="@color/greyish"
-                app:cardCornerRadius="8dp">
+                    </RelativeLayout>
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:focusable="true"
-                    android:clipToPadding="false"
-                    android:foreground="?attr/selectableItemBackground"
-                    android:orientation="vertical"
-                    android:padding="15dp">
-
-
-                    <ImageView
-                        android:id="@+id/iv_add_creditors"
-                        android:layout_width="38dp"
-                        android:layout_height="37dp"
-                        android:layout_centerVertical="true"
-                        android:src="@drawable/ic_creditors" />
-
-                    <TextView
-                        android:id="@+id/tv_add_creditors"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="15dp"
-                        android:layout_toRightOf="@+id/iv_add_creditors"
-                        android:elevation="8dp"
-                        android:fontFamily="@font/proxima_regular"
-                        android:text="@string/add_creditors"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="23sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/tv_add_creditors"
-                        android:layout_marginStart="15dp"
-                        android:layout_toRightOf="@+id/iv_add_creditors"
-                        android:fontFamily="@font/proxima_regular"
-                        android:text="@string/add_creditor_details" />
-
-                </RelativeLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/btn_creditors"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                app:cardBackgroundColor="@color/greyish"
-                app:cardCornerRadius="8dp">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:focusable="true"
-                    android:clipToPadding="false"
-                    android:foreground="?attr/selectableItemBackground"
-                    android:orientation="vertical"
-                    android:padding="15dp">
+                </com.google.android.material.card.MaterialCardView>
 
 
-                    <ImageView
-                        android:id="@+id/iv_creditors"
-                        android:layout_width="38dp"
-                        android:layout_height="37dp"
-                        android:layout_centerVertical="true"
-                        android:src="@drawable/ic_creditor" />
-
-                    <TextView
-                        android:id="@+id/tv_creditors"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="15dp"
-                        android:layout_toRightOf="@+id/iv_creditors"
-                        android:elevation="8dp"
-                        android:fontFamily="@font/proxima_regular"
-                        android:text="Creditors"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="23sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/tv_creditors"
-                        android:layout_marginStart="15dp"
-                        android:layout_toRightOf="@+id/iv_creditors"
-                        android:fontFamily="@font/proxima_regular"
-                        android:text="Creditor details" />
-
-                </RelativeLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp">
-
-                <TextView
-                    android:id="@+id/tv_report_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/report"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_toEndOf="@+id/tv_report_title"
-                    android:background="@color/colorAccent" />
-
-            </RelativeLayout>
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/btn_reports"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                app:cardBackgroundColor="@color/greyish"
-                app:cardCornerRadius="8dp">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:focusable="true"
-                    android:clipToPadding="false"
-                    android:foreground="?attr/selectableItemBackground"
-                    android:orientation="vertical"
-                    android:padding="15dp">
-
-                    <ImageView
-                        android:id="@+id/iv_report"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_centerVertical="true"
-                        android:src="@drawable/ic_reports" />
-
-                    <TextView
-                        android:id="@+id/tv_report"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="15dp"
-                        android:layout_toRightOf="@+id/iv_report"
-                        android:elevation="8dp"
-                        android:fontFamily="@font/proxima_regular"
-                        android:text="@string/reports"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="25sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/tv_report"
-                        android:layout_marginStart="15dp"
-                        android:layout_toRightOf="@id/iv_report"
-                        android:fontFamily="@font/proxima_regular"
-                        android:text="@string/sale_details_in_chart_and_table" />
-
-                </RelativeLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-
-
-        </LinearLayout>
+            </LinearLayout>
 
         </ScrollView>
 

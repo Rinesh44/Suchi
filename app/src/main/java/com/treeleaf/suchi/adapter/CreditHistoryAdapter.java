@@ -65,16 +65,19 @@ public class CreditHistoryAdapter extends RecyclerView.Adapter<CreditHistoryAdap
         holder.mAddress.setText(creditors.getAddress());
         holder.mPhone.setText(creditors.getPhone());
 
-        if (!creditDto.getDueAmount().equals("0")) {
+        if (!creditDto.getBalance().equals("0")) {
             StringBuilder dueAmountBuilder = new StringBuilder();
             dueAmountBuilder.append("Rs. ");
-            dueAmountBuilder.append(new DecimalFormat("##.##").format(Double.valueOf(creditDto.getDueAmount())));
+            dueAmountBuilder.append(new DecimalFormat("##.##").format(Double.valueOf(creditDto.getBalance())));
             holder.mDueAmount.setText(dueAmountBuilder);
 
-            StringBuilder paidAmountBuilder = new StringBuilder();
-            paidAmountBuilder.append("Rs. ");
-            paidAmountBuilder.append(new DecimalFormat("##.##").format(Double.valueOf(creditDto.getPaidAmount())));
-            holder.mPaidAmount.setText(paidAmountBuilder);
+            if (!creditDto.getPaidAmount().isEmpty()) {
+                StringBuilder paidAmountBuilder = new StringBuilder();
+                paidAmountBuilder.append("Rs. ");
+                paidAmountBuilder.append(new DecimalFormat("##.##").format(Double.valueOf(creditDto.getPaidAmount())));
+                holder.mPaidAmount.setText(paidAmountBuilder);
+            } else holder.mPaidAmount.setText("N/A");
+
         } else {
             //remove amount and set paid text
             holder.mDueAmount.setText("Paid");

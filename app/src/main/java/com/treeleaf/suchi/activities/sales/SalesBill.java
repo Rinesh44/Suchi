@@ -35,6 +35,7 @@ import com.treeleaf.suchi.realm.repo.SalesRepo;
 import com.treeleaf.suchi.utils.AppUtils;
 import com.treeleaf.suchi.utils.Constants;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -65,6 +66,8 @@ public class SalesBill extends BaseActivity {
     EditText mPaidAmount;
     @BindView(R.id.tv_remaining_amt)
     TextView mRemainingAmount;
+    @BindView(R.id.tv_amount_title)
+    TextView mAmountType;
 
     private double totalAmount = 0;
 
@@ -112,18 +115,25 @@ public class SalesBill extends BaseActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
                 if (!charSequence.toString().isEmpty()) {
-                    double remainingAmount = Double.valueOf(charSequence.toString()) - totalAmount;
+                    if(Double.valueOf(charSequence.toString()) > totalAmount) mAmountType.setText("Excess amount: ");
+                     else mAmountType.setText("Remaining amount: ");
+
+                    double remainingAmount = Math.abs(Double.valueOf(charSequence.toString()) -
+                            Double.valueOf(new DecimalFormat("#.##").format(totalAmount)));
 
                     StringBuilder remainingAmountBuilder = new StringBuilder();
                     remainingAmountBuilder.append(" Rs. ");
-                    remainingAmountBuilder.append(String.valueOf(remainingAmount));
+                    remainingAmountBuilder.append((new DecimalFormat("#.##").format(
+                            Double.valueOf(remainingAmount))));
                     mRemainingAmount.setText(remainingAmountBuilder);
 
                 } else {
                     StringBuilder remainingAmountBuilder = new StringBuilder();
                     remainingAmountBuilder.append(" Rs. ");
-                    remainingAmountBuilder.append(String.valueOf(totalAmount));
+                    remainingAmountBuilder.append(new DecimalFormat("#.##").format(
+                            Double.valueOf(totalAmount)));
                     mRemainingAmount.setText(remainingAmountBuilder);
                 }
             }
@@ -153,15 +163,15 @@ public class SalesBill extends BaseActivity {
             quantityHolder.append(salesStock.getUnit());
 
             qty.setText(quantityHolder);
-            price.setText(salesStock.getUnitPrice());
-            amount.setText(salesStock.getAmount());
+            price.setText(String.valueOf(new DecimalFormat("#.##").format(Double.valueOf(salesStock.getUnitPrice()))));
+            amount.setText(String.valueOf(new DecimalFormat("#.##").format(Double.valueOf(salesStock.getAmount()))));
 
             totalAmount += Double.valueOf(salesStock.getAmount());
             mBillHolder.addView(view);
 
             StringBuilder totalAmountBuilder = new StringBuilder();
             totalAmountBuilder.append("Rs. ");
-            totalAmountBuilder.append(totalAmount);
+            totalAmountBuilder.append(new DecimalFormat("#.##").format(totalAmount));
             mTotalAmount.setText(totalAmountBuilder);
         }
     }

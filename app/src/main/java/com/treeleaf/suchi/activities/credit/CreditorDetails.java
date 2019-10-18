@@ -60,6 +60,7 @@ public class CreditorDetails extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setBackgroundDrawable(getResources().getDrawable(R.drawable.bg_for_keyboard_glitch));
         setContentView(R.layout.activity_creditor_details);
 
         ButterKnife.bind(this);
@@ -166,7 +167,6 @@ public class CreditorDetails extends BaseActivity {
             mCreditorName.setText(creditorsDto.getName());
             mCreditorAddress.setText(creditorsDto.getAddress());
             mCreditorNumber.setText(creditorsDto.getPhone());
-
         }
 
     }
@@ -178,7 +178,7 @@ public class CreditorDetails extends BaseActivity {
             getSupportActionBar().setHomeButtonEnabled(true);
             getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
-        mToolbarTitle.setText(getResources().getString(R.string.creditor_details));
+        mToolbarTitle.setText(getResources().getString(R.string.edit_creditor));
     }
 
     @Override
@@ -199,6 +199,5 @@ public class CreditorDetails extends BaseActivity {
         byte[] byteArray = byteArrayOutputStream.toByteArray();
 
         encodedImage = Base64.encodeToString(byteArray, Base64.DEFAULT);
-
     }
 }

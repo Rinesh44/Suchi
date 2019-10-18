@@ -30,6 +30,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_paid_amount"
                     android:layout_width="match_parent"
+                    android:inputType="numberDecimal"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/proxima_regular" />
 
@@ -37,6 +38,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
+                android:id="@+id/tv_amount_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -51,7 +53,7 @@
                 android:id="@+id/tv_remaining_amt"
                 android:layout_width="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:textColor="@color/colorAccent"
+                android:textColor="@color/black"
                 android:fontFamily="@font/proxima_regular"
                 android:layout_below="@+id/il_paid_amount"
                 android:layout_marginTop="10dp"

@@ -10,7 +10,7 @@ public class Credit extends RealmObject {
     private String id;
     private String creditorId;
     private String paidAmount;
-    private String dueAmount;
+    private String balance;
     private String totalAmount;
     private String userId;
     private String creditorSignature;
@@ -54,12 +54,12 @@ public class Credit extends RealmObject {
         this.paidAmount = paidAmount;
     }
 
-    public String getDueAmount() {
-        return dueAmount;
+    public String getBalance() {
+        return balance;
     }
 
-    public void setDueAmount(String dueAmount) {
-        this.dueAmount = dueAmount;
+    public void setBalance(String dueAmount) {
+        this.balance = dueAmount;
     }
 
     public String getTotalAmount() {
