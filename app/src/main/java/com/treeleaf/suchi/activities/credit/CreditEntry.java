@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -21,6 +22,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.github.gcacace.signaturepad.views.SignaturePad;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.treeleaf.suchi.R;
@@ -52,6 +54,7 @@ import io.realm.RealmList;
 
 public class CreditEntry extends BaseActivity implements View.OnClickListener {
     private static final String TAG = "CreditEntry";
+    private static final int PICKFILE_RESULT_CODE = 1;
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
     @BindView(R.id.toolbar_title)
@@ -82,6 +85,10 @@ public class CreditEntry extends BaseActivity implements View.OnClickListener {
     Button mAddSign;
     @BindView(R.id.rl_sign)
     RelativeLayout mSignField;
+    @BindView(R.id.btn_add_attachments)
+    MaterialButton mAttachments;
+    @BindView(R.id.ll_attachments)
+    LinearLayout mAttachmentsHolder;
 
     private double totalAmount = 0;
     private List<SalesStock> salesStockList = new RealmList<>();
@@ -107,6 +114,8 @@ public class CreditEntry extends BaseActivity implements View.OnClickListener {
         mAddToCredit.setOnClickListener(this);
         mAddSign.setOnClickListener(this);
         mCreditorHistory.setOnClickListener(this);
+        mAttachments.setOnClickListener(this);
+
         mAmountType.setEnabled(false);
 
         getBillFromIntent();
@@ -182,6 +191,28 @@ public class CreditEntry extends BaseActivity implements View.OnClickListener {
         });
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == PICKFILE_RESULT_CODE && resultCode == RESULT_OK) {
+            mAttachmentsHolder.setVisibility(View.VISIBLE);
+            String filePath = Objects.requireNonNull(data.getData()).getPath();
+            MaterialCardView attchment = (MaterialCardView) getLayoutInflater().inflate(R.layout.layout_attachment, null);
+            TextView fileName = (TextView) attchment.findViewById(R.id.tv_filename);
+            ImageView remove = (ImageView) attchment.findViewById(R.id.iv_remove);
+            remove.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mAttachmentsHolder.removeView(attchment);
+                    if(mAttachmentsHolder.getChildCount() == 0) mAttachmentsHolder.setVisibility(View.GONE);
+                }
+            });
+            fileName.setText(filePath);
+            mAttachmentsHolder.addView(attchment);
+        }
+    }
+
+
     private CreditDto mapCreditToDto(Credit selectedCredit) {
         CreditDto creditDto = new CreditDto();
         creditDto.setId(selectedCredit.getId());
@@ -243,7 +274,7 @@ public class CreditEntry extends BaseActivity implements View.OnClickListener {
                     return;
                 }
 
-                if(enableSign) {
+                if (enableSign) {
                     Bitmap signatureBitmap = mSignaturePad.getTransparentSignatureBitmap();
                     encodeBitmapToBase64(signatureBitmap);
                 }
@@ -262,15 +293,23 @@ public class CreditEntry extends BaseActivity implements View.OnClickListener {
 
             case R.id.btn_add_sign:
                 enableSign = !enableSign;
-                if(enableSign) {
+                if (enableSign) {
                     mSignField.setVisibility(View.VISIBLE);
                     mAddSign.setText("Remove creditor's signature");
-                }
-                else {
+                } else {
                     mAddSign.setText("Add creditors's signature");
                     mSignField.setVisibility(View.GONE);
                     creditorSignEncoded = "";
                 }
+                break;
+
+            case R.id.btn_add_attachments:
+                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                intent.setType("file/*");
+                startActivityForResult(intent, PICKFILE_RESULT_CODE);
+                break;
+
+            default:
                 break;
         }
     }
