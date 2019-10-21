@@ -71,12 +71,12 @@ public class CreditHistoryAdapter extends RecyclerView.Adapter<CreditHistoryAdap
             dueAmountBuilder.append(new DecimalFormat("##.##").format(Double.valueOf(creditDto.getBalance())));
             holder.mDueAmount.setText(dueAmountBuilder);
 
-            if (!creditDto.getPaidAmount().isEmpty()) {
+            if (!creditDto.getPaidAmount().equals("N/A")) {
                 StringBuilder paidAmountBuilder = new StringBuilder();
                 paidAmountBuilder.append("Rs. ");
                 paidAmountBuilder.append(new DecimalFormat("##.##").format(Double.valueOf(creditDto.getPaidAmount())));
                 holder.mPaidAmount.setText(paidAmountBuilder);
-            } else holder.mPaidAmount.setText("N/A");
+            } else holder.mPaidAmount.setText(creditDto.getPaidAmount());
 
         } else {
             //remove amount and set paid text
@@ -87,7 +87,6 @@ public class CreditHistoryAdapter extends RecyclerView.Adapter<CreditHistoryAdap
             paidAmountBuilder.append("Rs. ");
             paidAmountBuilder.append(new DecimalFormat("##.##").format(Double.valueOf(formattedTotalAmount)));
             holder.mPaidAmount.setText(paidAmountBuilder);
-
         }
 
 

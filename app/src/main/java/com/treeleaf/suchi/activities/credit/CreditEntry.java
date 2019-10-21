@@ -101,6 +101,7 @@ public class CreditEntry extends BaseActivity implements View.OnClickListener {
     private double amountDiff;
     private double paidAmount = 0;
     private boolean enableSign = false;
+    private Credit existingCredit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -162,8 +163,15 @@ public class CreditEntry extends BaseActivity implements View.OnClickListener {
                         mAmountType.setTextColor(getResources().getColor(R.color.red));
                         mAmountTypeLayout.setHint("Due Amount");
                     }
+                    AppUtils.showLog(TAG, "paidAmt: " + paidAmount);
+                    AppUtils.showLog(TAG, "amtDiff: " + amountDiff);
                 } else {
+                    paidAmount = 0;
+                    amountDiff = paidAmount - totalAmount;
                     mAmountType.setText(String.valueOf(new DecimalFormat("#.##").format(totalAmount)));
+
+                    AppUtils.showLog(TAG, "paidAmt: " + paidAmount);
+                    AppUtils.showLog(TAG, "amtDiff: " + amountDiff);
                 }
             }
 
@@ -204,7 +212,8 @@ public class CreditEntry extends BaseActivity implements View.OnClickListener {
                 @Override
                 public void onClick(View view) {
                     mAttachmentsHolder.removeView(attchment);
-                    if(mAttachmentsHolder.getChildCount() == 0) mAttachmentsHolder.setVisibility(View.GONE);
+                    if (mAttachmentsHolder.getChildCount() == 0)
+                        mAttachmentsHolder.setVisibility(View.GONE);
                 }
             });
             fileName.setText(filePath);
@@ -279,8 +288,6 @@ public class CreditEntry extends BaseActivity implements View.OnClickListener {
                     encodeBitmapToBase64(signatureBitmap);
                 }
 
-                amountDiff = paidAmount = totalAmount;
-                AppUtils.showLog(TAG, "AmountDiffer: " + amountDiff);
                 saveCreditToDb();
                 break;
 
@@ -304,8 +311,9 @@ public class CreditEntry extends BaseActivity implements View.OnClickListener {
                 break;
 
             case R.id.btn_add_attachments:
-                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-                intent.setType("file/*");
+                Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+                intent.setType("*/*");
+                intent.addCategory(Intent.CATEGORY_OPENABLE);
                 startActivityForResult(intent, PICKFILE_RESULT_CODE);
                 break;
 
@@ -315,22 +323,59 @@ public class CreditEntry extends BaseActivity implements View.OnClickListener {
     }
 
     private void saveCreditToDb() {
-
         RealmList<SalesStock> realmStockList = new RealmList<>();
         realmStockList.addAll(salesStockList);
-        creditId = UUID.randomUUID().toString().replace("-", "");
+
+        if (mPaidAmount.getText().toString().isEmpty()) {
+            paidAmount = 0;
+            amountDiff = paidAmount - totalAmount;
+        }
+
+        boolean creditorExists = false;
+
+        List<Credit> existingCreditList = CreditRepo.getInstance().getAllCredits();
+        for (Credit credit : existingCreditList
+        ) {
+                if(credit.getCreditorId().equals(selectedCreditor.getId())) {
+                    creditorExists = true;
+                    existingCredit = credit;
+                }
+        }
+
         Credit credit = new Credit();
-        credit.setId(creditId);
-        credit.setCreditorId(selectedCreditor.getId());
-        credit.setPaidAmount(Objects.requireNonNull(mPaidAmount.getText()).toString());
-        credit.setBalance(Objects.requireNonNull(String.valueOf(amountDiff)));
-        credit.setTotalAmount(String.valueOf(totalAmount));
-        credit.setUserId(preferences.getString(Constants.USER_ID, ""));
-        credit.setCreatedAt(System.currentTimeMillis());
-        credit.setUpdatedAt(0);
-        credit.setSoldItems(realmStockList);
-        if (creditorSignEncoded != null && !creditorSignEncoded.isEmpty())
-            credit.setCreditorSignature(creditorSignEncoded);
+
+        if(!creditorExists) {
+            creditId = UUID.randomUUID().toString().replace("-", "");
+
+            credit.setId(creditId);
+            credit.setCreditorId(selectedCreditor.getId());
+            if (paidAmount == 0) credit.setPaidAmount(Objects.requireNonNull("N/A"));
+            else credit.setPaidAmount(Objects.requireNonNull(String.valueOf(paidAmount)));
+            credit.setBalance(Objects.requireNonNull(String.valueOf(amountDiff)));
+            credit.setTotalAmount(String.valueOf(totalAmount));
+            credit.setUserId(preferences.getString(Constants.USER_ID, ""));
+            credit.setCreatedAt(System.currentTimeMillis());
+            credit.setUpdatedAt(0);
+            credit.setSoldItems(realmStockList);
+            if (creditorSignEncoded != null && !creditorSignEncoded.isEmpty())
+                credit.setCreditorSignature(creditorSignEncoded);
+
+        } else {
+            realmStockList.addAll(existingCredit.getSoldItems());
+
+            credit.setId(existingCredit.getId());
+            credit.setBalance(String.valueOf(Double.valueOf(existingCredit.getBalance()) + amountDiff));
+            credit.setCreditorSignature(existingCredit.getCreditorSignature());
+            credit.setCreatedAt(existingCredit.getCreatedAt());
+            credit.setUpdatedAt(System.currentTimeMillis());
+            credit.setCreditorId(existingCredit.getCreditorId());
+            credit.setPaidAmount(String.valueOf(Double.valueOf(existingCredit.getPaidAmount()) + paidAmount));
+            credit.setSoldItems(realmStockList);
+            credit.setSync(existingCredit.isSync());
+            credit.setUserId(existingCredit.getUserId());
+            credit.setTotalAmount(String.valueOf(Double.valueOf(existingCredit.getTotalAmount())) + totalAmount);
+        }
+
         saveSalesData();
 
         CreditRepo.getInstance().saveCredit(credit, new Repo.Callback() {

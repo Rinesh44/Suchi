@@ -118,8 +118,8 @@ public class CreditDetails extends BaseActivity {
     }
 
     private void setCreditData() {
-        if (!credit.getBalance().equals("0")) {
-            if(!credit.getPaidAmount().isEmpty()) {
+        if (!credit.getBalance().equals("N/A")) {
+            if(!credit.getPaidAmount().isEmpty() || !mPaidAmount.getText().toString().equals("N/A")) {
                 StringBuilder paidAmountBuilder = new StringBuilder();
                 paidAmountBuilder.append("Rs. ");
                 paidAmountBuilder.append(new DecimalFormat("##.##").format(Double.valueOf(credit.getPaidAmount())));
