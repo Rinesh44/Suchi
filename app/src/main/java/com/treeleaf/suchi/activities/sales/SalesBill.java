@@ -76,6 +76,7 @@ public class SalesBill extends BaseActivity {
     private String userId;
     private NotificationManagerCompat notificationManagerCompat;
     private int notificationThreshold;
+    private boolean credit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,8 +88,19 @@ public class SalesBill extends BaseActivity {
 
         Intent i = getIntent();
         updatedSalesStockList = i.getParcelableArrayListExtra(EXTRA_TITLE);
-
+        credit = i.getBooleanExtra("credit", false);
         inflateListInBillHolder();
+
+
+        if(credit){
+            mPay.setVisibility(View.GONE);
+
+            LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT
+            );
+            mAddToCredit.setLayoutParams(param);
+        }
 
         mPay.setOnClickListener(new View.OnClickListener() {
             @Override

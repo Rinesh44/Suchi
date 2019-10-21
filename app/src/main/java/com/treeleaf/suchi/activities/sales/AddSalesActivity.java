@@ -170,6 +170,7 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
     private boolean isScanDone;
     private BottomSheetBehavior sheetBehavior;
     private final int REQ_CODE_SPEECH_INPUT = 101;
+    private boolean credit;
 
 
     @Override
@@ -185,6 +186,7 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
         requestPermission();
         setUpSearch();
         setUpBarcodeScanner();
+        checkIfCredit();
 
         token = sharedPreferences.getString(Constants.TOKEN, "");
         userId = sharedPreferences.getString(Constants.USER_ID, "");
@@ -265,6 +267,11 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
             }
         });
 
+    }
+
+    private void checkIfCredit() {
+        Intent i = getIntent();
+        credit = i.getBooleanExtra("credit", false);
     }
 
     /**
@@ -624,6 +631,7 @@ public class AddSalesActivity extends BaseActivity implements View.OnClickListen
 
         Intent sendData = new Intent(AddSalesActivity.this, SalesBill.class);
         sendData.putParcelableArrayListExtra(EXTRA_TITLE, (ArrayList<? extends Parcelable>) cartItemList);
+        sendData.putExtra("credit", credit);
         startActivity(sendData);
 
 //        List<Sales> unSyncedSalesList = mapCartItemDataToSalesModel();

@@ -20,8 +20,10 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.activities.base.BaseActivity;
+import com.treeleaf.suchi.activities.sales.AddSalesActivity;
 import com.treeleaf.suchi.adapter.CreditHistoryAdapter;
 import com.treeleaf.suchi.api.Endpoints;
 import com.treeleaf.suchi.dto.CreditDto;
@@ -66,6 +68,8 @@ public class CreditHistory extends BaseActivity implements CreditHistoryView {
     LinearLayout mTotalAmtBottomHolder;
     @BindView(R.id.ll_table_titles)
     LinearLayout mTableTitles;
+    @BindView(R.id.fab_add_credit)
+    FloatingActionButton mAddCredit;
 
 
     private CreditHistoryAdapter adapter;
@@ -93,6 +97,7 @@ public class CreditHistory extends BaseActivity implements CreditHistoryView {
         });
 
         setUpRecyclerView(creditList);
+        hideFabWhenScrolled();
 
         mSearch.addTextChangedListener(new TextWatcher() {
             @Override
@@ -114,6 +119,15 @@ public class CreditHistory extends BaseActivity implements CreditHistoryView {
             @Override
             public void afterTextChanged(Editable editable) {
 
+            }
+        });
+
+        mAddCredit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(CreditHistory.this, AddSalesActivity.class);
+                i.putExtra("credit", true);
+                startActivity(i);
             }
         });
     }
@@ -164,6 +178,25 @@ public class CreditHistory extends BaseActivity implements CreditHistoryView {
         setUpRecyclerView(creditList);
 //        invalidateOptionsMenu();
 
+    }
+
+    private void hideFabWhenScrolled() {
+
+        mCreditHistory.addOnScrollListener(new RecyclerView.OnScrollListener() {
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                if (dy > 0 || dy < 0 && mAddCredit.isShown())
+                    mAddCredit.hide();
+            }
+
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                if (newState == RecyclerView.SCROLL_STATE_IDLE)
+                    mAddCredit.show();
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+        });
     }
 
     private void setUpRecyclerView(List<Credit> creditList) {

@@ -251,19 +251,12 @@ public class CreditEntry extends BaseActivity implements View.OnClickListener {
                 amountDiff = paidAmount = totalAmount;
                 AppUtils.showLog(TAG, "AmountDiffer: " + amountDiff);
                 saveCreditToDb();
-
-                String newString;
-                for(int i = 0; i < newString.length(); i++){
-                    char c = newString.
-                    if(c == "a") count++;
-                }
                 break;
 
             case R.id.btn_show_creditor_history:
                 Intent i = new Intent(CreditEntry.this, CreditDetails.class);
                 CreditDto creditDto = mapCreditToDto(selectedCredit);
                 i.putExtra("credit_info", creditDto);
-                Character.()
                 startActivity(i);
                 break;
 
