@@ -89,6 +89,12 @@ public class CreditEntry extends BaseActivity implements View.OnClickListener {
     MaterialButton mAttachments;
     @BindView(R.id.ll_attachments)
     LinearLayout mAttachmentsHolder;
+    @BindView(R.id.ll_creditor_info)
+    LinearLayout mCreditorInfo;
+    @BindView(R.id.il_creditor_credit_amt)
+    TextInputLayout mCreditorCreditAmtLayout;
+    @BindView(R.id.et_creditor_credit_amt)
+    TextInputEditText mCreditorCreditAmt;
 
     private double totalAmount = 0;
     private List<SalesStock> salesStockList = new RealmList<>();
@@ -124,16 +130,59 @@ public class CreditEntry extends BaseActivity implements View.OnClickListener {
         setUpCreditorSearch();
 
         mAmountType.setText(String.valueOf(new DecimalFormat("#.##").format(totalAmount)));
+
+        mCreditorName.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                //disable paid amount if creditor not selected and set amount type to total amount
+                if(mCreditorName.getText().toString().isEmpty()) {
+                    mPaidAmount.setEnabled(false);
+                    mCreditorInfo.setVisibility(View.GONE);
+                    mAmountType.setText(new DecimalFormat("#.##").format(totalAmount));
+                    mAmountType.setTextColor(getResources().getColor(R.color.red));
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
         mCreditorName.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                mPaidAmount.setEnabled(true);
                 hideKeyboard();
                 selectedCreditor = (CreditorsDto) adapterView.getItemAtPosition(i);
 
                 selectedCredit = CreditRepo.getInstance().getCreditByCreditorId(selectedCreditor.getId());
-                if (selectedCredit != null && !selectedCredit.getBalance().isEmpty())
-                    mCreditorHistory.setVisibility(View.VISIBLE);
-                else mCreditorHistory.setVisibility(View.GONE);
+                if (selectedCredit != null && !selectedCredit.getBalance().isEmpty()) {
+                    mCreditorInfo.setVisibility(View.VISIBLE);
+                    mCreditorCreditAmt.setText(new DecimalFormat("#.##").format(
+                            Math.abs(Double.valueOf(selectedCredit.getBalance()))));
+                    if(Double.valueOf(selectedCredit.getBalance()) >= 0){
+                        mCreditorCreditAmtLayout.setHint("Creditor's balance");
+                        mCreditorCreditAmt.setTextColor(getResources().getColor(R.color.green1));
+                    } else{
+                        mCreditorCreditAmtLayout.setHint("Creditor's dues");
+                        mCreditorCreditAmt.setTextColor(getResources().getColor(R.color.red));
+                    }
+                    amountDiff = Double.valueOf(selectedCredit.getBalance()) - totalAmount;
+                    setDuesOrBalance();
+                    mAmountType.setText(new DecimalFormat("#.##").format(Math.abs(amountDiff)));
+                }
+                else {
+                    //remove creditor's info and set amount type to total amount
+                    mCreditorInfo.setVisibility(View.GONE);
+                    mAmountType.setText(new DecimalFormat("#.##").format(totalAmount));
+                    mAmountType.setTextColor(getResources().getColor(R.color.red));
+                }
 
                 AppUtils.showLog(TAG, "selectedname: " + selectedCreditor.getName());
                 mCreditorName.setText(selectedCreditor.getName());
@@ -149,29 +198,23 @@ public class CreditEntry extends BaseActivity implements View.OnClickListener {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (!charSequence.toString().isEmpty() && charSequence.length() > 1) {
+                if (!charSequence.toString().isEmpty()) {
+                    double fixedAmount = 0;
+                    if(selectedCredit != null) fixedAmount = Double.valueOf(selectedCredit.getBalance()) - totalAmount;
                     paidAmount = Double.valueOf(charSequence.toString());
-                    amountDiff = paidAmount - totalAmount;
-                    AppUtils.showLog(TAG, "amountDiff: " + amountDiff);
-                    if (amountDiff >= 0) {
-                        mAmountType.setText(String.valueOf(amountDiff));
-                        mAmountType.setTextColor(getResources().getColor(R.color.green1));
-                        mAmountTypeLayout.setHint("Balance");
-                    } else {
-                        mAmountType.setText(String.valueOf(new DecimalFormat("#.##").
-                                format(Math.abs(amountDiff))));
-                        mAmountType.setTextColor(getResources().getColor(R.color.red));
-                        mAmountTypeLayout.setHint("Due Amount");
-                    }
+                    AppUtils.showLog(TAG, "amtdiff: " + amountDiff);
                     AppUtils.showLog(TAG, "paidAmt: " + paidAmount);
-                    AppUtils.showLog(TAG, "amtDiff: " + amountDiff);
+                    if(fixedAmount == 0) amountDiff = paidAmount - totalAmount;
+                    else amountDiff = fixedAmount + paidAmount;
+                    AppUtils.showLog(TAG, "amountDiff: " + amountDiff);
+                    setDuesOrBalance();
                 } else {
                     paidAmount = 0;
-                    amountDiff = paidAmount - totalAmount;
-                    mAmountType.setText(String.valueOf(new DecimalFormat("#.##").format(totalAmount)));
-
-                    AppUtils.showLog(TAG, "paidAmt: " + paidAmount);
-                    AppUtils.showLog(TAG, "amtDiff: " + amountDiff);
+//                    amountDiff = paidAmount - totalAmount;
+                    if(selectedCredit != null) amountDiff = Double.valueOf(selectedCredit.getBalance()) - totalAmount;
+                    else amountDiff = paidAmount - totalAmount;
+                    mAmountType.setText(new DecimalFormat("#.##").format(amountDiff));
+                    setDuesOrBalance();
                 }
             }
 
@@ -197,6 +240,19 @@ public class CreditEntry extends BaseActivity implements View.OnClickListener {
 
             }
         });
+    }
+
+    private void setDuesOrBalance(){
+        if (amountDiff >= 0) {
+            mAmountType.setText(new DecimalFormat("#.##").format(amountDiff));
+            mAmountType.setTextColor(getResources().getColor(R.color.green1));
+            mAmountTypeLayout.setHint("Balance");
+        } else {
+            mAmountType.setText(new DecimalFormat("#.##").
+                    format(Math.abs(amountDiff)));
+            mAmountType.setTextColor(getResources().getColor(R.color.red));
+            mAmountTypeLayout.setHint("Due Amount");
+        }
     }
 
     @Override
@@ -349,7 +405,7 @@ public class CreditEntry extends BaseActivity implements View.OnClickListener {
 
             credit.setId(creditId);
             credit.setCreditorId(selectedCreditor.getId());
-            if (paidAmount == 0) credit.setPaidAmount(Objects.requireNonNull("N/A"));
+            if (paidAmount == 0) credit.setPaidAmount(Objects.requireNonNull("0"));
             else credit.setPaidAmount(Objects.requireNonNull(String.valueOf(paidAmount)));
             credit.setBalance(Objects.requireNonNull(String.valueOf(amountDiff)));
             credit.setTotalAmount(String.valueOf(totalAmount));
@@ -364,7 +420,8 @@ public class CreditEntry extends BaseActivity implements View.OnClickListener {
             realmStockList.addAll(existingCredit.getSoldItems());
 
             credit.setId(existingCredit.getId());
-            credit.setBalance(String.valueOf(Double.valueOf(existingCredit.getBalance()) + amountDiff));
+            if(paidAmount > 0) credit.setBalance(String.valueOf(amountDiff));
+            else credit.setBalance(String.valueOf(Double.valueOf(existingCredit.getBalance()) + amountDiff));
             credit.setCreditorSignature(existingCredit.getCreditorSignature());
             credit.setCreatedAt(existingCredit.getCreatedAt());
             credit.setUpdatedAt(System.currentTimeMillis());
@@ -373,7 +430,9 @@ public class CreditEntry extends BaseActivity implements View.OnClickListener {
             credit.setSoldItems(realmStockList);
             credit.setSync(existingCredit.isSync());
             credit.setUserId(existingCredit.getUserId());
-            credit.setTotalAmount(String.valueOf(Double.valueOf(existingCredit.getTotalAmount())) + totalAmount);
+            AppUtils.showLog(TAG, "existingAmt: " + existingCredit.getTotalAmount());
+            AppUtils.showLog(TAG, "totalAmt: " + totalAmount);
+            credit.setTotalAmount(String.valueOf(Double.valueOf(existingCredit.getTotalAmount()) + totalAmount));
         }
 
         saveSalesData();

@@ -161,4 +161,5 @@
     <string name="minimum_stock_quantity_for_notification">Minimum stock quantity for notification</string>
     <string name="days_remaining">days remaining</string>
     <string name="remaining_amount">Remaining amount:</string>
+    <string name="dues_balance">Dues/balance</string>
 </resources>

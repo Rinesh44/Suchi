@@ -118,15 +118,29 @@ public class CreditDetails extends BaseActivity {
     }
 
     private void setCreditData() {
-        if (!credit.getBalance().equals("N/A")) {
-            if(!credit.getPaidAmount().isEmpty() || !mPaidAmount.getText().toString().equals("N/A")) {
+        if (!credit.getBalance().equals("0")) {
+            if (!new DecimalFormat("#.##").format(Double.valueOf(credit.getPaidAmount())).equals("0")) {
                 StringBuilder paidAmountBuilder = new StringBuilder();
                 paidAmountBuilder.append("Rs. ");
                 paidAmountBuilder.append(new DecimalFormat("##.##").format(Double.valueOf(credit.getPaidAmount())));
                 mPaidAmount.setText(paidAmountBuilder);
             } else mPaidAmount.setText("N/A");
 
-
+            if (Double.valueOf(credit.getBalance()) >= 0) {
+                mDueAmountTitle.setText("Balance");
+                StringBuilder dueAmountBuilder = new StringBuilder();
+                dueAmountBuilder.append("Rs. ");
+                dueAmountBuilder.append(new DecimalFormat("#.##").format(Double.valueOf(credit.getBalance())));
+                mDueAmount.setText(dueAmountBuilder);
+                mDueAmount.setTextColor(getResources().getColor(R.color.green1));
+            } else {
+                mDueAmountTitle.setText("Due amount");
+                StringBuilder dueAmountBuilder = new StringBuilder();
+                dueAmountBuilder.append("Rs. ");
+                dueAmountBuilder.append(new DecimalFormat("#.##").format(Math.abs(Double.valueOf(credit.getBalance()))));
+                mDueAmount.setText(dueAmountBuilder);
+                mDueAmount.setTextColor(getResources().getColor(R.color.red));
+            }
             StringBuilder dueAmountBuilder = new StringBuilder();
             dueAmountBuilder.append("Rs. ");
             dueAmountBuilder.append(new DecimalFormat("##.##").format(Double.valueOf(credit.getBalance())));

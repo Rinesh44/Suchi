@@ -260,15 +260,50 @@
 
             </LinearLayout>
 
-            <Button
-                android:id="@+id/btn_show_creditor_history"
+            <LinearLayout
+                android:id="@+id/ll_creditor_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                android:weightSum="4">
+
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/il_creditor_credit_amt"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:hint="Creditor's dues">
+
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_creditor_credit_amt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:enabled="false"
+                        android:fontFamily="@font/proxima_regular"
+                        android:inputType="numberDecimal"
+                        android:textSize="14sp" />
+
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+            <Button
+                android:id="@+id/btn_show_creditor_history"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_margin="10dp"
+                android:layout_weight="2"
                 android:fontFamily="@font/proxima_regular"
                 android:text="Show creditor history"
-                android:textStyle="bold"
-                android:visibility="gone" />
+                android:textStyle="bold" />
+
+            </LinearLayout>
 
 
             <com.google.android.material.textfield.TextInputLayout
@@ -284,6 +319,8 @@
                     android:id="@+id/et_paid_amount"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:maxLength="9"
+                    android:enabled="false"
                     android:fontFamily="@font/proxima_regular"
                     android:inputType="numberDecimal"
                     android:textSize="14sp" />

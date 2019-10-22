@@ -66,17 +66,27 @@ public class CreditHistoryAdapter extends RecyclerView.Adapter<CreditHistoryAdap
         holder.mPhone.setText(creditors.getPhone());
 
         if (!creditDto.getBalance().equals("0")) {
-            StringBuilder dueAmountBuilder = new StringBuilder();
-            dueAmountBuilder.append("Rs. ");
-            dueAmountBuilder.append(new DecimalFormat("##.##").format(Double.valueOf(creditDto.getBalance())));
-            holder.mDueAmount.setText(dueAmountBuilder);
+            if(Double.valueOf(creditDto.getBalance()) > 0){
+                StringBuilder dueAmountBuilder = new StringBuilder();
+                dueAmountBuilder.append("Rs. ");
+                dueAmountBuilder.append(new DecimalFormat("#.##").format(Double.valueOf(creditDto.getBalance())));
+                holder.mDueAmount.setText(dueAmountBuilder);
+                holder.mDueAmount.setTextColor(mContext.getResources().getColor(R.color.green1));
+            } else{
+                StringBuilder dueAmountBuilder = new StringBuilder();
+                dueAmountBuilder.append("Rs. ");
+                dueAmountBuilder.append(new DecimalFormat("#.##").format(Math.abs(Double.valueOf(creditDto.getBalance()))));
+                holder.mDueAmount.setText(dueAmountBuilder);
+                holder.mDueAmount.setTextColor(mContext.getResources().getColor(R.color.red));
+            }
 
-            if (!creditDto.getPaidAmount().equals("N/A")) {
+
+            if (!new DecimalFormat("#.##").format(Double.valueOf(creditDto.getPaidAmount())).equals("0")) {
                 StringBuilder paidAmountBuilder = new StringBuilder();
                 paidAmountBuilder.append("Rs. ");
                 paidAmountBuilder.append(new DecimalFormat("##.##").format(Double.valueOf(creditDto.getPaidAmount())));
                 holder.mPaidAmount.setText(paidAmountBuilder);
-            } else holder.mPaidAmount.setText(creditDto.getPaidAmount());
+            } else holder.mPaidAmount.setText("N/A");
 
         } else {
             //remove amount and set paid text
