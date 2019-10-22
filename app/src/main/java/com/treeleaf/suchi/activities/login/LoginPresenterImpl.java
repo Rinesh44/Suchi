@@ -136,6 +136,38 @@ public class LoginPresenterImpl implements LoginPresenter {
         }));
     }
 
+    @Override
+    public void forgotPassword(String emailPhone) {
+        endpoints.forgotPassword(emailPhone).enqueue(new CallbackWrapper<>(activity, new CallbackWrapper.Wrapper<SuchiRpcProto.SuchiBaseResponse>() {
+            @Override
+            public void onSuccessResult(Response<SuchiRpcProto.SuchiBaseResponse> response) {
+                SuchiRpcProto.SuchiBaseResponse baseResponse = response.body();
+
+                AppUtils.showLog(TAG, "forgotPasswordResponse: " + baseResponse);
+                activity.hideLoading();
+
+                if (baseResponse == null) {
+                    activity.hideLoading();
+                    activity.forgotPasswordFail("forgot password failed");
+                    return;
+                }
+
+                if (baseResponse.getError()) {
+                    activity.hideLoading();
+                    activity.forgotPasswordFail(baseResponse.getMsg());
+                    return;
+                }
+
+                activity.forgotPasswordSuccess();
+            }
+
+            @Override
+            public void onFailureResult() {
+
+            }
+        }));
+    }
+
     private void mapSales(List<SuchiProto.Sale> salesList) {
         List<Sales> sales = new ArrayList<>();
         for (SuchiProto.Sale salePb : salesList

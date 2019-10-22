@@ -108,7 +108,7 @@ public class CreditDetails extends BaseActivity {
 
                     @Override
                     public void fail() {
-                        AppUtils.showLog(TAG, "failed to update credit");
+                        AppUtils.showLog(TAG, "failed to update credit");   
                     }
                 });
 

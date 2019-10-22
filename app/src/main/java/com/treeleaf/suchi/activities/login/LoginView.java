@@ -12,4 +12,8 @@ public interface LoginView {
     void getAllDataSuccess();
 
     void getAllDataFail(String msg);
+
+    void forgotPasswordSuccess();
+
+    void forgotPasswordFail(String msg);
 }

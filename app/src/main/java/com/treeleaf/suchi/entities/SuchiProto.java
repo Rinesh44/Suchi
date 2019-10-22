@@ -227,6 +227,158 @@ public final class SuchiProto {
     // @@protoc_insertion_point(enum_scope:treeleaf.suchi.entities.Sort)
   }
 
+  /**
+   * Protobuf enum {@code treeleaf.suchi.entities.PaymentStatus}
+   */
+  public enum PaymentStatus
+      implements com.google.protobuf.Internal.EnumLite {
+    /**
+     * <code>UNKNOWN_PAYMENT_STATUS = 0;</code>
+     */
+    UNKNOWN_PAYMENT_STATUS(0),
+    /**
+     * <code>PAID = 1;</code>
+     */
+    PAID(1),
+    /**
+     * <code>UNPAID = 2;</code>
+     */
+    UNPAID(2),
+    UNRECOGNIZED(-1),
+    ;
+
+    /**
+     * <code>UNKNOWN_PAYMENT_STATUS = 0;</code>
+     */
+    public static final int UNKNOWN_PAYMENT_STATUS_VALUE = 0;
+    /**
+     * <code>PAID = 1;</code>
+     */
+    public static final int PAID_VALUE = 1;
+    /**
+     * <code>UNPAID = 2;</code>
+     */
+    public static final int UNPAID_VALUE = 2;
+
+
+    public final int getNumber() {
+      return value;
+    }
+
+    /**
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @Deprecated
+    public static PaymentStatus valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static PaymentStatus forNumber(int value) {
+      switch (value) {
+        case 0: return UNKNOWN_PAYMENT_STATUS;
+        case 1: return PAID;
+        case 2: return UNPAID;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<PaymentStatus>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        PaymentStatus> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<PaymentStatus>() {
+            public PaymentStatus findValueByNumber(int number) {
+              return PaymentStatus.forNumber(number);
+            }
+          };
+
+    private final int value;
+
+    private PaymentStatus(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:treeleaf.suchi.entities.PaymentStatus)
+  }
+
+  /**
+   * Protobuf enum {@code treeleaf.suchi.entities.PaymentMode}
+   */
+  public enum PaymentMode
+      implements com.google.protobuf.Internal.EnumLite {
+    /**
+     * <code>UNKNOWN_PAYMENT_MODE = 0;</code>
+     */
+    UNKNOWN_PAYMENT_MODE(0),
+    /**
+     * <code>BANK = 1;</code>
+     */
+    BANK(1),
+    /**
+     * <code>ONLINE = 2;</code>
+     */
+    ONLINE(2),
+    UNRECOGNIZED(-1),
+    ;
+
+    /**
+     * <code>UNKNOWN_PAYMENT_MODE = 0;</code>
+     */
+    public static final int UNKNOWN_PAYMENT_MODE_VALUE = 0;
+    /**
+     * <code>BANK = 1;</code>
+     */
+    public static final int BANK_VALUE = 1;
+    /**
+     * <code>ONLINE = 2;</code>
+     */
+    public static final int ONLINE_VALUE = 2;
+
+
+    public final int getNumber() {
+      return value;
+    }
+
+    /**
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @Deprecated
+    public static PaymentMode valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static PaymentMode forNumber(int value) {
+      switch (value) {
+        case 0: return UNKNOWN_PAYMENT_MODE;
+        case 1: return BANK;
+        case 2: return ONLINE;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<PaymentMode>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        PaymentMode> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<PaymentMode>() {
+            public PaymentMode findValueByNumber(int number) {
+              return PaymentMode.forNumber(number);
+            }
+          };
+
+    private final int value;
+
+    private PaymentMode(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:treeleaf.suchi.entities.PaymentMode)
+  }
+
   public interface StockKeepingUnitOrBuilder extends
       // @@protoc_insertion_point(interface_extends:treeleaf.suchi.entities.StockKeepingUnit)
       com.google.protobuf.MessageLiteOrBuilder {
@@ -17953,6 +18105,11 @@ public final class SuchiProto {
      * <code>optional int64 expires_at = 5;</code>
      */
     long getExpiresAt();
+
+    /**
+     * <code>optional bool isPaid = 6;</code>
+     */
+    boolean getIsPaid();
   }
   /**
    * Protobuf type {@code treeleaf.suchi.entities.SuchiKey}
@@ -18151,6 +18308,29 @@ public final class SuchiProto {
       expiresAt_ = 0L;
     }
 
+    public static final int ISPAID_FIELD_NUMBER = 6;
+    private boolean isPaid_;
+    /**
+     * <code>optional bool isPaid = 6;</code>
+     */
+    public boolean getIsPaid() {
+      return isPaid_;
+    }
+    /**
+     * <code>optional bool isPaid = 6;</code>
+     */
+    private void setIsPaid(boolean value) {
+      
+      isPaid_ = value;
+    }
+    /**
+     * <code>optional bool isPaid = 6;</code>
+     */
+    private void clearIsPaid() {
+      
+      isPaid_ = false;
+    }
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!keyId_.isEmpty()) {
@@ -18167,6 +18347,9 @@ public final class SuchiProto {
       }
       if (expiresAt_ != 0L) {
         output.writeInt64(5, expiresAt_);
+      }
+      if (isPaid_ != false) {
+        output.writeBool(6, isPaid_);
       }
     }
 
@@ -18194,6 +18377,10 @@ public final class SuchiProto {
       if (expiresAt_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(5, expiresAt_);
+      }
+      if (isPaid_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(6, isPaid_);
       }
       memoizedSerializedSize = size;
       return size;
@@ -18447,6 +18634,29 @@ public final class SuchiProto {
         return this;
       }
 
+      /**
+       * <code>optional bool isPaid = 6;</code>
+       */
+      public boolean getIsPaid() {
+        return instance.getIsPaid();
+      }
+      /**
+       * <code>optional bool isPaid = 6;</code>
+       */
+      public Builder setIsPaid(boolean value) {
+        copyOnWrite();
+        instance.setIsPaid(value);
+        return this;
+      }
+      /**
+       * <code>optional bool isPaid = 6;</code>
+       */
+      public Builder clearIsPaid() {
+        copyOnWrite();
+        instance.clearIsPaid();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:treeleaf.suchi.entities.SuchiKey)
     }
     protected final Object dynamicMethod(
@@ -18478,6 +18688,8 @@ public final class SuchiProto {
               other.createdAt_ != 0L, other.createdAt_);
           expiresAt_ = visitor.visitLong(expiresAt_ != 0L, expiresAt_,
               other.expiresAt_ != 0L, other.expiresAt_);
+          isPaid_ = visitor.visitBoolean(isPaid_ != false, isPaid_,
+              other.isPaid_ != false, other.isPaid_);
           if (visitor == MergeFromVisitor
               .INSTANCE) {
           }
@@ -18528,6 +18740,11 @@ public final class SuchiProto {
                 case 40: {
 
                   expiresAt_ = input.readInt64();
+                  break;
+                }
+                case 48: {
+
+                  isPaid_ = input.readBool();
                   break;
                 }
               }
@@ -21977,6 +22194,2090 @@ public final class SuchiProto {
     private static volatile com.google.protobuf.Parser<EsewaPaymentNotification> PARSER;
 
     public static com.google.protobuf.Parser<EsewaPaymentNotification> parser() {
+      return DEFAULT_INSTANCE.getParserForType();
+    }
+  }
+
+  public interface PaymentStatusEntryOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:treeleaf.suchi.entities.PaymentStatusEntry)
+      com.google.protobuf.MessageLiteOrBuilder {
+
+    /**
+     * <code>optional string paymentId = 1;</code>
+     */
+    String getPaymentId();
+    /**
+     * <code>optional string paymentId = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getPaymentIdBytes();
+
+    /**
+     * <code>optional string userId = 2;</code>
+     */
+    String getUserId();
+    /**
+     * <code>optional string userId = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getUserIdBytes();
+
+    /**
+     * <code>optional .treeleaf.suchi.entities.PaymentStatus paymentStatus = 3;</code>
+     */
+    int getPaymentStatusValue();
+    /**
+     * <code>optional .treeleaf.suchi.entities.PaymentStatus paymentStatus = 3;</code>
+     */
+    PaymentStatus getPaymentStatus();
+
+    /**
+     * <code>optional .treeleaf.suchi.entities.PaymentMode paymentMode = 4;</code>
+     */
+    int getPaymentModeValue();
+    /**
+     * <code>optional .treeleaf.suchi.entities.PaymentMode paymentMode = 4;</code>
+     */
+    PaymentMode getPaymentMode();
+
+    /**
+     * <code>optional string paymentReference = 5;</code>
+     */
+    String getPaymentReference();
+    /**
+     * <code>optional string paymentReference = 5;</code>
+     */
+    com.google.protobuf.ByteString
+        getPaymentReferenceBytes();
+
+    /**
+     * <code>optional int64 createdAt = 6;</code>
+     */
+    long getCreatedAt();
+
+    /**
+     * <code>optional int64 updatedAt = 7;</code>
+     */
+    long getUpdatedAt();
+
+    /**
+     * <code>optional double amount = 8;</code>
+     */
+    double getAmount();
+  }
+  /**
+   * Protobuf type {@code treeleaf.suchi.entities.PaymentStatusEntry}
+   */
+  public  static final class PaymentStatusEntry extends
+      com.google.protobuf.GeneratedMessageLite<
+          PaymentStatusEntry, PaymentStatusEntry.Builder> implements
+      // @@protoc_insertion_point(message_implements:treeleaf.suchi.entities.PaymentStatusEntry)
+      PaymentStatusEntryOrBuilder {
+    private PaymentStatusEntry() {
+      paymentId_ = "";
+      userId_ = "";
+      paymentReference_ = "";
+    }
+    public static final int PAYMENTID_FIELD_NUMBER = 1;
+    private String paymentId_;
+    /**
+     * <code>optional string paymentId = 1;</code>
+     */
+    public String getPaymentId() {
+      return paymentId_;
+    }
+    /**
+     * <code>optional string paymentId = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getPaymentIdBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(paymentId_);
+    }
+    /**
+     * <code>optional string paymentId = 1;</code>
+     */
+    private void setPaymentId(
+        String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      paymentId_ = value;
+    }
+    /**
+     * <code>optional string paymentId = 1;</code>
+     */
+    private void clearPaymentId() {
+      
+      paymentId_ = getDefaultInstance().getPaymentId();
+    }
+    /**
+     * <code>optional string paymentId = 1;</code>
+     */
+    private void setPaymentIdBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      paymentId_ = value.toStringUtf8();
+    }
+
+    public static final int USERID_FIELD_NUMBER = 2;
+    private String userId_;
+    /**
+     * <code>optional string userId = 2;</code>
+     */
+    public String getUserId() {
+      return userId_;
+    }
+    /**
+     * <code>optional string userId = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getUserIdBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(userId_);
+    }
+    /**
+     * <code>optional string userId = 2;</code>
+     */
+    private void setUserId(
+        String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      userId_ = value;
+    }
+    /**
+     * <code>optional string userId = 2;</code>
+     */
+    private void clearUserId() {
+      
+      userId_ = getDefaultInstance().getUserId();
+    }
+    /**
+     * <code>optional string userId = 2;</code>
+     */
+    private void setUserIdBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      userId_ = value.toStringUtf8();
+    }
+
+    public static final int PAYMENTSTATUS_FIELD_NUMBER = 3;
+    private int paymentStatus_;
+    /**
+     * <code>optional .treeleaf.suchi.entities.PaymentStatus paymentStatus = 3;</code>
+     */
+    public int getPaymentStatusValue() {
+      return paymentStatus_;
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.PaymentStatus paymentStatus = 3;</code>
+     */
+    public PaymentStatus getPaymentStatus() {
+      PaymentStatus result = PaymentStatus.forNumber(paymentStatus_);
+      return result == null ? PaymentStatus.UNRECOGNIZED : result;
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.PaymentStatus paymentStatus = 3;</code>
+     */
+    private void setPaymentStatusValue(int value) {
+        paymentStatus_ = value;
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.PaymentStatus paymentStatus = 3;</code>
+     */
+    private void setPaymentStatus(PaymentStatus value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      
+      paymentStatus_ = value.getNumber();
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.PaymentStatus paymentStatus = 3;</code>
+     */
+    private void clearPaymentStatus() {
+      
+      paymentStatus_ = 0;
+    }
+
+    public static final int PAYMENTMODE_FIELD_NUMBER = 4;
+    private int paymentMode_;
+    /**
+     * <code>optional .treeleaf.suchi.entities.PaymentMode paymentMode = 4;</code>
+     */
+    public int getPaymentModeValue() {
+      return paymentMode_;
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.PaymentMode paymentMode = 4;</code>
+     */
+    public PaymentMode getPaymentMode() {
+      PaymentMode result = PaymentMode.forNumber(paymentMode_);
+      return result == null ? PaymentMode.UNRECOGNIZED : result;
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.PaymentMode paymentMode = 4;</code>
+     */
+    private void setPaymentModeValue(int value) {
+        paymentMode_ = value;
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.PaymentMode paymentMode = 4;</code>
+     */
+    private void setPaymentMode(PaymentMode value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      
+      paymentMode_ = value.getNumber();
+    }
+    /**
+     * <code>optional .treeleaf.suchi.entities.PaymentMode paymentMode = 4;</code>
+     */
+    private void clearPaymentMode() {
+      
+      paymentMode_ = 0;
+    }
+
+    public static final int PAYMENTREFERENCE_FIELD_NUMBER = 5;
+    private String paymentReference_;
+    /**
+     * <code>optional string paymentReference = 5;</code>
+     */
+    public String getPaymentReference() {
+      return paymentReference_;
+    }
+    /**
+     * <code>optional string paymentReference = 5;</code>
+     */
+    public com.google.protobuf.ByteString
+        getPaymentReferenceBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(paymentReference_);
+    }
+    /**
+     * <code>optional string paymentReference = 5;</code>
+     */
+    private void setPaymentReference(
+        String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      paymentReference_ = value;
+    }
+    /**
+     * <code>optional string paymentReference = 5;</code>
+     */
+    private void clearPaymentReference() {
+      
+      paymentReference_ = getDefaultInstance().getPaymentReference();
+    }
+    /**
+     * <code>optional string paymentReference = 5;</code>
+     */
+    private void setPaymentReferenceBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      paymentReference_ = value.toStringUtf8();
+    }
+
+    public static final int CREATEDAT_FIELD_NUMBER = 6;
+    private long createdAt_;
+    /**
+     * <code>optional int64 createdAt = 6;</code>
+     */
+    public long getCreatedAt() {
+      return createdAt_;
+    }
+    /**
+     * <code>optional int64 createdAt = 6;</code>
+     */
+    private void setCreatedAt(long value) {
+      
+      createdAt_ = value;
+    }
+    /**
+     * <code>optional int64 createdAt = 6;</code>
+     */
+    private void clearCreatedAt() {
+      
+      createdAt_ = 0L;
+    }
+
+    public static final int UPDATEDAT_FIELD_NUMBER = 7;
+    private long updatedAt_;
+    /**
+     * <code>optional int64 updatedAt = 7;</code>
+     */
+    public long getUpdatedAt() {
+      return updatedAt_;
+    }
+    /**
+     * <code>optional int64 updatedAt = 7;</code>
+     */
+    private void setUpdatedAt(long value) {
+      
+      updatedAt_ = value;
+    }
+    /**
+     * <code>optional int64 updatedAt = 7;</code>
+     */
+    private void clearUpdatedAt() {
+      
+      updatedAt_ = 0L;
+    }
+
+    public static final int AMOUNT_FIELD_NUMBER = 8;
+    private double amount_;
+    /**
+     * <code>optional double amount = 8;</code>
+     */
+    public double getAmount() {
+      return amount_;
+    }
+    /**
+     * <code>optional double amount = 8;</code>
+     */
+    private void setAmount(double value) {
+      
+      amount_ = value;
+    }
+    /**
+     * <code>optional double amount = 8;</code>
+     */
+    private void clearAmount() {
+      
+      amount_ = 0D;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!paymentId_.isEmpty()) {
+        output.writeString(1, getPaymentId());
+      }
+      if (!userId_.isEmpty()) {
+        output.writeString(2, getUserId());
+      }
+      if (paymentStatus_ != PaymentStatus.UNKNOWN_PAYMENT_STATUS.getNumber()) {
+        output.writeEnum(3, paymentStatus_);
+      }
+      if (paymentMode_ != PaymentMode.UNKNOWN_PAYMENT_MODE.getNumber()) {
+        output.writeEnum(4, paymentMode_);
+      }
+      if (!paymentReference_.isEmpty()) {
+        output.writeString(5, getPaymentReference());
+      }
+      if (createdAt_ != 0L) {
+        output.writeInt64(6, createdAt_);
+      }
+      if (updatedAt_ != 0L) {
+        output.writeInt64(7, updatedAt_);
+      }
+      if (amount_ != 0D) {
+        output.writeDouble(8, amount_);
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!paymentId_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeStringSize(1, getPaymentId());
+      }
+      if (!userId_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeStringSize(2, getUserId());
+      }
+      if (paymentStatus_ != PaymentStatus.UNKNOWN_PAYMENT_STATUS.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(3, paymentStatus_);
+      }
+      if (paymentMode_ != PaymentMode.UNKNOWN_PAYMENT_MODE.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(4, paymentMode_);
+      }
+      if (!paymentReference_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeStringSize(5, getPaymentReference());
+      }
+      if (createdAt_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(6, createdAt_);
+      }
+      if (updatedAt_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(7, updatedAt_);
+      }
+      if (amount_ != 0D) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(8, amount_);
+      }
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    public static PaymentStatusEntry parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static PaymentStatusEntry parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static PaymentStatusEntry parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static PaymentStatusEntry parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static PaymentStatusEntry parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static PaymentStatusEntry parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static PaymentStatusEntry parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    }
+    public static PaymentStatusEntry parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static PaymentStatusEntry parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static PaymentStatusEntry parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(PaymentStatusEntry prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+
+    /**
+     * Protobuf type {@code treeleaf.suchi.entities.PaymentStatusEntry}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          PaymentStatusEntry, Builder> implements
+        // @@protoc_insertion_point(builder_implements:treeleaf.suchi.entities.PaymentStatusEntry)
+        PaymentStatusEntryOrBuilder {
+      // Construct using com.treeleaf.suchi.entities.SuchiProto.PaymentStatusEntry.newBuilder()
+      private Builder() {
+        super(DEFAULT_INSTANCE);
+      }
+
+
+      /**
+       * <code>optional string paymentId = 1;</code>
+       */
+      public String getPaymentId() {
+        return instance.getPaymentId();
+      }
+      /**
+       * <code>optional string paymentId = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getPaymentIdBytes() {
+        return instance.getPaymentIdBytes();
+      }
+      /**
+       * <code>optional string paymentId = 1;</code>
+       */
+      public Builder setPaymentId(
+          String value) {
+        copyOnWrite();
+        instance.setPaymentId(value);
+        return this;
+      }
+      /**
+       * <code>optional string paymentId = 1;</code>
+       */
+      public Builder clearPaymentId() {
+        copyOnWrite();
+        instance.clearPaymentId();
+        return this;
+      }
+      /**
+       * <code>optional string paymentId = 1;</code>
+       */
+      public Builder setPaymentIdBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setPaymentIdBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>optional string userId = 2;</code>
+       */
+      public String getUserId() {
+        return instance.getUserId();
+      }
+      /**
+       * <code>optional string userId = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getUserIdBytes() {
+        return instance.getUserIdBytes();
+      }
+      /**
+       * <code>optional string userId = 2;</code>
+       */
+      public Builder setUserId(
+          String value) {
+        copyOnWrite();
+        instance.setUserId(value);
+        return this;
+      }
+      /**
+       * <code>optional string userId = 2;</code>
+       */
+      public Builder clearUserId() {
+        copyOnWrite();
+        instance.clearUserId();
+        return this;
+      }
+      /**
+       * <code>optional string userId = 2;</code>
+       */
+      public Builder setUserIdBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setUserIdBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>optional .treeleaf.suchi.entities.PaymentStatus paymentStatus = 3;</code>
+       */
+      public int getPaymentStatusValue() {
+        return instance.getPaymentStatusValue();
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.PaymentStatus paymentStatus = 3;</code>
+       */
+      public Builder setPaymentStatusValue(int value) {
+        copyOnWrite();
+        instance.setPaymentStatusValue(value);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.PaymentStatus paymentStatus = 3;</code>
+       */
+      public PaymentStatus getPaymentStatus() {
+        return instance.getPaymentStatus();
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.PaymentStatus paymentStatus = 3;</code>
+       */
+      public Builder setPaymentStatus(PaymentStatus value) {
+        copyOnWrite();
+        instance.setPaymentStatus(value);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.PaymentStatus paymentStatus = 3;</code>
+       */
+      public Builder clearPaymentStatus() {
+        copyOnWrite();
+        instance.clearPaymentStatus();
+        return this;
+      }
+
+      /**
+       * <code>optional .treeleaf.suchi.entities.PaymentMode paymentMode = 4;</code>
+       */
+      public int getPaymentModeValue() {
+        return instance.getPaymentModeValue();
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.PaymentMode paymentMode = 4;</code>
+       */
+      public Builder setPaymentModeValue(int value) {
+        copyOnWrite();
+        instance.setPaymentModeValue(value);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.PaymentMode paymentMode = 4;</code>
+       */
+      public PaymentMode getPaymentMode() {
+        return instance.getPaymentMode();
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.PaymentMode paymentMode = 4;</code>
+       */
+      public Builder setPaymentMode(PaymentMode value) {
+        copyOnWrite();
+        instance.setPaymentMode(value);
+        return this;
+      }
+      /**
+       * <code>optional .treeleaf.suchi.entities.PaymentMode paymentMode = 4;</code>
+       */
+      public Builder clearPaymentMode() {
+        copyOnWrite();
+        instance.clearPaymentMode();
+        return this;
+      }
+
+      /**
+       * <code>optional string paymentReference = 5;</code>
+       */
+      public String getPaymentReference() {
+        return instance.getPaymentReference();
+      }
+      /**
+       * <code>optional string paymentReference = 5;</code>
+       */
+      public com.google.protobuf.ByteString
+          getPaymentReferenceBytes() {
+        return instance.getPaymentReferenceBytes();
+      }
+      /**
+       * <code>optional string paymentReference = 5;</code>
+       */
+      public Builder setPaymentReference(
+          String value) {
+        copyOnWrite();
+        instance.setPaymentReference(value);
+        return this;
+      }
+      /**
+       * <code>optional string paymentReference = 5;</code>
+       */
+      public Builder clearPaymentReference() {
+        copyOnWrite();
+        instance.clearPaymentReference();
+        return this;
+      }
+      /**
+       * <code>optional string paymentReference = 5;</code>
+       */
+      public Builder setPaymentReferenceBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setPaymentReferenceBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>optional int64 createdAt = 6;</code>
+       */
+      public long getCreatedAt() {
+        return instance.getCreatedAt();
+      }
+      /**
+       * <code>optional int64 createdAt = 6;</code>
+       */
+      public Builder setCreatedAt(long value) {
+        copyOnWrite();
+        instance.setCreatedAt(value);
+        return this;
+      }
+      /**
+       * <code>optional int64 createdAt = 6;</code>
+       */
+      public Builder clearCreatedAt() {
+        copyOnWrite();
+        instance.clearCreatedAt();
+        return this;
+      }
+
+      /**
+       * <code>optional int64 updatedAt = 7;</code>
+       */
+      public long getUpdatedAt() {
+        return instance.getUpdatedAt();
+      }
+      /**
+       * <code>optional int64 updatedAt = 7;</code>
+       */
+      public Builder setUpdatedAt(long value) {
+        copyOnWrite();
+        instance.setUpdatedAt(value);
+        return this;
+      }
+      /**
+       * <code>optional int64 updatedAt = 7;</code>
+       */
+      public Builder clearUpdatedAt() {
+        copyOnWrite();
+        instance.clearUpdatedAt();
+        return this;
+      }
+
+      /**
+       * <code>optional double amount = 8;</code>
+       */
+      public double getAmount() {
+        return instance.getAmount();
+      }
+      /**
+       * <code>optional double amount = 8;</code>
+       */
+      public Builder setAmount(double value) {
+        copyOnWrite();
+        instance.setAmount(value);
+        return this;
+      }
+      /**
+       * <code>optional double amount = 8;</code>
+       */
+      public Builder clearAmount() {
+        copyOnWrite();
+        instance.clearAmount();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:treeleaf.suchi.entities.PaymentStatusEntry)
+    }
+    protected final Object dynamicMethod(
+        MethodToInvoke method,
+        Object arg0, Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new PaymentStatusEntry();
+        }
+        case IS_INITIALIZED: {
+          return DEFAULT_INSTANCE;
+        }
+        case MAKE_IMMUTABLE: {
+          return null;
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case VISIT: {
+          Visitor visitor = (Visitor) arg0;
+          PaymentStatusEntry other = (PaymentStatusEntry) arg1;
+          paymentId_ = visitor.visitString(!paymentId_.isEmpty(), paymentId_,
+              !other.paymentId_.isEmpty(), other.paymentId_);
+          userId_ = visitor.visitString(!userId_.isEmpty(), userId_,
+              !other.userId_.isEmpty(), other.userId_);
+          paymentStatus_ = visitor.visitInt(paymentStatus_ != 0, paymentStatus_,    other.paymentStatus_ != 0, other.paymentStatus_);
+          paymentMode_ = visitor.visitInt(paymentMode_ != 0, paymentMode_,    other.paymentMode_ != 0, other.paymentMode_);
+          paymentReference_ = visitor.visitString(!paymentReference_.isEmpty(), paymentReference_,
+              !other.paymentReference_.isEmpty(), other.paymentReference_);
+          createdAt_ = visitor.visitLong(createdAt_ != 0L, createdAt_,
+              other.createdAt_ != 0L, other.createdAt_);
+          updatedAt_ = visitor.visitLong(updatedAt_ != 0L, updatedAt_,
+              other.updatedAt_ != 0L, other.updatedAt_);
+          amount_ = visitor.visitDouble(amount_ != 0D, amount_,
+              other.amount_ != 0D, other.amount_);
+          if (visitor == MergeFromVisitor
+              .INSTANCE) {
+          }
+          return this;
+        }
+        case MERGE_FROM_STREAM: {
+          com.google.protobuf.CodedInputStream input =
+              (com.google.protobuf.CodedInputStream) arg0;
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry =
+              (com.google.protobuf.ExtensionRegistryLite) arg1;
+          try {
+            boolean done = false;
+            while (!done) {
+              int tag = input.readTag();
+              switch (tag) {
+                case 0:
+                  done = true;
+                  break;
+                default: {
+                  if (!input.skipField(tag)) {
+                    done = true;
+                  }
+                  break;
+                }
+                case 10: {
+                  String s = input.readStringRequireUtf8();
+
+                  paymentId_ = s;
+                  break;
+                }
+                case 18: {
+                  String s = input.readStringRequireUtf8();
+
+                  userId_ = s;
+                  break;
+                }
+                case 24: {
+                  int rawValue = input.readEnum();
+
+                  paymentStatus_ = rawValue;
+                  break;
+                }
+                case 32: {
+                  int rawValue = input.readEnum();
+
+                  paymentMode_ = rawValue;
+                  break;
+                }
+                case 42: {
+                  String s = input.readStringRequireUtf8();
+
+                  paymentReference_ = s;
+                  break;
+                }
+                case 48: {
+
+                  createdAt_ = input.readInt64();
+                  break;
+                }
+                case 56: {
+
+                  updatedAt_ = input.readInt64();
+                  break;
+                }
+                case 65: {
+
+                  amount_ = input.readDouble();
+                  break;
+                }
+              }
+            }
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw new RuntimeException(e.setUnfinishedMessage(this));
+          } catch (java.io.IOException e) {
+            throw new RuntimeException(
+                new com.google.protobuf.InvalidProtocolBufferException(
+                    e.getMessage()).setUnfinishedMessage(this));
+          } finally {
+          }
+        }
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          if (PARSER == null) {    synchronized (PaymentStatusEntry.class) {
+              if (PARSER == null) {
+                PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+              }
+            }
+          }
+          return PARSER;
+        }
+      }
+      throw new UnsupportedOperationException();
+    }
+
+
+    // @@protoc_insertion_point(class_scope:treeleaf.suchi.entities.PaymentStatusEntry)
+    private static final PaymentStatusEntry DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new PaymentStatusEntry();
+      DEFAULT_INSTANCE.makeImmutable();
+    }
+
+    public static PaymentStatusEntry getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static volatile com.google.protobuf.Parser<PaymentStatusEntry> PARSER;
+
+    public static com.google.protobuf.Parser<PaymentStatusEntry> parser() {
+      return DEFAULT_INSTANCE.getParserForType();
+    }
+  }
+
+  public interface VerificationOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:treeleaf.suchi.entities.Verification)
+      com.google.protobuf.MessageLiteOrBuilder {
+
+    /**
+     * <code>optional string emailPhone = 1;</code>
+     */
+    String getEmailPhone();
+    /**
+     * <code>optional string emailPhone = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getEmailPhoneBytes();
+
+    /**
+     * <code>optional int32 code = 2;</code>
+     */
+    int getCode();
+
+    /**
+     * <code>optional int64 timestamp = 3;</code>
+     */
+    long getTimestamp();
+
+    /**
+     * <code>optional string refId = 4;</code>
+     */
+    String getRefId();
+    /**
+     * <code>optional string refId = 4;</code>
+     */
+    com.google.protobuf.ByteString
+        getRefIdBytes();
+  }
+  /**
+   * Protobuf type {@code treeleaf.suchi.entities.Verification}
+   */
+  public  static final class Verification extends
+      com.google.protobuf.GeneratedMessageLite<
+          Verification, Verification.Builder> implements
+      // @@protoc_insertion_point(message_implements:treeleaf.suchi.entities.Verification)
+      VerificationOrBuilder {
+    private Verification() {
+      emailPhone_ = "";
+      refId_ = "";
+    }
+    public static final int EMAILPHONE_FIELD_NUMBER = 1;
+    private String emailPhone_;
+    /**
+     * <code>optional string emailPhone = 1;</code>
+     */
+    public String getEmailPhone() {
+      return emailPhone_;
+    }
+    /**
+     * <code>optional string emailPhone = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getEmailPhoneBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(emailPhone_);
+    }
+    /**
+     * <code>optional string emailPhone = 1;</code>
+     */
+    private void setEmailPhone(
+        String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      emailPhone_ = value;
+    }
+    /**
+     * <code>optional string emailPhone = 1;</code>
+     */
+    private void clearEmailPhone() {
+      
+      emailPhone_ = getDefaultInstance().getEmailPhone();
+    }
+    /**
+     * <code>optional string emailPhone = 1;</code>
+     */
+    private void setEmailPhoneBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      emailPhone_ = value.toStringUtf8();
+    }
+
+    public static final int CODE_FIELD_NUMBER = 2;
+    private int code_;
+    /**
+     * <code>optional int32 code = 2;</code>
+     */
+    public int getCode() {
+      return code_;
+    }
+    /**
+     * <code>optional int32 code = 2;</code>
+     */
+    private void setCode(int value) {
+      
+      code_ = value;
+    }
+    /**
+     * <code>optional int32 code = 2;</code>
+     */
+    private void clearCode() {
+      
+      code_ = 0;
+    }
+
+    public static final int TIMESTAMP_FIELD_NUMBER = 3;
+    private long timestamp_;
+    /**
+     * <code>optional int64 timestamp = 3;</code>
+     */
+    public long getTimestamp() {
+      return timestamp_;
+    }
+    /**
+     * <code>optional int64 timestamp = 3;</code>
+     */
+    private void setTimestamp(long value) {
+      
+      timestamp_ = value;
+    }
+    /**
+     * <code>optional int64 timestamp = 3;</code>
+     */
+    private void clearTimestamp() {
+      
+      timestamp_ = 0L;
+    }
+
+    public static final int REFID_FIELD_NUMBER = 4;
+    private String refId_;
+    /**
+     * <code>optional string refId = 4;</code>
+     */
+    public String getRefId() {
+      return refId_;
+    }
+    /**
+     * <code>optional string refId = 4;</code>
+     */
+    public com.google.protobuf.ByteString
+        getRefIdBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(refId_);
+    }
+    /**
+     * <code>optional string refId = 4;</code>
+     */
+    private void setRefId(
+        String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      refId_ = value;
+    }
+    /**
+     * <code>optional string refId = 4;</code>
+     */
+    private void clearRefId() {
+      
+      refId_ = getDefaultInstance().getRefId();
+    }
+    /**
+     * <code>optional string refId = 4;</code>
+     */
+    private void setRefIdBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      refId_ = value.toStringUtf8();
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!emailPhone_.isEmpty()) {
+        output.writeString(1, getEmailPhone());
+      }
+      if (code_ != 0) {
+        output.writeInt32(2, code_);
+      }
+      if (timestamp_ != 0L) {
+        output.writeInt64(3, timestamp_);
+      }
+      if (!refId_.isEmpty()) {
+        output.writeString(4, getRefId());
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!emailPhone_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeStringSize(1, getEmailPhone());
+      }
+      if (code_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, code_);
+      }
+      if (timestamp_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(3, timestamp_);
+      }
+      if (!refId_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeStringSize(4, getRefId());
+      }
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    public static Verification parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static Verification parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static Verification parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static Verification parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static Verification parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static Verification parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static Verification parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    }
+    public static Verification parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static Verification parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static Verification parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(Verification prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+
+    /**
+     * Protobuf type {@code treeleaf.suchi.entities.Verification}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          Verification, Builder> implements
+        // @@protoc_insertion_point(builder_implements:treeleaf.suchi.entities.Verification)
+        VerificationOrBuilder {
+      // Construct using com.treeleaf.suchi.entities.SuchiProto.Verification.newBuilder()
+      private Builder() {
+        super(DEFAULT_INSTANCE);
+      }
+
+
+      /**
+       * <code>optional string emailPhone = 1;</code>
+       */
+      public String getEmailPhone() {
+        return instance.getEmailPhone();
+      }
+      /**
+       * <code>optional string emailPhone = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getEmailPhoneBytes() {
+        return instance.getEmailPhoneBytes();
+      }
+      /**
+       * <code>optional string emailPhone = 1;</code>
+       */
+      public Builder setEmailPhone(
+          String value) {
+        copyOnWrite();
+        instance.setEmailPhone(value);
+        return this;
+      }
+      /**
+       * <code>optional string emailPhone = 1;</code>
+       */
+      public Builder clearEmailPhone() {
+        copyOnWrite();
+        instance.clearEmailPhone();
+        return this;
+      }
+      /**
+       * <code>optional string emailPhone = 1;</code>
+       */
+      public Builder setEmailPhoneBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setEmailPhoneBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>optional int32 code = 2;</code>
+       */
+      public int getCode() {
+        return instance.getCode();
+      }
+      /**
+       * <code>optional int32 code = 2;</code>
+       */
+      public Builder setCode(int value) {
+        copyOnWrite();
+        instance.setCode(value);
+        return this;
+      }
+      /**
+       * <code>optional int32 code = 2;</code>
+       */
+      public Builder clearCode() {
+        copyOnWrite();
+        instance.clearCode();
+        return this;
+      }
+
+      /**
+       * <code>optional int64 timestamp = 3;</code>
+       */
+      public long getTimestamp() {
+        return instance.getTimestamp();
+      }
+      /**
+       * <code>optional int64 timestamp = 3;</code>
+       */
+      public Builder setTimestamp(long value) {
+        copyOnWrite();
+        instance.setTimestamp(value);
+        return this;
+      }
+      /**
+       * <code>optional int64 timestamp = 3;</code>
+       */
+      public Builder clearTimestamp() {
+        copyOnWrite();
+        instance.clearTimestamp();
+        return this;
+      }
+
+      /**
+       * <code>optional string refId = 4;</code>
+       */
+      public String getRefId() {
+        return instance.getRefId();
+      }
+      /**
+       * <code>optional string refId = 4;</code>
+       */
+      public com.google.protobuf.ByteString
+          getRefIdBytes() {
+        return instance.getRefIdBytes();
+      }
+      /**
+       * <code>optional string refId = 4;</code>
+       */
+      public Builder setRefId(
+          String value) {
+        copyOnWrite();
+        instance.setRefId(value);
+        return this;
+      }
+      /**
+       * <code>optional string refId = 4;</code>
+       */
+      public Builder clearRefId() {
+        copyOnWrite();
+        instance.clearRefId();
+        return this;
+      }
+      /**
+       * <code>optional string refId = 4;</code>
+       */
+      public Builder setRefIdBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setRefIdBytes(value);
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:treeleaf.suchi.entities.Verification)
+    }
+    protected final Object dynamicMethod(
+        MethodToInvoke method,
+        Object arg0, Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new Verification();
+        }
+        case IS_INITIALIZED: {
+          return DEFAULT_INSTANCE;
+        }
+        case MAKE_IMMUTABLE: {
+          return null;
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case VISIT: {
+          Visitor visitor = (Visitor) arg0;
+          Verification other = (Verification) arg1;
+          emailPhone_ = visitor.visitString(!emailPhone_.isEmpty(), emailPhone_,
+              !other.emailPhone_.isEmpty(), other.emailPhone_);
+          code_ = visitor.visitInt(code_ != 0, code_,
+              other.code_ != 0, other.code_);
+          timestamp_ = visitor.visitLong(timestamp_ != 0L, timestamp_,
+              other.timestamp_ != 0L, other.timestamp_);
+          refId_ = visitor.visitString(!refId_.isEmpty(), refId_,
+              !other.refId_.isEmpty(), other.refId_);
+          if (visitor == MergeFromVisitor
+              .INSTANCE) {
+          }
+          return this;
+        }
+        case MERGE_FROM_STREAM: {
+          com.google.protobuf.CodedInputStream input =
+              (com.google.protobuf.CodedInputStream) arg0;
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry =
+              (com.google.protobuf.ExtensionRegistryLite) arg1;
+          try {
+            boolean done = false;
+            while (!done) {
+              int tag = input.readTag();
+              switch (tag) {
+                case 0:
+                  done = true;
+                  break;
+                default: {
+                  if (!input.skipField(tag)) {
+                    done = true;
+                  }
+                  break;
+                }
+                case 10: {
+                  String s = input.readStringRequireUtf8();
+
+                  emailPhone_ = s;
+                  break;
+                }
+                case 16: {
+
+                  code_ = input.readInt32();
+                  break;
+                }
+                case 24: {
+
+                  timestamp_ = input.readInt64();
+                  break;
+                }
+                case 34: {
+                  String s = input.readStringRequireUtf8();
+
+                  refId_ = s;
+                  break;
+                }
+              }
+            }
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw new RuntimeException(e.setUnfinishedMessage(this));
+          } catch (java.io.IOException e) {
+            throw new RuntimeException(
+                new com.google.protobuf.InvalidProtocolBufferException(
+                    e.getMessage()).setUnfinishedMessage(this));
+          } finally {
+          }
+        }
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          if (PARSER == null) {    synchronized (Verification.class) {
+              if (PARSER == null) {
+                PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+              }
+            }
+          }
+          return PARSER;
+        }
+      }
+      throw new UnsupportedOperationException();
+    }
+
+
+    // @@protoc_insertion_point(class_scope:treeleaf.suchi.entities.Verification)
+    private static final Verification DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new Verification();
+      DEFAULT_INSTANCE.makeImmutable();
+    }
+
+    public static Verification getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static volatile com.google.protobuf.Parser<Verification> PARSER;
+
+    public static com.google.protobuf.Parser<Verification> parser() {
+      return DEFAULT_INSTANCE.getParserForType();
+    }
+  }
+
+  public interface PasswordResetOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:treeleaf.suchi.entities.PasswordReset)
+      com.google.protobuf.MessageLiteOrBuilder {
+
+    /**
+     * <code>optional string userId = 1;</code>
+     */
+    String getUserId();
+    /**
+     * <code>optional string userId = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getUserIdBytes();
+
+    /**
+     * <code>optional int32 code = 2;</code>
+     */
+    int getCode();
+
+    /**
+     * <code>optional string resetToken = 3;</code>
+     */
+    String getResetToken();
+    /**
+     * <code>optional string resetToken = 3;</code>
+     */
+    com.google.protobuf.ByteString
+        getResetTokenBytes();
+
+    /**
+     * <code>optional string newPassword = 4;</code>
+     */
+    String getNewPassword();
+    /**
+     * <code>optional string newPassword = 4;</code>
+     */
+    com.google.protobuf.ByteString
+        getNewPasswordBytes();
+  }
+  /**
+   * Protobuf type {@code treeleaf.suchi.entities.PasswordReset}
+   */
+  public  static final class PasswordReset extends
+      com.google.protobuf.GeneratedMessageLite<
+          PasswordReset, PasswordReset.Builder> implements
+      // @@protoc_insertion_point(message_implements:treeleaf.suchi.entities.PasswordReset)
+      PasswordResetOrBuilder {
+    private PasswordReset() {
+      userId_ = "";
+      resetToken_ = "";
+      newPassword_ = "";
+    }
+    public static final int USERID_FIELD_NUMBER = 1;
+    private String userId_;
+    /**
+     * <code>optional string userId = 1;</code>
+     */
+    public String getUserId() {
+      return userId_;
+    }
+    /**
+     * <code>optional string userId = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getUserIdBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(userId_);
+    }
+    /**
+     * <code>optional string userId = 1;</code>
+     */
+    private void setUserId(
+        String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      userId_ = value;
+    }
+    /**
+     * <code>optional string userId = 1;</code>
+     */
+    private void clearUserId() {
+      
+      userId_ = getDefaultInstance().getUserId();
+    }
+    /**
+     * <code>optional string userId = 1;</code>
+     */
+    private void setUserIdBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      userId_ = value.toStringUtf8();
+    }
+
+    public static final int CODE_FIELD_NUMBER = 2;
+    private int code_;
+    /**
+     * <code>optional int32 code = 2;</code>
+     */
+    public int getCode() {
+      return code_;
+    }
+    /**
+     * <code>optional int32 code = 2;</code>
+     */
+    private void setCode(int value) {
+      
+      code_ = value;
+    }
+    /**
+     * <code>optional int32 code = 2;</code>
+     */
+    private void clearCode() {
+      
+      code_ = 0;
+    }
+
+    public static final int RESETTOKEN_FIELD_NUMBER = 3;
+    private String resetToken_;
+    /**
+     * <code>optional string resetToken = 3;</code>
+     */
+    public String getResetToken() {
+      return resetToken_;
+    }
+    /**
+     * <code>optional string resetToken = 3;</code>
+     */
+    public com.google.protobuf.ByteString
+        getResetTokenBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(resetToken_);
+    }
+    /**
+     * <code>optional string resetToken = 3;</code>
+     */
+    private void setResetToken(
+        String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      resetToken_ = value;
+    }
+    /**
+     * <code>optional string resetToken = 3;</code>
+     */
+    private void clearResetToken() {
+      
+      resetToken_ = getDefaultInstance().getResetToken();
+    }
+    /**
+     * <code>optional string resetToken = 3;</code>
+     */
+    private void setResetTokenBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      resetToken_ = value.toStringUtf8();
+    }
+
+    public static final int NEWPASSWORD_FIELD_NUMBER = 4;
+    private String newPassword_;
+    /**
+     * <code>optional string newPassword = 4;</code>
+     */
+    public String getNewPassword() {
+      return newPassword_;
+    }
+    /**
+     * <code>optional string newPassword = 4;</code>
+     */
+    public com.google.protobuf.ByteString
+        getNewPasswordBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(newPassword_);
+    }
+    /**
+     * <code>optional string newPassword = 4;</code>
+     */
+    private void setNewPassword(
+        String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      newPassword_ = value;
+    }
+    /**
+     * <code>optional string newPassword = 4;</code>
+     */
+    private void clearNewPassword() {
+      
+      newPassword_ = getDefaultInstance().getNewPassword();
+    }
+    /**
+     * <code>optional string newPassword = 4;</code>
+     */
+    private void setNewPasswordBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      newPassword_ = value.toStringUtf8();
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!userId_.isEmpty()) {
+        output.writeString(1, getUserId());
+      }
+      if (code_ != 0) {
+        output.writeInt32(2, code_);
+      }
+      if (!resetToken_.isEmpty()) {
+        output.writeString(3, getResetToken());
+      }
+      if (!newPassword_.isEmpty()) {
+        output.writeString(4, getNewPassword());
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!userId_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeStringSize(1, getUserId());
+      }
+      if (code_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, code_);
+      }
+      if (!resetToken_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeStringSize(3, getResetToken());
+      }
+      if (!newPassword_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeStringSize(4, getNewPassword());
+      }
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    public static PasswordReset parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static PasswordReset parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static PasswordReset parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static PasswordReset parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static PasswordReset parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static PasswordReset parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static PasswordReset parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    }
+    public static PasswordReset parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static PasswordReset parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static PasswordReset parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(PasswordReset prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+
+    /**
+     * Protobuf type {@code treeleaf.suchi.entities.PasswordReset}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          PasswordReset, Builder> implements
+        // @@protoc_insertion_point(builder_implements:treeleaf.suchi.entities.PasswordReset)
+        PasswordResetOrBuilder {
+      // Construct using com.treeleaf.suchi.entities.SuchiProto.PasswordReset.newBuilder()
+      private Builder() {
+        super(DEFAULT_INSTANCE);
+      }
+
+
+      /**
+       * <code>optional string userId = 1;</code>
+       */
+      public String getUserId() {
+        return instance.getUserId();
+      }
+      /**
+       * <code>optional string userId = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getUserIdBytes() {
+        return instance.getUserIdBytes();
+      }
+      /**
+       * <code>optional string userId = 1;</code>
+       */
+      public Builder setUserId(
+          String value) {
+        copyOnWrite();
+        instance.setUserId(value);
+        return this;
+      }
+      /**
+       * <code>optional string userId = 1;</code>
+       */
+      public Builder clearUserId() {
+        copyOnWrite();
+        instance.clearUserId();
+        return this;
+      }
+      /**
+       * <code>optional string userId = 1;</code>
+       */
+      public Builder setUserIdBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setUserIdBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>optional int32 code = 2;</code>
+       */
+      public int getCode() {
+        return instance.getCode();
+      }
+      /**
+       * <code>optional int32 code = 2;</code>
+       */
+      public Builder setCode(int value) {
+        copyOnWrite();
+        instance.setCode(value);
+        return this;
+      }
+      /**
+       * <code>optional int32 code = 2;</code>
+       */
+      public Builder clearCode() {
+        copyOnWrite();
+        instance.clearCode();
+        return this;
+      }
+
+      /**
+       * <code>optional string resetToken = 3;</code>
+       */
+      public String getResetToken() {
+        return instance.getResetToken();
+      }
+      /**
+       * <code>optional string resetToken = 3;</code>
+       */
+      public com.google.protobuf.ByteString
+          getResetTokenBytes() {
+        return instance.getResetTokenBytes();
+      }
+      /**
+       * <code>optional string resetToken = 3;</code>
+       */
+      public Builder setResetToken(
+          String value) {
+        copyOnWrite();
+        instance.setResetToken(value);
+        return this;
+      }
+      /**
+       * <code>optional string resetToken = 3;</code>
+       */
+      public Builder clearResetToken() {
+        copyOnWrite();
+        instance.clearResetToken();
+        return this;
+      }
+      /**
+       * <code>optional string resetToken = 3;</code>
+       */
+      public Builder setResetTokenBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setResetTokenBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>optional string newPassword = 4;</code>
+       */
+      public String getNewPassword() {
+        return instance.getNewPassword();
+      }
+      /**
+       * <code>optional string newPassword = 4;</code>
+       */
+      public com.google.protobuf.ByteString
+          getNewPasswordBytes() {
+        return instance.getNewPasswordBytes();
+      }
+      /**
+       * <code>optional string newPassword = 4;</code>
+       */
+      public Builder setNewPassword(
+          String value) {
+        copyOnWrite();
+        instance.setNewPassword(value);
+        return this;
+      }
+      /**
+       * <code>optional string newPassword = 4;</code>
+       */
+      public Builder clearNewPassword() {
+        copyOnWrite();
+        instance.clearNewPassword();
+        return this;
+      }
+      /**
+       * <code>optional string newPassword = 4;</code>
+       */
+      public Builder setNewPasswordBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setNewPasswordBytes(value);
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:treeleaf.suchi.entities.PasswordReset)
+    }
+    protected final Object dynamicMethod(
+        MethodToInvoke method,
+        Object arg0, Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new PasswordReset();
+        }
+        case IS_INITIALIZED: {
+          return DEFAULT_INSTANCE;
+        }
+        case MAKE_IMMUTABLE: {
+          return null;
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case VISIT: {
+          Visitor visitor = (Visitor) arg0;
+          PasswordReset other = (PasswordReset) arg1;
+          userId_ = visitor.visitString(!userId_.isEmpty(), userId_,
+              !other.userId_.isEmpty(), other.userId_);
+          code_ = visitor.visitInt(code_ != 0, code_,
+              other.code_ != 0, other.code_);
+          resetToken_ = visitor.visitString(!resetToken_.isEmpty(), resetToken_,
+              !other.resetToken_.isEmpty(), other.resetToken_);
+          newPassword_ = visitor.visitString(!newPassword_.isEmpty(), newPassword_,
+              !other.newPassword_.isEmpty(), other.newPassword_);
+          if (visitor == MergeFromVisitor
+              .INSTANCE) {
+          }
+          return this;
+        }
+        case MERGE_FROM_STREAM: {
+          com.google.protobuf.CodedInputStream input =
+              (com.google.protobuf.CodedInputStream) arg0;
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry =
+              (com.google.protobuf.ExtensionRegistryLite) arg1;
+          try {
+            boolean done = false;
+            while (!done) {
+              int tag = input.readTag();
+              switch (tag) {
+                case 0:
+                  done = true;
+                  break;
+                default: {
+                  if (!input.skipField(tag)) {
+                    done = true;
+                  }
+                  break;
+                }
+                case 10: {
+                  String s = input.readStringRequireUtf8();
+
+                  userId_ = s;
+                  break;
+                }
+                case 16: {
+
+                  code_ = input.readInt32();
+                  break;
+                }
+                case 26: {
+                  String s = input.readStringRequireUtf8();
+
+                  resetToken_ = s;
+                  break;
+                }
+                case 34: {
+                  String s = input.readStringRequireUtf8();
+
+                  newPassword_ = s;
+                  break;
+                }
+              }
+            }
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw new RuntimeException(e.setUnfinishedMessage(this));
+          } catch (java.io.IOException e) {
+            throw new RuntimeException(
+                new com.google.protobuf.InvalidProtocolBufferException(
+                    e.getMessage()).setUnfinishedMessage(this));
+          } finally {
+          }
+        }
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          if (PARSER == null) {    synchronized (PasswordReset.class) {
+              if (PARSER == null) {
+                PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+              }
+            }
+          }
+          return PARSER;
+        }
+      }
+      throw new UnsupportedOperationException();
+    }
+
+
+    // @@protoc_insertion_point(class_scope:treeleaf.suchi.entities.PasswordReset)
+    private static final PasswordReset DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new PasswordReset();
+      DEFAULT_INSTANCE.makeImmutable();
+    }
+
+    public static PasswordReset getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static volatile com.google.protobuf.Parser<PasswordReset> PARSER;
+
+    public static com.google.protobuf.Parser<PasswordReset> parser() {
       return DEFAULT_INSTANCE.getParserForType();
     }
   }

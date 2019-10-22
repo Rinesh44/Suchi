@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
@@ -14,6 +15,7 @@ import com.treeleaf.suchi.R;
 import com.treeleaf.suchi.activities.base.BaseActivity;
 import com.treeleaf.suchi.activities.dashboard.DashboardActivity;
 import com.treeleaf.suchi.activities.enterkey.EnterKeyActivity;
+import com.treeleaf.suchi.activities.forgotpassword.ForgotPassword;
 import com.treeleaf.suchi.api.Endpoints;
 import com.treeleaf.suchi.entities.TreeleafProto;
 import com.treeleaf.suchi.realm.repo.Repo;
@@ -46,6 +48,8 @@ public class LoginActivity extends BaseActivity implements LoginView {
     TextInputEditText mPassword;
     @BindView(R.id.btn_login)
     MaterialButton mLogin;
+    @BindView(R.id.tv_forgot_password)
+    TextView mForgotPassword;
 
     private LoginPresenter presenter;
     private SharedPreferences preferences;
@@ -67,6 +71,23 @@ public class LoginActivity extends BaseActivity implements LoginView {
             @Override
             public void onClick(View view) {
                 validateAndLogin();
+            }
+        });
+
+
+        mForgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (Objects.requireNonNull(mUsername.getText()).toString().isEmpty()) {
+                    mUsernameLayout.setErrorEnabled(true);
+                    mUsernameLayout.setError("This field is required");
+                    mUsername.requestFocus();
+                    return;
+                } else {
+                    mUsernameLayout.setErrorEnabled(false);
+                }
+
+                presenter.forgotPassword(mUsername.getText().toString());
             }
         });
 
@@ -190,6 +211,18 @@ public class LoginActivity extends BaseActivity implements LoginView {
     @Override
     public void getAllDataFail(String msg) {
         customProgress.hideProgress();
+        showMessage(msg);
+    }
+
+    @Override
+    public void forgotPasswordSuccess() {
+        Toast.makeText(this, "Please wait for code...", Toast.LENGTH_SHORT).show();
+        Intent i = new Intent(LoginActivity.this, ForgotPassword.class);
+        startActivity(i);
+    }
+
+    @Override
+    public void forgotPasswordFail(String msg) {
         showMessage(msg);
     }
 }

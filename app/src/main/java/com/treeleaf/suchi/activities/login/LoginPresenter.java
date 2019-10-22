@@ -6,4 +6,6 @@ public interface LoginPresenter {
 
     void getAllData(String token);
 
+    void forgotPassword(String emailPhone);
+
 }

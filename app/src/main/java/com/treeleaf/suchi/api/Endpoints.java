@@ -4,6 +4,7 @@ import com.treeleaf.suchi.entities.SuchiProto;
 import com.treeleaf.suchi.entities.TreeleafProto;
 import com.treeleaf.suchi.rpc.SuchiRpcProto;
 
+import butterknife.BindView;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -34,6 +35,8 @@ public interface Endpoints {
     String CREDITORS = "creditor/sync";
     String CREDIT_DETAILS = "credit/sync";
     String FREE_TRIAL = "suchi/key/free";
+    String FORGOT_PASSWORD = "user/password/reset/request";
+    String RESET_PASSWORD = "user/password/reset";
 
     String ADD_UNSYNCED_INVENTORIES = "inventory/sync";
 
@@ -89,5 +92,10 @@ public interface Endpoints {
     Call<SuchiRpcProto.SuchiBaseResponse> getFreeTrial(@Header(AUTHORIZATION) String auth,
                                                        @Body SuchiProto.SuchiKey suchiKey);
 
+    @PATCH(API_BASE_URL + FORGOT_PASSWORD)
+    Call<SuchiRpcProto.SuchiBaseResponse> forgotPassword(@Body String emailPhone);
+
+    @POST(API_BASE_URL + RESET_PASSWORD)
+    Call<SuchiRpcProto.SuchiBaseResponse> resetPassword(@Body SuchiProto.PasswordReset resetPassword);
 
 }

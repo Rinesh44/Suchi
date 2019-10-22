@@ -3,6 +3,7 @@ package com.treeleaf.suchi.dagger.component;
 import com.treeleaf.suchi.activities.credit.CreditHistory;
 import com.treeleaf.suchi.activities.dashboard.DashboardActivity;
 import com.treeleaf.suchi.activities.enterkey.EnterKeyActivity;
+import com.treeleaf.suchi.activities.forgotpassword.ForgotPassword;
 import com.treeleaf.suchi.activities.inventory.stock.SearchStock;
 import com.treeleaf.suchi.activities.inventory.stock.StockActivity;
 import com.treeleaf.suchi.activities.inventory.stock.StockEntryActivity;
@@ -39,5 +40,7 @@ public interface AppComponent {
     void inject(CreditHistory creditHistory);
 
     void inject(EnterKeyActivity enterKeyActivity);
+
+    void inject(ForgotPassword forgotPassword);
 
 }
