@@ -13,11 +13,42 @@
         android:layout_height="match_parent">
 
         <RelativeLayout
+            android:id="@+id/rl_calculate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+             android:layout_below="@+id/mcv_bill_holder"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:id="@+id/tv_calculate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/calculate"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:layout_toEndOf="@+id/tv_calculate"
+                android:background="@color/colorAccent" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
             android:id="@+id/rl_amount_calculator"
             android:layout_width="match_parent"
-            android:layout_below="@+id/mcv_bill_holder"
+            android:layout_below="@+id/rl_calculate"
             android:layout_above="@+id/ll_bottom_buttons"
-            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="10dp"
             android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputLayout

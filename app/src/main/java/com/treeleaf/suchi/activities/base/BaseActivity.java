@@ -112,6 +112,16 @@ public abstract class BaseActivity extends AppCompatActivity implements com.tree
         return "";
     }
 
+    public String getDateAlternate(long time) {
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy");
+            return sdf.format(new Date(time));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+
 
     private void showSnackBar(String message) {
         Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content),

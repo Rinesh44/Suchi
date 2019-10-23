@@ -147,13 +147,11 @@ public class LoginPresenterImpl implements LoginPresenter {
                 activity.hideLoading();
 
                 if (baseResponse == null) {
-                    activity.hideLoading();
                     activity.forgotPasswordFail("forgot password failed");
                     return;
                 }
 
                 if (baseResponse.getError()) {
-                    activity.hideLoading();
                     activity.forgotPasswordFail(baseResponse.getMsg());
                     return;
                 }
@@ -163,7 +161,7 @@ public class LoginPresenterImpl implements LoginPresenter {
 
             @Override
             public void onFailureResult() {
-
+                activity.forgotPasswordFail("Failed");
             }
         }));
     }

@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="Gradle: :eSewaSdk:@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/e667c2421de226026274b65718ef8cc7/jetified-eSewaSdk/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/e667c2421de226026274b65718ef8cc7/jetified-eSewaSdk/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/3ba97d8eecbbbe1e57089107afee9cdd/jetified-eSewaSdk/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/3ba97d8eecbbbe1e57089107afee9cdd/jetified-eSewaSdk/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

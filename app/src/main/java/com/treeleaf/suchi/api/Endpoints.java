@@ -14,6 +14,7 @@ import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.PATCH;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 public interface Endpoints {
     //    String API_BASE_URL = "http://192.168.0.173:9020/";
@@ -35,7 +36,7 @@ public interface Endpoints {
     String CREDITORS = "creditor/sync";
     String CREDIT_DETAILS = "credit/sync";
     String FREE_TRIAL = "suchi/key/free";
-    String FORGOT_PASSWORD = "user/password/reset/request";
+    String FORGOT_PASSWORD = "user/password/reset/request/{emailPhone}";
     String RESET_PASSWORD = "user/password/reset";
 
     String ADD_UNSYNCED_INVENTORIES = "inventory/sync";
@@ -93,7 +94,7 @@ public interface Endpoints {
                                                        @Body SuchiProto.SuchiKey suchiKey);
 
     @PATCH(API_BASE_URL + FORGOT_PASSWORD)
-    Call<SuchiRpcProto.SuchiBaseResponse> forgotPassword(@Body String emailPhone);
+    Call<SuchiRpcProto.SuchiBaseResponse> forgotPassword(@Path(value = "emailPhone") String emailPhone);
 
     @POST(API_BASE_URL + RESET_PASSWORD)
     Call<SuchiRpcProto.SuchiBaseResponse> resetPassword(@Body SuchiProto.PasswordReset resetPassword);

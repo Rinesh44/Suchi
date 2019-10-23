@@ -228,8 +228,12 @@ public class CreditDetails extends BaseActivity {
             TextView qty = view.findViewById(R.id.tv_qty);
             TextView price = view.findViewById(R.id.tv_price);
             TextView amount = view.findViewById(R.id.tv_amount);
+            TextView date = view.findViewById(R.id.tv_date);
 
             itemName.setText(salesStock.getName());
+
+            String dateString = getDateAlternate(salesStock.getCreatedAt());
+            date.setText(dateString);
 
             StringBuilder quantityHolder = new StringBuilder();
             quantityHolder.append(salesStock.getQuantity());
@@ -243,6 +247,10 @@ public class CreditDetails extends BaseActivity {
 
             AppUtils.showLog(TAG, "sales amount: " + salesStock.getAmount());
             totalAmount += Double.valueOf(salesStock.getAmount());
+
+            LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            params.setMargins(0, 0, 0, 10);
+            view.setLayoutParams(params);
             mBillHolder.addView(view);
 
             StringBuilder totalAmountBuilder = new StringBuilder();

@@ -87,6 +87,7 @@ public class LoginActivity extends BaseActivity implements LoginView {
                     mUsernameLayout.setErrorEnabled(false);
                 }
 
+                showLoading();
                 presenter.forgotPassword(mUsername.getText().toString());
             }
         });
