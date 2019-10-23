@@ -156,7 +156,7 @@ public class LoginPresenterImpl implements LoginPresenter {
                     return;
                 }
 
-                activity.forgotPasswordSuccess();
+                activity.forgotPasswordSuccess(baseResponse.getUser().getUserId());
             }
 
             @Override

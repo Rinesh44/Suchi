@@ -13,7 +13,7 @@ public interface LoginView {
 
     void getAllDataFail(String msg);
 
-    void forgotPasswordSuccess();
+    void forgotPasswordSuccess(String userId);
 
     void forgotPasswordFail(String msg);
 }

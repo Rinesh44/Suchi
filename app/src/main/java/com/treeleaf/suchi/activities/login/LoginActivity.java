@@ -216,9 +216,10 @@ public class LoginActivity extends BaseActivity implements LoginView {
     }
 
     @Override
-    public void forgotPasswordSuccess() {
+    public void forgotPasswordSuccess(String userId) {
         Toast.makeText(this, "Please wait for code...", Toast.LENGTH_SHORT).show();
         Intent i = new Intent(LoginActivity.this, ForgotPassword.class);
+        i.putExtra("user_id", userId);
         startActivity(i);
     }
 

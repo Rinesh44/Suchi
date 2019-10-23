@@ -1,9 +1,10 @@
 package com.treeleaf.suchi.activities.forgotpassword;
 
-import androidx.appcompat.app.AppCompatActivity;
+
 import androidx.appcompat.widget.Toolbar;
 import androidx.databinding.Bindable;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
@@ -47,6 +48,7 @@ public class ForgotPassword extends BaseActivity implements ForgotPasswordView {
 
 
     private ForgotPasswordPresenter mPresenter;
+    private String userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +61,8 @@ public class ForgotPassword extends BaseActivity implements ForgotPasswordView {
         initialize();
         mPresenter = new ForgotPasswordPresenterImpl(endpoints, this);
 
+        userId = getUserId();
+
         mResetPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -68,12 +72,18 @@ public class ForgotPassword extends BaseActivity implements ForgotPasswordView {
                 SuchiProto.PasswordReset passwordReset = SuchiProto.PasswordReset.newBuilder()
                         .setCode(Integer.valueOf(code))
                         .setNewPassword(password)
+                        .setUserId(userId)
                         .build();
 
                 showLoading();
                 mPresenter.resetPassword(passwordReset);
             }
         });
+    }
+
+    private String getUserId() {
+        Intent i = getIntent();
+        return  i.getStringExtra("user_id");
     }
 
     private void initialize() {
