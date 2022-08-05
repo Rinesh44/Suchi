@@ -1,6 +1,6 @@
 # Suchi
 
-Suchi is an AI-based POS system for retail stores to handle the sales, inventory and credit management. It is all at once, a software solution built particularly for retail businesses to the small and midsize retailers to manage stocks and credits.
+Suchi is a POS system for retail stores to handle the sales, inventory and credit management. It is all at once, a software solution built particularly for retail businesses to the small and midsize retailers to manage stocks and credits.
 
 
 ## Screenshots
